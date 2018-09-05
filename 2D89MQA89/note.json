@@ -1,0 +1,439 @@
+﻿{
+  "paragraphs": [
+    {
+      "title": "Transactions ",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Splice Transactions with Spark and JDBC\n\nNow we'll get a glimpse into the transactional nature of Splice Machine.  We'll be switching to the `%spark` interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we'll:\n\n<ul class=\"italic\">\n    <li>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</li>\n    <li>Use JDBC calls to set and check values from the database.</li>\n    <li>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</li>\n</ul>\n<br />\n## Run Setup Code and Define our Procedure\n\nWe define a simple procedure, `checkBalance` that checks and *pretty-prints* the current balance for a supplier  ",
+      "user": "splice",
+      "dateUpdated": "2018-03-04T14:13:51-0500",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Splice Transactions with Spark and JDBC</h1>\n<p>Now we&rsquo;ll get a glimpse into the transactional nature of Splice Machine. We&rsquo;ll be switching to the <code>%spark</code> interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we&rsquo;ll:</p>\n<ul class=\"italic\">\n    <li>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</li>\n    <li>Use JDBC calls to set and check values from the database.</li>\n    <li>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</li>\n</ul>\n<br />\n<h2>Run Setup Code and Define our Procedure</h2>\n<p>We define a simple procedure, <code>checkBalance</code> that checks and <em>pretty-prints</em> the current balance for a supplier</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246722_1493122298",
+      "id": "20180115-164647_1759951771",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "dateStarted": "2018-03-04T14:13:51-0500",
+      "dateFinished": "2018-03-04T14:13:51-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:23566"
+    },
+    {
+      "text": "%spark\n  println(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\n  val defaultJDBCURL = z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin\"\"\").toString\n  val localJDBCURL = \"\"\"jdbc:splice://localhost:1527/splicedb;user=splice;password=admin\"\"\"\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-08-28T11:53:30-0400",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1535471538810_-682924297",
+      "id": "20180828-115218_491973685",
+      "dateCreated": "2018-08-28T11:52:18-0400",
+      "dateStarted": "2018-08-28T11:53:09-0400",
+      "dateFinished": "2018-08-28T11:53:09-0400",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23567"
+    },
+    {
+      "title": "Simple Function to Pretty Print Balance",
+      "text": "%spark\nimport java.sql.{DriverManager,Connection}\nvar conn = DriverManager.getConnection(defaultJDBCURL)\nconn.setAutoCommit(false)\nvar statement = conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit = {\n    var resSet = statement.executeQuery(\"SELECT S_ACCTBAL FROM TPCH1.SUPPLIER WHERE S_SUPPKEY = \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl = resSet.getString(\"S_ACCTBAL\")\n        println(\"================ Current account balance: \" + bl + \" ====================\");\n    }\n}\n",
+      "user": "splice",
+      "dateUpdated": "2018-08-28T11:52:42-0400",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "editorHide": false,
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246722_1493122298",
+      "id": "20180115-164841_170157787",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "dateStarted": "2018-05-26T21:58:10-0400",
+      "dateFinished": "2018-05-26T21:58:10-0400",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23568"
+    },
+    {
+      "text": "%md\nNow we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:",
+      "user": "splice",
+      "dateUpdated": "2018-03-29T11:59:43-0400",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Now we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246722_1493122298",
+      "id": "20180115-165029_1635005335",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "dateStarted": "2018-03-29T11:59:43-0400",
+      "dateFinished": "2018-03-29T11:59:45-0400",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23569"
+    },
+    {
+      "text": "%spark\ncheckBalance(6517)",
+      "user": "splice",
+      "dateUpdated": "2018-05-26T21:58:51-0400",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorHide": false,
+        "tableHide": false,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\njava.sql.SQLSyntaxErrorException: Table/View 'TPCH1.SUPPLIER' does not exist.\n  at com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:89)\n  at com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n  at com.splicemachine.db.client.am.Statement.executeQuery(Statement.java:494)\n  at $line203567114742.$read$checkBalance(<console>:35)\n  at $line203567114743.$read$<init>(<console>:37)\n  at $line203567114743.$read$<init>(<console>:42)\n  at $line203567114743.$read$<init>(<console>:44)\n  at $line203567114743.$read$<init>(<console>:46)\n  at $line203567114743.$read$<init>(<console>:48)\n  at $line203567114743.$read$<init>(<console>:50)\n  at $line203567114743.$read$<init>(<console>:52)\n  at $line203567114743.$read$<init>(<console>:54)\n  at $line203567114743.$read.<init>(<console>:56)\n  at $line203567114743.$read$.<init>(<console>:60)\n  at $line203567114743.$read$.<clinit>(<console>)\n  at $line203567114743.$eval$.$print$lzycompute(<console>:7)\n  at $line203567114743.$eval$.$print(<console>:6)\n  at $line203567114743.$eval.$print(<console>)\n  at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n  at java.lang.reflect.Method.invoke(Method.java:498)\n  at scala.tools.nsc.interpreter.IMain$ReadEvalPrint.call(IMain.scala:786)\n  at scala.tools.nsc.interpreter.IMain$Request.loadAndRun(IMain.scala:1047)\n  at scala.tools.nsc.interpreter.IMain$WrappedRequest$$anonfun$loadAndRunReq$1.apply(IMain.scala:638)\n  at scala.tools.nsc.interpreter.IMain$WrappedRequest$$anonfun$loadAndRunReq$1.apply(IMain.scala:637)\n  at scala.reflect.internal.util.ScalaClassLoader$class.asContext(ScalaClassLoader.scala:31)\n  at scala.reflect.internal.util.AbstractFileClassLoader.asContext(AbstractFileClassLoader.scala:19)\n  at scala.tools.nsc.interpreter.IMain$WrappedRequest.loadAndRunReq(IMain.scala:637)\n  at scala.tools.nsc.interpreter.IMain.interpret(IMain.scala:569)\n  at scala.tools.nsc.interpreter.IMain.interpret(IMain.scala:565)\n  at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n  at java.lang.reflect.Method.invoke(Method.java:498)\n  at org.apache.zeppelin.spark.Utils.invokeMethod(Utils.java:38)\n  at org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:972)\n  at org.apache.zeppelin.spark.SparkInterpreter.interpretInput(SparkInterpreter.java:1198)\n  at org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:1144)\n  at org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:1137)\n  at org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:95)\n  at org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:490)\n  at org.apache.zeppelin.scheduler.Job.run(Job.java:175)\n  at org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\n  at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n  at java.util.concurrent.FutureTask.run(FutureTask.java:266)\n  at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n  at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n  at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n  at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n  at java.lang.Thread.run(Thread.java:745)\nCaused by: com.splicemachine.db.client.am.SqlException: Table/View 'TPCH1.SUPPLIER' does not exist.\n  at com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1845)\n  at com.splicemachine.db.client.net.NetStatementReply.parsePrepareError(NetStatementReply.java:572)\n  at com.splicemachine.db.client.net.NetStatementReply.parsePRPSQLSTTreply(NetStatementReply.java:146)\n  at com.splicemachine.db.client.net.NetStatementReply.readPrepareDescribeOutput(NetStatementReply.java:55)\n  at com.splicemachine.db.client.net.StatementReply.readPrepareDescribeOutput(StatementReply.java:44)\n  at com.splicemachine.db.client.net.NetStatement.readPrepareDescribeOutput_(NetStatement.java:142)\n  at com.splicemachine.db.client.am.Statement.readPrepareDescribeOutput(Statement.java:1452)\n  at com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2126)\n  at com.splicemachine.db.client.am.Statement.executeQueryX(Statement.java:500)\n  at com.splicemachine.db.client.am.Statement.executeQuery(Statement.java:485)\n  ... 48 more\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246723_1492737549",
+      "id": "20180115-165115_1164524303",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "dateStarted": "2018-05-26T21:58:51-0400",
+      "dateFinished": "2018-05-26T21:58:51-0400",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23570"
+    },
+    {
+      "text": "%md\nOur setup code created two useful variables we can now employ:\n\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n\nThe first example shows an update statement which, upon committing, retains the value to which it is set.\n\n## Committing a Transaction",
+      "user": "splice",
+      "dateUpdated": "2018-05-21T21:05:02-0400",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>Our setup code created two useful variables we can now employ:</p>\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n<p>The first example shows an update statement which, upon committing, retains the value to which it is set.</p>\n<h2>Committing a Transaction</h2>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246723_1492737549",
+      "id": "20180115-165133_1245971625",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "dateStarted": "2018-05-21T21:05:02-0400",
+      "dateFinished": "2018-05-21T21:05:02-0400",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23571"
+    },
+    {
+      "title": "Transaction Commit Example",
+      "text": "%spark\nstatement.executeUpdate(\"update TPCH1.SUPPLIER SET S_ACCTBAL = 10000 WHERE S_SUPPKEY = 6517\");\ncheckBalance(6517);\nconn.commit();\ncheckBalance(6517);",
+      "user": "splice",
+      "dateUpdated": "2018-05-21T21:05:47-0400",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nres2: Int = 1\n================ Current account balance: 10000.00 ====================\n================ Current account balance: 10000.00 ====================\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246723_1492737549",
+      "id": "20180115-165153_163460075",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "dateStarted": "2018-05-21T21:05:47-0400",
+      "dateFinished": "2018-05-21T21:05:49-0400",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23572"
+    },
+    {
+      "text": "%md\n<br />\nBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\n\n## Rolling Back a Transaction",
+      "dateUpdated": "2018-03-04T12:24:06-0500",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<br />\n<p>But if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.</p>\n<h2>Rolling Back a Transaction</h2>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246724_1490813804",
+      "id": "20180115-165208_1601331583",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23573"
+    },
+    {
+      "title": "Transaction Rollback Example",
+      "text": "%spark\nstatement.executeUpdate(\"update TPCH1.SUPPLIER SET S_ACCTBAL = 0 WHERE S_SUPPKEY = 6517\")\ncheckBalance(6517);\nconn.rollback();\ncheckBalance(6517);\n",
+      "user": "splice",
+      "dateUpdated": "2018-05-21T21:05:56-0400",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/scala",
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nres6: Int = 1\n================ Current account balance: 0.00 ====================\n================ Current account balance: 10000.00 ====================\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246724_1490813804",
+      "id": "20180115-165244_2028152757",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "dateStarted": "2018-05-21T21:05:56-0400",
+      "dateFinished": "2018-05-21T21:05:57-0400",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23574"
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this presentation walks you through <a href=\"/#/notebook/2D8PMSAPJ\">creating applications with Splice Machine.</a>\n",
+      "dateUpdated": "2018-03-04T12:24:06-0500",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation walks you through <a href=\"/#/notebook/2D8PMSAPJ\">creating applications with Splice Machine.</a></p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246724_1490813804",
+      "id": "20180122-173624_509126525",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23575"
+    },
+    {
+      "text": "%md\n",
+      "dateUpdated": "2018-03-04T12:24:06-0500",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "fontSize": 9
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184246725_1490429055",
+      "id": "20180125-142959_1101825868",
+      "dateCreated": "2018-03-04T12:24:06-0500",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:23576"
+    }
+  ],
+  "name": "3. Splice Deep Dive / 5. Transactions with Spark & JDBC",
+  "id": "2D89MQA89",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

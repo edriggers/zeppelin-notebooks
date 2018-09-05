@@ -1,0 +1,694 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Python and JDBC\nIn this tutorial, we will walk through setting up Python with Spark\n\n## What is Python?\nPython is a high level interpreted language great for data analysis and visualization. \n\n### Python has some great advantages\nPython is known for having a very simple syntax which makes rapid prototyping and deployment a breeze. Additionally, Python comes with some great libraries to help you get started with many different types of projects.\n\n## Connect to Splice Machine's JDBC with Python\nIn this tutorial, I am going to show you how to connect to our JDBC server using Python and create a few simple visualizations using real-world datasets",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T17:05:01-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h1>Python and JDBC</h1>\n<p>In this tutorial, we will walk through setting up Python with Spark</p>\n<h2>What is Python?</h2>\n<p>Python is a high level interpreted language great for data analysis and visualization. </p>\n<h3>Python has some great advantages</h3>\n<p>Python is known for having a very simple syntax which makes rapid prototyping and deployment a breeze. Additionally, Python comes with some great libraries to help you get started with many different types of projects.</p>\n<h2>Connect to Splice Machine&rsquo;s JDBC with Python</h2>\n<p>In this tutorial, I am going to show you how to connect to our JDBC server using Python and create a few simple visualizations using real-world datasets</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1498057950744_2072714267",
+      "id": "20170621-101230_695262303",
+      "dateCreated": "2017-06-21T10:12:30-0500",
+      "dateStarted": "2017-06-26T17:05:01-0500",
+      "dateFinished": "2017-06-26T17:05:01-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:706"
+    },
+    {
+      "text": "%md\n#JayDeBeApi\n[JayDeBeApi](https://pypi.python.org/pypi/JayDeBeApi/) is a great Python library (among hundreds of others) that helps you connect to any online database (such as Splice Machine!) to import and begin using JayDeBeApi, you will first need to install it on your computer. In terminal, run the following command:\n`$pip install jaydebeapi`\nThat's it! You can now connect use JayDeBeApi to connect to Splice Machine\n\nLet's show that in action and grab some sample data from the SYS schema (you can run any of these live code paragraphs with 'Shift+Enter'):",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T17:05:04-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498510945301_1576354836",
+      "id": "20170626-160225_1123197058",
+      "dateCreated": "2017-06-26T16:02:25-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:2841",
+      "dateFinished": "2017-06-26T17:05:04-0500",
+      "dateStarted": "2017-06-26T17:05:04-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<p>#JayDeBeApi<br/><a href=\"https://pypi.python.org/pypi/JayDeBeApi/\">JayDeBeApi</a> is a great Python library (among hundreds of others) that helps you connect to any online database (such as Splice Machine!) to import and begin using JayDeBeApi, you will first need to install it on your computer. In terminal, run the following command:<br/><code>$pip install jaydebeapi</code><br/>That&rsquo;s it! You can now connect use JayDeBeApi to connect to Splice Machine</p>\n<p>Let&rsquo;s show that in action and grab some sample data from the SYS schema (you can run any of these live code paragraphs with &lsquo;Shift+Enter&rsquo;):</p>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python\nimport jaydebeapi\n\nurl = \"jdbc:splice://localhost:1527/splicedb\"\ndriver = \"com.splicemachine.db.jdbc.ClientDriver\"\n\nconn = jaydebeapi.connect(driver, url, {'user': \"splice\", 'password': \"admin\"}, \"/Users/benepstein/Documents/GitHub/splice-zeppelin/target/zeppelin-0.7.1-bin-all/interpreter/python/db-client-2.6.0.1724-SNAPSHOT.jar\")\n\ncurs = conn.cursor()\n\ncurs.execute(\"select * from sys.systables\")\n\nallData = curs.fetchall()\n\nfor i in allData:\n    print i[1]\n \ncurs.close()\nconn.close()",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T17:05:06-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "SYSCONGLOMERATES\nSYSTABLES\nSYSCOLUMNS\nSYSSCHEMAS\nSYSKEYS\nSYSPRIMARYKEYS\nSYSVIEWS\nSYSSTATEMENTS\nSYSFOREIGNKEYS\nSYSCHECKS\nSYSDEPENDS\nSYSCONSTRAINTS\nSYSALIASES\nSYSFILES\nSYSSEQUENCES\nSYSUSERS\nSYSROUTINEPERMS\nSYSROLES\nSYSTRIGGERS\nSYSBACKUP\nSYSBACKUPFILESET\nSYSTABLEPERMS\nSYSCOLPERMS\nSYSBACKUPJOBS\nSYSPHYSICALSTATS\nSYSBACKUPITEMS\nSYSPERMS\nSYSDUMMY1\nSYSSNAPSHOTS\nSYSSOURCECODE\nSYSCOLUMNSTATS\nSYSSCHEMAPERMS\nSYSTABLESTATS\nSYSTABLESTATISTICS\nSYSCOLUMNSTATISTICS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1498057957868_-385061707",
+      "id": "20170621-101237_1581151098",
+      "dateCreated": "2017-06-21T10:12:37-0500",
+      "dateStarted": "2017-06-26T17:05:06-0500",
+      "dateFinished": "2017-06-26T17:05:07-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:707"
+    },
+    {
+      "text": "%md\n#### Great! Now that we are connected, let's analyze some data.\n\n# Lightning and Bokeh\nPython has many great visualization libraries, but on the top of that list are [Bokeh](http://bokeh.pydata.org/en/latest/) and [Lightning](http://lightning-viz.org/)\nThese are very well documented and supported libraries in the Python community, and you can create many amazing models using them. For some documentation and examples, check out their GitHubs:\n[Bokeh](https://github.com/bokeh/bokeh)\n[Lightning](http://lightning-viz.org/)\n\n## Installation\nBefore installing Bokeh and Lightning, you must have [Python](https://www.python.org/downloads/release/python-2713/) installed and the Anaconda package installer on your computer. Anaconda is a very simple installation, with instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-the-anaconda-python-distribution-on-ubuntu-16-04)\n\nNow that you have Anaconda, run the following commands in terminal to set up your enviornment:\n`conda install bokeh`\n`pip install lightning-python`\n`conda install numpy`\n`conda install pandas`",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:34:49-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498511343245_-45627222",
+      "id": "20170626-160903_1831280594",
+      "dateCreated": "2017-06-26T16:09:03-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:3040",
+      "dateFinished": "2017-06-26T16:34:49-0500",
+      "dateStarted": "2017-06-26T16:34:49-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>Great! Now that we are connected, let&rsquo;s analyze some data.</h4>\n<h1>Lightning and Bokeh</h1>\n<p>Python has many great visualization libraries, but on the top of that list are <a href=\"http://bokeh.pydata.org/en/latest/\">Bokeh</a> and <a href=\"http://lightning-viz.org/\">Lightning</a><br/>These are very well documented and supported libraries in the Python community, and you can create many amazing models using them. For some documentation and examples, check out their GitHubs:<br/><a href=\"https://github.com/bokeh/bokeh\">Bokeh</a><br/><a href=\"http://lightning-viz.org/\">Lightning</a></p>\n<h2>Installation</h2>\n<p>Before installing Bokeh and Lightning, you must have <a href=\"https://www.python.org/downloads/release/python-2713/\">Python</a> installed and the Anaconda package installer on your computer. Anaconda is a very simple installation, with instructions <a href=\"https://www.digitalocean.com/community/tutorials/how-to-install-the-anaconda-python-distribution-on-ubuntu-16-04\">here</a></p>\n<p>Now that you have Anaconda, run the following commands in terminal to set up your enviornment:<br/><code>conda install bokeh</code><br/><code>pip install lightning-python</code><br/><code>conda install numpy</code><br/><code>conda install pandas</code></p>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n#### Now that we have everything ready, lets begin analyzing. First we will import our necessary libraries",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:33:20-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498512467023_311062891",
+      "id": "20170626-162747_952440808",
+      "dateCreated": "2017-06-26T16:27:47-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:3355",
+      "dateFinished": "2017-06-26T16:33:20-0500",
+      "dateStarted": "2017-06-26T16:33:20-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>Now that we have everything ready, lets begin analyzing. First we will import our necessary libraries</h4>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python\nimport numpy as np\nimport pandas as pd\nfrom lightning import Lightning\nimport os\nimport uuid\nfrom bokeh.plotting import figure, output_file, show",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:31:22-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1498256356237_1058057292",
+      "id": "20170623-171916_259857420",
+      "dateCreated": "2017-06-23T17:19:16-0500",
+      "dateStarted": "2017-06-26T16:31:22-0500",
+      "dateFinished": "2017-06-26T16:31:22-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:708"
+    },
+    {
+      "text": "%md\n#### Great, now lets define some objects for visualization. StarsLightning and StarsBokeh will allow Zeppelin to display our visualizaitons onscreen\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:33:13-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498512635028_-405128835",
+      "id": "20170626-163035_1267884363",
+      "dateCreated": "2017-06-26T16:30:35-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:3423",
+      "dateFinished": "2017-06-26T16:33:13-0500",
+      "dateStarted": "2017-06-26T16:33:13-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>Great, now lets define some objects for visualization. StarsLightning and StarsBokeh will allow Zeppelin to display our visualizaitons onscreen</h4>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python\nclass StarsLightning (object):\n    def __init__(self, host=\"https://stars-lightning.renci.org\"):\n        self.host = host\n        self.service = Lightning(host=self.host)\n    def render (self, vis, width=400, height=300):\n        print ('\\n%html <iframe src=\"{0}/visualizations/{1}/iframe\" width=\"{2}\" height=\"{3}\" >'.format (self.host, vis.id, width, height))\n         \nstarlight = StarsLightning ()\n\nclass StarsBokeh(object):\n    def __init__(self, data_dir=\"/<data-path>/bokeh\"):\n        self.data_dir = data_dir\n    def output_file (self, file_name, title=\"Title\"):\n        output_file (os.path.join (self.data_dir, file_name), title=title)\n    def show (self, p, file_name):\n        show (p)\n        path = os.path.join (self.data_dir, file_name)\n        print (\"\\n%html {0}\".format (open(path).read ()))\n    def render (self, p, title=\"Title\"):\n        out_file = \"vis-{0}\".format (uuid.uuid1())\n        print (out_file)\n        self.output_file (out_file, title=title)\n        print (\"wrote\")\n        self.show (p, out_file)\nstarsbokeh = StarsBokeh ()\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:31:25-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Lightning initialized\nConnected to server at https://stars-lightning.renci.org\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1498500594866_-1299170466",
+      "id": "20170626-130954_744806228",
+      "dateCreated": "2017-06-26T13:09:54-0500",
+      "dateStarted": "2017-06-26T16:31:25-0500",
+      "dateFinished": "2017-06-26T16:31:25-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:712"
+    },
+    {
+      "text": "%md\n#### Lightning has some really cool built in graph types such as circles, maps, histograms, scatter plots, and many more.\n#### Let's check out what Lightning can do with some randomly generated data",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:45:15-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498513435933_-792237135",
+      "id": "20170626-164355_730170690",
+      "dateCreated": "2017-06-26T16:43:55-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:3665",
+      "dateFinished": "2017-06-26T16:45:15-0500",
+      "dateStarted": "2017-06-26T16:45:15-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>Lightning has some really cool built in graph types such as circles, maps, histograms, scatter plots, and many more.</h4>\n<h4>Let&rsquo;s check out what Lightning can do with some randomly generated data</h4>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python\nfrom lightning import Lightning\nfrom numpy import random\nconnections = random.rand(50,50)\nconnections[connections<0.98] = 0\ng1 = (random.rand(50) * 3).astype('int')\ng2 = (random.rand(50) * 3).astype('int')\ngroup = [g2, g1]\nstarlight.render(starlight.service.circle (connections, group=group), width=600, height=600)\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:12:36-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<iframe src=\"https://stars-lightning.renci.org/visualizations/558c254c-e773-4425-b048-29095a0cff99/iframe\" width=\"600\" height=\"600\" >\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1498500581779_781166837",
+      "id": "20170626-130941_625641623",
+      "dateCreated": "2017-06-26T13:09:41-0500",
+      "dateStarted": "2017-06-26T16:12:36-0500",
+      "dateFinished": "2017-06-26T16:12:37-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:713"
+    },
+    {
+      "text": "%md\n#### Pretty cool. Let's work with some real data. Here we'll build a histogram of average us salaries by county. You can see the distributions of incomes thoughout America, but with no indication of where the incomes are the highest and lowest\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:48:57-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498513620945_960002946",
+      "id": "20170626-164700_2046707990",
+      "dateCreated": "2017-06-26T16:47:00-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:3888",
+      "dateFinished": "2017-06-26T16:48:57-0500",
+      "dateStarted": "2017-06-26T16:48:57-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>Pretty cool. Let&rsquo;s work with some real data. Here we&rsquo;ll build a histogram of average us salaries by county. You can see the distributions of incomes thoughout America, but with no indication of where the incomes are the highest and lowest</h4>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python\nincomes = pd.read_csv(\"/Users/benepstein/Desktop/incomes/csv/us_income.csv\", usecols=['median_income'])\nstarlight.render(starlight.service.histogram(incomes['median_income']/1000), width=600, height=400)",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:49:53-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<iframe src=\"https://stars-lightning.renci.org/visualizations/2e1b1988-592b-43f2-9bb2-3b13ec1478ba/iframe\" width=\"600\" height=\"400\" >\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1498501849771_-1988796502",
+      "id": "20170626-133049_2139847633",
+      "dateCreated": "2017-06-26T13:30:49-0500",
+      "dateStarted": "2017-06-26T16:49:53-0500",
+      "dateFinished": "2017-06-26T16:49:53-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:715"
+    },
+    {
+      "text": "%md\n#### Not bad, but we can do better. Let's see that distribution mapped accross the country. Fortunately for us, Lightning has a US map generator. The darker the state, the higher the income.\n#### While we're at it, let's see the population distribution as well.\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T17:04:48-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498513797757_-1718603049",
+      "id": "20170626-164957_1353891984",
+      "dateCreated": "2017-06-26T16:49:57-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:4270",
+      "dateFinished": "2017-06-26T17:04:48-0500",
+      "dateStarted": "2017-06-26T17:04:48-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>Not bad, but we can do better. Let&rsquo;s see that distribution mapped accross the country. Fortunately for us, Lightning has a US map generator. The darker the state, the higher the income.</h4>\n<h4>While we&rsquo;re at it, let&rsquo;s see the population distribution as well.</h4>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%python\n#Income\nimport string\nincomes = pd.read_csv(\"/Users/benepstein/Desktop/state_incomes.csv\")\n\nmedIncomes = [ int(x.replace('$','').replace(',','')) for x in incomes[\"Median household income\"] ]\nstates = [x for x in incomes[\"State\"]]\nstarlight.render(starlight.service.map(states, medIncomes, colormap=\"Blues\"), width=600, height=600)",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T16:53:21-0500",
+      "config": {
+        "colWidth": 6,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 794,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<iframe src=\"https://stars-lightning.renci.org/visualizations/94957692-6294-4bfa-bc90-61590de0948c/iframe\" width=\"600\" height=\"600\" >\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1498506038041_-1123136145",
+      "id": "20170626-144038_700257814",
+      "dateCreated": "2017-06-26T14:40:38-0500",
+      "dateStarted": "2017-06-26T16:53:21-0500",
+      "dateFinished": "2017-06-26T16:53:21-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:716"
+    },
+    {
+      "text": "%python\n#Population\n\n\n\n\n\npopulation = [ int(x.replace(',','')) for x in incomes[\"Population\"] ]\nstarlight.render(starlight.service.map(states, population, colormap=\"Oranges\"), width=600, height=600)",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T17:02:28-0500",
+      "config": {
+        "colWidth": 6,
+        "enabled": true,
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 594,
+              "optionOpen": false
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\n"
+          },
+          {
+            "type": "HTML",
+            "data": "<iframe src=\"https://stars-lightning.renci.org/visualizations/226bc915-2d5c-4702-ae15-d35638598d85/iframe\" width=\"600\" height=\"600\" >\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1498507146484_1835924962",
+      "id": "20170626-145906_577171471",
+      "dateCreated": "2017-06-26T14:59:06-0500",
+      "dateStarted": "2017-06-26T16:56:51-0500",
+      "dateFinished": "2017-06-26T16:56:52-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:717"
+    },
+    {
+      "text": "%md\n#### I hope you enjoyed this tutorial. More information on Splice Machine [here](https://www.splicemachine.com/) and visualizations in Python [here](https://blog.modeanalytics.com/python-data-visualization-libraries/)",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T17:04:39-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498508749644_-1646275115",
+      "id": "20170626-152549_392888678",
+      "dateCreated": "2017-06-26T15:25:49-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:718",
+      "dateFinished": "2017-06-26T17:04:39-0500",
+      "dateStarted": "2017-06-26T17:04:39-0500",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h4>I hope you enjoyed this tutorial. More information on Splice Machine <a href=\"https://www.splicemachine.com/\">here</a> and visualizations in Python <a href=\"https://blog.modeanalytics.com/python-data-visualization-libraries/\">here</a></h4>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-26T17:04:39-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1498514679656_1677294724",
+      "id": "20170626-170439_1412140939",
+      "dateCreated": "2017-06-26T17:04:39-0500",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:4921"
+    }
+  ],
+  "name": "Python+JDBC",
+  "id": "2CJMQPAKB",
+  "angularObjects": {
+    "2CJJ57RCU:shared_process": [],
+    "2CN2CS55V:shared_process": [],
+    "2CNN6YSYQ:shared_process": [],
+    "2CJTSDSAV:shared_process": [],
+    "2CN777T5E:shared_process": [],
+    "2CMTDZJDV:shared_process": [],
+    "2CKERQFVR:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

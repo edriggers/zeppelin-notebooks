@@ -1,0 +1,370 @@
+﻿{
+  "paragraphs": [
+    {
+      "title": "Using Zeppelin for Graphing and Filtering",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Using Zeppelin for Graphing and Filtering\n\nSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\n\nBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\n\nFirst we'll run the query as-is, then we'll change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.",
+      "dateUpdated": "2018-03-04T17:23:58+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Using Zeppelin for Graphing and Filtering</h1>\n<p>Suppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.</p>\n<p>Below we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.</p>\n<p>First we&rsquo;ll run the query as-is, then we&rsquo;ll change the <code>nationName</code> in the input box from ‘FRANCE’ to ‘ROMANIA’ and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184238152_198426925",
+      "id": "20180115-083330_15158583",
+      "dateCreated": "2018-03-04T17:23:58+0000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:12127"
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0} \norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "splice",
+      "dateUpdated": "2018-05-27T01:55:28+0000",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {
+          "nationName": "'FRANCE'",
+          "balanceThreshold": "1"
+        },
+        "forms": {
+          "nationName": {
+            "name": "nationName",
+            "defaultValue": "'FRANCE'",
+            "hidden": false,
+            "$$hashKey": "object:12363"
+          },
+          "balanceThreshold": {
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false,
+            "$$hashKey": "object:12362"
+          }
+        }
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "paragraph_1520184238152_198426925's Interpreter splicemachine not found"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184238152_198426925",
+      "id": "20180115-083533_1027074665",
+      "dateCreated": "2018-03-04T17:23:58+0000",
+      "dateStarted": "2018-03-05T08:25:16+0000",
+      "dateFinished": "2018-03-05T08:25:17+0000",
+      "status": "ERROR",
+      "errorMessage": "org.apache.zeppelin.interpreter.InterpreterException: paragraph_1520184238152_198426925's Interpreter splicemachine not found\n\tat org.apache.zeppelin.notebook.Note.run(Note.java:605)\n\tat org.apache.zeppelin.socket.NotebookServer.persistAndExecuteSingleParagraph(NotebookServer.java:1641)\n\tat org.apache.zeppelin.socket.NotebookServer.runParagraph(NotebookServer.java:1615)\n\tat org.apache.zeppelin.socket.NotebookServer.onMessage(NotebookServer.java:265)\n\tat org.apache.zeppelin.socket.NotebookSocket.onWebSocketText(NotebookSocket.java:59)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextMessage(JettyListenerEventDriver.java:128)\n\tat org.eclipse.jetty.websocket.common.message.SimpleTextMessage.messageComplete(SimpleTextMessage.java:69)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.appendMessage(AbstractEventDriver.java:65)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextFrame(JettyListenerEventDriver.java:122)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.incomingFrame(AbstractEventDriver.java:161)\n\tat org.eclipse.jetty.websocket.common.WebSocketSession.incomingFrame(WebSocketSession.java:309)\n\tat org.eclipse.jetty.websocket.common.extensions.ExtensionStack.incomingFrame(ExtensionStack.java:214)\n\tat org.eclipse.jetty.websocket.common.Parser.notifyFrame(Parser.java:220)\n\tat org.eclipse.jetty.websocket.common.Parser.parse(Parser.java:258)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.readParse(AbstractWebSocketConnection.java:632)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.onFillable(AbstractWebSocketConnection.java:480)\n\tat org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:544)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)\n\tat java.lang.Thread.run(Thread.java:745)\n",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:12128"
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "splice",
+      "dateUpdated": "2018-05-27T01:56:03+0000",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 239.006,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "nationName": "'ROMANIA'",
+          "balanceThreshold": "0"
+        },
+        "forms": {
+          "nationName": {
+            "name": "nationName",
+            "defaultValue": "'FRANCE'",
+            "hidden": false,
+            "$$hashKey": "object:12418"
+          },
+          "balanceThreshold": {
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false,
+            "$$hashKey": "object:12417"
+          }
+        }
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "paragraph_1520184238153_198042176's Interpreter splicemachine not found"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184238153_198042176",
+      "id": "20180129-123733_1126963025",
+      "dateCreated": "2018-03-04T17:23:58+0000",
+      "dateStarted": "2018-03-05T08:25:32+0000",
+      "dateFinished": "2018-03-05T08:25:32+0000",
+      "status": "ERROR",
+      "errorMessage": "org.apache.zeppelin.interpreter.InterpreterException: paragraph_1520184238153_198042176's Interpreter splicemachine not found\n\tat org.apache.zeppelin.notebook.Note.run(Note.java:605)\n\tat org.apache.zeppelin.socket.NotebookServer.persistAndExecuteSingleParagraph(NotebookServer.java:1641)\n\tat org.apache.zeppelin.socket.NotebookServer.runParagraph(NotebookServer.java:1615)\n\tat org.apache.zeppelin.socket.NotebookServer.onMessage(NotebookServer.java:265)\n\tat org.apache.zeppelin.socket.NotebookSocket.onWebSocketText(NotebookSocket.java:59)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextMessage(JettyListenerEventDriver.java:128)\n\tat org.eclipse.jetty.websocket.common.message.SimpleTextMessage.messageComplete(SimpleTextMessage.java:69)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.appendMessage(AbstractEventDriver.java:65)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextFrame(JettyListenerEventDriver.java:122)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.incomingFrame(AbstractEventDriver.java:161)\n\tat org.eclipse.jetty.websocket.common.WebSocketSession.incomingFrame(WebSocketSession.java:309)\n\tat org.eclipse.jetty.websocket.common.extensions.ExtensionStack.incomingFrame(ExtensionStack.java:214)\n\tat org.eclipse.jetty.websocket.common.Parser.notifyFrame(Parser.java:220)\n\tat org.eclipse.jetty.websocket.common.Parser.parse(Parser.java:258)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.readParse(AbstractWebSocketConnection.java:632)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.onFillable(AbstractWebSocketConnection.java:480)\n\tat org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:544)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)\n\tat java.lang.Thread.run(Thread.java:745)\n",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:12129"
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "splice",
+      "dateUpdated": "2018-05-27T01:56:09+0000",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 239.006,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "nationName": "'ROMANIA'",
+          "balanceThreshold": "0"
+        },
+        "forms": {
+          "nationName": {
+            "name": "nationName",
+            "defaultValue": "'FRANCE'",
+            "hidden": false,
+            "$$hashKey": "object:12473"
+          },
+          "balanceThreshold": {
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false,
+            "$$hashKey": "object:12472"
+          }
+        }
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "paragraph_1520184238153_198042176's Interpreter splicemachine not found"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184238153_198042176",
+      "id": "20180129-123839_391823179",
+      "dateCreated": "2018-03-04T17:23:58+0000",
+      "dateStarted": "2018-03-05T08:25:44+0000",
+      "dateFinished": "2018-03-05T08:25:44+0000",
+      "status": "ERROR",
+      "errorMessage": "org.apache.zeppelin.interpreter.InterpreterException: paragraph_1520184238153_198042176's Interpreter splicemachine not found\n\tat org.apache.zeppelin.notebook.Note.run(Note.java:605)\n\tat org.apache.zeppelin.socket.NotebookServer.persistAndExecuteSingleParagraph(NotebookServer.java:1641)\n\tat org.apache.zeppelin.socket.NotebookServer.runParagraph(NotebookServer.java:1615)\n\tat org.apache.zeppelin.socket.NotebookServer.onMessage(NotebookServer.java:265)\n\tat org.apache.zeppelin.socket.NotebookSocket.onWebSocketText(NotebookSocket.java:59)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextMessage(JettyListenerEventDriver.java:128)\n\tat org.eclipse.jetty.websocket.common.message.SimpleTextMessage.messageComplete(SimpleTextMessage.java:69)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.appendMessage(AbstractEventDriver.java:65)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextFrame(JettyListenerEventDriver.java:122)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.incomingFrame(AbstractEventDriver.java:161)\n\tat org.eclipse.jetty.websocket.common.WebSocketSession.incomingFrame(WebSocketSession.java:309)\n\tat org.eclipse.jetty.websocket.common.extensions.ExtensionStack.incomingFrame(ExtensionStack.java:214)\n\tat org.eclipse.jetty.websocket.common.Parser.notifyFrame(Parser.java:220)\n\tat org.eclipse.jetty.websocket.common.Parser.parse(Parser.java:258)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.readParse(AbstractWebSocketConnection.java:632)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.onFillable(AbstractWebSocketConnection.java:480)\n\tat org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:544)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)\n\tat java.lang.Thread.run(Thread.java:745)\n",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:12130"
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "splice",
+      "dateUpdated": "2018-03-05T08:25:57+0000",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 4,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 239.006,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "nationName": "'ROMANIA'",
+          "balanceThreshold": "0"
+        },
+        "forms": {
+          "nationName": {
+            "name": "nationName",
+            "defaultValue": "'FRANCE'",
+            "hidden": false,
+            "$$hashKey": "object:12562"
+          },
+          "balanceThreshold": {
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false,
+            "$$hashKey": "object:12561"
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "BALANCE\tSUPPLIER\n-19.63\tSupplier#000007973\n-21.75\tSupplier#000002398\n-60.23\tSupplier#000009484\n-112.15\tSupplier#000002729\n-127.07\tSupplier#000009585\n-132.77\tSupplier#000003390\n-144.48\tSupplier#000001765\n-165.23\tSupplier#000004814\n-201.93\tSupplier#000004223\n-228.32\tSupplier#000002200\n-258.71\tSupplier#000007578\n-314.06\tSupplier#000000510\n-338.23\tSupplier#000004438\n-345.82\tSupplier#000001805\n-389.86\tSupplier#000004317\n-417.15\tSupplier#000008474\n-488.86\tSupplier#000008250\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184238153_198042176",
+      "id": "20180129-124117_290278524",
+      "dateCreated": "2018-03-04T17:23:58+0000",
+      "dateStarted": "2018-03-05T08:25:51+0000",
+      "dateFinished": "2018-03-05T08:25:51+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:12131"
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this presentation introduces you to <a href=\"/#/notebook/2D89MQA89\">the transactional nature of Splice Machine and using JDBC to program transactions.</a>\n",
+      "dateUpdated": "2018-03-04T17:23:58+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation introduces you to <a href=\"/#/notebook/2D89MQA89\">the transactional nature of Splice Machine and using JDBC to program transactions.</a></p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184238153_198042176",
+      "id": "20180122-173624_509126525",
+      "dateCreated": "2018-03-04T17:23:58+0000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:12132"
+    },
+    {
+      "text": "%md\n",
+      "dateUpdated": "2018-03-04T17:23:58+0000",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1520184238154_199196422",
+      "id": "20180125-142959_1101825868",
+      "dateCreated": "2018-03-04T17:23:58+0000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:12133"
+    }
+  ],
+  "name": "3. Splice Deep Dive / 4. Visualizing Results with Zeppelin",
+  "id": "2D9M6ZUAW",
+  "angularObjects": {},
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

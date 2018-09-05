@@ -1,0 +1,84 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%spark\n\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\nimport com.splicemachine.spark.splicemachine._\n\n// Grab available dataset from Watson\nval telcoText = sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://community.watsonanalytics.com/wp-content/uploads/2015/03/WA_Fn-UseC_-Telco-Customer-Churn.csv?cm_mc_uid=93701979699314920973859&cm_mc_sid_50200000=1492097385&cm_mc_sid_52640000=1492097385\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\n// Declare the Schema of the Data Set         \ncase class TelcoChurn (customerID: String, gender: String, SeniorCitizen: Boolean,Partner: String,Dependents: String,tenure: Integer ,PhoneService: String,\nMultipleLines: String,InternetService: String,OnlineSecurity: String,OnlineBackup: String,DeviceProtection: String,TechSupport: String,StreamingTV: String,\nStreamingMovies: String,Contract: String,PaperlessBilling: String,PaymentMethod: String,MonthlyCharges: Double,TotalCharges: Double,Churn: String)\n\n// Perform Data Transformation\nval telcoDF = telcoText.map(s => s.split(\",\")).filter(s => s(0) != \"customerID\").map ( p => TelcoChurn (\n    p(0), p(1), \n    if (p(2).equals(\"0\")) \n        false \n    else \n        true, \n    p(3), p(4), p(5).toInt, p(6), p(7), p(8), p(9), p(10), p(11), p(12), p(13), p(14), p(15), p(16), p(17), p(18).toDouble, p(19).toDouble, p(20))).toDF()\n\n// Show First 10 Values from Data Frame\ntelcoDF.show(10)\n\n// Insert Data Into Database\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-04-13T15:44:34-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nimport org.apache.commons.io.IOUtils\n\nimport java.net.URL\n\nimport java.nio.charset.Charset\n\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\n\nimport com.splicemachine.spark.splicemachine._\n\ntelcoText: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[126] at parallelize at <console>:307\n\ndefined class TelcoChurn\n\ntelcoDF: org.apache.spark.sql.DataFrame = [customerID: string, gender: string ... 19 more fields]\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|customerID|gender|SeniorCitizen|Partner|Dependents|tenure|PhoneService|   MultipleLines|InternetService|OnlineSecurity|OnlineBackup|DeviceProtection|TechSupport|StreamingTV|StreamingMovies|      Contract|PaperlessBilling|       PaymentMethod|MonthlyCharges|TotalCharges|Churn|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|7590-VHVEG|Female|        false|    Yes|        No|     1|          No|No phone service|            DSL|            No|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|         29.85|       29.85|  No\r|\n|5575-GNVDE|  Male|        false|     No|        No|    34|         Yes|              No|            DSL|           Yes|          No|             Yes|         No|         No|             No|      One year|              No|        Mailed check|         56.95|      1889.5|  No\r|\n|3668-QPYBK|  Male|        false|     No|        No|     2|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|        Mailed check|         53.85|      108.15| Yes\r|\n|7795-CFOCW|  Male|        false|     No|        No|    45|          No|No phone service|            DSL|           Yes|          No|             Yes|        Yes|         No|             No|      One year|              No|Bank transfer (au...|          42.3|     1840.75|  No\r|\n|9237-HQITU|Female|        false|     No|        No|     2|         Yes|              No|    Fiber optic|            No|          No|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|          70.7|      151.65| Yes\r|\n|9305-CDSKC|Female|        false|     No|        No|     8|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|         No|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         99.65|       820.5| Yes\r|\n|1452-KIOVK|  Male|        false|     No|       Yes|    22|         Yes|             Yes|    Fiber optic|            No|         Yes|              No|         No|        Yes|             No|Month-to-month|             Yes|Credit card (auto...|          89.1|      1949.4|  No\r|\n|6713-OKOMC|Female|        false|     No|        No|    10|          No|No phone service|            DSL|           Yes|          No|              No|         No|         No|             No|Month-to-month|              No|        Mailed check|         29.75|       301.9|  No\r|\n|7892-POOKP|Female|        false|    Yes|        No|    28|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|        Yes|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         104.8|     3046.05| Yes\r|\n|6388-TABGU|  Male|        false|     No|       Yes|    62|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|      One year|              No|Bank transfer (au...|         56.15|     3487.95|  No\r|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1492095898391_894965081",
+      "id": "20170413-100458_275811262",
+      "dateCreated": "2017-04-13T10:04:58-0500",
+      "dateStarted": "2017-04-13T11:12:13-0500",
+      "dateFinished": "2017-04-13T11:12:18-0500",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:5333"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2017-04-13T15:44:35-0500",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1492095978164_1776363515",
+      "id": "20170413-100618_77420174",
+      "dateCreated": "2017-04-13T10:06:18-0500",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:5334"
+    }
+  ],
+  "name": "4. Data Engineering / 1. ETL Pipeline Example",
+  "id": "2CD73PAF8",
+  "angularObjects": {
+    "2CD8THAXR:shared_process": [],
+    "2CCMGRBF7:shared_process": [],
+    "2CEYUCMX9:shared_process": [],
+    "2CDDA5JYN:shared_process": [],
+    "2CFAKFJ61:shared_process": [],
+    "2CDG4M175:shared_process": [],
+    "2CECUYXZG:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

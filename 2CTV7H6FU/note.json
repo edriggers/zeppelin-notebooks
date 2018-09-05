@@ -1,0 +1,176 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Welcome to Splice Machine!\nThis README will help you to get started, in these sections:\n\n* *Release Notes* lists the known assumptions and limitations in the current version of our Database Service\n\n* *About Zeppelin* provides a very quick overview of Zeppelin\n\n* *Tutorial Notebooks* introduces the set of tutorials that we've created to help you get started with Splice Machine\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T22:34:32+0000",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Welcome to Splice Machine!</h1>\n<p>This README will help you to get started, in these sections:</p>\n<ul>\n  <li>\n  <p><em>Release Notes</em> lists the known assumptions and limitations in the current version of our Database Service</p></li>\n  <li>\n  <p><em>About Zeppelin</em> provides a very quick overview of Zeppelin</p></li>\n  <li>\n  <p><em>Tutorial Notebooks</em> introduces the set of tutorials that we&rsquo;ve created to help you get started with Splice Machine</p></li>\n</ul>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505356902677_1123213177",
+      "id": "20170913-194142_1709581557",
+      "dateCreated": "2017-09-14T02:41:42+0000",
+      "dateStarted": "2018-02-02T22:34:32+0000",
+      "dateFinished": "2018-02-02T22:34:32+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:35382"
+    },
+    {
+      "text": "%md\n## Release Notes\n\nThe following are known assumptions and limitations to the service at this time:\n\n1. Clusters are only created in the us-east-1 region currently. We will add support for more regions later\n\n2. For the JDBC connection, individual queries or actions will time out after one hour. For long-running queries, run within a Zeppelin notebook\n\n3. TLS for JDBC has not yet been enabled\n\n4. Usage graphs for clusters (CPU, Memory, and Disk) are currently intermittent\n\n5. VPC Settings are not yet enabled but will be in a near future release\n\n6. It is important to know that the timestamps you see in Zeppelin will be different than the timestamps you see in the Splice Spark UI, depending upon your time zone\n\n7. At this time, cancelling queries (through Zeppelin or JDBC tools) does not work. Spark queries can be killed through the Spark UI\n\n8. Reminder: though Splice Machine backs up your database regularly, it does not back up your Notebook changes. Please export your Notebooks regularly if you make changes\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T22:34:35+0000",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Release Notes</h2>\n<p>The following are known assumptions and limitations to the service at this time:</p>\n<ol>\n  <li>\n  <p>Clusters are only created in the us-east-1 region currently. We will add support for more regions later</p></li>\n  <li>\n  <p>For the JDBC connection, individual queries or actions will time out after one hour. For long-running queries, run within a Zeppelin notebook</p></li>\n  <li>\n  <p>TLS for JDBC has not yet been enabled</p></li>\n  <li>\n  <p>Usage graphs for clusters (CPU, Memory, and Disk) are currently intermittent</p></li>\n  <li>\n  <p>VPC Settings are not yet enabled but will be in a near future release</p></li>\n  <li>\n  <p>It is important to know that the timestamps you see in Zeppelin will be different than the timestamps you see in the Splice Spark UI, depending upon your time zone</p></li>\n  <li>\n  <p>At this time, cancelling queries (through Zeppelin or JDBC tools) does not work. Spark queries can be killed through the Spark UI</p></li>\n  <li>\n  <p>Reminder: though Splice Machine backs up your database regularly, it does not back up your Notebook changes. Please export your Notebooks regularly if you make changes</p></li>\n</ol>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505362993599_-1317579724",
+      "id": "20170913-212313_2119986028",
+      "dateCreated": "2017-09-14T04:23:13+0000",
+      "dateStarted": "2018-02-02T22:34:35+0000",
+      "dateFinished": "2018-02-02T22:34:35+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:35383"
+    },
+    {
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n## About Zeppelin\n\nApache Zeppelin is a web-based notebook that enables interactive data analytics. With Zeppelin, you can easily develop data-driven, interactive and collaborative documents with a rich set of pre-built language backends (or interpreters) including Scala, SQL, Markdown, Angular, and many others.\n\nWe strongly encourage you to visit the <a href=\"https://zeppelin.apache.org/docs/\" target=\"_blank\">Zeppelin documentation site</a> to learn about creating, modifying, and running your own Zeppelin notebooks.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T22:34:38+0000",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h2>About Zeppelin</h2>\n<p>Apache Zeppelin is a web-based notebook that enables interactive data analytics. With Zeppelin, you can easily develop data-driven, interactive and collaborative documents with a rich set of pre-built language backends (or interpreters) including Scala, SQL, Markdown, Angular, and many others.</p>\n<p>We strongly encourage you to visit the <a href=\"https://zeppelin.apache.org/docs/\" target=\"_blank\">Zeppelin documentation site</a> to learn about creating, modifying, and running your own Zeppelin notebooks.</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1507322321727_583675297",
+      "id": "20171006-133841_1450869834",
+      "dateCreated": "2017-10-06T20:38:41+0000",
+      "dateStarted": "2018-02-02T22:34:38+0000",
+      "dateFinished": "2018-02-02T22:34:38+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:35384"
+    },
+    {
+      "text": "%md\n## Tutorial Notebooks\n\nWe've created a set of Notebooks to help you get up and running with your Splice Machine database and Zeppelin:\n\n<table class=\"splicezep\">\n    <thead>\n        <tr>\n            <th>Section</th>\n            <th>Notebook</th>\n            <th>Description</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td rowspan=\"9\">Getting Started Tutorial</td>\n            <td><a href=\"/#/notebook/2CTKW7A6U\">Notebook Basics</a></td>\n            <td>Introduces using Splice Machine and Zeppelin together</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CUA8V2RK\">Copying Data to S3 for easy import</a></td>\n            <td>How to copy data to S3 for easy access from Splice Machine</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CSKWGZ8P\">Importing Data into Your Database</a></td>\n            <td>How to import data into your Database</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CU1SNACA\">Running Queries</a></td>\n            <td>Running Splice Machine database queries in Zeppelin and applying visualizations to the results</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CS27TE2A\">Tuning Queries for Performance</a></td>\n            <td>Easy Splice Machine query optimization techniques</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CVPHXRZN\">Using the DB Console UI</a></td>\n            <td>Introduces the Spark DB Console, which you can use to monitor queries</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CU4BJJDS\">Using Explain and Hints</a></td>\n            <td>Shows you how to use Splice Machine's Explain Plan and Hints to tune up your queries</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CFY9Q6NS\">Running the TPCH-1 Benchmark Queries</a></td>\n            <td>Walks you through importing the TPCH-1 data and running the benchmark queries</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CFMYDAYJ\">Common Utilities</a></td>\n            <td>A collection of Splice Machine tools and techniques to help simplify development</td>\n        </tr>\n        \n        <tr>\n            <td rowspan=\"9\">Deep Dive</td>\n            <td><a href=\"/#/notebook/2D76NPKV6\">Introduction</a></td>\n            <td>This notebook introduces Splice Machine, with a brief overview of its architecture, technology stack, and SQL coverage.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D6ZFHE9U\">The Life of a Query</a></td>\n            <td>Walks you through importing and running the TPC-H benchmark data by creating a database in Splice Machine, importing the TPC-H dataset, running queries, and improving performance by indexing the data.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D93Y56QJ\">Monitoring Queries with the Database Console</a></td>\n            <td>Introduces you to the Splice Machine Database Console, which you can use to monitor and control your currently running queries.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D9M6ZUAW\">Using Zeppelin for Graphing and Filtering</a></td>\n            <td>Shows you how to use Apache Zeppelin notebooks for graphing and filtering the data in your Splice Machine databases.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D89MQA89\">Splice Transactions with Spark and JDBC</a></td>\n            <td>Introduces you to the transactional nature of Splice Machine and using JDBC to program transactions.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D8PMSAPJ\">Creating Applications with Splice Machine</a></td>\n            <td>Show you how you can easily create applications with Splice Machine.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D96GBY2P\">Using the Splice Machine Spark Adapter</a></td>\n            <td>Introduces you to Using the Splice Machine Spark Adapter for working with your database.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2DFY9ZKYB\">Machine Learning with Spark MLlib using Python</a></td>\n            <td>Presents an example of Using the Spark Machine Learning Library (MLlib) with Splice Machine and Python.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D7P8BMMS\">Machine Learning with Spark MLlib using Scala</a></td>\n            <td>Presents an example of Using the Spark Machine Learning Library (MLlib) with Splice Machine and Scala.</td>\n        </tr>\n        <tr>\n            <td>Data Engineering</td>\n            <td><a href=\"/#/notebook/2CD73PAF8\">ETL Pipeline</a></td>\n            <td>A simple notebook that creates a Splice Machine ETL Pipeline</td>\n        </tr>\n        <tr>\n            <td rowspan=\"2\">Reference Applications</td>\n            <td><a href=\"/#/notebook/2CKKJKSK8\">Supply Chain</a></td>\n            <td>Our Supply Chain application Notebook demonstrates a supply chain tool that predicts shortages.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CH931JT4\">IOT</a></td>\n            <td>Our Internet of Things Notebook demonstrates an app that tracks the movement of items from warehouses to stores in real time</td>\n        </tr>\n        <tr>\n            <td>Benchmarks</td>\n            <td><a href=\"/#/notebook/2CSGDX1CW\">TPCH-100 Benchmark</a></td>\n            <td>Walks you through importing the TPCH-100 data and running the benchmark queries</td>\n        </tr>\n        <tr>\n            <td rowspan=\"3\">Zeppelin Tutorial</td>\n            <td><a href=\"/#/notebook/2A94M5J1Z\">Basic Features</a></td>\n            <td>A tutorial written elsewhere to introduce you to Zeppelin</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2BWJFTXKJ\">R (SparkR)</a></td>\n            <td>An example of using SparkR in a Zeppelin notebook</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2BYEZ5EVK\">Using Mahout</a></td>\n            <td>How to use Mahout with Zeppelin</td>\n        </tr>\n    </tbody>\n</table>\n \nWe strongly recommend that you take the time to go through all of these Tutorial Notebooks, which will address many of your initial questions and guide you to your next steps.\n\n<p class=\"noteIcon\">We recommend going through the Notebooks in our <em>Getting Started Tutorial</em> in sequence, starting with <a href=\"/#/notebook/2CTKW7A6U\">Notebook Basics</a>; these Notebooks build on results generated by previous steps to guide you through importing data, making queries, and tuning those queries for better performance.</p> \n\nAfter you've completed the Tutorials, you can explore our other Notebooks, which illustrate the database capabilities, and walk you through reference applications using Splice Machine along with other tools, including streaming, supply chain management, and machine learning.\n",
+      "user": "splice",
+      "dateUpdated": "2018-08-14T15:28:34+0000",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Tutorial Notebooks</h2>\n<p>We&rsquo;ve created a set of Notebooks to help you get up and running with your Splice Machine database and Zeppelin:</p>\n<table class=\"splicezep\">\n    <thead>\n        <tr>\n            <th>Section</th>\n            <th>Notebook</th>\n            <th>Description</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td rowspan=\"9\">Getting Started Tutorial</td>\n            <td><a href=\"/#/notebook/2CTKW7A6U\">Notebook Basics</a></td>\n            <td>Introduces using Splice Machine and Zeppelin together</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CUA8V2RK\">Copying Data to S3 for easy import</a></td>\n            <td>How to copy data to S3 for easy access from Splice Machine</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CSKWGZ8P\">Importing Data into Your Database</a></td>\n            <td>How to import data into your Database</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CU1SNACA\">Running Queries</a></td>\n            <td>Running Splice Machine database queries in Zeppelin and applying visualizations to the results</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CS27TE2A\">Tuning Queries for Performance</a></td>\n            <td>Easy Splice Machine query optimization techniques</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CVPHXRZN\">Using the DB Console UI</a></td>\n            <td>Introduces the Spark DB Console, which you can use to monitor queries</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CU4BJJDS\">Using Explain and Hints</a></td>\n            <td>Shows you how to use Splice Machine's Explain Plan and Hints to tune up your queries</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CFY9Q6NS\">Running the TPCH-1 Benchmark Queries</a></td>\n            <td>Walks you through importing the TPCH-1 data and running the benchmark queries</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CFMYDAYJ\">Common Utilities</a></td>\n            <td>A collection of Splice Machine tools and techniques to help simplify development</td>\n        </tr>\n        \n        <tr>\n            <td rowspan=\"9\">Deep Dive</td>\n            <td><a href=\"/#/notebook/2D76NPKV6\">Introduction</a></td>\n            <td>This notebook introduces Splice Machine, with a brief overview of its architecture, technology stack, and SQL coverage.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D6ZFHE9U\">The Life of a Query</a></td>\n            <td>Walks you through importing and running the TPC-H benchmark data by creating a database in Splice Machine, importing the TPC-H dataset, running queries, and improving performance by indexing the data.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D93Y56QJ\">Monitoring Queries with the Database Console</a></td>\n            <td>Introduces you to the Splice Machine Database Console, which you can use to monitor and control your currently running queries.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D9M6ZUAW\">Using Zeppelin for Graphing and Filtering</a></td>\n            <td>Shows you how to use Apache Zeppelin notebooks for graphing and filtering the data in your Splice Machine databases.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D89MQA89\">Splice Transactions with Spark and JDBC</a></td>\n            <td>Introduces you to the transactional nature of Splice Machine and using JDBC to program transactions.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D8PMSAPJ\">Creating Applications with Splice Machine</a></td>\n            <td>Show you how you can easily create applications with Splice Machine.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D96GBY2P\">Using the Splice Machine Spark Adapter</a></td>\n            <td>Introduces you to Using the Splice Machine Spark Adapter for working with your database.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2DFY9ZKYB\">Machine Learning with Spark MLlib using Python</a></td>\n            <td>Presents an example of Using the Spark Machine Learning Library (MLlib) with Splice Machine and Python.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2D7P8BMMS\">Machine Learning with Spark MLlib using Scala</a></td>\n            <td>Presents an example of Using the Spark Machine Learning Library (MLlib) with Splice Machine and Scala.</td>\n        </tr>\n        <tr>\n            <td>Data Engineering</td>\n            <td><a href=\"/#/notebook/2CD73PAF8\">ETL Pipeline</a></td>\n            <td>A simple notebook that creates a Splice Machine ETL Pipeline</td>\n        </tr>\n        <tr>\n            <td rowspan=\"2\">Reference Applications</td>\n            <td><a href=\"/#/notebook/2CKKJKSK8\">Supply Chain</a></td>\n            <td>Our Supply Chain application Notebook demonstrates a supply chain tool that predicts shortages.</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2CH931JT4\">IOT</a></td>\n            <td>Our Internet of Things Notebook demonstrates an app that tracks the movement of items from warehouses to stores in real time</td>\n        </tr>\n        <tr>\n            <td>Benchmarks</td>\n            <td><a href=\"/#/notebook/2CSGDX1CW\">TPCH-100 Benchmark</a></td>\n            <td>Walks you through importing the TPCH-100 data and running the benchmark queries</td>\n        </tr>\n        <tr>\n            <td rowspan=\"3\">Zeppelin Tutorial</td>\n            <td><a href=\"/#/notebook/2A94M5J1Z\">Basic Features</a></td>\n            <td>A tutorial written elsewhere to introduce you to Zeppelin</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2BWJFTXKJ\">R (SparkR)</a></td>\n            <td>An example of using SparkR in a Zeppelin notebook</td>\n        </tr>\n        <tr>\n            <td><a href=\"/#/notebook/2BYEZ5EVK\">Using Mahout</a></td>\n            <td>How to use Mahout with Zeppelin</td>\n        </tr>\n    </tbody>\n</table>\n<p>We strongly recommend that you take the time to go through all of these Tutorial Notebooks, which will address many of your initial questions and guide you to your next steps.</p>\n<p class=\"noteIcon\">We recommend going through the Notebooks in our <em>Getting Started Tutorial</em> in sequence, starting with <a href=\"/#/notebook/2CTKW7A6U\">Notebook Basics</a>; these Notebooks build on results generated by previous steps to guide you through importing data, making queries, and tuning those queries for better performance.</p>\n<p>After you&rsquo;ve completed the Tutorials, you can explore our other Notebooks, which illustrate the database capabilities, and walk you through reference applications using Splice Machine along with other tools, including streaming, supply chain management, and machine learning.</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1505362903123_-773621924",
+      "id": "20170913-212143_362991174",
+      "dateCreated": "2017-09-14T04:21:43+0000",
+      "dateStarted": "2018-08-14T15:28:34+0000",
+      "dateFinished": "2018-08-14T15:28:34+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:35385"
+    }
+  ],
+  "name": "1. Getting Started / README",
+  "id": "2CTV7H6FU",
+  "angularObjects": {
+    "2DKP5EMTC:shared_process": [],
+    "2DKVQCZ7K:shared_process": [],
+    "2DMCKRAR8:shared_process": [],
+    "2DQ6VH68X:shared_process": [],
+    "2DKQWEG1R:shared_process": [],
+    "2DMC6KXQ8:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

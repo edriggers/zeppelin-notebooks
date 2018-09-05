@@ -1,0 +1,89 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Spark Stream\nSpark Streaming is used to read data from Kafka Queue, which is then ingested into Splice using Splice Machine Adpater.\n\nThe steps involved are:\n\n* Create Spark Direct Streaming to consume the data from Kafka Queue  \n* Initialize the Splice Machine Adapter\n* As data is streamed in, blocks of the data are parsed and ingested into Splice Machine using the Adapter\n\nThe streaming of data can be viewed in Spark UI \nIn the next notebook, we can query against the streamed data that is ingested in real time.\n\nBefore running this notebook, ensure that brokerlist and jdbc url are set appropriatly ",
+      "user": "splice",
+      "dateUpdated": "2018-08-02T15:45:41+0000",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1533224664954_-176628789",
+      "id": "20180802-154424_1841587236",
+      "dateCreated": "2018-08-02T15:44:24+0000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:75881",
+      "dateFinished": "2018-08-02T15:45:41+0000",
+      "dateStarted": "2018-08-02T15:45:41+0000",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Spark Stream</h1>\n<p>Spark Streaming is used to read data from Kafka Queue, which is then ingested into Splice using Splice Machine Adpater.</p>\n<p>The steps involved are:</p>\n<ul>\n  <li>Create Spark Direct Streaming to consume the data from Kafka Queue</li>\n  <li>Initialize the Splice Machine Adapter</li>\n  <li>As data is streamed in, blocks of the data are parsed and ingested into Splice Machine using the Adapter</li>\n</ul>\n<p>The streaming of data can be viewed in Spark UI<br/>In the next notebook, we can query against the streamed data that is ingested in real time.</p>\n<p>Before running this notebook, ensure that brokerlist and jdbc url are set appropriatly</p>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Spark Streaming",
+      "text": "%spark\nimport _root_.kafka.serializer.DefaultDecoder\nimport _root_.kafka.serializer.StringDecoder\nimport org.apache.spark.storage.StorageLevel\nimport org.apache.spark.sql.Row\nimport scala.collection.mutable.ListBuffer\n\nimport org.apache.kafka.clients.consumer.ConsumerRecord\nimport org.apache.kafka.common.serialization.StringDeserializer\n\nimport org.apache.spark.SparkConf\nimport org.apache.spark.streaming.Seconds\nimport org.apache.spark.sql.SQLContext\n\nimport org.apache.spark.streaming.StreamingContext\nimport org.apache.spark.streaming.kafka010._\nimport org.apache.spark.streaming.kafka010.LocationStrategies.PreferConsistent\nimport org.apache.spark.streaming.kafka010.ConsumerStrategies.Subscribe\nimport com.splicemachine.spark.splicemachine._\nimport com.splicemachine.derby.utils._\n\n\n//Set properties\n\nval topics = Array(\"iotdemo\")\n\nval brokerList=\"kafka-0-node.{FRAMEWORKNAME}.mesos:9092\"\nval consumerGroup=\"kstest\"\nval batchInterval=5\n\nval JDBC_URL=\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin;useSpark=true\"\nval SPLICE_TABLE_ITEM=\"IOTDEMO.ITEMFLOW\"\n\n\n//Create Streaming Context\nval ssc = new StreamingContext(sc, Seconds(5)) \n\n//Set Kafka Queue parameters\nval kafkaParams = Map[String, Object](\n    \"bootstrap.servers\" -> brokerList,\n    \"group.id\"-> consumerGroup,\n    \"auto.offset.reset\" -> \"earliest\",\n    \"enable.auto.commit\" -> (false: java.lang.Boolean),\n    \"key.deserializer\" -> classOf[StringDeserializer],\n    \"value.deserializer\" -> classOf[StringDeserializer]\n    )\n    \n    \n//Create Direct Stream\nval stream = KafkaUtils.createDirectStream[String, String](\n  ssc,\n  PreferConsistent,\n  Subscribe[String, String](topics, kafkaParams)\n)\n\n\n//Parse the queue messages\nval toPair = stream.map(record => (record.key, record.value))\nval msgs = toPair.map(_._2)\n\nval splicemachineContext = new SplicemachineContext(JDBC_URL)\nval schema_item = splicemachineContext.getSchema(SPLICE_TABLE_ITEM)\n \n\n msgs.foreachRDD { rdd =>\n   \n   //Create dataframes\n    val lines =  rdd.map(line => line.split(\",\"))\n   \n    val rowRdd_item = lines.map { p => \n        Row (\n             p(0).toLong, \n             if(p(1).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(1), \"yyyy-MM-dd HH:mm:ss\"), \n            if(p(2).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(2), \"yyyy-MM-dd HH:mm:ss\"), \n            p(3), \n            if(p(4).length==0) null else  p(4).toLong,\n            if(p(5).length==0) null else BigDecimal(p(5)), \n            if(p(6).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(6), \"yyyy-MM-dd HH:mm:ss\"),\n            if(p(7).length==0) null else  p(7).toLong, \n            if(p(8).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(8), \"yyyy-MM-dd HH:mm:ss\"),\n            if(p(9).length==0) null else p(9).toLong, \n            if(p(10).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(10), \"yyyy-MM-dd HH:mm:ss\"),\n            if(p(11).length==0) null else BigDecimal(p(11)),  \n            if(p(12).length==0) null else BigDecimal(p(12)), \n            if(p(13).length==0) null else BigDecimal(p(13)),\n            if(p(14).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(14), \"yyyy-MM-dd HH:mm:ss\"),\n            if(p.length >15) if(p(15).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(15), \"yyyy-MM-dd HH:mm:ss\") else null,\n             if(p.length >16) if(p(16).length==0) null else  SpliceDateFunctions.TO_TIMESTAMP( p(16), \"yyyy-MM-dd HH:mm:ss\") else null,\n              if(p.length >17) if(p(17).length==0) null else SpliceDateFunctions.TO_TIMESTAMP( p(17), \"yyyy-MM-dd HH:mm:ss\") else null\n         )\n    }\n    \n\n    val df_item = sqlContext.createDataFrame(rowRdd_item, schema_item)\n  \n    //If there are records, use Splice Adapter to insert the data to table\n    if(df_item.count > 0)\n        splicemachineContext.insert(df_item,  SPLICE_TABLE_ITEM)\n  \n    }\n    \n  \n//Stop gracefully when driver is stopped\n sys.ShutdownHookThread {\n      ssc.stop(true, true)\n  }\n  \n\nssc.start()\n//ssc.awaitTermination()\nssc.awaitTerminationOrTimeout(5000000)\nssc.stop(stopSparkContext = false, stopGracefully = true)\n\n",
+      "dateUpdated": "2017-05-19T21:53:49+0000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/text",
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495230829926_-1588882296",
+      "id": "20170504-215255_128602462",
+      "dateCreated": "2017-05-19T21:53:49+0000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:75528"
+    }
+  ],
+  "name": "5. Reference Applications / 2. IoT / 4.SparkStream",
+  "id": "2CGVRH6SF",
+  "angularObjects": {
+    "2CJBRB58G:shared_process": [],
+    "2CJ11XTGU:shared_process": [],
+    "2CGYU62VR:shared_process": [],
+    "2CGX96MC1:shared_process": [],
+    "2CHPY9J2B:shared_process": [],
+    "2CKTCVYBT:shared_process": [],
+    "2CG76MEQK:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

@@ -1,0 +1,1718 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# TCPH-1 Walk Through\n\nIn this tutorial, we'll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-1 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this tutorial all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-10-16T14:43:54-0700",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>TCPH-1 Walk Through</h1>\n<p>In this tutorial, we&rsquo;ll walk you through using the TPCH-1 data set, in these steps:</p>\n<ul>\n  <li><em>1. Creating the Tables</em></li>\n  <li><em>2. Importing TPCH-1 Data From S3</em></li>\n  <li><em>3. Creating Indexes</em></li>\n  <li><em>4. Compacting and Collecting Statistics</em></li>\n  <li><em>5. Running Queries</em></li>\n</ul>\n<p>At the bottom you will also see some graphical output from some queries (or slight variations).</p>\n<p class=\"noteIcon\">The code paragraphs in this tutorial all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325223_-1427009466",
+      "id": "20170517-225129_1383056312",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2017-10-16T14:43:54-0700",
+      "dateFinished": "2017-10-16T14:43:54-0700",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:16516"
+    },
+    {
+      "text": "%md\n\n## 1. Creating the Tables\n\nClick <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph  next paragraph to create the `TPCH1` schema and tables in your database:\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:06:06-0800",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>1. Creating the Tables</h2>\n<p>Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph next paragraph to create the <code>TPCH1</code> schema and tables in your database:</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508187650376_-632260045",
+      "id": "20171016-140050_518907300",
+      "dateCreated": "2017-10-16T14:00:50-0700",
+      "dateStarted": "2018-02-02T14:06:06-0800",
+      "dateFinished": "2018-02-02T14:06:06-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16517"
+    },
+    {
+      "title": "Create Tables",
+      "text": "%splicemachine\nCREATE SCHEMA TPCH1;\n\nCREATE TABLE TPCH1.LINEITEM (\n L_ORDERKEY BIGINT NOT NULL,\n L_PARTKEY INTEGER NOT NULL,\n L_SUPPKEY INTEGER NOT NULL, \n L_LINENUMBER INTEGER NOT NULL, \n L_QUANTITY DECIMAL(15,2),\n L_EXTENDEDPRICE DECIMAL(15,2),\n L_DISCOUNT DECIMAL(15,2),\n L_TAX DECIMAL(15,2),\n L_RETURNFLAG VARCHAR(1), \n L_LINESTATUS VARCHAR(1),\n L_SHIPDATE DATE,\n L_COMMITDATE DATE,\n L_RECEIPTDATE DATE,\n L_SHIPINSTRUCT VARCHAR(25),\n L_SHIPMODE VARCHAR(10),\n L_COMMENT VARCHAR(44),\n PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)\n );\n \n CREATE TABLE TPCH1.ORDERS (\n O_ORDERKEY BIGINT NOT NULL PRIMARY KEY,\n O_CUSTKEY INTEGER,\n O_ORDERSTATUS VARCHAR(1),\n O_TOTALPRICE DECIMAL(15,2),\n O_ORDERDATE DATE,\n O_ORDERPRIORITY VARCHAR(15),\n O_CLERK VARCHAR(15),\n O_SHIPPRIORITY INTEGER ,\n O_COMMENT VARCHAR(79)\n );\n \n CREATE TABLE TPCH1.CUSTOMER (\n C_CUSTKEY INTEGER NOT NULL PRIMARY KEY,\n C_NAME VARCHAR(25),\n C_ADDRESS VARCHAR(40),\n C_NATIONKEY INTEGER NOT NULL,\n C_PHONE VARCHAR(15),\n C_ACCTBAL DECIMAL(15,2),\n C_MKTSEGMENT VARCHAR(10),\n C_COMMENT VARCHAR(117)\n );\n \n CREATE TABLE TPCH1.PARTSUPP (\n PS_PARTKEY INTEGER NOT NULL ,\n PS_SUPPKEY INTEGER NOT NULL , \n PS_AVAILQTY INTEGER,\n PS_SUPPLYCOST DECIMAL(15,2),\n PS_COMMENT VARCHAR(199),\n PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY) \n );\n \n CREATE TABLE TPCH1.SUPPLIER (\n S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,\n S_NAME VARCHAR(25) ,\n S_ADDRESS VARCHAR(40) ,\n S_NATIONKEY INTEGER ,\n S_PHONE VARCHAR(15) ,\n S_ACCTBAL DECIMAL(15,2),\n S_COMMENT VARCHAR(101)\n );\n \n CREATE TABLE TPCH1.PART (\n P_PARTKEY INTEGER NOT NULL PRIMARY KEY,\n P_NAME VARCHAR(55) ,\n P_MFGR VARCHAR(25) ,\n P_BRAND VARCHAR(10) ,\n P_TYPE VARCHAR(25) ,\n P_SIZE INTEGER ,\n P_CONTAINER VARCHAR(10) ,\n P_RETAILPRICE DECIMAL(15,2),\n P_COMMENT VARCHAR(23)\n );\n \n CREATE TABLE TPCH1.REGION (\n R_REGIONKEY INTEGER NOT NULL PRIMARY KEY,\n R_NAME VARCHAR(25),\n R_COMMENT VARCHAR(152)\n );\n \n CREATE TABLE TPCH1.NATION (\n N_NATIONKEY INTEGER NOT NULL,\n N_NAME VARCHAR(25),\n N_REGIONKEY INTEGER NOT NULL,\n N_COMMENT VARCHAR(152),\n PRIMARY KEY (N_NATIONKEY)\n );",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:06:13-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325229_-1430856955",
+      "id": "20170406-153604_1986172856",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:06:13-0800",
+      "dateFinished": "2018-02-02T14:06:23-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16518"
+    },
+    {
+      "text": "%md\n\n## 2. Importing the Data From S3\n\nWe have pre-loaded flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph to import all of the data from those files:\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:08:04-0800",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>2. Importing the Data From S3</h2>\n<p>We have pre-loaded flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph to import all of the data from those files:</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508187797728_485667017",
+      "id": "20171016-140317_176321024",
+      "dateCreated": "2017-10-16T14:03:17-0700",
+      "dateStarted": "2018-02-02T14:08:04-0800",
+      "dateFinished": "2018-02-02T14:08:04-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16519"
+    },
+    {
+      "title": "Import Data from S3",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'LINEITEM', null, 's3a://splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'ORDERS',   null, 's3a://splice-benchmark-data/flat/TPCH/1/orders',   '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'CUSTOMER', null, 's3a://splice-benchmark-data/flat/TPCH/1/customer', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'PARTSUPP', null, 's3a://splice-benchmark-data/flat/TPCH/1/partsupp', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'SUPPLIER', null, 's3a://splice-benchmark-data/flat/TPCH/1/supplier', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'PART',     null, 's3a://splice-benchmark-data/flat/TPCH/1/part',     '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'REGION',   null, 's3a://splice-benchmark-data/flat/TPCH/1/region',   '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'NATION',   null, 's3a://splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp', true, null);",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:24:45-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "3": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "4": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "5": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "6": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "7": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n6001215\t0\t1\t759863287\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n1500000\t0\t1\t171952161\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n150000\t0\t1\t24346144\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n800000\t0\t1\t118984616\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n10000\t0\t1\t1409184\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n200000\t0\t1\t24135125\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n5\t0\t1\t389\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n25\t0\t1\t2224\tNONE\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325231_-1430087457",
+      "id": "20170406-153809_1285888971",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:07:16-0800",
+      "dateFinished": "2018-02-02T14:10:35-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16520"
+    },
+    {
+      "text": "%md\n\n## 3. Creating Indexes\n\nNext we'll create indexes for our table. We'll actually run three steps in the next three paragraphs in this tutorial:\n\n* Run the next paragraph to count the records in each table (without indexes), so you can what's been imported.\n* Run the following paragraph to create four indexes.\n* Finally, re-run some of the counts using the indexes and confirm that the counts are the same.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:13:52-0800",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>3. Creating Indexes</h2>\n<p>Next we&rsquo;ll create indexes for our table. We&rsquo;ll actually run three steps in the next three paragraphs in this tutorial:</p>\n<ul>\n  <li>Run the next paragraph to count the records in each table (without indexes), so you can what&rsquo;s been imported.</li>\n  <li>Run the following paragraph to create four indexes.</li>\n  <li>Finally, re-run some of the counts using the indexes and confirm that the counts are the same.</li>\n</ul>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508188135960_1946724162",
+      "id": "20171016-140855_1554334339",
+      "dateCreated": "2017-10-16T14:08:55-0700",
+      "dateStarted": "2018-02-02T14:13:52-0800",
+      "dateFinished": "2018-02-02T14:13:52-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16521"
+    },
+    {
+      "title": "Run a Count on Each Table",
+      "text": "%splicemachine\n\nSELECT COUNT(*) AS LINEITEM FROM TPCH1.LINEITEM --SPLICE-PROPERTIES index=null\n;\nSELECT COUNT(*) AS ORDERS FROM TPCH1.ORDERS --SPLICE-PROPERTIES index=null\n;\nSELECT COUNT(*) AS CUSTOMER FROM TPCH1.CUSTOMER --SPLICE-PROPERTIES index=null\n;\nSELECT COUNT(*) AS PARTSUPP FROM TPCH1.PARTSUPP --SPLICE-PROPERTIES index=null\n;\nSELECT COUNT(*) AS SUPPLIER FROM TPCH1.SUPPLIER --SPLICE-PROPERTIES index=null\n;\nSELECT COUNT(*) AS PART FROM TPCH1.PART --SPLICE-PROPERTIES index=null\n;\nSELECT COUNT(*) AS REGION FROM TPCH1.REGION --SPLICE-PROPERTIES index=null\n;\nSELECT COUNT(*) AS NATION FROM TPCH1.NATION --SPLICE-PROPERTIES index=null\n;",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:15:37-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "3": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "4": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "5": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "6": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "7": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "LINEITEM\n6001215\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "ORDERS\n1500000\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "CUSTOMER\n150000\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "PARTSUPP\n800000\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "SUPPLIER\n10000\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "PART\n200000\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "REGION\n5\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "NATION\n25\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325231_-1430087457",
+      "id": "20170406-154157_316847142",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:14:00-0800",
+      "dateFinished": "2018-02-02T14:14:11-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16522"
+    },
+    {
+      "title": "Create Indexes",
+      "text": "%splicemachine\n\ncreate index TPCH1.O_CUST_IDX on TPCH1.ORDERS(\n O_CUSTKEY,\n O_ORDERKEY\n );\n \n create index TPCH1.O_DATE_PRI_KEY_IDX on TPCH1.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n \n create index TPCH1.L_SHIPDATE_IDX on TPCH1.LINEITEM(\n L_SHIPDATE,\n L_PARTKEY,\n L_EXTENDEDPRICE,\n L_DISCOUNT\n );\n \n create index TPCH1.L_PART_IDX on TPCH1.LINEITEM(\n L_PARTKEY,\n L_ORDERKEY,\n L_SUPPKEY,\n L_SHIPDATE,\n L_EXTENDEDPRICE,\n L_DISCOUNT,\n L_QUANTITY,\n L_SHIPMODE,\n L_SHIPINSTRUCT\n );",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:15:49-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325232_-1419699237",
+      "id": "20170406-154341_155611008",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:15:49-0800",
+      "dateFinished": "2018-02-02T14:17:40-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16523"
+    },
+    {
+      "title": "Count Tables With Indexes",
+      "text": "%splicemachine\n\nSELECT COUNT(*) AS ORDERS FROM TPCH1.ORDERS --SPLICE-PROPERTIES index=O_CUST_IDX\n;\nSELECT COUNT(*) AS ORDERS FROM TPCH1.ORDERS --SPLICE-PROPERTIES index=O_DATE_PRI_KEY_IDX\n;\nSELECT COUNT(*) AS LINEITEM FROM TPCH1.LINEITEM --SPLICE-PROPERTIES index=L_SHIPDATE_IDX\n;\nSELECT COUNT(*) AS LINEITEM FROM TPCH1.LINEITEM --SPLICE-PROPERTIES index=L_PART_IDX\n;",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:18:39-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "2": {
+            "graph": {
+              "mode": "table",
+              "height": 84,
+              "optionOpen": false
+            }
+          },
+          "3": {
+            "graph": {
+              "mode": "table",
+              "height": 88,
+              "optionOpen": false
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "ORDERS\n1500000\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "ORDERS\n1500000\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "LINEITEM\n6001215\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "LINEITEM\n6001215\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325233_-1420083986",
+      "id": "20170406-154442_212169007",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:17:49-0800",
+      "dateFinished": "2018-02-02T14:18:09-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16524"
+    },
+    {
+      "text": "%md\n\n## 4. Compacting and Collecting Statistics\n\nSince you've just imported a large amount of data into your database, it's a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:19:08-0800",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>4. Compacting and Collecting Statistics</h2>\n<p>Since you&rsquo;ve just imported a large amount of data into your database, it&rsquo;s a good idea to run a major compaction and collect statistics.</p>\n<p>To do so, run each of the next two paragraphs:</p>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508189143841_320427787",
+      "id": "20171016-142543_1916990265",
+      "dateCreated": "2017-10-16T14:25:43-0700",
+      "dateStarted": "2018-02-02T14:19:08-0800",
+      "dateFinished": "2018-02-02T14:19:08-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16525"
+    },
+    {
+      "title": "Perform Major Compaction",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA('TPCH1');",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:18:52-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325282_-1351213933",
+      "id": "20170406-154629_1395682435",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:18:52-0800",
+      "dateFinished": "2018-02-02T14:20:35-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16526"
+    },
+    {
+      "title": "Collect Statistics",
+      "text": "%splicemachine\n\nanalyze schema TPCH1;",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:23:13-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTPCH1\tLINEITEM\t-All-\t6001215\t528106920\t29\t2\t0.0\nTPCH1\tORDERS\t-All-\t1500000\t150000000\t6\t2\t0.0\nTPCH1\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nTPCH1\tPARTSUPP\t-All-\t800000\t112000000\t7\t2\t0.0\nTPCH1\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nTPCH1\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nTPCH1\tREGION\t-All-\t5\t380\t1\t2\t0.0\nTPCH1\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325283_-1351598682",
+      "id": "20170406-154656_1940284364",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:19:47-0800",
+      "dateFinished": "2018-02-02T14:21:41-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16527"
+    },
+    {
+      "text": "%md\n\n## Running the TPCH-1 Queries\n\nEach of the remaining paragraphs in this tutorial runs one of the TPC-H queries, starting with Query 01 and through to the last query, Query 22.\n\n>Simply click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in each query to run it. \n\n\nThe final two paragraphs run variants of Query 01:\n\n* The first variant changes what gets selected and how the results are presented\n* The second variant demonstrates the use of an input field and variable substitution\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-10-19T11:25:20-0700",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Running the TPCH-1 Queries</h2>\n<p>Each of the remaining paragraphs in this tutorial runs one of the TPC-H queries, starting with Query 01 and through to the last query, Query 22.</p>\n<blockquote>\n  <p>Simply click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in each query to run it. </p>\n</blockquote>\n<p>The final two paragraphs run variants of Query 01:</p>\n<ul>\n  <li>The first variant changes what gets selected and how the results are presented</li>\n  <li>The second variant demonstrates the use of an input field and variable substitution</li>\n</ul>\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1508189272003_396977494",
+      "id": "20171016-142752_2046863155",
+      "dateCreated": "2017-10-16T14:27:52-0700",
+      "dateStarted": "2017-10-19T11:25:20-0700",
+      "dateFinished": "2017-10-19T11:25:20-0700",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16528"
+    },
+    {
+      "title": "TPC-H Query 1",
+      "text": "%splicemachine\n-- QUERY 01\nselect\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate <= date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:24:04-0800",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 162,
+              "optionOpen": true,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": false
+                },
+                "scatterChart": {}
+              },
+              "keys": [],
+              "groups": [
+                {
+                  "name": "L_LINESTATUS",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "SUM_QTY",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "L_RETURNFLAG\tL_LINESTATUS\tSUM_QTY\tSUM_BASE_PRICE\tSUM_DISC_PRICE\tSUM_CHARGE\tAVG_QTY\tAVG_PRICE\tAVG_DISC\tCOUNT_ORDER\nA\tF\t37734107.00\t56586554400.73\t53758257134.8700\t55909065222.827692\t25.5220\t38273.1297\t0.0499\t1478493\nN\tF\t991417.00\t1487504710.38\t1413082168.0541\t1469649223.194375\t25.5164\t38284.4677\t0.0500\t38854\nN\tO\t74476040.00\t111701729697.74\t106118230307.6056\t110367043872.497010\t25.5022\t38249.1179\t0.0499\t2920374\nR\tF\t37719753.00\t56568041380.90\t53741292684.6040\t55889619119.831932\t25.5057\t38250.8546\t0.0500\t1478870\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325283_-1351598682",
+      "id": "20170406-154718_1568658794",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "dateStarted": "2018-02-02T14:23:24-0800",
+      "dateFinished": "2018-02-02T14:23:43-0800",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16529"
+    },
+    {
+      "title": "TPC-H Query 2",
+      "text": "%splicemachine\n-- QUERY 02\nselect\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tTPCH1.part,\n\tTPCH1.supplier,\n\tTPCH1.partsupp,\n\tTPCH1.nation,\n\tTPCH1.region\nwhere\n\tp_partkey = ps_partkey\n\tand s_suppkey = ps_suppkey\n\tand p_size = 15\n\tand p_type like '%BRASS'\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'EUROPE'\n\tand ps_supplycost = (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tTPCH1.partsupp,\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.nation,\n\t\t\tTPCH1.region\n\t\twhere\n\t\t\tp_partkey = ps_partkey\n\t\t\tand s_suppkey = ps_suppkey\n\t\t\tand s_nationkey = n_nationkey\n\t\t\tand n_regionkey = r_regionkey\n\t\t\tand r_name = 'EUROPE'\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325284_-1353522426",
+      "id": "20170406-154748_2032636417",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16530"
+    },
+    {
+      "title": "TPC-H Query 3",
+      "text": "%splicemachine\n-- QUERY 03\nselect\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tTPCH1.customer,\n\tTPCH1.orders,\n\tTPCH1.lineitem\nwhere\n\tc_mktsegment = 'BUILDING' \n\tand c_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand o_orderdate < date('1995-03-15') \n\tand l_shipdate > date('1995-03-15') \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325284_-1353522426",
+      "id": "20170406-155338_1478784227",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16531"
+    },
+    {
+      "title": "TPC-H Query 4",
+      "text": "%splicemachine\n-- QUERY 04\nselect\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tTPCH1.orders\nwhere\n\to_orderdate >= date('1993-07-01')\n\tand o_orderdate < add_months('1993-07-01',3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey = o_orderkey\n\t\t\tand l_commitdate < l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325285_-1353907175",
+      "id": "20170406-155520_1963165823",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16532"
+    },
+    {
+      "title": "TPC-H Query 5",
+      "text": "%splicemachine\n-- QUERY 05\nselect\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tTPCH1.customer,\n\tTPCH1.orders,\n\tTPCH1.lineitem,\n\tTPCH1.supplier,\n\tTPCH1.nation,\n\tTPCH1.region\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand l_suppkey = s_suppkey\n\tand c_nationkey = s_nationkey\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'ASIA'\n\tand o_orderdate >= date('1994-01-01')\n\tand o_orderdate < date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})\ngroup by\n\tn_name\norder by\n\trevenue desc\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325285_-1353907175",
+      "id": "20170406-155537_1524014555",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16533"
+    },
+    {
+      "title": "TPC-H Query 6",
+      "text": "%splicemachine\n-- QUERY 06\nselect\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate >= date('1994-01-01')\n\tand l_shipdate < date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})\n\tand l_discount between .06 - 0.01 and .06 + 0.01\n\tand l_quantity < 24\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325285_-1353907175",
+      "id": "20170406-155824_54255049",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16534"
+    },
+    {
+      "title": "TPC-H Query 7",
+      "text": "%splicemachine\n-- QUERY 07\nselect\n\tsupp_nation,\n\tcust_nation,\n\tl_year,\n\tsum(volume) as revenue\nfrom\n\t(\n\t\tselect\n\t\t\tn1.n_name as supp_nation,\n\t\t\tn2.n_name as cust_nation,\n\t\t\tyear(l_shipdate) as l_year,\n\t\t\tl_extendedprice * (1 - l_discount) as volume\n\t\tfrom\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.lineitem,\n\t\t\tTPCH1.orders,\n\t\t\tTPCH1.customer,\n\t\t\tTPCH1.nation n1,\n\t\t\tTPCH1.nation n2\n\t\twhere\n\t\t\ts_suppkey = l_suppkey\n\t\t\tand o_orderkey = l_orderkey\n\t\t\tand c_custkey = o_custkey\n\t\t\tand s_nationkey = n1.n_nationkey\n\t\t\tand c_nationkey = n2.n_nationkey\n\t\t\tand (\n\t\t\t\t(n1.n_name = 'FRANCE' and n2.n_name = 'GERMANY')\n\t\t\t\tor (n1.n_name = 'GERMANY' and n2.n_name = 'FRANCE')\n\t\t\t)\n\t\t\tand l_shipdate between date('1995-01-01') and date('1996-12-31')\n\t) as shipping\ngroup by\n\tsupp_nation,\n\tcust_nation,\n\tl_year\norder by\n\tsupp_nation,\n\tcust_nation,\n\tl_year\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325286_-1352752928",
+      "id": "20170406-155843_1328686434",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16535"
+    },
+    {
+      "title": "TPC-H Query 8",
+      "text": "%splicemachine\n-- QUERY 08\nselect\n\to_year,\n\tsum(case\n\t\twhen nation = 'BRAZIL' then volume\n\t\telse 0\n\tend) / sum(volume) as mkt_share\nfrom\n\t(\n\t\tselect\n\t\t\tyear(o_orderdate) as o_year,\n\t\t\tl_extendedprice * (1 - l_discount) as volume,\n\t\t\tn2.n_name as nation\n\t\tfrom\n\t\t\tTPCH1.part,\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.lineitem,\n\t\t\tTPCH1.orders,\n\t\t\tTPCH1.customer,\n\t\t\tTPCH1.nation n1,\n\t\t\tTPCH1.nation n2,\n\t\t\tTPCH1.region\n\t\twhere\n\t\t\tp_partkey = l_partkey\n\t\t\tand s_suppkey = l_suppkey\n\t\t\tand l_orderkey = o_orderkey\n\t\t\tand o_custkey = c_custkey\n\t\t\tand c_nationkey = n1.n_nationkey\n\t\t\tand n1.n_regionkey = r_regionkey\n\t\t\tand r_name = 'AMERICA'\n\t\t\tand s_nationkey = n2.n_nationkey\n\t\t\tand o_orderdate between date('1995-01-01') and date('1996-12-31')\n\t\t\tand p_type = 'ECONOMY ANODIZED STEEL'\n\t) as all_nations\ngroup by\n\to_year\norder by\n\to_year\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325286_-1352752928",
+      "id": "20170406-155904_1757423264",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16536"
+    },
+    {
+      "title": "TPC-H Query 9",
+      "text": "%splicemachine\n-- QUERY 09\nselect\n\tnation,\n\to_year,\n\tsum(amount) as sum_profit\nfrom\n\t(\n\t\tselect\n\t\t\tn_name as nation,\n\t\t\tyear(o_orderdate) as o_year,\n\t\t\tl_extendedprice * (1 - l_discount) - ps_supplycost * l_quantity as amount\n\t\tfrom\n\t\t\tTPCH1.part,\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.lineitem,\n\t\t\tTPCH1.partsupp,\n\t\t\tTPCH1.orders,\n\t\t\tTPCH1.nation\n\t\twhere\n\t\t\ts_suppkey = l_suppkey\n\t\t\tand ps_suppkey = l_suppkey\n\t\t\tand ps_partkey = l_partkey\n\t\t\tand p_partkey = l_partkey\n\t\t\tand o_orderkey = l_orderkey\n\t\t\tand s_nationkey = n_nationkey\n\t\t\tand p_name like '%green%'\n\t) as profit\ngroup by\n\tnation,\n\to_year\norder by\n\tnation,\n\to_year desc\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325286_-1352752928",
+      "id": "20170406-155920_2131789649",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16537"
+    },
+    {
+      "title": "TPC-H Query 10",
+      "text": "%splicemachine\n-- QUERY 10\nselect\n\tc_custkey,\n\tc_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\tc_acctbal,\n\tn_name,\n\tc_address,\n\tc_phone,\n\tc_comment\nfrom\n\tTPCH1.customer,\n\tTPCH1.orders,\n\tTPCH1.lineitem,\n\tTPCH1.nation\nwhere\n\tc_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand o_orderdate >= date('1993-10-01')\n\tand o_orderdate < ADD_MONTHS('1993-10-01',3) \n\tand l_returnflag = 'R'\n\tand c_nationkey = n_nationkey\ngroup by\n\tc_custkey,\n\tc_name,\n\tc_acctbal,\n\tc_phone,\n\tn_name,\n\tc_address,\n\tc_comment\norder by\n\trevenue desc\n{limit 20}\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325287_-1353137677",
+      "id": "20170406-155935_1818801004",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16538"
+    },
+    {
+      "title": "TPC-H Query 11",
+      "text": "%splicemachine\n-- QUERY 11\nselect\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tTPCH1.partsupp,\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\tps_suppkey = s_suppkey\n\tand s_nationkey = n_nationkey\n\tand n_name = 'GERMANY'\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) > (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tTPCH1.partsupp,\n\t\t\t\tTPCH1.supplier,\n\t\t\t\tTPCH1.nation\n\t\t\twhere\n\t\t\t\tps_suppkey = s_suppkey\n\t\t\t\tand s_nationkey = n_nationkey\n\t\t\t\tand n_name = 'GERMANY'\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325287_-1353137677",
+      "id": "20170406-155954_424082601",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16539"
+    },
+    {
+      "title": "TPC-H Query 12",
+      "text": "%splicemachine\n-- QUERY 12\nselect\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority = '1-URGENT'\n\t\t\tor o_orderpriority = '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority <> '1-URGENT'\n\t\t\tand o_orderpriority <> '2-HIGH'\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\tTPCH1.orders,\n\tTPCH1.lineitem\nwhere\n\to_orderkey = l_orderkey\n\tand l_shipmode in ('MAIL', 'SHIP')\n\tand l_commitdate < l_receiptdate\n\tand l_shipdate < l_commitdate\n        and l_receiptdate >= date('1994-01-01')\n        and l_receiptdate < date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast('1994-01-01 00:00:00' as timestamp))})\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325287_-1353137677",
+      "id": "20170406-160015_1173205349",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16540"
+    },
+    {
+      "title": "TPC-H Query 13",
+      "text": "%splicemachine\n-- QUERY 13\nselect\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tTPCH1.customer left outer join tpch1.orders on\n\t\t\t\tc_custkey = o_custkey\n\t\t\t\tand o_comment not like '%special%requests%'\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325288_-1355061422",
+      "id": "20170406-160031_290929306",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16541"
+    },
+    {
+      "title": "TPC-H Query 14",
+      "text": "%splicemachine\n-- QUERY 14\nselect\n\t100.00 * sum(case\n\t\twhen p_type like 'PROMO%'\n\t\t\tthen l_extendedprice * (1 - l_discount)\n\t\telse 0\n\tend) / sum(l_extendedprice * (1 - l_discount)) as promo_revenue\nfrom\n\tTPCH1.lineitem,\n\tTPCH1.part\nwhere\n\tl_partkey = p_partkey\n\tand l_shipdate >= date('1995-09-01')\n\tand l_shipdate < add_months('1995-09-01',1)\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:34-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325288_-1355061422",
+      "id": "20170406-160052_1211797311",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16542"
+    },
+    {
+      "title": "TPC-H Query 15",
+      "text": "%splicemachine\n-- QUERY 15\ncreate view TPCH1.revenue0 (supplier_no, total_revenue) as\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tTPCH1.lineitem\n\twhere\n\t\tl_shipdate >= date('1996-01-01')\n\t\tand l_shipdate < add_months('1996-01-01',3)\n\tgroup by\n\t\tl_suppkey;\n-- END OF QUERY\n\n-- QUERY 15\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tTPCH1.supplier,\n\tTPCH1.revenue0\nwhere\n\ts_suppkey = supplier_no\n\tand total_revenue = (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\tTPCH1.revenue0\n\t)\norder by\n\ts_suppkey;\n-- END OF QUERY\n\n-- QUERY 15\ndrop view TPCH1.revenue0\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:26:59-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325289_-1355446171",
+      "id": "20170406-160131_1976478929",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16543"
+    },
+    {
+      "title": "TPC-H Query 16",
+      "text": "%splicemachine\n-- QUERY 16\nselect\n\tp_brand,\n\tp_type,\n\tp_size,\n\tcount(distinct ps_suppkey) as supplier_cnt\nfrom\n\tTPCH1.partsupp,\n\tTPCH1.part\nwhere\n\tp_partkey = ps_partkey\n\tand p_brand <> 'Brand#45'\n\tand p_type not like 'MEDIUM POLISHED%'\n\tand p_size in (49, 14, 23, 45, 19, 3, 36, 9)\n\tand ps_suppkey not in (\n\t\tselect\n\t\t\ts_suppkey\n\t\tfrom\n\t\t\tTPCH1.supplier\n\t\twhere\n\t\t\ts_comment like '%Customer%Complaints%'\n\t)\ngroup by\n\tp_brand,\n\tp_type,\n\tp_size\norder by\n\tsupplier_cnt desc,\n\tp_brand,\n\tp_type,\n\tp_size\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:27:01-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325290_-1354291924",
+      "id": "20170406-160244_828229170",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16544"
+    },
+    {
+      "title": "TPC-H Query 17",
+      "text": "%splicemachine\n-- QUERY 17\nselect\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tTPCH1.lineitem,\n\tTPCH1.part\nwhere\n\tp_partkey = l_partkey\n\tand p_brand = 'Brand#23'\n\tand p_container = 'MED BOX'\n\tand l_quantity < (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tTPCH1.lineitem\n\t\twhere\n\t\t\tl_partkey = p_partkey\n\t)\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:27:03-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325290_-1354291924",
+      "id": "20170406-160257_1735755840",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16545"
+    },
+    {
+      "title": "TPC-H Query 19",
+      "text": "%splicemachine\n-- QUERY 19\nselect\n\tsum(l_extendedprice* (1 - l_discount)) as revenue\nfrom\n\tTPCH1.lineitem,\n\tTPCH1.part\nwhere\n\t(\n\t\tp_partkey = l_partkey\n\t\tand p_brand = 'Brand#12'\n\t\tand p_container in ('SM CASE', 'SM BOX', 'SM PACK', 'SM PKG')\n\t\tand l_quantity >= 1 and l_quantity <= 1 + 10\n\t\tand p_size between 1 and 5\n\t\tand l_shipmode in ('AIR', 'AIR REG')\n\t\tand l_shipinstruct = 'DELIVER IN PERSON'\n\t)\n\tor\n\t(\n\t\tp_partkey = l_partkey\n\t\tand p_brand = 'Brand#23'\n\t\tand p_container in ('MED BAG', 'MED BOX', 'MED PKG', 'MED PACK')\n\t\tand l_quantity >= 10 and l_quantity <= 10 + 10\n\t\tand p_size between 1 and 10\n\t\tand l_shipmode in ('AIR', 'AIR REG')\n\t\tand l_shipinstruct = 'DELIVER IN PERSON'\n\t)\n\tor\n\t(\n\t\tp_partkey = l_partkey\n\t\tand p_brand = 'Brand#34'\n\t\tand p_container in ('LG CASE', 'LG BOX', 'LG PACK', 'LG PKG')\n\t\tand l_quantity >= 20 and l_quantity <= 20 + 10\n\t\tand p_size between 1 and 15\n\t\tand l_shipmode in ('AIR', 'AIR REG')\n\t\tand l_shipinstruct = 'DELIVER IN PERSON'\n\t)\n-- END OF QUERY\n",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:27:05-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325290_-1354291924",
+      "id": "20170406-160315_1218486186",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16546"
+    },
+    {
+      "title": "TPC-H Query 21(variant)",
+      "text": "%splicemachine\n-- QUERY 21-var\nselect\n\tn_name,\n\tcount(*) as numwait\nfrom\n\tTPCH1.supplier,\n\tTPCH1.lineitem l1,\n\tTPCH1.orders,\n\tTPCH1.nation\nwhere\n\ts_suppkey = l1.l_suppkey\n\tand o_orderkey = l1.l_orderkey\n\tand o_orderstatus = 'F'\n\tand l1.l_receiptdate > l1.l_commitdate\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem l2\n\t\twhere\n\t\t\tl2.l_orderkey = l1.l_orderkey\n\t\t\tand l2.l_suppkey <> l1.l_suppkey\n\t)\n\tand not exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem l3\n\t\twhere\n\t\t\tl3.l_orderkey = l1.l_orderkey\n\t\t\tand l3.l_suppkey <> l1.l_suppkey\n\t\t\tand l3.l_receiptdate > l3.l_commitdate\n\t)\n\tand s_nationkey = n_nationkey\ngroup by\n\tn_name\norder by\n\tnumwait desc\n{limit 100}\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:27:08-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "lineChart": {},
+                "multiBarChart": {
+                  "stacked": false
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "N_NAME",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "NUMWAIT",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {
+          "waitCount": "4000"
+        },
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325291_-1354676673",
+      "id": "20170406-160338_835788312",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16547"
+    },
+    {
+      "title": "TPC-H Query 22",
+      "text": "%splicemachine\n-- QUERY 22\nselect\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tTPCH1.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t('13', '31', '23', '29', '30', '18', '17')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tTPCH1.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t('13', '31', '23', '29', '30', '18', '17')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tTPCH1.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:27:10-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "pieChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "stackedAreaChart": {},
+                "pieChart": {}
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [
+                {
+                  "name": "CNTRYCODE",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "TOTACCTBAL",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325291_-1354676673",
+      "id": "20170406-160357_2054277666",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16548"
+    },
+    {
+      "title": "TPC-H Query 1 (variant)",
+      "text": "%splicemachine\n-- QUERY 01-variant\nselect\n\tl_linestatus,\n\tl_shipdate,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tcount(*) as count_order\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate <= date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})\ngroup by\n\tl_shipdate,\n\tl_linestatus\norder by\n    l_shipdate\n\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:27:12-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "multiBarChart": {
+                  "stacked": true
+                },
+                "scatterChart": {
+                  "group": {
+                    "name": "L_LINESTATUS",
+                    "index": 0,
+                    "aggr": "sum"
+                  },
+                  "xAxis": {
+                    "name": "L_SHIPDATE",
+                    "index": 1,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "SUM_QTY",
+                    "index": 2,
+                    "aggr": "sum"
+                  }
+                },
+                "lineChart": {},
+                "stackedAreaChart": {}
+              },
+              "keys": [
+                {
+                  "name": "SUM_QTY",
+                  "index": 2,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "L_LINESTATUS",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "L_SHIPDATE",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325292_-1356600417",
+      "id": "20170406-173221_1006804720",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16549"
+    },
+    {
+      "title": "TPC-H Query 1 (variant with input field)",
+      "text": "%splicemachine\n-- QUERY 01-variant with variable substitution enabled\nselect\n\tl_linestatus,\n\tl_shipdate,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tcount(*) as count_order\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate <= ${maxDate='1992-07-20'}\ngroup by\n\tl_shipdate,\n\tl_linestatus\norder by\n    l_shipdate\n\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2017-06-14T05:27:15-0700",
+      "config": {
+        "colWidth": 12,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 300,
+              "optionOpen": true,
+              "setting": {
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "L_SHIPDATE",
+                    "index": 1,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "SUM_QTY",
+                    "index": 2,
+                    "aggr": "sum"
+                  },
+                  "group": {
+                    "name": "L_LINESTATUS",
+                    "index": 0,
+                    "aggr": "sum"
+                  }
+                }
+              }
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorHide": false,
+        "title": true
+      },
+      "settings": {
+        "params": {
+          "maxDate": "'1992-06-10'"
+        },
+        "forms": {
+          "maxDate": {
+            "name": "maxDate",
+            "defaultValue": "'1992-07-20'",
+            "hidden": false,
+            "$$hashKey": "object:19867"
+          }
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1495120325294_-1355830920",
+      "id": "20170517-221256_1926688850",
+      "dateCreated": "2017-05-18T08:12:05-0700",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16550"
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nOur next tutorial, <a href=\"/#/notebook/2CFMYDAYJ\">Common Utilities</a>, introduces some common utilities that you may find useful.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:27:03-0800",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1496115141851_1768793976",
+      "id": "20170530-033221_2109984853",
+      "dateCreated": "2017-05-29T20:32:21-0700",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500,
+      "$$hashKey": "object:16551",
+      "dateFinished": "2018-02-02T14:27:03-0800",
+      "dateStarted": "2018-02-02T14:27:03-0800",
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Our next tutorial, <a href=\"/#/notebook/2CFMYDAYJ\">Common Utilities</a>, introduces some common utilities that you may find useful.</p>\n</div>"
+          }
+        ]
+      }
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-02-02T14:27:03-0800",
+      "config": {
+        "colWidth": 12,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1517610423612_-1708291364",
+      "id": "20180202-142703_1560690170",
+      "dateCreated": "2018-02-02T14:27:03-0800",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500,
+      "focus": true,
+      "$$hashKey": "object:20467"
+    }
+  ],
+  "name": "2. Tutorials / 8. TPCH-1",
+  "id": "2CFY9Q6NS",
+  "angularObjects": {
+    "2D7W59HDB:shared_process": [],
+    "2D4UGGXZW:shared_process": [],
+    "2D5TA9K9A:shared_process": [],
+    "2D5ANWKXQ:shared_process": [],
+    "2D7RE2EBN:shared_process": [],
+    "2D86QCCB7:shared_process": [],
+    "2D64PYPXT:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
