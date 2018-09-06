@@ -13,7 +13,7 @@ import os
 import json
 import mmap
 
-_author__ = "Erin Driggers"
+__author__ = "Erin Driggers"
 __copyright__ = "Copyright 2018, Splice Machine"
 __credits__ = ["Erin Driggers"]
 __version__ = '0.0.1'
@@ -21,18 +21,19 @@ __version__ = '0.0.1'
 current_file_directory = os.path.dirname(os.path.abspath(__file__))
 
 parser = argparse.ArgumentParser(description="This script will import Splice Machine's zeppelin notebooks to your zeppelin instance")
-#parser.add_argument('-z', '--zeppelinUrl', dest='zeppelinUrl',
-#                    default='http://localhost:8080', help='Zeppelin url for example: http://localhost:8080')
 parser.add_argument('-z', '--zeppelinUrl', dest='zeppelinUrl',
                     default='http://localhost:8080', help='Zeppelin url for example: http://localhost:8080')
 
 parser.add_argument('-n', '--notebookDir', dest='notebookDir',
                     default=current_file_directory,
                     help='Root directory containing the notebooks')
+
+parser.add_argument('-d', '--delete', dest='delete', action='store_true', help='Use the -d or --delete option if you wish to delete existing matching notebooks')
 args = parser.parse_args()
 
 ZEPPELIN_URL=args.zeppelinUrl
 NOTEBOOK_ROOT_DIR=args.notebookDir
+DELETE_NOTEBOOKS=args.delete
 
 list_url = ZEPPELIN_URL + '/api/notebook'
 import_url = ZEPPELIN_URL + '/api/notebook/import'
@@ -56,7 +57,7 @@ if r.status_code == 200:
             currentNotebookNames[note['name']] = []
 
         currentNotebookNames[note['name']].append(note['id'])
-print '**** Currently there are ' + str(totalNotes) + ' notebooks in Zeppelin ****'
+print ('**** Currently there are ' + str(totalNotes) + ' notebooks in Zeppelin ****')
 
 #
 # Load the notebooks in the cluster.  First check to see if they currently exist
@@ -71,30 +72,29 @@ for subdir, dirs, files in os.walk(NOTEBOOK_ROOT_DIR):
         if filepath.endswith(".json"):
             notebookId = os.path.basename(subdir)
             notebookName = ""
-            with open(filepath, "r") as note_file:
-                s = mmap.mmap(note_file.fileno(), 0, access=mmap.ACCESS_READ)
-                nameLoc = s.rfind('"name"')
-                if nameLoc != -1:
-                    commaLoc = s.find(",", nameLoc + 7)
-                    if(commaLoc != -1):
-                        notebookName = s[nameLoc:commaLoc]
-                        notebookName = notebookName.replace('"name": ','')
-                        notebookName = notebookName.replace('"','')
 
-            print ('Processing notebook id: %s with name %s' % (notebookId, notebookName))
-            if notebookId in currentNotebookIds:
-                print 'Notebook Id exists - deleting'
-                r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + notebookId)
+            if DELETE_NOTEBOOKS is True:
+                with open(filepath, "r") as note_file:
+                    s = mmap.mmap(note_file.fileno(), 0, access=mmap.ACCESS_READ)
+                    nameLoc = s.rfind('"name"'.encode())
+                    if nameLoc != -1:
+                        commaLoc = s.find(",".encode(), nameLoc + 7)
+                        if(commaLoc != -1):
+                            notebookName = s[nameLoc:commaLoc]
+                            notebookName = notebookName.replace('"name": '.encode(),''.encode())
+                            notebookName = notebookName.replace('"'.encode(),''.encode())
 
-            if notebookName in currentNotebookNames:
-                print 'Notebook Name exists - deleting'
-                for noteId in currentNotebookNames[notebookName]:
-                    print 'Deleting matching Name with notebook id:' + noteId
-                    r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + noteId)
+                notebookName = notebookName.decode()
+                print ('Processing notebook id: %s with name %s' % (notebookId, notebookName))
+                if notebookId in currentNotebookIds:
+                    print ('Notebook Id exists - deleting')
+                    r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + notebookId)
 
-            if notebookId in currentNotebookIds:
-                 print 'Notebook exists - deleting'
-                 r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + notebookId)
+                if notebookName in currentNotebookNames:
+                    print ('Notebook Name exists - deleting')
+                    for noteId in currentNotebookNames[notebookName]:
+                        print ('Deleting matching Name with notebook id:' + noteId)
+                        r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + noteId)
 
             r = requests.post(import_url, data=open(filepath, 'rb'))
             if r.status_code != 200:
