@@ -1,7 +1,7 @@
 # Splice Machine Apache Zeppelin notebooks
 
 ## Updating your Zeppelin instance with all notebooks in this repo
-If you would like to load these notebooks in your current zeppelin cluster you can use the load-notebooks.py script.  It takes 2 optional parameters:
+If you would like to load these notebooks in your current zeppelin cluster you can use the load-notebooks.py script.  It takes several optional parameters:
 * -z: The Zeppelin URL ie http://localhost:8080.  It defaults to localhost:8080
 * -n: The directory containing the notebook folders.  It defaults to the directory where this script is located. 
 * -d: Flag to indicate you want to delete existing notebooks whose id and/or name matches
