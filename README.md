@@ -5,6 +5,8 @@ If you would like to load these notebooks in your current zeppelin cluster you c
 * -z: The Zeppelin URL ie http://localhost:8080.  It defaults to localhost:8080
 * -n: The directory containing the notebook folders.  It defaults to the directory where this script is located. 
 * -d: Flag to indicate you want to delete existing notebooks whose id and/or name matches
+* -u: If your zeppelin expects credentials, then this should be the user id
+* -p: If your zeppelin expects credentials, then this should be the password
 
 ## Importing specific notebooks
 Copy the "json" link URL from the table below and paste it into Zeppelin's import from URL tool.
