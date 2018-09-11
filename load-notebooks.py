@@ -28,25 +28,61 @@ parser.add_argument('-n', '--notebookDir', dest='notebookDir',
                     default=current_file_directory,
                     help='Root directory containing the notebooks')
 
+parser.add_argument('-u', '--user', dest='user',
+                    default="",
+                    help='Zeppelin user if authentication enabled')
+
+parser.add_argument('-p', '--password', dest='password',
+                    default="",
+                    help='Zeppelin password if authentication enabled')
+
+
 parser.add_argument('-d', '--delete', dest='delete', action='store_true', help='Use the -d or --delete option if you wish to delete existing matching notebooks')
 args = parser.parse_args()
 
 ZEPPELIN_URL=args.zeppelinUrl
 NOTEBOOK_ROOT_DIR=args.notebookDir
 DELETE_NOTEBOOKS=args.delete
+USER=args.user
+PASSWORD=args.password
+authentication=True
 
+if USER is None or USER == "":
+    authentication=False
+
+login_url = ZEPPELIN_URL + '/api/login'
 list_url = ZEPPELIN_URL + '/api/notebook'
 import_url = ZEPPELIN_URL + '/api/notebook/import'
 
 # These are the notebooks that are currently installed on Zeppelin
 currentNotebookIds = {}
 currentNotebookNames = {}
+cookies=None
+
+#
+# Authenticate if necessary
+#
+if authentication is True:
+    r = requests.post(login_url, data='userName=' + USER + "&password=" + PASSWORD)
+    if r.status_code == 200:
+        loginResponse = json.loads(r.text)
+        cookies = r.cookies
+        if cookies is None:
+            print ('******* Unable to retrieve cookie ********')
+            exit()
+    else:
+        print ('******* Authentication failed ********')
+        exit()
+
+if authentication is True and cookies is None:
+    exit()
+
 
 #
 # Get the current notebooks on the Zeppelin cluster
 #
 totalNotes = 0
-r = requests.get(list_url)
+r = requests.get(list_url, cookies=cookies)
 if r.status_code == 200:
     notebooks = json.loads(r.text)
     for note in notebooks['body']:
@@ -88,16 +124,16 @@ for subdir, dirs, files in os.walk(NOTEBOOK_ROOT_DIR):
                 print ('Processing notebook id: %s with name %s' % (notebookId, notebookName))
                 if notebookId in currentNotebookIds:
                     print ('Notebook Id exists - deleting')
-                    r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + notebookId)
+                    r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + notebookId, cookies=cookies)
 
                 if notebookName in currentNotebookNames:
                     print ('Notebook Name exists - deleting')
                     for noteId in currentNotebookNames[notebookName]:
                         print ('Deleting matching Name with notebook id:' + noteId)
-                        r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + noteId)
+                        r = requests.delete(ZEPPELIN_URL + '/api/notebook/' + noteId, cookies=cookies)
 
-            r = requests.post(import_url, data=open(filepath, 'rb'))
-            if r.status_code != 200:
+            r = requests.post(import_url, data=open(filepath, 'rb'), cookies=cookies)
+            if r.status_code > 201:
                 print('Status:', r.status_code)
                 print ('Response:' + r.text)
 
