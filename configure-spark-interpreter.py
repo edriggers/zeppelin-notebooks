@@ -3,6 +3,8 @@
 
 '''
 Updates the Zeppelin spark interpreter to work on a cloudera or hortonworks cluster.  This script must be run on the hadoop cluster.
+The REST API between Zeppelin 0.7.3 and 0.8.0 changed and therefore there are a couple of places where the logic in this file is
+slightly different between the two versions.
 
 Run for the details about the parameters: python configure-spark-interpreter.py --help
 
@@ -56,6 +58,9 @@ parser.add_argument('-p', '--password', dest='password',
 parser.add_argument('-v', '--zeppelinVersion', dest='zeppelinVersion', default="0.8.0",
                     help='Zeppelin version.')
 
+parser.add_argument('-i', '--spliceSparkInterpreterJarName', dest='spliceSparkInterpreterJarName', default="splicemachine-cdh5.14.0-2.2.0.cloudera2_2.11-2.7.0.1828.jar",
+                    help='The name of the jar containing the spark interpreter code ie splicemachine-hdp2.6.3-2.2.0.2.6.3.0-235_2.11-2.7.0.1828.jar')
+
 args = parser.parse_args()
 
 ZEPPELIN_URL=args.zeppelinUrl
@@ -66,7 +71,8 @@ SPLICE_ADDITIONAL_JARS_DIR=args.spliceAdditionalJarDir
 USER=args.user
 PASSWORD=args.password
 ZEPPELIN_VERSION=args.zeppelinVersion
-
+SPLICE_SPECIAL_JAR=args.spliceSparkInterpreterJarName
+SPLICE_INTERPRETER_NAME = 'splicespark'
 
 if HADOOP_ROOT_DIR is None:
     if HADOOP_VENDOR == 'CDH':
@@ -77,17 +83,21 @@ if HADOOP_ROOT_DIR is None:
         print('Invalid value for hadoopVendor');
         exit();
 
-SPLICE_SPECIAL_JAR="splicemachine-cdh5.14.0-2.2.0.cloudera2_2.11-2.7.0.1828.jar"
+
 if HADOOP_VENDOR == 'CDH':
     HADOOP_VENDOR_DIR=HADOOP_ROOT_DIR + "/CDH/lib"
     HBASE_LIB_DIR=HADOOP_VENDOR_DIR + '/hbase'
     SPARK_ROOT_DIR=HADOOP_ROOT_DIR + "/SPARK2/lib/spark2"
-    SPLICE_ROOT_DIR=HADOOP_ROOT_DIR + "/SPLICEMACHINE"
+    SPARK_HOME=SPARK_ROOT_DIR
+    SPLICE_ROOT_DIR=HADOOP_ROOT_DIR + "/SPLICEMACHINE/lib"
+    TEMPLATE_INTERPRETER_NAME="spark"
 elif HADOOP_VENDOR == 'HDP':
     HADOOP_VENDOR_DIR=HADOOP_ROOT_DIR
     HBASE_LIB_DIR=HADOOP_VENDOR_DIR + '/hbase/lib'
     SPARK_ROOT_DIR=HADOOP_ROOT_DIR + "/spark2"
-    SPLICE_ROOT_DIR="/opt/splice/default/"
+    SPARK_HOME='/usr/hdp/current/spark2-client/'
+    SPLICE_ROOT_DIR="/var/lib/splicemachine"
+    TEMPLATE_INTERPRETER_NAME="spark2"
 else:
     print('Invalid value for hadoopVendor');
     exit();
@@ -98,6 +108,9 @@ interpreterId=None
 authentication=True
 if USER is None or USER == "":
     authentication=False
+
+spliceInterpreter=None
+templateInterpreter=None
 
 #
 # Function to build the list of properties to update
@@ -112,6 +125,18 @@ def addProperty(propList, name, value, type):
         prop['type'] = type
         propList[name] = prop
     return propList
+
+#
+# Function to return the property value
+#
+def getPropertyValue(propList, name):
+    if name in propList:
+        if ZEPPELIN_VERSION == "0.7.3":
+            return propList[name]
+        else:
+            return propList[name]['value']
+    else:
+        return None
 
 
 #
@@ -132,55 +157,71 @@ if authentication is True:
 if authentication is True and cookies is None:
     exit()
 
+#
+# Add the splice machine repo
+#
+splicerepo = {}
+splicerepo['id'] = 'splicemachine'
+splicerepo['url'] = 'http://repository.splicemachine.com/nexus/content/groups/public'
+splicerepo['snapshot'] = False
+print('***** Adding interpreter Repo *****')
+r = requests.post(ZEPPELIN_URL + '/api/interpreter/respository', data=json.dumps(splicerepo), cookies=cookies)
+if r.status_code == 201:
+    print('Success')
+else:
+    print('Addition of repo failed')
+    print(r.text)
 
 #
 # Get the spark interpreter setting id
 #
-print('***** Getting spark interpreter id *****')
+spliceInterpreterNew = True
+print('***** Getting interpreter *****')
 r = requests.get(ZEPPELIN_URL + '/api/interpreter/setting', cookies=cookies)
 if r.status_code == 200:
     data = json.loads(r.text)
     interpreters = data['body']
+
     for interpreter in interpreters:
-        if interpreter['name'] == 'spark':
-            interpreterId = interpreter['id']
+        if interpreter['name'] == SPLICE_INTERPRETER_NAME:
+            spliceInterpreter = interpreter
+            spliceInterpreterNew = False
+            break
+        elif interpreter['name'] == TEMPLATE_INTERPRETER_NAME:
+            templateInterpreter = interpreter
 
-if interpreterId is None:
-    print ('Interpreter not found - exiting')
-    exit()
+if spliceInterpreterNew:
+    spliceInterpreter = templateInterpreter
 
 #
-# Get the spark interpreter
+# Build a list of the current or default interpreter values
 #
-print('***** Getting interpreter settings *****')
-r = requests.get(ZEPPELIN_URL + '/api/interpreter/setting/' + interpreterId, cookies=cookies)
-if r.status_code == 200:
-    data = json.loads(r.text)
-    sparkDetails = data['body']
-    for property in sparkDetails['properties']:
-        propertyDetails = sparkDetails['properties'][property]
-        if ZEPPELIN_VERSION == "0.7.3":
-            currentSparkProperties = addProperty(currentSparkProperties,property,sparkDetails['properties'][property], None)
-        else:
-            currentSparkProperties = addProperty(currentSparkProperties,propertyDetails['name'], propertyDetails['value'], propertyDetails['type'])
-else:
-    print('There was an error getting the current interpreter settings - exiting')
-    exit()
+for property in spliceInterpreter['properties']:
+    propertyDetails = spliceInterpreter['properties'][property]
+    if ZEPPELIN_VERSION == "0.7.3":
+        currentSparkProperties = addProperty(currentSparkProperties,property,spliceInterpreter['properties'][property], None)
+    else:
+        currentSparkProperties = addProperty(currentSparkProperties,propertyDetails['name'], propertyDetails['value'], propertyDetails['type'])
 
+#
+# Get the current hadoop path for the SPARK_DIST_CLASSPATH variable
+#
 hadoop_classpath = subprocess.Popen([HADOOP_VENDOR_DIR + "/hadoop/bin/hadoop", "classpath"],
                           stdout=subprocess.PIPE).communicate()[0]
 hadoop_classpath = hadoop_classpath.rstrip()
 
+#
+# Build the list of files for the spark.jars
+#
 sparkJars = []
-
 sparkJars.append(HBASE_LIB_DIR + '/hbase-protocol.jar')
 sparkJars.append('/etc/hbase/conf/hbase-site.xml')
 sparkJars.append('/etc/hadoop/conf/core-site.xml')
 sparkJars.append('/etc/hadoop/conf/hdfs-site.xml')
 sparkJars.append('/etc/hadoop/conf/yarn-site.xml')
 sparkJars.append(SPLICE_ADDITIONAL_JARS_DIR + '/' + SPLICE_SPECIAL_JAR)
-for file in listdir(SPLICE_ROOT_DIR + "/lib"):
-    sparkJars.append(SPLICE_ROOT_DIR + "/lib/" + file)
+for file in listdir(SPLICE_ROOT_DIR):
+    sparkJars.append(SPLICE_ROOT_DIR + "/" + file)
 sparkJars.append(HBASE_LIB_DIR + '/hbase-client.jar')
 sparkJars.append(HBASE_LIB_DIR + '/hbase-common.jar')
 sparkJars.append(HBASE_LIB_DIR + '/hbase-server.jar')
@@ -190,75 +231,97 @@ if HADOOP_VENDOR == 'CDH':
 elif HADOOP_VENDOR == 'HDP':
     sparkJars.append(HBASE_LIB_DIR + '/htrace-core-3.1.0-incubating.jar')
 
-
+#
+# Build the spark.executor.extraClassPath and spark.driver.extraClassPath classes
+#
 sparkClassPath = []
 sparkClassPath.append('/etc/hbase/conf')
-sparkClassPath.append(SPLICE_ROOT_DIR + '/lib/*')
+sparkClassPath.append(SPLICE_ROOT_DIR + '/*')
 sparkClassPath.append(SPARK_ROOT_DIR + '/jars/*')
 sparkClassPath.append(HBASE_LIB_DIR + '/*')
 if HADOOP_VENDOR == 'CDH':
     sparkClassPath.append(HBASE_LIB_DIR + '/lib/*')
 sparkClassPath.append(SPLICE_ADDITIONAL_JARS_DIR + "/*")
 
-
 #
-# Generate the list of properties that should be set for the spark interpreter
+# Generate the list of properties that should be set for the splicespark interpreter
 #
 updatedSparkProperties = {}
-
-updatedSparkProperties = addProperty(updatedSparkProperties,'master', 'yarn', 'string')
-updatedSparkProperties = addProperty(updatedSparkProperties,'zeppelin.spark.uiWebUrl', RESOURCE_URL, 'string')
+if ZEPPELIN_VERSION == "0.7.3":
+    updatedSparkProperties = addProperty(updatedSparkProperties,'master', 'yarn-client', 'string')
+else:
+    updatedSparkProperties = addProperty(updatedSparkProperties,'master', 'yarn', 'string')
+    updatedSparkProperties = addProperty(updatedSparkProperties,'spark.submit.deployMode', 'cluster', 'string')
+    updatedSparkProperties = addProperty(updatedSparkProperties,'zeppelin.spark.uiWebUrl', RESOURCE_URL, 'string')
 
 updatedSparkProperties = addProperty(updatedSparkProperties,'zeppelin.spark.useHiveContext', False, 'checkbox')
-updatedSparkProperties = addProperty(updatedSparkProperties,'spark.submit.deployMode', 'cluster', 'string')
 updatedSparkProperties = addProperty(updatedSparkProperties,'spark.kryo.referenceTracking', False, 'checkbox')
 updatedSparkProperties = addProperty(updatedSparkProperties,'spark.kryo.registrator', "com.splicemachine.derby.impl.SpliceSparkKryoRegistrator", 'string')
-updatedSparkProperties = addProperty(updatedSparkProperties,'HADOOP_CONFIG_DIR', '/etc/hadoop/conf', 'string')
-updatedSparkProperties = addProperty(updatedSparkProperties,'HADOOP_HOME', HADOOP_VENDOR_DIR + '/lib/hadoop', 'string')
-updatedSparkProperties = addProperty(updatedSparkProperties,'SPARK_HOME', SPARK_ROOT_DIR, 'string')
-updatedSparkProperties = addProperty(updatedSparkProperties,'SPARK_CONF_DIR', '/etc/spark2/conf', 'string')
-updatedSparkProperties = addProperty(updatedSparkProperties,'SPARK_DIST_CLASSPATH', hadoop_classpath, 'textarea')
-updatedSparkProperties = addProperty(updatedSparkProperties,'spark.executor.extraClassPath', ":".join(sparkClassPath), 'textarea')
-updatedSparkProperties = addProperty(updatedSparkProperties,'spark.driver.extraClassPath', ":".join(sparkClassPath), 'textarea')
+updatedSparkProperties = addProperty(updatedSparkProperties,'SPARK_HOME', SPARK_HOME, 'string')
 updatedSparkProperties = addProperty(updatedSparkProperties,'spark.jars', ",".join(sparkJars), 'textarea')
+updatedSparkProperties = addProperty(updatedSparkProperties,'spark.jars.packages', "", 'textarea')
+updatedSparkProperties = addProperty(updatedSparkProperties,'spark.app.name', "SpliceZeppelin", 'string')
+if HADOOP_VENDOR != 'HDP':
+    updatedSparkProperties = addProperty(updatedSparkProperties,'HADOOP_CONFIG_DIR', '/etc/hadoop/conf', 'string')
+    updatedSparkProperties = addProperty(updatedSparkProperties,'HADOOP_HOME', HADOOP_VENDOR_DIR + '/lib/hadoop', 'string')
+    updatedSparkProperties = addProperty(updatedSparkProperties,'SPARK_CONF_DIR', '/etc/spark2/conf', 'string')
+    updatedSparkProperties = addProperty(updatedSparkProperties,'SPARK_DIST_CLASSPATH', hadoop_classpath, 'textarea')
+    updatedSparkProperties = addProperty(updatedSparkProperties,'spark.executor.extraClassPath', ":".join(sparkClassPath), 'textarea')
+    updatedSparkProperties = addProperty(updatedSparkProperties,'spark.driver.extraClassPath', ":".join(sparkClassPath), 'textarea')
 
-print('****** Properties that are going to change *******')
+
+#
+# Check to see if the zeppelin.dep.additionalRemoteRepository value, if it does and does not have the splice package in it, it needs to be appended
+#
+currentRemoteRepoVal = getPropertyValue(currentSparkProperties, 'zeppelin.dep.additionalRemoteRepository')
+if currentRemoteRepoVal is None:
+    updatedSparkProperties = addProperty(updatedSparkProperties,'zeppelin.dep.additionalRemoteRepository', 'splice-packages,http://repository.splicemachine.com/nexus/content/groups/public,false;', 'textarea')
+elif currentRemoteRepoVal.find('repository.splicemachine.com') < 0:
+    currentRemoteRepoVal = currentRemoteRepoVal + 'splice-packages,http://repository.splicemachine.com/nexus/content/groups/public,false;'
+    updatedSparkProperties = addProperty(updatedSparkProperties,'zeppelin.dep.additionalRemoteRepository',currentRemoteRepoVal, 'textarea')
+
+#
+# Determine the final list of spark properties by merging the original list with the new list
+#
 mergedSparkProperties=currentSparkProperties
+print('***** about to look at properties')
 for property in updatedSparkProperties:
     propDetails = updatedSparkProperties[property]
-    mergedSparkProperties[property]=propDetails 
     if property in currentSparkProperties:
         currentPropDetails = currentSparkProperties[property]
     else:
         currentPropDetails = None
 
-    if ZEPPELIN_VERSION == "0.7.3":
-        if currentPropDetails is None:
-            print('Adding property: name=' + property + " value=" + propDetails)
-        else:
-            if propDetails != currentPropDetails:
-                print('Updating property:' + property)
-                print ("CURRENT:   value=" + currentPropDetails)
-                print ("NEW:       value=" + propDetails)
+    if currentPropDetails is None:
+        print('*** Adding property ***')
+        print ("name=" + property + " value=" + str(getPropertyValue(updatedSparkProperties, property)))
     else:
-        if currentPropDetails is None:
-            print('Adding property')
-            print ("name=" + str(propDetails['name']) + " value=" + str(propDetails['value']))
-        else:
-            if propDetails['value'] != currentPropDetails['value']:
-                print('Updating property:' + propDetails['name'])
-                print ("CURRENT:   value=" + str(currentPropDetails['value']))
-                print ("NEW:       value=" + str(propDetails['value']))
+        currentVal = getPropertyValue(currentSparkProperties, property)
+        newVal = getPropertyValue(updatedSparkProperties, property)
+        if currentVal != newVal:
+            print('Updating property:' + property)
+            print ("CURRENT:   value=" + str(currentVal))
+            print ("NEW:       value=" + str(newVal))
+
+    mergedSparkProperties[property]=propDetails
+
 
 #
 # Update the spark interpreter
 #
-print('***** Update interpreter settings *****')
-sparkSettings={}
-sparkSettings['name']="spark"
-sparkSettings['properties']=mergedSparkProperties
-r = requests.put(ZEPPELIN_URL + '/api/interpreter/setting/' + interpreterId, data=json.dumps(sparkSettings), cookies=cookies)
-if r.status_code == 200:
+spliceInterpreter['properties'] = mergedSparkProperties
+del spliceInterpreter['status']
+if spliceInterpreterNew:
+    print('***** Creating a new interpreter *****')
+    spliceInterpreter['name'] = SPLICE_INTERPRETER_NAME
+    del spliceInterpreter['id']
+    r = requests.post(ZEPPELIN_URL + '/api/interpreter/setting', data=json.dumps(spliceInterpreter), cookies=cookies)
+else:
+    print('***** Update interpreter settings *****')
+    interpreterId = spliceInterpreter['id']
+    r = requests.put(ZEPPELIN_URL + '/api/interpreter/setting/' + interpreterId, data=json.dumps(spliceInterpreter), cookies=cookies)
+
+if r.status_code < 205:
     print('success')
 else:
     print('There was an error processing the request')
