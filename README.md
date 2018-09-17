@@ -49,3 +49,19 @@ You can add notebooks by making Github pull request, but we request you also upd
 |2A94M5J1Z|ZeppelinTutorial - Basic Features| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2A94M5J1Z/note.json) | |
 |2BWJFTXKJ|ZeppelinTutorial - SparkR| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2BWJFTXKJ/note.json) | |
 
+## Updating your HDP Zeppelin to use the Splice Machine Native Spark Datasource
+* Create a directory such as /tmp/splicemachine on each server to store 1 jar files needed by this setup.
+* Get the Splice Machine Native Spark Datasource for HDP for the version you are using ie (splicemachine-hdp2.6.3-2.2.0.2.6.3.0-235_2.11-2.7.0.1828.jar) for your cluster and place it in the /tmp/splicemachine directory on each server
+* Copy the configure-spark-interpreter.py from the zeppelin-notebook repo to a server that is running hortonworks and run the following command where:
+** The z parameter is the zeppelin server url - update the server and port to match your environment.
+** The a parameter is HDP
+** The s parameter is the directory from the step above
+** The v parameter is the version of zeppelin
+** The u parameter is the user if your zeppelin expects credentials
+** The p parameter is the password if your zeppelin expects credentials
+** The i parameter is the name of the Native Spark Datasource jar
+* Run a command like the following to configure your HDP Zeppelin
+
+```
+python configure-spark-interpreter.py -z "http://localhost:9995" -a "HDP" -s "/tmp/zeppelin" -v "0.7.3" -u admin -p admin -i splicemachine-hdp2.6.3-2.2.0.2.6.3.0-235_2.11-2.7.0.1828.jar
+```
