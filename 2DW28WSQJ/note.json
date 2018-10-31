@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\nThis notebook is used to perform check that Zeppelin is functioning properly.\n\u003cB\u003ePLEASE DON NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e",
+      "text": "%md\nThis notebook is used to perform check that Zeppelin is functioning properly.\n\u003cB\u003ePLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e",
       "user": "splice",
-      "dateUpdated": "2018-10-31 01:34:01.082",
+      "dateUpdated": "2018-10-31 20:41:27.676",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -15,7 +15,7 @@
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis notebook is used to perform check that Zeppelin is functioning properly.\u003cbr/\u003e\u003cB\u003ePLEASE DON NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis notebook is used to perform check that Zeppelin is functioning properly.\u003cbr/\u003e\u003cB\u003ePLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,16 +35,16 @@
       "jobName": "paragraph_1540927094962_1713595340",
       "id": "20181030-191814_1447274213",
       "dateCreated": "2018-10-30 19:18:14.962",
-      "dateStarted": "2018-10-31 01:34:01.478",
-      "dateFinished": "2018-10-31 01:34:04.217",
-      "status": "FINISHED",
+      "dateStarted": "2018-10-31 20:41:27.677",
+      "dateFinished": "2018-10-31 20:41:27.682",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Test Splice DB connection",
       "text": "select count(1) from sys.systables;",
       "user": "splice",
-      "dateUpdated": "2018-10-31 01:34:04.288",
+      "dateUpdated": "2018-10-31 20:31:11.203",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -89,22 +89,14 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "1\n85\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1540521838009_667447489",
       "id": "20181026-024358_1904749892",
       "dateCreated": "2018-10-26 02:43:58.009",
-      "dateStarted": "2018-10-31 01:34:04.403",
-      "dateFinished": "2018-10-31 01:34:06.818",
-      "status": "FINISHED",
+      "dateStarted": "2018-10-31 20:31:11.273",
+      "dateFinished": "2018-10-31 20:31:11.303",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -156,22 +148,14 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "1\n85\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1540521857472_161462042",
       "id": "20181026-024417_1685384875",
       "dateCreated": "2018-10-26 02:44:17.472",
-      "dateStarted": "2018-10-31 01:34:07.650",
-      "dateFinished": "2018-10-31 01:34:08.285",
-      "status": "FINISHED",
+      "dateStarted": "2018-10-31 20:00:07.009",
+      "dateFinished": "2018-10-31 20:00:07.800",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -197,23 +181,14 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "import spark.implicits._\nprimitiveDS: org.apache.spark.sql.Dataset[Int] \u003d [value: int]\nres10: Array[Int] \u003d Array(2, 3, 4)\n"
-          }
-        ]
-      },
-      "runtimeInfos": {},
       "apps": [],
       "jobName": "paragraph_1540927379744_-306541172",
       "id": "20181030-192259_1985721246",
       "dateCreated": "2018-10-30 19:22:59.744",
-      "dateStarted": "2018-10-31 01:34:08.380",
-      "dateFinished": "2018-10-31 01:34:09.555",
-      "status": "FINISHED",
+      "dateStarted": "2018-10-31 20:00:07.810",
+      "dateFinished": "2018-10-31 20:00:08.708",
+      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -239,38 +214,14 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+--------------------+--------------------+---------+--------------------+---------------+-------+-----------+---------+-------+-----+------+--------+-----------+---------+------------------+\n|             TABLEID|           TABLENAME|TABLETYPE|            SCHEMAID|LOCKGRANULARITY|VERSION|COLSEQUENCE|DELIMITED|ESCAPED|LINES|STORED|LOCATION|COMPRESSION|IS_PINNED|PURGE_DELETED_ROWS|\n+--------------------+--------------------+---------+--------------------+---------------+-------+-----------+---------+-------+-----+------+--------+-----------+---------+------------------+\n|4aaa4172-0165-4e4...|                 VAR|        T|08264012-0164-f23...|              R|    2.0|          2|     null|   null| null|  null|    null|       null|    false|             false|\n|40348015-0164-f23...|JOB_SEARCH_IMPRES...|        T|08264012-0164-f23...|              R|    2.0|         48|     null|   null| null|  null|    null|       none|    false|             false|\n|80000010-00d0-fd7...|    SYSCONGLOMERATES|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n|80000018-00d0-fd7...|           SYSTABLES|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n|8000001e-00d0-fd7...|          SYSCOLUMNS|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n|80000022-00d0-fd7...|          SYSSCHEMAS|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n|8000004d-00d0-fd7...|            SYSVIEWS|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n|f48ad515-013d-35d...|      SYSPRIMARYKEYS|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n|80000039-00d0-fd7...|             SYSKEYS|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n|80000056-00d0-fd7...|           SYSCHECKS|        S|8000000d-00d0-fd7...|              R|    2.0|         -1|     null|   null| null|  null|    null|       null|    false|             false|\n+--------------------+--------------------+---------+--------------------+---------------+-------+-----------+---------+-------+-----+------+--------+-----------+---------+------------------+\nonly showing top 10 rows\n\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1540927805289_-1065690429",
       "id": "20181030-193005_5392037",
       "dateCreated": "2018-10-30 19:30:05.289",
-      "dateStarted": "2018-10-31 10:41:15.295",
-      "dateFinished": "2018-10-31 10:41:22.087",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\n",
-      "user": "splice",
-      "dateUpdated": "2018-10-31 10:40:36.889",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1540982436889_1642437703",
-      "id": "20181031-104036_1714071023",
-      "dateCreated": "2018-10-31 10:40:36.889",
+      "dateStarted": "2018-10-31 20:00:08.712",
+      "dateFinished": "2018-10-31 20:00:09.765",
       "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
