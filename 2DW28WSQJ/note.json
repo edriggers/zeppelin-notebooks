@@ -1,0 +1,241 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\nThis notebook is used to perform check that Zeppelin is functioning properly.\n\u003cB\u003ePLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e",
+      "user": "splice",
+      "dateUpdated": "2018-10-31 20:41:27.676",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis notebook is used to perform check that Zeppelin is functioning properly.\u003cbr/\u003e\u003cB\u003ePLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1540927094962_1713595340",
+      "id": "20181030-191814_1447274213",
+      "dateCreated": "2018-10-30 19:18:14.962",
+      "dateStarted": "2018-10-31 20:41:27.677",
+      "dateFinished": "2018-10-31 20:41:27.682",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Test Splice DB connection",
+      "text": "select count(1) from sys.systables;",
+      "user": "splice",
+      "dateUpdated": "2018-10-31 20:31:11.203",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "1": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1540521838009_667447489",
+      "id": "20181026-024358_1904749892",
+      "dateCreated": "2018-10-26 02:43:58.009",
+      "dateStarted": "2018-10-31 20:31:11.273",
+      "dateFinished": "2018-10-31 20:31:11.303",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Test Splice Spark",
+      "text": "select count(1) from sys.systables --splice-properties useSpark\u003dtrue\n;",
+      "user": "splice",
+      "dateUpdated": "2018-10-31 01:34:06.905",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "1": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1540521857472_161462042",
+      "id": "20181026-024417_1685384875",
+      "dateCreated": "2018-10-26 02:44:17.472",
+      "dateStarted": "2018-10-31 20:00:07.009",
+      "dateFinished": "2018-10-31 20:00:07.800",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Test Zeppelin Spark ",
+      "text": "%spark \n\nimport spark.implicits._\nval primitiveDS \u003d Seq(1, 2, 3).toDS()\nprimitiveDS.map(_ + 1).collect() \n\n",
+      "user": "splice",
+      "dateUpdated": "2018-10-31 01:34:08.350",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/scala",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1540927379744_-306541172",
+      "id": "20181030-192259_1985721246",
+      "dateCreated": "2018-10-30 19:22:59.744",
+      "dateStarted": "2018-10-31 20:00:07.810",
+      "dateFinished": "2018-10-31 20:00:08.708",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Test pySpark",
+      "text": "%spark.pyspark\nfrom splicemachine.spark.context import PySpliceContext\n\ndef get_jdbc_url():\n    import os\n    framework \u003d os.environ[\u0027FRAMEWORK_NAME\u0027]\n    return \u0027jdbc:splice://{framework}-proxy.marathon.mesos:1527/splicedb\u0027.format(framework\u003dframework)\n\nsplice \u003d PySpliceContext(get_jdbc_url(), spark)\n\n\n# Query Features\nquery_results \u003d splice.df(\"select * from SYS.SYSTABLES\")\nquery_results.show(10)\n",
+      "user": "splice",
+      "dateUpdated": "2018-10-31 10:41:15.261",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1540927805289_-1065690429",
+      "id": "20181030-193005_5392037",
+      "dateCreated": "2018-10-30 19:30:05.289",
+      "dateStarted": "2018-10-31 20:00:08.712",
+      "dateFinished": "2018-10-31 20:00:09.765",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "/System/Health Check",
+  "id": "2DW28WSQJ",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
