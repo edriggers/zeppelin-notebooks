@@ -1,1 +1,129 @@
-﻿{"paragraphs":[{"title":"Deploying Applications: Spring","text":"%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Deploying Applications\n\nSplice Machine is an ACID compliant RDMS, which means that you can build <a href=\"https://spring.io/\" target=\"_blank\"><em>Spring</em></a> applications on it.\n\nOne such application is the commonly-used *Petclinic* web app.\n<br />\n\n## Running the Petclinic Web App\n\nHere are links you can follow to download and run the Splice Machine/Spring implementation of the Petclinic app. You can:\n\n<table class=\"splicezepNoBorder\">\n   <tbody>\n        <tr>\n            <td>Access the repository:</td>\n            <td><a href=\"https://github.com/splicemachine/spring-petclinic\" target=\"_blank\">https://github.com/splicemachine/spring-petclinic</a></td>\n        </tr>\n        <tr>\n            <td>Download a JDBC driver to use with it:</td>\n            <td><a href=\"https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\" target=\"_blank\">https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar</a></td>\n        </tr>\n        <tr>\n            <td>Download an ODBC driver to use with it:</td>\n            <td><a href=\"https://www.splicemachine.com/get-started/odbc-driver-download/\"target=\"_blank\">https://www.splicemachine.com/get-started/odbc-driver-download/</a></td>\n        </tr>\n        <tr>\n            <td>Run it in this container:</td>\n            <td><a href=\"http://34.224.173.173:8080/owners/find\" target=\"_blank\">http://34.224.173.173:8080/owners/find</a></td>\n        </tr>\n   </tbody>\n</table>\n\n\n<p class=\"noteNote\">The Petclinic app uses the same basic Java persistence model as traditional databases, as shown <a href=\"https://github.com/splicemachine/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/model/Person.java\">here.</a></p>\n\n\n","user":"anonymous","dateUpdated":"2018-11-16T19:11:16+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Deploying Applications</h1>\n<p>Splice Machine is an ACID compliant RDMS, which means that you can build <a href=\"https://spring.io/\" target=\"_blank\"><em>Spring</em></a> applications on it.</p>\n<p>One such application is the commonly-used <em>Petclinic</em> web app.<br/><br /></p>\n<h2>Running the Petclinic Web App</h2>\n<p>Here are links you can follow to download and run the Splice Machine/Spring implementation of the Petclinic app. You can:</p>\n<table class=\"splicezepNoBorder\">\n   <tbody>\n        <tr>\n            <td>Access the repository:</td>\n            <td><a href=\"https://github.com/splicemachine/spring-petclinic\" target=\"_blank\">https://github.com/splicemachine/spring-petclinic</a></td>\n        </tr>\n        <tr>\n            <td>Download a JDBC driver to use with it:</td>\n            <td><a href=\"https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\" target=\"_blank\">https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar</a></td>\n        </tr>\n        <tr>\n            <td>Download an ODBC driver to use with it:</td>\n            <td><a href=\"https://www.splicemachine.com/get-started/odbc-driver-download/\"target=\"_blank\">https://www.splicemachine.com/get-started/odbc-driver-download/</a></td>\n        </tr>\n        <tr>\n            <td>Run it in this container:</td>\n            <td><a href=\"http://34.224.173.173:8080/owners/find\" target=\"_blank\">http://34.224.173.173:8080/owners/find</a></td>\n        </tr>\n   </tbody>\n</table>\n<p class=\"noteNote\">The Petclinic app uses the same basic Java persistence model as traditional databases, as shown <a href=\"https://github.com/splicemachine/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/model/Person.java\">here.</a></p>\n</div>"}]},"apps":[],"jobName":"paragraph_1542395462227_454863039","id":"20180113-222530_245304175","dateCreated":"2018-11-16T19:11:02+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:75608","dateFinished":"2018-11-16T19:11:16+0000","dateStarted":"2018-11-16T19:11:16+0000"},{"text":"%md\n## Where to Go Next\n\nThe next notebook in this presentation introduces you to <a href=\"/#/notebook/2D96GBY2P\">Using the Splice Machine Spark Adapter</a> for working with your database.","user":"anonymous","dateUpdated":"2018-11-16T19:11:02+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation introduces you to <a href=\"/#/notebook/2D96GBY2P\">Using the Splice Machine Spark Adapter</a> for working with your database.</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1542395462228_-1889307572","id":"20180122-173624_509126525","dateCreated":"2018-11-16T19:11:02+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:75609"},{"text":"%md\n","user":"anonymous","dateUpdated":"2018-11-16T19:11:02+0000","config":{"colWidth":12,"editorMode":"ace/mode/markdown","results":{},"enabled":true,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"fontSize":9},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1542395462228_-541050903","id":"20180125-142959_1101825868","dateCreated":"2018-11-16T19:11:02+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:75610"}],"name":"Training/Developers - Part II/g. Creating Apps with Splice Machine","id":"2DVU2ESP3","noteParams":{},"noteForms":{},"angularObjects":{"md:shared_process":[],"splicemachine:shared_process":[],"spark:shared_process":[]},"config":{"isZeppelinNotebookCronEnable":false,"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [
+    {
+      "title": "Deploying Applications: Spring",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Deploying Applications\n\nSplice Machine is an ACID compliant RDMS, which means that you can build \u003ca href\u003d\"https://spring.io/\" target\u003d\"_blank\"\u003e\u003cem\u003eSpring\u003c/em\u003e\u003c/a\u003e applications on it.\n\nOne such application is the commonly-used *Petclinic* web app.\n\u003cbr /\u003e\n\n## Running the Petclinic Web App\n\nHere are links you can follow to download and run the Splice Machine/Spring implementation of the Petclinic app. You can:\n\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eAccess the repository:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"https://github.com/splicemachine/spring-petclinic\" target\u003d\"_blank\"\u003ehttps://github.com/splicemachine/spring-petclinic\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eDownload a JDBC driver to use with it:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\" target\u003d\"_blank\"\u003ehttps://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eDownload an ODBC driver to use with it:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"https://www.splicemachine.com/get-started/odbc-driver-download/\"target\u003d\"_blank\"\u003ehttps://www.splicemachine.com/get-started/odbc-driver-download/\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRun it in this container:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"http://34.224.173.173:8080/owners/find\" target\u003d\"_blank\"\u003ehttp://34.224.173.173:8080/owners/find\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n   \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\u003cp class\u003d\"noteNote\"\u003eThe Petclinic app uses the same basic Java persistence model as traditional databases, as shown \u003ca href\u003d\"https://github.com/splicemachine/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/model/Person.java\"\u003ehere.\u003c/a\u003e\u003c/p\u003e\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 11:11:16.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eDeploying Applications\u003c/h1\u003e\n\u003cp\u003eSplice Machine is an ACID compliant RDMS, which means that you can build \u003ca href\u003d\"https://spring.io/\" target\u003d\"_blank\"\u003e\u003cem\u003eSpring\u003c/em\u003e\u003c/a\u003e applications on it.\u003c/p\u003e\n\u003cp\u003eOne such application is the commonly-used \u003cem\u003ePetclinic\u003c/em\u003e web app.\u003cbr/\u003e\u003cbr /\u003e\u003c/p\u003e\n\u003ch2\u003eRunning the Petclinic Web App\u003c/h2\u003e\n\u003cp\u003eHere are links you can follow to download and run the Splice Machine/Spring implementation of the Petclinic app. You can:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eAccess the repository:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"https://github.com/splicemachine/spring-petclinic\" target\u003d\"_blank\"\u003ehttps://github.com/splicemachine/spring-petclinic\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eDownload a JDBC driver to use with it:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\" target\u003d\"_blank\"\u003ehttps://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eDownload an ODBC driver to use with it:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"https://www.splicemachine.com/get-started/odbc-driver-download/\"target\u003d\"_blank\"\u003ehttps://www.splicemachine.com/get-started/odbc-driver-download/\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRun it in this container:\u003c/td\u003e\n            \u003ctd\u003e\u003ca href\u003d\"http://34.224.173.173:8080/owners/find\" target\u003d\"_blank\"\u003ehttp://34.224.173.173:8080/owners/find\u003c/a\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n   \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp class\u003d\"noteNote\"\u003eThe Petclinic app uses the same basic Java persistence model as traditional databases, as shown \u003ca href\u003d\"https://github.com/splicemachine/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/model/Person.java\"\u003ehere.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542395462227_454863039",
+      "id": "20180113-222530_245304175",
+      "dateCreated": "2018-11-16 11:11:02.000",
+      "dateStarted": "2018-11-16 11:11:16.000",
+      "dateFinished": "2018-11-16 11:11:16.000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class introduces you to [*Using the Splice Machine Native Spark DataSource*](/#/notebook/2DW6E5Z1X) to work with your database.",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:31:28.137",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class introduces you to \u003ca href\u003d\"/#/notebook/2DW6E5Z1X\"\u003e\u003cem\u003eUsing the Splice Machine Native Spark DataSource\u003c/em\u003e\u003c/a\u003e to work with your database.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542395462228_-1889307572",
+      "id": "20180122-173624_509126525",
+      "dateCreated": "2018-11-16 11:11:02.000",
+      "dateStarted": "2018-11-20 10:31:28.138",
+      "dateFinished": "2018-11-20 10:31:28.141",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 11:11:02.000",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542395462228_-541050903",
+      "id": "20180125-142959_1101825868",
+      "dateCreated": "2018-11-16 11:11:02.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Training/Developers - Part II/g. Creating Apps with Splice Machine",
+  "id": "2DVU2ESP3",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

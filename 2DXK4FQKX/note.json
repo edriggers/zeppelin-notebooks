@@ -1,1 +1,169 @@
-﻿{"paragraphs":[{"text":"%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# ETL Pipeline Example\n\nThis notebook presents a simple example of an ETL pipeline. It reads a dataset from a public URL, performs simple data transformations, and inserts data into a Splice Machine database.\n","user":"anonymous","dateUpdated":"2018-11-16T19:25:10+0000","config":{"colWidth":12,"fontSize":9,"enabled":true,"results":{},"editorSetting":{"language":"markdown","editOnDblClick":true,"completionKey":"TAB","completionSupport":false},"editorMode":"ace/mode/markdown","editorHide":true,"tableHide":false},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1542396165231_1238194394","id":"20181116-192245_1346898964","dateCreated":"2018-11-16T19:22:45+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:95667","dateFinished":"2018-11-16T19:25:10+0000","dateStarted":"2018-11-16T19:25:10+0000","results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>ETL Pipeline Example</h1>\n<p>This notebook presents a simple example of an ETL pipeline. It reads a dataset from a public URL, performs simple data transformations, and inserts data into a Splice Machine database.</p>\n</div>"}]}},{"text":"%spark\n\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\nimport com.splicemachine.spark.splicemachine._\n\n// Grab available dataset from Watson\nval telcoText = sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://community.watsonanalytics.com/wp-content/uploads/2015/03/WA_Fn-UseC_-Telco-Customer-Churn.csv?cm_mc_uid=93701979699314920973859&cm_mc_sid_50200000=1492097385&cm_mc_sid_52640000=1492097385\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\n// Declare the Schema of the Data Set         \ncase class TelcoChurn (customerID: String, gender: String, SeniorCitizen: Boolean,Partner: String,Dependents: String,tenure: Integer ,PhoneService: String,\nMultipleLines: String,InternetService: String,OnlineSecurity: String,OnlineBackup: String,DeviceProtection: String,TechSupport: String,StreamingTV: String,\nStreamingMovies: String,Contract: String,PaperlessBilling: String,PaymentMethod: String,MonthlyCharges: Double,TotalCharges: Double,Churn: String)\n\n// Perform Data Transformation\nval telcoDF = telcoText.map(s => s.split(\",\")).filter(s => s(0) != \"customerID\").map ( p => TelcoChurn (\n    p(0), p(1), \n    if (p(2).equals(\"0\")) \n        false \n    else \n        true, \n    p(3), p(4), p(5).toInt, p(6), p(7), p(8), p(9), p(10), p(11), p(12), p(13), p(14), p(15), p(16), p(17), p(18).toDouble, p(19).toDouble, p(20))).toDF()\n\n// Show First 10 Values from Data Frame\ntelcoDF.show(10)\n\n// Insert Data Into Database\n","user":"anonymous","dateUpdated":"2018-11-16T19:22:21+0000","config":{"colWidth":12,"editorMode":"ace/mode/scala","results":{},"enabled":true,"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT","data":"\nimport org.apache.commons.io.IOUtils\n\nimport java.net.URL\n\nimport java.nio.charset.Charset\n\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\n\nimport com.splicemachine.spark.splicemachine._\n\ntelcoText: org.apache.spark.rdd.RDD[String] = ParallelCollectionRDD[126] at parallelize at <console>:307\n\ndefined class TelcoChurn\n\ntelcoDF: org.apache.spark.sql.DataFrame = [customerID: string, gender: string ... 19 more fields]\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|customerID|gender|SeniorCitizen|Partner|Dependents|tenure|PhoneService|   MultipleLines|InternetService|OnlineSecurity|OnlineBackup|DeviceProtection|TechSupport|StreamingTV|StreamingMovies|      Contract|PaperlessBilling|       PaymentMethod|MonthlyCharges|TotalCharges|Churn|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|7590-VHVEG|Female|        false|    Yes|        No|     1|          No|No phone service|            DSL|            No|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|         29.85|       29.85|  No\r|\n|5575-GNVDE|  Male|        false|     No|        No|    34|         Yes|              No|            DSL|           Yes|          No|             Yes|         No|         No|             No|      One year|              No|        Mailed check|         56.95|      1889.5|  No\r|\n|3668-QPYBK|  Male|        false|     No|        No|     2|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|        Mailed check|         53.85|      108.15| Yes\r|\n|7795-CFOCW|  Male|        false|     No|        No|    45|          No|No phone service|            DSL|           Yes|          No|             Yes|        Yes|         No|             No|      One year|              No|Bank transfer (au...|          42.3|     1840.75|  No\r|\n|9237-HQITU|Female|        false|     No|        No|     2|         Yes|              No|    Fiber optic|            No|          No|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|          70.7|      151.65| Yes\r|\n|9305-CDSKC|Female|        false|     No|        No|     8|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|         No|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         99.65|       820.5| Yes\r|\n|1452-KIOVK|  Male|        false|     No|       Yes|    22|         Yes|             Yes|    Fiber optic|            No|         Yes|              No|         No|        Yes|             No|Month-to-month|             Yes|Credit card (auto...|          89.1|      1949.4|  No\r|\n|6713-OKOMC|Female|        false|     No|        No|    10|          No|No phone service|            DSL|           Yes|          No|              No|         No|         No|             No|Month-to-month|              No|        Mailed check|         29.75|       301.9|  No\r|\n|7892-POOKP|Female|        false|    Yes|        No|    28|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|        Yes|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         104.8|     3046.05| Yes\r|\n|6388-TABGU|  Male|        false|     No|       Yes|    62|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|      One year|              No|Bank transfer (au...|         56.15|     3487.95|  No\r|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\nonly showing top 10 rows\n\n"}]},"apps":[],"jobName":"paragraph_1542396141142_1804321142","id":"20170413-100458_275811262","dateCreated":"2018-11-16T19:22:21+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:95492"},{"text":"","user":"anonymous","dateUpdated":"2018-11-16T19:22:21+0000","config":{"colWidth":12,"editorMode":"ace/mode/scala","results":{},"enabled":true,"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"fontSize":9},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1542396141142_-938404343","id":"20170413-100618_77420174","dateCreated":"2018-11-16T19:22:21+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:95493"}],"name":"Training/Developers - Part II/l. ETL Pipeline","id":"2DXK4FQKX","noteParams":{},"noteForms":{},"angularObjects":{"md:shared_process":[],"splicemachine:shared_process":[],"spark:shared_process":[]},"config":{"isZeppelinNotebookCronEnable":false,"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# ETL Pipeline Example\n\nThis notebook presents a simple example of an ETL pipeline. It reads a dataset from a public URL, performs simple data transformations, and inserts data into a Splice Machine database.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 11:25:10.000",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eETL Pipeline Example\u003c/h1\u003e\n\u003cp\u003eThis notebook presents a simple example of an ETL pipeline. It reads a dataset from a public URL, performs simple data transformations, and inserts data into a Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542396165231_1238194394",
+      "id": "20181116-192245_1346898964",
+      "dateCreated": "2018-11-16 11:22:45.000",
+      "dateStarted": "2018-11-16 11:25:10.000",
+      "dateFinished": "2018-11-16 11:25:10.000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\nimport com.splicemachine.spark.splicemachine._\n\n// Grab available dataset from Watson\nval telcoText \u003d sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://community.watsonanalytics.com/wp-content/uploads/2015/03/WA_Fn-UseC_-Telco-Customer-Churn.csv?cm_mc_uid\u003d93701979699314920973859\u0026cm_mc_sid_50200000\u003d1492097385\u0026cm_mc_sid_52640000\u003d1492097385\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\n// Declare the Schema of the Data Set         \ncase class TelcoChurn (customerID: String, gender: String, SeniorCitizen: Boolean,Partner: String,Dependents: String,tenure: Integer ,PhoneService: String,\nMultipleLines: String,InternetService: String,OnlineSecurity: String,OnlineBackup: String,DeviceProtection: String,TechSupport: String,StreamingTV: String,\nStreamingMovies: String,Contract: String,PaperlessBilling: String,PaymentMethod: String,MonthlyCharges: Double,TotalCharges: Double,Churn: String)\n\n// Perform Data Transformation\nval telcoDF \u003d telcoText.map(s \u003d\u003e s.split(\",\")).filter(s \u003d\u003e s(0) !\u003d \"customerID\").map ( p \u003d\u003e TelcoChurn (\n    p(0), p(1), \n    if (p(2).equals(\"0\")) \n        false \n    else \n        true, \n    p(3), p(4), p(5).toInt, p(6), p(7), p(8), p(9), p(10), p(11), p(12), p(13), p(14), p(15), p(16), p(17), p(18).toDouble, p(19).toDouble, p(20))).toDF()\n\n// Show First 10 Values from Data Frame\ntelcoDF.show(10)\n\n// Insert Data Into Database\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 11:22:21.000",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\nimport org.apache.commons.io.IOUtils\n\nimport java.net.URL\n\nimport java.nio.charset.Charset\n\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\n\nimport com.splicemachine.spark.splicemachine._\n\ntelcoText: org.apache.spark.rdd.RDD[String] \u003d ParallelCollectionRDD[126] at parallelize at \u003cconsole\u003e:307\n\ndefined class TelcoChurn\n\ntelcoDF: org.apache.spark.sql.DataFrame \u003d [customerID: string, gender: string ... 19 more fields]\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|customerID|gender|SeniorCitizen|Partner|Dependents|tenure|PhoneService|   MultipleLines|InternetService|OnlineSecurity|OnlineBackup|DeviceProtection|TechSupport|StreamingTV|StreamingMovies|      Contract|PaperlessBilling|       PaymentMethod|MonthlyCharges|TotalCharges|Churn|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|7590-VHVEG|Female|        false|    Yes|        No|     1|          No|No phone service|            DSL|            No|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|         29.85|       29.85|  No\r|\n|5575-GNVDE|  Male|        false|     No|        No|    34|         Yes|              No|            DSL|           Yes|          No|             Yes|         No|         No|             No|      One year|              No|        Mailed check|         56.95|      1889.5|  No\r|\n|3668-QPYBK|  Male|        false|     No|        No|     2|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|        Mailed check|         53.85|      108.15| Yes\r|\n|7795-CFOCW|  Male|        false|     No|        No|    45|          No|No phone service|            DSL|           Yes|          No|             Yes|        Yes|         No|             No|      One year|              No|Bank transfer (au...|          42.3|     1840.75|  No\r|\n|9237-HQITU|Female|        false|     No|        No|     2|         Yes|              No|    Fiber optic|            No|          No|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|          70.7|      151.65| Yes\r|\n|9305-CDSKC|Female|        false|     No|        No|     8|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|         No|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         99.65|       820.5| Yes\r|\n|1452-KIOVK|  Male|        false|     No|       Yes|    22|         Yes|             Yes|    Fiber optic|            No|         Yes|              No|         No|        Yes|             No|Month-to-month|             Yes|Credit card (auto...|          89.1|      1949.4|  No\r|\n|6713-OKOMC|Female|        false|     No|        No|    10|          No|No phone service|            DSL|           Yes|          No|              No|         No|         No|             No|Month-to-month|              No|        Mailed check|         29.75|       301.9|  No\r|\n|7892-POOKP|Female|        false|    Yes|        No|    28|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|        Yes|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         104.8|     3046.05| Yes\r|\n|6388-TABGU|  Male|        false|     No|       Yes|    62|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|      One year|              No|Bank transfer (au...|         56.15|     3487.95|  No\r|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\nonly showing top 10 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542396141142_1804321142",
+      "id": "20170413-100458_275811262",
+      "dateCreated": "2018-11-16 11:22:21.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Advanced Splice Machine Developer\u0027s Class*. \n\nVisit our [*Introduction to Splice Machine Training*](/#/notebook/2DWTR5ZBH) notebook to access our other Splice Machine training classes.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 11:10:47.815",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eAdvanced Splice Machine Developer\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit our \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eIntroduction to Splice Machine Training\u003c/em\u003e\u003c/a\u003e notebook to access our other Splice Machine training classes.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542737973060_2140710284",
+      "id": "20181120-101933_827290426",
+      "dateCreated": "2018-11-20 10:19:33.060",
+      "dateStarted": "2018-11-20 11:10:47.816",
+      "dateFinished": "2018-11-20 11:10:47.820",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:19:28.336",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "fontSize": 9.0,
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542396141142_-938404343",
+      "id": "20170413-100618_77420174",
+      "dateCreated": "2018-11-16 11:22:21.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Training/Developers - Part II/l. ETL Pipeline",
+  "id": "2DXK4FQKX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

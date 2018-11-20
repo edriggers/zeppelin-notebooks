@@ -41,14 +41,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Hybrid Transactional and Analytical Processing\n\nSplice Machine has a unique “Dual Engine” architecture that it uses to provide outstanding performance for concurrent transactional (OLTP) and analytical (OLAP) workloads. The SQL parser and cost-based optimizer analyze an incoming query and then determine the best execution plan based on query type, data sizes, available indexes and more. Based on that analysis, Splice Machine:\n\n* Deploys HBase for OLTP-type lookups, inserts and short range scans\n* Uses Spark for lightning-fast in-memory processing of analytical workloads.\n\nThe Dual Engine architecture gives you the best of multiple worlds in a hybrid database: the performance, scale-out, and resilience of HBase, the in-memory analytics performance of Spark, and the performance of a cost-based optimizer.\n",
+      "text": "%md\n## Hybrid Transactional and Analytical Processing\n\nSplice Machine has a unique *Dual Engine* architecture that it uses to provide outstanding performance for concurrent transactional (OLTP) and analytical (OLAP) workloads. The SQL parser and cost-based optimizer analyze an incoming query and then determine the best execution plan based on query type, data sizes, available indexes and more. Based on that analysis, Splice Machine:\n\n* Deploys HBase for OLTP-type lookups, inserts and short range scans\n* Uses Spark for lightning-fast in-memory processing of analytical workloads.\n\nThe Dual Engine architecture gives you the best of multiple worlds in a hybrid database: the performance, scale-out, and resilience of HBase, the in-memory analytics performance of Spark, and the performance of a cost-based optimizer.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 14:57:12.095",
+      "dateUpdated": "2018-11-19 16:28:20.036",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -66,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eHybrid Transactional and Analytical Processing\u003c/h2\u003e\n\u003cp\u003eSplice Machine has a unique “Dual Engine” architecture that it uses to provide outstanding performance for concurrent transactional (OLTP) and analytical (OLAP) workloads. The SQL parser and cost-based optimizer analyze an incoming query and then determine the best execution plan based on query type, data sizes, available indexes and more. Based on that analysis, Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eDeploys HBase for OLTP-type lookups, inserts and short range scans\u003c/li\u003e\n  \u003cli\u003eUses Spark for lightning-fast in-memory processing of analytical workloads.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe Dual Engine architecture gives you the best of multiple worlds in a hybrid database: the performance, scale-out, and resilience of HBase, the in-memory analytics performance of Spark, and the performance of a cost-based optimizer.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eHybrid Transactional and Analytical Processing\u003c/h2\u003e\n\u003cp\u003eSplice Machine has a unique \u003cem\u003eDual Engine\u003c/em\u003e architecture that it uses to provide outstanding performance for concurrent transactional (OLTP) and analytical (OLAP) workloads. The SQL parser and cost-based optimizer analyze an incoming query and then determine the best execution plan based on query type, data sizes, available indexes and more. Based on that analysis, Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eDeploys HBase for OLTP-type lookups, inserts and short range scans\u003c/li\u003e\n  \u003cli\u003eUses Spark for lightning-fast in-memory processing of analytical workloads.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe Dual Engine architecture gives you the best of multiple worlds in a hybrid database: the performance, scale-out, and resilience of HBase, the in-memory analytics performance of Spark, and the performance of a cost-based optimizer.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -74,19 +75,21 @@
       "jobName": "paragraph_1542668232094_-885192667",
       "id": "20180125-141830_1881954222",
       "dateCreated": "2018-11-19 14:57:12.094",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-19 16:28:20.036",
+      "dateFinished": "2018-11-19 16:28:20.065",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## ANSI SQL Coverage\n\nUnlike other Big Data systems, Splice Machine supports full [ANSI SQL-2003](https://doc.splicemachine.com/sqlref_sqlsummary.html); here\u0027s a quick summary of our coverage:\n\n\u003ctable class\u003d\"splicezep\" summary\u003d\"Summary of SQL features available in Splice Machine.\"\u003e\n    \u003ccolgroup\u003e\n       \u003ccol\u003e\n      \u003ccol\u003e\n    \u003c/colgroup\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eFeature\u003c/th\u003e\n            \u003cth\u003eExamples\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n   \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eAggregation functions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eAVG, COUNT, MAX, MIN, STDDEV_POP, STDDEV_SAMP, SUM\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eConditional functions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eCASE, searched CASE\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eData Types\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eINTEGER, REAL, CHARACTER, DATE, BOOLEAN, BIGINT\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eDDL\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eCREATE TABLE, CREATE\u0026nbsp;SCHEMA, CREATE\u0026nbsp;INDEX, ALTER\u0026nbsp;TABLE, DELETE, UPDATE\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eDML\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eINSERT, DELETE, UPDATE, SELECT\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eIsolation Levels\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eSnapshot isolation\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eJoins\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eINNER\u0026nbsp;JOIN, LEFT\u0026nbsp;OUTER\u0026nbsp;JOIN, RIGHT\u0026nbsp;OUTER\u0026nbsp;JOIN\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003ePredicates\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eIN, BETWEEN, LIKE, EXISTS\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003ePrivileges\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003ePrivileges for \u003ccode\u003eSELECT, DELETE, INSERT, EXECUTE\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eQuery Specification\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eSELECT\u0026nbsp;DISTINCT, GROUP\u0026nbsp;BY, HAVING\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eSET\u0026nbsp;functions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eUNION, ABS, MOD, ALL, CHECK\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eString functions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eCHAR, Concatenation (||), INSTR, LCASE\u0026nbsp;(LOWER), LENGTH,\u003cbr\u003eLTRIM, REGEXP_LIKE, REPLACE, RTRIM, SUBSTR, UCASE\u0026nbsp;(UPPER), VARCHAR\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eSub-queries\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eYes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eTransactions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eCOMMIT, ROLLBACK\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eTriggers\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eYes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eUser-defined functions (UDFs)\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eYes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eViews\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eIncluding grouped views\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eWindow functions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e\u003ccode\u003eAVG, COUNT, DENSE_RANK, FIRST_VALUE, LAG, LAST_VALUE, LEAD, MAX, MIN, RANK, ROW_NUMBER, STDDEV_POP, STDDEV_SAMP, SUM\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 14:57:12.096",
+      "dateUpdated": "2018-11-19 20:47:01.067",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -112,19 +115,21 @@
       "jobName": "paragraph_1542668232095_631512533",
       "id": "20180113-194734_1961030416",
       "dateCreated": "2018-11-19 14:57:12.095",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-19 20:47:01.067",
+      "dateFinished": "2018-11-19 20:47:01.073",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Architecture Overview\n\nThe following diagram is a high-level representation of the architecture of Splice Machine:\n\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/spliceArch1.png\"\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 14:57:12.098",
+      "dateUpdated": "2018-11-19 16:38:30.033",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -150,8 +155,9 @@
       "jobName": "paragraph_1542668232097_-1445725140",
       "id": "20180125-150608_1902680448",
       "dateCreated": "2018-11-19 14:57:12.097",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-19 16:38:30.033",
+      "dateFinished": "2018-11-19 16:38:30.037",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -193,14 +199,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Internal Storage Using HBase\n\nSplice Machine uses HBase to internally store data. HBase is modeled after Google Big Table, which is a large, distributed associative map stored as a Log-Structured Merge Tree. In HBase:\n\n* Users store data rows in labelled tables.\n* Each data row has a sortable key and an aribtrary number of columns.\n* \nHBase is often misunderstood because many call it a column-oriented datastore. This just means columns are grouped in separately separately stored column families. But all data is still ordered by row.\n\nAn HBase cluster has a service known as the *HBase Master* that coordinates the HBase Cluster and is responsible for administrative operations.\n\nSplice Machine also uses ZooKeeper, which is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services on a cluster. \n\nHere\u0027s a diagram showing how HBase operates in Splice Machine:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/hbases_storage_architecture2.png\"\u003e\n\u003cbr /\u003e\n### Region Servers and Regions\n\nHBase auto-shards the data in a table across *Region Servers*:\n\n* Each region server has a set of *Regions*.\n* Each region is a set of rows sorted by a primary key.\n* \nWhen a region server fails to respond, HBase makes its regions accessible on other region servers. HBase is resilient to region server failures as well as to failure of Hadoop Data Nodes. \n\n### HBase Data Storage\n\nHBase writes data to an in-memory store, called *memstore*. Once this memstore reaches a certain size, it is flushed to disk into a *store file*; everything is also written immediately to a log file for durability. \n\nThe store files created on disk are immutable. Sometimes the store files are merged together, this is done by a process called *compaction*. Store files are on the Hadoop Distributed File System (\u003cem\u003eHDFS\u003c/em\u003e) and are replicated for fault-tolerance. \n\n",
+      "text": "%md\n## Internal Storage Using HBase\n\nSplice Machine uses HBase to internally store data. HBase is modeled after Google Big Table, which is a large, distributed associative map stored as a Log-Structured Merge Tree. In HBase:\n\n* Users store data rows in labelled tables.\n* Each data row has a sortable key and an aribtrary number of columns.\n* \nHBase is often misunderstood because many call it a column-oriented datastore. This just means columns are grouped in separately separately stored column families. But all data is still ordered by row.\n\nAn HBase cluster has a service known as the *HBase Master* that coordinates the HBase Cluster and is responsible for administrative operations.\n\nSplice Machine also uses ZooKeeper, which is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services on a cluster. \n\nHere\u0027s a diagram showing how HBase operates in Splice Machine:\n\u003cimg class\u003d\"splice\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/hbases_storage_architecture2.png\"\u003e\n\u003cbr /\u003e\n### Region Servers and Regions\n\nHBase auto-shards the data in a table across *Region Servers*:\n\n* Each region server has a set of *Regions*.\n* Each region is a set of rows sorted by a primary key.\n* \nWhen a region server fails to respond, HBase makes its regions accessible on other region servers. HBase is resilient to region server failures as well as to failure of Hadoop Data Nodes. \n\n### HBase Data Storage\n\nHBase writes data to an in-memory store, called *memstore*. Once this memstore reaches a certain size, it is flushed to disk into a *store file*; everything is also written immediately to a log file for durability. \n\nThe store files created on disk are immutable. Sometimes the store files are merged together, this is done by a process called *compaction*. Store files are on the Hadoop Distributed File System (\u003cem\u003eHDFS\u003c/em\u003e) and are replicated for fault-tolerance. \n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 14:57:12.101",
+      "dateUpdated": "2018-11-19 16:41:42.871",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -218,7 +225,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInternal Storage Using HBase\u003c/h2\u003e\n\u003cp\u003eSplice Machine uses HBase to internally store data. HBase is modeled after Google Big Table, which is a large, distributed associative map stored as a Log-Structured Merge Tree. In HBase:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eUsers store data rows in labelled tables.\u003c/li\u003e\n  \u003cli\u003eEach data row has a sortable key and an aribtrary number of columns.\u003c/li\u003e\n  \u003cli\u003eHBase is often misunderstood because many call it a column-oriented datastore. This just means columns are grouped in separately separately stored column families. But all data is still ordered by row.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAn HBase cluster has a service known as the \u003cem\u003eHBase Master\u003c/em\u003e that coordinates the HBase Cluster and is responsible for administrative operations.\u003c/p\u003e\n\u003cp\u003eSplice Machine also uses ZooKeeper, which is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services on a cluster. \u003c/p\u003e\n\u003cp\u003eHere\u0026rsquo;s a diagram showing how HBase operates in Splice Machine:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/hbases_storage_architecture2.png\"\u003e\u003cbr/\u003e\u003cbr /\u003e\u003c/p\u003e\n\u003ch3\u003eRegion Servers and Regions\u003c/h3\u003e\n\u003cp\u003eHBase auto-shards the data in a table across \u003cem\u003eRegion Servers\u003c/em\u003e:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eEach region server has a set of \u003cem\u003eRegions\u003c/em\u003e.\u003c/li\u003e\n  \u003cli\u003eEach region is a set of rows sorted by a primary key.\u003c/li\u003e\n  \u003cli\u003eWhen a region server fails to respond, HBase makes its regions accessible on other region servers. HBase is resilient to region server failures as well as to failure of Hadoop Data Nodes.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eHBase Data Storage\u003c/h3\u003e\n\u003cp\u003eHBase writes data to an in-memory store, called \u003cem\u003ememstore\u003c/em\u003e. Once this memstore reaches a certain size, it is flushed to disk into a \u003cem\u003estore file\u003c/em\u003e; everything is also written immediately to a log file for durability. \u003c/p\u003e\n\u003cp\u003eThe store files created on disk are immutable. Sometimes the store files are merged together, this is done by a process called \u003cem\u003ecompaction\u003c/em\u003e. Store files are on the Hadoop Distributed File System (\u003cem\u003eHDFS\u003c/em\u003e) and are replicated for fault-tolerance.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInternal Storage Using HBase\u003c/h2\u003e\n\u003cp\u003eSplice Machine uses HBase to internally store data. HBase is modeled after Google Big Table, which is a large, distributed associative map stored as a Log-Structured Merge Tree. In HBase:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eUsers store data rows in labelled tables.\u003c/li\u003e\n  \u003cli\u003eEach data row has a sortable key and an aribtrary number of columns.\u003c/li\u003e\n  \u003cli\u003eHBase is often misunderstood because many call it a column-oriented datastore. This just means columns are grouped in separately separately stored column families. But all data is still ordered by row.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAn HBase cluster has a service known as the \u003cem\u003eHBase Master\u003c/em\u003e that coordinates the HBase Cluster and is responsible for administrative operations.\u003c/p\u003e\n\u003cp\u003eSplice Machine also uses ZooKeeper, which is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services on a cluster. \u003c/p\u003e\n\u003cp\u003eHere\u0026rsquo;s a diagram showing how HBase operates in Splice Machine:\u003cbr/\u003e\u003cimg class\u003d\"splice\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/hbases_storage_architecture2.png\"\u003e\u003cbr/\u003e\u003cbr /\u003e\u003c/p\u003e\n\u003ch3\u003eRegion Servers and Regions\u003c/h3\u003e\n\u003cp\u003eHBase auto-shards the data in a table across \u003cem\u003eRegion Servers\u003c/em\u003e:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eEach region server has a set of \u003cem\u003eRegions\u003c/em\u003e.\u003c/li\u003e\n  \u003cli\u003eEach region is a set of rows sorted by a primary key.\u003c/li\u003e\n  \u003cli\u003eWhen a region server fails to respond, HBase makes its regions accessible on other region servers. HBase is resilient to region server failures as well as to failure of Hadoop Data Nodes.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eHBase Data Storage\u003c/h3\u003e\n\u003cp\u003eHBase writes data to an in-memory store, called \u003cem\u003ememstore\u003c/em\u003e. Once this memstore reaches a certain size, it is flushed to disk into a \u003cem\u003estore file\u003c/em\u003e; everything is also written immediately to a log file for durability. \u003c/p\u003e\n\u003cp\u003eThe store files created on disk are immutable. Sometimes the store files are merged together, this is done by a process called \u003cem\u003ecompaction\u003c/em\u003e. Store files are on the Hadoop Distributed File System (\u003cem\u003eHDFS\u003c/em\u003e) and are replicated for fault-tolerance.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -226,19 +233,21 @@
       "jobName": "paragraph_1542668232100_-730463153",
       "id": "20180125-141721_42146671",
       "dateCreated": "2018-11-19 14:57:12.100",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-19 16:41:42.872",
+      "dateFinished": "2018-11-19 16:41:42.884",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this presentation walks you through \u003ca href\u003d\"/#/notebook/2D6ZFHE9U\"\u003eimporting and running the TPC-H benchmark data\u003c/a\u003e by creating a database in Splice Machine, importing the TPC-H dataset, running queries, and improving performance by indexing the data.\n",
+      "text": "%md\n## Where to Go Next\n\nWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the [Introduction to Splice Machine Training](/#/notebook/2DWTR5ZBH) notebook. Each of our classes ranges from 1-3 hours time to complete.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 14:57:12.102",
+      "dateUpdated": "2018-11-19 20:46:53.856",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -256,7 +265,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this presentation walks you through \u003ca href\u003d\"/#/notebook/2D6ZFHE9U\"\u003eimporting and running the TPC-H benchmark data\u003c/a\u003e by creating a database in Splice Machine, importing the TPC-H dataset, running queries, and improving performance by indexing the data.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003eIntroduction to Splice Machine Training\u003c/a\u003e notebook. Each of our classes ranges from 1-3 hours time to complete.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -264,8 +273,9 @@
       "jobName": "paragraph_1542668232101_1564913823",
       "id": "20180125-142959_1101825868",
       "dateCreated": "2018-11-19 14:57:12.101",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-19 20:46:53.856",
+      "dateFinished": "2018-11-19 20:46:53.861",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -301,7 +311,8 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": []
+    "md:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

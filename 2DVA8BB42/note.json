@@ -1,1 +1,381 @@
-﻿{"paragraphs":[{"title":"Using Zeppelin for Graphing and Filtering","text":"%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Using Zeppelin for Graphing and Filtering\n\nSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\n\nBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\n\nFirst we'll run the query as-is, then we'll change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.","user":"anonymous","dateUpdated":"2018-11-16T20:16:57+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Using Zeppelin for Graphing and Filtering</h1>\n<p>Suppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.</p>\n<p>Below we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.</p>\n<p>First we&rsquo;ll run the query as-is, then we&rsquo;ll change the <code>nationName</code> in the input box from <code>FRANCE</code> to <code>ROMANIA</code> and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1542399401995_2027356643","id":"20180115-083330_15158583","dateCreated":"2018-11-16T20:16:41+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:209692","dateFinished":"2018-11-16T20:16:57+0000","dateStarted":"2018-11-16T20:16:57+0000"},{"text":"%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0} \norder by\n\ts_acctbal desc\n{limit 100}","user":"anonymous","dateUpdated":"2018-11-16T20:16:41+0000","config":{"colWidth":12,"editorMode":"ace/mode/sql","results":{"0":{"graph":{"mode":"lineChart","height":300,"optionOpen":false},"helium":{}}},"enabled":true,"editorSetting":{"language":"sql","editOnDblClick":false,"completionKey":true},"fontSize":9},"settings":{"params":{"nationName":"'FRANCE'","balanceThreshold":"1"},"forms":{"nationName":{"type":"TextBox","name":"nationName","defaultValue":"'FRANCE'","hidden":false,"$$hashKey":"object:209782"},"balanceThreshold":{"type":"TextBox","name":"balanceThreshold","defaultValue":"0","hidden":false,"$$hashKey":"object:209783"}}},"results":{"code":"ERROR","msg":[{"type":"TEXT","data":"paragraph_1520184238152_198426925's Interpreter splicemachine not found"}]},"apps":[],"jobName":"paragraph_1542399401996_-1777323590","id":"20180115-083533_1027074665","dateCreated":"2018-11-16T20:16:41+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:209693"},{"text":"%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}","user":"anonymous","dateUpdated":"2018-11-16T20:16:41+0000","config":{"tableHide":false,"editorSetting":{"language":"sql","editOnDblClick":false,"completionKey":true},"colWidth":4,"editorMode":"ace/mode/sql","editorHide":false,"results":{"0":{"graph":{"mode":"scatterChart","height":239.006,"optionOpen":false},"helium":{}}},"enabled":true,"fontSize":9},"settings":{"params":{"nationName":"'ROMANIA'","balanceThreshold":"0"},"forms":{"nationName":{"type":"TextBox","name":"nationName","defaultValue":"'FRANCE'","hidden":false,"$$hashKey":"object:209813"},"balanceThreshold":{"type":"TextBox","name":"balanceThreshold","defaultValue":"0","hidden":false,"$$hashKey":"object:209814"}}},"results":{"code":"ERROR","msg":[{"type":"TEXT","data":"paragraph_1520184238153_198042176's Interpreter splicemachine not found"}]},"apps":[],"jobName":"paragraph_1542399401997_1395828042","id":"20180129-123733_1126963025","dateCreated":"2018-11-16T20:16:41+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:209694"},{"text":"%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}","user":"anonymous","dateUpdated":"2018-11-16T20:16:41+0000","config":{"editorSetting":{"language":"sql","editOnDblClick":false,"completionKey":true},"colWidth":4,"editorMode":"ace/mode/sql","editorHide":false,"results":{"0":{"graph":{"mode":"scatterChart","height":239.006,"optionOpen":false},"helium":{}}},"enabled":true,"fontSize":9},"settings":{"params":{"nationName":"'ROMANIA'","balanceThreshold":"0"},"forms":{"nationName":{"type":"TextBox","name":"nationName","defaultValue":"'FRANCE'","hidden":false,"$$hashKey":"object:209844"},"balanceThreshold":{"type":"TextBox","name":"balanceThreshold","defaultValue":"0","hidden":false,"$$hashKey":"object:209845"}}},"results":{"code":"ERROR","msg":[{"type":"TEXT","data":"paragraph_1520184238153_198042176's Interpreter splicemachine not found"}]},"apps":[],"jobName":"paragraph_1542399401997_1103263814","id":"20180129-123839_391823179","dateCreated":"2018-11-16T20:16:41+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:209695"},{"text":"%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}","user":"anonymous","dateUpdated":"2018-11-16T20:16:41+0000","config":{"editorSetting":{"language":"sql","editOnDblClick":false,"completionKey":true},"colWidth":4,"editorMode":"ace/mode/sql","editorHide":false,"results":{"0":{"graph":{"mode":"scatterChart","height":239.006,"optionOpen":false},"helium":{}}},"enabled":true,"fontSize":9},"settings":{"params":{"nationName":"'ROMANIA'","balanceThreshold":"0"},"forms":{"nationName":{"type":"TextBox","name":"nationName","defaultValue":"'FRANCE'","hidden":false,"$$hashKey":"object:209875"},"balanceThreshold":{"type":"TextBox","name":"balanceThreshold","defaultValue":"0","hidden":false,"$$hashKey":"object:209876"}}},"results":{"code":"SUCCESS","msg":[{"type":"TABLE","data":"BALANCE\tSUPPLIER\n-19.63\tSupplier#000007973\n-21.75\tSupplier#000002398\n-60.23\tSupplier#000009484\n-112.15\tSupplier#000002729\n-127.07\tSupplier#000009585\n-132.77\tSupplier#000003390\n-144.48\tSupplier#000001765\n-165.23\tSupplier#000004814\n-201.93\tSupplier#000004223\n-228.32\tSupplier#000002200\n-258.71\tSupplier#000007578\n-314.06\tSupplier#000000510\n-338.23\tSupplier#000004438\n-345.82\tSupplier#000001805\n-389.86\tSupplier#000004317\n-417.15\tSupplier#000008474\n-488.86\tSupplier#000008250\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"}]},"apps":[],"jobName":"paragraph_1542399401998_-67124120","id":"20180129-124117_290278524","dateCreated":"2018-11-16T20:16:41+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:209696"},{"text":"%md\n## Where to Go Next\n\nThe next notebook in this presentation introduces you to <a href=\"/#/notebook/2D89MQA89\">the transactional nature of Splice Machine and using JDBC to program transactions.</a>\n","user":"anonymous","dateUpdated":"2018-11-16T20:16:41+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation introduces you to <a href=\"/#/notebook/2D89MQA89\">the transactional nature of Splice Machine and using JDBC to program transactions.</a></p>\n</div>"}]},"apps":[],"jobName":"paragraph_1542399401998_-89787735","id":"20180122-173624_509126525","dateCreated":"2018-11-16T20:16:41+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:209697"},{"text":"%md\n","user":"anonymous","dateUpdated":"2018-11-16T20:16:42+0000","config":{"colWidth":12,"editorMode":"ace/mode/markdown","results":{},"enabled":true,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"fontSize":9},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1542399401999_-1555384142","id":"20180125-142959_1101825868","dateCreated":"2018-11-16T20:16:41+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:209698"}],"name":"Training/Data Science/f. Visualizing Results in Zeppelin","id":"2DVA8BB42","noteParams":{},"noteForms":{},"angularObjects":{"md:shared_process":[],"splicemachine:shared_process":[],"angular:shared_process":[],"spark:shared_process":[]},"config":{"isZeppelinNotebookCronEnable":false,"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [
+    {
+      "title": "Using Zeppelin for Graphing and Filtering",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\n\nBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\n\nFirst we\u0027ll run the query as-is, then we\u0027ll change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 12:16:57.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Zeppelin for Graphing and Filtering\u003c/h1\u003e\n\u003cp\u003eSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\u003c/p\u003e\n\u003cp\u003eBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\u003c/p\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll run the query as-is, then we\u0026rsquo;ll change the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542399401995_2027356643",
+      "id": "20180115-083330_15158583",
+      "dateCreated": "2018-11-16 12:16:41.000",
+      "dateStarted": "2018-11-16 12:16:57.000",
+      "dateFinished": "2018-11-16 12:16:57.000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 12:16:41.000",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "lineChart",
+              "height": 300.0,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": true
+        },
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {
+          "nationName": "\u0027FRANCE\u0027",
+          "balanceThreshold": "1"
+        },
+        "forms": {
+          "nationName": {
+            "type": "TextBox",
+            "name": "nationName",
+            "defaultValue": "\u0027FRANCE\u0027",
+            "hidden": false
+          },
+          "balanceThreshold": {
+            "type": "TextBox",
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "paragraph_1520184238152_198426925\u0027s Interpreter splicemachine not found"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542399401996_-1777323590",
+      "id": "20180115-083533_1027074665",
+      "dateCreated": "2018-11-16 12:16:41.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 12:16:41.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 239.006,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {
+          "nationName": "\u0027ROMANIA\u0027",
+          "balanceThreshold": "0"
+        },
+        "forms": {
+          "nationName": {
+            "type": "TextBox",
+            "name": "nationName",
+            "defaultValue": "\u0027FRANCE\u0027",
+            "hidden": false
+          },
+          "balanceThreshold": {
+            "type": "TextBox",
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "paragraph_1520184238153_198042176\u0027s Interpreter splicemachine not found"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542399401997_1395828042",
+      "id": "20180129-123733_1126963025",
+      "dateCreated": "2018-11-16 12:16:41.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 12:16:41.000",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 239.006,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {
+          "nationName": "\u0027ROMANIA\u0027",
+          "balanceThreshold": "0"
+        },
+        "forms": {
+          "nationName": {
+            "type": "TextBox",
+            "name": "nationName",
+            "defaultValue": "\u0027FRANCE\u0027",
+            "hidden": false
+          },
+          "balanceThreshold": {
+            "type": "TextBox",
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "paragraph_1520184238153_198042176\u0027s Interpreter splicemachine not found"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542399401997_1103263814",
+      "id": "20180129-123839_391823179",
+      "dateCreated": "2018-11-16 12:16:41.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 12:16:41.000",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "scatterChart",
+              "height": 239.006,
+              "optionOpen": false
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {
+          "nationName": "\u0027ROMANIA\u0027",
+          "balanceThreshold": "0"
+        },
+        "forms": {
+          "nationName": {
+            "type": "TextBox",
+            "name": "nationName",
+            "defaultValue": "\u0027FRANCE\u0027",
+            "hidden": false
+          },
+          "balanceThreshold": {
+            "type": "TextBox",
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "BALANCE\tSUPPLIER\n-19.63\tSupplier#000007973\n-21.75\tSupplier#000002398\n-60.23\tSupplier#000009484\n-112.15\tSupplier#000002729\n-127.07\tSupplier#000009585\n-132.77\tSupplier#000003390\n-144.48\tSupplier#000001765\n-165.23\tSupplier#000004814\n-201.93\tSupplier#000004223\n-228.32\tSupplier#000002200\n-258.71\tSupplier#000007578\n-314.06\tSupplier#000000510\n-338.23\tSupplier#000004438\n-345.82\tSupplier#000001805\n-389.86\tSupplier#000004317\n-417.15\tSupplier#000008474\n-488.86\tSupplier#000008250\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542399401998_-67124120",
+      "id": "20180129-124117_290278524",
+      "dateCreated": "2018-11-16 12:16:41.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nNow that you have an understanding of using Zeppelin with Spark and Splice Machine, let\u0027s explore machine learning with these technologies, starting with our next notebook: [*ML with Spark MLib using Python*](/#/notebook/2DYC2S8DY).\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 11:00:15.968",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow that you have an understanding of using Zeppelin with Spark and Splice Machine, let\u0026rsquo;s explore machine learning with these technologies, starting with our next notebook: \u003ca href\u003d\"/#/notebook/2DYC2S8DY\"\u003e\u003cem\u003eML with Spark MLib using Python\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542399401998_-89787735",
+      "id": "20180122-173624_509126525",
+      "dateCreated": "2018-11-16 12:16:41.000",
+      "dateStarted": "2018-11-20 11:00:15.968",
+      "dateFinished": "2018-11-20 11:00:15.974",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 12:16:42.000",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542399401999_-1555384142",
+      "id": "20180125-142959_1101825868",
+      "dateCreated": "2018-11-16 12:16:41.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Training/Data Science/f. Visualizing Results in Zeppelin",
+  "id": "2DVA8BB42",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

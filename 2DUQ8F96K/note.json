@@ -1,1 +1,145 @@
-﻿{"paragraphs":[{"text":"%md\n# Decision Trees\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\nThe [Decision Tree](https://spark.apache.org/docs/latest/mllib-decision-tree.html) is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. \n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it's greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision. See [here](http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg)\n\nThe example below demonstrates how to load a [LIBSVM](https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt) data file, parse it as an RDD of LabeledPoint and then perform classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5. The test error is calculated to measure the algorithm accuracy. For more information, check out Spark's Decision Tree [page](https://spark.apache.org/docs/latest/mllib-decision-tree.html)\n","user":"anonymous","dateUpdated":"2018-11-16T20:01:09+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"fontSize":9,"results":{},"enabled":true},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h1>Decision Trees</h1>\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<p>The <a href=\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\">Decision Tree</a> is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling.<br/>* Locally optimal decisions are made at each node in hopes of a globally optimal decision<br/>* Because of it&rsquo;s greedy nature, it cannot guarantee the globally optimal tree</p>\n<p>At its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision. See <a href=\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\">here</a></p>\n<p>The example below demonstrates how to load a <a href=\"https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\">LIBSVM</a> data file, parse it as an RDD of LabeledPoint and then perform classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5. The test error is calculated to measure the algorithm accuracy. For more information, check out Spark&rsquo;s Decision Tree <a href=\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\">page</a></p>\n</div>"}]},"apps":[],"jobName":"paragraph_1542398443304_1947682620","id":"20170620-141909_771490751","dateCreated":"2018-11-16T20:00:43+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:201511","dateFinished":"2018-11-16T20:01:09+0000","dateStarted":"2018-11-16T20:01:09+0000"},{"text":"%spark\nimport org.apache.spark.mllib.tree.DecisionTree\nimport org.apache.spark.mllib.tree.model.DecisionTreeModel\nimport org.apache.spark.mllib.util.MLUtils\n\n// Load and parse the data file.\nval data = MLUtils.loadLibSVMFile(sc, \"/Users/benepstein/Desktop/sample_libsvm_data.txt\")\n// Split the data into training and test sets (30% held out for testing)\nval splits = data.randomSplit(Array(0.7, 0.3))\nval (trainingData, testData) = (splits(0), splits(1))\n\n// Train a DecisionTree model.\n//  Empty categoricalFeaturesInfo indicates all features are continuous.\nval numClasses = 2\nval categoricalFeaturesInfo = Map[Int, Int]()\nval impurity = \"gini\"\nval maxDepth = 5\nval maxBins = 32\n\nval model = DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,\n  impurity, maxDepth, maxBins)\n\n// Evaluate model on test instances and compute test error\nval labelAndPreds = testData.map { point =>\n  val prediction = model.predict(point.features)\n  (point.label, prediction)\n}\nval testErr = labelAndPreds.filter(r => r._1 != r._2).count().toDouble / testData.count()\nprintln(\"Test Error = \" + testErr)\nprintln(\"Learned classification tree model:\\n\" + model.toDebugString)\n\n// Save and load model\n// model.save(sc, \"target/tmp/myDecisionTreeClassificationModel\")\n// val sameModel = DecisionTreeModel.load(sc, \"target/tmp/myDecisionTreeClassificationModel\")","user":"anonymous","dateUpdated":"2018-11-16T20:00:43+0000","config":{"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"colWidth":12,"editorMode":"ace/mode/scala","fontSize":9,"results":{},"enabled":true},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1542398443305_2007728913","id":"20170620-153325_126659046","dateCreated":"2018-11-16T20:00:43+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:201512"},{"text":"%spark\n","user":"anonymous","dateUpdated":"2018-11-16T20:00:43+0000","config":{"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"colWidth":12,"editorMode":"ace/mode/scala","fontSize":9,"results":{},"enabled":true},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1542398443306_-1240311123","id":"20170620-153620_626385294","dateCreated":"2018-11-16T20:00:43+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:201513"}],"name":"Training/Data Science/k. Decision Trees","id":"2DUQ8F96K","noteParams":{},"noteForms":{},"angularObjects":{"md:shared_process":[],"splicemachine:shared_process":[],"angular:shared_process":[],"spark:shared_process":[]},"config":{"isZeppelinNotebookCronEnable":false,"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# Decision Trees\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\nThe [Decision Tree](https://spark.apache.org/docs/latest/mllib-decision-tree.html) is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. \n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it\u0027s greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision. See [here](http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg)\n\nThe example below demonstrates how to load a [LIBSVM](https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt) data file, parse it as an RDD of LabeledPoint and then perform classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5. The test error is calculated to measure the algorithm accuracy. For more information, check out Spark\u0027s Decision Tree [page](https://spark.apache.org/docs/latest/mllib-decision-tree.html)\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:16:32.461",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eDecision Trees\u003c/h1\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003cp\u003eThe \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\"\u003eDecision Tree\u003c/a\u003e is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling.\u003cbr/\u003e* Locally optimal decisions are made at each node in hopes of a globally optimal decision\u003cbr/\u003e* Because of it\u0026rsquo;s greedy nature, it cannot guarantee the globally optimal tree\u003c/p\u003e\n\u003cp\u003eAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision. See \u003ca href\u003d\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\"\u003ehere\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eThe example below demonstrates how to load a \u003ca href\u003d\"https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\"\u003eLIBSVM\u003c/a\u003e data file, parse it as an RDD of LabeledPoint and then perform classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5. The test error is calculated to measure the algorithm accuracy. For more information, check out Spark\u0026rsquo;s Decision Tree \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\"\u003epage\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542398443304_1947682620",
+      "id": "20170620-141909_771490751",
+      "dateCreated": "2018-11-16 12:00:43.000",
+      "dateStarted": "2018-11-20 10:16:32.462",
+      "dateFinished": "2018-11-20 10:16:32.470",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport org.apache.spark.mllib.tree.DecisionTree\nimport org.apache.spark.mllib.tree.model.DecisionTreeModel\nimport org.apache.spark.mllib.util.MLUtils\n\n// Load and parse the data file.\nval data \u003d MLUtils.loadLibSVMFile(sc, \"/Users/benepstein/Desktop/sample_libsvm_data.txt\")\n// Split the data into training and test sets (30% held out for testing)\nval splits \u003d data.randomSplit(Array(0.7, 0.3))\nval (trainingData, testData) \u003d (splits(0), splits(1))\n\n// Train a DecisionTree model.\n//  Empty categoricalFeaturesInfo indicates all features are continuous.\nval numClasses \u003d 2\nval categoricalFeaturesInfo \u003d Map[Int, Int]()\nval impurity \u003d \"gini\"\nval maxDepth \u003d 5\nval maxBins \u003d 32\n\nval model \u003d DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,\n  impurity, maxDepth, maxBins)\n\n// Evaluate model on test instances and compute test error\nval labelAndPreds \u003d testData.map { point \u003d\u003e\n  val prediction \u003d model.predict(point.features)\n  (point.label, prediction)\n}\nval testErr \u003d labelAndPreds.filter(r \u003d\u003e r._1 !\u003d r._2).count().toDouble / testData.count()\nprintln(\"Test Error \u003d \" + testErr)\nprintln(\"Learned classification tree model:\\n\" + model.toDebugString)\n\n// Save and load model\n// model.save(sc, \"target/tmp/myDecisionTreeClassificationModel\")\n// val sameModel \u003d DecisionTreeModel.load(sc, \"target/tmp/myDecisionTreeClassificationModel\")",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 12:00:43.000",
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542398443305_2007728913",
+      "id": "20170620-153325_126659046",
+      "dateCreated": "2018-11-16 12:00:43.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\nThe final notebook in this class shows you an example of implementing a simple [*ETL Pipeline*](/#/notebook/2DWVX87QY) in a Splice Machine Zeppelin notebook.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:52:44.414",
+      "config": {
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThe final notebook in this class shows you an example of implementing a simple \u003ca href\u003d\"/#/notebook/2DWVX87QY\"\u003e\u003cem\u003eETL Pipeline\u003c/em\u003e\u003c/a\u003e in a Splice Machine Zeppelin notebook.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542398443306_-1240311123",
+      "id": "20170620-153620_626385294",
+      "dateCreated": "2018-11-16 12:00:43.000",
+      "dateStarted": "2018-11-20 10:52:44.414",
+      "dateFinished": "2018-11-20 10:52:44.418",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:17:40.729",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542737860728_1243453423",
+      "id": "20181120-101740_2054891679",
+      "dateCreated": "2018-11-20 10:17:40.728",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Training/Data Science/k. Decision Trees",
+  "id": "2DUQ8F96K",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

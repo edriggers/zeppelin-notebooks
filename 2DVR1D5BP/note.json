@@ -445,20 +445,23 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Where to Go Next\n\nOnce you have successfully imported your own data, you\u0027re ready to run queries. See our next tutorial, \u003ca href\u003d\"/#/notebook/2CU1SNACA\"\u003eRunning Queries\u003c/a\u003e.\n\n\u003cp class\u003d\"noteIcon\"\u003eOur \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_importdata.html\" target\u003d\"_blank\"\u003edocumentation for importing data\u003c/a\u003e is extremely useful in handling your specific import cases, especially with respect to supported timestamp, date, and time data formats.\u003c/p\u003e\n",
+      "text": "%md\n## Where to Go Next\n\nOnce you have successfully imported your own data, you\u0027re ready to run queries. See our next tutorial, [*Running Queries*](/#/notebook/2DUGVN2K2).\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 15:40:15.334",
+      "dateUpdated": "2018-11-20 10:35:55.094",
       "config": {
-        "tableHide": false,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
         },
-        "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "results": {},
-        "enabled": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -469,7 +472,47 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eWhere to Go Next\u003c/h3\u003e\n\u003cp\u003eOnce you have successfully imported your own data, you\u0026rsquo;re ready to run queries. See our next tutorial, \u003ca href\u003d\"/#/notebook/2CU1SNACA\"\u003eRunning Queries\u003c/a\u003e.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eOur \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_importdata.html\" target\u003d\"_blank\"\u003edocumentation for importing data\u003c/a\u003e is extremely useful in handling your specific import cases, especially with respect to supported timestamp, date, and time data formats.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eOnce you have successfully imported your own data, you\u0026rsquo;re ready to run queries. See our next tutorial, \u003ca href\u003d\"/#/notebook/2DUGVN2K2\"\u003e\u003cem\u003eRunning Queries\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542676116226_1799695660",
+      "id": "20181119-170836_461498674",
+      "dateCreated": "2018-11-19 17:08:36.226",
+      "dateStarted": "2018-11-20 10:35:55.095",
+      "dateFinished": "2018-11-20 10:35:55.099",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Related Documentation\nThe \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation provides details about and examples of using our different data importation processes.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:36:18.756",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRelated Documentation\u003c/h2\u003e\n\u003cp\u003eThe \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation provides details about and examples of using our different data importation processes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -477,8 +520,9 @@
       "jobName": "paragraph_1542670815334_1983767364",
       "id": "20170907-074700_1452777231",
       "dateCreated": "2018-11-19 15:40:15.334",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 10:36:18.757",
+      "dateFinished": "2018-11-20 10:36:18.761",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -514,7 +558,9 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": []
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

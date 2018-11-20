@@ -3,9 +3,9 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Crystal Ball\nThe Crystal Ball application is a supply chain reference application relevant to manufacturers, distributors, retailers, and e-commerce companies. With the crystall ball you can:\n\n1. Perform Available-to-Promise (ATP) inquiries in seconds on real-time inventory changes due to purchases, manufacturing, sales, and shipments\n2. Learn when shipments are likely to be late\n3. Anticipate stock outs due to predicted late orders\n4. Determine what customers or downstream orders are affected by anticipated stockouts.\n\nWhen supply chain managers have the crystal ball, they can:\n-- plan around stock outs\n-- warn down stream consumers so they can re-plan.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 16:01:26.917",
+      "dateUpdated": "2018-11-20 09:59:10.907",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "fontSize": 9.0,
         "results": {},
         "enabled": true
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542398139913_292026853",
       "id": "20170621-041621_785608971",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "dateStarted": "2018-11-16 11:57:06.000",
-      "dateFinished": "2018-11-16 11:57:06.000",
+      "dateStarted": "2018-11-20 09:59:10.908",
+      "dateFinished": "2018-11-20 09:59:10.916",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -357,7 +357,7 @@
       "title": "Load Train Data",
       "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027TIMELINE\u0027,\u0027TRANSFERORDERS\u0027,null, \u0027s3a://splice-demo/supplychain/data_0623/train_orders.csv\u0027, null, null, \u0027yyyy-MM-dd HH:mm:ss.S\u0027, null, null, -1, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027TIMELINE\u0027,\u0027TO_DELIVERY_CHG_EVENT\u0027, null, \u0027s3a://splice-demo/supplychain/data_0623/train_events.csv\u0027, null, null, \u0027yyyy-MM-dd HH:mm:ss.S\u0027, null, null, -1, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027TIMELINE\u0027,\u0027TIMELINE_INT\u0027, null, \u0027s3a://splice-demo/supplychain/data_0623/train_inv.csv\u0027, null, null, \u0027yyyy-MM-dd HH:mm:ss.S\u0027, null, null, -1, \u0027/tmp\u0027, true, null);\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 16:01:00.097",
+      "dateUpdated": "2018-11-20 09:59:01.663",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -370,6 +370,37 @@
         "fontSize": 9.0,
         "title": true,
         "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
           "1": {
             "graph": {
               "mode": "table",
@@ -656,7 +687,7 @@
       "title": "Tracking Inventory As Timelines",
       "text": "%splicemachine\nselect * from timeline.timeline_int\nwhere TIMELINE_ID \u003d ${inv\u003d200}\norder by TIMELINE.TIMELINE_INT.ST;",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 16:00:48.128",
+      "dateUpdated": "2018-11-20 10:51:30.338",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1578,7 +1609,7 @@
       "title": "Num of Late Orders By Weather",
       "text": "%splicemachine\nselect * from timeline.TO_DELIVERY_CHG_EVENT\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 16:00:50.342",
+      "dateUpdated": "2018-11-20 10:51:36.235",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -2114,32 +2145,60 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n",
+      "text": "%md\n## Where to Go Next\nWe\u0027ll now continue our exploration of Machine Learning with Splice Machine by implementing a [*KMeans clustering algorithm*](/#/notebook/2DX6TGACY) in a Splice Machine Zeppelin notebook.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:55:39.000",
+      "dateUpdated": "2018-11-20 10:52:00.342",
       "config": {
         "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
+          "language": "markdown",
+          "editOnDblClick": true,
           "completionKey": "TAB",
-          "completionSupport": true
+          "completionSupport": false
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
+        "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": true,
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll now continue our exploration of Machine Learning with Splice Machine by implementing a \u003ca href\u003d\"/#/notebook/2DX6TGACY\"\u003e\u003cem\u003eKMeans clustering algorithm\u003c/em\u003e\u003c/a\u003e in a Splice Machine Zeppelin notebook.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542398139938_-585719086",
       "id": "20170714-192918_375392082",
       "dateCreated": "2018-11-16 11:55:39.000",
+      "dateStarted": "2018-11-20 10:52:00.343",
+      "dateFinished": "2018-11-20 10:52:00.347",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:07:42.567",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542737262567_-2130094596",
+      "id": "20181120-100742_595605634",
+      "dateCreated": "2018-11-20 10:07:42.567",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -2147,7 +2206,11 @@
   "id": "2DY411M2A",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

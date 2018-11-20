@@ -1,1 +1,254 @@
-﻿{"paragraphs":[{"text":"%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Useful Database Utilities\n\nThis Notebook describes a number of utilities that you may find useful. We'll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run each paragraph and see the results.","user":"anonymous","dateUpdated":"2018-11-16T19:01:48+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Useful Database Utilities</h1>\n<p>This Notebook describes a number of utilities that you may find useful. We&rsquo;ll expand this list over time. For now, we have these sections:</p>\n<ul>\n  <li><em>Discovering the Splice Machine Versions</em> shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.</li>\n  <li><em>Listing the Tables in Your Database</em> shows you a <code>SELECT</code> statement that displays all of the tables in your database</li>\n</ul>\n<p>All you need to do is click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run each paragraph and see the results.</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1542394892708_1482012156","id":"20170917-165934_1261053428","dateCreated":"2018-11-16T19:01:32+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:60123","dateFinished":"2018-11-16T19:01:48+0000","dateStarted":"2018-11-16T19:01:48+0000"},{"title":"Discovering the Splice Machine Versions","text":"%splicemachine\n\ncall SYSCS_UTIL.SYSCS_GET_VERSION_INFO();","user":"anonymous","dateUpdated":"2018-11-16T19:01:38+0000","config":{"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","title":true,"results":{"0":{"graph":{"mode":"table","height":104,"optionOpen":false,"setting":{"table":{"tableGridState":{},"tableColumnTypeState":{"names":{"HOSTNAME":"string","RELEASE":"string","IMPLEMENTATIONVERSION":"string","BUILDTIME":"string","URL":"string"},"updated":false},"tableOptionSpecHash":"[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]","tableOptionValue":{"useFilter":false,"showPagination":false,"showAggregationFooter":false},"updated":false,"initialized":false}},"commonSetting":{}}}},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TABLE","data":"HOSTNAME\tRELEASE\tIMPLEMENTATIONVERSION\tBUILDTIME\tURL\n192.168.1.19:50841\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n192.168.1.19:50926\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n"}]},"apps":[],"jobName":"paragraph_1542394892708_394384365","id":"20170424-135902_1116885980","dateCreated":"2018-11-16T19:01:32+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:60124"},{"title":"Listing the Tables in Your Database","text":"%splicemachine\n\nselect t.TABLENAME, s.SCHEMANAME from SYS.SYSTABLES t, SYS.SYSSCHEMAS s where t.SCHEMAID = s.SCHEMAID;","user":"anonymous","dateUpdated":"2018-11-16T19:01:38+0000","config":{"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","editorHide":false,"title":true,"results":{"0":{"graph":{"mode":"table","height":300,"optionOpen":false,"setting":{"table":{"tableGridState":{},"tableColumnTypeState":{"names":{"TABLENAME":"string","SCHEMANAME":"string"},"updated":false},"tableOptionSpecHash":"[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]","tableOptionValue":{"useFilter":false,"showPagination":false,"showAggregationFooter":false},"updated":false,"initialized":false}},"commonSetting":{}}}},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TABLE","data":"TABLENAME\tSCHEMANAME\nA\tSPLICE\nIMPORT_EXAMPLE\tSPLICE\nSYSALIASES\tSYS\nSYSBACKUP\tSYS\nSYSBACKUPFILESET\tSYS\nSYSBACKUPITEMS\tSYS\nSYSBACKUPJOBS\tSYS\nSYSCHECKS\tSYS\nSYSCOLPERMS\tSYS\nSYSCOLUMNS\tSYS\nSYSCOLUMNSTATISTICS\tSYS\nSYSCOLUMNSTATS\tSYS\nSYSCONGLOMERATES\tSYS\nSYSCONSTRAINTS\tSYS\nSYSDEPENDS\tSYS\nSYSDUMMY1\tSYSIBM\nSYSFILES\tSYS\nSYSFOREIGNKEYS\tSYS\nSYSKEYS\tSYS\nSYSPERMS\tSYS\nSYSPHYSICALSTATS\tSYS\nSYSPRIMARYKEYS\tSYS\nSYSROLES\tSYS\nSYSROUTINEPERMS\tSYS\nSYSSCHEMAPERMS\tSYS\nSYSSCHEMAS\tSYS\nSYSSEQUENCES\tSYS\nSYSSNAPSHOTS\tSYS\nSYSSOURCECODE\tSYS\nSYSSTATEMENTS\tSYS\nSYSTABLEPERMS\tSYS\nSYSTABLES\tSYS\nSYSTABLESTATISTICS\tSYS\nSYSTABLESTATS\tSYS\nSYSTRIGGERS\tSYS\nSYSUSERS\tSYS\nSYSVIEWS\tSYS\n"}]},"apps":[],"jobName":"paragraph_1542394892709_-1175510987","id":"20170424-135930_879534749","dateCreated":"2018-11-16T19:01:32+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:60125"},{"user":"anonymous","dateUpdated":"2018-11-16T19:01:32+0000","config":{"colWidth":12,"editorMode":"ace/mode/scala","results":{},"enabled":true,"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"fontSize":9},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1542394892709_-400293355","id":"20170424-140825_873746189","dateCreated":"2018-11-16T19:01:32+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:60126"}],"name":"Training/Developers - Part II/c. Common Utilities","id":"2DUK929SD","noteParams":{},"noteForms":{},"angularObjects":{"md:shared_process":[],"splicemachine:shared_process":[],"spark:shared_process":[]},"config":{"isZeppelinNotebookCronEnable":false,"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Useful Database Utilities\n\nThis Notebook describes a number of utilities that you may find useful. We\u0027ll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 11:01:48.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUseful Database Utilities\u003c/h1\u003e\n\u003cp\u003eThis Notebook describes a number of utilities that you may find useful. We\u0026rsquo;ll expand this list over time. For now, we have these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eDiscovering the Splice Machine Versions\u003c/em\u003e shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eListing the Tables in Your Database\u003c/em\u003e shows you a \u003ccode\u003eSELECT\u003c/code\u003e statement that displays all of the tables in your database\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542394892708_1482012156",
+      "id": "20170917-165934_1261053428",
+      "dateCreated": "2018-11-16 11:01:32.000",
+      "dateStarted": "2018-11-16 11:01:48.000",
+      "dateFinished": "2018-11-16 11:01:48.000",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Discovering the Splice Machine Versions",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_GET_VERSION_INFO();",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 11:01:38.000",
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 104.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "HOSTNAME": "string",
+                      "RELEASE": "string",
+                      "IMPLEMENTATIONVERSION": "string",
+                      "BUILDTIME": "string",
+                      "URL": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "HOSTNAME\tRELEASE\tIMPLEMENTATIONVERSION\tBUILDTIME\tURL\n192.168.1.19:50841\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n192.168.1.19:50926\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542394892708_394384365",
+      "id": "20170424-135902_1116885980",
+      "dateCreated": "2018-11-16 11:01:32.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Listing the Tables in Your Database",
+      "text": "%splicemachine\n\nselect t.TABLENAME, s.SCHEMANAME from SYS.SYSTABLES t, SYS.SYSSCHEMAS s where t.SCHEMAID \u003d s.SCHEMAID;",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 11:01:38.000",
+      "config": {
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/text",
+        "editorHide": false,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "TABLENAME": "string",
+                      "SCHEMANAME": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "TABLENAME\tSCHEMANAME\nA\tSPLICE\nIMPORT_EXAMPLE\tSPLICE\nSYSALIASES\tSYS\nSYSBACKUP\tSYS\nSYSBACKUPFILESET\tSYS\nSYSBACKUPITEMS\tSYS\nSYSBACKUPJOBS\tSYS\nSYSCHECKS\tSYS\nSYSCOLPERMS\tSYS\nSYSCOLUMNS\tSYS\nSYSCOLUMNSTATISTICS\tSYS\nSYSCOLUMNSTATS\tSYS\nSYSCONGLOMERATES\tSYS\nSYSCONSTRAINTS\tSYS\nSYSDEPENDS\tSYS\nSYSDUMMY1\tSYSIBM\nSYSFILES\tSYS\nSYSFOREIGNKEYS\tSYS\nSYSKEYS\tSYS\nSYSPERMS\tSYS\nSYSPHYSICALSTATS\tSYS\nSYSPRIMARYKEYS\tSYS\nSYSROLES\tSYS\nSYSROUTINEPERMS\tSYS\nSYSSCHEMAPERMS\tSYS\nSYSSCHEMAS\tSYS\nSYSSEQUENCES\tSYS\nSYSSNAPSHOTS\tSYS\nSYSSOURCECODE\tSYS\nSYSSTATEMENTS\tSYS\nSYSTABLEPERMS\tSYS\nSYSTABLES\tSYS\nSYSTABLESTATISTICS\tSYS\nSYSTABLESTATS\tSYS\nSYSTRIGGERS\tSYS\nSYSUSERS\tSYS\nSYSVIEWS\tSYS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542394892709_-1175510987",
+      "id": "20170424-135930_879534749",
+      "dateCreated": "2018-11-16 11:01:32.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nYou\u0027re now ready to learn about the [*The Life of a Splice Machine Query*](/#/notebook/2DWS5FM39) in the next notebook in this class.",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 11:52:32.376",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "fontSize": 9.0,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;re now ready to learn about the \u003ca href\u003d\"/#/notebook/2DWS5FM39\"\u003e\u003cem\u003eThe Life of a Splice Machine Query\u003c/em\u003e\u003c/a\u003e in the next notebook in this class.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542394892709_-400293355",
+      "id": "20170424-140825_873746189",
+      "dateCreated": "2018-11-16 11:01:32.000",
+      "dateStarted": "2018-11-20 11:51:52.873",
+      "dateFinished": "2018-11-20 11:51:52.875",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 10:26:52.058",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542738412057_-1248851198",
+      "id": "20181120-102652_1578849737",
+      "dateCreated": "2018-11-20 10:26:52.057",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Training/Developers - Part II/c. Common Utilities",
+  "id": "2DUK929SD",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
