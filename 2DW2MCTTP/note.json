@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\n\nIn this tutorial, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-1 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this tutorial all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\n\nIn this notebook, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-1 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this tutorial all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:53.000",
+      "dateUpdated": "2018-11-20 15:56:22.074",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this tutorial, we\u0026rsquo;ll walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003e1. Creating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e2. Importing TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e3. Creating Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e4. Compacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e5. Running Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this tutorial all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003e1. Creating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e2. Importing TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e3. Creating Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e4. Compacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e5. Running Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this tutorial all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542394755823_-1090847122",
       "id": "20170517-225129_1383056312",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "dateStarted": "2018-11-16 10:59:53.000",
-      "dateFinished": "2018-11-16 10:59:53.000",
+      "dateStarted": "2018-11-20 15:56:22.075",
+      "dateFinished": "2018-11-20 15:56:22.087",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -193,7 +193,7 @@
       "title": "Import Data from S3",
       "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:55:09.139",
+      "dateUpdated": "2018-11-20 15:55:40.028",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -218,7 +218,31 @@
             "graph": {
               "mode": "table",
               "height": 84.0,
-              "optionOpen": false
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
             }
           },
           "2": {
@@ -460,14 +484,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 3. Creating Indexes\n\nNext we\u0027ll create indexes for our table. We\u0027ll actually run three steps in the next three paragraphs in this tutorial:\n\n* Run the next paragraph to count the records in each table (without indexes), so you can what\u0027s been imported.\n* Run the following paragraph to create four indexes.\n* Finally, re-run some of the counts using the indexes and confirm that the counts are the same.\n",
+      "text": "%md\n\n## 3. Creating Indexes\n\nNext we\u0027ll create indexes for our table. We\u0027ll actually run three steps in the next three paragraphs in this notebook:\n\n* Run the next paragraph to count the records in each table (without indexes), so you can what\u0027s been imported.\n* Run the following paragraph to create four indexes.\n* Finally, re-run some of the counts using the indexes and confirm that the counts are the same.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-11-20 15:56:41.960",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -485,7 +510,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Creating Indexes\u003c/h2\u003e\n\u003cp\u003eNext we\u0026rsquo;ll create indexes for our table. We\u0026rsquo;ll actually run three steps in the next three paragraphs in this tutorial:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eRun the next paragraph to count the records in each table (without indexes), so you can what\u0026rsquo;s been imported.\u003c/li\u003e\n  \u003cli\u003eRun the following paragraph to create four indexes.\u003c/li\u003e\n  \u003cli\u003eFinally, re-run some of the counts using the indexes and confirm that the counts are the same.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Creating Indexes\u003c/h2\u003e\n\u003cp\u003eNext we\u0026rsquo;ll create indexes for our table. We\u0026rsquo;ll actually run three steps in the next three paragraphs in this notebook:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eRun the next paragraph to count the records in each table (without indexes), so you can what\u0026rsquo;s been imported.\u003c/li\u003e\n  \u003cli\u003eRun the following paragraph to create four indexes.\u003c/li\u003e\n  \u003cli\u003eFinally, re-run some of the counts using the indexes and confirm that the counts are the same.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -493,8 +518,9 @@
       "jobName": "paragraph_1542394755826_888705991",
       "id": "20171016-140855_1554334339",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 15:56:41.960",
+      "dateFinished": "2018-11-20 15:56:41.967",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1154,14 +1180,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Running the TPCH-1 Queries\n\nEach of the remaining paragraphs in this tutorial runs one of the TPC-H queries, starting with Query 01 and through to the last query, Query 22.\n\n\u003eSimply click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in each query to run it. \n\n\nThe final two paragraphs run variants of Query 01:\n\n* The first variant changes what gets selected and how the results are presented\n* The second variant demonstrates the use of an input field and variable substitution\n",
+      "text": "%md\n\n## Running the TPCH-1 Queries\n\nEach of the remaining paragraphs in this notebook runs one of the TPC-H queries, starting with Query 01 and through to the last query, Query 22.\n\n\u003eSimply click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in each query to run it. \n\n\nThe final two paragraphs run variants of Query 01:\n\n* The first variant changes what gets selected and how the results are presented\n* The second variant demonstrates the use of an input field and variable substitution\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-11-20 15:57:01.941",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -1179,7 +1206,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning the TPCH-1 Queries\u003c/h2\u003e\n\u003cp\u003eEach of the remaining paragraphs in this tutorial runs one of the TPC-H queries, starting with Query 01 and through to the last query, Query 22.\u003c/p\u003e\n\u003cblockquote\u003e\n  \u003cp\u003eSimply click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in each query to run it. \u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eThe final two paragraphs run variants of Query 01:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe first variant changes what gets selected and how the results are presented\u003c/li\u003e\n  \u003cli\u003eThe second variant demonstrates the use of an input field and variable substitution\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning the TPCH-1 Queries\u003c/h2\u003e\n\u003cp\u003eEach of the remaining paragraphs in this notebook runs one of the TPC-H queries, starting with Query 01 and through to the last query, Query 22.\u003c/p\u003e\n\u003cblockquote\u003e\n  \u003cp\u003eSimply click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in each query to run it. \u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp\u003eThe final two paragraphs run variants of Query 01:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe first variant changes what gets selected and how the results are presented\u003c/li\u003e\n  \u003cli\u003eThe second variant demonstrates the use of an input field and variable substitution\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1187,8 +1214,9 @@
       "jobName": "paragraph_1542394755839_-1846378320",
       "id": "20171016-142752_2046863155",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 15:57:01.942",
+      "dateFinished": "2018-11-20 15:57:01.948",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -2151,7 +2179,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Developers - Part II/b. Running TPCH-1 Benchmark Queries",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/b. Running TPCH-1 Benchmark Queries",
   "id": "2DW2MCTTP",
   "noteParams": {},
   "noteForms": {},

@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Useful Database Utilities\n\nThis Notebook describes a number of utilities that you may find useful. We\u0027ll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Useful Database Utilities\n\nThis notebook describes a number of utilities that you may find useful. We\u0027ll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:01:48.000",
+      "dateUpdated": "2018-11-20 15:57:39.904",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUseful Database Utilities\u003c/h1\u003e\n\u003cp\u003eThis Notebook describes a number of utilities that you may find useful. We\u0026rsquo;ll expand this list over time. For now, we have these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eDiscovering the Splice Machine Versions\u003c/em\u003e shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eListing the Tables in Your Database\u003c/em\u003e shows you a \u003ccode\u003eSELECT\u003c/code\u003e statement that displays all of the tables in your database\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUseful Database Utilities\u003c/h1\u003e\n\u003cp\u003eThis notebook describes a number of utilities that you may find useful. We\u0026rsquo;ll expand this list over time. For now, we have these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eDiscovering the Splice Machine Versions\u003c/em\u003e shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eListing the Tables in Your Database\u003c/em\u003e shows you a \u003ccode\u003eSELECT\u003c/code\u003e statement that displays all of the tables in your database\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542394892708_1482012156",
       "id": "20170917-165934_1261053428",
       "dateCreated": "2018-11-16 11:01:32.000",
-      "dateStarted": "2018-11-16 11:01:48.000",
-      "dateFinished": "2018-11-16 11:01:48.000",
+      "dateStarted": "2018-11-20 15:57:39.905",
+      "dateFinished": "2018-11-20 15:57:39.958",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -236,7 +236,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Developers - Part II/c. Common Utilities",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/c. Common Utilities",
   "id": "2DUK929SD",
   "noteParams": {},
   "noteForms": {},

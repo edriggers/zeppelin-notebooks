@@ -527,7 +527,7 @@
     {
       "text": "%md\n## Where to Go Next\nNow, please continue on to the next notebook in this class, [*Using Explain and Hints*](/#/notebook/2DVFUM14R), to discover more about tuning your Splice Machine queries.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:49:24.677",
+      "dateUpdated": "2018-11-20 13:17:08.683",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -537,7 +537,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -559,8 +559,8 @@
       "jobName": "paragraph_1542394040013_-395136509",
       "id": "20170917-145935_2044886732",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-11-20 10:38:12.639",
-      "dateFinished": "2018-11-20 10:38:12.641",
+      "dateStarted": "2018-11-20 13:17:08.684",
+      "dateFinished": "2018-11-20 13:17:08.690",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -594,7 +594,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Developers - Part I/g. Using the DB Console",
+  "name": "Splice Machine Training/For Developers, Part I - Beginning/g. Using the DB Console",
   "id": "2DWZA8SHP",
   "noteParams": {},
   "noteForms": {},

@@ -44,7 +44,7 @@
     {
       "text": "%md\n## Where to Go Next\nPlease start this class with the [*Notebook Basics*](/#/notebook/2DUNNSQYR) notebook for a brief introduction to running and creating/modifying Zeppelin notebooks.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:29:12.874",
+      "dateUpdated": "2018-11-20 17:39:11.319",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -57,7 +57,7 @@
         "fontSize": 9.0,
         "results": {},
         "enabled": true,
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -77,8 +77,8 @@
       "jobName": "paragraph_1542396437264_-1286732572",
       "id": "20181115-225256_473630650",
       "dateCreated": "2018-11-16 11:27:17.000",
-      "dateStarted": "2018-11-20 10:40:06.663",
-      "dateFinished": "2018-11-20 10:40:06.666",
+      "dateStarted": "2018-11-20 17:39:11.320",
+      "dateFinished": "2018-11-20 17:39:11.324",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -99,7 +99,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Data Science/a. Introduction",
+  "name": "Splice Machine Training/For Data Scientists/a. Introduction",
   "id": "2DXBQGZ1A",
   "noteParams": {},
   "noteForms": {},

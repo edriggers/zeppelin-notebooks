@@ -335,7 +335,7 @@
       "title": "Import Data",
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:57:02.580",
+      "dateUpdated": "2018-11-20 15:57:56.223",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -379,7 +379,31 @@
             "graph": {
               "mode": "table",
               "height": 89.0057,
-              "optionOpen": false
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
             }
           },
           "5": {
@@ -836,14 +860,15 @@
     },
     {
       "title": "Indexes",
-      "text": "%md\n\n### Optimize by Adding Indexes\n\nSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\n\n\u003cdiv class\u003d\"notePlain\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\nUnlike HBase and other key-value stores, Splice Machine can use *secondary indexes* to improve the performance of data manipulation statements. In addition, `UNIQUE` indexes provide a form of data integrity checking.\n\nJust as we did when creating new tables, we\u0027ll first drop the indexes we\u0027re going to create, in case they already exist.\n",
+      "text": "%md\n\n### Optimize by Adding Indexes\n\nSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\n\n\u003cdiv class\u003d\"noteNote\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\nUnlike HBase and other key-value stores, Splice Machine can use *secondary indexes* to improve the performance of data manipulation statements. In addition, `UNIQUE` indexes provide a form of data integrity checking.\n\nJust as we did when creating new tables, we\u0027ll first drop the indexes we\u0027re going to create, in case they already exist.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
+      "dateUpdated": "2018-11-20 15:59:04.380",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -862,7 +887,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eOptimize by Adding Indexes\u003c/h3\u003e\n\u003cp\u003eSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\u003c/p\u003e\n\u003cdiv class\u003d\"notePlain\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\u003cp\u003eUnlike HBase and other key-value stores, Splice Machine can use \u003cem\u003esecondary indexes\u003c/em\u003e to improve the performance of data manipulation statements. In addition, \u003ccode\u003eUNIQUE\u003c/code\u003e indexes provide a form of data integrity checking.\u003c/p\u003e\n\u003cp\u003eJust as we did when creating new tables, we\u0026rsquo;ll first drop the indexes we\u0026rsquo;re going to create, in case they already exist.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eOptimize by Adding Indexes\u003c/h3\u003e\n\u003cp\u003eSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\u003c/p\u003e\n\u003cdiv class\u003d\"noteNote\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\u003cp\u003eUnlike HBase and other key-value stores, Splice Machine can use \u003cem\u003esecondary indexes\u003c/em\u003e to improve the performance of data manipulation statements. In addition, \u003ccode\u003eUNIQUE\u003c/code\u003e indexes provide a form of data integrity checking.\u003c/p\u003e\n\u003cp\u003eJust as we did when creating new tables, we\u0026rsquo;ll first drop the indexes we\u0026rsquo;re going to create, in case they already exist.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -870,8 +895,9 @@
       "jobName": "paragraph_1542395076261_-456101360",
       "id": "20180115-055551_1473914744",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 15:59:04.380",
+      "dateFinished": "2018-11-20 15:59:04.386",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1383,7 +1409,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Developers - Part II/d. The Life of a Query",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/d. The Life of a Query",
   "id": "2DWS5FM39",
   "noteParams": {},
   "noteForms": {},

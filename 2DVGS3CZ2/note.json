@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Tuning for Performance\n\nTuning for performance is a critical topic for any database. This is especially true for Splice Machine, because its architecture may influence performance in ways unexpected by experienced database users.\n\nSplice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.\n\nThis Notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Tuning for Performance\n\nTuning for performance is a critical topic for any database. This is especially true for Splice Machine, because its architecture may influence performance in ways unexpected by experienced database users.\n\nSplice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.\n\nThis notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:45:15.000",
+      "dateUpdated": "2018-11-20 13:03:38.560",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTuning for Performance\u003c/h1\u003e\n\u003cp\u003eTuning for performance is a critical topic for any database. This is especially true for Splice Machine, because its architecture may influence performance in ways unexpected by experienced database users.\u003c/p\u003e\n\u003cp\u003eSplice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the \u003cem\u003ecost\u003c/em\u003e of each possible plan, and chooses the lowest-cost option.\u003c/p\u003e\n\u003cp\u003eThis Notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eCollecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003ePerforming Major Compactions\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Primary Keys and Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJoining Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSelecting a Join Strategy\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTuning for Performance\u003c/h1\u003e\n\u003cp\u003eTuning for performance is a critical topic for any database. This is especially true for Splice Machine, because its architecture may influence performance in ways unexpected by experienced database users.\u003c/p\u003e\n\u003cp\u003eSplice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the \u003cem\u003ecost\u003c/em\u003e of each possible plan, and chooses the lowest-cost option.\u003c/p\u003e\n\u003cp\u003eThis notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eCollecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003ePerforming Major Compactions\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Primary Keys and Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJoining Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSelecting a Join Strategy\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542393888837_-1474071602",
       "id": "20170907-071526_832974549",
       "dateCreated": "2018-11-16 10:44:48.000",
-      "dateStarted": "2018-11-16 10:45:15.000",
-      "dateFinished": "2018-11-16 10:45:15.000",
+      "dateStarted": "2018-11-20 13:03:38.560",
+      "dateFinished": "2018-11-20 13:03:38.573",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -600,14 +600,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nThat query should have come back almost immediately. But what happens if we query on j?",
+      "text": "%md\n\u003cbr /\u003e\n\nThat query should have come back almost immediately. But what happens if we query on `j`?",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:44:48.000",
+      "dateUpdated": "2018-11-20 13:10:39.091",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -625,7 +626,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eThat query should have come back almost immediately. But what happens if we query on j?\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eThat query should have come back almost immediately. But what happens if we query on \u003ccode\u003ej\u003c/code\u003e?\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -633,8 +634,9 @@
       "jobName": "paragraph_1542393888849_-339103581",
       "id": "20170917-094320_895722307",
       "dateCreated": "2018-11-16 10:44:48.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 13:10:39.092",
+      "dateFinished": "2018-11-20 13:10:39.098",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -705,14 +707,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Adding an Index\n\nYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0027s add an index on j:",
+      "text": "%md\n### Adding an Index\n\nYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0027s add an index on `j`:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:44:48.000",
+      "dateUpdated": "2018-11-20 13:10:53.229",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -730,7 +733,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAdding an Index\u003c/h3\u003e\n\u003cp\u003eYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0026rsquo;s add an index on j:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAdding an Index\u003c/h3\u003e\n\u003cp\u003eYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0026rsquo;s add an index on \u003ccode\u003ej\u003c/code\u003e:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -738,8 +741,9 @@
       "jobName": "paragraph_1542393888851_-991480556",
       "id": "20170917-094404_1058792111",
       "dateCreated": "2018-11-16 10:44:48.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 13:10:53.230",
+      "dateFinished": "2018-11-20 13:10:53.234",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1009,14 +1013,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nYou add a Splice Machine __hint__ to your queries by appending a specially formatted *comment*. These hints:\n\n* are always prefaced by `--splice-properties`\n* must always be placed at the end of a line\n* can be used either after a table name or after a `FROM` clause\n\nThe *index hint* in the above example  (`--splice-properties index\u003dij`) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses `IndexScan` instead of the `TableScan`. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\n\nIt\u0027s because the index only contains information for column `J`, and this query calls for information about column `I` as well. This means that we still have to get information from the base table for column I, and we have to do it *many* times.  You can see this in the plan: there is a step, `IndexLookup`, that is part of the plan.  You\u0027ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column `I`.  In distributed architectures like Splice Machine, this can be a very expensive operation.\n\nIf you want, you can run these these two queries by removing the `explains`; you\u0027ll noticed a significant performance difference between them.\n\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\nWhen faced with situations where you have __many__ matching rows however, like our original query, you can address the issue by creating a compound index that includes both j and i in it:",
+      "text": "%md\n\u003cbr /\u003e\n\nYou add a Splice Machine __hint__ to your queries by appending a specially formatted *comment*. These hints:\n\n* are always prefaced by `--splice-properties`\n* must always be placed at the end of a line\n* can be used either after a table name or after a `FROM` clause\n\nThe *index hint* in the above example  (`--splice-properties index\u003dij`) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses `IndexScan` instead of the `TableScan`. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\n\nIt\u0027s because the index only contains information for column `J`, and this query calls for information about column `I` as well. This means that we still have to get information from the base table for column I, and we have to do it *many* times.  You can see this in the plan: there is a step, `IndexLookup`, that is part of the plan.  You\u0027ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column `I`.  In distributed architectures like Splice Machine, this can be a very expensive operation.\n\nIf you want, you can run these these two queries by removing the `explains`; you\u0027ll noticed a significant performance difference between them.\n\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\nWhen faced with situations where you have __many__ matching rows however, like our original query, you can address the issue by creating a compound index that includes both `j` and `i` in it:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:44:48.000",
+      "dateUpdated": "2018-11-20 13:11:29.307",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -1034,7 +1039,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou add a Splice Machine \u003cstrong\u003ehint\u003c/strong\u003e to your queries by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. These hints:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eare always prefaced by \u003ccode\u003e--splice-properties\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003emust always be placed at the end of a line\u003c/li\u003e\n  \u003cli\u003ecan be used either after a table name or after a \u003ccode\u003eFROM\u003c/code\u003e clause\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe \u003cem\u003eindex hint\u003c/em\u003e in the above example (\u003ccode\u003e--splice-properties index\u003dij\u003c/code\u003e) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses \u003ccode\u003eIndexScan\u003c/code\u003e instead of the \u003ccode\u003eTableScan\u003c/code\u003e. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\u003c/p\u003e\n\u003cp\u003eIt\u0026rsquo;s because the index only contains information for column \u003ccode\u003eJ\u003c/code\u003e, and this query calls for information about column \u003ccode\u003eI\u003c/code\u003e as well. This means that we still have to get information from the base table for column I, and we have to do it \u003cem\u003emany\u003c/em\u003e times. You can see this in the plan: there is a step, \u003ccode\u003eIndexLookup\u003c/code\u003e, that is part of the plan. You\u0026rsquo;ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column \u003ccode\u003eI\u003c/code\u003e. In distributed architectures like Splice Machine, this can be a very expensive operation.\u003c/p\u003e\n\u003cp\u003eIf you want, you can run these these two queries by removing the \u003ccode\u003eexplains\u003c/code\u003e; you\u0026rsquo;ll noticed a significant performance difference between them.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\u003cp\u003eWhen faced with situations where you have \u003cstrong\u003emany\u003c/strong\u003e matching rows however, like our original query, you can address the issue by creating a compound index that includes both j and i in it:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou add a Splice Machine \u003cstrong\u003ehint\u003c/strong\u003e to your queries by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. These hints:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eare always prefaced by \u003ccode\u003e--splice-properties\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003emust always be placed at the end of a line\u003c/li\u003e\n  \u003cli\u003ecan be used either after a table name or after a \u003ccode\u003eFROM\u003c/code\u003e clause\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe \u003cem\u003eindex hint\u003c/em\u003e in the above example (\u003ccode\u003e--splice-properties index\u003dij\u003c/code\u003e) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses \u003ccode\u003eIndexScan\u003c/code\u003e instead of the \u003ccode\u003eTableScan\u003c/code\u003e. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\u003c/p\u003e\n\u003cp\u003eIt\u0026rsquo;s because the index only contains information for column \u003ccode\u003eJ\u003c/code\u003e, and this query calls for information about column \u003ccode\u003eI\u003c/code\u003e as well. This means that we still have to get information from the base table for column I, and we have to do it \u003cem\u003emany\u003c/em\u003e times. You can see this in the plan: there is a step, \u003ccode\u003eIndexLookup\u003c/code\u003e, that is part of the plan. You\u0026rsquo;ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column \u003ccode\u003eI\u003c/code\u003e. In distributed architectures like Splice Machine, this can be a very expensive operation.\u003c/p\u003e\n\u003cp\u003eIf you want, you can run these these two queries by removing the \u003ccode\u003eexplains\u003c/code\u003e; you\u0026rsquo;ll noticed a significant performance difference between them.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\u003cp\u003eWhen faced with situations where you have \u003cstrong\u003emany\u003c/strong\u003e matching rows however, like our original query, you can address the issue by creating a compound index that includes both \u003ccode\u003ej\u003c/code\u003e and \u003ccode\u003ei\u003c/code\u003e in it:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1042,8 +1047,9 @@
       "jobName": "paragraph_1542393888856_1680188532",
       "id": "20170917-102229_72455203",
       "dateCreated": "2018-11-16 10:44:48.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 13:11:29.307",
+      "dateFinished": "2018-11-20 13:11:29.341",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1255,12 +1261,13 @@
     {
       "text": "%md\n### Join Strategies\n\nDatabases employ different algorithms to efficiently perform a join, depending on the circumstances.  Here are the join strategies Splice Machine employs:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003eSorts the data being joined and performs a merge on the results\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003ePerforms a merge, but is not valid unless the data is not pre-sorted (via primary key or index) on the join key\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003eRequires the right-hand-side table to be small (\u003c 1 million rows), so that this table can be copied to all nodes for local joins on each node\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003eThe general-purpose join strategy\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nEach join strategy has its strengths and weaknesses, which are summarized here:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eStrengths and Weaknesses\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOn queries processing a lot of data, when a Merge or Broadcast is not valid, SortMerge will be used.\u003c/p\u003e\n                \u003cp\u003eIt is slower than Merge and Broadcast, but can be used in more instances.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eGenerally the fastest query to process many rows of data on both the right and left side of the join.\u003c/p\u003e\n                \u003cp\u003eHowever the data must be sorted on the join keys on both the right and left sides.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eA very fast join algorithm as long as the *right-hand* table of the join has 1 million or fewer rows.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eThe fastest join for *transaction-type* queries (i.e. keyed lookups with few rows on each side of the join).\u003c/p\u003e\n                \u003cp\u003eIf there are many rows on the right and/or left side, this query can be very slow.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nWhen planning a query with joins, the optimizer will choose the join strategy with the lowest cost.  Its choice however might again influence how you make your own changes (for example, add an index so that a SortMerge becomes a Merge).  We will see more examples of this in the next Tutorial.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:44:48.000",
+      "dateUpdated": "2018-11-20 13:12:15.012",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -1286,8 +1293,9 @@
       "jobName": "paragraph_1542393888860_1764455224",
       "id": "20170917-105934_534798535",
       "dateCreated": "2018-11-16 10:44:48.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 13:12:15.012",
+      "dateFinished": "2018-11-20 13:12:15.022",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1400,7 +1408,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Developers - Part I/f. Tuning Queries",
+  "name": "Splice Machine Training/For Developers, Part I - Beginning/f. Tuning Queries",
   "id": "2DVGS3CZ2",
   "noteParams": {},
   "noteForms": {},

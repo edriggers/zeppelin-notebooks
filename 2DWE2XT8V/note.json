@@ -103,7 +103,7 @@
     {
       "text": "%spark.sql \nselect age, count(1) value\nfrom bank \nwhere age \u003c 30 \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:48:12.996",
+      "dateUpdated": "2018-11-20 17:46:39.875",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -174,7 +174,7 @@
     {
       "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere age \u003c ${maxAge\u003d30} \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:48:13.062",
+      "dateUpdated": "2018-11-20 17:46:39.919",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -254,7 +254,7 @@
     {
       "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere marital\u003d\"${marital\u003dsingle,single|divorced|married}\" \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:48:13.134",
+      "dateUpdated": "2018-11-20 17:46:39.968",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -449,7 +449,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Data Science/d. Basics of Using Spark in Zeppelin",
+  "name": "Splice Machine Training/For Data Scientists/d. Basics of Using Spark in Zeppelin",
   "id": "2DWE2XT8V",
   "noteParams": {},
   "noteForms": {},

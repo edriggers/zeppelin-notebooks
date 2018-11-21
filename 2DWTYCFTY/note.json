@@ -41,14 +41,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n##  Create our Splice Machine Database\n\nBefore working with the MLlib, we need to create a Splice Machine database that contains the shipping data we\u0027re using. We:\n\n* Create the schema and tables\n* Import the data\n* Create our features table\n\n### Create the Schema and Tables\n\nFirst we create our new schema and make it our default schema, and then we create our tables for the shipment_in_transit and shipment_history data that we\u0027ll be importing.",
+      "text": "%md\n## Create our Splice Machine Database\n\nBefore working with the MLlib, we need to create a Splice Machine database that contains the shipping data we\u0027re using. We:\n\n1. Connect to your database via JDBC\n2. Create the schema and tables\n3. Import the data\n4. Create our features table\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 17:01:30.686",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -66,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate our Splice Machine Database\u003c/h2\u003e\n\u003cp\u003eBefore working with the MLlib, we need to create a Splice Machine database that contains the shipping data we\u0026rsquo;re using. We:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate the schema and tables\u003c/li\u003e\n  \u003cli\u003eImport the data\u003c/li\u003e\n  \u003cli\u003eCreate our features table\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eCreate the Schema and Tables\u003c/h3\u003e\n\u003cp\u003eFirst we create our new schema and make it our default schema, and then we create our tables for the shipment_in_transit and shipment_history data that we\u0026rsquo;ll be importing.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate our Splice Machine Database\u003c/h2\u003e\n\u003cp\u003eBefore working with the MLlib, we need to create a Splice Machine database that contains the shipping data we\u0026rsquo;re using. We:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eConnect to your database via JDBC\u003c/li\u003e\n  \u003cli\u003eCreate the schema and tables\u003c/li\u003e\n  \u003cli\u003eImport the data\u003c/li\u003e\n  \u003cli\u003eCreate our features table\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -74,14 +75,15 @@
       "jobName": "paragraph_1542395787808_1407293526",
       "id": "20180202-100849_1233744001",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 17:01:30.686",
+      "dateFinished": "2018-11-20 17:01:30.697",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Python JDBC URL",
+      "text": "%md\n### 1. Connect to Your Database via JDBC\n\nNext we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine. \n\n* If you\u0027re working on a cluster, you\u0027ll find your JDBC URL in your cluster dashboard, at the bottom right of the screen. \n* If you\u0027re working on a standalone version of Splice Machine, you can use the `localJDBCURL` value shown below.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 17:58:46.413",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -93,7 +95,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -104,7 +107,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePython JDBC URL\u003c/h2\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Connect to Your Database via JDBC\u003c/h3\u003e\n\u003cp\u003eNext we\u0026rsquo;ll configure the URL we\u0026rsquo;ll use in our JDBC connection to Splice Machine. \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIf you\u0026rsquo;re working on a cluster, you\u0026rsquo;ll find your JDBC URL in your cluster dashboard, at the bottom right of the screen.\u003c/li\u003e\n  \u003cli\u003eIf you\u0026rsquo;re working on a standalone version of Splice Machine, you can use the \u003ccode\u003elocalJDBCURL\u003c/code\u003e value shown below.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -112,14 +115,15 @@
       "jobName": "paragraph_1542395787809_1910261322",
       "id": "20180613-033509_2022872512",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 17:01:33.028",
+      "dateFinished": "2018-11-20 17:01:33.037",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark.pyspark\n \nprint(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\ndefaultJDBCURL \u003d z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\")\nlocalJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:05:49.799",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -168,6 +172,47 @@
       "dateCreated": "2018-11-16 11:16:27.000",
       "status": "READY",
       "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md \n### 2. Create the Schema and Tables\n\nWe\u0027ll now create our new schema, make it our default schema, and then create the tables for the `shipment_in_transit` and `shipment_history` data that we will import.",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 17:09:13.831",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Create the Schema and Tables\u003c/h3\u003e\n\u003cp\u003eWe\u0026rsquo;ll now create our new schema, make it our default schema, and then create the tables for the \u003ccode\u003eshipment_in_transit\u003c/code\u003e and \u003ccode\u003eshipment_history\u003c/code\u003e data that we will import.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542759443596_-1054064431",
+      "id": "20181120-161723_2024551045",
+      "dateCreated": "2018-11-20 16:17:23.596",
+      "dateStarted": "2018-11-20 17:01:36.639",
+      "dateFinished": "2018-11-20 17:01:36.652",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -284,14 +329,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Import the Data\n\nNext we import the shipping data, which is in csv format, into our Splice Machine database.\n",
+      "text": "%md\n### 3. Import the Data\n\nNext we import the shipping data, which is in csv format, into our Splice Machine database.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:43:24.076",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -309,7 +355,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eImport the Data\u003c/h3\u003e\n\u003cp\u003eNext we import the shipping data, which is in csv format, into our Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Import the Data\u003c/h3\u003e\n\u003cp\u003eNext we import the shipping data, which is in csv format, into our Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -317,8 +363,9 @@
       "jobName": "paragraph_1542395787810_156567497",
       "id": "20180202-104354_1962297047",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:43:24.076",
+      "dateFinished": "2018-11-20 16:43:24.081",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -463,14 +510,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Create our Features Table\n\nWe create a features table in our database that we use with our learning model. We add three computed fields in the `features` table that are important to our model:\n\n* `quantity_bin` categorizes shipping quantities into bins, to improve learning accuracy \n* `lateness` computes how many days late a shipment was\n* `label` categorizes lateness into one of four values:\n\n\u003ctable class\u003d\"spliceZepNoBorder\" style\u003d\"margin: 0 0 100px 50px;\"\u003e\n    \u003ctbody\u003e\n            \u003ctr\u003e\u003ctd\u003e0\u003c/td\u003e\u003ctd\u003e0 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1-5 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e2\u003c/td\u003e\u003ctd\u003e5-10 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e3\u003c/td\u003e\u003ctd\u003e10 days or more late\u003c/td\u003e\u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e",
+      "text": "%md\n### 4. Create our Features Table\n\nWe create a features table in our database that we use with our learning model. We add three computed fields in the `features` table that are important to our model:\n\n* `quantity_bin` categorizes shipping quantities into bins, to improve learning accuracy \n* `lateness` computes how many days late a shipment was\n* `label` categorizes lateness into one of four values:\n\n\u003ctable class\u003d\"spliceZepNoBorder\" style\u003d\"margin: 0 0 100px 50px;\"\u003e\n    \u003ctbody\u003e\n            \u003ctr\u003e\u003ctd\u003e0\u003c/td\u003e\u003ctd\u003e0 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1-5 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e2\u003c/td\u003e\u003ctd\u003e5-10 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e3\u003c/td\u003e\u003ctd\u003e10 days or more late\u003c/td\u003e\u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:43:28.223",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -488,7 +536,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCreate our Features Table\u003c/h3\u003e\n\u003cp\u003eWe create a features table in our database that we use with our learning model. We add three computed fields in the \u003ccode\u003efeatures\u003c/code\u003e table that are important to our model:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003equantity_bin\u003c/code\u003e categorizes shipping quantities into bins, to improve learning accuracy\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elateness\u003c/code\u003e computes how many days late a shipment was\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elabel\u003c/code\u003e categorizes lateness into one of four values:\u003c/li\u003e\n\u003c/ul\u003e\n\u003ctable class\u003d\"spliceZepNoBorder\" style\u003d\"margin: 0 0 100px 50px;\"\u003e\n    \u003ctbody\u003e\n            \u003ctr\u003e\u003ctd\u003e0\u003c/td\u003e\u003ctd\u003e0 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1-5 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e2\u003c/td\u003e\u003ctd\u003e5-10 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e3\u003c/td\u003e\u003ctd\u003e10 days or more late\u003c/td\u003e\u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Create our Features Table\u003c/h3\u003e\n\u003cp\u003eWe create a features table in our database that we use with our learning model. We add three computed fields in the \u003ccode\u003efeatures\u003c/code\u003e table that are important to our model:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003equantity_bin\u003c/code\u003e categorizes shipping quantities into bins, to improve learning accuracy\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elateness\u003c/code\u003e computes how many days late a shipment was\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elabel\u003c/code\u003e categorizes lateness into one of four values:\u003c/li\u003e\n\u003c/ul\u003e\n\u003ctable class\u003d\"spliceZepNoBorder\" style\u003d\"margin: 0 0 100px 50px;\"\u003e\n    \u003ctbody\u003e\n            \u003ctr\u003e\u003ctd\u003e0\u003c/td\u003e\u003ctd\u003e0 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1-5 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e2\u003c/td\u003e\u003ctd\u003e5-10 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e3\u003c/td\u003e\u003ctd\u003e10 days or more late\u003c/td\u003e\u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -496,8 +544,9 @@
       "jobName": "paragraph_1542395787811_-342254676",
       "id": "20180202-104618_659628734",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:43:28.224",
+      "dateFinished": "2018-11-20 16:43:28.237",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -542,18 +591,19 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Creating, Training, and Deploying our Learning Model\n\nThe remainder of this notebook walks you through the code we use to create, train, and deploy our learning model, in these steps:\n\n\u003col class\u003d\"italic\"\u003e\n    \u003cli\u003ePerform Spark+MLlib Setup Tasks\u003c/li\u003e\n    \u003cli\u003eCreate our DataFrame\u003c/li\u003e\n    \u003cli\u003eCreate Pipeline Stages\u003c/li\u003e\n    \u003cli\u003eAssemble the Pipeline\u003c/li\u003e\n    \u003cli\u003eTrain our Model\u003c/li\u003e\n    \u003cli\u003eDeploy our Model\u003c/li\u003e\n\u003c/ol\u003e\n\nWe include the entire program at the end of this notebook.",
+      "text": "%md\n## Create, Train, and Deploy our Learning Model\n\nThe remainder of this notebook walks you through the code we use to create, train, and deploy our learning model, in these steps:\n\n1. Perform Spark+MLlib Setup Tasks\n2. Create our DataFrame\n3. Create Pipeline Stages\n4. Assemble the Pipeline\u003eTrain our Model\n5. Deploy our Model\n\nWe include the entire program at the end of this notebook.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 17:10:13.186",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -567,7 +617,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating, Training, and Deploying our Learning Model\u003c/h2\u003e\n\u003cp\u003eThe remainder of this notebook walks you through the code we use to create, train, and deploy our learning model, in these steps:\u003c/p\u003e\n\u003col class\u003d\"italic\"\u003e\n    \u003cli\u003ePerform Spark+MLlib Setup Tasks\u003c/li\u003e\n    \u003cli\u003eCreate our DataFrame\u003c/li\u003e\n    \u003cli\u003eCreate Pipeline Stages\u003c/li\u003e\n    \u003cli\u003eAssemble the Pipeline\u003c/li\u003e\n    \u003cli\u003eTrain our Model\u003c/li\u003e\n    \u003cli\u003eDeploy our Model\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eWe include the entire program at the end of this notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate, Train, and Deploy our Learning Model\u003c/h2\u003e\n\u003cp\u003eThe remainder of this notebook walks you through the code we use to create, train, and deploy our learning model, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003ePerform Spark+MLlib Setup Tasks\u003c/li\u003e\n  \u003cli\u003eCreate our DataFrame\u003c/li\u003e\n  \u003cli\u003eCreate Pipeline Stages\u003c/li\u003e\n  \u003cli\u003eAssemble the Pipeline\u0026gt;Train our Model\u003c/li\u003e\n  \u003cli\u003eDeploy our Model\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eWe include the entire program at the end of this notebook.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -575,26 +625,29 @@
       "jobName": "paragraph_1542395787812_-451255579",
       "id": "20180131-172852_644197695",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 17:01:43.861",
+      "dateFinished": "2018-11-20 17:01:43.875",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### The Python Splice Machine API communicates with your database through the `PySparkContext` Class\n#### You can see it implemented below\n",
+      "text": "%md\n### 1. Perform Spark + MLlib Setup Tasks\n\nThe Python Splice Machine API communicates with your database through the `PySparkContext` class, the implementation of which is shown below.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:23:40.666",
       "config": {
-        "tableHide": false,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
         },
-        "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -605,31 +658,34 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eThe Python Splice Machine API communicates with your database through the \u003ccode\u003ePySparkContext\u003c/code\u003e Class\u003c/h3\u003e\n\u003ch4\u003eYou can see it implemented below\u003c/h4\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Perform Spark + MLlib Setup Tasks\u003c/h3\u003e\n\u003cp\u003eThe Python Splice Machine API communicates with your database through the \u003ccode\u003ePySparkContext\u003c/code\u003e class, the implementation of which is shown below.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1542395787813_958797595",
-      "id": "20180611-203433_1201670218",
-      "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "jobName": "paragraph_1542759213126_684562962",
+      "id": "20181120-161333_1536591529",
+      "dateCreated": "2018-11-20 16:13:33.127",
+      "dateStarted": "2018-11-20 16:23:40.666",
+      "dateFinished": "2018-11-20 16:23:40.670",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark.pyspark\nfrom __future__ import print_function\n\nfrom pyspark.sql import DataFrame\nfrom py4j.java_gateway import java_import\n\n\nclass PySpliceContext:\n    \"\"\"\n    This class implements a SpliceMachineContext object (similar to the SparkContext object)\n    \"\"\"\n\n    def __init__(self, JDBC_URL, sparkSQLContext, _unitTesting\u003dFalse):\n        \"\"\"\n        :param JDBC_URL: (string) The JDBC URL Connection String for your Splice Machine Cluster\n        :param sparkSQLContext: (sparkContext) A SparkContext Object for executing Spark Queries\n        \"\"\"\n        self.jdbcurl \u003d JDBC_URL\n        self._unitTesting \u003d _unitTesting\n\n        if not _unitTesting:  # Private Internal Argument to Override Using JVM\n            self.sparkSQLContext \u003d sparkSQLContext\n            self.jvm \u003d self.sparkSQLContext._sc._jvm\n            java_import(self.jvm, \"com.splicemachine.spark.splicemachine.*\")\n            java_import(self.jvm, \"org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\")\n            java_import(self.jvm, \"scala.collection.JavaConverters._\")\n            self.context \u003d self.jvm.com.splicemachine.spark.splicemachine.SplicemachineContext(self.jdbcurl)\n\n        else:\n            self.sparkSQLContext \u003d sparkSQLContext\n            self.jvm \u003d \u0027\u0027\n            self.context \u003d FakeJContext(self.jdbcurl)\n\n    def getConnection(self):\n        \"\"\"\n        Return a connection to the database\n        \"\"\"\n        return self.context.getConnection()\n\n    def tableExists(self, schemaTableName):\n        \"\"\"\n        Check whether or not a table exists\n\n        :param schemaTableName: (string) Table Name\n        \"\"\"\n        return self.context.tableExists(schemaTableName)\n\n    def dropTable(self, schemaTableName):  # works\n        \"\"\"\n        Drop a specified table.\n\n        :param schemaTableName (optional): (string) schemaName.tableName\n        \"\"\"\n        return self.context.dropTable(schemaTableName)\n\n    def df(self, sql):\n        \"\"\"\n        Return a Spark Dataframe from the results of a Splice Machine SQL Query\n\n        :param sql: (string) SQL Query (eg. SELECT * FROM table1 WHERE column2 \u003e 3)\n        :return: A Spark DataFrame containing the results\n        \"\"\"\n        if self._unitTesting:\n            return self.context.df(sql)\n        return DataFrame(self.context.df(sql), self.sparkSQLContext)\n\n    def insert(self, dataFrame, schemaTableName):\n        \"\"\"\n        Insert a RDD into a table (schema.table).  The schema is required since RDD\u0027s do not have schema.\n\n        :param dataFrame: (RDD) The dataFrame you would like to insert\n        :param schemaTableName: (string) The table in which you would like to insert the RDD\n        \"\"\"\n        return self.context.insert(dataFrame._jdf, schemaTableName)\n\n    def delete(self, dataFrame, schemaTableName):\n        \"\"\"\n        Delete records in a dataframe based on joining by primary keys from the data frame.\n        Be careful with column naming and case sensitivity.\n\n        :param dataFrame: (RDD) The dataFrame you would like to delete\n        :param schemaTableName: (string) Splice Machine Table\n        \"\"\"\n        return self.context.delete(dataFrame._jdf, schemaTableName)\n\n    def update(self, dataFrame, schemaTableName):\n        \"\"\"\n        Update data from a dataframe for a specified schemaTableName (schema.table).\n        The keys are required for the update and any other columns provided will be updated in the rows.\n\n        :param dataFrame: (RDD) The dataFrame you would like to update\n        :param schemaTableName: (string) Splice Machine Table\n        :return:\n        \"\"\"\n        return self.context.update(dataFrame._jdf, schemaTableName)\n\n    def getSchema(self, schemaTableName):\n        \"\"\"\n        Return the schema via JDBC.\n\n        :param schemaTableName: (string) Table name\n        \"\"\"\n        return self.context.getSchema(schemaTableName)\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:23:23.367",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "python",
-          "editOnDblClick": false
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/python",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -639,26 +695,33 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": []
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "pyspark is not responding"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1542395787813_-907687800",
       "id": "20180611-203503_2054048772",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:23:23.391",
+      "dateFinished": "2018-11-20 16:23:44.965",
+      "status": "ABORT",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md \n#### Now that we have our `PySpliceContext`, we can instantiate it and import our modules\n\n```\nfrom pyspark.ml.feature import StringIndexer, VectorAssembler\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\n```",
+      "text": "%md \nWe use the following code to instantiate `PySpliceContext` and import our modules:\n\n```\nfrom pyspark.ml.feature import StringIndexer, VectorAssembler\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\n```",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:24:32.226",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -676,7 +739,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eNow that we have our \u003ccode\u003ePySpliceContext\u003c/code\u003e, we can instantiate it and import our modules\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003efrom pyspark.ml.feature import StringIndexer, VectorAssembler\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe use the following code to instantiate \u003ccode\u003ePySpliceContext\u003c/code\u003e and import our modules:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003efrom pyspark.ml.feature import StringIndexer, VectorAssembler\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -684,14 +747,15 @@
       "jobName": "paragraph_1542395787814_1617706465",
       "id": "20180611-203526_1071983380",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:24:32.226",
+      "dateFinished": "2018-11-20 16:24:32.231",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 2. Create our DataFrame\n#### The next thing that we have to do is create a Python DataFrame from the results of a SQL `SELECT` query from the database. This allows us to manipulate our Splice Machine data as a Spark DataFrame\n\n```\ndf_with_uppercase_schema \u003d PySpliceContext.df(\"select * from ASN.Features\")\nnewNames \u003d [\n    \"consignee\",\n    \"shipper\",\n    \"shipmode\",\n    \"gross_weight_lb\",\n    \"foreign_port\",\n    \"us_port\",\n    \"vessel_name\",\n    \"country_of_origin\",\n    \"container_number\",\n    \"container_type\",\n    \"quantity\",\n    \"ship_registered_in\",\n    \"carrier_code\",\n    \"carrier_city\",\n    \"notify_party\",\n    \"place_of_receipt\",\n    \"zipcode\",\n    \"quantity_bin\"\n    ]\ndf \u003d df_with_uppercase_schema.toDF(newNames)\n```",
+      "text": "%md\n### 2. Create our DataFrame\n\nNext we create a Python DataFrame from the results of a SQL `SELECT` query from the database. This allows us to manipulate our Splice Machine data as a Spark DataFrame\n\n```\ndf_with_uppercase_schema \u003d PySpliceContext.df(\"select * from ASN.Features\")\nnewNames \u003d [\n    \"consignee\",\n    \"shipper\",\n    \"shipmode\",\n    \"gross_weight_lb\",\n    \"foreign_port\",\n    \"us_port\",\n    \"vessel_name\",\n    \"country_of_origin\",\n    \"container_number\",\n    \"container_type\",\n    \"quantity\",\n    \"ship_registered_in\",\n    \"carrier_code\",\n    \"carrier_city\",\n    \"notify_party\",\n    \"place_of_receipt\",\n    \"zipcode\",\n    \"quantity_bin\"\n    ]\ndf \u003d df_with_uppercase_schema.toDF(newNames)\n```",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:24:54.939",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -714,7 +778,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Create our DataFrame\u003c/h3\u003e\n\u003ch4\u003eThe next thing that we have to do is create a Python DataFrame from the results of a SQL \u003ccode\u003eSELECT\u003c/code\u003e query from the database. This allows us to manipulate our Splice Machine data as a Spark DataFrame\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003edf_with_uppercase_schema \u003d PySpliceContext.df(\u0026quot;select * from ASN.Features\u0026quot;)\nnewNames \u003d [\n    \u0026quot;consignee\u0026quot;,\n    \u0026quot;shipper\u0026quot;,\n    \u0026quot;shipmode\u0026quot;,\n    \u0026quot;gross_weight_lb\u0026quot;,\n    \u0026quot;foreign_port\u0026quot;,\n    \u0026quot;us_port\u0026quot;,\n    \u0026quot;vessel_name\u0026quot;,\n    \u0026quot;country_of_origin\u0026quot;,\n    \u0026quot;container_number\u0026quot;,\n    \u0026quot;container_type\u0026quot;,\n    \u0026quot;quantity\u0026quot;,\n    \u0026quot;ship_registered_in\u0026quot;,\n    \u0026quot;carrier_code\u0026quot;,\n    \u0026quot;carrier_city\u0026quot;,\n    \u0026quot;notify_party\u0026quot;,\n    \u0026quot;place_of_receipt\u0026quot;,\n    \u0026quot;zipcode\u0026quot;,\n    \u0026quot;quantity_bin\u0026quot;\n    ]\ndf \u003d df_with_uppercase_schema.toDF(newNames)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Create our DataFrame\u003c/h3\u003e\n\u003cp\u003eNext we create a Python DataFrame from the results of a SQL \u003ccode\u003eSELECT\u003c/code\u003e query from the database. This allows us to manipulate our Splice Machine data as a Spark DataFrame\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edf_with_uppercase_schema \u003d PySpliceContext.df(\u0026quot;select * from ASN.Features\u0026quot;)\nnewNames \u003d [\n    \u0026quot;consignee\u0026quot;,\n    \u0026quot;shipper\u0026quot;,\n    \u0026quot;shipmode\u0026quot;,\n    \u0026quot;gross_weight_lb\u0026quot;,\n    \u0026quot;foreign_port\u0026quot;,\n    \u0026quot;us_port\u0026quot;,\n    \u0026quot;vessel_name\u0026quot;,\n    \u0026quot;country_of_origin\u0026quot;,\n    \u0026quot;container_number\u0026quot;,\n    \u0026quot;container_type\u0026quot;,\n    \u0026quot;quantity\u0026quot;,\n    \u0026quot;ship_registered_in\u0026quot;,\n    \u0026quot;carrier_code\u0026quot;,\n    \u0026quot;carrier_city\u0026quot;,\n    \u0026quot;notify_party\u0026quot;,\n    \u0026quot;place_of_receipt\u0026quot;,\n    \u0026quot;zipcode\u0026quot;,\n    \u0026quot;quantity_bin\u0026quot;\n    ]\ndf \u003d df_with_uppercase_schema.toDF(newNames)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -722,8 +786,9 @@
       "jobName": "paragraph_1542395787814_-782902311",
       "id": "20180611-211856_605292217",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:24:54.939",
+      "dateFinished": "2018-11-20 16:24:54.944",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -765,14 +830,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 4. Assemble our Pipeline\n\n```\n// Chain indexers and tree in a Pipeline\nlrPipeline \u003d Pipeline(stages\u003d\n        [consigneeIndexer,\n        shipperIndexer,\n        shipmodeIndexer,\n        gross_weight_lbIndexer,\n        foreign_portIndexer,\n        us_portIndexer,\n        vessel_nameIndexer,\n        country_of_originIndexer,\n        container_numberIndexer,\n        container_typeIndexer,\n        ship_registered_inIndexer,\n        carrier_codeIndexer,\n        carrier_cityIndexer,\n        notify_partyIndexer,\n        place_of_receiptIndexer,\n        zipcodeIndexer,\n        assembler,\n        lr]\n        )\n```",
+      "text": "%md\n### 4. Assemble our Pipeline\n\nNow we\u0027re ready to assemble our pipeline:\n\n```\n// Chain indexers and tree in a Pipeline\nlrPipeline \u003d Pipeline(stages\u003d\n        [consigneeIndexer,\n        shipperIndexer,\n        shipmodeIndexer,\n        gross_weight_lbIndexer,\n        foreign_portIndexer,\n        us_portIndexer,\n        vessel_nameIndexer,\n        country_of_originIndexer,\n        container_numberIndexer,\n        container_typeIndexer,\n        ship_registered_inIndexer,\n        carrier_codeIndexer,\n        carrier_cityIndexer,\n        notify_partyIndexer,\n        place_of_receiptIndexer,\n        zipcodeIndexer,\n        assembler,\n        lr]\n        )\n```",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:25:38.789",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -790,7 +856,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Assemble our Pipeline: Python\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003e// Chain indexers and tree in a Pipeline\nlrPipeline \u003d Pipeline(stages\u003d\n        [consigneeIndexer,\n        shipperIndexer,\n        shipmodeIndexer,\n        gross_weight_lbIndexer,\n        foreign_portIndexer,\n        us_portIndexer,\n        vessel_nameIndexer,\n        country_of_originIndexer,\n        container_numberIndexer,\n        container_typeIndexer,\n        ship_registered_inIndexer,\n        carrier_codeIndexer,\n        carrier_cityIndexer,\n        notify_partyIndexer,\n        place_of_receiptIndexer,\n        zipcodeIndexer,\n        assembler,\n        lr]\n        )\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Assemble our Pipeline\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to assemble our pipeline:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Chain indexers and tree in a Pipeline\nlrPipeline \u003d Pipeline(stages\u003d\n        [consigneeIndexer,\n        shipperIndexer,\n        shipmodeIndexer,\n        gross_weight_lbIndexer,\n        foreign_portIndexer,\n        us_portIndexer,\n        vessel_nameIndexer,\n        country_of_originIndexer,\n        container_numberIndexer,\n        container_typeIndexer,\n        ship_registered_inIndexer,\n        carrier_codeIndexer,\n        carrier_cityIndexer,\n        notify_partyIndexer,\n        place_of_receiptIndexer,\n        zipcodeIndexer,\n        assembler,\n        lr]\n        )\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -798,19 +864,21 @@
       "jobName": "paragraph_1542395787815_-1002231981",
       "id": "20180611-215932_1084664308",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:25:38.790",
+      "dateFinished": "2018-11-20 16:25:38.794",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 5. Train our Model\nNow that our pipeline is set up, all we need to do to train our model is feed our dataframe into the pipeline\u0027s `fit` method, which learns from the data. \n```\n// Train model. \nlrModel \u003d lrPipeline.fit(df)\n```\n",
+      "text": "%md\n### 5. Train our Model\nNow that our pipeline is set up, all we need to do to train our model by feeding our dataframe into the pipeline\u0027s `fit` method, which learns from the data. \n```\n// Train model. \nlrModel \u003d lrPipeline.fit(df)\n```\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:26:00.165",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -828,7 +896,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e5. Train our Model\u003c/h3\u003e\n\u003cp\u003eNow that our pipeline is set up, all we need to do to train our model is feed our dataframe into the pipeline\u0026rsquo;s \u003ccode\u003efit\u003c/code\u003e method, which learns from the data. \u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Train model. \nlrModel \u003d lrPipeline.fit(df)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e5. Train our Model\u003c/h3\u003e\n\u003cp\u003eNow that our pipeline is set up, all we need to do to train our model by feeding our dataframe into the pipeline\u0026rsquo;s \u003ccode\u003efit\u003c/code\u003e method, which learns from the data. \u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Train model. \nlrModel \u003d lrPipeline.fit(df)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -836,20 +904,22 @@
       "jobName": "paragraph_1542395787815_1282966933",
       "id": "20180611-220247_1750575070",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:26:00.165",
+      "dateFinished": "2018-11-20 16:26:00.170",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Using Spark MLlib",
-      "text": "%md\n### 6. Materialize the Model\n\nNow that we\u0027ve trained our model, we can apply it to real data and display the results. For simplicity sake, we\u0027ll simply apply the model to our feature table itself.\n\n```\nlrModel.transform(df).select(\"prediction\", \"probability\", \"features\").show(100)\n```",
+      "text": "%md\n### 6. Materialize the Model\n\nAfter training our model, we can apply it to real data and display the results. For simplicity sake, in this example, we\u0027ll apply the model to our feature table itself.\n\n```\nlrModel.transform(df).select(\"prediction\", \"probability\", \"features\").show(100)\n```",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:26:35.053",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -868,7 +938,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Materialize the Model\u003c/h3\u003e\n\u003cp\u003eNow that we\u0026rsquo;ve trained our model, we can apply it to real data and display the results. For simplicity sake, we\u0026rsquo;ll simply apply the model to our feature table itself.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003elrModel.transform(df).select(\u0026quot;prediction\u0026quot;, \u0026quot;probability\u0026quot;, \u0026quot;features\u0026quot;).show(100)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Materialize the Model\u003c/h3\u003e\n\u003cp\u003eAfter training our model, we can apply it to real data and display the results. For simplicity sake, in this example, we\u0026rsquo;ll apply the model to our feature table itself.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003elrModel.transform(df).select(\u0026quot;prediction\u0026quot;, \u0026quot;probability\u0026quot;, \u0026quot;features\u0026quot;).show(100)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -876,8 +946,9 @@
       "jobName": "paragraph_1542395787815_-1172896776",
       "id": "20180118-020316_1913850778",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:26:35.054",
+      "dateFinished": "2018-11-20 16:26:35.058",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -992,14 +1063,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Final Python Code\n##### (you made it!)",
+      "text": "%md\n## The Python Code\n\nOur Python code is listed here:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 16:27:55.220",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -1017,7 +1089,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eFinal Python Code\u003c/h3\u003e\n\u003ch5\u003e(you made it!)\u003c/h5\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eThe Python Code\u003c/h2\u003e\n\u003cp\u003eOur Python code is listed here:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1025,8 +1097,9 @@
       "jobName": "paragraph_1542395787817_317619724",
       "id": "20180611-220822_612758436",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:27:55.221",
+      "dateFinished": "2018-11-20 16:27:55.224",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1111,18 +1184,19 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md \n### Let\u0027s test it on the \"testing\" features table",
+      "text": "%md \n## Testing the Code\n\nNow we\u0027ll test our code on the `testing` features table:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
+      "dateUpdated": "2018-11-20 17:14:45.620",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -1136,7 +1210,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLet\u0026rsquo;s test it on the \u0026ldquo;testing\u0026rdquo; features table\u003c/h3\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTesting the Code\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll test our code on the \u003ccode\u003etesting\u003c/code\u003e features table:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1144,8 +1218,9 @@
       "jobName": "paragraph_1542395787818_781413201",
       "id": "20180612-031608_1101973053",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 16:28:25.558",
+      "dateFinished": "2018-11-20 16:28:25.561",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1183,44 +1258,6 @@
       "apps": [],
       "jobName": "paragraph_1542395787818_-162438799",
       "id": "20180612-031749_1939890694",
-      "dateCreated": "2018-11-16 11:16:27.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n### Python",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:16:27.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003ePython\u003c/h3\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395787818_-1378242676",
-      "id": "20180612-174734_2138572916",
       "dateCreated": "2018-11-16 11:16:27.000",
       "status": "READY",
       "errorMessage": "",
@@ -1433,7 +1470,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Developers - Part II/i. ML with Spark MLlib Using Python",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/i. ML with Spark MLlib Using Python",
   "id": "2DWTYCFTY",
   "noteParams": {},
   "noteForms": {},

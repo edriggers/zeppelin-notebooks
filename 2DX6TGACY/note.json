@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# KMeans\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset\nKMeans is an iterative process, where K clusters are created by the user and continualy computed on a given dataset until the data converges and the algorithm ends.\n## Setting up a KMeans\nTo implement KMeans, you will need two things:\n\n* A dataset of structured data. Learn about structured data [here](https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid\u003d33JGI)\n* A value for K. K can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K [here](https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set)\n\n## Computing KMeans\nA KMeans algorithm is computed in three main steps:\n1. K clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints\n2. For each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance\n3. After all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.\n\n#### Steps 2 and 3 are repeated until one of the following:\n* A set number of iterations occurs\n* No datapoints are reassigned to new clusters\n* Minimum distance changes occur within clusters\n\nLearn more about KMeans algorithm [here](https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials)\nIn-depth KMeans clustering documentation [here](http://scikit-learn.org/stable/modules/clustering.html#k-means)\n\n#### We will now create a simple KMeans example.\nTo follow along with this data, download [here](https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv)\nMore KMeans and Scala examples [here](https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib)\n\nLearn about Sum of Squares for Errors (used later in algorithm) [here](http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE))",
+      "text": "%md\n\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# KMeans\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset\nKMeans is an iterative process, where K clusters are created by the user and continualy computed on a given dataset until the data converges and the algorithm ends.\n## Setting up a KMeans\nYou need these things to implement KMeans:\n\n* A dataset of structured data. Learn about structured data [here](https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid\u003d33JGI)\n* A value for K. K can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K [here](https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set)\n\n## Computing KMeans\nA KMeans algorithm is computed in three main steps:\n\n1. K clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints\n2. For each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance\n3. After all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.\n\nSteps 2 and 3 are repeated until one of the following occurs:\n\n* A set number of iterations occurs\n* No datapoints are reassigned to new clusters\n* Minimum distance changes occur within clusters\n\nLearn more about the KMeans algorithm [here](https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials)\nIn-depth KMeans clustering documentation [here](http://scikit-learn.org/stable/modules/clustering.html#k-means)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:59:38.000",
+      "dateUpdated": "2018-11-20 18:29:46.537",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -35,7 +35,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eKMeans\u003c/h1\u003e\n\u003cp\u003eKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset\u003cbr/\u003eKMeans is an iterative process, where K clusters are created by the user and continualy computed on a given dataset until the data converges and the algorithm ends.\u003c/p\u003e\n\u003ch2\u003eSetting up a KMeans\u003c/h2\u003e\n\u003cp\u003eTo implement KMeans, you will need two things:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eA dataset of structured data. Learn about structured data \u003ca href\u003d\"https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid\u003d33JGI\"\u003ehere\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eA value for K. K can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K \u003ca href\u003d\"https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set\"\u003ehere\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eComputing KMeans\u003c/h2\u003e\n\u003cp\u003eA KMeans algorithm is computed in three main steps:\u003cbr/\u003e1. K clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints\u003cbr/\u003e2. For each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance\u003cbr/\u003e3. After all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.\u003c/p\u003e\n\u003ch4\u003eSteps 2 and 3 are repeated until one of the following:\u003c/h4\u003e\n\u003cul\u003e\n  \u003cli\u003eA set number of iterations occurs\u003c/li\u003e\n  \u003cli\u003eNo datapoints are reassigned to new clusters\u003c/li\u003e\n  \u003cli\u003eMinimum distance changes occur within clusters\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLearn more about KMeans algorithm \u003ca href\u003d\"https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials\"\u003ehere\u003c/a\u003e\u003cbr/\u003eIn-depth KMeans clustering documentation \u003ca href\u003d\"http://scikit-learn.org/stable/modules/clustering.html#k-means\"\u003ehere\u003c/a\u003e\u003c/p\u003e\n\u003ch4\u003eWe will now create a simple KMeans example.\u003c/h4\u003e\n\u003cp\u003eTo follow along with this data, download \u003ca href\u003d\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\"\u003ehere\u003c/a\u003e\u003cbr/\u003eMore KMeans and Scala examples \u003ca href\u003d\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\"\u003ehere\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eLearn about Sum of Squares for Errors (used later in algorithm) [here](\u003ca href\u003d\"http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\"\u003ehttp://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\u003c/a\u003e)\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eKMeans\u003c/h1\u003e\n\u003cp\u003eKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset\u003cbr/\u003eKMeans is an iterative process, where K clusters are created by the user and continualy computed on a given dataset until the data converges and the algorithm ends.\u003c/p\u003e\n\u003ch2\u003eSetting up a KMeans\u003c/h2\u003e\n\u003cp\u003eYou need these things to implement KMeans:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eA dataset of structured data. Learn about structured data \u003ca href\u003d\"https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid\u003d33JGI\"\u003ehere\u003c/a\u003e\u003c/li\u003e\n  \u003cli\u003eA value for K. K can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K \u003ca href\u003d\"https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set\"\u003ehere\u003c/a\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eComputing KMeans\u003c/h2\u003e\n\u003cp\u003eA KMeans algorithm is computed in three main steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eK clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints\u003c/li\u003e\n  \u003cli\u003eFor each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance\u003c/li\u003e\n  \u003cli\u003eAfter all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eSteps 2 and 3 are repeated until one of the following occurs:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eA set number of iterations occurs\u003c/li\u003e\n  \u003cli\u003eNo datapoints are reassigned to new clusters\u003c/li\u003e\n  \u003cli\u003eMinimum distance changes occur within clusters\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLearn more about the KMeans algorithm \u003ca href\u003d\"https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials\"\u003ehere\u003c/a\u003e\u003cbr/\u003eIn-depth KMeans clustering documentation \u003ca href\u003d\"http://scikit-learn.org/stable/modules/clustering.html#k-means\"\u003ehere\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -43,8 +43,49 @@
       "jobName": "paragraph_1542398329138_264893937",
       "id": "20170620-100414_1484018649",
       "dateCreated": "2018-11-16 11:58:49.000",
-      "dateStarted": "2018-11-16 11:59:38.000",
-      "dateFinished": "2018-11-16 11:59:38.000",
+      "dateStarted": "2018-11-20 18:29:46.538",
+      "dateFinished": "2018-11-20 18:29:46.548",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## A Simple KMeans Example\n\nThe remainder of this notebook implements a simple example of KMeans.\n\nTo follow along with this data, download from here:  [https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv](https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv).\n\nYou can see more KMeans and Scala examples here: \u003ca href\u003d\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\" target\u003d\"_blank\"\u003ehttps://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\u003c/a\u003e.\n\nAnd you can learn about Sum of Squares for Errors, which is used later in the algorithm, here:  \u003ca href\u003d\"http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\" target\u003d\"_blank\"\u003ehttps://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\u003c/a\u003e.",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-20 18:34:48.390",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Simple KMeans Example\u003c/h2\u003e\n\u003cp\u003eThe remainder of this notebook implements a simple example of KMeans.\u003c/p\u003e\n\u003cp\u003eTo follow along with this data, download from here: \u003ca href\u003d\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\"\u003ehttps://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eYou can see more KMeans and Scala examples here: \u003ca href\u003d\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\"\u003ehttps://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\u003c/a\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eAnd you can learn about Sum of Squares for Errors, which is used later in the algorithm, here: \u003ca href\u003d\"http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\"\u003ehttps://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\u003c/a\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542767394316_90114078",
+      "id": "20181120-182954_729821940",
+      "dateCreated": "2018-11-20 18:29:54.316",
+      "dateStarted": "2018-11-20 18:34:48.391",
+      "dateFinished": "2018-11-20 18:34:48.395",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -137,7 +178,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Data Science/j. KMeans",
+  "name": "Splice Machine Training/For Data Scientists/j. KMeans",
   "id": "2DX6TGACY",
   "noteParams": {},
   "noteForms": {},

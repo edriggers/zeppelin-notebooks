@@ -145,14 +145,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Zeppelin SparkR Tutorial\n\n##### This is a live tutorial, you can run the code yourself. (Shift-Enter to Run)",
+      "text": "%md\n\nTo see Spark R in action, click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in each of the next paragraphs.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:52:52.000",
+      "dateUpdated": "2018-11-20 17:47:48.946",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -170,7 +171,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eZeppelin SparkR Tutorial\u003c/h2\u003e\n\u003ch5\u003eThis is a live tutorial, you can run the code yourself. (Shift-Enter to Run)\u003c/h5\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eTo see Spark R in action, click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in each of the next paragraphs.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -178,8 +179,9 @@
       "jobName": "paragraph_1542397972789_-1173705120",
       "id": "20170128-115033_693473992",
       "dateCreated": "2018-11-16 11:52:52.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-20 17:47:48.946",
+      "dateFinished": "2018-11-20 17:47:48.949",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -384,7 +386,7 @@
       "title": "Write Scala To R",
       "text": "%spark\nval s \u003d \"Hello R from Scala\"\nz.put(\"s\", s)\nval b \u003d new Integer(42)\nz.put(\"b\", b)\nval a: Array[Double] \u003d Array[Double](30.1, 20.0)\nz.put(\"a\", a)\nval m \u003d Array(Array(1, 4), Array(8, 16))\nz.put(\"m\", m)\nval v \u003d Vector(1, 2, 3, 4)\nz.put(\"v\", v)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:52:52.000",
+      "dateUpdated": "2018-11-20 17:50:22.230",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -438,7 +440,7 @@
       "title": "Read from R the Scala Variables",
       "text": "%r\nz.get(\"s\")\nz.get(\"b\")\nprint(unlist(z.get(\"a\")))\nprint(unlist(z.get(\"m\")))\nz.get(\"v\")",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:52:52.000",
+      "dateUpdated": "2018-11-20 17:50:26.382",
       "config": {
         "editorSetting": {
           "language": "r",
@@ -490,7 +492,7 @@
       "title": "Write R to Scala",
       "text": "%r\ns \u003c- \"Hello Scala from R\"\nprint(s)\nz.put(\"rs\", s)\nb \u003c- TRUE\nprint(b)\nz.put(\"rb\", b)\nd \u003c- 15.0\nprint(d)\nz.put(\"rd\", d)\nm \u003c- c(2.4, 2.5, 4)\nprint(m)\nz.put(\"rm\", m)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:52:52.000",
+      "dateUpdated": "2018-11-20 17:50:29.600",
       "config": {
         "editorSetting": {
           "language": "r",
@@ -542,7 +544,7 @@
       "title": "Read from Scala the R Variables",
       "text": "%spark\nprintln(\"rs \u003d \"+ z.get(\"rs\"))\nprintln(\"rb \u003d \"+ z.get(\"rb\"))\nprintln(\"rd \u003d \"+ z.get(\"rd\"))\nprintln(\"rm \u003d \"+ z.get(\"rm\"))\n// println(z.get(\"rm\").getClass)\n// println(\"rm \u003d \"+ z.get(\"rm\").asInstanceOf[Array[Double]].toSeq)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:52:52.000",
+      "dateUpdated": "2018-11-20 17:50:32.221",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1006,7 +1008,7 @@
       "title": "GoogleVis: Candlestick Chart",
       "text": "%r\nlibrary(googleVis)\n\nCandle \u003c- gvisCandlestickChart(OpenClose, \n                               options\u003dlist(legend\u003d\u0027none\u0027))\n\nprint(Candle, tag \u003d \u0027chart\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:52:52.000",
+      "dateUpdated": "2018-11-20 17:50:12.825",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1103,7 +1105,7 @@
     {
       "text": "%r pairs(iris)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:52:52.000",
+      "dateUpdated": "2018-11-20 17:51:58.577",
       "config": {
         "editorSetting": {
           "language": "r",
@@ -1126,7 +1128,8 @@
             }
           }
         ],
-        "enabled": true
+        "enabled": true,
+        "title": false
       },
       "settings": {
         "params": {},
@@ -1437,7 +1440,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/Data Science/e. Using SparkR in Zeppelin",
+  "name": "Splice Machine Training/For Data Scientists/e. Using SparkR in Zeppelin",
   "id": "2DXQ24QYP",
   "noteParams": {},
   "noteForms": {},

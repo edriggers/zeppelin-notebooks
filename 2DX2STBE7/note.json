@@ -239,9 +239,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the [Introduction to Splice Machine Training](/#/notebook/2DWTR5ZBH) notebook. Each of our classes ranges from 1-3 hours time to complete.\n",
+      "text": "%md\n## Where to Go Next\n\nWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the [*Introduction to Splice Machine Training*](/#/notebook/2DWTR5ZBH) notebook. Each of our classes ranges from 1-3 hours time to complete.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 20:46:53.856",
+      "dateUpdated": "2018-11-20 12:52:49.495",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -265,7 +265,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003eIntroduction to Splice Machine Training\u003c/a\u003e notebook. Each of our classes ranges from 1-3 hours time to complete.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eIntroduction to Splice Machine Training\u003c/em\u003e\u003c/a\u003e notebook. Each of our classes ranges from 1-3 hours time to complete.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -273,8 +273,8 @@
       "jobName": "paragraph_1542668232101_1564913823",
       "id": "20180125-142959_1101825868",
       "dateCreated": "2018-11-19 14:57:12.101",
-      "dateStarted": "2018-11-19 20:46:53.856",
-      "dateFinished": "2018-11-19 20:46:53.861",
+      "dateStarted": "2018-11-20 12:52:49.497",
+      "dateFinished": "2018-11-20 12:52:51.547",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -306,12 +306,13 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Training/General Introduction to Splice Machine",
+  "name": "Splice Machine Training/General Introduction to Splice Machine",
   "id": "2DX2STBE7",
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
+    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {
