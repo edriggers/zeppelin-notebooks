@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction\nSplice Machine allows for the creation of custom functions and procedures that you can deploy to your database.  Once deployed, these functions and procedures can be called as needed from your SQL.  This notebook will show you how this is done.\n\n\u003cp class\u003d\"noteIcon\"\u003eWhen creating custom functions and procedures as described here, the code must be in Java.\u003c/p\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:29:23.785",
+      "dateUpdated": "2018-11-21 10:21:02.200",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -82,16 +82,17 @@
     {
       "text": "%md\n## Local Development of the Custom Code in an IDE\n\nWe highly recommend that the initial development of the custom code is done in your local environment (e.g. Mac or Linux).  This way you can develop and test the code in a quick cycle, testing and tuning as needed, before deploying to a full cluster.  The steps described here will be for a Mac, but the process is generally the same for Linux.\n\nUsing an Integrated Development Environment (IDE) is usually the best approach when developing code, since development is straightforward, as is the generation of the desired output - a JDK 1.8-compatible JAR file.  We\u0027ll be using IntelliJ IDEA here but again most IDE\u0027s should work as well.\n\n### Setting Up Your Project\n\nInside of IntelliJ IDEA, do the following:\n1. Select File -\u003e New -\u003e Project...\n2. Choose \"Java\" with 1.8 as the Project SDK \u003cNext\u003e\n3. Skip creating from a template unless you prefer to use one \u003cNext\u003e\n4. Give your project a name and location (such as CompanyACustom1)\n5. If desired, create a new package (File -\u003e New -\u003e Package), such as com.splicemachine.companya\n\n### Configuring to output a JAR file\n\nInside of IntelliJ IDEA, do the following:\n1. Select File -\u003e Project Structure...\n2. Select Artifacts, and hit \"+\"\n3. Choose JAR -\u003e From modules with dependencies \n3. Check \"Build on make\" and hit \u003cOK\u003e\n\n### Coding your function or procedure\n\n1. Create a file: right click on your src or package folder and select `New -\u003e Java Class`\n2. Paste in code like the following:\n\n```\npackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\"jdbc:default:connection\")) {\n\n            String incrementSQL \u003d \"update SPLICE.INCREMENTTEST set i \u003d i + 1\";\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n```\n\n### Build your JAR file\n1. Build -\u003e Artifacts... JAR\n2. Using your CLI you can navigate to where the JAR file is being created (e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar)\n\nYou are now ready to deploy your JAR file to test!\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:31:05.859",
+      "dateUpdated": "2018-11-21 10:21:40.922",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 8.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -105,7 +106,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLocal Development of the Custom Code in an IDE\u003c/h2\u003e\n\u003cp\u003eWe highly recommend that the initial development of the custom code is done in your local environment (e.g. Mac or Linux). This way you can develop and test the code in a quick cycle, testing and tuning as needed, before deploying to a full cluster. The steps described here will be for a Mac, but the process is generally the same for Linux.\u003c/p\u003e\n\u003cp\u003eUsing an Integrated Development Environment (IDE) is usually the best approach when developing code, since development is straightforward, as is the generation of the desired output - a JDK 1.8-compatible JAR file. We\u0026rsquo;ll be using IntelliJ IDEA here but again most IDE\u0026rsquo;s should work as well.\u003c/p\u003e\n\u003ch3\u003eSetting Up Your Project\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003cbr/\u003e1. Select File -\u0026gt; New -\u0026gt; Project\u0026hellip;\u003cbr/\u003e2. Choose \u0026ldquo;Java\u0026rdquo; with 1.8 as the Project SDK \u003cNext\u003e\u003cbr/\u003e3. Skip creating from a template unless you prefer to use one \u003cNext\u003e\u003cbr/\u003e4. Give your project a name and location (such as CompanyACustom1)\u003cbr/\u003e5. If desired, create a new package (File -\u0026gt; New -\u0026gt; Package), such as com.splicemachine.companya\u003c/p\u003e\n\u003ch3\u003eConfiguring to output a JAR file\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003cbr/\u003e1. Select File -\u0026gt; Project Structure\u0026hellip;\u003cbr/\u003e2. Select Artifacts, and hit \u0026ldquo;+\u0026rdquo;\u003cbr/\u003e3. Choose JAR -\u0026gt; From modules with dependencies\u003cbr/\u003e3. Check \u0026ldquo;Build on make\u0026rdquo; and hit \u003cOK\u003e\u003c/p\u003e\n\u003ch3\u003eCoding your function or procedure\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a file: right click on your src or package folder and select New -\u0026gt; Java Class\u003c/li\u003e\n  \u003cli\u003ePaste in code like the following:\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003epackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\u0026quot;jdbc:default:connection\u0026quot;)) {\n\n            String incrementSQL \u003d \u0026quot;update SPLICE.INCREMENTTEST set i \u003d i + 1\u0026quot;;\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003eBuild your JAR file\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003eBuild -\u0026gt; Artifacts\u0026hellip; JAR\u003c/li\u003e\n  \u003cli\u003eUsing your CLI you can navigate to where the JAR file is being created (e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar)\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eYou are now ready to deploy your JAR file to test!\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLocal Development of the Custom Code in an IDE\u003c/h2\u003e\n\u003cp\u003eWe highly recommend that the initial development of the custom code is done in your local environment (e.g. Mac or Linux). This way you can develop and test the code in a quick cycle, testing and tuning as needed, before deploying to a full cluster. The steps described here will be for a Mac, but the process is generally the same for Linux.\u003c/p\u003e\n\u003cp\u003eUsing an Integrated Development Environment (IDE) is usually the best approach when developing code, since development is straightforward, as is the generation of the desired output - a JDK 1.8-compatible JAR file. We\u0026rsquo;ll be using IntelliJ IDEA here but again most IDE\u0026rsquo;s should work as well.\u003c/p\u003e\n\u003ch3\u003eSetting Up Your Project\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003cbr/\u003e1. Select File -\u0026gt; New -\u0026gt; Project\u0026hellip;\u003cbr/\u003e2. Choose \u0026ldquo;Java\u0026rdquo; with 1.8 as the Project SDK \u003cNext\u003e\u003cbr/\u003e3. Skip creating from a template unless you prefer to use one \u003cNext\u003e\u003cbr/\u003e4. Give your project a name and location (such as CompanyACustom1)\u003cbr/\u003e5. If desired, create a new package (File -\u0026gt; New -\u0026gt; Package), such as com.splicemachine.companya\u003c/p\u003e\n\u003ch3\u003eConfiguring to output a JAR file\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003cbr/\u003e1. Select File -\u0026gt; Project Structure\u0026hellip;\u003cbr/\u003e2. Select Artifacts, and hit \u0026ldquo;+\u0026rdquo;\u003cbr/\u003e3. Choose JAR -\u0026gt; From modules with dependencies\u003cbr/\u003e3. Check \u0026ldquo;Build on make\u0026rdquo; and hit \u003cOK\u003e\u003c/p\u003e\n\u003ch3\u003eCoding your function or procedure\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a file: right click on your src or package folder and select \u003ccode\u003eNew -\u0026gt; Java Class\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003ePaste in code like the following:\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003epackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\u0026quot;jdbc:default:connection\u0026quot;)) {\n\n            String incrementSQL \u003d \u0026quot;update SPLICE.INCREMENTTEST set i \u003d i + 1\u0026quot;;\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003eBuild your JAR file\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003eBuild -\u0026gt; Artifacts\u0026hellip; JAR\u003c/li\u003e\n  \u003cli\u003eUsing your CLI you can navigate to where the JAR file is being created (e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar)\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eYou are now ready to deploy your JAR file to test!\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -113,8 +114,9 @@
       "jobName": "paragraph_1542396049298_-265258066",
       "id": "20171130-161030_1002161632",
       "dateCreated": "2018-11-16 11:20:49.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 10:21:40.923",
+      "dateFinished": "2018-11-21 10:21:40.944",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -506,7 +508,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

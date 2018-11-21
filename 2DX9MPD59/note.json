@@ -117,14 +117,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nYou\u0027ll notice, as you probably did when running the `explain` in the *Importing Data* tutorial, that the row counts are way off! That\u0027s because we have __not__ run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\n\nLet\u0027s collect some statistics by analyzing our table, and then we\u0027ll rerun the `explain`. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0027ll see that the row counts and costs are accurate.\n\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n",
+      "text": "%md\n\u003cbr /\u003e\n\nYou\u0027ll notice that the row counts are way off! That\u0027s because we have __not__ run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\n\nLet\u0027s collect some statistics by analyzing our table, and then we\u0027ll rerun the `explain`. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0027ll see that the row counts and costs are accurate.\n\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-21 09:47:13.262",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -142,7 +143,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice, as you probably did when running the \u003ccode\u003eexplain\u003c/code\u003e in the \u003cem\u003eImporting Data\u003c/em\u003e tutorial, that the row counts are way off! That\u0026rsquo;s because we have \u003cstrong\u003enot\u003c/strong\u003e run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s collect some statistics by analyzing our table, and then we\u0026rsquo;ll rerun the \u003ccode\u003eexplain\u003c/code\u003e. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0026rsquo;ll see that the row counts and costs are accurate.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice that the row counts are way off! That\u0026rsquo;s because we have \u003cstrong\u003enot\u003c/strong\u003e run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s collect some statistics by analyzing our table, and then we\u0026rsquo;ll rerun the \u003ccode\u003eexplain\u003c/code\u003e. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0026rsquo;ll see that the row counts and costs are accurate.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -150,8 +151,9 @@
       "jobName": "paragraph_1542402464281_-1793022678",
       "id": "20170916-210342_1463344047",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 09:47:13.263",
+      "dateFinished": "2018-11-21 09:47:13.273",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -599,9 +601,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nThat query should have come back almost immediately. But what happens if we query on j?",
+      "text": "%md\n\u003cbr /\u003e\n\nThat query should have come back almost immediately. But what happens if we query on `j`?",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-21 09:48:02.267",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -624,7 +626,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eThat query should have come back almost immediately. But what happens if we query on j?\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eThat query should have come back almost immediately. But what happens if we query on \u003ccode\u003ej\u003c/code\u003e?\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -632,8 +634,9 @@
       "jobName": "paragraph_1542402464284_-1568315423",
       "id": "20170917-094320_895722307",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 09:48:02.267",
+      "dateFinished": "2018-11-21 09:48:02.272",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -704,9 +707,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Adding an Index\n\nYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0027s add an index on j:",
+      "text": "%md\n### Adding an Index\n\nYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0027s add an index on `j`:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-21 09:48:15.832",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -729,7 +732,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAdding an Index\u003c/h3\u003e\n\u003cp\u003eYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0026rsquo;s add an index on j:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAdding an Index\u003c/h3\u003e\n\u003cp\u003eYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0026rsquo;s add an index on \u003ccode\u003ej\u003c/code\u003e:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -737,8 +740,9 @@
       "jobName": "paragraph_1542402464285_151424432",
       "id": "20170917-094404_1058792111",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 09:48:15.832",
+      "dateFinished": "2018-11-21 09:48:15.841",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -780,9 +784,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nIf you rerun the previous j query, it now runs quickly.  This is because the optimizer considered both plan options available to it (with and without an index), found a lower cost for the plan using the index, and executed that plan.\n\nThis is where `EXPLAIN` can be quite useful as well: you can discover if an index is being used or not. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to run the `explain`:\n",
+      "text": "%md\n\u003cbr /\u003e\n\nIf you rerun the previous `j` query, it now runs quickly.  This is because the optimizer considered both plan options available to it (with and without an index), found a lower cost for the plan using the index, and executed that plan.\n\nThis is where `EXPLAIN` can be quite useful as well: you can discover if an index is being used or not. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to run the `explain`:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-21 09:48:34.614",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -805,7 +809,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eIf you rerun the previous j query, it now runs quickly. This is because the optimizer considered both plan options available to it (with and without an index), found a lower cost for the plan using the index, and executed that plan.\u003c/p\u003e\n\u003cp\u003eThis is where \u003ccode\u003eEXPLAIN\u003c/code\u003e can be quite useful as well: you can discover if an index is being used or not. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to run the \u003ccode\u003eexplain\u003c/code\u003e:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eIf you rerun the previous \u003ccode\u003ej\u003c/code\u003e query, it now runs quickly. This is because the optimizer considered both plan options available to it (with and without an index), found a lower cost for the plan using the index, and executed that plan.\u003c/p\u003e\n\u003cp\u003eThis is where \u003ccode\u003eEXPLAIN\u003c/code\u003e can be quite useful as well: you can discover if an index is being used or not. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to run the \u003ccode\u003eexplain\u003c/code\u003e:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -813,8 +817,9 @@
       "jobName": "paragraph_1542402464286_-1683779077",
       "id": "20170917-094813_1546634594",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 09:48:34.614",
+      "dateFinished": "2018-11-21 09:48:34.624",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1252,9 +1257,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Join Strategies\n\nDatabases employ different algorithms to efficiently perform a join, depending on the circumstances.  Here are the join strategies Splice Machine employs:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003eSorts the data being joined and performs a merge on the results\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003ePerforms a merge, but is not valid unless the data is not pre-sorted (via primary key or index) on the join key\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003eRequires the right-hand-side table to be small (\u003c 1 million rows), so that this table can be copied to all nodes for local joins on each node\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003eThe general-purpose join strategy\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nEach join strategy has its strengths and weaknesses, which are summarized here:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eStrengths and Weaknesses\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOn queries processing a lot of data, when a Merge or Broadcast is not valid, SortMerge will be used.\u003c/p\u003e\n                \u003cp\u003eIt is slower than Merge and Broadcast, but can be used in more instances.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eGenerally the fastest query to process many rows of data on both the right and left side of the join.\u003c/p\u003e\n                \u003cp\u003eHowever the data must be sorted on the join keys on both the right and left sides.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eA very fast join algorithm as long as the *right-hand* table of the join has 1 million or fewer rows.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eThe fastest join for *transaction-type* queries (i.e. keyed lookups with few rows on each side of the join).\u003c/p\u003e\n                \u003cp\u003eIf there are many rows on the right and/or left side, this query can be very slow.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nWhen planning a query with joins, the optimizer will choose the join strategy with the lowest cost.  Its choice however might again influence how you make your own changes (for example, add an index so that a SortMerge becomes a Merge).  We will see more examples of this in the next Tutorial.\n\n",
+      "text": "%md\n### Join Strategies\n\nDatabases employ different algorithms to efficiently perform a join, depending on the circumstances.  Here are the join strategies Splice Machine employs:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003eSorts the data being joined and performs a merge on the results\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003ePerforms a merge, but is not valid unless the data is not pre-sorted (via primary key or index) on the join key\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003eRequires the right-hand-side table to be small (\u003c 1 million rows), so that this table can be copied to all nodes for local joins on each node\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003eThe general-purpose join strategy\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nEach join strategy has its strengths and weaknesses, which are summarized here:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eStrengths and Weaknesses\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOn queries processing a lot of data, when a Merge or Broadcast is not valid, SortMerge will be used.\u003c/p\u003e\n                \u003cp\u003eIt is slower than Merge and Broadcast, but can be used in more instances.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eGenerally the fastest query to process many rows of data on both the right and left side of the join.\u003c/p\u003e\n                \u003cp\u003eHowever the data must be sorted on the join keys on both the right and left sides.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eA very fast join algorithm as long as the *right-hand* table of the join has 1 million or fewer rows.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eThe fastest join for *transaction-type* queries (i.e. keyed lookups with few rows on each side of the join).\u003c/p\u003e\n                \u003cp\u003eIf there are many rows on the right and/or left side, this query can be very slow.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nWhen planning a query with joins, the optimizer will choose the join strategy with the lowest cost.  Its choice however might again influence how you make your own changes (for example, add an index so that a SortMerge becomes a Merge). \n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-21 09:49:39.150",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1277,7 +1282,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eJoin Strategies\u003c/h3\u003e\n\u003cp\u003eDatabases employ different algorithms to efficiently perform a join, depending on the circumstances. Here are the join strategies Splice Machine employs:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003eSorts the data being joined and performs a merge on the results\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003ePerforms a merge, but is not valid unless the data is not pre-sorted (via primary key or index) on the join key\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003eRequires the right-hand-side table to be small (\u003c 1 million rows), so that this table can be copied to all nodes for local joins on each node\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003eThe general-purpose join strategy\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eEach join strategy has its strengths and weaknesses, which are summarized here:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eStrengths and Weaknesses\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOn queries processing a lot of data, when a Merge or Broadcast is not valid, SortMerge will be used.\u003c/p\u003e\n                \u003cp\u003eIt is slower than Merge and Broadcast, but can be used in more instances.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eGenerally the fastest query to process many rows of data on both the right and left side of the join.\u003c/p\u003e\n                \u003cp\u003eHowever the data must be sorted on the join keys on both the right and left sides.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eA very fast join algorithm as long as the *right-hand* table of the join has 1 million or fewer rows.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eThe fastest join for *transaction-type* queries (i.e. keyed lookups with few rows on each side of the join).\u003c/p\u003e\n                \u003cp\u003eIf there are many rows on the right and/or left side, this query can be very slow.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eWhen planning a query with joins, the optimizer will choose the join strategy with the lowest cost. Its choice however might again influence how you make your own changes (for example, add an index so that a SortMerge becomes a Merge). We will see more examples of this in the next Tutorial.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eJoin Strategies\u003c/h3\u003e\n\u003cp\u003eDatabases employ different algorithms to efficiently perform a join, depending on the circumstances. Here are the join strategies Splice Machine employs:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003eSorts the data being joined and performs a merge on the results\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003ePerforms a merge, but is not valid unless the data is not pre-sorted (via primary key or index) on the join key\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003eRequires the right-hand-side table to be small (\u003c 1 million rows), so that this table can be copied to all nodes for local joins on each node\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003eThe general-purpose join strategy\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eEach join strategy has its strengths and weaknesses, which are summarized here:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eStrengths and Weaknesses\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOn queries processing a lot of data, when a Merge or Broadcast is not valid, SortMerge will be used.\u003c/p\u003e\n                \u003cp\u003eIt is slower than Merge and Broadcast, but can be used in more instances.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eGenerally the fastest query to process many rows of data on both the right and left side of the join.\u003c/p\u003e\n                \u003cp\u003eHowever the data must be sorted on the join keys on both the right and left sides.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eA very fast join algorithm as long as the *right-hand* table of the join has 1 million or fewer rows.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eThe fastest join for *transaction-type* queries (i.e. keyed lookups with few rows on each side of the join).\u003c/p\u003e\n                \u003cp\u003eIf there are many rows on the right and/or left side, this query can be very slow.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eWhen planning a query with joins, the optimizer will choose the join strategy with the lowest cost. Its choice however might again influence how you make your own changes (for example, add an index so that a SortMerge becomes a Merge).\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1285,8 +1290,9 @@
       "jobName": "paragraph_1542402464294_-307946997",
       "id": "20170917-105934_534798535",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 09:49:39.150",
+      "dateFinished": "2018-11-21 09:49:39.163",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1404,7 +1410,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

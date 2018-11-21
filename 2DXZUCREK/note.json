@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction\nSplice Machine allows for the creation of custom functions and procedures that you can deploy to your database.  Once deployed, these functions and procedures can be called as needed from your SQL.  This notebook will show you how this is done.\n\n(Important note: when creating custom functions and procedures as described here, the code must be in Java.)\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction\nSplice Machine allows for the creation of custom functions and procedures that you can deploy to your database.  Once deployed, these functions and procedures can be called as needed from your SQL.  This notebook will show you how this is done.\n\n\u003cp class\u003d\"noteIcon\"\u003eWhen creating custom functions and procedures as described here, the code must be in Java.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:17:21.000",
+      "dateUpdated": "2018-11-21 10:21:19.074",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eIntroduction\u003c/h1\u003e\n\u003cp\u003eSplice Machine allows for the creation of custom functions and procedures that you can deploy to your database. Once deployed, these functions and procedures can be called as needed from your SQL. This notebook will show you how this is done.\u003c/p\u003e\n\u003cp\u003e(Important note: when creating custom functions and procedures as described here, the code must be in Java.)\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eIntroduction\u003c/h1\u003e\n\u003cp\u003eSplice Machine allows for the creation of custom functions and procedures that you can deploy to your database. Once deployed, these functions and procedures can be called as needed from your SQL. This notebook will show you how this is done.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eWhen creating custom functions and procedures as described here, the code must be in Java.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542403025850_-533276268",
       "id": "20171130-160641_2246962",
       "dateCreated": "2018-11-16 13:17:05.000",
-      "dateStarted": "2018-11-16 13:17:21.000",
-      "dateFinished": "2018-11-16 13:17:21.000",
+      "dateStarted": "2018-11-21 10:21:19.075",
+      "dateFinished": "2018-11-21 10:21:19.080",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -505,7 +505,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {
