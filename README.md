@@ -18,6 +18,9 @@ To use the notebooks in this repo with a locally installed version of Apache Zep
 
 The notebooks in this repo will be organized into the `Splice Machine Training` folder, which contains a subfolder for each of our training classes.
 
+### Updating the Repo
+After modifying the notebooks in your local version of Zeppelin, update your local repo by copying all of the notebook folders in the `zeppelin-0.8.0-bin-all/notebook` folder into the local version of your notebooks repo.
+
 ## Using the Notebooks with the Splice Training Docker Image
 
 To use the notebooks in this repo with the docker image distributed by Splice Machine:
@@ -36,7 +39,7 @@ To use the notebooks in this repo with the docker image distributed by Splice Ma
 
    Note that the `./start-splice.sh` step will take a couple minutes, and you may see a sequence of warnings displayed; you can ignore these messages while the various services are starting up:
    `Ncat: Cannot assign requested address.`
- 
+
 5. You can then browse to `localhost:8088` to work with the Training notebooks.
 
 ## Tracking Notebooks
@@ -52,11 +55,15 @@ If you add a notebook to a course, you'll need to add it to the appropriate spre
 * Copy the next-in-sequence link information in that notebook to your clipboard.
 * Modify that link to point to the new notebook.
 * Edit the new notebook and paste the next-in-sequence information into the `Where to Go Next` section.
-* Update the spreadsheet tab
+* You'll also need to rename (by changing the notebook lowercase-alpha "prefix") any notebooks that follow the newly inserted notebook. Renaming is easily done from the Zeppelin home page.
+  For example, if you insert a new notebook between "c. Running Queries" and "d. Tuning Queries", you'll need to prefix the new notebook with "d.", rename the next notebook to "e. Tuning Queries", and then similarly change the prefix on each subsequent notebook.
+* Update the spreadsheet tab with info about the new notebook, AND update the prefix in each name in the spreadsheet tab.
 
 If you going to delete a notebook from a course, you'll need to update the spreadsheet tab for that course, and:
 
 * Edit the notebook you're about to delete.
 * Copy the next-in-sequence link information in that notebook to your clipboard.
 * Edit the notebook that precedes the one that you're deleting in the course sequence and modify its next-in-sequence link information by pasting in the link info from the clipboard.
-* Update the spreadsheet tab.
+* You'll also need to rename (by changing the notebook lowercase-alpha "prefix") any notebooks that follow the newly deleted notebook. Renaming is easily done from the Zeppelin home page.
+  For example, if you delete a notebook named "d. Tuning Queries", you'll need to prefix the next ("e. ") notebook with "d.",  and then similarly change the prefix on each subsequent notebook.
+* Update the spreadsheet tab with info about the new notebook, AND update the prefix in each name in the spreadsheet tab.
