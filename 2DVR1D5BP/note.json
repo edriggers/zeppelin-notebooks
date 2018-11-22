@@ -43,7 +43,7 @@
     {
       "text": "%md\n## The IMPORT_DATA Command\n\nSyntax for the `IMPORT_DATA` command looks like this:\n```\ncall SYSCS_UTIL.IMPORT_DATA (\n\tschemaName,\n\ttableName,\n\tinsertColumnList | null,\n\tfileOrDirectoryName,\n\tcolumnDelimiter | null,\n\tcharacterDelimiter | null,\n\ttimestampFormat | null,\n\tdateFormat | null,\n\ttimeFormat | null,\n\tbadRecordsAllowed,\n\tbadRecordDirectory | null,\n\toneLineRecords | null,\n\tcharset | null \n);\n```\nNotice that many of the parameters allow you to apply the default value by specifying `null`.\n\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_importdata.html\" target\u003d\"_blank\"\u003eour Importing Data documentation.\u003c/a\u003e\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 15:40:15.330",
+      "dateUpdated": "2018-11-21 15:48:58.162",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -54,7 +54,8 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": true,
+        "fontSize": 9.0
       },
       "settings": {
         "params": {},
@@ -73,8 +74,9 @@
       "jobName": "paragraph_1542670815329_855436182",
       "id": "20170907-074507_462416683",
       "dateCreated": "2018-11-19 15:40:15.329",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 15:48:58.163",
+      "dateFinished": "2018-11-21 15:48:58.171",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -302,9 +304,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n#### 3. Make Minor Data Changes and Corresponding Parameter Changes\n\nNow we\u0027ll make a few minor changes in our input data to see how that influences our import command. The modified data is stored in the \nLet\u0027s change the data a bit, and see how that influences the `import_data` command. \n\nThe updated data, stored in *example2.csv*, looks like this:\n\n\u003cpre\u003e\n\u0027hello\nthere\u0027|2017-01-01 00:00:00.123456\n\u0027how, are you\u0027|2017-02-01 00:00:00.123456\n\u003c/pre\u003e\n\nNow import the data in the example2.csv file by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph, which again uses the *%splicemachine* interpreter:\n",
+      "text": "%md\n\n#### 3. Make Minor Data Changes and Corresponding Parameter Changes\n\nNow we\u0027ll make a few minor changes in our input data to see how that influences our import command. The modified data is stored in a CSV file in an S3 bucket on AWS. \nLet\u0027s change the data a bit, and see how that influences the `import_data` command. \n\nThe updated data, stored in *example2.csv*, looks like this:\n\n\u003cpre\u003e\n\u0027hello\nthere\u0027|2017-01-01 00:00:00.123456\n\u0027how, are you\u0027|2017-02-01 00:00:00.123456\n\u003c/pre\u003e\n\nNow import the data in the example2.csv file by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph, which again uses the *%splicemachine* interpreter:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 12:58:33.384",
+      "dateUpdated": "2018-11-21 17:33:58.146",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -328,7 +330,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003e3. Make Minor Data Changes and Corresponding Parameter Changes\u003c/h4\u003e\n\u003cp\u003eNow we\u0026rsquo;ll make a few minor changes in our input data to see how that influences our import command. The modified data is stored in the\u003cbr/\u003eLet\u0026rsquo;s change the data a bit, and see how that influences the \u003ccode\u003eimport_data\u003c/code\u003e command. \u003c/p\u003e\n\u003cp\u003eThe updated data, stored in \u003cem\u003eexample2.csv\u003c/em\u003e, looks like this:\u003c/p\u003e\n\u003cpre\u003e\n\u0027hello\nthere\u0027|2017-01-01 00:00:00.123456\n\u0027how, are you\u0027|2017-02-01 00:00:00.123456\n\u003c/pre\u003e\n\u003cp\u003eNow import the data in the example2.csv file by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph, which again uses the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003e3. Make Minor Data Changes and Corresponding Parameter Changes\u003c/h4\u003e\n\u003cp\u003eNow we\u0026rsquo;ll make a few minor changes in our input data to see how that influences our import command. The modified data is stored in a CSV file in an S3 bucket on AWS.\u003cbr/\u003eLet\u0026rsquo;s change the data a bit, and see how that influences the \u003ccode\u003eimport_data\u003c/code\u003e command. \u003c/p\u003e\n\u003cp\u003eThe updated data, stored in \u003cem\u003eexample2.csv\u003c/em\u003e, looks like this:\u003c/p\u003e\n\u003cpre\u003e\n\u0027hello\nthere\u0027|2017-01-01 00:00:00.123456\n\u0027how, are you\u0027|2017-02-01 00:00:00.123456\n\u003c/pre\u003e\n\u003cp\u003eNow import the data in the example2.csv file by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph, which again uses the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -336,8 +338,8 @@
       "jobName": "paragraph_1542670815332_271639112",
       "id": "20170916-182114_1562378772",
       "dateCreated": "2018-11-19 15:40:15.332",
-      "dateStarted": "2018-11-20 12:58:33.385",
-      "dateFinished": "2018-11-20 12:58:33.394",
+      "dateStarted": "2018-11-21 17:33:58.147",
+      "dateFinished": "2018-11-21 17:33:58.151",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -565,7 +567,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

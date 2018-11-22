@@ -41,9 +41,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table from a previous tutorial. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query:\n",
+      "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table that we created earlier in this class. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:12:22.000",
+      "dateUpdated": "2018-11-21 17:04:29.161",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -66,7 +66,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUnderstanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eOrdering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003eUse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eNeed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003eJoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eActual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003ePresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eIndication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003eindex_example\u003c/code\u003e table from a previous tutorial. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUnderstanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eOrdering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003eUse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eNeed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003eJoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eActual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003ePresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eIndication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003eindex_example\u003c/code\u003e table that we created earlier in this class. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -74,8 +74,9 @@
       "jobName": "paragraph_1542402742669_954366135",
       "id": "20171016-100728_1909675860",
       "dateCreated": "2018-11-16 13:12:22.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 17:04:29.162",
+      "dateFinished": "2018-11-21 17:04:29.171",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -273,12 +274,13 @@
     {
       "text": "%md\n### Examples of When to Hint\n\nIf the optimizer doesn\u0027t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0027ll typically find that the cost shown when you use `explain` is higher than the cost chosen by the optimizer.\n\nIf you find that your plan (after hinting) runs faster, you should report this to support@splicemachine.com so we can determine if you\u0027ve found a bug.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:12:22.000",
+      "dateUpdated": "2018-11-21 11:23:03.983",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -296,7 +298,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExamples of When to Hint\u003c/h3\u003e\n\u003cp\u003eIf the optimizer doesn\u0026rsquo;t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0026rsquo;ll typically find that the cost shown when you use \u003ccode\u003eexplain\u003c/code\u003e is higher than the cost chosen by the optimizer.\u003c/p\u003e\n\u003cp\u003eIf you find that your plan (after hinting) runs faster, you should report this to \u003ca href\u003d\"mailto:\u0026#115;\u0026#117;p\u0026#x70;\u0026#x6f;r\u0026#116;\u0026#x40;\u0026#x73;\u0026#112;\u0026#108;\u0026#105;\u0026#99;\u0026#101;\u0026#x6d;\u0026#x61;\u0026#99;\u0026#104;\u0026#105;\u0026#110;\u0026#x65;\u0026#46;\u0026#99;\u0026#111;\u0026#x6d;\"\u003e\u0026#115;\u0026#117;p\u0026#x70;\u0026#x6f;r\u0026#116;\u0026#x40;\u0026#x73;\u0026#112;\u0026#108;\u0026#105;\u0026#99;\u0026#101;\u0026#x6d;\u0026#x61;\u0026#99;\u0026#104;\u0026#105;\u0026#110;\u0026#x65;\u0026#46;\u0026#99;\u0026#111;\u0026#x6d;\u003c/a\u003e so we can determine if you\u0026rsquo;ve found a bug.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExamples of When to Hint\u003c/h3\u003e\n\u003cp\u003eIf the optimizer doesn\u0026rsquo;t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0026rsquo;ll typically find that the cost shown when you use \u003ccode\u003eexplain\u003c/code\u003e is higher than the cost chosen by the optimizer.\u003c/p\u003e\n\u003cp\u003eIf you find that your plan (after hinting) runs faster, you should report this to \u003ca href\u003d\"mailto:\u0026#115;u\u0026#112;\u0026#x70;\u0026#x6f;\u0026#x72;\u0026#x74;\u0026#64;\u0026#x73;\u0026#x70;l\u0026#105;\u0026#x63;\u0026#101;m\u0026#97;\u0026#99;\u0026#104;i\u0026#110;e\u0026#x2e;\u0026#99;\u0026#x6f;\u0026#x6d;\"\u003e\u0026#115;u\u0026#112;\u0026#x70;\u0026#x6f;\u0026#x72;\u0026#x74;\u0026#64;\u0026#x73;\u0026#x70;l\u0026#105;\u0026#x63;\u0026#101;m\u0026#97;\u0026#99;\u0026#104;i\u0026#110;e\u0026#x2e;\u0026#99;\u0026#x6f;\u0026#x6d;\u003c/a\u003e so we can determine if you\u0026rsquo;ve found a bug.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -304,8 +306,9 @@
       "jobName": "paragraph_1542402742672_-709422998",
       "id": "20170917-161208_1733120671",
       "dateCreated": "2018-11-16 13:12:22.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 11:23:03.985",
+      "dateFinished": "2018-11-21 11:23:06.320",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {

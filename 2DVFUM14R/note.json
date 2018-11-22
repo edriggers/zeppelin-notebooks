@@ -41,9 +41,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table from a previous tutorial. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query:\n",
+      "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table that we created earlier in this class. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:04.000",
+      "dateUpdated": "2018-11-21 17:18:19.933",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -66,7 +66,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUnderstanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eOrdering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003eUse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eNeed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003eJoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eActual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003ePresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eIndication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003eindex_example\u003c/code\u003e table from a previous tutorial. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUnderstanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eOrdering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003eUse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eNeed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003eJoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eActual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003ePresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eIndication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003eindex_example\u003c/code\u003e table that we created earlier in this class. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -74,8 +74,9 @@
       "jobName": "paragraph_1542394204046_-1213191106",
       "id": "20171016-100728_1909675860",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 17:18:19.933",
+      "dateFinished": "2018-11-21 17:18:19.942",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {

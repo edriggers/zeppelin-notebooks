@@ -81,9 +81,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 1. Connect to your Database via JDBC\nNext we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine. \n\n* If you\u0027re working on a cluster, you\u0027ll find your JDBC URL in your cluster dashboard, at the bottom right of the screen. \n* If you\u0027re working on a standalone version of Splice Machine, you can use the `localJDBCURL` value shown below.",
+      "text": "%md\n### 1. Connect to your Database via JDBC\nNext we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 16:55:18.935",
+      "dateUpdated": "2018-11-21 17:53:51.846",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -96,7 +96,7 @@
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
@@ -122,9 +122,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.pyspark\n \nprint(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\ndefaultJDBCURL \u003d z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\")\nlocalJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
+      "text": "%spark.pyspark\n \ndefaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:18:45.000",
+      "dateUpdated": "2018-11-21 17:54:16.551",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1465,7 +1465,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

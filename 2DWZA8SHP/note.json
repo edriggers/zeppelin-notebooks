@@ -79,9 +79,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Basic UI Features\n\nBefore we use the console to examine a specific query, let\u0027s go over a few interesting notes about the DB Console:\n\n* Queries are reported as *Jobs* in the Spark UI\n* Each Job will have *Stages*\n* Each Stage will have *Tasks*\n\n#### Drilling Down\n\nIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were  looking at the following in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eExplain\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for *Job 113*:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\n\nYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this Tutorial, we will view job details and then drill down for an example query.\n\n#### Switching Views\n\nYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. The *Jobs* tab is selected in this screen shot:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\n\n#### Hovering\n\nYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\n\nSimilarly, you can hover over the ? to display the definition for a term, like the definition of a job:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\n\nAnd you can hover over an event in timeline display to see summary information; for example:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\n",
+      "text": "%md\n## Basic UI Features\n\nBefore we use the console to examine a specific query, let\u0027s go over a few interesting notes about the DB Console:\n\n* Queries are reported as *Jobs* in the Spark UI\n* Each Job will have *Stages*\n* Each Stage will have *Tasks*\n\n#### Drilling Down\n\nIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were  looking at the following in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eExplain\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for *Job 113*:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\n\nYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this notebook, we will view job details and then drill down for an example query.\n\n#### Switching Views\n\nYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. The *Jobs* tab is selected in this screen shot:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\n\n#### Hovering\n\nYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\n\nSimilarly, you can hover over the ? to display the definition for a term, like the definition of a job:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\n\nAnd you can hover over an event in timeline display to see summary information; for example:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:47:20.000",
+      "dateUpdated": "2018-11-21 17:20:59.527",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -104,7 +104,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBasic UI Features\u003c/h2\u003e\n\u003cp\u003eBefore we use the console to examine a specific query, let\u0026rsquo;s go over a few interesting notes about the DB Console:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eQueries are reported as \u003cem\u003eJobs\u003c/em\u003e in the Spark UI\u003c/li\u003e\n  \u003cli\u003eEach Job will have \u003cem\u003eStages\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003eEach Stage will have \u003cem\u003eTasks\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eDrilling Down\u003c/h4\u003e\n\u003cp\u003eIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were looking at the following in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eExplain\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for \u003cem\u003eJob 113\u003c/em\u003e:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this Tutorial, we will view job details and then drill down for an example query.\u003c/p\u003e\n\u003ch4\u003eSwitching Views\u003c/h4\u003e\n\u003cp\u003eYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. The \u003cem\u003eJobs\u003c/em\u003e tab is selected in this screen shot:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\u003c/p\u003e\n\u003ch4\u003eHovering\u003c/h4\u003e\n\u003cp\u003eYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\u003c/p\u003e\n\u003cp\u003eSimilarly, you can hover over the ? to display the definition for a term, like the definition of a job:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eAnd you can hover over an event in timeline display to see summary information; for example:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBasic UI Features\u003c/h2\u003e\n\u003cp\u003eBefore we use the console to examine a specific query, let\u0026rsquo;s go over a few interesting notes about the DB Console:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eQueries are reported as \u003cem\u003eJobs\u003c/em\u003e in the Spark UI\u003c/li\u003e\n  \u003cli\u003eEach Job will have \u003cem\u003eStages\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003eEach Stage will have \u003cem\u003eTasks\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eDrilling Down\u003c/h4\u003e\n\u003cp\u003eIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were looking at the following in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eExplain\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for \u003cem\u003eJob 113\u003c/em\u003e:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this notebook, we will view job details and then drill down for an example query.\u003c/p\u003e\n\u003ch4\u003eSwitching Views\u003c/h4\u003e\n\u003cp\u003eYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. The \u003cem\u003eJobs\u003c/em\u003e tab is selected in this screen shot:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\u003c/p\u003e\n\u003ch4\u003eHovering\u003c/h4\u003e\n\u003cp\u003eYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\u003c/p\u003e\n\u003cp\u003eSimilarly, you can hover over the ? to display the definition for a term, like the definition of a job:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eAnd you can hover over an event in timeline display to see summary information; for example:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -112,8 +112,9 @@
       "jobName": "paragraph_1542394040009_-2120021183",
       "id": "20171017-143511_678293042",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 17:20:59.527",
+      "dateFinished": "2018-11-21 17:20:59.538",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -484,47 +485,6 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## For Additional Help\nAs you\u0027ve seen in this notebook, the Database Console UI is extremely useful in getting a view into how well your queries are getting processed.  Once you have your data loaded at or near target scale, if you are not seeing good throughput (task activity, etc), contact \u003ca  href\u003d\"mailto:support@splicemachine.com\"\u003esupport@splicemachine.com\u003c/a\u003e.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:49:22.382",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Additional Help\u003c/h2\u003e\n\u003cp\u003eAs you\u0026rsquo;ve seen in this notebook, the Database Console UI is extremely useful in getting a view into how well your queries are getting processed. Once you have your data loaded at or near target scale, if you are not seeing good throughput (task activity, etc), contact \u003ca  href\u003d\"mailto:support@splicemachine.com\"\u003e\u003ca href\u003d\"mailto:\u0026#115;\u0026#117;p\u0026#x70;\u0026#x6f;r\u0026#116;\u0026#x40;\u0026#x73;\u0026#112;\u0026#108;\u0026#105;\u0026#99;\u0026#101;\u0026#x6d;\u0026#x61;\u0026#99;\u0026#104;\u0026#105;\u0026#110;\u0026#x65;\u0026#46;\u0026#99;\u0026#111;\u0026#x6d;\"\u003e\u0026#115;\u0026#117;p\u0026#x70;\u0026#x6f;r\u0026#116;\u0026#x40;\u0026#x73;\u0026#112;\u0026#108;\u0026#105;\u0026#99;\u0026#101;\u0026#x6d;\u0026#x61;\u0026#99;\u0026#104;\u0026#105;\u0026#110;\u0026#x65;\u0026#46;\u0026#99;\u0026#111;\u0026#x6d;\u003c/a\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542688084762_1789984110",
-      "id": "20181119-202804_1936495102",
-      "dateCreated": "2018-11-19 20:28:04.762",
-      "dateStarted": "2018-11-19 20:31:42.960",
-      "dateFinished": "2018-11-19 20:31:42.971",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "text": "%md\n## Where to Go Next\nNow, please continue on to the next notebook in this class, [*Using Explain and Hints*](/#/notebook/2DVFUM14R), to discover more about tuning your Splice Machine queries.\n",
       "user": "anonymous",
       "dateUpdated": "2018-11-20 13:17:08.683",
@@ -565,6 +525,47 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%md\n## For Additional Help\nAs you\u0027ve seen in this notebook, the Database Console UI is extremely useful in getting a view into how well your queries are getting processed.  \n\nOnce you have your data loaded at or near target scale, if you are not seeing good throughput (task activity, etc), please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0027ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-21 15:41:39.625",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Additional Help\u003c/h2\u003e\n\u003cp\u003eAs you\u0026rsquo;ve seen in this notebook, the Database Console UI is extremely useful in getting a view into how well your queries are getting processed. \u003c/p\u003e\n\u003cp\u003eOnce you have your data loaded at or near target scale, if you are not seeing good throughput (task activity, etc), please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0026rsquo;ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542688084762_1789984110",
+      "id": "20181119-202804_1936495102",
+      "dateCreated": "2018-11-19 20:28:04.762",
+      "dateStarted": "2018-11-21 15:41:39.625",
+      "dateFinished": "2018-11-21 15:41:39.634",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "",
       "user": "anonymous",
       "dateUpdated": "2018-11-16 10:47:20.000",
@@ -600,7 +601,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

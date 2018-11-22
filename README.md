@@ -1,69 +1,62 @@
-# Splice Machine Apache Zeppelin notebooks
+# Splice Machine Training Notebooks
 
-## Updating your Zeppelin instance with all notebooks in this repo
-If you would like to load these notebooks in your current zeppelin cluster you can use the load-notebooks.py script.  It takes several optional parameters:
-* -z: The Zeppelin URL ie http://localhost:8080.  It defaults to localhost:8080
-* -n: The directory containing the notebook folders.  It defaults to the directory where this script is located. 
-* -d: Flag to indicate you want to delete existing notebooks whose id and/or name matches
-* -u: If your zeppelin expects credentials, then this should be the user id
-* -p: If your zeppelin expects credentials, then this should be the password
+This is the repository for the Zeppelin notebooks used for Splice Machine Training. These notebooks can be loaded into Zeppelin running on your standalone, or they can be built into a docker image.
 
-## Importing specific notebooks
-Copy the "json" link URL from the table below and paste it into Zeppelin's import from URL tool.
+## Using the Notebooks with the Apache Zeppelin Distribution
+To use the notebooks in this repo with a locally installed version of Apache Zeppelin, follow these steps:
 
-## Adding notebooks
-You can add notebooks by making Github pull request, but we request you also update the table below by adding a record for your notebook.
+1. Navigate to the [Apache Zeppelin web site](https://zeppelin.apache.org/).
+2. Click the *Download* button and download the Zeppelin tarball; for example: `zeppelin-0.8.0-bin-all.tgz`.
+3. Move the download to a location from which you want to run Zeppelin.
+4. Unpack the tarball, which will create a new subdirectory, e.g. `zeppelin-0.8.0-bin-all`.
+5. `cd zeppelin-0.8.0-bin-all/notebook`
+6. You can optionally delete all of the notebooks that are shipped with Zeppelin (recommended).
+6. Copy the contents of this repo to the `notebook` folder. There should be 43 notebooks, plus the `datasets_for_python_notebook` folder.
+7. `cd zeppelin-0.8.0-bin-all/bin`
+8. Run `zeppelin.sh`
+9. Point your browser to localhost:8080
 
-## Notebooks
-|Id|Description|Interpreter / Component|Code|Comments|
-|-------------|-------------|-----|----------|--------|
-|2CTV7H6FU|1.  Getting Started - README|Markup|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CTV7H6FU/note.json) | |
-|2CTKW7A6U|2.1 Notebook Basics Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CTKW7A6U/note.json) | |
-|2CUA8V2RK|2.2 Copying to S3 Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CUA8V2RK/note.json) | |
-|2CSKWGZ8P|2.3 Importing Data Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSKWGZ8P/note.json) | |
-|2CU1SNACA|2.4 Running Queries Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CU1SNACA/note.json) | |
-|2CS27TE2A|2.5 Tuning for Performance Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CS27TE2A/note.json) | |
-|2CVPHXRZN|2.6 Using the Database Console UI Tutorial|Splicemachine / SparkUI|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CVPHXRZN/note.json) | |
-|2CU4BJJDS|2.7 Explaining and Hinting Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CU4BJJDS/note.json) | |
-|2CFY9Q6NS|2.8 TPCH-1 Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CFY9Q6NS/note.json) | |
-|2CFMYDAYJ|2.9 Common Utilities|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CFMYDAYJ/note.json) | |
-|2D76NPKV6|3. Splice Deep Dive / 1. Introduction|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D76NPKV6/note.json) | |
-|2D6ZFHE9U|3. Splice Deep Dive / 2. The Life of a Query|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D6ZFHE9U/note.json) | |
-|2D93Y56QJ|3. Splice Deep Dive / 3. Monitoring Queries|Splicemachine / SparkUI|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D93Y56QJ/note.json) | |
-|2D9M6ZUAW|3. Splice Deep Dive / 4. Visualizing Results with Zeppelin|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D9M6ZUAW/note.json) | |
-|2D89MQA89|3. Splice Deep Dive / 5. Transactions with Spark & JDBC|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D89MQA89/note.json) | |
-|2D8PMSAPJ|3. Splice Deep Dive / 6. Creating Applications|Splicemachine Interpreter|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D8PMSAPJ/note.json) | |
-|2D96GBY2P|3. Splice Deep Dive / 7. Using our Spark Adapter|Splicemachine / Spark Python|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D96GBY2P/note.json) | |
-|2DFY9ZKYB|3. Splice Deep Dive / 8. Python MLlib example|Splicemachine / Spark Python |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2DFY9ZKYB/note.json) | |
-|2D7P8BMMS|3. Splice Deep Dive / 9. Scala MLlib example|Splicemachine / Scala / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D7P8BMMS/note.json) | |
-|2CD73PAF8|4. Data Engineering / 1. ETL Pipeline Example|Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CD73PAF8/note.json) | |
-|2CKKJKSK8|5. Reference Applications / 1. Supply Chain - Predicting Shortages|Splicemachine / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CKKJKSK8/note.json) | |
-|2CH931JT4|5. Reference Applications / 2. IoT / 1. Overview| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CH931JT4/note.json) | |
-|2CHVYSK7B|5. Reference Applications / 2. IoT / 2. Database Setup| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CHVYSK7B/note.json) | |
-|2CG53XQM7|5. Reference Applications / 2. IoT / 3. Kafka| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CG53XQM7/note.json) | |
-|2CGVRH6SF|5. Reference Applications / 2. IoT / 4.SparkStream| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CGVRH6SF/note.json) | |
-|2CG6KVZJ2|5. Reference Applications / 2. IoT / 5. Splice Query| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CG6KVZJ2/note.json) | |
-|2D2RM85JF|6. Advanced Tutorials / 1. Creating Custom Stored Procedures| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D2RM85JF/note.json) | |
-|2CSGDX1CW|7. Benchmarks / 1. TPCH-100| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSGDX1CW/note.json) | |
-|2CN9CP75G|8. Machine Learning / 1. Kmeans| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CN9CP75G/note.json) | |
-|2CM14K96J|8. Machine Learning / 2. Decision Tree| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CM14K96J/note.json) | |
-|2CJMQPAKB|Python+JDBC| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CJMQPAKB/note.json) | |
-|2A94M5J1Z|ZeppelinTutorial - Basic Features| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2A94M5J1Z/note.json) | |
-|2BWJFTXKJ|ZeppelinTutorial - SparkR| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2BWJFTXKJ/note.json) | |
+The notebooks in this repo will be organized into the `Splice Machine Training` folder, which contains a subfolder for each of our training classes.
 
-## Updating your HDP Zeppelin to use the Splice Machine Native Spark Datasource
-* Create a directory such as /tmp/splicemachine on each server to store 1 jar files needed by this setup.
-* Get the Splice Machine Native Spark Datasource for HDP for the version you are using ie (splicemachine-hdp2.6.3-2.2.0.2.6.3.0-235_2.11-2.7.0.1828.jar) for your cluster and place it in the /tmp/splicemachine directory on each server
-* Copy the configure-spark-interpreter.py from the zeppelin-notebook repo to a server that is running hortonworks and run the following command where:
-** The z parameter is the zeppelin server url - update the server and port to match your environment.
-** The a parameter is HDP
-** The s parameter is the directory from the step above
-** The v parameter is the version of zeppelin
-** The u parameter is the user if your zeppelin expects credentials
-** The p parameter is the password if your zeppelin expects credentials
-** The i parameter is the name of the Native Spark Datasource jar
-* Run a command like the following to configure your HDP Zeppelin
+## Using the Notebooks with the Splice Training Docker Image
 
-```
-python configure-spark-interpreter.py -z "http://localhost:9995" -a "HDP" -s "/tmp/zeppelin" -v "0.7.3" -u admin -p admin -i splicemachine-hdp2.6.3-2.2.0.2.6.3.0-235_2.11-2.7.0.1828.jar
-```
+To use the notebooks in this repo with the docker image distributed by Splice Machine:
+
+1. Run docker on your computer.
+2. In the docker Advanced Preferences, set memory to 12GB.
+3. Start the Splice Machine docker container with this command:
+   `docker run -ti --hostname localhost -p 8080:8080 -p 1527:1527 -p 4040:4040 -p 8088:8088 splicemachine/standalone:latest`
+4. Once the container starts, you'll see a command prompt. Issue these commands in sequence:
+   ```
+   cd splice-training
+   ./start-splice.sh
+   ./start-zeppelin.sh
+   ./sqlshell.sh
+   ```
+
+   Note that the `./start-splice.sh` step will take a couple minutes, and you may see a sequence of warnings displayed; you can ignore these messages while the various services are starting up:
+   `Ncat: Cannot assign requested address.`
+ 
+5. You can then browse to `localhost:8088` to work with the Training notebooks.
+
+## Tracking Notebooks
+Because Zeppelin *names* notebooks with non-descriptive IDs, we've created a spreadsheet that maps notebook descriptions to their IDs, and tracks which notebook is the next-in-sequence in each course. [This Google Sheets spreadsheet](https://docs.google.com/spreadsheets/d/1IwCkolUBSRxK5gTjOxpm3Wu7QfikHv1O7xLkkD7FFk8/edit?usp=sharing) contains a sheet for each of our courses.
+
+### Adding and Deleting Notebooks
+
+Our training courses include duplicate (or almost duplicate) versions of various, which share the same descriptive names. Because of this, it's important to maintain the mappings and next-in-sequence links in the spreadsheet.
+
+If you add a notebook to a course, you'll need to add it to the appropriate spreadsheet tab. And you'll need to modify the next-in-sequence notebook link that is found in the `Where to Go Next` section at the bottom of each training notebook:
+
+* Edit the notebook that will precede the new notebook in the course sequence.
+* Copy the next-in-sequence link information in that notebook to your clipboard.
+* Modify that link to point to the new notebook.
+* Edit the new notebook and paste the next-in-sequence information into the `Where to Go Next` section.
+* Update the spreadsheet tab
+
+If you going to delete a notebook from a course, you'll need to update the spreadsheet tab for that course, and:
+
+* Edit the notebook you're about to delete.
+* Copy the next-in-sequence link information in that notebook to your clipboard.
+* Edit the notebook that precedes the one that you're deleting in the course sequence and modify its next-in-sequence link information by pasting in the link info from the clipboard.
+* Update the spreadsheet tab.

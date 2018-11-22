@@ -45,16 +45,17 @@
     {
       "text": "%md\n## Creating our Database in Splice Machine\n\nNow we\u0027ll create our database in Splice Machine, in the following steps\n\n1. Create the Schema\n2. Create the Tables\n3. Import the Data\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 10:16:19.224",
+      "dateUpdated": "2018-11-21 17:36:42.995",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -68,7 +69,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating our Database in Splice Machine\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll create our database in Splice Machine, in the following steps:\u003c/p\u003e\n\u003col class\u003d\"italic\"\u003e\n    \u003cli\u003eCreate the Schema\u003c/li\u003e\n    \u003cli\u003eCreate the Tables\u003c/li\u003e\n    \u003cli\u003eImport the Data\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eNow we\u0026rsquo;ll create the TPC-H schema in Splice Machine, create our tables, import the TPC-H data and run queries against that data.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating our Database in Splice Machine\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll create our database in Splice Machine, in the following steps\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the Schema\u003c/li\u003e\n  \u003cli\u003eCreate the Tables\u003c/li\u003e\n  \u003cli\u003eImport the Data\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -76,14 +77,15 @@
       "jobName": "paragraph_1542395076252_-2092882093",
       "id": "20180125-195425_1198649470",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 17:36:42.996",
+      "dateFinished": "2018-11-21 17:36:43.000",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n### 1. Create the Schema\n\nFirst, we\u0027ll create the TPC-H schema in Splice Machine.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 10:16:33.521",
+      "dateUpdated": "2018-11-21 17:36:51.325",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -95,17 +97,30 @@
           "completionKey": "TAB",
           "completionSupport": false
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create the Schema\u003c/h3\u003e\n\u003cp\u003eFirst, we\u0026rsquo;ll create the TPC-H schema in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542824092679_-725564269",
       "id": "20181121-101452_164319993",
       "dateCreated": "2018-11-21 10:14:52.679",
-      "status": "READY",
+      "dateStarted": "2018-11-21 17:36:51.326",
+      "dateFinished": "2018-11-21 17:36:51.328",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -363,7 +378,7 @@
       "title": "Import Data",
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 10:14:36.678",
+      "dateUpdated": "2018-11-21 17:36:45.813",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -386,14 +401,62 @@
             "graph": {
               "mode": "table",
               "height": 89.0057,
-              "optionOpen": false
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
             }
           },
           "2": {
             "graph": {
               "mode": "table",
               "height": 89.0057,
-              "optionOpen": false
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
             }
           },
           "3": {

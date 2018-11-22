@@ -81,9 +81,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 1. Connect to Your Database via JDBC\n\nNext we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine. \n\n* If you\u0027re working on a cluster, you\u0027ll find your JDBC URL in your cluster dashboard, at the bottom right of the screen. \n* If you\u0027re working on a standalone version of Splice Machine, you can use the `localJDBCURL` value shown below.",
+      "text": "%md\n### 1. Connect to Your Database via JDBC\n\nNext we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:58:46.413",
+      "dateUpdated": "2018-11-21 17:51:18.220",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -92,11 +92,11 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true,
         "fontSize": 9.0,
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -107,7 +107,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Connect to Your Database via JDBC\u003c/h3\u003e\n\u003cp\u003eNext we\u0026rsquo;ll configure the URL we\u0026rsquo;ll use in our JDBC connection to Splice Machine. \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIf you\u0026rsquo;re working on a cluster, you\u0026rsquo;ll find your JDBC URL in your cluster dashboard, at the bottom right of the screen.\u003c/li\u003e\n  \u003cli\u003eIf you\u0026rsquo;re working on a standalone version of Splice Machine, you can use the \u003ccode\u003elocalJDBCURL\u003c/code\u003e value shown below.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Connect to Your Database via JDBC\u003c/h3\u003e\n\u003cp\u003eNext we\u0026rsquo;ll configure the URL we\u0026rsquo;ll use in our JDBC connection to Splice Machine:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -115,15 +115,15 @@
       "jobName": "paragraph_1542395787809_1910261322",
       "id": "20180613-033509_2022872512",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "dateStarted": "2018-11-20 17:01:33.028",
-      "dateFinished": "2018-11-20 17:01:33.037",
+      "dateStarted": "2018-11-21 17:51:18.220",
+      "dateFinished": "2018-11-21 17:51:18.223",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.pyspark\n \nprint(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\ndefaultJDBCURL \u003d z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\")\nlocalJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
+      "text": "%spark.pyspark\ndefaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 16:05:49.799",
+      "dateUpdated": "2018-11-21 17:51:07.325",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1476,7 +1476,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

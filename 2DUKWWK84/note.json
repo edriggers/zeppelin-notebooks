@@ -2,9 +2,9 @@
   "paragraphs": [
     {
       "title": "Transactions ",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Splice Transactions with Spark and JDBC\n\nNow we\u0027ll get a glimpse into the transactional nature of Splice Machine.  We\u0027ll be switching to the `%spark` interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we\u0027ll:\n\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eRun setup code to create our variables and define a simple Spark procedure named \u003ccode\u003echeckBalance\u003c/code\u003e.\u003c/li\u003e\n    \u003cli\u003eUse JDBC calls to set and check values from the database.\u003c/li\u003e\n    \u003cli\u003eShow the use of \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e to control transactional persistence of our updates.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr /\u003e\n## Run Setup Code and Define our Procedure\n\nWe define a simple procedure, `checkBalance` that checks and *pretty-prints* the current balance for a supplier  ",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Splice Transactions with Spark and JDBC\n\nNow we\u0027ll get a glimpse into the transactional nature of Splice Machine.  We\u0027ll be switching to the `%spark` interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we\u0027ll:\n\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eRun setup code to create our variables and define a simple Spark procedure named \u003ccode\u003echeckBalance\u003c/code\u003e.\u003c/li\u003e\n    \u003cli\u003eUse JDBC calls to set and check values from the database.\u003c/li\u003e\n    \u003cli\u003eShow the use of \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e to control transactional persistence of our updates.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr /\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:09:25.000",
+      "dateUpdated": "2018-11-21 17:40:08.965",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eSplice Transactions with Spark and JDBC\u003c/h1\u003e\n\u003cp\u003eNow we\u0026rsquo;ll get a glimpse into the transactional nature of Splice Machine. We\u0026rsquo;ll be switching to the \u003ccode\u003e%spark\u003c/code\u003e interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we\u0026rsquo;ll:\u003c/p\u003e\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eRun setup code to create our variables and define a simple Spark procedure named \u003ccode\u003echeckBalance\u003c/code\u003e.\u003c/li\u003e\n    \u003cli\u003eUse JDBC calls to set and check values from the database.\u003c/li\u003e\n    \u003cli\u003eShow the use of \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e to control transactional persistence of our updates.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr /\u003e\n\u003ch2\u003eRun Setup Code and Define our Procedure\u003c/h2\u003e\n\u003cp\u003eWe define a simple procedure, \u003ccode\u003echeckBalance\u003c/code\u003e that checks and \u003cem\u003epretty-prints\u003c/em\u003e the current balance for a supplier\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eSplice Transactions with Spark and JDBC\u003c/h1\u003e\n\u003cp\u003eNow we\u0026rsquo;ll get a glimpse into the transactional nature of Splice Machine. We\u0026rsquo;ll be switching to the \u003ccode\u003e%spark\u003c/code\u003e interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we\u0026rsquo;ll:\u003c/p\u003e\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eRun setup code to create our variables and define a simple Spark procedure named \u003ccode\u003echeckBalance\u003c/code\u003e.\u003c/li\u003e\n    \u003cli\u003eUse JDBC calls to set and check values from the database.\u003c/li\u003e\n    \u003cli\u003eShow the use of \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e to control transactional persistence of our updates.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cbr /\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -37,15 +37,56 @@
       "jobName": "paragraph_1542395325471_793238414",
       "id": "20180115-164647_1759951771",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "dateStarted": "2018-11-16 11:09:25.000",
-      "dateFinished": "2018-11-16 11:09:26.000",
+      "dateStarted": "2018-11-21 17:40:08.965",
+      "dateFinished": "2018-11-21 17:40:08.971",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n  println(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\n  val defaultJDBCURL \u003d z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\").toString\n  val localJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
+      "text": "%md\n## Run Setup Code and Define our Procedure\n\nFirst, we configure the JDBC URL we\u0027ll use to connect to your Splice Machine database:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:08:45.000",
+      "dateUpdated": "2018-11-21 17:42:07.017",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRun Setup Code and Define our Procedure\u003c/h2\u003e\n\u003cp\u003eFirst, we configure the JDBC URL we\u0026rsquo;ll use to connect to your Splice Machine database:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542850708004_-1697364192",
+      "id": "20181121-173828_564206103",
+      "dateCreated": "2018-11-21 17:38:28.004",
+      "dateStarted": "2018-11-21 17:42:07.017",
+      "dateFinished": "2018-11-21 17:42:07.021",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\n  val defaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-21 17:42:22.262",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -63,19 +104,70 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "defaultJDBCURL: String \u003d jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395325471_1357966940",
       "id": "20180828-115218_491973685",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 17:42:22.278",
+      "dateFinished": "2018-11-21 17:42:34.091",
+      "status": "ABORT",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\u003cbr /\u003e\nNext, we define a simple procedure, `checkBalance` that checks and *pretty-prints* the current balance for a supplier:",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-21 17:40:16.495",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNext, we define a simple procedure, \u003ccode\u003echeckBalance\u003c/code\u003e that checks and \u003cem\u003epretty-prints\u003c/em\u003e the current balance for a supplier:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542850779698_-1175907831",
+      "id": "20181121-173939_1123275261",
+      "dateCreated": "2018-11-21 17:39:39.699",
+      "dateStarted": "2018-11-21 17:40:16.496",
+      "dateFinished": "2018-11-21 17:40:16.499",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Simple Function to Pretty Print Balance",
-      "text": "%spark\nimport java.sql.{DriverManager,Connection}\nvar conn \u003d DriverManager.getConnection(defaultJDBCURL)\nconn.setAutoCommit(false)\nvar statement \u003d conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit \u003d {\n    var resSet \u003d statement.executeQuery(\"SELECT S_ACCTBAL FROM TPCH1.SUPPLIER WHERE S_SUPPKEY \u003d \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl \u003d resSet.getString(\"S_ACCTBAL\")\n        println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: \" + bl + \" \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");\n    }\n}\n",
+      "text": "%spark\nimport java.sql.{DriverManager,Connection}\nvar conn \u003d DriverManager.getConnection(localJDBCURL)\nconn.setAutoCommit(false)\nvar statement \u003d conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit \u003d {\n    var resSet \u003d statement.executeQuery(\"SELECT S_ACCTBAL FROM TPCH1.SUPPLIER WHERE S_SUPPKEY \u003d \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl \u003d resSet.getString(\"S_ACCTBAL\")\n        println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: \" + bl + \" \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");\n    }\n}\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:08:45.000",
+      "dateUpdated": "2018-11-21 17:40:55.436",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -107,15 +199,16 @@
     {
       "text": "%md\nNow we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:08:45.000",
+      "dateUpdated": "2018-11-21 17:42:42.639",
       "config": {
         "tableHide": false,
         "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/text",
+        "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
@@ -138,14 +231,15 @@
       "jobName": "paragraph_1542395325472_1299881130",
       "id": "20180115-165029_1635005335",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-21 17:42:42.640",
+      "dateFinished": "2018-11-21 17:42:42.644",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\ncheckBalance(6517)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:08:45.000",
+      "dateUpdated": "2018-11-21 17:43:16.371",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -158,7 +252,15 @@
         "editorMode": "ace/mode/scala",
         "editorHide": false,
         "fontSize": 9.0,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 88.0,
+              "optionOpen": false
+            }
+          }
+        },
         "enabled": true
       },
       "settings": {
@@ -413,7 +515,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

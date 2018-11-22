@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\n\nIn this notebook, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-1 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this tutorial all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\n\nIn this notebook, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-1 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 15:56:22.074",
+      "dateUpdated": "2018-11-21 17:14:43.141",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003e1. Creating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e2. Importing TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e3. Creating Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e4. Compacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e5. Running Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this tutorial all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003e1. Creating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e2. Importing TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e3. Creating Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e4. Compacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e5. Running Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542394755823_-1090847122",
       "id": "20170517-225129_1383056312",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "dateStarted": "2018-11-20 15:56:22.075",
-      "dateFinished": "2018-11-20 15:56:22.087",
+      "dateStarted": "2018-11-21 17:14:43.141",
+      "dateFinished": "2018-11-21 17:14:43.146",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -193,7 +193,7 @@
       "title": "Import Data from S3",
       "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 15:55:40.028",
+      "dateUpdated": "2018-11-21 17:14:21.299",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -211,7 +211,31 @@
             "graph": {
               "mode": "table",
               "height": 84.0,
-              "optionOpen": false
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
             }
           },
           "1": {
@@ -2185,7 +2209,6 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
     "spark:shared_process": []
   },
   "config": {
