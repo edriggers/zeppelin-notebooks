@@ -142,18 +142,18 @@
       },
       "settings": {
         "params": {
-          "JDBCurl": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin",
-          "JDBCurl Scala": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
-          "JDBCxurl": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
-          "JDBCURL Scala": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin",
-          "Scala JDBCurl": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin"
+          "JDBCurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
+          "JDBCurl Scala": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
+          "JDBCxurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
+          "JDBCURL Scala": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
+          "Scala JDBCurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin"
         },
         "forms": {
           "JDBCurl": {
             "type": "TextBox",
             "name": "JDBCurl",
             "displayName": "JDBCurl",
-            "defaultValue": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin",
+            "defaultValue": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
             "hidden": false
           }
         }

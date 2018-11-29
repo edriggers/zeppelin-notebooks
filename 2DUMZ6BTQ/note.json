@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Running Queries in Splice M# Running Queries in Splice Machine\n\nThis notebook demonstrates how to run queries in Splice Machine. These queries run against a table named `import_example`, the creation of which is detailed in the [*Importing Data*](/#/notebook/2DVR1D5BP) notebook in our *Splice Machine Developers Course, Part I*. \n\n## Create and Populate our Example Table\nFirst we\u0027ll create and populate the `import_example` table; simply click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph:\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Importing Data and Running Queries\n\nThis notebook demonstrates how to run queries in Splice Machine. These queries run against a table named `import_example`, the creation of which is detailed in the [*Importing Data*](/#/notebook/2DVR1D5BP) notebook in our *Splice Machine Developers Course, Part I*. \n\n## Create and Populate our Example Table\nFirst we\u0027ll create and populate the `import_example` table; simply click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph:\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:31:09.622",
+      "dateUpdated": "2018-11-29 18:19:53.067",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eRunning Queries in Splice M# Running Queries in Splice Machine\u003c/h1\u003e\n\u003cp\u003eThis notebook demonstrates how to run queries in Splice Machine. These queries run against a table named \u003ccode\u003eimport_example\u003c/code\u003e, the creation of which is detailed in the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data\u003c/em\u003e\u003c/a\u003e notebook in our \u003cem\u003eSplice Machine Developers Course, Part I\u003c/em\u003e. \u003c/p\u003e\n\u003ch2\u003eCreate and Populate our Example Table\u003c/h2\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll create and populate the \u003ccode\u003eimport_example\u003c/code\u003e table; simply click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eImporting Data and Running Queries\u003c/h1\u003e\n\u003cp\u003eThis notebook demonstrates how to run queries in Splice Machine. These queries run against a table named \u003ccode\u003eimport_example\u003c/code\u003e, the creation of which is detailed in the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data\u003c/em\u003e\u003c/a\u003e notebook in our \u003cem\u003eSplice Machine Developers Course, Part I\u003c/em\u003e. \u003c/p\u003e\n\u003ch2\u003eCreate and Populate our Example Table\u003c/h2\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll create and populate the \u003ccode\u003eimport_example\u003c/code\u003e table; simply click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542402377078_-2120810033",
       "id": "20170907-071443_970035831",
       "dateCreated": "2018-11-16 13:06:17.000",
-      "dateStarted": "2018-11-21 17:31:09.623",
-      "dateFinished": "2018-11-21 17:31:09.628",
+      "dateStarted": "2018-11-29 18:19:53.068",
+      "dateFinished": "2018-11-29 18:19:53.083",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -366,8 +366,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "spark:shared_process": []
+    "md:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

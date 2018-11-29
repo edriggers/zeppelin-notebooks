@@ -82,7 +82,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n  println(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\n  val defaultJDBCURL \u003d z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue\"\"\").toString\n  val localJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
+      "text": "%spark\n  println(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\n  val defaultJDBCURL \u003d z.input(\"JDBCurl\",\"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue\"\"\").toString\n  val localJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
       "user": "anonymous",
       "dateUpdated": "2018-11-20 17:59:49.255",
       "config": {
@@ -107,7 +107,7 @@
             "type": "TextBox",
             "name": "JDBCurl",
             "displayName": "JDBCurl",
-            "defaultValue": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
+            "defaultValue": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
             "hidden": false
           }
         }

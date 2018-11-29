@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Explaining and Hinting\n\nIn this notebook we\u0027ll dig into the explain and hint capabilities that we\u0027ve briefly seen so far.  We\u0027ll see how they can help us:\n\n* Understand more deeply what the optimizer\u0027s plan is to run the query\n* How to potentially influence that plan if necessary\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Explaining and Hinting\n\nIn this notebook we\u0027ll dig into the explain and hint capabilities that we\u0027ve briefly seen so far.  We\u0027ll see how they can help us in:\n\n* *Understanding the Query Execution Plan*\n* *Influencing the Query Execution Plan with Hints*\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:20.000",
+      "dateUpdated": "2018-11-29 22:25:21.721",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExplaining and Hinting\u003c/h1\u003e\n\u003cp\u003eIn this notebook we\u0026rsquo;ll dig into the explain and hint capabilities that we\u0026rsquo;ve briefly seen so far. We\u0026rsquo;ll see how they can help us:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eUnderstand more deeply what the optimizer\u0026rsquo;s plan is to run the query\u003c/li\u003e\n  \u003cli\u003eHow to potentially influence that plan if necessary\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExplaining and Hinting\u003c/h1\u003e\n\u003cp\u003eIn this notebook we\u0026rsquo;ll dig into the explain and hint capabilities that we\u0026rsquo;ve briefly seen so far. We\u0026rsquo;ll see how they can help us in:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eUnderstanding the Query Execution Plan\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eInfluencing the Query Execution Plan with Hints\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,20 +35,21 @@
       "jobName": "paragraph_1542394204045_-1639069832",
       "id": "20170907-071606_1955118051",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-16 10:50:20.000",
-      "dateFinished": "2018-11-16 10:50:20.000",
+      "dateStarted": "2018-11-29 22:25:21.722",
+      "dateFinished": "2018-11-29 22:25:21.734",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table that we created earlier in this class. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query:\n",
+      "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table that we created earlier in this class. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query. \n\nYou\u0027ll notice that on the very right of the plan are two lines with *preds\u003d* on them. *Preds* is short for *predicates*, which in databases are true/false conditions that are tested during query execution.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:18:19.933",
+      "dateUpdated": "2018-11-29 22:41:32.300",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -66,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUnderstanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eOrdering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003eUse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eNeed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003eJoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eActual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003ePresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eIndication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003eindex_example\u003c/code\u003e table that we created earlier in this class. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUnderstanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eOrdering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003eUse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eNeed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003eJoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eActual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003ePresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eIndication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003eindex_example\u003c/code\u003e table that we created earlier in this class. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query. \u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice that on the very right of the plan are two lines with \u003cem\u003epreds\u003d\u003c/em\u003e on them. \u003cem\u003ePreds\u003c/em\u003e is short for \u003cem\u003epredicates\u003c/em\u003e, which in databases are true/false conditions that are tested during query execution.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -74,8 +75,8 @@
       "jobName": "paragraph_1542394204046_-1213191106",
       "id": "20171016-100728_1909675860",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-21 17:18:19.933",
-      "dateFinished": "2018-11-21 17:18:19.942",
+      "dateStarted": "2018-11-29 22:41:32.301",
+      "dateFinished": "2018-11-29 22:41:32.319",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -119,14 +120,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nYou\u0027ll notice that on the very right of the plan are two lines with *preds\u003d* on them. *Preds* is short for *predicates*, which in databases are true/false conditions that are tested during query execution.\n\nStarting on the bottom line, we see an `IndexScan` with the preds specification on it; this is called a *Predicate Pushdown*. A pushdown means: when we perform this `IndexScan`, we\u0027ll bring this predicate (`A.J \u003d 700000`) along with us, and will return ONLY the rows that match.  Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\n\nThe other kind of predicate shown here is of the form `[(A.I[4:2] \u003d B.I[4:1])]`. You can ignore the numbers for now; the key part is `A.I \u003d B.I`.  You can see that this is the join predicate, required for the actual join operation.\n\nThe main takeaway is that, as with most databases: when you can *push down* a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.",
+      "text": "%md\n### About Predicates\n\nStarting on the bottom line, we see an `IndexScan` with the preds specification on it; this is called a *Predicate Pushdown*. A pushdown means: when we perform this `IndexScan`, we\u0027ll bring this predicate (`A.J \u003d 700000`) along with us, and will return ONLY the rows that match.  Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\n\nThe other kind of predicate shown here is of the form `[(A.I[4:2] \u003d B.I[4:1])]`. You can ignore the numbers for now; the key part is `A.I \u003d B.I`.  You can see that this is the join predicate, required for the actual join operation.\n\nThe main takeaway is that, as with most databases: when you can *push down* a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:04.000",
+      "dateUpdated": "2018-11-29 22:44:27.375",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -144,7 +146,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice that on the very right of the plan are two lines with \u003cem\u003epreds\u003d\u003c/em\u003e on them. \u003cem\u003ePreds\u003c/em\u003e is short for \u003cem\u003epredicates\u003c/em\u003e, which in databases are true/false conditions that are tested during query execution.\u003c/p\u003e\n\u003cp\u003eStarting on the bottom line, we see an \u003ccode\u003eIndexScan\u003c/code\u003e with the preds specification on it; this is called a \u003cem\u003ePredicate Pushdown\u003c/em\u003e. A pushdown means: when we perform this \u003ccode\u003eIndexScan\u003c/code\u003e, we\u0026rsquo;ll bring this predicate (\u003ccode\u003eA.J \u003d 700000\u003c/code\u003e) along with us, and will return ONLY the rows that match. Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\u003c/p\u003e\n\u003cp\u003eThe other kind of predicate shown here is of the form \u003ccode\u003e[(A.I[4:2] \u003d B.I[4:1])]\u003c/code\u003e. You can ignore the numbers for now; the key part is \u003ccode\u003eA.I \u003d B.I\u003c/code\u003e. You can see that this is the join predicate, required for the actual join operation.\u003c/p\u003e\n\u003cp\u003eThe main takeaway is that, as with most databases: when you can \u003cem\u003epush down\u003c/em\u003e a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAbout Predicates\u003c/h3\u003e\n\u003cp\u003eStarting on the bottom line, we see an \u003ccode\u003eIndexScan\u003c/code\u003e with the preds specification on it; this is called a \u003cem\u003ePredicate Pushdown\u003c/em\u003e. A pushdown means: when we perform this \u003ccode\u003eIndexScan\u003c/code\u003e, we\u0026rsquo;ll bring this predicate (\u003ccode\u003eA.J \u003d 700000\u003c/code\u003e) along with us, and will return ONLY the rows that match. Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\u003c/p\u003e\n\u003cp\u003eThe other kind of predicate shown here is of the form \u003ccode\u003e[(A.I[4:2] \u003d B.I[4:1])]\u003c/code\u003e. You can ignore the numbers for now; the key part is \u003ccode\u003eA.I \u003d B.I\u003c/code\u003e. You can see that this is the join predicate, required for the actual join operation.\u003c/p\u003e\n\u003cp\u003eThe main takeaway is that, as with most databases: when you can \u003cem\u003epush down\u003c/em\u003e a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -152,19 +154,21 @@
       "jobName": "paragraph_1542394204050_-1589518069",
       "id": "20170917-151828_1052121991",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-29 22:44:27.381",
+      "dateFinished": "2018-11-29 22:44:27.394",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Join Ordering\n\nThe actual join ordering is part of the optimization process: do I get a better cost when I start with table A and join B with it, or the other way around?\n\nSmart join ordering depends a lot on the situation.  Generally speaking, the sooner you can filter out rows (thus working with fewer rows at each step of the query), the faster the query will run.\n\nWhen you look at an explain plan, if you are unsure of the ordering, remember again the order is *bottom up*. Another way to view this is to look at the counts on each row of the plan (n\u003d1, n\u003d2, etc.).  This dictates the table ordering being used.",
+      "text": "%md\n### Join Ordering\n\nThe actual join ordering is part of the optimization process: do I get a better cost when I start with table A and join B with it, or the other way around?\n\nSmart join ordering depends a lot on the situation.  Generally speaking, the sooner you can filter out rows (thus working with fewer rows at each step of the query), the faster the query will run.\n\nWhen you look at an explain plan, if you are unsure of the ordering, remember again that the order is *bottom up*. Another way to view this is to look at the counts on each row of the plan (n\u003d1, n\u003d2, etc.).  This dictates the table ordering being used.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:04.000",
+      "dateUpdated": "2018-11-29 22:44:52.339",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -182,7 +186,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eJoin Ordering\u003c/h3\u003e\n\u003cp\u003eThe actual join ordering is part of the optimization process: do I get a better cost when I start with table A and join B with it, or the other way around?\u003c/p\u003e\n\u003cp\u003eSmart join ordering depends a lot on the situation. Generally speaking, the sooner you can filter out rows (thus working with fewer rows at each step of the query), the faster the query will run.\u003c/p\u003e\n\u003cp\u003eWhen you look at an explain plan, if you are unsure of the ordering, remember again the order is \u003cem\u003ebottom up\u003c/em\u003e. Another way to view this is to look at the counts on each row of the plan (n\u003d1, n\u003d2, etc.). This dictates the table ordering being used.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eJoin Ordering\u003c/h3\u003e\n\u003cp\u003eThe actual join ordering is part of the optimization process: do I get a better cost when I start with table A and join B with it, or the other way around?\u003c/p\u003e\n\u003cp\u003eSmart join ordering depends a lot on the situation. Generally speaking, the sooner you can filter out rows (thus working with fewer rows at each step of the query), the faster the query will run.\u003c/p\u003e\n\u003cp\u003eWhen you look at an explain plan, if you are unsure of the ordering, remember again that the order is \u003cem\u003ebottom up\u003c/em\u003e. Another way to view this is to look at the counts on each row of the plan (n\u003d1, n\u003d2, etc.). This dictates the table ordering being used.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -190,19 +194,21 @@
       "jobName": "paragraph_1542394204051_-531252008",
       "id": "20170917-155926_2097194095",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-29 22:44:52.340",
+      "dateFinished": "2018-11-29 22:44:52.355",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Influencing the Query Execution Plan with Hints\n\nIf your query is still slower than you expect or if you want to experiment with plan alternatives, you can use Splice Machine *query hints*, which provide additional information to our optimizer. For example, hinting can help when your query is still slower than you would expect, or when you just want to try out other plan alternatives to see what would happen. \n\nWe introduced hints in an earlier notebook, *Tuning for Performance.* To recap: you add a hint to a query by appending a specially formatted *comment*. These hints must always be placed at the end of a line, and can be used either after a table name or after a `FROM` clause. Most hints are used for these reasons:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n### Syntax Matters\n\nNote that in the example below, the comma separating the tables to be joined needs to be AFTER the index hint, and thus is on the next line.  Further, if there is a semicolon separating your SQL calls, you must put the semicolon AFTER the hint: on the next line.\n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\nHere\u0027s the syntax to use for each hint type:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  to see a full example:\n",
+      "text": "%md\n## Influencing the Query Execution Plan with Hints\n\nIf your query is still slower than you expect, or if you want to experiment with plan alternatives, you can use Splice Machine *query hints*, which provide additional information to our optimizer.\n\nWe introduced hints in an earlier notebook, *Tuning for Performance.* To recap: you add a hint to a query by appending a specially formatted *comment*. These hints must always be placed at the end of a line, and can be used either after a table name or after a `FROM` clause. Most hints are used for these reasons:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 10:26:54.877",
+      "dateUpdated": "2018-11-29 22:58:52.232",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -220,7 +226,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInfluencing the Query Execution Plan with Hints\u003c/h2\u003e\n\u003cp\u003eIf your query is still slower than you expect or if you want to experiment with plan alternatives, you can use Splice Machine \u003cem\u003equery hints\u003c/em\u003e, which provide additional information to our optimizer. For example, hinting can help when your query is still slower than you would expect, or when you just want to try out other plan alternatives to see what would happen. \u003c/p\u003e\n\u003cp\u003eWe introduced hints in an earlier notebook, \u003cem\u003eTuning for Performance.\u003c/em\u003e To recap: you add a hint to a query by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. These hints must always be placed at the end of a line, and can be used either after a table name or after a \u003ccode\u003eFROM\u003c/code\u003e clause. Most hints are used for these reasons:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch3\u003eSyntax Matters\u003c/h3\u003e\n\u003cp\u003eNote that in the example below, the comma separating the tables to be joined needs to be AFTER the index hint, and thus is on the next line. Further, if there is a semicolon separating your SQL calls, you must put the semicolon AFTER the hint: on the next line.\u003c/p\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\u003cp\u003eHere\u0026rsquo;s the syntax to use for each hint type:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to see a full example:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInfluencing the Query Execution Plan with Hints\u003c/h2\u003e\n\u003cp\u003eIf your query is still slower than you expect, or if you want to experiment with plan alternatives, you can use Splice Machine \u003cem\u003equery hints\u003c/em\u003e, which provide additional information to our optimizer.\u003c/p\u003e\n\u003cp\u003eWe introduced hints in an earlier notebook, \u003cem\u003eTuning for Performance.\u003c/em\u003e To recap: you add a hint to a query by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. These hints must always be placed at the end of a line, and can be used either after a table name or after a \u003ccode\u003eFROM\u003c/code\u003e clause. Most hints are used for these reasons:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -228,15 +234,55 @@
       "jobName": "paragraph_1542394204052_-266420455",
       "id": "20171016-094705_1165713084",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-21 10:26:54.878",
-      "dateFinished": "2018-11-21 10:26:54.889",
+      "dateStarted": "2018-11-29 22:58:52.235",
+      "dateFinished": "2018-11-29 22:58:52.250",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from\n  (select a.i, a.j from --splice-properties joinOrder\u003dfixed\n    index_example b --splice-properties index\u003dij\n    ,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\n     where a.j \u003d 700000) x\n",
+      "text": "%md\n### Syntax Matters\nAs you\u0027ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\n\n* If you\u0027re adding the hint to the end of a query, you must put the semicolon (`;`) that terminates that query on the next line:\n  `select count(*) from myTbl --splice-properties index\u003dmyIndex1`\n  `;`\n\n* Similarly, if you\u0027re specifying multiple hints, each will need to be at the end of its own line:\n  `explain select count(*) from`\n  `(select a.i, a.j from --splice-properties joinOrder\u003dfixed`\n   `index_example b --splice-properties index\u003dij`\n   `,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop`\n   `  where a.j \u003d 700000) ;`\n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\nHere\u0027s the syntax to use for each hint type:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  to see a full example:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:04.000",
+      "dateUpdated": "2018-11-29 22:58:56.182",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSyntax Matters\u003c/h3\u003e\n\u003cp\u003eAs you\u0026rsquo;ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eIf you\u0026rsquo;re adding the hint to the end of a query, you must put the semicolon (\u003ccode\u003e;\u003c/code\u003e) that terminates that query on the next line:\u003cbr/\u003e \u003ccode\u003eselect count(*) from myTbl --splice-properties index\u003dmyIndex1\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e;\u003c/code\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eSimilarly, if you\u0026rsquo;re specifying multiple hints, each will need to be at the end of its own line:\u003cbr/\u003e \u003ccode\u003eexplain select count(*) from\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e(select a.i, a.j from --splice-properties joinOrder\u003dfixed\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003eindex_example b --splice-properties index\u003dij\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003ewhere a.j \u003d 700000) ;\u003c/code\u003e\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\u003cp\u003eHere\u0026rsquo;s the syntax to use for each hint type:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to see a full example:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543532181121_-243910551",
+      "id": "20181129-225621_2052865998",
+      "dateCreated": "2018-11-29 22:56:21.121",
+      "dateStarted": "2018-11-29 22:58:56.184",
+      "dateFinished": "2018-11-29 22:58:56.205",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n\nexplain select count(*) from\n  (select a.i, a.j from --splice-properties joinOrder\u003dfixed\n    index_example b --splice-properties index\u003dij\n    ,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\n     where a.j \u003d 700000) ;\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-29 22:52:30.374",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -271,47 +317,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Examples of When to Hint\n\nIf the optimizer doesn\u0027t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0027ll typically find that the cost shown when you use `explain` is higher than the cost chosen by the optimizer.\n\nIf you find that your plan (after hinting) runs faster, you should report this to support@splicemachine.com so we can determine if you\u0027ve found a bug.",
+      "text": "%md\n### Examples of When to Hint\n\nIf the optimizer doesn\u0027t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0027ll typically find that the cost shown when you use `explain` is higher than the cost chosen by the optimizer.\n\nIf you find that your plan (after hinting) is not running faster,  please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0027ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:04.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExamples of When to Hint\u003c/h3\u003e\n\u003cp\u003eIf the optimizer doesn\u0026rsquo;t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0026rsquo;ll typically find that the cost shown when you use \u003ccode\u003eexplain\u003c/code\u003e is higher than the cost chosen by the optimizer.\u003c/p\u003e\n\u003cp\u003eIf you find that your plan (after hinting) runs faster, you should report this to \u003ca href\u003d\"mailto:\u0026#115;\u0026#117;p\u0026#x70;\u0026#x6f;r\u0026#116;\u0026#x40;\u0026#x73;\u0026#112;\u0026#108;\u0026#105;\u0026#99;\u0026#101;\u0026#x6d;\u0026#x61;\u0026#99;\u0026#104;\u0026#105;\u0026#110;\u0026#x65;\u0026#46;\u0026#99;\u0026#111;\u0026#x6d;\"\u003e\u0026#115;\u0026#117;p\u0026#x70;\u0026#x6f;r\u0026#116;\u0026#x40;\u0026#x73;\u0026#112;\u0026#108;\u0026#105;\u0026#99;\u0026#101;\u0026#x6d;\u0026#x61;\u0026#99;\u0026#104;\u0026#105;\u0026#110;\u0026#x65;\u0026#46;\u0026#99;\u0026#111;\u0026#x6d;\u003c/a\u003e so we can determine if you\u0026rsquo;ve found a bug.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542394204053_-1820594503",
-      "id": "20170917-161208_1733120671",
-      "dateCreated": "2018-11-16 10:50:04.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Beginning Splice Machine Developer\u0027s Class*. \n\nVisit our [*Introduction to Splice Machine Training*](/#/notebook/2DWTR5ZBH) notebook to access our other Splice Machine training classes.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:38:40.003",
+      "dateUpdated": "2018-11-29 23:06:31.986",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -335,7 +343,47 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eBeginning Splice Machine Developer\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit our \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eIntroduction to Splice Machine Training\u003c/em\u003e\u003c/a\u003e notebook to access our other Splice Machine training classes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eExamples of When to Hint\u003c/h3\u003e\n\u003cp\u003eIf the optimizer doesn\u0026rsquo;t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0026rsquo;ll typically find that the cost shown when you use \u003ccode\u003eexplain\u003c/code\u003e is higher than the cost chosen by the optimizer.\u003c/p\u003e\n\u003cp\u003eIf you find that your plan (after hinting) is not running faster, please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0026rsquo;ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542394204053_-1820594503",
+      "id": "20170917-161208_1733120671",
+      "dateCreated": "2018-11-16 10:50:04.000",
+      "dateStarted": "2018-11-29 23:06:31.989",
+      "dateFinished": "2018-11-29 23:06:31.998",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Beginning Splice Machine Developer\u0027s Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-29 18:14:52.422",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eBeginning Splice Machine Developer\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -343,8 +391,8 @@
       "jobName": "paragraph_1542394204054_-1107415519",
       "id": "20170917-162201_1369089111",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-20 10:38:40.004",
-      "dateFinished": "2018-11-20 10:38:40.008",
+      "dateStarted": "2018-11-29 18:14:52.429",
+      "dateFinished": "2018-11-29 18:14:52.457",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -384,6 +432,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

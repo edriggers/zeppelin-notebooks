@@ -80,9 +80,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Data Science Class*. \n\nVisit our [*Introduction to Splice Machine Training*](/#/notebook/2DWTR5ZBH) notebook to access our other Splice Machine training classes.\n",
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Data Science Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:53:03.954",
+      "dateUpdated": "2018-11-29 18:15:51.612",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -107,7 +107,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Data Science Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit our \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eIntroduction to Splice Machine Training\u003c/em\u003e\u003c/a\u003e notebook to access our other Splice Machine training classes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Data Science Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -115,8 +115,8 @@
       "jobName": "paragraph_1542398760212_662535765",
       "id": "20170413-100618_77420174",
       "dateCreated": "2018-11-16 12:06:00.000",
-      "dateStarted": "2018-11-20 10:53:03.955",
-      "dateFinished": "2018-11-20 10:53:03.963",
+      "dateStarted": "2018-11-29 18:15:51.613",
+      "dateFinished": "2018-11-29 18:15:51.623",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -142,9 +142,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "angular:shared_process": [],
-    "spark:shared_process": []
+    "md:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

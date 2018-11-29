@@ -2,9 +2,9 @@
   "paragraphs": [
     {
       "title": "Using Zeppelin for Graphing and Filtering",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\n\nBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\n\nFirst we\u0027ll run the query as-is, then we\u0027ll change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\n\nIn this notebook, we\u0027ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0027ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0027ll:\n\n1. *Simplify Query 2, adding two additional filters and a default value*. This allows us to change the values directly in the input fields instead of editing the queries.\n2. *Run the query \"as-is\".*\n3. *Change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats*, so you can see some of the power of Zeppelin visualizations.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:06:48.000",
+      "dateUpdated": "2018-11-29 19:26:27.712",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Zeppelin for Graphing and Filtering\u003c/h1\u003e\n\u003cp\u003eSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\u003c/p\u003e\n\u003cp\u003eBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\u003c/p\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll run the query as-is, then we\u0026rsquo;ll change the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Zeppelin for Graphing and Filtering\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\u003c/p\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0026rsquo;ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eSimplify Query 2, adding two additional filters and a default value\u003c/em\u003e. This allows us to change the values directly in the input fields instead of editing the queries.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the query \u0026ldquo;as-is\u0026rdquo;.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eChange the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats\u003c/em\u003e, so you can see some of the power of Zeppelin visualizations.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -37,15 +37,15 @@
       "jobName": "paragraph_1542395179280_-1447041975",
       "id": "20180115-083330_15158583",
       "dateCreated": "2018-11-16 11:06:19.000",
-      "dateStarted": "2018-11-16 11:06:48.000",
-      "dateFinished": "2018-11-16 11:06:48.000",
+      "dateStarted": "2018-11-29 19:26:27.713",
+      "dateFinished": "2018-11-29 19:26:27.727",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:06:19.000",
+      "dateUpdated": "2018-11-29 19:27:06.638",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -92,7 +92,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "paragraph_1520184238152_198426925\u0027s Interpreter splicemachine not found"
+            "data": "java.sql.SQLException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:160)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:208)\n\tat org.apache.commons.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)\n\tat org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:205)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)\n\tat org.apache.commons.dbcp2.PoolingDriver.connect(PoolingDriver.java:129)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:270)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnectionFromPool(JDBCInterpreter.java:410)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnection(JDBCInterpreter.java:428)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:673)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.Connection.completeSqlca(Connection.java:2135)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseRdbAccessFailed(NetConnectionReply.java:554)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseAccessRdbError(NetConnectionReply.java:447)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseACCRDBreply(NetConnectionReply.java:310)\n\tat com.splicemachine.db.client.net.NetConnectionReply.readAccessDatabase(NetConnectionReply.java:124)\n\tat com.splicemachine.db.client.net.NetConnection.readAccessRdb(NetConnection.java:1048)\n\tat com.splicemachine.db.client.net.NetConnection.readSecurityCheckAndAccessRdb(NetConnection.java:1039)\n\tat com.splicemachine.db.client.net.NetConnection.flowSecurityCheckAndAccessRdb(NetConnection.java:939)\n\tat com.splicemachine.db.client.net.NetConnection.flowUSRIDPWDconnect(NetConnection.java:622)\n\tat com.splicemachine.db.client.net.NetConnection.flowConnect(NetConnection.java:435)\n\tat com.splicemachine.db.client.net.NetConnection.\u003cinit\u003e(NetConnection.java:249)\n\tat com.splicemachine.db.client.net.NetConnection40.\u003cinit\u003e(NetConnection40.java:78)\n\tat com.splicemachine.db.client.net.ClientJDBCObjectFactoryImpl40.newNetConnection(ClientJDBCObjectFactoryImpl40.java:271)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:152)\n\t... 25 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\n"
           }
         ]
       },
@@ -100,14 +100,15 @@
       "jobName": "paragraph_1542395179281_1345098367",
       "id": "20180115-083533_1027074665",
       "dateCreated": "2018-11-16 11:06:19.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-29 19:27:06.647",
+      "dateFinished": "2018-11-29 19:27:06.682",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:06:19.000",
+      "dateUpdated": "2018-11-29 19:26:47.164",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -156,7 +157,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "paragraph_1520184238153_198042176\u0027s Interpreter splicemachine not found"
+            "data": "java.sql.SQLException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:160)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:208)\n\tat org.apache.commons.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)\n\tat org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:205)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)\n\tat org.apache.commons.dbcp2.PoolingDriver.connect(PoolingDriver.java:129)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:270)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnectionFromPool(JDBCInterpreter.java:410)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnection(JDBCInterpreter.java:428)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:673)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.Connection.completeSqlca(Connection.java:2135)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseRdbAccessFailed(NetConnectionReply.java:554)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseAccessRdbError(NetConnectionReply.java:447)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseACCRDBreply(NetConnectionReply.java:310)\n\tat com.splicemachine.db.client.net.NetConnectionReply.readAccessDatabase(NetConnectionReply.java:124)\n\tat com.splicemachine.db.client.net.NetConnection.readAccessRdb(NetConnection.java:1048)\n\tat com.splicemachine.db.client.net.NetConnection.readSecurityCheckAndAccessRdb(NetConnection.java:1039)\n\tat com.splicemachine.db.client.net.NetConnection.flowSecurityCheckAndAccessRdb(NetConnection.java:939)\n\tat com.splicemachine.db.client.net.NetConnection.flowUSRIDPWDconnect(NetConnection.java:622)\n\tat com.splicemachine.db.client.net.NetConnection.flowConnect(NetConnection.java:435)\n\tat com.splicemachine.db.client.net.NetConnection.\u003cinit\u003e(NetConnection.java:249)\n\tat com.splicemachine.db.client.net.NetConnection40.\u003cinit\u003e(NetConnection40.java:78)\n\tat com.splicemachine.db.client.net.ClientJDBCObjectFactoryImpl40.newNetConnection(ClientJDBCObjectFactoryImpl40.java:271)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:152)\n\t... 25 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\n"
           }
         ]
       },
@@ -164,8 +165,9 @@
       "jobName": "paragraph_1542395179281_-2040910926",
       "id": "20180129-123733_1126963025",
       "dateCreated": "2018-11-16 11:06:19.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-29 19:26:47.174",
+      "dateFinished": "2018-11-29 19:26:49.634",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -333,34 +335,6 @@
       "dateFinished": "2018-11-20 10:57:37.748",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:06:19.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395179284_-1830073531",
-      "id": "20180125-142959_1101825868",
-      "dateCreated": "2018-11-16 11:06:19.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Developers, Part II - Intermediate/e. Visualizing Results with Zeppelin",
@@ -369,8 +343,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

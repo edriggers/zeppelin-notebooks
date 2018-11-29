@@ -70,15 +70,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/Introduction to Splice Machine Training",
+  "name": "Splice Machine Training/Courses Introduction/Our Training Courses",
   "id": "2DWTR5ZBH",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "angular:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

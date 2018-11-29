@@ -28,19 +28,21 @@ To use the notebooks in this repo with the docker image distributed by Splice Ma
 1. Run docker on your computer.
 2. In the docker Advanced Preferences, set memory to 12GB.
 3. Start the Splice Machine docker container with this command:
-   `docker run -ti --hostname localhost -p 8080:8080 -p 1527:1527 -p 4040:4040 -p 8088:8088 splicemachine/standalone:latest`
+   `docker run -ti  --sysctl net.ipv6.conf.all.disable_ipv6=1  --name spliceserver  --hostname localhost  -p 1527:1527 -p 4040:4040 -p 7078:7078  -p 8080:8080 -p 8090:8090 -p 8091:8091  splicemachine/standalone:latest`
 4. Once the container starts, you'll see a command prompt. Issue these commands in sequence:
    ```
-   cd splice-training
+   ./start-spark-master.sh
+   ./start-spark-slave.sh
    ./start-splice.sh
    ./start-zeppelin.sh
-   ./sqlshell.sh
    ```
 
    Note that the `./start-splice.sh` step will take a couple minutes, and you may see a sequence of warnings displayed; you can ignore these messages while the various services are starting up:
    `Ncat: Cannot assign requested address.`
 
-5. You can then browse to `localhost:8088` to work with the Training notebooks.
+   The `./start-zeppelin.sh` step will also display some warning messages that you can ignore.
+
+5. You can then browse to `localhost:8090` to work with the Training notebooks.
 
 ## Tracking Notebooks
 Because Zeppelin *names* notebooks with non-descriptive IDs, we've created a spreadsheet that maps notebook descriptions to their IDs, and tracks which notebook is the next-in-sequence in each course. [This Google Sheets spreadsheet](https://docs.google.com/spreadsheets/d/1IwCkolUBSRxK5gTjOxpm3Wu7QfikHv1O7xLkkD7FFk8/edit?usp=sharing) contains a sheet for each of our courses.

@@ -142,17 +142,17 @@
       },
       "settings": {
         "params": {
-          "JDBCurl": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin",
-          "JDBCurl Scala": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
-          "JDBCURL Scala": "jdbc:splice:/{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin",
-          "JDBCxurl": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue"
+          "JDBCurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
+          "JDBCurl Scala": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
+          "JDBCURL Scala": "jdbc:splice:/localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
+          "JDBCxurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue"
         },
         "forms": {
           "JDBCurl": {
             "type": "TextBox",
             "name": "JDBCurl",
             "displayName": "JDBCurl",
-            "defaultValue": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin",
+            "defaultValue": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
             "hidden": false
           }
         }
@@ -162,7 +162,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\nwarning: there was one deprecation warning; re-run with -deprecation for details\ndefaultJDBCURL: String \u003d jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user\u003dsplice;password\u003dadmin\nlocalJDBCURL: String \u003d jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\n"
+            "data": "Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\nwarning: there was one deprecation warning; re-run with -deprecation for details\ndefaultJDBCURL: String \u003d jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\nlocalJDBCURL: String \u003d jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\n"
           }
         ]
       },
