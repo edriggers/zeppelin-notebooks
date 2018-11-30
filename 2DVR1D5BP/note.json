@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" /\u003e\n\n# Importing Data into Your Splice Machine Database\n\nThis notebook shows you how to import data into your Splice Machine database from flat files; we\u0027ll walk you through a simple example, after which you\u0027ll be able to import your own data into your database. This notebook contains these sections:\n\n* The *Import Data Checklist* summarizes important details about the format of the data you\u0027re importing.\n* *Using the `IMPORT_DATA` Command* shows the syntax for importing data using our `IMPORT_DATA` system procedure, and include\n\n\u003eBefore starting to work with this notebook, you should already have your data stored in delimited format (such as CSV); if that\u0027s not yet true, please review the previous notebook in this class, [*Preparing Data for Import*](/#/notebook/2DX8XQH89), which walks you through getting your data ready to import.\n\n\n## Additional Data Ingestion Information\nIn addition to using our `import_data` procedure to load flat files into a database, Splice Machine provides a number of *advanced* import processes for loading very large datasets into your database, including the use of bulk HFiles, and pre-splitting data for more efficient mapping into HBase regions. These are described, along with examples, in the  \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation.\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Importing Data into Your Splice Machine Database\n\nThis notebook shows you how to import data into your Splice Machine database from flat files; we\u0027ll walk you through a simple example, after which you\u0027ll be able to import your own data into your database. This notebook contains these sections:\n\n* The *Import Data Checklist* summarizes important details about the format of the data you\u0027re importing.\n* *Using the `IMPORT_DATA` Command* shows the syntax for importing data using our `IMPORT_DATA` system procedure, and include\n\n\u003eBefore starting to work with this notebook, you should already have your data stored in delimited format (such as CSV); if that\u0027s not yet true, please review the previous notebook in this class, [*Preparing Data for Import*](/#/notebook/2DX8XQH89), which walks you through getting your data ready to import.\n\n\n## Additional Data Ingestion Information\nIn addition to using our `import_data` procedure to load flat files into a database, Splice Machine provides a number of *advanced* import processes for loading very large datasets into your database, including the use of bulk HFiles, and pre-splitting data for more efficient mapping into HBase regions. These are described, along with examples, in the  \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:13:01.175",
+      "dateUpdated": "2018-11-30 00:04:20.415",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" /\u003e\n\u003ch1\u003eImporting Data into Your Splice Machine Database\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you how to import data into your Splice Machine database from flat files; we\u0026rsquo;ll walk you through a simple example, after which you\u0026rsquo;ll be able to import your own data into your database. This notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003cem\u003eImport Data Checklist\u003c/em\u003e summarizes important details about the format of the data you\u0026rsquo;re importing.\u003c/li\u003e\n  \u003cli\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cblockquote\u003e\n  \u003cp\u003eBefore starting to work with this notebook, you should already have your data stored in delimited format (such as CSV); if that\u0026rsquo;s not yet true, please review the previous notebook in this class, \u003ca href\u003d\"/#/notebook/2DX8XQH89\"\u003e\u003cem\u003ePreparing Data for Import\u003c/em\u003e\u003c/a\u003e, which walks you through getting your data ready to import.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2\u003eAdditional Data Ingestion Information\u003c/h2\u003e\n\u003cp\u003eIn addition to using our \u003ccode\u003eimport_data\u003c/code\u003e procedure to load flat files into a database, Splice Machine provides a number of \u003cem\u003eadvanced\u003c/em\u003e import processes for loading very large datasets into your database, including the use of bulk HFiles, and pre-splitting data for more efficient mapping into HBase regions. These are described, along with examples, in the \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eImporting Data into Your Splice Machine Database\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you how to import data into your Splice Machine database from flat files; we\u0026rsquo;ll walk you through a simple example, after which you\u0026rsquo;ll be able to import your own data into your database. This notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003cem\u003eImport Data Checklist\u003c/em\u003e summarizes important details about the format of the data you\u0026rsquo;re importing.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing the \u003ccode\u003eIMPORT_DATA\u003c/code\u003e Command\u003c/em\u003e shows the syntax for importing data using our \u003ccode\u003eIMPORT_DATA\u003c/code\u003e system procedure, and include\u003c/li\u003e\n\u003c/ul\u003e\n\u003cblockquote\u003e\n  \u003cp\u003eBefore starting to work with this notebook, you should already have your data stored in delimited format (such as CSV); if that\u0026rsquo;s not yet true, please review the previous notebook in this class, \u003ca href\u003d\"/#/notebook/2DX8XQH89\"\u003e\u003cem\u003ePreparing Data for Import\u003c/em\u003e\u003c/a\u003e, which walks you through getting your data ready to import.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003ch2\u003eAdditional Data Ingestion Information\u003c/h2\u003e\n\u003cp\u003eIn addition to using our \u003ccode\u003eimport_data\u003c/code\u003e procedure to load flat files into a database, Splice Machine provides a number of \u003cem\u003eadvanced\u003c/em\u003e import processes for loading very large datasets into your database, including the use of bulk HFiles, and pre-splitting data for more efficient mapping into HBase regions. These are described, along with examples, in the \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542670815328_1646270231",
       "id": "20170907-071238_703539388",
       "dateCreated": "2018-11-19 15:40:15.328",
-      "dateStarted": "2018-11-29 20:09:30.822",
-      "dateFinished": "2018-11-29 20:09:30.848",
+      "dateStarted": "2018-11-30 00:04:20.416",
+      "dateFinished": "2018-11-30 00:04:20.445",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -656,8 +656,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

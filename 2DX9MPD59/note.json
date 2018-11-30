@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Tuning for Performance\n\nTuning for performance is a critical topic for any database. This is especially true for Splice Machine, because its architecture may influence performance in ways unexpected by experienced database users.\n\nSplice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.\n\nThis Notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*\n\nThis notebook uses the same `import_example` table that we created in the previous notebook in this class. \n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Tuning for Performance\n\nThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*\n\nTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:02:48.462",
+      "dateUpdated": "2018-11-30 00:14:07.313",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTuning for Performance\u003c/h1\u003e\n\u003cp\u003eTuning for performance is a critical topic for any database. This is especially true for Splice Machine, because its architecture may influence performance in ways unexpected by experienced database users.\u003c/p\u003e\n\u003cp\u003eSplice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the \u003cem\u003ecost\u003c/em\u003e of each possible plan, and chooses the lowest-cost option.\u003c/p\u003e\n\u003cp\u003eThis Notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eCollecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003ePerforming Major Compactions\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Primary Keys and Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJoining Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSelecting a Join Strategy\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThis notebook uses the same \u003ccode\u003eimport_example\u003c/code\u003e table that we created in the previous notebook in this class.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTuning for Performance\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eCollecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003ePerforming Major Compactions\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Primary Keys and Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJoining Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSelecting a Join Strategy\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the \u003cem\u003ecost\u003c/em\u003e of each possible plan, and chooses the lowest-cost option.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542402464279_-1504886143",
       "id": "20170907-071526_832974549",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-21 17:02:48.463",
-      "dateFinished": "2018-11-21 17:02:48.486",
+      "dateStarted": "2018-11-30 00:14:07.314",
+      "dateFinished": "2018-11-30 00:14:07.331",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -117,9 +117,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nYou\u0027ll notice that the row counts are way off! That\u0027s because we have __not__ run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\n\nLet\u0027s collect some statistics by analyzing our table, and then we\u0027ll rerun the `explain`. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0027ll see that the row counts and costs are accurate.\n\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n",
+      "text": "%md\n### The Importance of Statistics\n\nYou\u0027ll notice that the row counts are way off! That\u0027s because we have __not__ run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\n\nLet\u0027s collect some statistics by analyzing our table, and then we\u0027ll rerun the `explain`. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0027ll see that the row counts and costs are accurate.\n\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 09:47:13.262",
+      "dateUpdated": "2018-11-30 00:47:00.944",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -143,7 +143,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice that the row counts are way off! That\u0026rsquo;s because we have \u003cstrong\u003enot\u003c/strong\u003e run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s collect some statistics by analyzing our table, and then we\u0026rsquo;ll rerun the \u003ccode\u003eexplain\u003c/code\u003e. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0026rsquo;ll see that the row counts and costs are accurate.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eThe Importance of Statistics\u003c/h3\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice that the row counts are way off! That\u0026rsquo;s because we have \u003cstrong\u003enot\u003c/strong\u003e run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s collect some statistics by analyzing our table, and then we\u0026rsquo;ll rerun the \u003ccode\u003eexplain\u003c/code\u003e. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0026rsquo;ll see that the row counts and costs are accurate.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -151,22 +151,22 @@
       "jobName": "paragraph_1542402464281_-1793022678",
       "id": "20170916-210342_1463344047",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-21 09:47:13.263",
-      "dateFinished": "2018-11-21 09:47:13.273",
+      "dateStarted": "2018-11-30 00:47:00.944",
+      "dateFinished": "2018-11-30 00:47:00.963",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\nanalyze table import_example;\n\nexplain select * from import_example a, import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:59.000",
+      "dateUpdated": "2018-11-30 00:45:16.350",
       "config": {
         "editorSetting": {
-          "language": "text",
+          "language": "sql",
           "editOnDblClick": false
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/text",
+        "editorMode": "ace/mode/sql",
         "editorHide": false,
         "results": {
           "0": {
@@ -212,15 +212,11 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nSPLICE\tIMPORT_EXAMPLE\t-All-\t4\t108\t1\t2\t0.0\n"
-          },
-          {
             "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d5,rows\u003d4,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d48.172,outputRows\u003d4,outputHeapSize\u003d216 B,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d28.091,outputRows\u003d4,outputHeapSize\u003d216 B,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1616)](n\u003d2,totalCost\u003d4.005,scannedRows\u003d4,outputRows\u003d4,outputHeapSize\u003d216 B,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1616)](n\u003d1,totalCost\u003d4.005,scannedRows\u003d4,outputRows\u003d1,outputHeapSize\u003d27 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
+            "data": "java.sql.SQLSyntaxErrorException: Table/View \u0027SPLICE.IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:89)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:904)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:718)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: Table/View \u0027SPLICE.IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.Statement.completeExecute(Statement.java:1612)\n\tat com.splicemachine.db.client.net.NetStatementReply.parseEXCSQLSTTreply(NetStatementReply.java:324)\n\tat com.splicemachine.db.client.net.NetStatementReply.readExecuteCall(NetStatementReply.java:108)\n\tat com.splicemachine.db.client.net.StatementReply.readExecuteCall(StatementReply.java:79)\n\tat com.splicemachine.db.client.net.NetStatement.readExecuteCall_(NetStatement.java:179)\n\tat com.splicemachine.db.client.am.Statement.readExecuteCall(Statement.java:1578)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2169)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:909)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:895)\n\t... 15 more\n"
           }
         ]
       },
@@ -228,8 +224,9 @@
       "jobName": "paragraph_1542402464281_1953344349",
       "id": "20170916-210539_1235333677",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 00:45:16.420",
+      "dateFinished": "2018-11-30 00:45:16.583",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -309,18 +306,18 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* the primary key becomes the key for the HBase table\n* an index is another HBase table whose key consists of the columns in the index\n* compound (multi-column) primary keys and indexes are supported\n\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an index improperly used can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\nLet\u0027s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.",
+      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an index improperly used can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\nLet\u0027s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-30 00:47:52.953",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -937,9 +934,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Adding Hints\n\nNote that the optimizer chose the plan that uses the actual table, NOT the index; why did it make this choice?\n\nWe can learn more about this by using a Splice Machine *hint* to force use of an index. We use an `index` hint in next paragraph:\n",
+      "text": "%md\n### Adding Index Hints\n\nNote that the optimizer chose the plan that uses the actual table, NOT the index; why did it make this choice?\n\nWe can learn more about this by using a Splice Machine *hint* to force use of an index. We use an `index` hint in next paragraph:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-30 00:49:01.451",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -962,7 +959,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAdding Hints\u003c/h3\u003e\n\u003cp\u003eNote that the optimizer chose the plan that uses the actual table, NOT the index; why did it make this choice?\u003c/p\u003e\n\u003cp\u003eWe can learn more about this by using a Splice Machine \u003cem\u003ehint\u003c/em\u003e to force use of an index. We use an \u003ccode\u003eindex\u003c/code\u003e hint in next paragraph:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAdding Index Hints\u003c/h3\u003e\n\u003cp\u003eNote that the optimizer chose the plan that uses the actual table, NOT the index; why did it make this choice?\u003c/p\u003e\n\u003cp\u003eWe can learn more about this by using a Splice Machine \u003cem\u003ehint\u003c/em\u003e to force use of an index. We use an \u003ccode\u003eindex\u003c/code\u003e hint in next paragraph:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -970,8 +967,9 @@
       "jobName": "paragraph_1542402464288_-1391229295",
       "id": "20170917-101802_1032211186",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 00:49:01.452",
+      "dateFinished": "2018-11-30 00:49:01.461",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1013,18 +1011,19 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nYou add a Splice Machine __hint__ to your queries by appending a specially formatted *comment*. These hints:\n\n* are always prefaced by `--splice-properties`\n* must always be placed at the end of a line\n* can be used either after a table name or after a `FROM` clause\n\nThe *index hint* in the above example  (`--splice-properties index\u003dij`) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses `IndexScan` instead of the `TableScan`. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\n\nIt\u0027s because the index only contains information for column `J`, and this query calls for information about column `I` as well. This means that we still have to get information from the base table for column I, and we have to do it *many* times.  You can see this in the plan: there is a step, `IndexLookup`, that is part of the plan.  You\u0027ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column `I`.  In distributed architectures like Splice Machine, this can be a very expensive operation.\n\nIf you want, you can run these these two queries by removing the `explains`; you\u0027ll noticed a significant performance difference between them.\n\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\nWhen faced with situations where you have __many__ matching rows however, like our original query, you can address the issue by creating a compound index that includes both j and i in it:",
+      "text": "%md\n### Learning About Hints\nYou add Splice Machine __hints__ to your queries by appending a specially formatted *comment*. The different kinds of available hints and the syntax required for them is described in detail later in this class, in the [*Using Explain and Hints*](/#/notebook/2DUVSWQRW) notebook.\n\nThe *index hint* in the above example  (`--splice-properties index\u003dij`) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses `IndexScan` instead of the `TableScan`. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\n\nIt\u0027s because the index only contains information for column `J`, and this query calls for information about column `I` as well. This means that we still have to get information from the base table for column I, and we have to do it *many* times.  You can see this in the plan: there is a step, `IndexLookup`, that is part of the plan.  You\u0027ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column `I`.  In distributed architectures like Splice Machine, this can be a very expensive operation.\n\nIf you want, you can run these these two queries by removing the `explains`; you\u0027ll noticed a significant performance difference between them.\n\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\nWhen faced with situations where you have __many__ matching rows however, like our original query, you can address the issue by creating a compound index that includes both `j` and `i` in it:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-11-30 00:54:01.269",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -1038,7 +1037,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou add a Splice Machine \u003cstrong\u003ehint\u003c/strong\u003e to your queries by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. These hints:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eare always prefaced by \u003ccode\u003e--splice-properties\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003emust always be placed at the end of a line\u003c/li\u003e\n  \u003cli\u003ecan be used either after a table name or after a \u003ccode\u003eFROM\u003c/code\u003e clause\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe \u003cem\u003eindex hint\u003c/em\u003e in the above example (\u003ccode\u003e--splice-properties index\u003dij\u003c/code\u003e) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses \u003ccode\u003eIndexScan\u003c/code\u003e instead of the \u003ccode\u003eTableScan\u003c/code\u003e. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\u003c/p\u003e\n\u003cp\u003eIt\u0026rsquo;s because the index only contains information for column \u003ccode\u003eJ\u003c/code\u003e, and this query calls for information about column \u003ccode\u003eI\u003c/code\u003e as well. This means that we still have to get information from the base table for column I, and we have to do it \u003cem\u003emany\u003c/em\u003e times. You can see this in the plan: there is a step, \u003ccode\u003eIndexLookup\u003c/code\u003e, that is part of the plan. You\u0026rsquo;ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column \u003ccode\u003eI\u003c/code\u003e. In distributed architectures like Splice Machine, this can be a very expensive operation.\u003c/p\u003e\n\u003cp\u003eIf you want, you can run these these two queries by removing the \u003ccode\u003eexplains\u003c/code\u003e; you\u0026rsquo;ll noticed a significant performance difference between them.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\u003cp\u003eWhen faced with situations where you have \u003cstrong\u003emany\u003c/strong\u003e matching rows however, like our original query, you can address the issue by creating a compound index that includes both j and i in it:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLearning About Hints\u003c/h3\u003e\n\u003cp\u003eYou add Splice Machine \u003cstrong\u003ehints\u003c/strong\u003e to your queries by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. The different kinds of available hints and the syntax required for them is described in detail later in this class, in the \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eUsing Explain and Hints\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003cp\u003eThe \u003cem\u003eindex hint\u003c/em\u003e in the above example (\u003ccode\u003e--splice-properties index\u003dij\u003c/code\u003e) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses \u003ccode\u003eIndexScan\u003c/code\u003e instead of the \u003ccode\u003eTableScan\u003c/code\u003e. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\u003c/p\u003e\n\u003cp\u003eIt\u0026rsquo;s because the index only contains information for column \u003ccode\u003eJ\u003c/code\u003e, and this query calls for information about column \u003ccode\u003eI\u003c/code\u003e as well. This means that we still have to get information from the base table for column I, and we have to do it \u003cem\u003emany\u003c/em\u003e times. You can see this in the plan: there is a step, \u003ccode\u003eIndexLookup\u003c/code\u003e, that is part of the plan. You\u0026rsquo;ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column \u003ccode\u003eI\u003c/code\u003e. In distributed architectures like Splice Machine, this can be a very expensive operation.\u003c/p\u003e\n\u003cp\u003eIf you want, you can run these these two queries by removing the \u003ccode\u003eexplains\u003c/code\u003e; you\u0026rsquo;ll noticed a significant performance difference between them.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\u003cp\u003eWhen faced with situations where you have \u003cstrong\u003emany\u003c/strong\u003e matching rows however, like our original query, you can address the issue by creating a compound index that includes both \u003ccode\u003ej\u003c/code\u003e and \u003ccode\u003ei\u003c/code\u003e in it:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1046,8 +1045,9 @@
       "jobName": "paragraph_1542402464289_-996725073",
       "id": "20170917-102229_72455203",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 00:53:43.350",
+      "dateFinished": "2018-11-30 00:53:43.387",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1410,7 +1410,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

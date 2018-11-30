@@ -2,9 +2,9 @@
   "paragraphs": [
     {
       "title": "Tutorial Data Schema - TPC-H",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# The Life of a Query\n\nThis notebook walks you through using Splice Machine to create, populate, and query a sample database. We\u0027ll use the TPC-H benchmarking data as our sample dataset.\n\nTPC-H is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\nWe demonstrate running and optimizing queries in Splice Machine, in these sections:\n\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eCreating our Database in Splice Machine\u003c/li\u003e\n    \u003cli\u003eExamining a Query Execution Plan\u003c/li\u003e\n    \u003cli\u003eInforming the Optimizer\u003c/li\u003e\n    \u003cli\u003eAdding Indexes to the Database\u003c/li\u003e\n    \u003cli\u003eA Glimpse at Splice Machine Benchmark Results\u003c/li\u003e\n    \u003cli\u003eRunning Queries\u003c/li\u003e\n\u003c/ul\u003e\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# The Life of a Query\n\nThis notebook walks you through running and optimizing a query in Splice Machine, using TPC-H benchmarking data that you\u0027ll first import into your database. We explore these topics:\n\n* *Importing the TPCH Data into Your Database*\n* *Examining a Query Execution Plan*\n* *Informing the Optimizer*\n* *Adding Indexes to the Database*\n* *A Glimpse at Splice Machine Benchmark Results*\n* *Running Queries*\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:14:13.000",
+      "dateUpdated": "2018-11-30 01:16:51.849",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eThe Life of a Query\u003c/h1\u003e\n\u003cp\u003eThis notebook walks you through using Splice Machine to create, populate, and query a sample database. We\u0026rsquo;ll use the TPC-H benchmarking data as our sample dataset.\u003c/p\u003e\n\u003cp\u003eTPC-H is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003cp\u003eWe demonstrate running and optimizing queries in Splice Machine, in these sections:\u003c/p\u003e\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eCreating our Database in Splice Machine\u003c/li\u003e\n    \u003cli\u003eExamining a Query Execution Plan\u003c/li\u003e\n    \u003cli\u003eInforming the Optimizer\u003c/li\u003e\n    \u003cli\u003eAdding Indexes to the Database\u003c/li\u003e\n    \u003cli\u003eA Glimpse at Splice Machine Benchmark Results\u003c/li\u003e\n    \u003cli\u003eRunning Queries\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eThe Life of a Query\u003c/h1\u003e\n\u003cp\u003eThis notebook walks you through running and optimizing a query in Splice Machine, using TPC-H benchmarking data that you\u0026rsquo;ll first import into your database. We explore these topics:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eImporting the TPCH Data into Your Database\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eExamining a Query Execution Plan\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eInforming the Optimizer\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAdding Indexes to the Database\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eA Glimpse at Splice Machine Benchmark Results\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -37,15 +37,15 @@
       "jobName": "paragraph_1542402827707_-1442760902",
       "id": "20180113-213553_290656873",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-11-16 13:14:13.000",
-      "dateFinished": "2018-11-16 13:14:13.000",
+      "dateStarted": "2018-11-30 01:16:51.853",
+      "dateFinished": "2018-11-30 01:16:51.866",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Creating our Database in Splice Machine\n\nNow we\u0027ll create our database in Splice Machine, in the following steps\n\n1. Create the Schema\n2. Create the Tables\n3. Import the Data\n",
+      "text": "%md\n## Importing the TPCH Data into Your Database\n\nTo create the TPCH schema and tables, and then import the TPCH data, in these steps:\n\n1. Create the Schema\n2. Create the Tables\n3. Import the Data\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 10:18:56.958",
+      "dateUpdated": "2018-11-30 01:20:32.676",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating our Database in Splice Machine\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll create our database in Splice Machine, in the following steps\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the Schema\u003c/li\u003e\n  \u003cli\u003eCreate the Tables\u003c/li\u003e\n  \u003cli\u003eImport the Data\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eImporting the TPCH Data into Your Database\u003c/h2\u003e\n\u003cp\u003eTo create the TPCH schema and tables, and then import the TPCH data, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the Schema\u003c/li\u003e\n  \u003cli\u003eCreate the Tables\u003c/li\u003e\n  \u003cli\u003eImport the Data\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -76,8 +76,48 @@
       "jobName": "paragraph_1542402827708_759617580",
       "id": "20180125-195425_1198649470",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-11-21 10:18:56.959",
-      "dateFinished": "2018-11-21 10:18:56.965",
+      "dateStarted": "2018-11-30 01:20:32.677",
+      "dateFinished": "2018-11-30 01:20:32.687",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n#### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-30 01:23:05.638",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAbout TPCH Data\u003c/h3\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch4\u003eThe TPCH Schema\u003c/h4\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543540813943_2120816045",
+      "id": "20181130-012013_175160479",
+      "dateCreated": "2018-11-30 01:20:13.943",
+      "dateStarted": "2018-11-30 01:23:05.638",
+      "dateFinished": "2018-11-30 01:23:05.660",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -125,7 +165,7 @@
     {
       "text": "%splicemachine\nCREATE SCHEMA TPCH1;",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 10:19:01.679",
+      "dateUpdated": "2018-11-30 01:18:11.924",
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -144,33 +184,40 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
-        "msg": []
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1542402827709_690823560",
       "id": "20180115-053038_1611909604",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "ERROR",
-      "errorMessage": "org.apache.zeppelin.interpreter.InterpreterNotFoundException: Either no interpreter named splicemachine or it is not binded to this note\n\tat org.apache.zeppelin.interpreter.InterpreterFactory.getInterpreter(InterpreterFactory.java:101)\n\tat org.apache.zeppelin.notebook.Paragraph.getBindedInterpreter(Paragraph.java:242)\n\tat org.apache.zeppelin.notebook.Paragraph.execute(Paragraph.java:350)\n\tat org.apache.zeppelin.notebook.Note.run(Note.java:683)\n\tat org.apache.zeppelin.socket.NotebookServer.persistAndExecuteSingleParagraph(NotebookServer.java:1867)\n\tat org.apache.zeppelin.socket.NotebookServer.runParagraph(NotebookServer.java:1826)\n\tat org.apache.zeppelin.socket.NotebookServer.onMessage(NotebookServer.java:261)\n\tat org.apache.zeppelin.socket.NotebookSocket.onWebSocketText(NotebookSocket.java:59)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextMessage(JettyListenerEventDriver.java:128)\n\tat org.eclipse.jetty.websocket.common.message.SimpleTextMessage.messageComplete(SimpleTextMessage.java:69)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.appendMessage(AbstractEventDriver.java:65)\n\tat org.eclipse.jetty.websocket.common.events.JettyListenerEventDriver.onTextFrame(JettyListenerEventDriver.java:122)\n\tat org.eclipse.jetty.websocket.common.events.AbstractEventDriver.incomingFrame(AbstractEventDriver.java:161)\n\tat org.eclipse.jetty.websocket.common.WebSocketSession.incomingFrame(WebSocketSession.java:309)\n\tat org.eclipse.jetty.websocket.common.extensions.ExtensionStack.incomingFrame(ExtensionStack.java:214)\n\tat org.eclipse.jetty.websocket.common.Parser.notifyFrame(Parser.java:220)\n\tat org.eclipse.jetty.websocket.common.Parser.parse(Parser.java:258)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.readParse(AbstractWebSocketConnection.java:632)\n\tat org.eclipse.jetty.websocket.common.io.AbstractWebSocketConnection.onFillable(AbstractWebSocketConnection.java:480)\n\tat org.eclipse.jetty.io.AbstractConnection$2.run(AbstractConnection.java:544)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:635)\n\tat org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:555)\n\tat java.lang.Thread.run(Thread.java:748)\n",
+      "dateStarted": "2018-11-30 01:18:11.965",
+      "dateFinished": "2018-11-30 01:18:12.589",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n#### Overview of the TPC-H Schema\n\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fit3qtrwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n### 2. Create the Tables\n\nWe\u0027ll now create the TPCH tables in our schema. In case we\u0027re working on a database in which we may have already imported TPCH data, we\u0027ll first conditionally drop the tables we want to create:",
+      "text": "%md\n## Create the Tables\nNext we\u0027ll create the tables for the TPCH data that we\u0027ll be importing.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:13:47.000",
+      "dateUpdated": "2018-11-30 01:27:59.798",
       "config": {
-        "tableHide": false,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
-        "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -181,83 +228,17 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eOverview of the TPC-H Schema\u003c/h4\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fit3qtrwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003ch3\u003e2. Create the Tables\u003c/h3\u003e\n\u003cp\u003eWe\u0026rsquo;ll now create the TPCH tables in our schema. In case we\u0026rsquo;re working on a database in which we may have already imported TPCH data, we\u0026rsquo;ll first conditionally drop the tables we want to create:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate the Tables\u003c/h2\u003e\n\u003cp\u003eNext we\u0026rsquo;ll create the tables for the TPCH data that we\u0026rsquo;ll be importing.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1542402827709_-94917009",
-      "id": "20180125-201218_1888148548",
-      "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\nDROP TABLE IF EXISTS TPCH1.LINEITEM;\nDROP TABLE IF EXISTS TPCH1.ORDERS;\nDROP TABLE IF EXISTS TPCH1.CUSTOMER;\nDROP TABLE IF EXISTS TPCH1.PARTSUPP;\nDROP TABLE IF EXISTS TPCH1.SUPPLIER;\nDROP TABLE IF EXISTS TPCH1.PART;\nDROP TABLE IF EXISTS TPCH1.REGION;\nDROP TABLE IF EXISTS TPCH1.NATION;",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:13:47.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542402827710_-2036650984",
-      "id": "20180115-013106_1425678081",
-      "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
+      "jobName": "paragraph_1543540867920_1906678968",
+      "id": "20181130-012107_272512523",
+      "dateCreated": "2018-11-30 01:21:07.920",
+      "dateStarted": "2018-11-30 01:27:59.798",
+      "dateFinished": "2018-11-30 01:27:59.804",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -303,9 +284,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 3. Import the Data\n\nWe have pre-loaded flat files with the TPCH data into an S3 bucket to facilitate importing the data. All we need to do is run an `IMPORT` statement for each table.\n\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n",
+      "text": "%md\n### 3. Import the TPCH Data\n\nWe have pre-loaded flat files with the TPCH data into an S3 bucket to facilitate importing the data. All we need to do is run an `IMPORT` statement for each table.\n\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:13:47.000",
+      "dateUpdated": "2018-11-30 01:18:35.639",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -328,7 +309,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Import the Data\u003c/h3\u003e\n\u003cp\u003eWe have pre-loaded flat files with the TPCH data into an S3 bucket to facilitate importing the data. All we need to do is run an \u003ccode\u003eIMPORT\u003c/code\u003e statement for each table.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Import the TPCH Data\u003c/h3\u003e\n\u003cp\u003eWe have pre-loaded flat files with the TPCH data into an S3 bucket to facilitate importing the data. All we need to do is run an \u003ccode\u003eIMPORT\u003c/code\u003e statement for each table.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -336,43 +317,16 @@
       "jobName": "paragraph_1542402827711_838191504",
       "id": "20180125-201815_611540808",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:13:47.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542402827712_173810412",
-      "id": "20180403-195450_1901236835",
-      "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 01:18:35.639",
+      "dateFinished": "2018-11-30 01:18:35.648",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Import Data",
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:10:07.231",
+      "dateUpdated": "2018-11-30 01:12:25.675",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -388,7 +342,31 @@
             "graph": {
               "mode": "table",
               "height": 96.946,
-              "optionOpen": false
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
             }
           },
           "1": {
@@ -1109,9 +1087,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Re-analze and Re-run the Explain Plan After Indexing\n\nNow that we\u0027ve added indexes to our database, let\u0027s re-analyze the database and then re-run the `explain` plan for Query 4 one more time to see how indexing has affected our execution plan.\n",
+      "text": "%md\n### Analyze and Explain Again After Indexing\n\nNow that we\u0027ve added indexes to our database, let\u0027s re-analyze the database and then re-run the `explain` plan for Query 4 one more time to see how indexing has affected our execution plan.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:13:47.000",
+      "dateUpdated": "2018-11-30 03:13:44.156",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1134,7 +1112,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRe-analze and Re-run the Explain Plan After Indexing\u003c/h3\u003e\n\u003cp\u003eNow that we\u0026rsquo;ve added indexes to our database, let\u0026rsquo;s re-analyze the database and then re-run the \u003ccode\u003eexplain\u003c/code\u003e plan for Query 4 one more time to see how indexing has affected our execution plan.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAnalyze and Explain Again After Indexing\u003c/h3\u003e\n\u003cp\u003eNow that we\u0026rsquo;ve added indexes to our database, let\u0026rsquo;s re-analyze the database and then re-run the \u003ccode\u003eexplain\u003c/code\u003e plan for Query 4 one more time to see how indexing has affected our execution plan.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1142,8 +1120,9 @@
       "jobName": "paragraph_1542402827719_-891352269",
       "id": "20180125-203451_1030911184",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 03:13:44.161",
+      "dateFinished": "2018-11-30 03:13:44.172",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1258,9 +1237,9 @@
     },
     {
       "title": "Plan Comparison After Indexes",
-      "text": "%md\n### Compare Execution Plans\n\nWe can now compare how the query will execute with indexing in place versus without indexes. You\u0027ll again notice that, among other differences, the `totalCost` values are lower for most operations because the optimizer was able to take advantage of the indexes we added.\n\n#### Query Plan After Indexing\n```\nPlan\nCursor(n\u003d14,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d13,totalCost\u003d15353.855,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d12,totalCost\u003d15353.753,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d11,totalCost\u003d14988.138,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d10,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d9,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d8,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  ProjectRestrict(n\u003d7,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n                -\u003e  IndexScan[O_DATE_PRI_KEY_IDX(1745)](n\u003d6,totalCost\u003d1547.029,scannedRows\u003d1160172,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41,baseTable\u003dORDERS(1616),preds\u003d[(O_ORDERDATE[5:1] \u003c dataTypeServices: DATE ),(O_ORDERDATE[5:1] \u003e\u003d 1993-07-01)])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```\n\n#### Query Plan Before Indexing\n```\nPlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```",
+      "text": "%md\n### Compare Updated Execution Plans\n\nWe can now compare how the query will execute with indexing in place versus without indexes. You\u0027ll again notice that, among other differences, the `totalCost` values are lower for most operations because the optimizer was able to take advantage of the indexes we added.\n\n#### Query Plan After Indexing\n```\nPlan\nCursor(n\u003d14,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d13,totalCost\u003d15353.855,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d12,totalCost\u003d15353.753,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d11,totalCost\u003d14988.138,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d10,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d9,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d8,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  ProjectRestrict(n\u003d7,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n                -\u003e  IndexScan[O_DATE_PRI_KEY_IDX(1745)](n\u003d6,totalCost\u003d1547.029,scannedRows\u003d1160172,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41,baseTable\u003dORDERS(1616),preds\u003d[(O_ORDERDATE[5:1] \u003c dataTypeServices: DATE ),(O_ORDERDATE[5:1] \u003e\u003d 1993-07-01)])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```\n\n#### Query Plan Before Indexing\n```\nPlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:13:47.000",
+      "dateUpdated": "2018-11-30 03:14:22.806",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1284,7 +1263,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCompare Execution Plans\u003c/h3\u003e\n\u003cp\u003eWe can now compare how the query will execute with indexing in place versus without indexes. You\u0026rsquo;ll again notice that, among other differences, the \u003ccode\u003etotalCost\u003c/code\u003e values are lower for most operations because the optimizer was able to take advantage of the indexes we added.\u003c/p\u003e\n\u003ch4\u003eQuery Plan After Indexing\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d14,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d13,totalCost\u003d15353.855,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d12,totalCost\u003d15353.753,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d11,totalCost\u003d14988.138,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d10,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d9,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d8,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  ProjectRestrict(n\u003d7,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n                -\u0026gt;  IndexScan[O_DATE_PRI_KEY_IDX(1745)](n\u003d6,totalCost\u003d1547.029,scannedRows\u003d1160172,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41,baseTable\u003dORDERS(1616),preds\u003d[(O_ORDERDATE[5:1] \u0026lt; dataTypeServices: DATE ),(O_ORDERDATE[5:1] \u0026gt;\u003d 1993-07-01)])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eQuery Plan Before Indexing\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u0026gt;\u003d 1993-07-01),(O_ORDERDATE[5:2] \u0026lt; dataTypeServices: DATE )])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCompare Updated Execution Plans\u003c/h3\u003e\n\u003cp\u003eWe can now compare how the query will execute with indexing in place versus without indexes. You\u0026rsquo;ll again notice that, among other differences, the \u003ccode\u003etotalCost\u003c/code\u003e values are lower for most operations because the optimizer was able to take advantage of the indexes we added.\u003c/p\u003e\n\u003ch4\u003eQuery Plan After Indexing\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d14,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d13,totalCost\u003d15353.855,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d12,totalCost\u003d15353.753,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d11,totalCost\u003d14988.138,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d10,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d9,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d8,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  ProjectRestrict(n\u003d7,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n                -\u0026gt;  IndexScan[O_DATE_PRI_KEY_IDX(1745)](n\u003d6,totalCost\u003d1547.029,scannedRows\u003d1160172,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41,baseTable\u003dORDERS(1616),preds\u003d[(O_ORDERDATE[5:1] \u0026lt; dataTypeServices: DATE ),(O_ORDERDATE[5:1] \u0026gt;\u003d 1993-07-01)])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eQuery Plan Before Indexing\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u0026gt;\u003d 1993-07-01),(O_ORDERDATE[5:2] \u0026lt; dataTypeServices: DATE )])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1292,48 +1271,9 @@
       "jobName": "paragraph_1542402827721_-415320323",
       "id": "20180115-164324_663989920",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "Representative Micro-Benchmarks",
-      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in \u003c100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:13:47.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "title": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Glimpse at Splice Machine Benchmark Results\u003c/h2\u003e\n\u003cp\u003eHere are some micro-results from Splice Machine running TPC-H benchmarks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e2ms single record lookups on primary keys at petabyte scale\u003c/li\u003e\n  \u003cli\u003e20ms single record updates at petabyte scale\u003c/li\u003e\n  \u003cli\u003e40-way OLTP indexed joins return in \u0026lt;100ms\u003c/li\u003e\n  \u003cli\u003e150-way OLAP style joins execute in under 2 minutes\u003c/li\u003e\n  \u003cli\u003e440-way join executes where others can’t parse\u003c/li\u003e\n  \u003cli\u003eIngestion at 80MB/sec/node\u003c/li\u003e\n  \u003cli\u003eCan run TPC-C and TPC-H simultaneously\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542402827722_-438213067",
-      "id": "20180118-022657_414327443",
-      "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 03:14:22.807",
+      "dateFinished": "2018-11-30 03:14:22.827",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1448,6 +1388,46 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "title": "Representative Micro-Benchmarks",
+      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in \u003c100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-16 13:13:47.000",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Glimpse at Splice Machine Benchmark Results\u003c/h2\u003e\n\u003cp\u003eHere are some micro-results from Splice Machine running TPC-H benchmarks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e2ms single record lookups on primary keys at petabyte scale\u003c/li\u003e\n  \u003cli\u003e20ms single record updates at petabyte scale\u003c/li\u003e\n  \u003cli\u003e40-way OLTP indexed joins return in \u0026lt;100ms\u003c/li\u003e\n  \u003cli\u003e150-way OLAP style joins execute in under 2 minutes\u003c/li\u003e\n  \u003cli\u003e440-way join executes where others can’t parse\u003c/li\u003e\n  \u003cli\u003eIngestion at 80MB/sec/node\u003c/li\u003e\n  \u003cli\u003eCan run TPC-C and TPC-H simultaneously\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542402827722_-438213067",
+      "id": "20180118-022657_414327443",
+      "dateCreated": "2018-11-16 13:13:47.000",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%md\n## Where to Go Next\n\nThe next notebook in this class introduces you to [*Monitoring Queries*](/#/notebook/2DVCDT3ND) with the Splice Machine Database Console.",
       "user": "anonymous",
       "dateUpdated": "2018-11-20 13:21:21.104",
@@ -1522,7 +1502,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

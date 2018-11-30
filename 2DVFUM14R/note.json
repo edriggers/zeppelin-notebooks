@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Explaining and Hinting\n\nIn this notebook we\u0027ll dig into the explain and hint capabilities that we\u0027ve briefly seen so far.  We\u0027ll see how they can help us in:\n\n* *Understanding the Query Execution Plan*\n* *Influencing the Query Execution Plan with Hints*\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 22:25:21.721",
+      "dateUpdated": "2018-11-30 01:08:51.191",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1542394204045_-1639069832",
       "id": "20170907-071606_1955118051",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-29 22:25:21.722",
-      "dateFinished": "2018-11-29 22:25:21.734",
+      "dateStarted": "2018-11-30 01:08:51.194",
+      "dateFinished": "2018-11-30 01:08:51.203",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table that we created earlier in this class. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query. \n\nYou\u0027ll notice that on the very right of the plan are two lines with *preds\u003d* on them. *Preds* is short for *predicates*, which in databases are true/false conditions that are tested during query execution.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 22:41:32.300",
+      "dateUpdated": "2018-11-30 01:09:13.942",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -53,7 +53,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -242,7 +242,7 @@
     {
       "text": "%md\n### Syntax Matters\nAs you\u0027ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\n\n* If you\u0027re adding the hint to the end of a query, you must put the semicolon (`;`) that terminates that query on the next line:\n  `select count(*) from myTbl --splice-properties index\u003dmyIndex1`\n  `;`\n\n* Similarly, if you\u0027re specifying multiple hints, each will need to be at the end of its own line:\n  `explain select count(*) from`\n  `(select a.i, a.j from --splice-properties joinOrder\u003dfixed`\n   `index_example b --splice-properties index\u003dij`\n   `,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop`\n   `  where a.j \u003d 700000) ;`\n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\nHere\u0027s the syntax to use for each hint type:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  to see a full example:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 22:58:56.182",
+      "dateUpdated": "2018-11-30 01:12:00.907",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -274,8 +274,8 @@
       "jobName": "paragraph_1543532181121_-243910551",
       "id": "20181129-225621_2052865998",
       "dateCreated": "2018-11-29 22:56:21.121",
-      "dateStarted": "2018-11-29 22:58:56.184",
-      "dateFinished": "2018-11-29 22:58:56.205",
+      "dateStarted": "2018-11-30 01:12:00.908",
+      "dateFinished": "2018-11-30 01:12:00.929",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -432,8 +432,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

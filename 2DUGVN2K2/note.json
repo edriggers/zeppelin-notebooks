@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Running Queries in Splice Machine\n\nThis notebook introduces you to:\n\n1. *Running database queries from a Zeppelin notebook*\n2. *Using `Explain Plan`* to explore the execution plan for a query \n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 21:27:28.478",
+      "dateUpdated": "2018-11-30 00:09:41.735",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542393642884_-1280717367",
       "id": "20170907-071443_970035831",
       "dateCreated": "2018-11-16 10:40:42.000",
-      "dateStarted": "2018-11-29 21:27:28.479",
-      "dateFinished": "2018-11-29 21:27:28.486",
+      "dateStarted": "2018-11-30 00:09:41.737",
+      "dateFinished": "2018-11-30 00:09:41.746",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -189,7 +189,7 @@
     {
       "text": "%splicemachine\n\nexplain select * from import_example a, import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:40:42.000",
+      "dateUpdated": "2018-11-30 00:15:06.499",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -201,18 +201,19 @@
         "editorMode": "ace/mode/sql",
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
             "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d5,rows\u003d360,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d1744.96,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d1657.16,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1616)](n\u003d2,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1616)](n\u003d1,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d18,outputHeapSize\u003d54 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
+            "data": "java.sql.SQLSyntaxErrorException: Table/View \u0027IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:89)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:904)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:718)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: Table/View \u0027IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1844)\n\tat com.splicemachine.db.client.net.NetStatementReply.parsePrepareError(NetStatementReply.java:572)\n\tat com.splicemachine.db.client.net.NetStatementReply.parsePRPSQLSTTreply(NetStatementReply.java:146)\n\tat com.splicemachine.db.client.net.NetStatementReply.readPrepareDescribeOutput(NetStatementReply.java:55)\n\tat com.splicemachine.db.client.net.StatementReply.readPrepareDescribeOutput(StatementReply.java:44)\n\tat com.splicemachine.db.client.net.NetStatement.readPrepareDescribeOutput_(NetStatement.java:142)\n\tat com.splicemachine.db.client.am.Statement.readPrepareDescribeOutput(Statement.java:1451)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2125)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:909)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:895)\n\t... 15 more\n"
           }
         ]
       },
@@ -220,8 +221,9 @@
       "jobName": "paragraph_1542393642887_1103046659",
       "id": "20170916-190855_22811088",
       "dateCreated": "2018-11-16 10:40:42.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 00:15:06.519",
+      "dateFinished": "2018-11-30 00:15:09.778",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -341,8 +343,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,
