@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction to Zeppelin Notebooks\nThis notebook is a brief introduction for running and creating/modifying notebooks. Splice Machine uses *Zeppelin Notebooks* to give users a flexible, interactive mechanism for working with the database and any code working with it. We show you how to:\n\n1. *Edit a simple markdown paragraph in Zeppelin.*\n2. *Use Zeppelin\u0027s controls to run, edit, and add or delete paragraphs in a notebook.*\n3. *View and modify the set of Zeppelin *Interpreters* available in a notebook.*\n4. *Run a simple Splice Machine database query in Zeppelin.*\n\n## Basic Zeppelin Terminology\nHere\u0027s some basic Zeppelin Notebook terminology:\n\n* Notebooks are broken into *paragraphs*. You are now viewing the first paragraph in this notebook.\n \n* Each paragraph has an *interpreter* (sometimes called a backend) that knows how to process the source content in the paragraph. \n  We are using the *%md* (short for *Markdown*) interpreter in the paragraph that you\u0027re currently reading. Markdown generates HTML from easy-to-read, plain text input that uses simplified formatting instructions.\n\n* Each paragraph has an *Editor* associated with it that you can use to enter or view the code or text that constitutes the paragraph.\n \n* You run a paragraph by clicking its \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button. After the paragraph runs, you can see its results. For example, the result of running this Markdown paragraph is to see the formatted text that you are currently reading.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:45:11.399",
+      "dateUpdated": "2018-11-30 18:35:14.363",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1542393312443_-1630575929",
       "id": "20170912-074720_358235395",
       "dateCreated": "2018-11-16 10:35:12.000",
-      "dateStarted": "2018-11-29 19:49:39.721",
-      "dateFinished": "2018-11-29 19:49:39.746",
+      "dateStarted": "2018-11-30 18:35:14.391",
+      "dateFinished": "2018-11-30 18:35:17.875",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\nThe paragraph below this one is an empty Markdown paragraph. You can enter markdown text into it to see how a Markdown paragraph works. Follow these steps:\n\n* Enter some text on the line below the `%md`.\n* Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Zeppelin Notebook Play button\"\u003e *Play* icon to run the paragraph.\n* Display the output of your paragraph, if not already shown, by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepResultsIcon.png\" alt\u003d\"Zeppelin Notebook Results button\"\u003e *Results* icon.\n* Return to editing the code for your paragraph by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepEditorIcon.png\" alt\u003d\"Zeppelin Notebook Edit button\"\u003e *Edit* icon.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:46:02.665",
+      "dateUpdated": "2018-11-30 18:35:25.419",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -55,7 +55,7 @@
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -75,8 +75,8 @@
       "jobName": "paragraph_1543520690036_-195993523",
       "id": "20181129-194450_1684925904",
       "dateCreated": "2018-11-29 19:44:50.036",
-      "dateStarted": "2018-11-29 19:45:10.273",
-      "dateFinished": "2018-11-29 19:45:10.287",
+      "dateStarted": "2018-11-30 18:35:25.437",
+      "dateFinished": "2018-11-30 18:35:25.481",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -472,7 +472,9 @@
   "id": "2DV36AEJ2",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

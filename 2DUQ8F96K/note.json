@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n# Decision Trees\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\nThe [Decision Tree](https://spark.apache.org/docs/latest/mllib-decision-tree.html) is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. \n\n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it\u0027s greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\n\n\u003cimg class\u003d\"splice\" src\u003d\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\"\u003e",
+      "text": "%md\n# Decision Trees\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\nThis notebook provides an example of implementing a *Decision Tree* algorithm that:\n\n* Loads a data file\n* Parses the data as an RDD of LabeledPoint\n* Performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\n\nThe \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eDecision Tree Algorithm\u003c/a\u003e is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: \n\n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it\u0027s greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\n\n\u003cimg class\u003d\"splice\" src\u003d\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\"\u003e",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:37:41.724",
+      "dateUpdated": "2018-11-30 23:26:37.916",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eDecision Trees\u003c/h1\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003cp\u003eThe \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\"\u003eDecision Tree\u003c/a\u003e is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eLocally optimal decisions are made at each node in hopes of a globally optimal decision\u003c/li\u003e\n  \u003cli\u003eBecause of it\u0026rsquo;s greedy nature, it cannot guarantee the globally optimal tree\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\u003c/p\u003e\n\u003cimg class\u003d\"splice\" src\u003d\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\"\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eDecision Trees\u003c/h1\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003cp\u003eThis notebook provides an example of implementing a \u003cem\u003eDecision Tree\u003c/em\u003e algorithm that:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eLoads a data file\u003c/li\u003e\n  \u003cli\u003eParses the data as an RDD of LabeledPoint\u003c/li\u003e\n  \u003cli\u003ePerforms classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eDecision Tree Algorithm\u003c/a\u003e is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eLocally optimal decisions are made at each node in hopes of a globally optimal decision\u003c/li\u003e\n  \u003cli\u003eBecause of it\u0026rsquo;s greedy nature, it cannot guarantee the globally optimal tree\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\u003c/p\u003e\n\u003cimg class\u003d\"splice\" src\u003d\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\"\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1542398443304_1947682620",
       "id": "20170620-141909_771490751",
       "dateCreated": "2018-11-16 12:00:43.000",
-      "dateStarted": "2018-11-20 18:37:41.724",
-      "dateFinished": "2018-11-20 18:37:41.730",
+      "dateStarted": "2018-11-30 23:26:37.923",
+      "dateFinished": "2018-11-30 23:26:37.936",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Decision Tree Example\n\nThe remainder of this notebook demonstrates how to:\n\n* Load a  [LIBSVM](https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt) data file\n* Parse it as an RDD of LabeledPoint\n* Perform classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\n\nThe test error is calculated to measure the algorithm accuracy. \n\nFor more information, check out \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eSpark\u0027s Decision Tree page\u003c/a\u003e.\n",
+      "text": "%md\n## Decision Tree Example\n\nThe example in the next paragraph loads a LIBSVM data file, available from \u003ca href\u003d\"https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\" target\u003d\"_blank\"\u003ehttps://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\u003c/a\u003e.\n\nIt then parses that data as an RDD of labeled points, and performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5. The test error is calculated, to measure the accuracy of the algorithm.\n\nYou can learn more about decision trees with MLlib on \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eSpark\u0027s Decision Tree page\u003c/a\u003e.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:40:17.840",
+      "dateUpdated": "2018-11-30 23:31:28.296",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDecision Tree Example\u003c/h2\u003e\n\u003cp\u003eThe remainder of this notebook demonstrates how to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eLoad a \u003ca href\u003d\"https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\"\u003eLIBSVM\u003c/a\u003e data file\u003c/li\u003e\n  \u003cli\u003eParse it as an RDD of LabeledPoint\u003c/li\u003e\n  \u003cli\u003ePerform classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe test error is calculated to measure the algorithm accuracy. \u003c/p\u003e\n\u003cp\u003eFor more information, check out \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eSpark\u0026rsquo;s Decision Tree page\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDecision Tree Example\u003c/h2\u003e\n\u003cp\u003eThe example in the next paragraph loads a LIBSVM data file, available from \u003ca href\u003d\"https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\"\u003ehttps://github.com/apache/spark/blob/master/data/mllib/sample_libsvm_data.txt\u003c/a\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eIt then parses that data as an RDD of labeled points, and performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5. The test error is calculated, to measure the accuracy of the algorithm.\u003c/p\u003e\n\u003cp\u003eYou can learn more about decision trees with MLlib on \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eSpark\u0026rsquo;s Decision Tree page\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -76,8 +76,8 @@
       "jobName": "paragraph_1542767864123_962201816",
       "id": "20181120-183744_1917061299",
       "dateCreated": "2018-11-20 18:37:44.123",
-      "dateStarted": "2018-11-20 18:40:17.840",
-      "dateFinished": "2018-11-20 18:40:17.845",
+      "dateStarted": "2018-11-30 23:31:28.299",
+      "dateFinished": "2018-11-30 23:31:28.315",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -174,7 +174,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

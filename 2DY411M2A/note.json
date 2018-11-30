@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Crystal Ball\n\nThis notebook presents the *Crystal Ball* application, which is a supply chain reference application relevant to manufacturers, distributors, retailers, and e-commerce companies. With the crystall ball you can:\n\n1. Perform Available-to-Promise (ATP) inquiries in seconds on real-time inventory changes due to purchases, manufacturing, sales, and shipments\n2. Learn when shipments are likely to be late\n3. Anticipate stock outs due to predicted late orders\n4. Determine what customers or downstream orders are affected by anticipated stockouts.\n\nWhen supply chain managers have the crystal ball, they can:\n-- plan around stock outs\n-- warn down stream consumers so they can re-plan.\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Crystal Ball\n\nThis notebook presents the *Crystal Ball* application, which is a supply chain reference application relevant to manufacturers, distributors, retailers, and e-commerce companies. This app is presented in the following sections:\n\n* *Set Up Your JDBC Connection URL*\n* *Managing Your Timeline*\n* *Crystal Ball Application Requirements*\n* *Ingesting Advanced Shipping Notices - Transfer Orders*\n* *Using Timeline Tables*\n* *Applying the Crystal Ball*\n* *Machine Learning*\n\n## What the Crystal Ball Does\nYou can do the following with the *Crystal Ball* application:\n\n* Perform Available-to-Promise (ATP) inquiries in seconds on real-time inventory changes due to purchases, manufacturing, sales, and shipments\n* Learn when shipments are likely to be late\n* Anticipate stock outs that are due to predicted late orders\n* Determine which customers or downstream orders are affected by anticipated stockouts.\n\nWhen supply chain managers have the crystal ball, they can:\n\n* Plan around stock outs\n* Warn down stream consumers so they can re-plan.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:56:31.151",
+      "dateUpdated": "2018-11-30 22:49:25.275",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eCrystal Ball\u003c/h1\u003e\n\u003cp\u003eThis notebook presents the \u003cem\u003eCrystal Ball\u003c/em\u003e application, which is a supply chain reference application relevant to manufacturers, distributors, retailers, and e-commerce companies. With the crystall ball you can:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003ePerform Available-to-Promise (ATP) inquiries in seconds on real-time inventory changes due to purchases, manufacturing, sales, and shipments\u003c/li\u003e\n  \u003cli\u003eLearn when shipments are likely to be late\u003c/li\u003e\n  \u003cli\u003eAnticipate stock outs due to predicted late orders\u003c/li\u003e\n  \u003cli\u003eDetermine what customers or downstream orders are affected by anticipated stockouts.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eWhen supply chain managers have the crystal ball, they can:\u003cbr/\u003e\u0026ndash; plan around stock outs\u003cbr/\u003e\u0026ndash; warn down stream consumers so they can re-plan.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eCrystal Ball\u003c/h1\u003e\n\u003cp\u003eThis notebook presents the \u003cem\u003eCrystal Ball\u003c/em\u003e application, which is a supply chain reference application relevant to manufacturers, distributors, retailers, and e-commerce companies. This app is presented in the following sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eSet Up Your JDBC Connection URL\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eManaging Your Timeline\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCrystal Ball Application Requirements\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eIngesting Advanced Shipping Notices - Transfer Orders\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing Timeline Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eApplying the Crystal Ball\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eMachine Learning\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eWhat the Crystal Ball Does\u003c/h2\u003e\n\u003cp\u003eYou can do the following with the \u003cem\u003eCrystal Ball\u003c/em\u003e application:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ePerform Available-to-Promise (ATP) inquiries in seconds on real-time inventory changes due to purchases, manufacturing, sales, and shipments\u003c/li\u003e\n  \u003cli\u003eLearn when shipments are likely to be late\u003c/li\u003e\n  \u003cli\u003eAnticipate stock outs that are due to predicted late orders\u003c/li\u003e\n  \u003cli\u003eDetermine which customers or downstream orders are affected by anticipated stockouts.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen supply chain managers have the crystal ball, they can:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ePlan around stock outs\u003c/li\u003e\n  \u003cli\u003eWarn down stream consumers so they can re-plan.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1542398139913_292026853",
       "id": "20170621-041621_785608971",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "dateStarted": "2018-11-20 17:56:31.152",
-      "dateFinished": "2018-11-20 17:56:31.159",
+      "dateStarted": "2018-11-30 22:49:25.277",
+      "dateFinished": "2018-11-30 22:49:25.308",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Set Up Your JDBC Connection URL\n\nTo connect to your Splice Machine database, you need to configure the URL you\u0027ll be connecting to via JDBC:\n\n* If you\u0027re working on a cluster, you\u0027ll find your JDBC URL in your cluster dashboard, at the bottom right of the screen. \n* If you\u0027re working on a standalone version of Splice Machine, you can use the `localJDBCURL` value shown below.",
+      "text": "%md\n## Set Up Your JDBC Connection URL\n\nTo connect to your Splice Machine database, you need to configure the URL you\u0027ll be connecting to via JDBC. \n\nFor this class, you can simply use the `defaultJDBCURL` assignment in the next paragraph. When running on a cluster, you can copy and paste the JDBC URL you\u0027ll find displayed at the bottom right of your cluster dashboard.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:59:58.767",
+      "dateUpdated": "2018-11-30 22:49:29.862",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSet Up Your JDBC Connection URL\u003c/h2\u003e\n\u003cp\u003eTo connect to your Splice Machine database, you need to configure the URL you\u0026rsquo;ll be connecting to via JDBC:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIf you\u0026rsquo;re working on a cluster, you\u0026rsquo;ll find your JDBC URL in your cluster dashboard, at the bottom right of the screen.\u003c/li\u003e\n  \u003cli\u003eIf you\u0026rsquo;re working on a standalone version of Splice Machine, you can use the \u003ccode\u003elocalJDBCURL\u003c/code\u003e value shown below.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSet Up Your JDBC Connection URL\u003c/h2\u003e\n\u003cp\u003eTo connect to your Splice Machine database, you need to configure the URL you\u0026rsquo;ll be connecting to via JDBC. \u003c/p\u003e\n\u003cp\u003eFor this class, you can simply use the \u003ccode\u003edefaultJDBCURL\u003c/code\u003e assignment in the next paragraph. When running on a cluster, you can copy and paste the JDBC URL you\u0026rsquo;ll find displayed at the bottom right of your cluster dashboard.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -76,15 +76,15 @@
       "jobName": "paragraph_1542765401625_-1467740243",
       "id": "20181120-175641_472076393",
       "dateCreated": "2018-11-20 17:56:41.625",
-      "dateStarted": "2018-11-20 17:59:58.768",
-      "dateFinished": "2018-11-20 17:59:58.772",
+      "dateStarted": "2018-11-30 22:49:29.864",
+      "dateFinished": "2018-11-30 22:49:29.873",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n  println(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\n  val defaultJDBCURL \u003d z.input(\"JDBCurl\",\"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue\"\"\").toString\n  val localJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
+      "text": "%spark\n  val defaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:59:49.255",
+      "dateUpdated": "2018-11-30 21:57:48.464",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -130,9 +130,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\nThe code below manages the timeline:",
+      "text": "%md\n## Managing the Timeline\nThe code in the next paragraph manages the timeline:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:01:58.661",
+      "dateUpdated": "2018-11-30 21:58:12.460",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -157,7 +157,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eThe code below manages the timeline:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eManaging the Timeline\u003c/h2\u003e\n\u003cp\u003eThe code in the next paragraph manages the timeline:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -165,8 +165,8 @@
       "jobName": "paragraph_1542765659638_-1071926324",
       "id": "20181120-180059_1459449180",
       "dateCreated": "2018-11-20 18:00:59.638",
-      "dateStarted": "2018-11-20 18:01:58.661",
-      "dateFinished": "2018-11-20 18:01:58.664",
+      "dateStarted": "2018-11-30 21:58:12.470",
+      "dateFinished": "2018-11-30 21:58:12.477",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -174,7 +174,7 @@
       "title": "Timeline  Code",
       "text": "%spark\nimport java.sql.{Connection,Timestamp}\nimport java.util.Date\nimport com.splicemachine.si.api.txn.WriteConflict\nimport org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\nimport com.splicemachine.spark.splicemachine._\n    \n  val table \u003d \"TimeLine_Int\"\n  val schema \u003d \"TimeLine\"\n  val internalTN \u003d schema + \".\" + table\n  val startOfTimeStr \u003d \"1678-01-01 00:00:00\"\n  val endOfTimeStr \u003d \"2261-12-31 00:00:00\"\n  val startOfTime \u003d java.sql.Timestamp.valueOf(startOfTimeStr)\n  val endOfTime \u003d java.sql.Timestamp.valueOf(endOfTimeStr)\n  val MAX_RETRIES: Integer \u003d 2\n\n  val SQL_ID \u003d 1\n  val SQL_ST \u003d 2\n  val SQL_ET \u003d 3\n  val SQL_VAL \u003d 4\n  val DF_ID \u003d 0\n  val DF_ST \u003d 1\n  val DF_ET \u003d 2\n  val DF_VAL \u003d 3\n  \n  val columnsWithPrimaryKey: String  \u003d \"(Timeline_Id bigint, \" + \"ST timestamp, \" + \"ET timestamp, \" + \"Val bigint, \" + \"primary key (Timeline_ID, ST)\" +\")\"\n  val columnsWithoutPrimaryKey \u003d \"(\" + \"Timeline_Id bigint, \" + \"ST timestamp, \" + \"ET timestamp, \" + \"Val bigint \" + \")\"\n  val primaryKeys \u003d Seq(\"Timeline_ID, ST\")\n  val columnsInsertString \u003d \"(\" + \"Timeline_Id, \" + \"ST, \" + \"ET, \" + \"Val\" + \") \"\n  val columnsSelectString \u003d \"Timeline_Id, \" + \"ST, \" + \"ET, \" + \"Value\"\n  val columnsInsertStringValues \u003d \"values (?,?,?,?)\"\n\n\n  /* (t1\u003c\u003dST and t2\u003eST) or (t1\u003eST and t1\u003cET)  (t1 t2 t1 t1 )*/\n  val overlapCondition \u003d \"where Timeline_Id \u003d ? and ((ST \u003e\u003d? and ST \u003c?) or ((ST \u003c ?) and (ET \u003e \u003e?)))\"\n\n\n  val internalOptions \u003d Map(\n    org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.JDBC_TABLE_NAME -\u003e internalTN,\n    org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.JDBC_URL -\u003e defaultJDBCURL\n  )\n\n  val internalJDBCOptions \u003d new org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions(internalOptions)\n  val splicemachineContext \u003d  new com.splicemachine.spark.splicemachine.SplicemachineContext(defaultJDBCURL)\n\n\n\n  /**\n    *\n    * createTimeline (table)\n    *\n    * @param table table name of timeline\n    * @return\n    */\n  def createTimeline(table: String, columnsWithPrimaryKey: String , internalJDBCOptions: JDBCOptions \u003d internalJDBCOptions ): Unit \u003d {\n    val conn \u003d JdbcUtils.createConnectionFactory(internalJDBCOptions)()\n    if (splicemachineContext.tableExists(table)){\n      conn.createStatement().execute(\"drop table \" + table)\n    }\n    conn.createStatement().execute(\"create table \" + table + columnsWithPrimaryKey)\n  }\n  \n  \n  \n  /**\n    *\n    * initialize (id startOfTime endOfTime value)\n    *\n    * @param table table name of timeline\n    * @param id id of timeline\n    * @param value initial value of timeline\n    * @return\n    */\n def initialize(table: String, id: Integer, value: Integer, columnsInsertString : String \u003d columnsInsertString ,columnsInsertStringValues :String \u003d columnsInsertStringValues  , internalJDBCOptions :JDBCOptions \u003d internalJDBCOptions ): Unit \u003d {\n    val conn \u003d JdbcUtils.createConnectionFactory(internalJDBCOptions)()\n    val start: Timestamp \u003d startOfTime\n    val end: Timestamp \u003d endOfTime\n    try {\n      var ps \u003d conn.prepareStatement(\"delete from \" + table + \" where timeline_id \u003d \" + id)\n      ps.execute()\n      ps \u003d conn.prepareStatement(\"insert into \" + table + columnsInsertString + columnsInsertStringValues)\n      ps.setInt(SQL_ID, id)\n      ps.setTimestamp(SQL_ST, start)\n      ps.setTimestamp(SQL_ET, end)\n      ps.setInt(SQL_VAL, value)\n      ps.execute()\n    } finally {\n      conn.close()\n    }\n  }\n\n  val CHANGE_AT_ST \u003d 0\n  val CHANGE_AT_ET \u003d 1\n  val CHANGE_BETWEEN_ST_ET \u003d2\n  \n\n  /**\n    * splitMiddle - The new delta interval is subsumed by one interval.\n    *\n    *  ST------------ET\n    *      t1---t2         \u003d\u003d\u003e   ST---t1 t1----t2 t2----ET\n    *\n    * Change the original interval to end at the start of the new delta interval\n    * Create a new record for the delta and apply the delta value\n    * Create a new record for the interval from the delta to the end of the original interval\n    *\n    * @param id - the id of the timeline to update\n    * @param t1 - the start of new delta\n    * @param t2 - the end of the new delta\n    * @param delta - an integer increment to the timeline\n    * @param persistence - CHANGE_AT_ST persists delta from t1 onwards\n    *                      CHANGE_AT_ET persists delta from t2 onwards\n    *                      CHANGE_BETWEEN_ST_ET persists delta during [t1 t2]\n    *\n    */\n    \n                \n  def splitMiddle(id: Integer,\n                  t1: java.sql.Timestamp, t2: java.sql.Timestamp,\n                  delta: Long,\n                  persistence: Int,\n                  internalTN : String \u003dinternalTN ,\n                  internalOptions : Map[String,String] \u003d internalOptions): Unit \u003d {\n    val df \u003d sqlContext.read.options(internalOptions).splicemachine.where(s\"TIMELINE_ID \u003d $id AND ST \u003c to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND ET \u003e to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027)\")\n    if (df.count() \u003e 0) {\n\n      /* Save old values */\n      var oldVal \u003d df.first().getLong(DF_VAL)\n      var oldET \u003d df.first().getTimestamp(DF_ET)\n\n      /* Update containing interval to be the begin split */\n      val updatedDF \u003d df\n        .filter(s\"TIMELINE_ID \u003d $id AND ST \u003c to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND ET \u003e to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027)\")\n        .select(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      .withColumn(\"ET\", lit(t1))\n      splicemachineContext.update(updatedDF, internalTN)\n\n      /* calculate persistence */\n      val firstValue: Long \u003d persistence match {\n        case CHANGE_AT_ST          \u003d\u003e oldVal + delta\n        case CHANGE_AT_ET          \u003d\u003e oldVal\n        case CHANGE_BETWEEN_ST_ET  \u003d\u003e oldVal + delta\n        case _                     \u003d\u003e 0\n      }\n\n      /* Insert the two new splits */\n      /* Note - the second new split will have delta added\n\t\tin the persistAfter method\n       */\n      val newDF \u003d sqlContext.createDataFrame(Seq(\n        (id, t1, t2, firstValue),\n        (id, t2, oldET, oldVal)))\n        .toDF(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      splicemachineContext.insert(newDF, internalTN)\n    }\n  }\n\n\n  /***\n    * \tsplitAtEnd - Delta overlaps beginning of interval.\n    *\n    *         ST------ET\n    *      t1---t2         \u003d\u003d\u003e  ST---t2 t2----ET\n    *\n    * Change the interval to end at the end of the delta then add a split from end of delta to the end of interval\n    *\n    * @param id - the id of the timeline to update\n    * @param t1 - the start of new delta\n    * @param t2 - the end of the new delta\n    * @param delta - an integer increment to the timeline\n    * @param persistence - CHANGE_AT_ST persists delta from t1 onwards\n    *                      CHANGE_AT_ET persists delta from t2 onwards\n    *                      CHANGE_BETWEEN_ST_ET persists delta during [t1 t2]\n    */\n    \n     \n  def splitAtEnd(id: Integer,\n                 t1: java.sql.Timestamp, t2: java.sql.Timestamp,\n                 delta: Long,\n                 persistence: Int,\n                  internalTN : String \u003dinternalTN ,\n                  internalOptions : Map[String,String] \u003d internalOptions): Unit \u003d {\n    val df \u003d sqlContext.read.options(internalOptions).splicemachine\n      .where(s\"\"\"TIMELINE_ID \u003d $id AND ST \u003e\u003d to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND ET \u003e to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027) AND ST \u003c to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027)\"\"\")\n\n    if (df.count() \u003e 0) {\n\n      /* Save old values */\n      var oldVal \u003d df.first().getLong(DF_VAL)\n      var oldST \u003d df.first().getTimestamp(DF_ST)\n      var oldET \u003d df.first().getTimestamp(DF_ET)\n      /* Update overlapping interval to be the begin split */\n\n      /* calculate persistence */\n      /* Note - the second new split will have delta added\n          in the persistAfter method if required\n */\n      val firstValue: Long \u003d persistence match {\n        case CHANGE_AT_ST          \u003d\u003e oldVal + delta\n        case CHANGE_AT_ET          \u003d\u003e oldVal\n        case CHANGE_BETWEEN_ST_ET  \u003d\u003e oldVal + delta\n        case _                     \u003d\u003e 0\n      }\n\n      val updatedDF \u003d df\n\t    .filter(s\"TIMELINE_ID \u003d $id AND ST \u003e\u003d to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND ET \u003e to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027) AND ST \u003c to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027)\")\n        .select(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      .withColumn(\"ET\", lit(t2))\n      .withColumn(\"VAL\", lit(firstValue))\n      splicemachineContext.update(updatedDF, internalTN)\n\n      /* Insert a new split after the delta */\n      val newDF \u003d sqlContext.createDataFrame(Seq((id, t2, oldET, oldVal))).toDF(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      splicemachineContext.insert(newDF, internalTN)\n    }\n  }\n\n  /**\n    * \tsplitAtStart - Delta overlaps end of interval.\n    *\n    *         ST-----ET\n    *            t1------t2         \u003d\u003d\u003e    ST---t1 t1---ET\n    *\n    * Change the interval to end at the start of the delta then add a split from beginning of delta to the end of interval\n    *\n    * @param id - the id of the timeline to update\n    * @param t1 - the start of new delta\n    * @param t2 - the end of the new delta\n    * @param delta - an integer increment to the timeline\n    * @param persistence - CHANGE_AT_ST persists delta from t1 onwards\n    *                      CHANGE_AT_ET persists delta from t2 onwards\n    *                      CHANGE_BETWEEN_ST_ET persists delta during [t1 t2]\n    */\n   \n  def splitAtStart(id: Integer,\n                   t1: java.sql.Timestamp, t2: java.sql.Timestamp,\n                   delta: Long, persistence: Int,\n                  internalTN : String \u003dinternalTN ,\n                  internalOptions : Map[String,String] \u003d internalOptions): Unit \u003d {\n    val df \u003d sqlContext.read.options(internalOptions).splicemachine.where(s\"TIMELINE_ID \u003d $id AND ST \u003c to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND \" +\n                s\"ET \u003c to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027) AND ET \u003e to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027)\")\n    if (df.count() \u003e 0) {\n\n      /* Save old values */\n      var oldVal \u003d df.first().getLong(DF_VAL)\n      var oldST \u003d df.first().getTimestamp(DF_ST)\n      var oldET \u003d df.first().getTimestamp(DF_ET)\n\n      /* calculate persistence */\n      val newValue: Long \u003d persistence match {\n        case CHANGE_AT_ST          \u003d\u003e oldVal + delta\n        case CHANGE_AT_ET          \u003d\u003e oldVal\n        case CHANGE_BETWEEN_ST_ET  \u003d\u003e oldVal\n        case _                     \u003d\u003e 0\n      }\n      /* Update overlapping interval to be the begin split */\n      val updatedDF \u003d df\n        .filter(s\"TIMELINE_ID \u003d $id AND ST \u003c to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND ET \u003c to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027) AND ET \u003e to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027)\")\n        .select(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      .withColumn(\"ET\", lit(t1))\n      .withColumn(\"VAL\", lit(newValue))\n      splicemachineContext.update(updatedDF, internalTN)\n      \n      /* Insert a new split */\n      val newDF \u003d sqlContext.createDataFrame(Seq(\n        (id, t1, oldET, oldVal)\n      )).toDF(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      splicemachineContext.insert(newDF, internalTN)\n    }\n }\n                   \n    \n  /***\n    *   changeNoSplit - Handles all intervals contained by delta\n    *\n    *           ST-----ET\n    *     t1---------------t2\n    *\n    *  No splits required since always initialized with infinite time, just need values changed\n    *\n    * @param id - the id of the timeline to update\n    * @param t1 - the start of new delta\n    * @param t2 - the end of the new delta\n    * @param delta - an integer increment to the timeline\n    * @param persistence - CHANGE_AT_ST persists delta from t1 onwards\n    *                      CHANGE_AT_ET persists delta from t2 onwards\n    *                      CHANGE_BETWEEN_ST_ET persists delta during [t1 t2]\n    */\n  def changeNoSplit(id: Integer,\n                    t1: java.sql.Timestamp, t2: java.sql.Timestamp,\n                    delta: Long,\n                    persistence: Int,\n                  internalTN : String \u003dinternalTN ,\n                  internalOptions : Map[String,String] \u003d internalOptions): Unit \u003d {\n           \n    val df \u003d sqlContext.read.options(internalOptions).splicemachine\n      .where(s\"TIMELINE_ID \u003d $id AND ST \u003e\u003d to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND ET \u003c\u003d to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027)\")\n\n    /* Calculate persistence */\n    val increment: Long \u003d persistence match {\n      case CHANGE_AT_ST          \u003d\u003e delta\n      case CHANGE_AT_ET          \u003d\u003e 0\n      case CHANGE_BETWEEN_ST_ET  \u003d\u003e delta\n      case _                     \u003d\u003e 0\n    }\n    val updatedDF \u003d df\n      .filter(s\"TIMELINE_ID \u003d $id AND ST \u003e\u003d to_utc_timestamp(\u0027$t1\u0027,\u0027GMT\u0027) AND ET \u003c\u003d to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027)\")\n      .select(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      .withColumn(\"VAL\", col(\"VAL\") + increment)\n\n    splicemachineContext.update(updatedDF, internalTN)\n  }\n\n  /***\n    *   persistAfter - changes the values for all intervals after delta\n    *\n    *     t1---------------t2  ST-----ET\n    *\n    *  No splits required since always initialized with infinite time, just need values changed\n    *\n    * @param id - the id of the timeline to update\n    * @param t1 - the start of new delta\n    * @param t2 - the end of the new delta\n    * @param delta - an integer increment to the timeline\n    * @param persistence - CHANGE_AT_ST persists delta from t1 onwards\n    *                      CHANGE_AT_ET persists delta from t2 onwards\n    *                      CHANGE_BETWEEN_ST_ET persists delta during [t1 t2]\n    */\n  def persistAfter(id: Integer,\n                   t1: java.sql.Timestamp, t2: java.sql.Timestamp,\n                   delta: Long,\n                   persistence: Int,\n                  internalTN : String \u003dinternalTN ,\n                  internalOptions : Map[String,String] \u003d internalOptions): Unit \u003d {\n\n    /* Persist delta after new splits if necesary */\n    if (persistence !\u003d CHANGE_BETWEEN_ST_ET) {\n      val persistDF \u003d sqlContext.read.options(internalOptions).splicemachine\n        .filter(s\"TIMELINE_ID \u003d $id AND ST \u003e\u003d to_utc_timestamp(\u0027$t2\u0027,\u0027GMT\u0027)\")\n        .select(\"TIMELINE_ID\", \"ST\", \"ET\", \"VAL\")\n      .withColumn(\"VAL\", col(\"VAL\") + delta)\n      splicemachineContext.update(persistDF, internalTN)\n    }\n  }\n\n  /** *\n    * update - increases/decreases the value for the interval\n    * from the start, end or during the interval\n    *\n    * @param table       - the name of the timeline table\n    * @param id          - the id of the timeline to update\n    * @param t1          - the start of new delta\n    * @param t2          - the end of the new delta\n    * @param delta       - an integer increment to the timeline\n    * @param persistence - CHANGE_AT_ST persists delta from t1 onwards\n    *                    CHANGE_AT_ET persists delta from t2 onwards\n    *                    CHANGE_BETWEEN_ST_ET persists delta during [t1 t2]\n    */\n\n  def update(table: String,\n             id: Integer,\n             t1: Timestamp, t2: Timestamp,\n             delta: Long,\n             persistence: Int): Unit \u003d {\n                \n\n   val intOptions \u003d Map(\n    org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.JDBC_TABLE_NAME -\u003e table,\n    org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.JDBC_URL -\u003e defaultJDBCURL\n  )\n    changeNoSplit(id, t1, t2, delta, persistence, table,intOptions )\n    splitAtStart(id, t1, t2, delta, persistence, table,intOptions)\n    splitMiddle(id, t1, t2, delta, persistence, table,intOptions)\n    splitAtEnd(id, t1, t2, delta, persistence, table,intOptions)\n    persistAfter(id, t1, t2, delta, persistence, table,intOptions)\n  }\n\n\n\n\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:00:11.716",
+      "dateUpdated": "2018-11-30 21:58:19.332",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -185,7 +185,7 @@
         "editorMode": "ace/mode/scala",
         "editorHide": false,
         "fontSize": 9.0,
-        "title": true,
+        "title": false,
         "results": {},
         "enabled": true
       },
@@ -211,9 +211,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Application Requirements\n\nThe *Crystal Ball* app was built to meet these requirements:\n\n* Streaming inventory movements - ASN - EDI856\n* Streaming ancilary data like real-time weather\n* Needle-in-Haystack OLTP queries and range scans for ATP\n* ACID Transactions for concurrent inventory changes\n* OLAP for analysis and feature engineering\n* OLAP for inventory projections\n* Machine Learning\n* UI for Collaboration\n\nSplice Machine has all these components pre-integrated and optimized",
+      "text": "%md\n## Crystal Ball Application Requirements\n\nThe *Crystal Ball* app was built to meet these requirements:\n\n* Streaming inventory movements - ASN - EDI856\n* Streaming ancilary data like real-time weather\n* Needle-in-Haystack OLTP queries and range scans for ATP\n* ACID Transactions for concurrent inventory changes\n* OLAP for analysis and feature engineering\n* OLAP for inventory projections\n* Machine Learning\n* UI for Collaboration\n\nSplice Machine has all these components pre-integrated and optimized",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:14:53.102",
+      "dateUpdated": "2018-11-30 22:35:52.087",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -237,7 +237,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eApplication Requirements\u003c/h3\u003e\n\u003cp\u003eThe \u003cem\u003eCrystal Ball\u003c/em\u003e app was built to meet these requirements:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eStreaming inventory movements - ASN - EDI856\u003c/li\u003e\n  \u003cli\u003eStreaming ancilary data like real-time weather\u003c/li\u003e\n  \u003cli\u003eNeedle-in-Haystack OLTP queries and range scans for ATP\u003c/li\u003e\n  \u003cli\u003eACID Transactions for concurrent inventory changes\u003c/li\u003e\n  \u003cli\u003eOLAP for analysis and feature engineering\u003c/li\u003e\n  \u003cli\u003eOLAP for inventory projections\u003c/li\u003e\n  \u003cli\u003eMachine Learning\u003c/li\u003e\n  \u003cli\u003eUI for Collaboration\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eSplice Machine has all these components pre-integrated and optimized\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCrystal Ball Application Requirements\u003c/h2\u003e\n\u003cp\u003eThe \u003cem\u003eCrystal Ball\u003c/em\u003e app was built to meet these requirements:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eStreaming inventory movements - ASN - EDI856\u003c/li\u003e\n  \u003cli\u003eStreaming ancilary data like real-time weather\u003c/li\u003e\n  \u003cli\u003eNeedle-in-Haystack OLTP queries and range scans for ATP\u003c/li\u003e\n  \u003cli\u003eACID Transactions for concurrent inventory changes\u003c/li\u003e\n  \u003cli\u003eOLAP for analysis and feature engineering\u003c/li\u003e\n  \u003cli\u003eOLAP for inventory projections\u003c/li\u003e\n  \u003cli\u003eMachine Learning\u003c/li\u003e\n  \u003cli\u003eUI for Collaboration\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eSplice Machine has all these components pre-integrated and optimized\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -245,15 +245,15 @@
       "jobName": "paragraph_1542398139916_-1935319884",
       "id": "20170621-041831_354747046",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "dateStarted": "2018-11-20 18:14:53.103",
-      "dateFinished": "2018-11-20 18:14:53.108",
+      "dateStarted": "2018-11-30 22:35:52.088",
+      "dateFinished": "2018-11-30 22:35:52.100",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Ingest Advanced Shipping Notices - Transfer Orders\n\nYou can copy and paste the data ingestion calls shown below; this data was generated by a supply-chain simulator notebook (URL). Here are some notes about this:\n\n* The simulator ticks through time randomly inserting Transfer Orders and also randomly inserts changes to Transfer Orders delivery dates.\n* The generator randomly selects features for the transfer orders. \n* The files below reflect the state of the database after the simulation runs. The orders and change orders are independent files that can be loaded separately.\n* The simulation runs are cumulative, which means demo has the inventory timelines for the test data and the train data. \n\nTo use the demo data, you need to: \n\n1.  Load, train, and test for orders and change orders\n2. Load the demo inventory timeline file.\n",
+      "text": "%md\n## Ingesting Advanced Shipping Notices - Transfer Orders\n\nYou can copy and paste the data ingestion calls shown below; this data was generated by a supply-chain simulator notebook (URL). Here are some notes about this:\n\n* The simulator ticks through time randomly inserting Transfer Orders and also randomly inserts changes to Transfer Orders delivery dates.\n* The generator randomly selects features for the transfer orders. \n* The files below reflect the state of the database after the simulation runs. The orders and change orders are independent files that can be loaded separately.\n* The simulation runs are cumulative, which means demo has the inventory timelines for the test data and the train data. \n\nTo use the demo data, you need to: \n\n1. Load, train, and test for orders and change orders\n2. Load the demo inventory timeline file.\n\nThe paragraphs in this section contain the code that takes care of these tasks.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:16:12.479",
+      "dateUpdated": "2018-11-30 22:39:21.380",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -277,7 +277,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eIngest Advanced Shipping Notices - Transfer Orders\u003c/h3\u003e\n\u003cp\u003eYou can copy and paste the data ingestion calls shown below; this data was generated by a supply-chain simulator notebook (URL). Here are some notes about this:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe simulator ticks through time randomly inserting Transfer Orders and also randomly inserts changes to Transfer Orders delivery dates.\u003c/li\u003e\n  \u003cli\u003eThe generator randomly selects features for the transfer orders.\u003c/li\u003e\n  \u003cli\u003eThe files below reflect the state of the database after the simulation runs. The orders and change orders are independent files that can be loaded separately.\u003c/li\u003e\n  \u003cli\u003eThe simulation runs are cumulative, which means demo has the inventory timelines for the test data and the train data.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eTo use the demo data, you need to: \u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eLoad, train, and test for orders and change orders\u003c/li\u003e\n  \u003cli\u003eLoad the demo inventory timeline file.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eIngesting Advanced Shipping Notices - Transfer Orders\u003c/h2\u003e\n\u003cp\u003eYou can copy and paste the data ingestion calls shown below; this data was generated by a supply-chain simulator notebook (URL). Here are some notes about this:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe simulator ticks through time randomly inserting Transfer Orders and also randomly inserts changes to Transfer Orders delivery dates.\u003c/li\u003e\n  \u003cli\u003eThe generator randomly selects features for the transfer orders.\u003c/li\u003e\n  \u003cli\u003eThe files below reflect the state of the database after the simulation runs. The orders and change orders are independent files that can be loaded separately.\u003c/li\u003e\n  \u003cli\u003eThe simulation runs are cumulative, which means demo has the inventory timelines for the test data and the train data.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eTo use the demo data, you need to: \u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eLoad, train, and test for orders and change orders\u003c/li\u003e\n  \u003cli\u003eLoad the demo inventory timeline file.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThe paragraphs in this section contain the code that takes care of these tasks.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -285,8 +285,8 @@
       "jobName": "paragraph_1542398139916_1177726344",
       "id": "20170621-044326_1460127976",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "dateStarted": "2018-11-20 18:16:12.480",
-      "dateFinished": "2018-11-20 18:16:12.486",
+      "dateStarted": "2018-11-30 22:39:21.380",
+      "dateFinished": "2018-11-30 22:39:21.396",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -732,9 +732,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### About Timelines\n\nTimelines are a relational representation of temporal data for AI applications. \n\nA timeline table contains a collection of timelines, each with a unique id. Every row represents: `TIMELINE_ID \u003d VAL @ [ST ET]` meaning the variable denoted by the id has the value over that time interval\n\nSome notes about Timelines:\n\n* Timelines record historical, present and future values.\n* Timelines require indexed row-based storage and an OLTP compute engine to quickly look up values associated at times.\n* Timelines require ACID properties because they serve concurrent users changing timelines plus all the timeline updates require atomic changes to timelines.\n\nFor example, you have to make sure that when you move an order, the decrement to the source inventory changes atomically with the change to the destination inventory.",
+      "text": "%md\n## Using Timeline Tables\n\nTimelines are a relational representation of temporal data for AI applications. \n\nA timeline table contains a collection of timelines, each with a unique id. Every row represents: `TIMELINE_ID \u003d VAL @ [ST ET]` meaning the variable denoted by the id has the value over that time interval\n\nSome notes about Timelines:\n\n* Timelines record historical, present and future values.\n* Timelines require indexed row-based storage and an OLTP compute engine to quickly look up values associated at times.\n* Timelines require ACID properties because they serve concurrent users changing timelines plus all the timeline updates require atomic changes to timelines.\n\nFor example, you have to make sure that when you move an order, the decrement to the source inventory changes atomically with the change to the destination inventory.\n\nThis code paragraphs in this section demonstrate how to use timeline tables for tracking inventory, finding stock-outs, and finding ATP inventory.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:18:40.995",
+      "dateUpdated": "2018-11-30 22:44:42.724",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -758,7 +758,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAbout Timelines\u003c/h3\u003e\n\u003cp\u003eTimelines are a relational representation of temporal data for AI applications. \u003c/p\u003e\n\u003cp\u003eA timeline table contains a collection of timelines, each with a unique id. Every row represents: \u003ccode\u003eTIMELINE_ID \u003d VAL @ [ST ET]\u003c/code\u003e meaning the variable denoted by the id has the value over that time interval\u003c/p\u003e\n\u003cp\u003eSome notes about Timelines:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eTimelines record historical, present and future values.\u003c/li\u003e\n  \u003cli\u003eTimelines require indexed row-based storage and an OLTP compute engine to quickly look up values associated at times.\u003c/li\u003e\n  \u003cli\u003eTimelines require ACID properties because they serve concurrent users changing timelines plus all the timeline updates require atomic changes to timelines.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eFor example, you have to make sure that when you move an order, the decrement to the source inventory changes atomically with the change to the destination inventory.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing Timeline Tables\u003c/h2\u003e\n\u003cp\u003eTimelines are a relational representation of temporal data for AI applications. \u003c/p\u003e\n\u003cp\u003eA timeline table contains a collection of timelines, each with a unique id. Every row represents: \u003ccode\u003eTIMELINE_ID \u003d VAL @ [ST ET]\u003c/code\u003e meaning the variable denoted by the id has the value over that time interval\u003c/p\u003e\n\u003cp\u003eSome notes about Timelines:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eTimelines record historical, present and future values.\u003c/li\u003e\n  \u003cli\u003eTimelines require indexed row-based storage and an OLTP compute engine to quickly look up values associated at times.\u003c/li\u003e\n  \u003cli\u003eTimelines require ACID properties because they serve concurrent users changing timelines plus all the timeline updates require atomic changes to timelines.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eFor example, you have to make sure that when you move an order, the decrement to the source inventory changes atomically with the change to the destination inventory.\u003c/p\u003e\n\u003cp\u003eThis code paragraphs in this section demonstrate how to use timeline tables for tracking inventory, finding stock-outs, and finding ATP inventory.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -766,8 +766,8 @@
       "jobName": "paragraph_1542398139922_1998505180",
       "id": "20170621-050328_679054277",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "dateStarted": "2018-11-20 18:18:40.996",
-      "dateFinished": "2018-11-20 18:18:41.002",
+      "dateStarted": "2018-11-30 22:44:42.724",
+      "dateFinished": "2018-11-30 22:44:42.741",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -775,7 +775,7 @@
       "title": "Tracking Inventory As Timelines",
       "text": "%splicemachine\nselect * from timeline.timeline_int\nwhere TIMELINE_ID \u003d ${inv\u003d200}\norder by TIMELINE.TIMELINE_INT.ST;",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:25:30.342",
+      "dateUpdated": "2018-11-30 22:36:40.824",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -839,11 +839,11 @@
         }
       },
       "results": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "msg": [
           {
-            "type": "TABLE",
-            "data": "TIMELINE_ID\tST\tET\tVAL\n200\t1677-12-31 23:52:58.0\t2016-01-15 00:00:00.0\t0\n200\t2016-01-15 00:00:00.0\t2016-01-18 00:00:00.0\t0\n200\t2016-01-18 00:00:00.0\t2016-01-20 00:00:00.0\t-145\n200\t2016-01-20 00:00:00.0\t2016-01-22 00:00:00.0\t670\n200\t2016-01-22 00:00:00.0\t2016-01-23 00:00:00.0\t-145\n200\t2016-01-23 00:00:00.0\t2016-01-26 00:00:00.0\t841\n200\t2016-01-26 00:00:00.0\t2016-01-29 00:00:00.0\t1191\n200\t2016-01-29 00:00:00.0\t2016-01-30 00:00:00.0\t1191\n200\t2016-01-30 00:00:00.0\t2016-01-31 00:00:00.0\t941\n200\t2016-01-31 00:00:00.0\t2016-02-01 00:00:00.0\t941\n200\t2016-02-01 00:00:00.0\t2016-02-04 00:00:00.0\t941\n200\t2016-02-04 00:00:00.0\t2016-02-05 00:00:00.0\t941\n200\t2016-02-05 00:00:00.0\t2016-02-09 00:00:00.0\t686\n200\t2016-02-09 00:00:00.0\t2016-02-11 00:00:00.0\t941\n200\t2016-02-11 00:00:00.0\t2016-02-12 00:00:00.0\t752\n200\t2016-02-12 00:00:00.0\t2016-02-13 00:00:00.0\t1345\n200\t2016-02-13 00:00:00.0\t2016-02-14 00:00:00.0\t1345\n200\t2016-02-14 00:00:00.0\t2016-02-15 00:00:00.0\t536\n200\t2016-02-15 00:00:00.0\t2016-02-16 00:00:00.0\t536\n200\t2016-02-16 00:00:00.0\t2016-02-17 00:00:00.0\t536\n200\t2016-02-17 00:00:00.0\t2016-02-18 00:00:00.0\t536\n200\t2016-02-18 00:00:00.0\t2016-02-19 00:00:00.0\t1536\n200\t2016-02-19 00:00:00.0\t2016-02-21 00:00:00.0\t1275\n200\t2016-02-21 00:00:00.0\t2016-02-23 00:00:00.0\t2202\n200\t2016-02-23 00:00:00.0\t2016-02-24 00:00:00.0\t2071\n200\t2016-02-24 00:00:00.0\t2016-02-26 00:00:00.0\t2442\n200\t2016-02-26 00:00:00.0\t2016-02-29 00:00:00.0\t2171\n200\t2016-02-29 00:00:00.0\t2016-03-01 00:00:00.0\t1950\n200\t2016-03-01 00:00:00.0\t2016-03-02 00:00:00.0\t2636\n200\t2016-03-02 00:00:00.0\t2016-03-03 00:00:00.0\t2721\n200\t2016-03-03 00:00:00.0\t2016-03-05 00:00:00.0\t2721\n200\t2016-03-05 00:00:00.0\t2016-03-06 00:00:00.0\t2032\n200\t2016-03-06 00:00:00.0\t2016-03-09 00:00:00.0\t2032\n200\t2016-03-09 00:00:00.0\t2016-03-10 00:00:00.0\t2032\n200\t2016-03-10 00:00:00.0\t2016-03-11 00:00:00.0\t2032\n200\t2016-03-11 00:00:00.0\t2016-03-15 00:00:00.0\t2032\n200\t2016-03-15 00:00:00.0\t2016-03-17 00:00:00.0\t1121\n200\t2016-03-17 00:00:00.0\t2016-03-20 00:00:00.0\t1121\n200\t2016-03-20 00:00:00.0\t2016-03-22 00:00:00.0\t1153\n200\t2016-03-22 00:00:00.0\t2016-03-23 00:00:00.0\t1593\n200\t2016-03-23 00:00:00.0\t2016-03-25 00:00:00.0\t1593\n200\t2016-03-25 00:00:00.0\t2016-03-30 00:00:00.0\t431\n200\t2016-03-30 00:00:00.0\t2016-04-01 00:00:00.0\t1302\n200\t2016-04-01 00:00:00.0\t2016-04-04 00:00:00.0\t431\n200\t2016-04-04 00:00:00.0\t2016-04-05 00:00:00.0\t-149\n200\t2016-04-05 00:00:00.0\t2016-04-08 00:00:00.0\t1442\n200\t2016-04-08 00:00:00.0\t2016-04-09 00:00:00.0\t1442\n200\t2016-04-09 00:00:00.0\t2016-04-11 00:00:00.0\t675\n200\t2016-04-11 00:00:00.0\t2016-04-12 00:00:00.0\t675\n200\t2016-04-12 00:00:00.0\t2016-04-14 00:00:00.0\t174\n200\t2016-04-14 00:00:00.0\t2016-04-15 00:00:00.0\t675\n200\t2016-04-15 00:00:00.0\t2016-04-19 00:00:00.0\t352\n200\t2016-04-19 00:00:00.0\t2016-04-20 00:00:00.0\t-471\n200\t2016-04-20 00:00:00.0\t2016-04-21 00:00:00.0\t-471\n200\t2016-04-21 00:00:00.0\t2016-04-24 00:00:00.0\t37\n200\t2016-04-24 00:00:00.0\t2016-04-26 00:00:00.0\t833\n200\t2016-04-26 00:00:00.0\t2016-04-29 00:00:00.0\t37\n200\t2016-04-29 00:00:00.0\t2016-04-30 00:00:00.0\t37\n200\t2016-04-30 00:00:00.0\t2016-05-01 00:00:00.0\t-673\n200\t2016-05-01 00:00:00.0\t2016-05-03 00:00:00.0\t-673\n200\t2016-05-03 00:00:00.0\t2016-05-04 00:00:00.0\t-673\n200\t2016-05-04 00:00:00.0\t2016-05-05 00:00:00.0\t-1003\n200\t2016-05-05 00:00:00.0\t2016-05-06 00:00:00.0\t-1003\n200\t2016-05-06 00:00:00.0\t2016-05-08 00:00:00.0\t-530\n200\t2016-05-08 00:00:00.0\t2016-05-09 00:00:00.0\t-492\n200\t2016-05-09 00:00:00.0\t2016-05-11 00:00:00.0\t-492\n200\t2016-05-11 00:00:00.0\t2016-05-13 00:00:00.0\t-492\n200\t2016-05-13 00:00:00.0\t2016-05-14 00:00:00.0\t-1206\n200\t2016-05-14 00:00:00.0\t2016-05-16 00:00:00.0\t-492\n200\t2016-05-16 00:00:00.0\t2016-05-19 00:00:00.0\t-764\n200\t2016-05-19 00:00:00.0\t2016-05-20 00:00:00.0\t-1584\n200\t2016-05-20 00:00:00.0\t2016-05-21 00:00:00.0\t-712\n200\t2016-05-21 00:00:00.0\t2016-05-24 00:00:00.0\t-1510\n200\t2016-05-24 00:00:00.0\t2016-05-26 00:00:00.0\t-712\n200\t2016-05-26 00:00:00.0\t2016-05-30 00:00:00.0\t-1510\n200\t2016-05-30 00:00:00.0\t2016-05-31 00:00:00.0\t-974\n200\t2016-05-31 00:00:00.0\t2016-06-01 00:00:00.0\t-974\n200\t2016-06-01 00:00:00.0\t2016-06-03 00:00:00.0\t-974\n200\t2016-06-03 00:00:00.0\t2016-06-05 00:00:00.0\t-974\n200\t2016-06-05 00:00:00.0\t2016-06-09 00:00:00.0\t-356\n200\t2016-06-09 00:00:00.0\t2016-06-13 00:00:00.0\t377\n200\t2016-06-13 00:00:00.0\t2016-06-16 00:00:00.0\t204\n200\t2016-06-16 00:00:00.0\t2016-06-18 00:00:00.0\t204\n200\t2016-06-18 00:00:00.0\t2016-06-19 00:00:00.0\t204\n200\t2016-06-19 00:00:00.0\t2016-06-20 00:00:00.0\t204\n200\t2016-06-20 00:00:00.0\t2016-06-25 00:00:00.0\t204\n200\t2016-06-25 00:00:00.0\t2016-06-26 00:00:00.0\t730\n200\t2016-06-26 00:00:00.0\t2016-07-01 00:00:00.0\t1270\n200\t2016-07-01 00:00:00.0\t2016-07-02 00:00:00.0\t1270\n200\t2016-07-02 00:00:00.0\t2016-07-06 00:00:00.0\t1095\n200\t2016-07-06 00:00:00.0\t2016-07-07 00:00:00.0\t1270\n200\t2016-07-07 00:00:00.0\t2016-07-11 00:00:00.0\t1889\n200\t2016-07-11 00:00:00.0\t2016-07-17 00:00:00.0\t1105\n200\t2016-07-17 00:00:00.0\t2016-07-18 00:00:00.0\t1105\n200\t2016-07-18 00:00:00.0\t2016-07-21 00:00:00.0\t1105\n200\t2016-07-21 00:00:00.0\t2016-07-22 00:00:00.0\t633\n200\t2016-07-22 00:00:00.0\t2016-07-23 00:00:00.0\t633\n200\t2016-07-23 00:00:00.0\t2016-07-26 00:00:00.0\t633\n200\t2016-07-26 00:00:00.0\t2016-07-28 00:00:00.0\t774\n200\t2016-07-28 00:00:00.0\t2016-08-10 00:00:00.0\t774\n200\t2016-08-10 00:00:00.0\t2016-08-13 00:00:00.0\t301\n200\t2016-08-13 00:00:00.0\t2016-08-15 00:00:00.0\t301\n200\t2016-08-15 00:00:00.0\t2016-08-17 00:00:00.0\t301\n200\t2016-08-17 00:00:00.0\t2016-08-20 00:00:00.0\t301\n200\t2016-08-20 00:00:00.0\t2016-08-21 00:00:00.0\t-279\n200\t2016-08-21 00:00:00.0\t2016-08-22 00:00:00.0\t269\n200\t2016-08-22 00:00:00.0\t2016-08-25 00:00:00.0\t808\n200\t2016-08-25 00:00:00.0\t2016-08-26 00:00:00.0\t-102\n200\t2016-08-26 00:00:00.0\t2016-08-28 00:00:00.0\t-102\n200\t2016-08-28 00:00:00.0\t2016-08-29 00:00:00.0\t280\n200\t2016-08-29 00:00:00.0\t2016-09-14 00:00:00.0\t280\n200\t2016-09-14 00:00:00.0\t2016-09-19 00:00:00.0\t280\n200\t2016-09-19 00:00:00.0\t2016-09-20 00:00:00.0\t82\n200\t2016-09-20 00:00:00.0\t2016-09-21 00:00:00.0\t82\n200\t2016-09-21 00:00:00.0\t2016-09-23 00:00:00.0\t627\n200\t2016-09-23 00:00:00.0\t2016-09-24 00:00:00.0\t1312\n200\t2016-09-24 00:00:00.0\t2016-09-29 00:00:00.0\t1145\n200\t2016-09-29 00:00:00.0\t2016-09-30 00:00:00.0\t1183\n200\t2016-09-30 00:00:00.0\t2016-10-01 00:00:00.0\t1145\n200\t2016-10-01 00:00:00.0\t2016-10-04 00:00:00.0\t1145\n200\t2016-10-04 00:00:00.0\t2016-10-05 00:00:00.0\t1145\n200\t2016-10-05 00:00:00.0\t2016-10-06 00:00:00.0\t1145\n200\t2016-10-06 00:00:00.0\t2016-10-07 00:00:00.0\t1145\n200\t2016-10-07 00:00:00.0\t2016-10-08 00:00:00.0\t1712\n200\t2016-10-08 00:00:00.0\t2016-10-10 00:00:00.0\t2153\n200\t2016-10-10 00:00:00.0\t2016-10-13 00:00:00.0\t2153\n200\t2016-10-13 00:00:00.0\t2016-10-14 00:00:00.0\t2153\n200\t2016-10-14 00:00:00.0\t2016-10-18 00:00:00.0\t2048\n200\t2016-10-18 00:00:00.0\t2016-10-19 00:00:00.0\t2048\n200\t2016-10-19 00:00:00.0\t2016-10-22 00:00:00.0\t1857\n200\t2016-10-22 00:00:00.0\t2016-10-24 00:00:00.0\t1857\n200\t2016-10-24 00:00:00.0\t2016-10-28 00:00:00.0\t1857\n200\t2016-10-28 00:00:00.0\t2016-10-29 00:00:00.0\t1857\n200\t2016-10-29 00:00:00.0\t2016-10-30 00:00:00.0\t1201\n200\t2016-10-30 00:00:00.0\t2016-10-31 00:00:00.0\t1201\n200\t2016-10-31 00:00:00.0\t2016-11-01 00:00:00.0\t1201\n200\t2016-11-01 00:00:00.0\t2016-11-03 00:00:00.0\t885\n200\t2016-11-03 00:00:00.0\t2016-11-06 00:00:00.0\t1201\n200\t2016-11-06 00:00:00.0\t2016-11-08 00:00:00.0\t1269\n200\t2016-11-08 00:00:00.0\t2016-11-09 00:00:00.0\t589\n200\t2016-11-09 00:00:00.0\t2016-11-10 00:00:00.0\t995\n200\t2016-11-10 00:00:00.0\t2016-11-13 00:00:00.0\t666\n200\t2016-11-13 00:00:00.0\t2016-11-14 00:00:00.0\t995\n200\t2016-11-14 00:00:00.0\t2016-11-15 00:00:00.0\t1140\n200\t2016-11-15 00:00:00.0\t2016-11-18 00:00:00.0\t1140\n200\t2016-11-18 00:00:00.0\t2016-11-19 00:00:00.0\t329\n200\t2016-11-19 00:00:00.0\t2016-11-20 00:00:00.0\t959\n200\t2016-11-20 00:00:00.0\t2016-11-22 00:00:00.0\t959\n200\t2016-11-22 00:00:00.0\t2016-11-26 00:00:00.0\t1624\n200\t2016-11-26 00:00:00.0\t2016-11-28 00:00:00.0\t2439\n200\t2016-11-28 00:00:00.0\t2016-12-03 00:00:00.0\t2439\n200\t2016-12-03 00:00:00.0\t2016-12-05 00:00:00.0\t1942\n200\t2016-12-05 00:00:00.0\t2016-12-13 00:00:00.0\t1942\n200\t2016-12-13 00:00:00.0\t2016-12-15 00:00:00.0\t1668\n200\t2016-12-15 00:00:00.0\t2016-12-20 00:00:00.0\t1668\n200\t2016-12-20 00:00:00.0\t2261-12-31 00:00:00.0\t2578\n"
+            "type": "TEXT",
+            "data": "java.sql.SQLSyntaxErrorException: Schema \u0027TIMELINE\u0027 does not exist\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:89)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:904)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:718)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: Schema \u0027TIMELINE\u0027 does not exist\n\tat com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1844)\n\tat com.splicemachine.db.client.net.NetStatementReply.parsePrepareError(NetStatementReply.java:572)\n\tat com.splicemachine.db.client.net.NetStatementReply.parsePRPSQLSTTreply(NetStatementReply.java:146)\n\tat com.splicemachine.db.client.net.NetStatementReply.readPrepareDescribeOutput(NetStatementReply.java:55)\n\tat com.splicemachine.db.client.net.StatementReply.readPrepareDescribeOutput(StatementReply.java:44)\n\tat com.splicemachine.db.client.net.NetStatement.readPrepareDescribeOutput_(NetStatement.java:142)\n\tat com.splicemachine.db.client.am.Statement.readPrepareDescribeOutput(Statement.java:1451)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2125)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:909)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:895)\n\t... 15 more\n"
           }
         ]
       },
@@ -851,8 +851,9 @@
       "jobName": "paragraph_1542398139922_1831631662",
       "id": "20170621-052218_96471785",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 22:36:40.865",
+      "dateFinished": "2018-11-30 22:36:41.163",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1019,39 +1020,11 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n",
+      "text": "%md\n## Applying the Crystal Ball\n\nYou can apply the crystal ball to perform a *What-If* on any predicted late shipment. By moving the shipment to the predicted new delivery date, you can see the new inventory levels and plan around stockouts.\n\nThe code paragraphs in this section create a prediction table that materializes predictions on some set of orders as to whether they are late. Then we initialize the table randomly for demostration purposes only. \n\nAfter that, we perform a *What-If* simulation for a specified order with a delay",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:55:39.000",
+      "dateUpdated": "2018-11-30 22:46:54.818",
       "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": true,
-        "fontSize": 9.0,
-        "results": {},
-        "enabled": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542398139923_-843462957",
-      "id": "20170628-145111_1644223982",
-      "dateCreated": "2018-11-16 11:55:39.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n### Apply the Crystal Ball\n\nYou can apply the crystal ball to perform a *What-If* on any predicted late shipment. By moving the shipment to the predicted new delivery date, you can see the new inventory levels and plan around stockouts.\n\nBelow we create a prediction table that materializes predictions on some set of orders as to whether they are late. Then we initialize the table randomly for demostration purposes only. \n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:19:57.988",
-      "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -1059,7 +1032,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "fontSize": 9.0,
         "results": {},
         "enabled": true
@@ -1073,7 +1046,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eApply the Crystal Ball\u003c/h3\u003e\n\u003cp\u003eYou can apply the crystal ball to perform a \u003cem\u003eWhat-If\u003c/em\u003e on any predicted late shipment. By moving the shipment to the predicted new delivery date, you can see the new inventory levels and plan around stockouts.\u003c/p\u003e\n\u003cp\u003eBelow we create a prediction table that materializes predictions on some set of orders as to whether they are late. Then we initialize the table randomly for demostration purposes only.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eApplying the Crystal Ball\u003c/h2\u003e\n\u003cp\u003eYou can apply the crystal ball to perform a \u003cem\u003eWhat-If\u003c/em\u003e on any predicted late shipment. By moving the shipment to the predicted new delivery date, you can see the new inventory levels and plan around stockouts.\u003c/p\u003e\n\u003cp\u003eThe code paragraphs in this section create a prediction table that materializes predictions on some set of orders as to whether they are late. Then we initialize the table randomly for demostration purposes only.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1081,8 +1054,8 @@
       "jobName": "paragraph_1542398139924_1939899989",
       "id": "20170621-054855_1620710812",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "dateStarted": "2018-11-20 18:19:57.989",
-      "dateFinished": "2018-11-20 18:19:57.994",
+      "dateStarted": "2018-11-30 22:45:51.145",
+      "dateFinished": "2018-11-30 22:45:51.161",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1090,7 +1063,7 @@
       "title": "Prediction Table",
       "text": "%splicemachine\nDrop table IF EXISTS TIMELINE.PREDICTIONS;\ncreate table TIMELINE.PREDICTIONS(\n    TO_ID   BIGINT,\n    LatenessBin1 DOUBLE,\n    LatenessBin2 DOUBLE,\n    LatenessBin3 DOUBLE,\n    LatenessBin4 DOUBLE,\n    LatenessBin5 DOUBLE,\n    LatenessBin6 DOUBLE,\n    LatenessBin7 DOUBLE,\n    LatenessBin8 DOUBLE,\n    LatenessBin9 DOUBLE,\n    LatenessBin10 DOUBLE,\n    primary key (TO_ID)\n    );\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:55:39.000",
+      "dateUpdated": "2018-11-30 22:37:11.406",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1284,7 +1257,7 @@
     {
       "text": "%md\n### Perform a *What-If* Simulation for a Specified Order with a Delay\n\nPick an order that may be delayed by a specified number of days to see what orders may result in stock out situation because of the delay.\n\nFirst, all the orders that are sourced from the Destination of the Order in consideration, the ones that have stockout are listed, before the delay in delivery date for comparison.\n\nNext, the delay is simulated, inventory calculations are made, and the Orders that are sourced from the Destination are again checked for stockout situation.\n\nSince these *what-if* calculations are done on a temporary table, the actual data is not impacted.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:24:29.148",
+      "dateUpdated": "2018-11-30 22:53:25.726",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1316,8 +1289,8 @@
       "jobName": "paragraph_1542398139928_-1737510532",
       "id": "20170716-211650_1813160194",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "dateStarted": "2018-11-20 18:24:29.148",
-      "dateFinished": "2018-11-20 18:24:29.154",
+      "dateStarted": "2018-11-30 22:53:25.728",
+      "dateFinished": "2018-11-30 22:53:25.753",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1363,7 +1336,7 @@
       "title": "What-If Simulation Code",
       "text": "%spark\n\nval splicemachineContext \u003d new SplicemachineContext(defaultJDBCURL)\nval InventoryTable \u003d \"timeline.timeline_int\"\nval TOTable \u003d \"timeline.transferorders\"\nval stockoutTable \u003d \"timeline.STOCKOUTS\"\nval CHANGE_AT_ST \u003d 0\nval CHANGE_AT_ET \u003d 1\nval tempTableColsWithPKey : String  \u003d \"(Timeline_Id bigint, \" + \"ST timestamp, \" + \"ET timestamp, \" + \"Val bigint, \" + \"primary key (Timeline_ID, ST)\" +\")\"\n\ndef createTempInvTable (smContext :SplicemachineContext, source : Long, dest : Long): String \u003d {\n    \n    var tempTable \u003d\"Timeline.\"+  \"TEMP_INV_\" + org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(6).toUpperCase();\n            while(smContext.tableExists( tempTable))\n                tempTable \u003d\"Timeline.\"+  \"TEMP_INV_\" +org.apache.commons.lang3.RandomStringUtils.randomAlphabetic(6).toUpperCase();\n    \n    \n    \n    val tempOptions \u003d Map(\n         org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.JDBC_TABLE_NAME -\u003e tempTable,\n        org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions.JDBC_URL -\u003e defaultJDBCURL\n    )\n\n    val tempJDBCOptions \u003d new org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions(tempOptions)\n\n    \n    val conn \u003d JdbcUtils.createConnectionFactory(tempJDBCOptions)()\n    try {\n    conn.createStatement().execute(\"create table \" + tempTable + tempTableColsWithPKey)\n    } finally {\n      conn.close()\n    }\n    \n    //insert \n    val stmt \u003d \"select *  FROM timeline.timeline_int  WHERE Timeline_Id  in ( \" + source + \", \"+ dest +\")\"\n    val timesDf \u003d splicemachineContext.df(stmt)\n    smContext.insert(timesDf,tempTable )\n   tempTable\n \n    \n}\n\ndef whatif(smContext :SplicemachineContext,\n            tempInvTable: String,\n           source: Integer,\n           destination: Integer,\n           shippingDate: Timestamp,\n           deliveryDate: Timestamp,\n           newDeliveryDate : Timestamp,\n           qty: Long,\n           retryCount: Integer \u003d 0,\n           revertFlag: Boolean): Unit \u003d {\n\n        val conn: Connection \u003d smContext.getConnection()\n         try {\n          conn.setAutoCommit(false) //TBD - Need to set to false when DBAAS-570 is resolved\n          update(tempInvTable, source, shippingDate, deliveryDate,  qty, CHANGE_AT_ST)\n          update(tempInvTable, destination, shippingDate, deliveryDate,  -qty, CHANGE_AT_ET)\n          update(tempInvTable, source, shippingDate, newDeliveryDate,  -qty, CHANGE_AT_ST)\n          update(tempInvTable, destination, shippingDate, newDeliveryDate,  qty, CHANGE_AT_ET)\n          conn.commit()\n          \n        }\n        catch {\n          case exp: WriteConflict \u003d\u003e {\n            conn.rollback()\n            conn.setAutoCommit(true)\n            if (retryCount \u003c MAX_RETRIES) {\n              println(\"Retrying create TO\" + source + \" \" + destination + \" \" + shippingDate + \" \" + deliveryDate + \" \" + qty + \" \" + retryCount + 1)\n              whatif(smContext, tempInvTable,source, destination, shippingDate, deliveryDate, newDeliveryDate, qty, retryCount + 1, revertFlag)\n            }\n            else {\n              // put code here to handle too many retries\n            }\n          }\n          case e: Throwable \u003d\u003e println(s\"Got some other kind of exception: $e\")\n        }\n        finally {\n          conn.setAutoCommit(true)\n        }\n      }\n      \n      \n  // Will need to copy the inventory table so that what-if is not visible to others\n\n  val transferOrdersTable \u003d Map(\n    JDBCOptions.JDBC_TABLE_NAME -\u003e \"Timeline.TransferOrders\",\n    JDBCOptions.JDBC_URL -\u003e defaultJDBCURL\n    ) \n  val orderid \u003d z.angular(\"orderId\").toString.toLong\n  val q \u003d s\"select *  FROM timeline.transferorders WHERE to_id \u003d $orderid\"\n  val order \u003d splicemachineContext.df(q)\n  \n   val days \u003d z.angular(\"delayDays\").toString.toInt\n \n  if(order.count \u003e 0 \u0026\u0026 days \u003e 0) {\n    //  val days: Int \u003d 5\n      val source \u003d order.first().getAs(\"SOURCEINVENTORY\").asInstanceOf[Long]\n      val dest \u003d order.first().getAs(\"DESTINATIONINVENTORY\").asInstanceOf[Long]\n      val ship \u003d order.first().getAs(\"SHIPDATE\").asInstanceOf[Timestamp]\n      val delivery \u003d order.first().getAs(\"DELIVERYDATE\").asInstanceOf[Timestamp]\n      val qty \u003d order.first().getAs(\"QTY\").asInstanceOf[Long]\n      val newDelivery \u003dnew Timestamp( new org.joda.time.DateTime (delivery).plusDays(days).getMillis())\n      \n      //Populate stockouts before What If\n      \n     val queryBefore \u003d s\"\"\"SELECT t.to_id, i.ST, i.timeline_id FROM $InventoryTable i  , $TOTable t\n        WHERE i.timeline_id \u003d $dest\n        AND t.sourceinventory \u003d i.timeline_id\n        AND val \u003c 0\n        AND i.ST \u003c\u003d  t.shipdate\n        AND  t.shipdate \u003c i.ET\n        ORDER BY i.ST\"\"\"\n    \n       println(s\"q\u003d$queryBefore\")\n      val stockOutsBefore \u003d splicemachineContext.df(queryBefore)\n  \n      splicemachineContext.insert(stockOutsBefore, stockoutTable)\n      z.run(\"20170621-055239_1661420434\")\n      z.run(\"20170628-152508_1831563439\")\n      \n      val tempInventoryTable \u003d createTempInvTable(splicemachineContext,source,dest)\n      \n      whatif(splicemachineContext,tempInventoryTable,source.toInt, dest.toInt, ship, delivery, newDelivery, qty, days, false)\n      \n      val destInvCol \u003d TOTable + \".destinationinventory \"\n      val timelineIdCol \u003d tempInventoryTable + \".timeline_id \"\n      val toIdCol \u003d TOTable + \".to_id \"\n      val stCol \u003d tempInventoryTable + \".ST \"\n      val etCol \u003d tempInventoryTable + \".ET \"\n      val delDateCol \u003d TOTable + \".deliverydate \"\n      val shipDateCol \u003d  TOTable + \".shipdate \"\n      val sourceInvCol \u003d TOTable + \".sourceinventory \"\n      val latCol \u003d TOTable + \".latitude \"\n      val longCol \u003d TOTable + \".longitude \"\n      val srcWeatherCol \u003d TOTable + \".fromweather \"\n      val destWeatherCol \u003d TOTable + \".toweather \"\n      /*\n      val query \u003d s\"\"\"SELECT $toIdCol, $stCol, $timelineIdCol FROM $tempInventoryTable , $TOTable\n                        WHERE $timelineIdCol \u003d $dest\n                        AND $destInvCol \u003d $timelineIdCol\n                        AND val \u003c 0\n                        AND $stCol \u003e\u003d $delDateCol\n                        ORDER BY $stCol\"\"\"\n                        println(s\"q\u003d$query\")\n                        */\n   \n     val query \u003d s\"\"\"SELECT $toIdCol, $stCol, $timelineIdCol FROM $tempInventoryTable , $TOTable\n        WHERE $timelineIdCol \u003d $dest\n        AND $sourceInvCol \u003d $timelineIdCol\n        AND val \u003c 0\n        AND $stCol \u003c\u003d  $shipDateCol\n        AND  $shipDateCol \u003c $etCol\n        ORDER BY $stCol\"\"\"\n    \n    println(s\"q\u003d$query\")\n      val stockOuts \u003d splicemachineContext.df(query)\n  \n     // whatif(source.toInt, dest.toInt, ship, delivery, newDelivery, qty, 5, true) // undo what-if \n      splicemachineContext.insert(stockOuts, stockoutTable)\n      z.run(\"20170716-165322_7991113\")\n      z.run(\"20170628-152508_1831563439\")\n     // splicemachineContext.dropTable(tempInventoryTable)\n   } else {\n    println(\" NO ORDERS FOUND FOR ORDER ID \" + orderid)\n   }\n  \n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:55:39.000",
+      "dateUpdated": "2018-11-30 22:46:54.989",
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -1372,7 +1345,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
-        "editorHide": true,
+        "editorHide": false,
         "fontSize": 9.0,
         "title": true,
         "results": {},
@@ -1701,7 +1674,7 @@
       "title": "Num of Late Orders By Weather",
       "text": "%splicemachine\nselect * from timeline.TO_DELIVERY_CHG_EVENT\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 18:25:33.408",
+      "dateUpdated": "2018-11-30 21:53:54.340",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1921,22 +1894,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Machine Learning \n### Learning to Predict Late Shipments\n\nHere we use a logistic regression ML model to classify late orders. Our inventory system tracks events such as the delivery date on an order changing or the qty delivered being different than expected.\n\nThe model considers attributes of the orders such as:\n- Mode of Transport\n- Carrier\n- Latitude \n- Longitude\n- Source City\n- Destination City\n- Part.\n\nThe model also considers exogenous data to enrich the inventory data such as weather:\n- weather at source\n- weather at destination.\n\nThe machine learning algorithm outputs a model that can predict whether a shipment is late. \n\n\n",
+      "text": "%md\n## Using Machine Learning to Predict Late Shipments\n\nHere we use a logistic regression ML model to classify late orders. Our inventory system tracks events such as the delivery date on an order changing or the qty delivered being different than expected.\n\nThe model considers attributes of the orders such as:\n- Mode of Transport\n- Carrier\n- Latitude \n- Longitude\n- Source City\n- Destination City\n- Part.\n\nThe model also considers exogenous data to enrich the inventory data such as weather:\n- weather at source\n- weather at destination.\n\nThe machine learning algorithm outputs a model that can predict whether a shipment is late. \n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:55:39.000",
+      "dateUpdated": "2018-11-30 22:58:33.518",
       "config": {
-        "tableHide": false,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
-        "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "fontSize": 9.0,
-        "title": false,
-        "results": {},
-        "enabled": false
+        "editorHide": false,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -1947,34 +1920,36 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eMachine Learning\u003c/h2\u003e\n\u003ch3\u003eLearning to Predict Late Shipments\u003c/h3\u003e\n\u003cp\u003eHere we use a logistic regression ML model to classify late orders. Our inventory system tracks events such as the delivery date on an order changing or the qty delivered being different than expected.\u003c/p\u003e\n\u003cp\u003eThe model considers attributes of the orders such as:\u003cbr/\u003e- Mode of Transport\u003cbr/\u003e- Carrier\u003cbr/\u003e- Latitude\u003cbr/\u003e- Longitude\u003cbr/\u003e- Source City\u003cbr/\u003e- Destination City\u003cbr/\u003e- Part.\u003c/p\u003e\n\u003cp\u003eThe model also considers exogenous data to enrich the inventory data such as weather:\u003cbr/\u003e- weather at source\u003cbr/\u003e- weather at destination.\u003c/p\u003e\n\u003cp\u003eThe machine learning algorithm outputs a model that can predict whether a shipment is late.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing Machine Learning to Predict Late Shipments\u003c/h2\u003e\n\u003cp\u003eHere we use a logistic regression ML model to classify late orders. Our inventory system tracks events such as the delivery date on an order changing or the qty delivered being different than expected.\u003c/p\u003e\n\u003cp\u003eThe model considers attributes of the orders such as:\u003cbr/\u003e- Mode of Transport\u003cbr/\u003e- Carrier\u003cbr/\u003e- Latitude\u003cbr/\u003e- Longitude\u003cbr/\u003e- Source City\u003cbr/\u003e- Destination City\u003cbr/\u003e- Part.\u003c/p\u003e\n\u003cp\u003eThe model also considers exogenous data to enrich the inventory data such as weather:\u003cbr/\u003e- weather at source\u003cbr/\u003e- weather at destination.\u003c/p\u003e\n\u003cp\u003eThe machine learning algorithm outputs a model that can predict whether a shipment is late.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1542398139934_-1599564439",
-      "id": "20170621-053550_1927397352",
-      "dateCreated": "2018-11-16 11:55:39.000",
-      "status": "READY",
-      "errorMessage": "",
+      "jobName": "paragraph_1543618455011_1246322468",
+      "id": "20181130-225415_805598687",
+      "dateCreated": "2018-11-30 22:54:15.011",
+      "dateStarted": "2018-11-30 22:54:33.402",
+      "dateFinished": "2018-11-30 22:54:33.421",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Ease of ML - NO ETL \n#### Just Transformations\n\nSplice Machine is HTAP so you can perform both transactional and analytical queries.\n\nTherefore we do not need to extract and load data - we only transform it.\n\nBelow we transform the transfer orders and the changes to transfer orders into a view, computing how late the order is and binning the lateness into 0,1,5,and 10 day late bins.\n\nThe first step is a classic transformation step of merging a master table of data with a table of changes and labeling the rows with classes and enriching it with outside data like weather in this case.\n\n\n",
+      "text": "%md\n### ML Means No ETL, Just Transformations\n\nSplice Machine is a Hybrid Transactional and Analytics Processing (*HTAP*) platform, so you can perform both transactional and analytical queries. This means that we don\u0027t need to extract and load data; instead, we simply transform it.\n\nBelow we transform the transfer orders and the changes to transfer orders into a view, computing how late the order is and binning the lateness into 0,1,5,and 10 day late bins.\n\nThe first step is a classic transformation step of merging a master table of data with a table of changes and labeling the rows with classes and enriching it with outside data like weather in this case.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:55:39.000",
+      "dateUpdated": "2018-11-30 22:57:40.954",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -1985,7 +1960,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eEase of ML - NO ETL\u003c/h3\u003e\n\u003ch4\u003eJust Transformations\u003c/h4\u003e\n\u003cp\u003eSplice Machine is HTAP so you can perform both transactional and analytical queries.\u003c/p\u003e\n\u003cp\u003eTherefore we do not need to extract and load data - we only transform it.\u003c/p\u003e\n\u003cp\u003eBelow we transform the transfer orders and the changes to transfer orders into a view, computing how late the order is and binning the lateness into 0,1,5,and 10 day late bins.\u003c/p\u003e\n\u003cp\u003eThe first step is a classic transformation step of merging a master table of data with a table of changes and labeling the rows with classes and enriching it with outside data like weather in this case.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eML Means No ETL, Just Transformations\u003c/h3\u003e\n\u003cp\u003eSplice Machine is a Hybrid Transactional and Analytics Processing (*HTAP*) platform, so you can perform both transactional and analytical queries. This means that we don\u0026rsquo;t need to extract and load data; instead, we simply transform it.\u003c/p\u003e\n\u003cp\u003eBelow we transform the transfer orders and the changes to transfer orders into a view, computing how late the order is and binning the lateness into 0,1,5,and 10 day late bins.\u003c/p\u003e\n\u003cp\u003eThe first step is a classic transformation step of merging a master table of data with a table of changes and labeling the rows with classes and enriching it with outside data like weather in this case.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1993,8 +1968,9 @@
       "jobName": "paragraph_1542398139934_-1835938020",
       "id": "20170621-070538_308959124",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 22:57:40.958",
+      "dateFinished": "2018-11-30 22:57:40.976",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -2118,21 +2094,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n#### MLlib\n\nMLlib is a rich repository of Transformers and Models. \n\nhttps://spark.apache.org/docs/latest/ml-guide.html\n\nIn this use case we will use Logistic Regression to classify late orders into four classes: 0 days late, 1-5 days late, 5-10 days late and  10 or over days late.\n\nThe Logistic Regression Model expects a dataframe with two elements: feature Vector and label.\n\nTherefore we have to extract the columns from the above table into this form.\n\nLuckily MLlib has such a transformer called a Vector Assembler.\n\nBelow we create a Vector Assembler, extract some columns from or feature table and then feed this to the model.\n\nThen we can deploy the model to create the prediction table we used above.\n",
+      "text": "%md\n### MLlib\n\nMLlib is a rich repository of Transformers and Models. For more information about MLlib, see: \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003ehttps://spark.apache.org/docs/latest/ml-guide.html\u003c/a\u003e\n\nIn this use case, we\u0027ll use Logistic Regression to classify late orders into four classes: 0 days late, 1-5 days late, 5-10 days late and  10 or over days late. Here are some notes about this:\n\n* The Logistic Regression Model expects a dataframe with two elements: feature Vector and label, which means that we have to extract the columns from the above table into this form.\n* Luckily MLlib has such a transformer called a Vector Assembler.\n\nIn the following paragraphs, we:\n\n1. Create a vector assembler\n2. Train the model\n3. Deploy the model to our prediction table\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:55:39.000",
+      "dateUpdated": "2018-11-30 23:07:44.265",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -2143,7 +2120,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch4\u003eMLlib\u003c/h4\u003e\n\u003cp\u003eMLlib is a rich repository of Transformers and Models. \u003c/p\u003e\n\u003cp\u003e\u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\"\u003ehttps://spark.apache.org/docs/latest/ml-guide.html\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eIn this use case we will use Logistic Regression to classify late orders into four classes: 0 days late, 1-5 days late, 5-10 days late and 10 or over days late.\u003c/p\u003e\n\u003cp\u003eThe Logistic Regression Model expects a dataframe with two elements: feature Vector and label.\u003c/p\u003e\n\u003cp\u003eTherefore we have to extract the columns from the above table into this form.\u003c/p\u003e\n\u003cp\u003eLuckily MLlib has such a transformer called a Vector Assembler.\u003c/p\u003e\n\u003cp\u003eBelow we create a Vector Assembler, extract some columns from or feature table and then feed this to the model.\u003c/p\u003e\n\u003cp\u003eThen we can deploy the model to create the prediction table we used above.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eMLlib\u003c/h3\u003e\n\u003cp\u003eMLlib is a rich repository of Transformers and Models. For more information about MLlib, see: \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\"\u003ehttps://spark.apache.org/docs/latest/ml-guide.html\u003c/a\u003e\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eIn this use case, we\u0026rsquo;ll use Logistic Regression to classify late orders into four classes: 0 days late, 1-5 days late, 5-10 days late and 10 or over days late. Here are some notes about this:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe Logistic Regression Model expects a dataframe with two elements: feature Vector and label, which means that we have to extract the columns from the above table into this form.\u003c/li\u003e\n  \u003cli\u003eLuckily MLlib has such a transformer called a Vector Assembler.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn the following paragraphs, we:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a vector assembler\u003c/li\u003e\n  \u003cli\u003eTrain the model\u003c/li\u003e\n  \u003cli\u003eDeploy the model to our prediction table\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -2151,8 +2128,9 @@
       "jobName": "paragraph_1542398139937_1455601499",
       "id": "20170621-164244_783302183",
       "dateCreated": "2018-11-16 11:55:39.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-11-30 23:07:44.266",
+      "dateFinished": "2018-11-30 23:07:44.286",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -2300,7 +2278,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

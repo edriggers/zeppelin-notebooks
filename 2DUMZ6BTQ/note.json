@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Importing Data and Running Queries\nThis notebook introduces you importing data into your Splice Machine database and running a simple query, in these steps:\n\n1. *Creating and Populating an Example Table*\n2. *Running database queries from a Zeppelin notebook*\n3. *Using `Explain Plan`* to explore the execution plan for a query ",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:52:51.100",
+      "dateUpdated": "2018-11-30 18:37:27.079",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1542402377078_-2120810033",
       "id": "20170907-071443_970035831",
       "dateCreated": "2018-11-16 13:06:17.000",
-      "dateStarted": "2018-11-29 23:52:51.100",
-      "dateFinished": "2018-11-29 23:52:51.125",
+      "dateStarted": "2018-11-30 18:37:14.137",
+      "dateFinished": "2018-11-30 18:37:14.150",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## 1. Create and Populate our Example Table\nFirst we\u0027ll create and populate the `import_example` table with some simple data. For additional information about importing this data, see the [*Importing Data*](/#/notebook/2DVR1D5BP) notebook in our *Beginning Developers* course.\n\nClick the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph to create and populate the table:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:55:48.987",
+      "dateUpdated": "2018-11-30 18:39:10.063",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -54,51 +54,113 @@
           "editOnDblClick": true,
           "completionSupport": false
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false,
+        "editorHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Create and Populate our Example Table\u003c/h2\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll create and populate the \u003ccode\u003eimport_example\u003c/code\u003e table with some simple data. For additional information about importing this data, see the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data\u003c/em\u003e\u003c/a\u003e notebook in our \u003cem\u003eBeginning Developers\u003c/em\u003e course.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph to create and populate the table:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1543535573982_577744232",
       "id": "20181129-235253_1744227870",
       "dateCreated": "2018-11-29 23:52:53.982",
-      "status": "READY",
+      "dateStarted": "2018-11-30 18:37:04.001",
+      "dateFinished": "2018-11-30 18:37:04.009",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\nCREATE TABLE import_example (i int, v varchar(20), t timestamp);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027splice\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 16:48:15.049",
+      "dateUpdated": "2018-11-30 18:39:59.172",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
         "enabled": true,
-        "results": {},
+        "results": {
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
           "completionKey": "TAB",
           "completionSupport": false
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/markdown",
+        "tableHide": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n2\t0\t1\t83\tNONE\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542847672383_-1353901299",
       "id": "20181121-164752_642828429",
       "dateCreated": "2018-11-21 16:47:52.383",
-      "status": "READY",
+      "dateStarted": "2018-11-30 18:39:30.168",
+      "dateFinished": "2018-11-30 18:39:58.633",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Running a Simple SQL Statement\n\nSplice Machine supports ANSI SQL. Our example query uses an SQL `SELECT` statement to select records from the table we created in the previous paragraph. \n\nThis query selects all records in the `import_example` table that have `100` as the value of column `i`; try it by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:56:09.665",
+      "dateUpdated": "2018-11-30 18:37:00.255",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -112,7 +174,7 @@
         },
         "editorMode": "ace/mode/markdown",
         "editorHide": false,
-        "tableHide": false
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -139,7 +201,7 @@
     {
       "text": "%splicemachine\n\nselect * from import_example\nwhere i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:06:24.000",
+      "dateUpdated": "2018-11-30 18:37:00.280",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/text",
@@ -179,7 +241,8 @@
           "language": "text",
           "editOnDblClick": false
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": true
       },
       "settings": {
         "params": {},
@@ -205,9 +268,9 @@
     {
       "text": "%md\n## Exploring Query Execution Plans\n\nIf you have a query that is not performing as expected, you can run the `explain` command to display the execution plan for the query.\n\nAll you need to do is put `EXPLAIN` in front of the query and run that. This generates the plan, but does not actually run the query. Try it by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:56:21.999",
+      "dateUpdated": "2018-11-30 18:40:59.562",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -215,7 +278,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -245,9 +308,9 @@
     {
       "text": "%splicemachine\n\nexplain select * from import_example a, import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:06:17.000",
+      "dateUpdated": "2018-11-30 18:37:00.328",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
@@ -283,9 +346,9 @@
     {
       "text": "%md\n### Some Explain Plan Details\n\nTo see the flow of the execution of the query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above. You can see the costs and row count estimates for each step.\n\nIn the *explain* example that we just ran, we can see we are scanning table `import_example` twice, then joining them with a particular strategy; in this case, the strategy is a nested join loop.\n\nThe final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:\n\n    Cursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\nThis line shows you which *engine* is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:56:51.992",
+      "dateUpdated": "2018-11-30 18:41:28.071",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -293,7 +356,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -323,9 +386,9 @@
     {
       "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Tuning Queries for Performance*](/#/notebook/2DX9MPD59), introduces the important elements required to make queries fast. ",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 09:46:18.139",
+      "dateUpdated": "2018-11-30 18:42:03.700",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -333,7 +396,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -363,7 +426,7 @@
     {
       "text": "",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:06:17.000",
+      "dateUpdated": "2018-11-30 18:37:00.416",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -376,7 +439,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": true
       },
       "settings": {
         "params": {},

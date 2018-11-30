@@ -2,9 +2,9 @@
   "paragraphs": [
     {
       "title": "Using Zeppelin for Graphing and Filtering",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\n\nBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\n\nFirst we\u0027ll run the query as-is, then we\u0027ll change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\n\nIn this notebook, we\u0027ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0027ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0027ll:\n\n1. *Simplify Query 2, adding two additional filters and a default value*. This allows us to change the values directly in the input fields instead of editing the queries.\n2. *Run the query \"as-is\".*\n3. *Change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats*, so you can see some of the power of Zeppelin visualizations.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:16:57.000",
+      "dateUpdated": "2018-11-30 21:36:50.083",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Zeppelin for Graphing and Filtering\u003c/h1\u003e\n\u003cp\u003eSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\u003c/p\u003e\n\u003cp\u003eBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\u003c/p\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll run the query as-is, then we\u0026rsquo;ll change the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Zeppelin for Graphing and Filtering\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\u003c/p\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0026rsquo;ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eSimplify Query 2, adding two additional filters and a default value\u003c/em\u003e. This allows us to change the values directly in the input fields instead of editing the queries.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the query \u0026ldquo;as-is\u0026rdquo;.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eChange the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats\u003c/em\u003e, so you can see some of the power of Zeppelin visualizations.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -37,8 +37,8 @@
       "jobName": "paragraph_1542399401995_2027356643",
       "id": "20180115-083330_15158583",
       "dateCreated": "2018-11-16 12:16:41.000",
-      "dateStarted": "2018-11-16 12:16:57.000",
-      "dateFinished": "2018-11-16 12:16:57.000",
+      "dateStarted": "2018-11-30 21:36:50.083",
+      "dateFinished": "2018-11-30 21:36:50.101",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -369,7 +369,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

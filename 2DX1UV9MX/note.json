@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Machine Learning with Spark MLlib Using Scala\n\nThis notebook contains code that uses the Machine Learning (\u003cem\u003eML\u003c/em\u003e) Library embedded in Spark, *MLlib*, with the Splice Machine Spark Adapter to realize in-process machine learning. Specifically, the example in this notebook uses data that tracks international shipments to learn, and then predicts how late a shipment will be, based on various factors.\n\nIf you\u0027re not familiar with Machine Learning with Spark MLlib, you can learn more about this library here: \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003ehttps://spark.apache.org/docs/latest/ml-guide.html\u003c/a\u003e.\n\nThe remainder of this notebook contains these sections:\n\n* \u003cem\u003eBasic Terminology\u003c/em\u003e defines a few major ML terms used in this notebook.\n* \u003cem\u003eAbout Our Sample Data\u003c/em\u003e introduces the shipping data that we use. \n* \u003cem\u003eAbout our Learning Model\u003c/em\u003e describes the learning model method we\u0027re using.\n* \u003cem\u003eCreating our Splice Machine Database\u003c/em\u003e walks you through setting up our database with our sample data.\n* \u003cem\u003eCreating, Training, and Deploying our Learning Model\u003c/em\u003e walks you through our Machine Learning sample code.\n* \u003cem\u003eProgram Listing\u003c/em\u003e contains a listing of all of the code used in this notebook.\n\n## Basic Terminology\n\nHere\u0027s some basic terminology you need to be familiar with to understand the code in this notebook. These descriptions are paraphrased from the \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003eabove-mentioned Spark MLlib guide.\u003c/a\u003e\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eTerm\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eDataFrame\u003c/td\u003e\n            \u003ctd\u003eA DataFrame is a basic Spark SQL concept. A DataFrame is similar to a table in a database: it contains rows of data with columns of varying types. The MLlib operates on datasets that are organized in DataFrames. \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003ePipeline\u003c/td\u003e\n            \u003ctd\u003eIn MLlib, you chain together a sequence of algorithms, or \u003cem\u003estages\u003c/em\u003e that operate on your DataFrame into a \u003cem\u003epipeline\u003c/em\u003e that learns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eTransformer\u003c/td\u003e\n            \u003ctd\u003eAn algorithm that transforms a DataFrame into another DataFrame. Each transformer implements a method named \u003ccode\u003etransform\u003c/code\u003e that converts the DataFrame, typically by appending additional columns to it. A \u003cem\u003emodel\u003c/em\u003e is a kind of transformer.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eEstimator\u003c/td\u003e\n            \u003ctd\u003eA learning algorithm that trains or \u003cem\u003efits\u003c/em\u003e on a DataFrame and produces a \u003ccode\u003emodel\u003c/code\u003e. Each estimator implements a method named \u003ccode\u003efit\u003c/code\u003e that produces a model.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n    \n\n## About our Sample Data\n\nWe\u0027ve obtained some actual shipping data that tracks international shipments between ports, and have imported that data into a Splice Machine database that we\u0027ve named `ASN.` The tables of interest are named `SHIPMENT_IN_TRANSIT` and `SHIPMENT_HISTORY;` you\u0027ll see these table used in the sample code below. We also create a database table named `Features` that forms the basis of the DataFrame we use for our learning model; this is the table you\u0027ll see featured in this notebook\u0027s code. The idea of this model is to predict, in real-time, how late a specific shipment will be, based on past data and other factors. Over time, as more data is processed by the model, the predictions become more accurate. \n\n## About our Learning Model\n\nWe use a Logistic Regression *estimator* as the final stage in our pipeline to produce a Logistic Regression Model of lateness from our data, and then deploy that model on a dataset to predict lateness.\n\nThe estimator operates on data that is formatted into vectors of integers. Since most of the fields in  our input dataset contain string values, we need to convert any data that will be used by the estimator into this format, as you\u0027ll see below. ",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Machine Learning with Spark MLlib Using Scala\n\nThis notebook contains code that uses the Machine Learning (\u003cem\u003eML\u003c/em\u003e) Library embedded in Spark, *MLlib*, with the Splice Machine Spark Adapter to realize in-process machine learning. Specifically, the example in this notebook uses data that tracks international shipments to learn, and then predicts how late a shipment will be, based on various factors.\n\n\u003cp class\u003d\"noteIcon\"\u003eThis notebook implements the same functionality as the previous notebook in this class, \u003cem\u003eMachine Learning with Spark MLlib Using Python\u003c/em\u003e. This notebook uses Scala instead of Python as the implementation language.\u003c/p\u003e \n\nThe remainder of this notebook contains these sections:\n\n* \u003cem\u003eCreating our Splice Machine Database\u003c/em\u003e walks you through setting up our database with our sample data.\n* \u003cem\u003eCreating, Training, and Deploying our Learning Model\u003c/em\u003e walks you through our Machine Learning sample code.\n* \u003cem\u003eProgram Listing\u003c/em\u003e contains a listing of all of the code used in this notebook.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:06:44.276",
+      "dateUpdated": "2018-11-30 21:47:35.263",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "fontSize": 9.0,
         "results": {},
         "enabled": true
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eMachine Learning with Spark MLlib Using Scala\u003c/h1\u003e\n\u003cp\u003eThis notebook contains code that uses the Machine Learning (\u003cem\u003eML\u003c/em\u003e) Library embedded in Spark, \u003cem\u003eMLlib\u003c/em\u003e, with the Splice Machine Spark Adapter to realize in-process machine learning. Specifically, the example in this notebook uses data that tracks international shipments to learn, and then predicts how late a shipment will be, based on various factors.\u003c/p\u003e\n\u003cp\u003eIf you\u0026rsquo;re not familiar with Machine Learning with Spark MLlib, you can learn more about this library here: \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\"\u003ehttps://spark.apache.org/docs/latest/ml-guide.html\u003c/a\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eThe remainder of this notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eBasic Terminology\u003c/em\u003e defines a few major ML terms used in this notebook.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAbout Our Sample Data\u003c/em\u003e introduces the shipping data that we use.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAbout our Learning Model\u003c/em\u003e describes the learning model method we\u0026rsquo;re using.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating our Splice Machine Database\u003c/em\u003e walks you through setting up our database with our sample data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating, Training, and Deploying our Learning Model\u003c/em\u003e walks you through our Machine Learning sample code.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eProgram Listing\u003c/em\u003e contains a listing of all of the code used in this notebook.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eBasic Terminology\u003c/h2\u003e\n\u003cp\u003eHere\u0026rsquo;s some basic terminology you need to be familiar with to understand the code in this notebook. These descriptions are paraphrased from the \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003eabove-mentioned Spark MLlib guide.\u003c/a\u003e\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eTerm\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eDataFrame\u003c/td\u003e\n            \u003ctd\u003eA DataFrame is a basic Spark SQL concept. A DataFrame is similar to a table in a database: it contains rows of data with columns of varying types. The MLlib operates on datasets that are organized in DataFrames. \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003ePipeline\u003c/td\u003e\n            \u003ctd\u003eIn MLlib, you chain together a sequence of algorithms, or \u003cem\u003estages\u003c/em\u003e that operate on your DataFrame into a \u003cem\u003epipeline\u003c/em\u003e that learns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eTransformer\u003c/td\u003e\n            \u003ctd\u003eAn algorithm that transforms a DataFrame into another DataFrame. Each transformer implements a method named \u003ccode\u003etransform\u003c/code\u003e that converts the DataFrame, typically by appending additional columns to it. A \u003cem\u003emodel\u003c/em\u003e is a kind of transformer.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eEstimator\u003c/td\u003e\n            \u003ctd\u003eA learning algorithm that trains or \u003cem\u003efits\u003c/em\u003e on a DataFrame and produces a \u003ccode\u003emodel\u003c/code\u003e. Each estimator implements a method named \u003ccode\u003efit\u003c/code\u003e that produces a model.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch2\u003eAbout our Sample Data\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ve obtained some actual shipping data that tracks international shipments between ports, and have imported that data into a Splice Machine database that we\u0026rsquo;ve named \u003ccode\u003eASN.\u003c/code\u003e The tables of interest are named \u003ccode\u003eSHIPMENT_IN_TRANSIT\u003c/code\u003e and \u003ccode\u003eSHIPMENT_HISTORY;\u003c/code\u003e you\u0026rsquo;ll see these table used in the sample code below. We also create a database table named \u003ccode\u003eFeatures\u003c/code\u003e that forms the basis of the DataFrame we use for our learning model; this is the table you\u0026rsquo;ll see featured in this notebook\u0026rsquo;s code. The idea of this model is to predict, in real-time, how late a specific shipment will be, based on past data and other factors. Over time, as more data is processed by the model, the predictions become more accurate. \u003c/p\u003e\n\u003ch2\u003eAbout our Learning Model\u003c/h2\u003e\n\u003cp\u003eWe use a Logistic Regression \u003cem\u003eestimator\u003c/em\u003e as the final stage in our pipeline to produce a Logistic Regression Model of lateness from our data, and then deploy that model on a dataset to predict lateness.\u003c/p\u003e\n\u003cp\u003eThe estimator operates on data that is formatted into vectors of integers. Since most of the fields in our input dataset contain string values, we need to convert any data that will be used by the estimator into this format, as you\u0026rsquo;ll see below.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eMachine Learning with Spark MLlib Using Scala\u003c/h1\u003e\n\u003cp\u003eThis notebook contains code that uses the Machine Learning (\u003cem\u003eML\u003c/em\u003e) Library embedded in Spark, \u003cem\u003eMLlib\u003c/em\u003e, with the Splice Machine Spark Adapter to realize in-process machine learning. Specifically, the example in this notebook uses data that tracks international shipments to learn, and then predicts how late a shipment will be, based on various factors.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThis notebook implements the same functionality as the previous notebook in this class, \u003cem\u003eMachine Learning with Spark MLlib Using Python\u003c/em\u003e. This notebook uses Scala instead of Python as the implementation language.\u003c/p\u003e\n\u003cp\u003eThe remainder of this notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eCreating our Splice Machine Database\u003c/em\u003e walks you through setting up our database with our sample data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating, Training, and Deploying our Learning Model\u003c/em\u003e walks you through our Machine Learning sample code.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eProgram Listing\u003c/em\u003e contains a listing of all of the code used in this notebook.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542395900748_-926908250",
       "id": "20180129-160012_924943773",
       "dateCreated": "2018-11-16 11:18:20.000",
-      "dateStarted": "2018-11-20 11:06:44.276",
-      "dateFinished": "2018-11-20 11:06:44.295",
+      "dateStarted": "2018-11-30 21:47:25.072",
+      "dateFinished": "2018-11-30 21:47:25.087",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -81,9 +81,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 1. Connect to Your Database via JDBC\n\nFirst we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine:\n",
+      "text": "%md\n### 1. Connect to Your Database via JDBC\n\nFirst we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine. \n\nFor this class, you can simply use the `defaultJDBCURL` assignment in the next paragraph. When running on a cluster, you can copy and paste the JDBC URL you\u0027ll find displayed at the bottom right of your cluster dashboard.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:22:13.882",
+      "dateUpdated": "2018-11-30 21:49:14.195",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -96,7 +96,7 @@
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
@@ -359,14 +359,14 @@
     {
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\n     \u0027ASN\u0027,\n     \u0027SHIPMENT_IN_TRANSIT\u0027,\n     null,\n     \u0027s3a://splice-demo/shipment/shipment_in_transit.csv\u0027,\n     \u0027|\u0027,\n     null,\n     \u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,\n     \u0027yyyy-MM-dd\u0027,\n     null,\n     -1,\n     \u0027/tmp\u0027,\n     true, null);",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:23:26.874",
+      "dateUpdated": "2018-11-30 21:50:31.940",
       "config": {
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
           "completionKey": true
         },
-        "colWidth": 12.0,
+        "colWidth": 6.0,
         "editorMode": "ace/mode/sql",
         "fontSize": 9.0,
         "results": {
@@ -414,6 +414,66 @@
       "dateCreated": "2018-11-16 11:18:20.000",
       "status": "READY",
       "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\n     \u0027ASN\u0027,\n     \u0027SHIPMENT_HISTORY\u0027,\n     null,\n     \u0027s3a://splice-demo/shipment/shipment_history.csv\u0027,\n     \u0027|\u0027,\n     null,\n     \u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,\n     \u0027yyyy-MM-dd\u0027,\n     null,\n     -1,\n     \u0027/tmp\u0027,\n     true, null);",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-30 21:50:55.916",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": true
+        },
+        "colWidth": 6.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543614624957_163405087",
+      "id": "20181130-215024_317065913",
+      "dateCreated": "2018-11-30 21:50:24.957",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1292,7 +1352,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

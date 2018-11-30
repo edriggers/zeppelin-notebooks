@@ -81,9 +81,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 1. Connect to Your Database via JDBC\n\nNext we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine:",
+      "text": "%md\n### 1. Connect to Your Database via JDBC\n\nFirst we\u0027ll configure the URL we\u0027ll use in our JDBC connection to Splice Machine. \n\nFor this class, you can simply use the `defaultJDBCURL` assignment in the next paragraph. When running on a cluster, you can copy and paste the JDBC URL you\u0027ll find displayed at the bottom right of your cluster dashboard.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:51:18.220",
+      "dateUpdated": "2018-11-30 21:42:05.229",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -92,7 +92,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0,
@@ -107,7 +107,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Connect to Your Database via JDBC\u003c/h3\u003e\n\u003cp\u003eNext we\u0026rsquo;ll configure the URL we\u0026rsquo;ll use in our JDBC connection to Splice Machine:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Connect to Your Database via JDBC\u003c/h3\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll configure the URL we\u0026rsquo;ll use in our JDBC connection to Splice Machine. \u003c/p\u003e\n\u003cp\u003eFor this class, you can simply use the \u003ccode\u003edefaultJDBCURL\u003c/code\u003e assignment in the next paragraph. When running on a cluster, you can copy and paste the JDBC URL you\u0026rsquo;ll find displayed at the bottom right of your cluster dashboard.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -115,15 +115,15 @@
       "jobName": "paragraph_1542395787809_1910261322",
       "id": "20180613-033509_2022872512",
       "dateCreated": "2018-11-16 11:16:27.000",
-      "dateStarted": "2018-11-21 17:51:18.220",
-      "dateFinished": "2018-11-21 17:51:18.223",
+      "dateStarted": "2018-11-30 21:41:55.818",
+      "dateFinished": "2018-11-30 21:41:55.825",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark.pyspark\ndefaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:51:07.325",
+      "dateUpdated": "2018-11-30 21:39:53.253",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1476,6 +1476,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

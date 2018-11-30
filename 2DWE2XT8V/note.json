@@ -1,11 +1,11 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Spark in a Zeppelin Notebook\nThis notebook demonstrates how to use Spark in a Zeppelin notebook.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Spark in a Zeppelin Notebook\nThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\n\n* *Loading Data Into A Table Using Spark*\n* *Using Spark SQL to Query the Loaded Data*\n\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:44:52.265",
+      "dateUpdated": "2018-11-30 19:31:02.657",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -13,7 +13,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "fontSize": 9.0,
         "results": [
           {
@@ -39,7 +39,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch2\u003eWelcome to Zeppelin.\u003c/h2\u003e\n\u003ch5\u003eThis is a live tutorial, you can run the code yourself. (Shift-Enter to Run)\u003c/h5\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Spark in a Zeppelin Notebook\u003c/h1\u003e\n\u003cp\u003eThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eLoading Data Into A Table Using Spark\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing Spark SQL to Query the Loaded Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -47,8 +47,48 @@
       "jobName": "paragraph_1542397883898_-912211351",
       "id": "20150213-231621_168813393",
       "dateCreated": "2018-11-16 11:51:23.000",
-      "dateStarted": "2018-11-16 11:51:44.000",
-      "dateFinished": "2018-11-16 11:51:44.000",
+      "dateStarted": "2018-11-30 19:31:02.666",
+      "dateFinished": "2018-11-30 19:31:02.678",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Loading Data Into a Table Using Spark\n\nThe following paragraph uses the `%spark` interpreter to load public bank data into a table. Note that Zeppelin creates and injects the SparkContext (`sc`) and sqlContext (`HiveContext` or `SqlContext`) for you, so you don\u0027t need to create them manually.",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-30 19:09:06.223",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLoading Data Into a Table Using Spark\u003c/h2\u003e\n\u003cp\u003eThe following paragraph uses the \u003ccode\u003e%spark\u003c/code\u003e interpreter to load public bank data into a table. Note that Zeppelin creates and injects the SparkContext (\u003ccode\u003esc\u003c/code\u003e) and sqlContext (\u003ccode\u003eHiveContext\u003c/code\u003e or \u003ccode\u003eSqlContext\u003c/code\u003e) for you, so you don\u0026rsquo;t need to create them manually.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543604712907_1062286965",
+      "id": "20181130-190512_465791935",
+      "dateCreated": "2018-11-30 19:05:12.907",
+      "dateStarted": "2018-11-30 19:09:06.225",
+      "dateFinished": "2018-11-30 19:09:06.233",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -56,7 +96,7 @@
       "title": "Load data into table",
       "text": "%spark\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\n\n// Zeppelin creates and injects sc (SparkContext) and sqlContext (HiveContext or SqlContext)\n// So you don\u0027t need create them manually\n\n// load bank data\nval bankText \u003d sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://s3.amazonaws.com/apache-zeppelin/tutorial/bank/bank.csv\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\ncase class Bank(age: Integer, job: String, marital: String, education: String, balance: Integer)\n\nval bank \u003d bankText.map(s \u003d\u003e s.split(\";\")).filter(s \u003d\u003e s(0) !\u003d \"\\\"age\\\"\").map(\n    s \u003d\u003e Bank(s(0).toInt, \n            s(1).replaceAll(\"\\\"\", \"\"),\n            s(2).replaceAll(\"\\\"\", \"\"),\n            s(3).replaceAll(\"\\\"\", \"\"),\n            s(5).replaceAll(\"\\\"\", \"\").toInt\n        )\n).toDF()\nbank.registerTempTable(\"bank\")",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:51:23.000",
+      "dateUpdated": "2018-11-30 19:14:32.254",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -67,7 +107,7 @@
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
         "fontSize": 9.0,
-        "title": true,
+        "title": false,
         "results": [
           {
             "graph": {
@@ -77,7 +117,8 @@
             }
           }
         ],
-        "enabled": true
+        "enabled": true,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -101,9 +142,37 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%md\n## Using Spark SQL to Query the Loaded Data\nThe three paragraphs below use the `%spark.sql` interpreter to query the loaded data; each displays the query results using one of the available Zeppelin data visualizations.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-11-30 19:12:35.654",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543605021486_1684401472",
+      "id": "20181130-191021_2034021855",
+      "dateCreated": "2018-11-30 19:10:21.486",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%spark.sql \nselect age, count(1) value\nfrom bank \nwhere age \u003c 30 \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:46:39.875",
+      "dateUpdated": "2018-11-30 19:30:53.186",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -174,7 +243,7 @@
     {
       "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere age \u003c ${maxAge\u003d30} \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:46:39.919",
+      "dateUpdated": "2018-11-30 19:30:53.227",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -254,7 +323,7 @@
     {
       "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere marital\u003d\"${marital\u003dsingle,single|divorced|married}\" \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:46:39.968",
+      "dateUpdated": "2018-11-30 19:30:53.271",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -344,54 +413,6 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Citation for the Bank Data Used in This Notebook\n\nThe bank data we used in this notebook is public data. Here\u0027s the citation:\n```\n[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. \nIn P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM\u00272011, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\n\nAvailable at: [pdf] http://hdl.handle.net/1822/14838\n            [bib] http://www3.dsi.uminho.pt/pcortez/bib/2011-esm-1.txt\n```",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:48:27.487",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "fontSize": 9.0,
-        "results": [
-          {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false
-            }
-          }
-        ],
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCitation for the Bank Data Used in This Notebook\u003c/h3\u003e\n\u003cp\u003eThe bank data we used in this notebook is public data. Here\u0026rsquo;s the citation:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology. \nIn P. Novais et al. (Eds.), Proceedings of the European Simulation and Modelling Conference - ESM\u0026#39;2011, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\n\nAvailable at: [pdf] http://hdl.handle.net/1822/14838\n            [bib] http://www3.dsi.uminho.pt/pcortez/bib/2011-esm-1.txt\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542397883901_-1364234168",
-      "id": "20150326-214658_12335843",
-      "dateCreated": "2018-11-16 11:51:23.000",
-      "dateStarted": "2018-11-20 10:48:27.487",
-      "dateFinished": "2018-11-20 10:48:27.491",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "text": "%md\n## Where to Go Next\nYou\u0027ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Zeppelin Using SparkR*](/#/notebook/2DXQ24QYP), shows you how to use R to program with Spark in a Zeppelin Notebook.",
       "user": "anonymous",
       "dateUpdated": "2018-11-20 10:46:03.705",
@@ -431,22 +452,6 @@
       "dateFinished": "2018-11-20 10:46:03.710",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 09:47:41.626",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542736061625_911669100",
-      "id": "20181120-094741_2056323042",
-      "dateCreated": "2018-11-20 09:47:41.625",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Data Scientists/d. Basics of Using Spark in Zeppelin",
@@ -455,7 +460,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

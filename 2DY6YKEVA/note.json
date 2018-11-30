@@ -4,7 +4,7 @@
       "title": "Using Zeppelin for Graphing and Filtering",
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\n\nIn this notebook, we\u0027ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0027ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0027ll:\n\n1. *Simplify Query 2, adding two additional filters and a default value*. This allows us to change the values directly in the input fields instead of editing the queries.\n2. *Run the query \"as-is\".*\n3. *Change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats*, so you can see some of the power of Zeppelin visualizations.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 19:26:27.712",
+      "dateUpdated": "2018-11-30 21:36:35.844",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -14,7 +14,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "title": false,
         "results": {},
         "enabled": true,
@@ -343,7 +343,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,
