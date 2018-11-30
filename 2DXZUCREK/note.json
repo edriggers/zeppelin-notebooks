@@ -43,7 +43,7 @@
     {
       "text": "%md\n## Your Stored Procedure Development Environment\n\nThe *environment* in which your stored procedure code is developed may change depending upon your need: we recommend that you flesh out the actual functionality of your custom code in a local (standalone) Splice Machine envirmonment. Once you have refined your code and it behaves to your satisfaction in your local environment, you can then re-deploy the developed code to your target instance. \n\nThis notebook covers all of these steps - though as you will see, these steps occur OUTSIDE of an actual Notebook when running in a local environment. Replace any instances of `\u003cyour-file-name\u003e` in the examples with your specific file name, rememberig to remove the `\u003c` and `\u003e` brackets.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 04:18:47.535",
+      "dateUpdated": "2018-11-30 05:17:18.622",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -53,7 +53,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -83,7 +83,7 @@
     {
       "text": "%md\n## Local Development of the Custom Code in an IDE\n\nAs mentioned above, Splice Machine strongly recommends that you develop your custom Java code using an Integrated Development Environment (IDE) on your local machine. This is most frequently done on a Mac or Linux computer. That way you can develop, test, and tune locally, before deploying to a full cluster. The product of your code should be a JDK 1.8-compatible JAR file.\n\nThe following steps are for developing your procedure using the IntelliJ IDEA on MacOS:\n\n### Setting Up Your Project\n\nInside of IntelliJ IDEA, do the following:\n1. Select `File -\u003e New -\u003e Project...`\n2. Choose `Java with 1.8` as the Project SDK\n3. Skip creating from a template unless you prefer to use one\n4. Give your project a name and location; for example: `CompanyACustom1`\n5. If desired, create a new package (`File -\u003e New -\u003e Package`), such as `com.splicemachine.companya`\n\n### Configuring to output a JAR file\nInside of IntelliJ IDEA, do the following:\n\n1. Select `File -\u003e Project Structure...`\n2. Select `Artifacts`, and click `+`\n3. Choose `JAR -\u003e From modules with dependencies `\n3. Check `Build on make` and then click `OK`\n\n### Coding your function or procedure\n\n1. Create a file by right-clicking on your src or package folder, and selecting `New -\u003e Java Class`\n2. Paste in code like the following:\n\n```\npackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\"jdbc:default:connection\")) {\n\n            String incrementSQL \u003d \"update SPLICE.INCREMENTTEST set i \u003d i + 1\";\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n```\n\n### Build your JAR file\n1. `Build -\u003e Artifacts... JAR`\n2. Use your command line interface to navigate to where the JAR file is created, e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar\n\nYou are now ready to deploy your JAR file to test!\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 04:51:10.189",
+      "dateUpdated": "2018-11-30 05:17:47.791",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -93,7 +93,7 @@
         },
         "colWidth": 8.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -123,7 +123,7 @@
     {
       "text": "%md\n## Development Guidelines\nBefore we develop the code and deploy the JAR file, it is worth going through some simple best practices:\n\n1. It\u0027s useful for code organization to use a package for the code, e.g. com.splicemachine.yourcompanyname.\n2. Notice you don\u0027t need a *main* code block in your class, because you\u0027ll be directly calling the class\u0027s specific method.\n3. The example we\u0027ve shown is a stored procedure, which means it does not return any results. When you create a function, it must return a result.\n4. You need to ensure that your method throws `SQLException` if SQL is being executed.  Be sure to use `try/catch` blocks similar to those shown in the example, to deal with any possible run-time exceptions.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 04:50:54.900",
+      "dateUpdated": "2018-11-30 05:18:33.701",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -133,7 +133,7 @@
         },
         "colWidth": 4.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -163,7 +163,7 @@
     {
       "text": "%md\n## Local Deployment of the JAR file\n\nOnce you\u0027ve got your code up and running  you can deploy into your development environment. Carefully edit and execute the commands below IN YOUR LOCAL ENVIRONMENT (not in Zeppelin) to align to your custom procedure and environment:\n\n```\nCALL SQLJ.INSTALL_JAR(\u0027\u003cyour-full-path-to\u003e/Custom1.jar\u0027, \u0027SPLICE.Custom1\u0027, 0);\nCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(\u0027derby.database.classpath\u0027, \u0027SPLICE.custom1\u0027);\nCREATE PROCEDURE SPLICE.customincrement() PARAMETER STYLE JAVA MODIFIES SQL DATA LANGUAGE JAVA DYNAMIC RESULT SETS 0 EXTERNAL NAME \u0027com.splicemachine.companya.Custom1.customIncrement\u0027;\n```\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 04:53:05.357",
+      "dateUpdated": "2018-11-30 05:19:23.881",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -173,7 +173,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
