@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Explaining and Hinting\n\nIn this notebook we\u0027ll dig into the explain and hint capabilities that we\u0027ve briefly seen so far.  We\u0027ll see how they can help us in:\n\n* *Understanding the Query Execution Plan*\n* *Influencing the Query Execution Plan with Hints*\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 01:08:51.191",
+      "dateUpdated": "2018-12-01 04:10:13.618",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1542394204045_-1639069832",
       "id": "20170907-071606_1955118051",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-30 01:08:51.194",
-      "dateFinished": "2018-11-30 01:08:51.203",
+      "dateStarted": "2018-12-01 04:10:04.989",
+      "dateFinished": "2018-12-01 04:10:04.996",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Understanding the Query Execution Plan\n\nThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\n\n*  Ordering of the joins and other steps in the query\n*  Use of Tables vs Indexes\n*  Need for IndexLookup, which can slow a query down\n*  Join Strategies employed\n*  Actual row count and cost estimates at each step\n*  Presence of predicate pushdowns where available\n*  Indication of which *engine* will run the query: *control* or *Spark*\n\nWe\u0027ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\n\n### Explain and Predicates\n\nLet\u0027s start with a query variant that is based on the `index_example` table that we created earlier in this class. Click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the plan for this query. \n\nYou\u0027ll notice that on the very right of the plan are two lines with *preds\u003d* on them. *Preds* is short for *predicates*, which in databases are true/false conditions that are tested during query execution.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 01:09:13.942",
+      "dateUpdated": "2018-12-01 04:10:52.371",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -53,9 +53,9 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -75,8 +75,8 @@
       "jobName": "paragraph_1542394204046_-1213191106",
       "id": "20171016-100728_1909675860",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-29 22:41:32.301",
-      "dateFinished": "2018-11-29 22:41:32.319",
+      "dateStarted": "2018-12-01 04:10:49.302",
+      "dateFinished": "2018-12-01 04:10:49.317",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -102,15 +102,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d7,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d6,totalCost\u003d16017.565,outputRows\u003d1,outputHeapSize\u003d5 MB,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d5 MB,partitions\u003d1)\n      -\u003e  MergeSortJoin(n\u003d4,totalCost\u003d16013.555,outputRows\u003d1,outputHeapSize\u003d5 MB,partitions\u003d1,preds\u003d[(A.I[5:1] \u003d B.I[5:3])])\n        -\u003e  TableScan[INDEX_EXAMPLE(1632)](n\u003d3,totalCost\u003d1419.578,scannedRows\u003d1310720,outputRows\u003d1310720,outputHeapSize\u003d5 MB,partitions\u003d1)\n        -\u003e  IndexLookup(n\u003d2,totalCost\u003d4,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n          -\u003e  IndexScan[IJ(1649)](n\u003d1,totalCost\u003d4,scannedRows\u003d1,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1,baseTable\u003dINDEX_EXAMPLE(1632),preds\u003d[(A.J[1:2] \u003d 700000)])\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394204047_-1270834820",
       "id": "20170907-080208_586782998",
@@ -122,7 +113,7 @@
     {
       "text": "%md\n### About Predicates\n\nStarting on the bottom line, we see an `IndexScan` with the preds specification on it; this is called a *Predicate Pushdown*. A pushdown means: when we perform this `IndexScan`, we\u0027ll bring this predicate (`A.J \u003d 700000`) along with us, and will return ONLY the rows that match.  Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\n\nThe other kind of predicate shown here is of the form `[(A.I[4:2] \u003d B.I[4:1])]`. You can ignore the numbers for now; the key part is `A.I \u003d B.I`.  You can see that this is the join predicate, required for the actual join operation.\n\nThe main takeaway is that, as with most databases: when you can *push down* a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 22:44:27.375",
+      "dateUpdated": "2018-12-01 04:11:33.112",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -134,7 +125,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -162,7 +153,7 @@
     {
       "text": "%md\n### Join Ordering\n\nThe actual join ordering is part of the optimization process: do I get a better cost when I start with table A and join B with it, or the other way around?\n\nSmart join ordering depends a lot on the situation.  Generally speaking, the sooner you can filter out rows (thus working with fewer rows at each step of the query), the faster the query will run.\n\nWhen you look at an explain plan, if you are unsure of the ordering, remember again that the order is *bottom up*. Another way to view this is to look at the counts on each row of the plan (n\u003d1, n\u003d2, etc.).  This dictates the table ordering being used.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 22:44:52.339",
+      "dateUpdated": "2018-12-01 04:11:36.678",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -174,7 +165,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -202,7 +193,7 @@
     {
       "text": "%md\n## Influencing the Query Execution Plan with Hints\n\nIf your query is still slower than you expect, or if you want to experiment with plan alternatives, you can use Splice Machine *query hints*, which provide additional information to our optimizer.\n\nWe introduced hints in an earlier notebook, *Tuning for Performance.* To recap: you add a hint to a query by appending a specially formatted *comment*. These hints must always be placed at the end of a line, and can be used either after a table name or after a `FROM` clause. Most hints are used for these reasons:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 22:58:52.232",
+      "dateUpdated": "2018-12-01 04:11:44.974",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -214,7 +205,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -242,11 +233,11 @@
     {
       "text": "%md\n### Syntax Matters\nAs you\u0027ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\n\n* If you\u0027re adding the hint to the end of a query, you must put the semicolon (`;`) that terminates that query on the next line:\n  `select count(*) from myTbl --splice-properties index\u003dmyIndex1`\n  `;`\n\n* Similarly, if you\u0027re specifying multiple hints, each will need to be at the end of its own line:\n  `explain select count(*) from`\n  `(select a.i, a.j from --splice-properties joinOrder\u003dfixed`\n   `index_example b --splice-properties index\u003dij`\n   `,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop`\n   `  where a.j \u003d 700000) ;`\n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\nHere\u0027s the syntax to use for each hint type:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  to see a full example:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 01:12:00.907",
+      "dateUpdated": "2018-12-01 04:12:06.107",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -299,15 +290,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d8,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d7,totalCost\u003d19051054080.149,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d6,totalCost\u003d19051026430.17,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d5,totalCost\u003d19051026430.17,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d19051026430.17,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n          -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d19051025063.021,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n            -\u003e  TableScan[INDEX_EXAMPLE(1632)](n\u003d2,totalCost\u003d1419.578,scannedRows\u003d1310720,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1,preds\u003d[(A.J[2:2] \u003d 700000)])\n            -\u003e  IndexScan[IJ(1649)](n\u003d1,totalCost\u003d1367.149,scannedRows\u003d1310720,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1,baseTable\u003dINDEX_EXAMPLE(1632))\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394204053_1576240295",
       "id": "20170917-162419_1730040169",
@@ -319,7 +301,7 @@
     {
       "text": "%md\n### Examples of When to Hint\n\nIf the optimizer doesn\u0027t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0027ll typically find that the cost shown when you use `explain` is higher than the cost chosen by the optimizer.\n\nIf you find that your plan (after hinting) is not running faster,  please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0027ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:06:31.986",
+      "dateUpdated": "2018-12-01 07:35:23.164",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -331,7 +313,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -359,7 +341,7 @@
     {
       "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Beginning Splice Machine Developer\u0027s Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 18:14:52.422",
+      "dateUpdated": "2018-12-01 04:12:42.150",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -371,7 +353,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -395,45 +377,13 @@
       "dateFinished": "2018-11-29 18:14:52.457",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:04.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542394204055_-1622492608",
-      "id": "20170917-162210_319214891",
-      "dateCreated": "2018-11-16 10:50:04.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Developers, Part I - Beginning/h. Using Explain and Hints",
   "id": "2DVFUM14R",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

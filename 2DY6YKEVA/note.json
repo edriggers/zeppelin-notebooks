@@ -4,7 +4,7 @@
       "title": "Using Zeppelin for Graphing and Filtering",
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\n\nIn this notebook, we\u0027ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0027ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0027ll:\n\n1. *Simplify Query 2, adding two additional filters and a default value*. This allows us to change the values directly in the input fields instead of editing the queries.\n2. *Run the query \"as-is\".*\n3. *Change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats*, so you can see some of the power of Zeppelin visualizations.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 21:36:35.844",
+      "dateUpdated": "2018-12-01 05:06:17.400",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -14,10 +14,10 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -37,15 +37,15 @@
       "jobName": "paragraph_1542395179280_-1447041975",
       "id": "20180115-083330_15158583",
       "dateCreated": "2018-11-16 11:06:19.000",
-      "dateStarted": "2018-11-29 19:26:27.713",
-      "dateFinished": "2018-11-29 19:26:27.727",
+      "dateStarted": "2018-12-01 05:06:14.107",
+      "dateFinished": "2018-12-01 05:06:16.129",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 19:27:06.638",
+      "dateUpdated": "2018-12-01 05:06:43.407",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -87,15 +87,6 @@
           }
         }
       },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "java.sql.SQLException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:160)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:208)\n\tat org.apache.commons.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)\n\tat org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:205)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)\n\tat org.apache.commons.dbcp2.PoolingDriver.connect(PoolingDriver.java:129)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:270)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnectionFromPool(JDBCInterpreter.java:410)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnection(JDBCInterpreter.java:428)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:673)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.Connection.completeSqlca(Connection.java:2135)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseRdbAccessFailed(NetConnectionReply.java:554)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseAccessRdbError(NetConnectionReply.java:447)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseACCRDBreply(NetConnectionReply.java:310)\n\tat com.splicemachine.db.client.net.NetConnectionReply.readAccessDatabase(NetConnectionReply.java:124)\n\tat com.splicemachine.db.client.net.NetConnection.readAccessRdb(NetConnection.java:1048)\n\tat com.splicemachine.db.client.net.NetConnection.readSecurityCheckAndAccessRdb(NetConnection.java:1039)\n\tat com.splicemachine.db.client.net.NetConnection.flowSecurityCheckAndAccessRdb(NetConnection.java:939)\n\tat com.splicemachine.db.client.net.NetConnection.flowUSRIDPWDconnect(NetConnection.java:622)\n\tat com.splicemachine.db.client.net.NetConnection.flowConnect(NetConnection.java:435)\n\tat com.splicemachine.db.client.net.NetConnection.\u003cinit\u003e(NetConnection.java:249)\n\tat com.splicemachine.db.client.net.NetConnection40.\u003cinit\u003e(NetConnection40.java:78)\n\tat com.splicemachine.db.client.net.ClientJDBCObjectFactoryImpl40.newNetConnection(ClientJDBCObjectFactoryImpl40.java:271)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:152)\n\t... 25 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395179281_1345098367",
       "id": "20180115-083533_1027074665",
@@ -103,12 +94,13 @@
       "dateStarted": "2018-11-29 19:27:06.647",
       "dateFinished": "2018-11-29 19:27:06.682",
       "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 19:26:47.164",
+      "dateUpdated": "2018-12-01 05:07:30.943",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -152,15 +144,6 @@
           }
         }
       },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "java.sql.SQLException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:160)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:208)\n\tat org.apache.commons.dbcp2.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:79)\n\tat org.apache.commons.dbcp2.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:205)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:861)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:435)\n\tat org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:363)\n\tat org.apache.commons.dbcp2.PoolingDriver.connect(PoolingDriver.java:129)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:664)\n\tat java.sql.DriverManager.getConnection(DriverManager.java:270)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnectionFromPool(JDBCInterpreter.java:410)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.getConnection(JDBCInterpreter.java:428)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:673)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: -1, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\u0014\u0014\u0014XJ001:java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\tat com.splicemachine.db.client.am.Connection.completeSqlca(Connection.java:2135)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseRdbAccessFailed(NetConnectionReply.java:554)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseAccessRdbError(NetConnectionReply.java:447)\n\tat com.splicemachine.db.client.net.NetConnectionReply.parseACCRDBreply(NetConnectionReply.java:310)\n\tat com.splicemachine.db.client.net.NetConnectionReply.readAccessDatabase(NetConnectionReply.java:124)\n\tat com.splicemachine.db.client.net.NetConnection.readAccessRdb(NetConnection.java:1048)\n\tat com.splicemachine.db.client.net.NetConnection.readSecurityCheckAndAccessRdb(NetConnection.java:1039)\n\tat com.splicemachine.db.client.net.NetConnection.flowSecurityCheckAndAccessRdb(NetConnection.java:939)\n\tat com.splicemachine.db.client.net.NetConnection.flowUSRIDPWDconnect(NetConnection.java:622)\n\tat com.splicemachine.db.client.net.NetConnection.flowConnect(NetConnection.java:435)\n\tat com.splicemachine.db.client.net.NetConnection.\u003cinit\u003e(NetConnection.java:249)\n\tat com.splicemachine.db.client.net.NetConnection40.\u003cinit\u003e(NetConnection40.java:78)\n\tat com.splicemachine.db.client.net.ClientJDBCObjectFactoryImpl40.newNetConnection(ClientJDBCObjectFactoryImpl40.java:271)\n\tat com.splicemachine.db.jdbc.ClientDriver.connect(ClientDriver.java:152)\n\t... 25 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014java.lang.RuntimeException: The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\nCaused by: com.splicemachine.db.client.am.SqlException: DERBY SQL error: SQLCODE: 0, SQLSTATE: XJ001, SQLERRMC: java.lang.RuntimeException\u0014The timestamp source has been closed.\u0014XJ001.U\n\t... 39 more\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395179281_-2040910926",
       "id": "20180129-123733_1126963025",
@@ -168,12 +151,13 @@
       "dateStarted": "2018-11-29 19:26:47.174",
       "dateFinished": "2018-11-29 19:26:49.634",
       "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:06:19.000",
+      "dateUpdated": "2018-12-01 05:07:34.964",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -215,15 +199,6 @@
             "hidden": false
           }
         }
-      },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "paragraph_1520184238153_198042176\u0027s Interpreter splicemachine not found"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542395179282_-1341363300",
@@ -234,9 +209,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:06:19.000",
+      "dateUpdated": "2018-12-01 05:07:40.600",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -278,15 +253,6 @@
             "hidden": false
           }
         }
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "BALANCE\tSUPPLIER\n-19.63\tSupplier#000007973\n-21.75\tSupplier#000002398\n-60.23\tSupplier#000009484\n-112.15\tSupplier#000002729\n-127.07\tSupplier#000009585\n-132.77\tSupplier#000003390\n-144.48\tSupplier#000001765\n-165.23\tSupplier#000004814\n-201.93\tSupplier#000004223\n-228.32\tSupplier#000002200\n-258.71\tSupplier#000007578\n-314.06\tSupplier#000000510\n-338.23\tSupplier#000004438\n-345.82\tSupplier#000001805\n-389.86\tSupplier#000004317\n-417.15\tSupplier#000008474\n-488.86\tSupplier#000008250\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542395179282_1826840501",
@@ -299,7 +265,7 @@
     {
       "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Transactions with Spark and JDBC*](/#/notebook/2DUKWWK84), introduces you to the transactional nature of Splice Machine and using JDBC to program transactions.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:57:37.744",
+      "dateUpdated": "2018-12-01 05:07:17.425",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -311,7 +277,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -343,8 +309,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

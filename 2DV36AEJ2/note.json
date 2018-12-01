@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction to Zeppelin Notebooks\nThis notebook is a brief introduction for running and creating/modifying notebooks. Splice Machine uses *Zeppelin Notebooks* to give users a flexible, interactive mechanism for working with the database and any code working with it. We show you how to:\n\n1. *Edit a simple markdown paragraph in Zeppelin.*\n2. *Use Zeppelin\u0027s controls to run, edit, and add or delete paragraphs in a notebook.*\n3. *View and modify the set of Zeppelin *Interpreters* available in a notebook.*\n4. *Run a simple Splice Machine database query in Zeppelin.*\n\n## Basic Zeppelin Terminology\nHere\u0027s some basic Zeppelin Notebook terminology:\n\n* Notebooks are broken into *paragraphs*. You are now viewing the first paragraph in this notebook.\n \n* Each paragraph has an *interpreter* (sometimes called a backend) that knows how to process the source content in the paragraph. \n  We are using the *%md* (short for *Markdown*) interpreter in the paragraph that you\u0027re currently reading. Markdown generates HTML from easy-to-read, plain text input that uses simplified formatting instructions.\n\n* Each paragraph has an *Editor* associated with it that you can use to enter or view the code or text that constitutes the paragraph.\n \n* You run a paragraph by clicking its \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button. After the paragraph runs, you can see its results. For example, the result of running this Markdown paragraph is to see the formatted text that you are currently reading.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:35:14.363",
+      "dateUpdated": "2018-12-01 03:22:37.470",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -43,11 +43,11 @@
     {
       "text": "%md\nThe paragraph below this one is an empty Markdown paragraph. You can enter markdown text into it to see how a Markdown paragraph works. Follow these steps:\n\n* Enter some text on the line below the `%md`.\n* Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Zeppelin Notebook Play button\"\u003e *Play* icon to run the paragraph.\n* Display the output of your paragraph, if not already shown, by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepResultsIcon.png\" alt\u003d\"Zeppelin Notebook Results button\"\u003e *Results* icon.\n* Return to editing the code for your paragraph by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepEditorIcon.png\" alt\u003d\"Zeppelin Notebook Edit button\"\u003e *Edit* icon.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:35:25.419",
+      "dateUpdated": "2018-12-01 03:22:52.802",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -122,18 +122,19 @@
     {
       "text": "%md\n## Working with Paragraphs\n\nEach paragraph in a notebook contains code that is interpreted by the interpreter associated with the paragraph. You associate an interpreter with a paragraph by specifying the Zeppelin interpreter `%[name]` directive at the beginning of the paragraph; for example `%splicemachine` will use the `splicemachine` interpreter for the paragraph, `%md` is the Markdown interpreter, `%spark` is the Spark interpreter, and so on. \n\nSee the *Using Interpreters* section below for more information about working with interpreters.\n\n### Running and Editing Paragraphs\n\nYou\u0027ll notice a set of icons in the upper right section of each paragraph. Use these to work with the paragraphs in your Notebook:\n\n* Click the \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Play button\"\u003e *Play* icon (or press `Shift-Enter`) to run the paragraph.\n* Click the  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepResultsIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Results button\"\u003e *Results* icon after running the paragraph to show or hide the results of running the paragraph.\n* Click the  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepEditorIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Edit button\"\u003e *Edit* icon (or press `Ctrl-Option-E`) to show/edit or hide the code in the paragraph. Each interpreter has an associated editor that you can use to directly modify the code and then re-run it.\n* Click the  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Settings button\"\u003e *Settings* icon to reveal a list of other operations that are available for paragraphs.\n\nWhen you run a paragraph, Zeppelin temporarily shows its status as *Running*. If the paragraph runs successfully, you\u0027ll see the results displayed, and the status displays as *Finished*: \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepFinished.png\" class\u003d\"inline\" style\u003d\"width:145px; height:28px\" alt\u003d\"Zeppelin Notebook Finished status display\"\u003e\n\nIf Zeppelin encounters an error in running the paragraph, the status displays as *Error*:  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepError.png\" class\u003d\"inline\" style\u003d\"height:24px; width:125px\" alt\u003d\"Zeppelin Notebook Error status display\"\u003e and an error message is displayed instead of the results. If you encounter an error, you can easily edit the code and rerun the paragraph.\n\nNote that a common error occurs when you\u0027ve not yet bound the required interpreter to your notebook, as described in the *Using Interpreters* section, below.\n\n\n### How Long Did it Take?\n\nAfter the execution of a paragraph, Zeppelin reports how long it took to execute. The timing is displayed at the bottom of the results; for example:\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepExecTime.png\" style\u003d\"height:100%\" alt\u003d\"Zeppelin Notebook Execution Time display\"\u003e\n\nKnowing how long a query took to complete can be vital information when we get to running more complex queries.\n\n\n### Adding/Removing Paragraphs\n\nThe next thing to try is to add more empty paragraphs to your notebook. You can easily add a paragraph by hovering your mouse in the *grey* area between two paragraphs. As you hover, you\u0027ll see a `+` appear in the center of the grey area:\n\u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepNewPgf.png\" alt\u003d\"Zeppelin create new paragraph\"\u003e\n\nClick the `+` to insert a new paragraph.\n\nIf you want to remove a paragraph, click the \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook settings button\"\u003e *Settings* icon and then click *Remove* (or press `Ctrl-Option-D`).\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:35:12.000",
+      "dateUpdated": "2018-12-01 03:23:33.385",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -160,7 +161,7 @@
     {
       "text": "%md\n## Using Interpreters\n\nZeppelin makes it easy for developers to create interpreters (backends) for different languages and tools:\n\n* When you create a new Notebook, you specify the default interpreter for that Notebook:\n  \u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepNewNote.png\" alt\u003d\"Zeppelin Create New Note form\"\u003e\n* You specify an interpreter for each paragraph in your Notebook; the default for a new paragraph is the Notebook\u0027s default interpreter\n* There is exactly one interpreter per paragraph\n* Every paragraph in a Notebook can use a different interpreter.\n\n When you open a Notebook created by someone else (like this one), the Interpreter bindings for the Notebook are displayed at the top of the screen.\n \n \u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepBindings.png\" alt\u003d\"Zeppelin Notebook Interpreter Bindings display\"\u003e\n \n You __MUST__ click the *Save* button to configure the interpreters for the notebook. If you fail to do so, you\u0027ll see an error when you attempt to run the paragraphs.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 19:48:10.239",
+      "dateUpdated": "2018-12-01 03:23:58.868",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -172,7 +173,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -200,11 +201,11 @@
     {
       "text": "%md\n## Running a Simple Database Query\nIn the next paragraph, we use the `%splicemachine` interpreter to run an SQL example against your Splice Machine database. Run the query by clicking the \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Play button\"\u003e *Play* icon to:\n\n* create a table named `a`\n* populate the table with 3 rows of data\n* select the contents of the table\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 23:47:12.675",
+      "dateUpdated": "2018-12-01 03:24:13.356",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -212,7 +213,7 @@
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -323,7 +324,7 @@
     {
       "text": "%md\n\nAs you can see, the above example successfully used the `splicemachine` interpreter to create, populate, and select the contents of the table named `a` in your Splice Machine database. A few notes about the results of these operations:\n\n* The output from the execution of the `create` and `insert` statement displays as `Query executed successfully...`\n* The output of the `select` statement is the displayed table\n* If the output contains many rows or columns, Zeppelin automatically adds scroll bars to allow you to view all of the data\n* The results are initially displayed in tabular format; you can apply different graphical displays of the results by clicking one of the visualization icons that are shown above the results:\n  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepVis1.png\" alt\u003d\"Zeppelin Visualization Choices display\"\u003e\n  * Simply click a visualization icon to display the results using a different visualization. Most of the visualizations offer `settings` that you can configure.\n  * Click the rightmost icon to download the results in CSV or TSV format.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:35:12.000",
+      "dateUpdated": "2018-12-01 03:24:47.698",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -334,7 +335,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -361,11 +362,11 @@
     {
       "text": "%md\n## Where to Go Next\n\nYou\u0027ve now learned about creating and running paragraphs that use different interpreters within a single notebook. Now let\u0027s continue on to the next notebook in this class: [*Preparing Data for Import*](/#/notebook/2DX8XQH89).\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:33:37.107",
+      "dateUpdated": "2018-12-01 03:24:53.297",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -402,7 +403,7 @@
     {
       "text": "%md\n## Related Documentation\n\nWe encourage you to visit the \u003ca href\u003d\"https://zeppelin.apache.org/docs/\" target\u003d\"_blank\"\u003eZeppelin documentation site\u003c/a\u003e to learn about other Zeppelin features, including copying, saving, and importing notebooks.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:33:39.184",
+      "dateUpdated": "2018-12-01 03:24:56.518",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -414,7 +415,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -438,43 +439,13 @@
       "dateFinished": "2018-11-20 10:33:39.187",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:35:12.000",
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542393312458_1310796790",
-      "id": "20170916-125546_349443427",
-      "dateCreated": "2018-11-16 10:35:12.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Developers, Part I - Beginning/b. Notebook Basics",
   "id": "2DV36AEJ2",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

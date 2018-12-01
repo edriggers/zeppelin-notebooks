@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Creating Custom Stored Procedures\n\nThis notebook describes how to create and use custom stored procedures in Splice Machine, in these sections:\n\n* *Your Stored Procedure Development Environment*\n* *Local Deployment of the Jar File*\n* *Running Your Custom Procedure Locally*\n\nYou can create custom functions and procedures to deploy in your database; you can then call them as needed from your SQL.\n\n\u003cp class\u003d\"noteIcon\"\u003eWhen creating custom functions and procedures as described here, the code must be in Java.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:17:10.637",
+      "dateUpdated": "2018-12-01 05:39:21.633",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -43,7 +43,7 @@
     {
       "text": "%md\n## Your Stored Procedure Development Environment\n\nThe *environment* in which your stored procedure code is developed may change depending upon your need: we recommend that you flesh out the actual functionality of your custom code in a local (standalone) Splice Machine envirmonment. Once you have refined your code and it behaves to your satisfaction in your local environment, you can then re-deploy the developed code to your target instance. \n\nThis notebook covers all of these steps - though as you will see, these steps occur OUTSIDE of an actual Notebook when running in a local environment. Replace any instances of `\u003cyour-file-name\u003e` in the examples with your specific file name, rememberig to remove the `\u003c` and `\u003e` brackets.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:17:36.731",
+      "dateUpdated": "2018-12-01 05:39:26.481",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -55,7 +55,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -83,7 +83,7 @@
     {
       "text": "%md\n## Local Development of the Custom Code in an IDE\n\nAs mentioned above, Splice Machine strongly recommends that you develop your custom Java code using an Integrated Development Environment (IDE) on your local machine. This is most frequently done on a Mac or Linux computer. That way you can develop, test, and tune locally, before deploying to a full cluster. The product of your code should be a JDK 1.8-compatible JAR file.\n\nThe following steps are for developing your procedure using the IntelliJ IDEA on MacOS:\n\n### Setting Up Your Project\n\nInside of IntelliJ IDEA, do the following:\n1. Select `File -\u003e New -\u003e Project...`\n2. Choose `Java with 1.8` as the Project SDK\n3. Skip creating from a template unless you prefer to use one\n4. Give your project a name and location; for example: `CompanyACustom1`\n5. If desired, create a new package (`File -\u003e New -\u003e Package`), such as `com.splicemachine.companya`\n\n### Configuring to output a JAR file\nInside of IntelliJ IDEA, do the following:\n\n1. Select `File -\u003e Project Structure...`\n2. Select `Artifacts`, and click `+`\n3. Choose `JAR -\u003e From modules with dependencies `\n3. Check `Build on make` and then click `OK`\n\n### Coding your function or procedure\n\n1. Create a file by right-clicking on your src or package folder, and selecting `New -\u003e Java Class`\n2. Paste in code like the following:\n\n```\npackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\"jdbc:default:connection\")) {\n\n            String incrementSQL \u003d \"update SPLICE.INCREMENTTEST set i \u003d i + 1\";\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n```\n\n### Build your JAR file\n1. `Build -\u003e Artifacts... JAR`\n2. Use your command line interface to navigate to where the JAR file is created, e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar\n\nYou are now ready to deploy your JAR file to test!\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:18:25.368",
+      "dateUpdated": "2018-12-01 05:39:33.620",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -95,7 +95,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -123,7 +123,7 @@
     {
       "text": "%md\n## Development Guidelines\nBefore we develop the code and deploy the JAR file, it is worth going through some simple best practices:\n\n1. It\u0027s useful for code organization to use a package for the code, e.g. com.splicemachine.yourcompanyname.\n2. Notice you don\u0027t need a *main* code block in your class, because you\u0027ll be directly calling the class\u0027s specific method.\n3. The example we\u0027ve shown is a stored procedure, which means it does not return any results. When you create a function, it must return a result.\n4. You need to ensure that your method throws `SQLException` if SQL is being executed.  Be sure to use `try/catch` blocks similar to those shown in the example, to deal with any possible run-time exceptions.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:18:53.285",
+      "dateUpdated": "2018-12-01 05:39:36.222",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -135,7 +135,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -163,7 +163,7 @@
     {
       "text": "%md\n## Local Deployment of the JAR file\n\nOnce you\u0027ve got your code up and running  you can deploy into your development environment. Carefully edit and execute the commands below IN YOUR LOCAL ENVIRONMENT (not in Zeppelin) to align to your custom procedure and environment:\n\n```\nCALL SQLJ.INSTALL_JAR(\u0027\u003cyour-full-path-to\u003e/Custom1.jar\u0027, \u0027SPLICE.Custom1\u0027, 0);\nCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(\u0027derby.database.classpath\u0027, \u0027SPLICE.custom1\u0027);\nCREATE PROCEDURE SPLICE.customincrement() PARAMETER STYLE JAVA MODIFIES SQL DATA LANGUAGE JAVA DYNAMIC RESULT SETS 0 EXTERNAL NAME \u0027com.splicemachine.companya.Custom1.customIncrement\u0027;\n```\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:19:40.465",
+      "dateUpdated": "2018-12-01 05:40:14.252",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -175,7 +175,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -203,7 +203,7 @@
     {
       "text": "%md\n## Run Your Procedure in Your Local Database Environment\n\nYou can create a table on which the stored procedure will operate, in your local environment. For example:\n```\ncreate table incrementtest (i int);\ninsert into incrementtest values 1;\n```\n\nAnd now you put your stored procedure into action:\n\n```\ncall customincrement();\nselect * from incrementtest;\n```\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:20:10.264",
+      "dateUpdated": "2018-12-01 05:40:18.427",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -215,7 +215,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -241,220 +241,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Deployment of the JAR file to your Service cluster\nOnce you have confirmed that the code works to your satisfaction, you can now take that same JAR file and deploy it to your Splice Machine cluster on the cloud.  Here are the steps we will follow:\n\n1. Copy the JAR file you already built to S3 - your Service cluster will be able to access it from here\n2. Deploy the JAR file similarly as before\n3. Test and run the custom procedure\n\nThese last two steps can now be run using a splicemachine interpreter in Zeppelin, so you should edit the recommended steps and run them as below",
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*ETL Pipeline*](/#/notebook/2DXK4FQKX) provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:20:49.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDeployment of the JAR file to your Service cluster\u003c/h2\u003e\n\u003cp\u003eOnce you have confirmed that the code works to your satisfaction, you can now take that same JAR file and deploy it to your Splice Machine cluster on the cloud. Here are the steps we will follow:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCopy the JAR file you already built to S3 - your Service cluster will be able to access it from here\u003c/li\u003e\n  \u003cli\u003eDeploy the JAR file similarly as before\u003c/li\u003e\n  \u003cli\u003eTest and run the custom procedure\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThese last two steps can now be run using a splicemachine interpreter in Zeppelin, so you should edit the recommended steps and run them as below\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542396049301_-461411038",
-      "id": "20171201-010043_1902163707",
-      "dateCreated": "2018-11-16 11:20:49.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n### Copy the JAR file to S3\n\nFirst make sure the `aws` command tool installed in the local environment where you have your JAR file.  If not, see http://docs.aws.amazon.com/cli/latest/userguide/installing.html\n\nOnce `aws` is installed, you can run the following commands in your local environment:\n\n```\naws s3 cp \u003cyour-file-name\u003e s3://\u003cyour-bucket-name\u003e/\u003cyour-JAR-file-name\u003e\naws s3api put-object-acl --bucket \u003cyour-bucket-name\u003e --grant-read emailAddress\u003d\"dbaas@splicemachine.com\"  --key\u003d\u003cyour-JAR-file-name\u003e --region us-east-1\n```",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:20:49.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCopy the JAR file to S3\u003c/h3\u003e\n\u003cp\u003eFirst make sure the \u003ccode\u003eaws\u003c/code\u003e command tool installed in the local environment where you have your JAR file. If not, see \u003ca href\u003d\"http://docs.aws.amazon.com/cli/latest/userguide/installing.html\"\u003ehttp://docs.aws.amazon.com/cli/latest/userguide/installing.html\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eOnce \u003ccode\u003eaws\u003c/code\u003e is installed, you can run the following commands in your local environment:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eaws s3 cp \u0026lt;your-file-name\u0026gt; s3://\u0026lt;your-bucket-name\u0026gt;/\u0026lt;your-JAR-file-name\u0026gt;\naws s3api put-object-acl --bucket \u0026lt;your-bucket-name\u0026gt; --grant-read emailAddress\u003d\u0026quot;dbaas@splicemachine.com\u0026quot;  --key\u003d\u0026lt;your-JAR-file-name\u0026gt; --region us-east-1\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542396049302_1514786592",
-      "id": "20171203-152143_1212910590",
-      "dateCreated": "2018-11-16 11:20:49.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n### Set up the custom procedure on your Service cluster",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:20:49.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSet up the custom procedure on your Service cluster\u003c/h3\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542396049302_102758238",
-      "id": "20171203-005131_1351460397",
-      "dateCreated": "2018-11-16 11:20:49.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n-- installing the jar and defining the procedure\n-- edit these steps for your environment\nCALL SQLJ.INSTALL_JAR(\u0027S3://\u003cyour-bucket-name\u003e/\u003cyour-jar-file-name\u003e\u0027, \u0027SPLICE.Custom1\u0027, 0);\nCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(\u0027derby.database.classpath\u0027, \u0027SPLICE.custom1\u0027);\nCREATE PROCEDURE SPLICE.customincrement() PARAMETER STYLE JAVA MODIFIES SQL DATA LANGUAGE JAVA DYNAMIC RESULT SETS 0 EXTERNAL NAME \u0027com.splicemachine.companya.Custom1.customIncrement\u0027;",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:20:49.000",
-      "config": {
-        "tableHide": true,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542396049303_1001862739",
-      "id": "20171203-005159_1258738745",
-      "dateCreated": "2018-11-16 11:20:49.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n### Run the stored procedure on your Service cluster",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:20:49.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRun the stored procedure on your Service cluster\u003c/h3\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542396049303_971546895",
-      "id": "20171203-152015_779093141",
-      "dateCreated": "2018-11-16 11:20:49.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\ncreate table incrementtest (i int);\ninsert into incremenenttest values 1;\ncall customincrement();\nselect * from incrementtest;",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:20:49.000",
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542396049303_-836066050",
-      "id": "20171203-152351_950299020",
-      "dateCreated": "2018-11-16 11:20:49.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n\u003cbr/\u003e\nThe next notebook in this class, [*ETL Pipeline*](/#/notebook/2DXK4FQKX) provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 17:32:21.292",
+      "dateUpdated": "2018-12-01 05:43:28.875",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -479,7 +268,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DXK4FQKX\"\u003e\u003cem\u003eETL Pipeline\u003c/em\u003e\u003c/a\u003e provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DXK4FQKX\"\u003e\u003cem\u003eETL Pipeline\u003c/em\u003e\u003c/a\u003e provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -487,25 +276,9 @@
       "jobName": "paragraph_1542740950015_-481719233",
       "id": "20181120-110910_1667651518",
       "dateCreated": "2018-11-20 11:09:10.015",
-      "dateStarted": "2018-11-20 17:32:21.293",
-      "dateFinished": "2018-11-20 17:32:21.296",
+      "dateStarted": "2018-12-01 05:43:28.875",
+      "dateFinished": "2018-12-01 05:43:28.909",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:10:29.228",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542741029227_1359889749",
-      "id": "20181120-111029_2074252733",
-      "dateCreated": "2018-11-20 11:10:29.227",
-      "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -515,7 +288,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

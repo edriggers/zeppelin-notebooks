@@ -4,7 +4,7 @@
       "title": "Deploying Applications: Spring",
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Deploying Applications\n\nSplice Machine is an ACID compliant RDMS, which means that you can build \u003ca href\u003d\"https://spring.io/\" target\u003d\"_blank\"\u003e\u003cem\u003eSpring\u003c/em\u003e\u003c/a\u003e applications on it.\n\nOne such application is the commonly-used *Petclinic* web app. This notebook provides a set of steps that you can follow to download and run the Splice Machine/Spring implementation of the Petclinic app:\n\n1. Access the repository: \u003ca href\u003d\"https://github.com/splicemachine/spring-petclinic\" target\u003d\"_blank\"\u003ehttps://github.com/splicemachine/spring-petclinic\u003c/a\u003e.\n2. Download a JDBC driver to use with it: \u003ca href\u003d\"https://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\" target\u003d\"_blank\"\u003ehttps://s3.amazonaws.com/splicemachine/artifacts/db-client-2.6.1.1736.jar\u003c/a\u003e.\n3. Download an ODBC driver to use with it: \u003ca href\u003d\"https://www.splicemachine.com/get-started/odbc-driver-download/\"target\u003d\"_blank\"\u003ehttps://www.splicemachine.com/get-started/odbc-driver-download/\u003c/a\u003e.\n4. Run it in this container: \u003ca href\u003d\"http://34.224.173.173:8080/owners/find\" target\u003d\"_blank\"\u003ehttp://34.224.173.173:8080/owners/find\u003c/a\u003e\n\n\u003cp class\u003d\"noteNote\"\u003eThe Petclinic app uses the same basic Java persistence model as traditional databases, as shown \u003ca href\u003d\"https://github.com/splicemachine/spring-petclinic/blob/master/src/main/java/org/springframework/samples/petclinic/model/Person.java\"\u003ehere.\u003c/a\u003e\u003c/p\u003e\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:09:14.079",
+      "dateUpdated": "2018-12-01 05:11:07.791",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -17,7 +17,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -80,34 +80,6 @@
       "dateStarted": "2018-11-20 10:31:28.138",
       "dateFinished": "2018-11-20 10:31:28.141",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:11:02.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395462228_-541050903",
-      "id": "20180125-142959_1101825868",
-      "dateCreated": "2018-11-16 11:11:02.000",
-      "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],

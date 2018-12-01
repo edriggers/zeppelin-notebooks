@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Tuning for Performance\n\nThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*\n\nTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:14:07.313",
+      "dateUpdated": "2018-12-01 07:26:43.291",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -43,7 +43,7 @@
     {
       "text": "%md\n## Collecting Statistics\n\nThe first commands you should learn about are the statistics collection commands:\n\n* `ANALYZE TABLE` collects statistics for a specific table\n* `ANALYZE SCHEMA` collects statistics for all tables in a schema.\n\nCollecting statistics drastically improves the estimation of costs that the optimizer relies on to find the best plan.\n\nLet\u0027s take a look at the impact of running statistics on our import test table from *Importing Data* Notebook. You can most easily understand this by viewing the output from the `EXPLAIN` command. First, we\u0027ll click the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to display the execution plan for our unoptimized query:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-01 07:26:48.353",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -54,7 +54,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -99,15 +99,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d5,rows\u003d360,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d1744.96,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d1657.16,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1616)](n\u003d2,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1616)](n\u003d1,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d18,outputHeapSize\u003d54 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464280_1220225039",
       "id": "20170916-210243_1737687704",
@@ -119,7 +110,7 @@
     {
       "text": "%md\n### The Importance of Statistics\n\nYou\u0027ll notice that the row counts are way off! That\u0027s because we have __not__ run statistics yet. When statistics have not been run, the optimizer makes an estimate, but row counts will be rough approximations.\n\nLet\u0027s collect some statistics by analyzing our table, and then we\u0027ll rerun the `explain`. When you click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, you\u0027ll see that the row counts and costs are accurate.\n\n\u003cp class\u003d\"noteNote\"\u003eSplice Machine recommends collecting statistics after initial loading of data into a table, and recollecting them if you\u0027ve made significant changes to a table. Running the \u003ccode\u003eanalyze\u003c/code\u003e command can take a bit of time, depending on the size of your database.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:47:00.944",
+      "dateUpdated": "2018-12-01 07:27:07.488",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -131,7 +122,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -211,15 +202,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "java.sql.SQLSyntaxErrorException: Table/View \u0027SPLICE.IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:89)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:904)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:718)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: Table/View \u0027SPLICE.IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.Statement.completeExecute(Statement.java:1612)\n\tat com.splicemachine.db.client.net.NetStatementReply.parseEXCSQLSTTreply(NetStatementReply.java:324)\n\tat com.splicemachine.db.client.net.NetStatementReply.readExecuteCall(NetStatementReply.java:108)\n\tat com.splicemachine.db.client.net.StatementReply.readExecuteCall(StatementReply.java:79)\n\tat com.splicemachine.db.client.net.NetStatement.readExecuteCall_(NetStatement.java:179)\n\tat com.splicemachine.db.client.am.Statement.readExecuteCall(Statement.java:1578)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2169)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:909)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:895)\n\t... 15 more\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464281_1953344349",
       "id": "20170916-210539_1235333677",
@@ -227,6 +209,7 @@
       "dateStarted": "2018-11-30 00:45:16.420",
       "dateFinished": "2018-11-30 00:45:16.583",
       "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -268,9 +251,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE(\u0027SPLICE\u0027,\u0027IMPORT_EXAMPLE\u0027)",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE(\u0027ADMIN\u0027,\u0027IMPORT_EXAMPLE\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-01 07:27:30.165",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -288,15 +271,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : -1"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464282_-1750439418",
       "id": "20170916-211302_1479353620",
@@ -308,18 +282,18 @@
     {
       "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an index improperly used can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\nLet\u0027s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:47:52.953",
+      "dateUpdated": "2018-12-01 07:27:38.723",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -331,7 +305,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating Primary Keys and Indexes\u003c/h2\u003e\n\u003cp\u003eSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ethe primary key becomes the key for the HBase table\u003c/li\u003e\n  \u003cli\u003ean index is another HBase table whose key consists of the columns in the index\u003c/li\u003e\n  \u003cli\u003ecompound (multi-column) primary keys and indexes are supported\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an index improperly used can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating Primary Keys and Indexes\u003c/h2\u003e\n\u003cp\u003eSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe primary key becomes the key for the HBase table.\u003c/li\u003e\n  \u003cli\u003eAn index is another HBase table whose key consists of the columns in the index.\u003c/li\u003e\n  \u003cli\u003eCompound (multi-column) primary keys and indexes are supported.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an index improperly used can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -339,8 +313,9 @@
       "jobName": "paragraph_1542402464283_-1067363641",
       "id": "20170916-192947_215578585",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 07:27:35.901",
+      "dateFinished": "2018-12-01 07:27:35.912",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -399,91 +374,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 10"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 10"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 20"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 40"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 80"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 160"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 320"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 640"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 1280"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 2560"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 5120"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 10240"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 20480"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 40960"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 81920"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 163840"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 327680"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 655360"
-          },
-          {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nSPLICE\tINDEX_EXAMPLE\t-All-\t1310720\t10485760\t1\t2\t0.0\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464283_-1159521920",
       "id": "20170916-213118_1059322916",
@@ -495,7 +385,7 @@
     {
       "text": "%md\n\u003cbr /\u003e\n\nAs you can see from the results of the above operation, we now have:\n\n* about 1.3 million rows of data\n* a primary key on `i`\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  to do lookups on `i`. You\u0027ll see that the primary key will find the record for us quickly:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-01 07:27:52.356",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -506,7 +396,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -580,15 +470,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "I\tJ\n300000\t300000\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464284_1494843294",
       "id": "20170916-211529_1481528006",
@@ -600,7 +481,7 @@
     {
       "text": "%md\n\u003cbr /\u003e\n\nThat query should have come back almost immediately. But what happens if we query on `j`?",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 09:48:02.267",
+      "dateUpdated": "2018-12-01 07:28:02.061",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -611,7 +492,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -686,15 +567,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "I\tJ\n300000\t300000\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464285_1429498569",
       "id": "20170917-094346_1396272310",
@@ -706,7 +578,7 @@
     {
       "text": "%md\n### Adding an Index\n\nYou probably noticed this query required more time to complete; this is because there was no key to go straight to the record. Now, let\u0027s add an index on `j`:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 09:48:15.832",
+      "dateUpdated": "2018-12-01 07:28:10.070",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -717,7 +589,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -763,15 +635,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464286_1884860213",
       "id": "20170917-094549_1951923955",
@@ -783,7 +646,7 @@
     {
       "text": "%md\n\u003cbr /\u003e\n\nIf you rerun the previous `j` query, it now runs quickly.  This is because the optimizer considered both plan options available to it (with and without an index), found a lower cost for the plan using the index, and executed that plan.\n\nThis is where `EXPLAIN` can be quite useful as well: you can discover if an index is being used or not. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to run the `explain`:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 09:48:34.614",
+      "dateUpdated": "2018-12-01 07:28:17.468",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -794,7 +657,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -840,15 +703,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d3,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d2,totalCost\u003d8,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  IndexScan[IJ(1649)](n\u003d1,totalCost\u003d4,scannedRows\u003d1,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1,baseTable\u003dINDEX_EXAMPLE(1632),preds\u003d[(J[0:1] \u003d 300000)])\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464287_-1757265349",
       "id": "20170917-101311_771962907",
@@ -860,7 +714,7 @@
     {
       "text": "%md\n### When an Index Doesn\u0027t Help\n\nYou can see that this performs an *IndexScan* (vs. a *TableScan*), and it tells you which index it uses, as well as the usual cost information, etc.\n\nLet\u0027s get into a more complicated case where it is __not__ a good idea to use a particular index. In the next paragraph, we start with an `EXPLAIN` on our query:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-01 07:28:26.407",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -871,7 +725,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -916,15 +770,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d6707.42,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d1419.578,outputRows\u003d524288,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d3,totalCost\u003d1419.578,outputRows\u003d524288,outputHeapSize\u003d4 MB,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d1419.578,outputRows\u003d524288,outputHeapSize\u003d4 MB,partitions\u003d1)\n          -\u003e  TableScan[INDEX_EXAMPLE(1632)](n\u003d1,totalCost\u003d1419.578,scannedRows\u003d1310720,outputRows\u003d524288,outputHeapSize\u003d4 MB,partitions\u003d1,preds\u003d[(J[0:2] \u003e 950000)])\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464288_-2063270503",
       "id": "20170917-095320_239489898",
@@ -936,7 +781,7 @@
     {
       "text": "%md\n### Adding Index Hints\n\nNote that the optimizer chose the plan that uses the actual table, NOT the index; why did it make this choice?\n\nWe can learn more about this by using a Splice Machine *hint* to force use of an index. We use an `index` hint in next paragraph:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:49:01.451",
+      "dateUpdated": "2018-12-01 07:28:35.360",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -947,7 +792,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -993,15 +838,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d7,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d6,totalCost\u003d2102993.101,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d2097701.26,outputRows\u003d524288,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d4,totalCost\u003d2097701.26,outputRows\u003d524288,outputHeapSize\u003d4 MB,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d2097701.26,outputRows\u003d524288,outputHeapSize\u003d4 MB,partitions\u003d1)\n          -\u003e  IndexLookup(n\u003d2,totalCost\u003d2097701.26,outputRows\u003d524288,outputHeapSize\u003d4 MB,partitions\u003d1)\n            -\u003e  IndexScan[IJ(1649)](n\u003d1,totalCost\u003d549.26,scannedRows\u003d524288,outputRows\u003d524288,outputHeapSize\u003d4 MB,partitions\u003d1,baseTable\u003dINDEX_EXAMPLE(1632),preds\u003d[(J[1:2] \u003e 950000)])\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464288_-2005088107",
       "id": "20170917-102130_1017436977",
@@ -1013,9 +849,9 @@
     {
       "text": "%md\n### Learning About Hints\nYou add Splice Machine __hints__ to your queries by appending a specially formatted *comment*. The different kinds of available hints and the syntax required for them is described in detail later in this class, in the [*Using Explain and Hints*](/#/notebook/2DUVSWQRW) notebook.\n\nThe *index hint* in the above example  (`--splice-properties index\u003dij`) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses `IndexScan` instead of the `TableScan`. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\n\nIt\u0027s because the index only contains information for column `J`, and this query calls for information about column `I` as well. This means that we still have to get information from the base table for column I, and we have to do it *many* times.  You can see this in the plan: there is a step, `IndexLookup`, that is part of the plan.  You\u0027ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column `I`.  In distributed architectures like Splice Machine, this can be a very expensive operation.\n\nIf you want, you can run these these two queries by removing the `explains`; you\u0027ll noticed a significant performance difference between them.\n\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\nWhen faced with situations where you have __many__ matching rows however, like our original query, you can address the issue by creating a compound index that includes both `j` and `i` in it:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:54:01.269",
+      "dateUpdated": "2018-12-01 07:28:46.737",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -1023,9 +859,9 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -1045,8 +881,8 @@
       "jobName": "paragraph_1542402464289_-996725073",
       "id": "20170917-102229_72455203",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-30 00:53:43.350",
-      "dateFinished": "2018-11-30 00:53:43.387",
+      "dateStarted": "2018-12-01 07:28:42.450",
+      "dateFinished": "2018-12-01 07:28:42.478",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1071,15 +907,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464290_1882625791",
       "id": "20170917-103810_1471531808",
@@ -1091,7 +918,7 @@
     {
       "text": "%md\n\u003cbr /\u003e\n\nRunning the original query will now choose this index, and run faster.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-01 07:28:58.576",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1102,7 +929,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -1129,7 +956,7 @@
     {
       "text": "%md\n\n## Joining Tables\n\nFew queries are written without joins between tables.  Shortly we will get into the join strategies Splice Machine employs, but first let\u0027s cover what it means to be on the *right* or *left* side of a join.  To begin, we\u0027ll click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates some tables and then runs an `EXPLAIN` on a join on those tables:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-01 07:29:01.213",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1140,7 +967,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -1185,31 +1012,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d9,rows\u003d17,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d8,totalCost\u003d42.71,outputRows\u003d17,outputHeapSize\u003d76 B,partitions\u003d1)\n    -\u003e  BroadcastJoin(n\u003d7,totalCost\u003d28.76,outputRows\u003d17,outputHeapSize\u003d76 B,partitions\u003d1,preds\u003d[(A.I[12:1] \u003d D.I[12:4])])\n      -\u003e  TableScan[JOIN4(1728)](n\u003d6,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d76 B,partitions\u003d1)\n      -\u003e  BroadcastJoin(n\u003d5,totalCost\u003d20.52,outputRows\u003d16,outputHeapSize\u003d56 B,partitions\u003d1,preds\u003d[(A.I[8:1] \u003d C.I[8:3])])\n        -\u003e  TableScan[JOIN3(1712)](n\u003d4,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d56 B,partitions\u003d1)\n        -\u003e  BroadcastJoin(n\u003d3,totalCost\u003d12.28,outputRows\u003d16,outputHeapSize\u003d36 B,partitions\u003d1,preds\u003d[(A.I[4:1] \u003d B.I[4:2])])\n          -\u003e  TableScan[JOIN2(1696)](n\u003d2,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d36 B,partitions\u003d1)\n          -\u003e  TableScan[JOIN1(1680)](n\u003d1,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d20 B,partitions\u003d1)\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402464292_-2101187881",
       "id": "20170917-111631_1232092004",
@@ -1221,7 +1023,7 @@
     {
       "text": "%md\n\u003cbr /\u003e\n\nFor now, we\u0027ll ignore costs and join strategies and focus on the __order__ in which tables show up in the plan we just generated (with our `explain`).  Again, we need to think through this *bottom-up:* when examining our plan:\n\n* The bottom-most table (`JOIN1`) is the *left-hand side*\n* The next up table (`JOIN2`) is the *right-hand side*\n* Each join needs a left-hand side and a right-hand side, so the bottom-most join will be joining tables `JOIN1` and `JOIN2`.\n* The __result__ of this bottom-most join becomes the __NEW__ *left-hand side*, and the table above it (in this case `JOIN3`) will be the *right-hand side* for the next join, and so on.\n\nIt is important to know what table (or join result) represents the left-hand or right-hand side of the join.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-01 07:29:10.737",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1232,7 +1034,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -1259,7 +1061,7 @@
     {
       "text": "%md\n### Join Strategies\n\nDatabases employ different algorithms to efficiently perform a join, depending on the circumstances.  Here are the join strategies Splice Machine employs:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003eSorts the data being joined and performs a merge on the results\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003ePerforms a merge, but is not valid unless the data is not pre-sorted (via primary key or index) on the join key\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003eRequires the right-hand-side table to be small (\u003c 1 million rows), so that this table can be copied to all nodes for local joins on each node\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003eThe general-purpose join strategy\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nEach join strategy has its strengths and weaknesses, which are summarized here:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eStrengths and Weaknesses\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eSortMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOn queries processing a lot of data, when a Merge or Broadcast is not valid, SortMerge will be used.\u003c/p\u003e\n                \u003cp\u003eIt is slower than Merge and Broadcast, but can be used in more instances.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eMerge\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eGenerally the fastest query to process many rows of data on both the right and left side of the join.\u003c/p\u003e\n                \u003cp\u003eHowever the data must be sorted on the join keys on both the right and left sides.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eBroadcast\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eA very fast join algorithm as long as the *right-hand* table of the join has 1 million or fewer rows.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eNestedLoop\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eThe fastest join for *transaction-type* queries (i.e. keyed lookups with few rows on each side of the join).\u003c/p\u003e\n                \u003cp\u003eIf there are many rows on the right and/or left side, this query can be very slow.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nWhen planning a query with joins, the optimizer will choose the join strategy with the lowest cost.  Its choice however might again influence how you make your own changes (for example, add an index so that a SortMerge becomes a Merge). \n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 09:49:39.150",
+      "dateUpdated": "2018-12-01 07:29:29.392",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1270,7 +1072,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -1298,7 +1100,7 @@
     {
       "text": "%md\n\n## Where to Go Next\n\nThe next notebook in this class, [*Using the DB Console*](/#/notebook/2DXU61KR1), explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:47:35.221",
+      "dateUpdated": "2018-12-01 07:29:37.147",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1309,7 +1111,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -1337,11 +1139,11 @@
     {
       "text": "%md\n## Related Documentation\nOur documentation has more information about the strategies described here; these topics are particularly relevant:\n\n* \u003ca href\u003d\"https://doc.splicemachine.com/developers_tuning_intro.html\" target\u003d\"blank\"\u003eThe \u003cem\u003eTuning and Debugging\u003c/em\u003e section of our Developer\u0027s Guide\u003c/a\u003e\n* \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_joinops_intro.html\" target\u003d\"blank\"\u003eThe \u003cem\u003eJoin Operations\u003c/em\u003e section of our SQL Reference Manual.\u003c/a\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:47:38.302",
+      "dateUpdated": "2018-12-01 07:29:40.146",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -1374,34 +1176,6 @@
       "dateFinished": "2018-11-20 11:47:38.307",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542402464295_796804398",
-      "id": "20170917-113226_2128468934",
-      "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Administrators/d. Tuning Queries",
@@ -1410,7 +1184,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

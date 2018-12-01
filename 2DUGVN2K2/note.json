@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Running Queries in Splice Machine\n\nThis notebook introduces you to:\n\n1. *Running database queries from a Zeppelin notebook*\n2. *Using `Explain Plan`* to explore the execution plan for a query \n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:09:41.735",
+      "dateUpdated": "2018-12-01 03:38:29.381",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -43,11 +43,11 @@
     {
       "text": "%md\n## 1. Running a Simple SQL Statement\nSplice Machine supports ANSI SQL. Our example query uses an SQL `SELECT` statement to select records from a table. This query makes use of the sample data that we imported in the previous notebook, *Importing Data*. \n\nThe following query selects all records in the `import_example` table that have `100` as the value of column `i`; try it by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 21:29:42.910",
+      "dateUpdated": "2018-12-01 03:38:33.618",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -129,15 +129,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "I\tV\tT\n100\thello there\t2017-01-01 00:00:00.0\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542393642885_1306687664",
       "id": "20170916-185904_635367698",
@@ -149,7 +140,7 @@
     {
       "text": "%md\n## 2. Exploring Query Execution Plans\n\nIf you have a query that is not performing as expected, you can run the `explain` command to display the execution plan for the query.\n\nAll you need to do is put `EXPLAIN` in front of the query and run that. This generates the plan, but does not actually run the query. Try it by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 21:28:11.465",
+      "dateUpdated": "2018-12-01 03:38:49.973",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -161,7 +152,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -208,15 +199,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "java.sql.SQLSyntaxErrorException: Table/View \u0027IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:89)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:904)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:718)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: Table/View \u0027IMPORT_EXAMPLE\u0027 does not exist.\n\tat com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1844)\n\tat com.splicemachine.db.client.net.NetStatementReply.parsePrepareError(NetStatementReply.java:572)\n\tat com.splicemachine.db.client.net.NetStatementReply.parsePRPSQLSTTreply(NetStatementReply.java:146)\n\tat com.splicemachine.db.client.net.NetStatementReply.readPrepareDescribeOutput(NetStatementReply.java:55)\n\tat com.splicemachine.db.client.net.StatementReply.readPrepareDescribeOutput(StatementReply.java:44)\n\tat com.splicemachine.db.client.net.NetStatement.readPrepareDescribeOutput_(NetStatement.java:142)\n\tat com.splicemachine.db.client.am.Statement.readPrepareDescribeOutput(Statement.java:1451)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2125)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:909)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:895)\n\t... 15 more\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542393642887_1103046659",
       "id": "20170916-190855_22811088",
@@ -224,12 +206,13 @@
       "dateStarted": "2018-11-30 00:15:06.519",
       "dateFinished": "2018-11-30 00:15:09.778",
       "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n### Some Explain Plan Details\n\nTo see the execution flow of a query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above. You can see the costs and row count estimates for each step.\n\nIn the *explain* example that we just ran, we can see we are scanning table `import_example` twice, then joining them with a particular strategy; in this case, the strategy is a nested join loop.\n\nThe final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:\n\n    Cursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\nThis line shows you which *engine* is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\nWe\u0027ll cover more about the engines, and the Spark engine in particular, later in this class.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 21:29:49.088",
+      "dateUpdated": "2018-12-01 03:39:34.847",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -241,7 +224,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -267,22 +250,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nNow that you\u0027ve learned about running queries, please continue on to the [*Tuning Queries*](/#/notebook/2DVGS3CZ2) notebook.",
+      "text": "%md\n## Where to Go Next\nNow that you\u0027ve learned about running queries, please continue on to the [*Tuning Queries*](/#/notebook/2DVGS3CZ2) notebook.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:36:36.959",
+      "dateUpdated": "2018-12-01 03:43:28.745",
       "config": {
-        "tableHide": false,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": false,
+        "results": {},
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
           "completionSupport": false
         },
-        "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -298,42 +281,12 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1542393642889_85111912",
-      "id": "20170907-075745_1978581419",
-      "dateCreated": "2018-11-16 10:40:42.000",
-      "dateStarted": "2018-11-20 10:36:36.959",
-      "dateFinished": "2018-11-20 10:36:36.962",
+      "jobName": "paragraph_1543635601646_753033850",
+      "id": "20181201-034001_1627381315",
+      "dateCreated": "2018-12-01 03:40:01.646",
+      "dateStarted": "2018-12-01 03:43:17.305",
+      "dateFinished": "2018-12-01 03:43:17.314",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:40:42.000",
-      "config": {
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542393642890_1292714140",
-      "id": "20170907-075807_1102578011",
-      "dateCreated": "2018-11-16 10:40:42.000",
-      "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -343,7 +296,9 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

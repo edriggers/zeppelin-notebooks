@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Useful Database Utilities\n\nThis notebook describes a number of utilities that you may find useful. We\u0027ll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 15:57:39.904",
+      "dateUpdated": "2018-12-01 04:55:13.079",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -93,15 +93,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "HOSTNAME\tRELEASE\tIMPLEMENTATIONVERSION\tBUILDTIME\tURL\n192.168.1.19:50841\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n192.168.1.19:50926\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394892708_394384365",
       "id": "20170424-135902_1116885980",
@@ -161,15 +152,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "TABLENAME\tSCHEMANAME\nA\tSPLICE\nIMPORT_EXAMPLE\tSPLICE\nSYSALIASES\tSYS\nSYSBACKUP\tSYS\nSYSBACKUPFILESET\tSYS\nSYSBACKUPITEMS\tSYS\nSYSBACKUPJOBS\tSYS\nSYSCHECKS\tSYS\nSYSCOLPERMS\tSYS\nSYSCOLUMNS\tSYS\nSYSCOLUMNSTATISTICS\tSYS\nSYSCOLUMNSTATS\tSYS\nSYSCONGLOMERATES\tSYS\nSYSCONSTRAINTS\tSYS\nSYSDEPENDS\tSYS\nSYSDUMMY1\tSYSIBM\nSYSFILES\tSYS\nSYSFOREIGNKEYS\tSYS\nSYSKEYS\tSYS\nSYSPERMS\tSYS\nSYSPHYSICALSTATS\tSYS\nSYSPRIMARYKEYS\tSYS\nSYSROLES\tSYS\nSYSROUTINEPERMS\tSYS\nSYSSCHEMAPERMS\tSYS\nSYSSCHEMAS\tSYS\nSYSSEQUENCES\tSYS\nSYSSNAPSHOTS\tSYS\nSYSSOURCECODE\tSYS\nSYSSTATEMENTS\tSYS\nSYSTABLEPERMS\tSYS\nSYSTABLES\tSYS\nSYSTABLESTATISTICS\tSYS\nSYSTABLESTATS\tSYS\nSYSTRIGGERS\tSYS\nSYSUSERS\tSYS\nSYSVIEWS\tSYS\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394892709_-1175510987",
       "id": "20170424-135930_879534749",
@@ -181,12 +163,12 @@
     {
       "text": "%md\n## Where to Go Next\n\nYou\u0027re now ready to learn about the [*The Life of a Splice Machine Query*](/#/notebook/2DWS5FM39) in the next notebook in this class.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:52:32.376",
+      "dateUpdated": "2018-12-01 04:55:56.961",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -218,22 +200,6 @@
       "dateFinished": "2018-11-20 11:51:52.875",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:26:52.058",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542738412057_-1248851198",
-      "id": "20181120-102652_1578849737",
-      "dateCreated": "2018-11-20 10:26:52.057",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Developers, Part II - Intermediate/c. Common Utilities",
@@ -242,7 +208,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {

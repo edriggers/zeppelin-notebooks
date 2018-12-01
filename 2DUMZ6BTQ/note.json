@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Importing Data and Running Queries\nThis notebook introduces you importing data into your Splice Machine database and running a simple query, in these steps:\n\n1. *Creating and Populating an Example Table*\n2. *Running database queries from a Zeppelin notebook*\n3. *Using `Explain Plan`* to explore the execution plan for a query ",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:37:27.079",
+      "dateUpdated": "2018-12-01 07:23:09.361",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -13,9 +13,9 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -35,19 +35,19 @@
       "jobName": "paragraph_1542402377078_-2120810033",
       "id": "20170907-071443_970035831",
       "dateCreated": "2018-11-16 13:06:17.000",
-      "dateStarted": "2018-11-30 18:37:14.137",
-      "dateFinished": "2018-11-30 18:37:14.150",
+      "dateStarted": "2018-12-01 07:22:14.494",
+      "dateFinished": "2018-12-01 07:22:14.504",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 1. Create and Populate our Example Table\nFirst we\u0027ll create and populate the `import_example` table with some simple data. For additional information about importing this data, see the [*Importing Data*](/#/notebook/2DVR1D5BP) notebook in our *Beginning Developers* course.\n\nClick the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph to create and populate the table:\n",
+      "text": "%md\n## 1. Create and Populate our Example Table\nFirst we\u0027ll create a schema named `ADMIN`, make it the default schema, and then create and populate the `import_example` table with some simple data. For additional information about importing this data, see the [*Importing Data*](/#/notebook/2DVR1D5BP) notebook in our *Beginning Developers* course.\n\nClick the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph to create and populate the table:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:39:10.063",
+      "dateUpdated": "2018-12-01 07:24:28.558",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -56,7 +56,7 @@
         },
         "editorMode": "ace/mode/markdown",
         "tableHide": false,
-        "editorHide": false
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -67,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Create and Populate our Example Table\u003c/h2\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll create and populate the \u003ccode\u003eimport_example\u003c/code\u003e table with some simple data. For additional information about importing this data, see the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data\u003c/em\u003e\u003c/a\u003e notebook in our \u003cem\u003eBeginning Developers\u003c/em\u003e course.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph to create and populate the table:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Create and Populate our Example Table\u003c/h2\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll create a schema named \u003ccode\u003eADMIN\u003c/code\u003e, make it the default schema, and then create and populate the \u003ccode\u003eimport_example\u003c/code\u003e table with some simple data. For additional information about importing this data, see the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data\u003c/em\u003e\u003c/a\u003e notebook in our \u003cem\u003eBeginning Developers\u003c/em\u003e course.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph to create and populate the table:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -75,15 +75,15 @@
       "jobName": "paragraph_1543535573982_577744232",
       "id": "20181129-235253_1744227870",
       "dateCreated": "2018-11-29 23:52:53.982",
-      "dateStarted": "2018-11-30 18:37:04.001",
-      "dateFinished": "2018-11-30 18:37:04.009",
+      "dateStarted": "2018-12-01 07:24:23.086",
+      "dateFinished": "2018-12-01 07:24:23.095",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nCREATE TABLE import_example (i int, v varchar(20), t timestamp);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027splice\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)\n",
+      "text": "%splicemachine\n\nCREATE SCHEMA ADMIN;\nSET SCHEMA ADMIN;\nCREATE TABLE import_example (i int, v varchar(20), t timestamp);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027ADMIN\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:39:59.172",
+      "dateUpdated": "2018-12-01 07:25:08.374",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -129,24 +129,11 @@
         },
         "editorMode": "ace/mode/markdown",
         "tableHide": false,
-        "editorHide": true
+        "editorHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n2\t0\t1\t83\tNONE\n"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542847672383_-1353901299",
@@ -155,16 +142,17 @@
       "dateStarted": "2018-11-30 18:39:30.168",
       "dateFinished": "2018-11-30 18:39:58.633",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Running a Simple SQL Statement\n\nSplice Machine supports ANSI SQL. Our example query uses an SQL `SELECT` statement to select records from the table we created in the previous paragraph. \n\nThis query selects all records in the `import_example` table that have `100` as the value of column `i`; try it by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the  the next paragraph.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:37:00.255",
+      "dateUpdated": "2018-12-01 07:25:11.592",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -173,8 +161,8 @@
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -185,7 +173,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Simple SQL SELECT statement\u003c/h2\u003e\n\u003cp\u003eSplice Machine supports ANSI SQL. Our example query uses an SQL \u003ccode\u003eSELECT\u003c/code\u003e statement to select records from the table we created in the previous paragraph. \u003c/p\u003e\n\u003cp\u003eThis query selects all records in the \u003ccode\u003eimport_example\u003c/code\u003e table that have \u003ccode\u003e100\u003c/code\u003e as the value of column \u003ccode\u003ei\u003c/code\u003e; try it by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning a Simple SQL Statement\u003c/h2\u003e\n\u003cp\u003eSplice Machine supports ANSI SQL. Our example query uses an SQL \u003ccode\u003eSELECT\u003c/code\u003e statement to select records from the table we created in the previous paragraph. \u003c/p\u003e\n\u003cp\u003eThis query selects all records in the \u003ccode\u003eimport_example\u003c/code\u003e table that have \u003ccode\u003e100\u003c/code\u003e as the value of column \u003ccode\u003ei\u003c/code\u003e; try it by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -193,8 +181,8 @@
       "jobName": "paragraph_1542847666771_1824706086",
       "id": "20181121-164746_1602058755",
       "dateCreated": "2018-11-21 16:47:46.771",
-      "dateStarted": "2018-11-21 16:48:30.971",
-      "dateFinished": "2018-11-21 16:48:30.978",
+      "dateStarted": "2018-12-01 07:25:08.420",
+      "dateFinished": "2018-12-01 07:25:08.432",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -268,9 +256,9 @@
     {
       "text": "%md\n## Exploring Query Execution Plans\n\nIf you have a query that is not performing as expected, you can run the `explain` command to display the execution plan for the query.\n\nAll you need to do is put `EXPLAIN` in front of the query and run that. This generates the plan, but does not actually run the query. Try it by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:40:59.562",
+      "dateUpdated": "2018-12-01 07:25:22.955",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -278,9 +266,9 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -300,8 +288,8 @@
       "jobName": "paragraph_1542402377081_-390549944",
       "id": "20170907-075704_344012816",
       "dateCreated": "2018-11-16 13:06:17.000",
-      "dateStarted": "2018-11-29 23:56:22.004",
-      "dateFinished": "2018-11-29 23:56:22.017",
+      "dateStarted": "2018-12-01 07:25:19.709",
+      "dateFinished": "2018-12-01 07:25:19.724",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -346,9 +334,9 @@
     {
       "text": "%md\n### Some Explain Plan Details\n\nTo see the flow of the execution of the query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above. You can see the costs and row count estimates for each step.\n\nIn the *explain* example that we just ran, we can see we are scanning table `import_example` twice, then joining them with a particular strategy; in this case, the strategy is a nested join loop.\n\nThe final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:\n\n    Cursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\nThis line shows you which *engine* is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:41:28.071",
+      "dateUpdated": "2018-12-01 07:25:36.194",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -356,7 +344,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -378,17 +366,17 @@
       "jobName": "paragraph_1542402377083_1513156442",
       "id": "20170916-191001_544321918",
       "dateCreated": "2018-11-16 13:06:17.000",
-      "dateStarted": "2018-11-29 23:56:51.993",
-      "dateFinished": "2018-11-29 23:56:52.027",
+      "dateStarted": "2018-12-01 07:25:36.195",
+      "dateFinished": "2018-12-01 07:25:36.207",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Tuning Queries for Performance*](/#/notebook/2DX9MPD59), introduces the important elements required to make queries fast. ",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:42:03.700",
+      "dateUpdated": "2018-12-01 07:26:00.648",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -396,9 +384,9 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -418,40 +406,9 @@
       "jobName": "paragraph_1542402377084_5041605",
       "id": "20170907-075745_1978581419",
       "dateCreated": "2018-11-16 13:06:17.000",
-      "dateStarted": "2018-11-21 09:46:18.140",
-      "dateFinished": "2018-11-21 09:46:18.152",
+      "dateStarted": "2018-12-01 07:25:54.417",
+      "dateFinished": "2018-12-01 07:25:54.422",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:37:00.416",
-      "config": {
-        "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0,
-        "tableHide": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542402377085_87118311",
-      "id": "20170907-075807_1102578011",
-      "dateCreated": "2018-11-16 13:06:17.000",
-      "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -461,7 +418,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

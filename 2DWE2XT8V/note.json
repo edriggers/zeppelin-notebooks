@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Spark in a Zeppelin Notebook\nThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\n\n* *Loading Data Into A Table Using Spark*\n* *Using Spark SQL to Query the Loaded Data*\n\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 19:31:02.657",
+      "dateUpdated": "2018-12-01 06:00:26.157",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -28,7 +28,7 @@
             }
           }
         ],
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -55,11 +55,11 @@
     {
       "text": "%md\n## Loading Data Into a Table Using Spark\n\nThe following paragraph uses the `%spark` interpreter to load public bank data into a table. Note that Zeppelin creates and injects the SparkContext (`sc`) and sqlContext (`HiveContext` or `SqlContext`) for you, so you don\u0027t need to create them manually.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 19:09:06.223",
+      "dateUpdated": "2018-12-01 06:00:57.796",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -87,8 +87,8 @@
       "jobName": "paragraph_1543604712907_1062286965",
       "id": "20181130-190512_465791935",
       "dateCreated": "2018-11-30 19:05:12.907",
-      "dateStarted": "2018-11-30 19:09:06.225",
-      "dateFinished": "2018-11-30 19:09:06.233",
+      "dateStarted": "2018-12-01 06:00:53.684",
+      "dateFinished": "2018-12-01 06:00:53.691",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -124,15 +124,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\nimport org.apache.commons.io.IOUtils\n\nimport java.net.URL\n\nimport java.nio.charset.Charset\n\nbankText: org.apache.spark.rdd.RDD[String] \u003d ParallelCollectionRDD[0] at parallelize at \u003cconsole\u003e:32\n\ndefined class Bank\n\nbank: org.apache.spark.sql.DataFrame \u003d [age: int, job: string ... 3 more fields]\n\nwarning: there were 1 deprecation warning(s); re-run with -deprecation for details\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542397883898_336019294",
       "id": "20150210-015259_1403135953",
@@ -144,11 +135,11 @@
     {
       "text": "%md\n## Using Spark SQL to Query the Loaded Data\nThe three paragraphs below use the `%spark.sql` interpreter to query the loaded data; each displays the query results using one of the available Zeppelin data visualizations.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 19:12:35.654",
+      "dateUpdated": "2018-12-01 06:01:19.339",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -156,23 +147,36 @@
           "completionKey": "TAB",
           "completionSupport": false
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing Spark SQL to Query the Loaded Data\u003c/h2\u003e\n\u003cp\u003eThe three paragraphs below use the \u003ccode\u003e%spark.sql\u003c/code\u003e interpreter to query the loaded data; each displays the query results using one of the available Zeppelin data visualizations.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1543605021486_1684401472",
       "id": "20181130-191021_2034021855",
       "dateCreated": "2018-11-30 19:10:21.486",
-      "status": "READY",
+      "dateStarted": "2018-12-01 06:01:15.386",
+      "dateFinished": "2018-12-01 06:01:15.394",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark.sql \nselect age, count(1) value\nfrom bank \nwhere age \u003c 30 \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 19:30:53.186",
+      "dateUpdated": "2018-12-01 06:00:21.152",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -223,15 +227,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "age\tvalue\n19\t4\n20\t3\n21\t7\n22\t9\n23\t20\n24\t24\n25\t44\n26\t77\n27\t94\n28\t103\n29\t97\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542397883899_311454002",
       "id": "20150210-015302_1492795503",
@@ -243,7 +238,7 @@
     {
       "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere age \u003c ${maxAge\u003d30} \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 19:30:53.227",
+      "dateUpdated": "2018-12-01 06:00:21.202",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -303,15 +298,6 @@
           }
         }
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "age\tvalue\n19\t4\n20\t3\n21\t7\n22\t9\n23\t20\n24\t24\n25\t44\n26\t77\n27\t94\n28\t103\n29\t97\n30\t150\n31\t199\n32\t224\n33\t186\n34\t231\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542397883899_-2020806566",
       "id": "20150212-145404_867439529",
@@ -323,7 +309,7 @@
     {
       "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere marital\u003d\"${marital\u003dsingle,single|divorced|married}\" \ngroup by age \norder by age",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 19:30:53.271",
+      "dateUpdated": "2018-12-01 06:00:21.246",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -395,15 +381,6 @@
           }
         }
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "age\tvalue\n19\t4\n20\t3\n21\t7\n22\t9\n23\t17\n24\t13\n25\t33\n26\t56\n27\t64\n28\t78\n29\t56\n30\t92\n31\t86\n32\t105\n33\t61\n34\t75\n35\t46\n36\t50\n37\t43\n38\t44\n39\t30\n40\t25\n41\t19\n42\t23\n43\t21\n44\t20\n45\t15\n46\t14\n47\t12\n48\t12\n49\t11\n50\t8\n51\t6\n52\t9\n53\t4\n55\t3\n56\t3\n57\t2\n58\t7\n59\t2\n60\t5\n66\t2\n69\t1\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542397883900_2032268547",
       "id": "20150213-230422_1600658137",
@@ -415,7 +392,7 @@
     {
       "text": "%md\n## Where to Go Next\nYou\u0027ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Zeppelin Using SparkR*](/#/notebook/2DXQ24QYP), shows you how to use R to program with Spark in a Zeppelin Notebook.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:46:03.705",
+      "dateUpdated": "2018-12-01 06:02:25.090",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -427,7 +404,7 @@
         "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorHide": true,
         "tableHide": false
       },

@@ -4,7 +4,7 @@
       "title": "Tutorial Data Schema - TPC-H",
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# The Life of a Query\n\nThis notebook walks you through running and optimizing a query in Splice Machine, using the TPC-H benchmarking data that we imported into your database at the beginning of this class. We explore these topics:\n\n* *Examining a Query Execution Plan*\n* *Informing the Optimizer*\n* *Adding Indexes to the Database*\n* *A Glimpse at Splice Machine Benchmark Results*\n* *Running Queries*\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:08:00.019",
+      "dateUpdated": "2018-12-01 04:56:28.425",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -17,7 +17,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -46,7 +46,7 @@
       "title": "Order Priority Checking Query (Q4)",
       "text": "%md\n## Examining a Query Execution Plan\n\nIn the next few sections of this notebook, we\u0027ll examine execution plans for TPC-H Query 4, which is known as the \u003cem\u003eOrder Priority Checking Query\u003c/em\u003e. This query counts the number of orders ordered in a given quarter of a given year in which at least one lineitem was received by the customer later than its committed date; you can use it to determine how well the order priority system is working and gives an assessment of customer satisfaction.\n\nSplice Machine generates an execution plan prior to running your query. You can use the `explain` command to generate and display the execution plan without actually running the query; this can help you to determine optimizing strategies for your queries. \n\u003cp class\u003d\"noteIcon\"\u003eThe \u003ca href\u003d\"https://doc.splicemachine.com/developers_tuning_explainplan_examples.html\" target\u003d\"_blank\"\u003eReading Explain Plans\u003c/a\u003e topic in our documentation describes how to read explain plans.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
+      "dateUpdated": "2018-12-01 04:56:33.152",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -58,7 +58,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -83,9 +83,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n-- QUERY 04\nexplain  select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tTPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 04\nexplain  select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
+      "dateUpdated": "2018-12-01 04:57:12.916",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -102,15 +102,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d13,rows\u003d1179878,updateMode\u003d,engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d137993.043,outputRows\u003d1179878,outputHeapSize\u003d4.425 MB,partitions\u003d2)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d114310.259,outputRows\u003d1179878,outputHeapSize\u003d4.425 MB,partitions\u003d2)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d34156.295,outputRows\u003d1179878,outputHeapSize\u003d4.425 MB,partitions\u003d2)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d6031.233,outputRows\u003d1179878,outputHeapSize\u003d4.425 MB,partitions\u003d2)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d2347.75,outputRows\u003d366874,outputHeapSize\u003d4.425 MB,partitions\u003d2)\n            -\u003e  BroadcastJoin(n\u003d7,totalCost\u003d6031.233,outputRows\u003d1179878,outputHeapSize\u003d4.425 MB,partitions\u003d2,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(7136)](n\u003d6,totalCost\u003d2347.75,scannedRows\u003d1171875,outputRows\u003d366874,outputHeapSize\u003d4.425 MB,partitions\u003d2,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d8845.366,outputRows\u003d1456640,outputHeapSize\u003d4.167 MB,partitions\u003d2)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d4422.683,outputRows\u003d1456640,outputHeapSize\u003d4.167 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d8845.366,outputRows\u003d1456640,outputHeapSize\u003d4.167 MB,partitions\u003d2)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d8845.366,outputRows\u003d1456640,outputHeapSize\u003d4.167 MB,partitions\u003d2,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(7120)](n\u003d1,totalCost\u003d8832.124,scannedRows\u003d4414062,outputRows\u003d4414062,outputHeapSize\u003d4.167 MB,partitions\u003d2)\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395076257_-893719305",
       "id": "20180201-123806_1712783827",
@@ -123,7 +114,7 @@
       "title": "Splice Machine Optimizer",
       "text": "%md\n## Optimizing Query Performance\n\nIn this section we\u0027ll look at optimizing the execution plan for TPCH Query 4. We\u0027ll:\n\n* Collect Statistics to Inform the Optimizer\n* Add Indexes to Further Optimize the Plan\n* Compare Execution Plans\n\nThe *Splice Machine Optimizer* is a cost-based optimizer that generates optimal execution plans for database queries. You use our `analyze` command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\n\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\nWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\n\n* It creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\n* When joining tables, the optimizer evaluates the best *join order* and the *join strategy* to use.\n* The optimizer unrolls subqueries to reduce processing time\n\nThese metrics are usually extremely expensive but if approximate results are acceptable, there is a class of specialized algorithms, called streaming algorithms, or *sketches*, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the [Yahoo Sketches Library](https://datasketches.github.io/docs/TheChallenge.html) for its statistics gathering. \n\n### Collect Statistics\nOur first optimization is to collect statistics to inform the optimizer about our database. We use our `analyze` command to collect statistics on a schema (or table). This process requires a couple minutes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:11:01.592",
+      "dateUpdated": "2018-12-01 04:57:14.737",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -136,7 +127,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -163,9 +154,9 @@
     },
     {
       "title": "Collect Statistics",
-      "text": "%splicemachine\nanalyze schema TPCH1;\n",
+      "text": "%splicemachine\nanalyze schema DEV2_TPCH1;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:54.000",
+      "dateUpdated": "2018-12-01 04:57:31.923",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -219,15 +210,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTPCH1\tLINEITEM\t-All-\t6001215\t528106920\t2\t2\t0.0\nTPCH1\tORDERS\t-All-\t1500000\t150000000\t1\t2\t0.0\nTPCH1\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nTPCH1\tPARTSUPP\t-All-\t800000\t112000000\t1\t2\t0.0\nTPCH1\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nTPCH1\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nTPCH1\tREGION\t-All-\t5\t380\t1\t2\t0.0\nTPCH1\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395076258_2086275353",
       "id": "20180115-053719_1393443514",
@@ -239,7 +221,7 @@
     {
       "text": "%md\n### Rerun the Explain Plan After Collecting Statistics\n\nNow let\u0027s re-run the `explain` plan for Query 4 and see how the optimizer changed the plan after gathering statistics.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:11:26.731",
+      "dateUpdated": "2018-12-01 04:57:34.175",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -251,7 +233,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -277,9 +259,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tTPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
+      "dateUpdated": "2018-12-01 04:57:56.377",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -296,15 +278,6 @@
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d13,rows\u003d5,updateMode\u003d,engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d67142.113,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d2)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d67142.01,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d2)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d44761.166,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d2)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d7495.089,outputRows\u003d1604125,outputHeapSize\u003d39.056 MB,partitions\u003d2)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d434563,outputHeapSize\u003d39.056 MB,partitions\u003d2)\n            -\u003e  BroadcastJoin(n\u003d7,totalCost\u003d7495.089,outputRows\u003d1604125,outputHeapSize\u003d39.056 MB,partitions\u003d2,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(7136)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d434563,outputHeapSize\u003d39.056 MB,partitions\u003d2,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d2)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d5692.652,outputRows\u003d1557719,outputHeapSize\u003d24.512 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d2)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d2,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(7120)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d2)\n"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542395076259_1233915627",
@@ -397,9 +370,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\ndrop index TPCH1.O_CUST_IDX;\ndrop index TPCH1.O_DATE_PRI_KEY_IDX;\ndrop index TPCH1.L_SHIPDATE_IDX;\ndrop index TPCH1.L_PART_IDX;",
+      "text": "%splicemachine\ndrop index DEV2_TPCH1.O_CUST_IDX;\ndrop index DEV2_TPCH1.O_DATE_PRI_KEY_IDX;\ndrop index DEV2_TPCH1.L_SHIPDATE_IDX;\ndrop index DEV2_TPCH1.L_PART_IDX;",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
+      "dateUpdated": "2018-12-01 04:58:13.143",
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -448,9 +421,9 @@
     },
     {
       "title": "Create Indexes",
-      "text": "%splicemachine\ncreate index TPCH1.O_CUST_IDX on TPCH1.ORDERS(\n O_CUSTKEY,\n O_ORDERKEY\n );\n \n create index TPCH1.O_DATE_PRI_KEY_IDX on TPCH1.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n \n create index TPCH1.L_SHIPDATE_IDX on TPCH1.LINEITEM(\n L_SHIPDATE,\n L_PARTKEY,\n L_EXTENDEDPRICE,\n L_DISCOUNT\n );\n \n create index TPCH1.L_PART_IDX on TPCH1.LINEITEM(\n L_PARTKEY,\n L_ORDERKEY,\n L_SUPPKEY,\n L_SHIPDATE,\n L_EXTENDEDPRICE,\n L_DISCOUNT,\n L_QUANTITY,\n L_SHIPMODE,\n L_SHIPINSTRUCT\n );",
+      "text": "%splicemachine\ncreate index DEV2_TPCH1.O_CUST_IDX on DEV2_TPCH1.ORDERS(\n O_CUSTKEY,\n O_ORDERKEY\n );\n \n create index DEV2_TPCH1.O_DATE_PRI_KEY_IDX on DEV2_TPCH1.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n \n create index TPCH1.L_SHIPDATE_IDX on TPCH1.LINEITEM(\n L_SHIPDATE,\n L_PARTKEY,\n L_EXTENDEDPRICE,\n L_DISCOUNT\n );\n \n create index TPCH1.L_PART_IDX on TPCH1.LINEITEM(\n L_PARTKEY,\n L_ORDERKEY,\n L_SUPPKEY,\n L_SHIPDATE,\n L_EXTENDEDPRICE,\n L_DISCOUNT,\n L_QUANTITY,\n L_SHIPMODE,\n L_SHIPINSTRUCT\n );",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
+      "dateUpdated": "2018-12-01 04:58:35.045",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -468,27 +441,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395076262_-1758413344",
       "id": "20180115-055326_1726784632",
@@ -500,7 +452,7 @@
     {
       "text": "%md\n### Analyze and Explain Again After Indexing\n\nNow that we\u0027ve added indexes to our database, let\u0027s re-analyze the database and then re-run the `explain` plan for Query 4 one more time to see how indexing has affected our execution plan.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:13:24.577",
+      "dateUpdated": "2018-12-01 04:59:00.567",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -512,7 +464,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -538,9 +490,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nanalyze schema TPCH1;",
+      "text": "%splicemachine\nanalyze schema DEV2_TPCH1;",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:54.000",
+      "dateUpdated": "2018-12-01 04:59:11.369",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -592,15 +544,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTPCH1\tLINEITEM\t-All-\t6001215\t528106920\t2\t2\t0.0\nTPCH1\tORDERS\t-All-\t1500000\t150000000\t1\t2\t0.0\nTPCH1\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nTPCH1\tPARTSUPP\t-All-\t800000\t112000000\t1\t2\t0.0\nTPCH1\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nTPCH1\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nTPCH1\tREGION\t-All-\t5\t380\t1\t2\t0.0\nTPCH1\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395076263_840107085",
       "id": "20180115-075331_1211951910",
@@ -610,9 +553,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tTPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
+      "dateUpdated": "2018-12-01 04:59:29.911",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -629,15 +572,6 @@
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d14,rows\u003d5,updateMode\u003d,engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d13,totalCost\u003d63851.66,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d2)\n    -\u003e  OrderBy(n\u003d12,totalCost\u003d63851.557,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d2)\n      -\u003e  ProjectRestrict(n\u003d11,totalCost\u003d42567.538,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d2)\n        -\u003e  GroupBy(n\u003d10,totalCost\u003d6032.67,outputRows\u003d1604125,outputHeapSize\u003d39.056 MB,partitions\u003d2)\n          -\u003e  ProjectRestrict(n\u003d9,totalCost\u003d6001884,outputRows\u003d434563,outputHeapSize\u003d39.056 MB,partitions\u003d2)\n            -\u003e  BroadcastJoin(n\u003d8,totalCost\u003d6032.67,outputRows\u003d1604125,outputHeapSize\u003d39.056 MB,partitions\u003d2,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  ProjectRestrict(n\u003d7,totalCost\u003d6001884,outputRows\u003d434563,outputHeapSize\u003d39.056 MB,partitions\u003d2)\n                -\u003e  IndexScan[O_DATE_PRI_KEY_IDX(7265)](n\u003d6,totalCost\u003d1541.581,scannedRows\u003d1156076,outputRows\u003d434563,outputHeapSize\u003d39.056 MB,partitions\u003d2,baseTable\u003dORDERS(7136),preds\u003d[(O_ORDERDATE[5:1] \u003c dataTypeServices: DATE ),(O_ORDERDATE[5:1] \u003e\u003d 1993-07-01)])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d2)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d5692.652,outputRows\u003d1557719,outputHeapSize\u003d24.512 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d2)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d2,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(7120)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d2)\n"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542395076264_805638871",
@@ -783,15 +717,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "S_ACCTBAL\tS_NAME\tN_NAME\tP_PARTKEY\tP_MFGR\tS_ADDRESS\tS_PHONE\tS_COMMENT\n9938.53\tSupplier#000005359\tUNITED KINGDOM\t185358\tManufacturer#4\tQKuHYh,vZGiwu2FWEJoLDx04\t33-429-790-6131\turiously regular requests hag\n9937.84\tSupplier#000005969\tROMANIA\t108438\tManufacturer#1\tANDENSOSmk,miq23Xfb5RWt6dvUcvt6Qa\t29-520-692-3537\tefully express instructions. regular requests against the slyly fin\n9936.22\tSupplier#000005250\tUNITED KINGDOM\t249\tManufacturer#4\tB3rqp0xbSEim4Mpy2RH J\t33-320-228-2957\tetect about the furiously final accounts. slyly ironic pinto beans sleep inside the furiously\n9923.77\tSupplier#000002324\tGERMANY\t29821\tManufacturer#4\ty3OD9UywSTOk\t17-779-299-1839\tackages boost blithely. blithely regular deposits c\n9871.22\tSupplier#000006373\tGERMANY\t43868\tManufacturer#5\tJ8fcXWsTqM\t17-813-485-8637\tetect blithely bold asymptotes. fluffily ironic platelets wake furiously; blit\n9870.78\tSupplier#000001286\tGERMANY\t81285\tManufacturer#2\tYKA,E2fjiVd7eUrzp2Ef8j1QxGo2DFnosaTEH\t17-516-924-4574\t regular accounts. furiously unusual courts above the fi\n9870.78\tSupplier#000001286\tGERMANY\t181285\tManufacturer#4\tYKA,E2fjiVd7eUrzp2Ef8j1QxGo2DFnosaTEH\t17-516-924-4574\t regular accounts. furiously unusual courts above the fi\n9852.52\tSupplier#000008973\tRUSSIA\t18972\tManufacturer#2\tt5L67YdBYYH6o,Vz24jpDyQ9\t32-188-594-7038\trns wake final foxes. carefully unusual depende\n9847.83\tSupplier#000008097\tRUSSIA\t130557\tManufacturer#2\txMe97bpE69NzdwLoX\t32-375-640-3593\t the special excuses. silent sentiments serve carefully final ac\n9847.57\tSupplier#000006345\tFRANCE\t86344\tManufacturer#1\tVSt3rzk3qG698u6ld8HhOByvrTcSTSvQlDQDag\t16-886-766-7945\tges. slyly regular requests are. ruthless, express excuses cajole blithely across the unu\n9847.57\tSupplier#000006345\tFRANCE\t173827\tManufacturer#2\tVSt3rzk3qG698u6ld8HhOByvrTcSTSvQlDQDag\t16-886-766-7945\tges. slyly regular requests are. ruthless, express excuses cajole blithely across the unu\n9836.93\tSupplier#000007342\tRUSSIA\t4841\tManufacturer#4\tJOlK7C1,7xrEZSSOw\t32-399-414-5385\tblithely carefully bold theodolites. fur\n9817.10\tSupplier#000002352\tRUSSIA\t124815\tManufacturer#2\t4LfoHUZjgjEbAKw TgdKcgOc4D4uCYw\t32-551-831-1437\twake carefully alongside of the carefully final ex\n9817.10\tSupplier#000002352\tRUSSIA\t152351\tManufacturer#3\t4LfoHUZjgjEbAKw TgdKcgOc4D4uCYw\t32-551-831-1437\twake carefully alongside of the carefully final ex\n9739.86\tSupplier#000003384\tFRANCE\t138357\tManufacturer#2\to,Z3v4POifevE k9U1b 6J1ucX,I\t16-494-913-5925\ts after the furiously bold packages sleep fluffily idly final requests: quickly final\n9721.95\tSupplier#000008757\tUNITED KINGDOM\t156241\tManufacturer#3\tAtg6GnM4dT2\t33-821-407-2995\teep furiously sauternes; quickl\n9681.33\tSupplier#000008406\tRUSSIA\t78405\tManufacturer#1\t,qUuXcftUl\t32-139-873-8571\thaggle slyly regular excuses. quic\n9643.55\tSupplier#000005148\tROMANIA\t107617\tManufacturer#1\tkT4ciVFslx9z4s79p Js825\t29-252-617-4850\tfinal excuses. final ideas boost quickly furiously speci\n9624.82\tSupplier#000001816\tFRANCE\t34306\tManufacturer#3\te7vab91vLJPWxxZnewmnDBpDmxYHrb\t16-392-237-6726\te packages are around the special ideas. special, pending foxes us\n9624.78\tSupplier#000009658\tROMANIA\t189657\tManufacturer#1\toE9uBgEfSS4opIcepXyAYM,x\t29-748-876-2014\tronic asymptotes wake bravely final\n9612.94\tSupplier#000003228\tROMANIA\t120715\tManufacturer#2\tKDdpNKN3cWu7ZSrbdqp7AfSLxx,qWB\t29-325-784-8187\twarhorses. quickly even deposits sublate daringly ironic instructions. slyly blithe t\n9612.94\tSupplier#000003228\tROMANIA\t198189\tManufacturer#4\tKDdpNKN3cWu7ZSrbdqp7AfSLxx,qWB\t29-325-784-8187\twarhorses. quickly even deposits sublate daringly ironic instructions. slyly blithe t\n9571.83\tSupplier#000004305\tROMANIA\t179270\tManufacturer#2\tqNHZ7WmCzygwMPRDO9Ps\t29-973-481-1831\tkly carefully express asymptotes. furiou\n9558.10\tSupplier#000003532\tUNITED KINGDOM\t88515\tManufacturer#4\tEOeuiiOn21OVpTlGguufFDFsbN1p0lhpxHp\t33-152-301-2164\t foxes. quickly even excuses use. slyly special foxes nag bl\n9492.79\tSupplier#000005975\tGERMANY\t25974\tManufacturer#5\tS6mIiCTx82z7lV\t17-992-579-4839\tarefully pending accounts. blithely regular excuses boost carefully carefully ironic p\n9461.05\tSupplier#000002536\tUNITED KINGDOM\t20033\tManufacturer#1\t8mmGbyzaU 7ZS2wJumTibypncu9pNkDc4FYA\t33-556-973-5522\t. slyly regular deposits wake slyly. furiously regular warthogs are.\n9453.01\tSupplier#000000802\tROMANIA\t175767\tManufacturer#1\t,6HYXb4uaHITmtMBj4Ak57Pd\t29-342-882-6463\tgular frets. permanently special multipliers believe blithely alongs\n9408.65\tSupplier#000007772\tUNITED KINGDOM\t117771\tManufacturer#4\tAiC5YAH,gdu0i7\t33-152-491-1126\tnag against the final requests. furiously unusual packages cajole blit\n9359.61\tSupplier#000004856\tROMANIA\t62349\tManufacturer#5\tHYogcF3Jb yh1\t29-334-870-9731\ty ironic theodolites. blithely sile\n9357.45\tSupplier#000006188\tUNITED KINGDOM\t138648\tManufacturer#1\tg801,ssP8wpTk4Hm\t33-583-607-1633\tously always regular packages. fluffily even accounts beneath the furiously final pack\n9352.04\tSupplier#000003439\tGERMANY\t170921\tManufacturer#4\tqYPDgoiBGhCYxjgC\t17-128-996-4650\t according to the carefully bold ideas\n9312.97\tSupplier#000007807\tRUSSIA\t90279\tManufacturer#5\toGYMPCk9XHGB2PBfKRnHA\t32-673-872-5854\tecial packages among the pending, even requests use regula\n9312.97\tSupplier#000007807\tRUSSIA\t100276\tManufacturer#5\toGYMPCk9XHGB2PBfKRnHA\t32-673-872-5854\tecial packages among the pending, even requests use regula\n9280.27\tSupplier#000007194\tROMANIA\t47193\tManufacturer#3\tzhRUQkBSrFYxIAXTfInj vyGRQjeK\t29-318-454-2133\to beans haggle after the furiously unusual deposits. carefully silent dolphins cajole carefully\n9274.80\tSupplier#000008854\tRUSSIA\t76346\tManufacturer#3\t1xhLoOUM7I3mZ1mKnerw OSqdbb4QbGa\t32-524-148-5221\ty. courts do wake slyly. carefully ironic platelets haggle above the slyly regular the\n9249.35\tSupplier#000003973\tFRANCE\t26466\tManufacturer#1\td18GiDsL6Wm2IsGXM,RZf1jCsgZAOjNYVThTRP4\t16-722-866-1658\tuests are furiously. regular tithes through the regular, final accounts cajole furiously above the q\n9249.35\tSupplier#000003973\tFRANCE\t33972\tManufacturer#1\td18GiDsL6Wm2IsGXM,RZf1jCsgZAOjNYVThTRP4\t16-722-866-1658\tuests are furiously. regular tithes through the regular, final accounts cajole furiously above the q\n9208.70\tSupplier#000007769\tROMANIA\t40256\tManufacturer#5\trsimdze 5o9P Ht7xS\t29-964-424-9649\tlites was quickly above the furiously ironic requests. slyly even foxes against the blithely bold \n9201.47\tSupplier#000009690\tUNITED KINGDOM\t67183\tManufacturer#5\tCB BnUTlmi5zdeEl7R7\t33-121-267-9529\te even, even foxes. blithely ironic packages cajole regular packages. slyly final ide\n9192.10\tSupplier#000000115\tUNITED KINGDOM\t85098\tManufacturer#3\tnJ 2t0f7Ve,wL1,6WzGBJLNBUCKlsV\t33-597-248-1220\tes across the carefully express accounts boost caref\n9189.98\tSupplier#000001226\tGERMANY\t21225\tManufacturer#4\tqsLCqSvLyZfuXIpjz\t17-725-903-1381\t deposits. blithely bold excuses about the slyly bold forges wake \n9128.97\tSupplier#000004311\tRUSSIA\t146768\tManufacturer#5\tI8IjnXd7NSJRs594RxsRR0\t32-155-440-7120\trefully. blithely unusual asymptotes haggle \n9104.83\tSupplier#000008520\tGERMANY\t150974\tManufacturer#4\tRqRVDgD0ER J9 b41vR2,3\t17-728-804-1793\tly about the blithely ironic depths. slyly final theodolites among the fluffily bold ideas print\n9101.00\tSupplier#000005791\tROMANIA\t128254\tManufacturer#5\tzub2zCV,jhHPPQqi,P2INAjE1zI n66cOEoXFG\t29-549-251-5384\tts. notornis detect blithely above the carefully bold requests. blithely even package\n9094.57\tSupplier#000004582\tRUSSIA\t39575\tManufacturer#1\tWB0XkCSG3r,mnQ n,h9VIxjjr9ARHFvKgMDf\t32-587-577-1351\tjole. regular accounts sleep blithely frets. final pinto beans play furiously past the \n8996.87\tSupplier#000004702\tFRANCE\t102191\tManufacturer#5\t8XVcQK23akp\t16-811-269-8946\tickly final packages along the express plat\n8996.14\tSupplier#000009814\tROMANIA\t139813\tManufacturer#2\taf0O5pg83lPU4IDVmEylXZVqYZQzSDlYLAmR\t29-995-571-8781\t dependencies boost quickly across the furiously pending requests! unusual dolphins play sl\n8968.42\tSupplier#000010000\tROMANIA\t119999\tManufacturer#5\taTGLEusCiL4F PDBdv665XBJhPyCOB0i\t29-578-432-2146\tly regular foxes boost slyly. quickly special waters boost carefully ironi\n8936.82\tSupplier#000007043\tUNITED KINGDOM\t109512\tManufacturer#1\tFVajceZInZdbJE6Z9XsRUxrUEpiwHDrOXi,1Rz\t33-784-177-8208\tefully regular courts. furiousl\n8929.42\tSupplier#000008770\tFRANCE\t173735\tManufacturer#4\tR7cG26TtXrHAP9 HckhfRi\t16-242-746-9248\tcajole furiously unusual requests. quickly stealthy requests are. \n8920.59\tSupplier#000003967\tROMANIA\t26460\tManufacturer#1\teHoAXe62SY9\t29-194-731-3944\taters. express, pending instructions sleep. brave, r\n8920.59\tSupplier#000003967\tROMANIA\t173966\tManufacturer#2\teHoAXe62SY9\t29-194-731-3944\taters. express, pending instructions sleep. brave, r\n8913.96\tSupplier#000004603\tUNITED KINGDOM\t137063\tManufacturer#2\tOUzlvMUr7n,utLxmPNeYKSf3T24OXskxB5\t33-789-255-7342\t haggle slyly above the furiously regular pinto beans. even \n8877.82\tSupplier#000007967\tFRANCE\t167966\tManufacturer#5\tA3pi1BARM4nx6R,qrwFoRPU\t16-442-147-9345\tously foxes. express, ironic requests im\n8862.24\tSupplier#000003323\tROMANIA\t73322\tManufacturer#3\tW9 lYcsC9FwBqk3ItL\t29-736-951-3710\tly pending ideas sleep about the furiously unu\n8841.59\tSupplier#000005750\tROMANIA\t100729\tManufacturer#5\tErx3lAgu0g62iaHF9x50uMH4EgeN9hEG\t29-344-502-5481\tgainst the pinto beans. fluffily unusual dependencies affix slyly even deposits.\n8781.71\tSupplier#000003121\tROMANIA\t13120\tManufacturer#5\twNqTogx238ZYCamFb,50v,bj 4IbNFW9Bvw1xP\t29-707-291-5144\ts wake quickly ironic ideas\n8754.24\tSupplier#000009407\tUNITED KINGDOM\t179406\tManufacturer#4\tCHRCbkaWcf5B\t33-903-970-9604\te ironic requests. carefully even foxes above the furious\n8691.06\tSupplier#000004429\tUNITED KINGDOM\t126892\tManufacturer#2\tk,BQms5UhoAF1B2Asi,fLib\t33-964-337-5038\tefully express deposits kindle after the deposits. final \n8655.99\tSupplier#000006330\tRUSSIA\t193810\tManufacturer#2\tUozlaENr0ytKe2w6CeIEWFWn iO3S8Rae7Ou\t32-561-198-3705\tsymptotes use about the express dolphins. requests use after the express platelets. final, ex\n8638.36\tSupplier#000002920\tRUSSIA\t75398\tManufacturer#1\tJe2a8bszf3L\t32-122-621-7549\tly quickly ironic requests. even requests whithout t\n8638.36\tSupplier#000002920\tRUSSIA\t170402\tManufacturer#3\tJe2a8bszf3L\t32-122-621-7549\tly quickly ironic requests. even requests whithout t\n8607.69\tSupplier#000006003\tUNITED KINGDOM\t76002\tManufacturer#2\tEH9wADcEiuenM0NR08zDwMidw,52Y2RyILEiA\t33-416-807-5206\tar, pending accounts. pending depende\n8569.52\tSupplier#000005936\tRUSSIA\t5935\tManufacturer#5\tjXaNZ6vwnEWJ2ksLZJpjtgt0bY2a3AU\t32-644-251-7916\t. regular foxes nag carefully atop the regular, silent deposits. quickly regular packages \n8564.12\tSupplier#000000033\tGERMANY\t110032\tManufacturer#1\tgfeKpYw3400L0SDywXA6Ya1Qmq1w6YB9f3R\t17-138-897-9374\tn sauternes along the regular asymptotes are regularly along the \n8553.82\tSupplier#000003979\tROMANIA\t143978\tManufacturer#4\tBfmVhCAnCMY3jzpjUMy4CNWs9 HzpdQR7INJU\t29-124-646-4897\tic requests wake against the blithely unusual accounts. fluffily r\n8517.23\tSupplier#000009529\tRUSSIA\t37025\tManufacturer#5\te44R8o7JAIS9iMcr\t32-565-297-8775\tove the even courts. furiously special platelets \n8517.23\tSupplier#000009529\tRUSSIA\t59528\tManufacturer#2\te44R8o7JAIS9iMcr\t32-565-297-8775\tove the even courts. furiously special platelets \n8503.70\tSupplier#000006830\tRUSSIA\t44325\tManufacturer#4\tBC4WFCYRUZyaIgchU 4S\t32-147-878-5069\tpades cajole. furious packages among the carefully express excuses boost furiously across th\n8457.09\tSupplier#000009456\tUNITED KINGDOM\t19455\tManufacturer#1\t7SBhZs8gP1cJjT0Qf433YBk\t33-858-440-4349\tcing requests along the furiously unusual deposits promise among the furiously unus\n8441.40\tSupplier#000003817\tFRANCE\t141302\tManufacturer#2\thU3fz3xL78\t16-339-356-5115\tely even ideas. ideas wake slyly furiously unusual instructions. pinto beans sleep ag\n8432.89\tSupplier#000003990\tRUSSIA\t191470\tManufacturer#1\twehBBp1RQbfxAYDASS75MsywmsKHRVdkrvNe6m\t32-839-509-9301\tep furiously. packages should have to haggle slyly across the deposits. furiously regu\n8431.40\tSupplier#000002675\tROMANIA\t5174\tManufacturer#1\tHJFStOu9R5NGPOegKhgbzBdyvrG2yh8w\t29-474-643-1443\tithely express pinto beans. blithely even foxes haggle. furiously regular theodol\n8407.04\tSupplier#000005406\tRUSSIA\t162889\tManufacturer#4\tj7 gYF5RW8DC5UrjKC\t32-626-152-4621\tr the blithely regular packages. slyly ironic theodoli\n8386.08\tSupplier#000008518\tFRANCE\t36014\tManufacturer#3\t2jqzqqAVe9crMVGP,n9nTsQXulNLTUYoJjEDcqWV\t16-618-780-7481\tblithely bold pains are carefully platelets. finally regular pinto beans sleep carefully special\n8376.52\tSupplier#000005306\tUNITED KINGDOM\t190267\tManufacturer#5\t9t8Y8 QqSIsoADPt6NLdk,TP5zyRx41oBUlgoGc9\t33-632-514-7931\tly final accounts sleep special, regular requests. furiously regular\n8348.74\tSupplier#000008851\tFRANCE\t66344\tManufacturer#4\tnWxi7GwEbjhw1\t16-796-240-2472\t boldly final deposits. regular, even instructions detect slyly. fluffily unusual pinto bea\n8338.58\tSupplier#000007269\tFRANCE\t17268\tManufacturer#4\tZwhJSwABUoiB04,3\t16-267-277-4365\tiously final accounts. even pinto beans cajole slyly regular\n8328.46\tSupplier#000001744\tROMANIA\t69237\tManufacturer#5\toLo3fV64q2,FKHa3p,qHnS7Yzv,ps8\t29-330-728-5873\tep carefully-- even, careful packages are slyly along t\n8307.93\tSupplier#000003142\tGERMANY\t18139\tManufacturer#1\tdqblvV8dCNAorGlJ\t17-595-447-6026\tolites wake furiously regular decoys. final requests nod \n8231.61\tSupplier#000009558\tRUSSIA\t192000\tManufacturer#2\tmcdgen,yT1iJDHDS5fV\t32-762-137-5858\t foxes according to the furi\n8152.61\tSupplier#000002731\tROMANIA\t15227\tManufacturer#4\t nluXJCuY1tu\t29-805-463-2030\t special requests. even, regular warhorses affix among the final gr\n8109.09\tSupplier#000009186\tFRANCE\t99185\tManufacturer#1\twgfosrVPexl9pEXWywaqlBMDYYf\t16-668-570-1402\ttions haggle slyly about the sil\n8102.62\tSupplier#000003347\tUNITED KINGDOM\t18344\tManufacturer#5\tm CtXS2S16i\t33-454-274-8532\tegrate with the slyly bold instructions. special foxes haggle silently among the\n8046.07\tSupplier#000008780\tFRANCE\t191222\tManufacturer#3\tAczzuE0UK9osj ,Lx0Jmh\t16-473-215-6395\tonic platelets cajole after the regular instructions. permanently bold excuses\n8042.09\tSupplier#000003245\tRUSSIA\t135705\tManufacturer#4\tDh8Ikg39onrbOL4DyTfGw8a9oKUX3d9Y\t32-836-132-8872\tosits. packages cajole slyly. furiously regular deposits cajole slyly. q\n8042.09\tSupplier#000003245\tRUSSIA\t150729\tManufacturer#1\tDh8Ikg39onrbOL4DyTfGw8a9oKUX3d9Y\t32-836-132-8872\tosits. packages cajole slyly. furiously regular deposits cajole slyly. q\n7992.40\tSupplier#000006108\tFRANCE\t118574\tManufacturer#1\t8tBydnTDwUqfBfFV4l3\t16-974-998-8937\t ironic ideas? fluffily even instructions wake. blithel\n7980.65\tSupplier#000001288\tFRANCE\t13784\tManufacturer#4\tzE,7HgVPrCn\t16-646-464-8247\tully bold courts. escapades nag slyly. furiously fluffy theodo\n7950.37\tSupplier#000008101\tGERMANY\t33094\tManufacturer#5\tkkYvL6IuvojJgTNG IKkaXQDYgx8ILohj\t17-627-663-8014\tarefully unusual requests x-ray above the quickly final deposits. \n7937.93\tSupplier#000009012\tROMANIA\t83995\tManufacturer#2\tiUiTziH,Ek3i4lwSgunXMgrcTzwdb\t29-250-925-9690\tto the blithely ironic deposits nag sly\n7914.45\tSupplier#000001013\tRUSSIA\t125988\tManufacturer#2\triRcntps4KEDtYScjpMIWeYF6mNnR\t32-194-698-3365\t busily bold packages are dolphi\n7912.91\tSupplier#000004211\tGERMANY\t159180\tManufacturer#5\t2wQRVovHrm3,v03IKzfTd,1PYsFXQFFOG\t17-266-947-7315\tay furiously regular platelets. cou\n7912.91\tSupplier#000004211\tGERMANY\t184210\tManufacturer#4\t2wQRVovHrm3,v03IKzfTd,1PYsFXQFFOG\t17-266-947-7315\tay furiously regular platelets. cou\n7894.56\tSupplier#000007981\tGERMANY\t85472\tManufacturer#4\tNSJ96vMROAbeXP\t17-963-404-3760\tic platelets affix after the furiously\n7887.08\tSupplier#000009792\tGERMANY\t164759\tManufacturer#3\tY28ITVeYriT3kIGdV2K8fSZ V2UqT5H1Otz\t17-988-938-4296\tckly around the carefully fluffy theodolites. slyly ironic pack\n7871.50\tSupplier#000007206\tRUSSIA\t104695\tManufacturer#1\t3w fNCnrVmvJjE95sgWZzvW\t32-432-452-7731\tironic requests. furiously final theodolites cajole. final, express packages sleep. quickly reg\n7852.45\tSupplier#000005864\tRUSSIA\t8363\tManufacturer#4\tWCNfBPZeSXh3h,c\t32-454-883-3821\tusly unusual pinto beans. brave ideas sleep carefully quickly ironi\n7850.66\tSupplier#000001518\tUNITED KINGDOM\t86501\tManufacturer#1\tONda3YJiHKJOC\t33-730-383-3892\tifts haggle fluffily pending pai\n7843.52\tSupplier#000006683\tFRANCE\t11680\tManufacturer#4\t2Z0JGkiv01Y00oCFwUGfviIbhzCdy\t16-464-517-8943\t express, final pinto beans x-ray slyly asymptotes. unusual, unusual\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395076267_271039718",
       "id": "20180115-083845_542565773",
@@ -804,7 +729,7 @@
       "title": "Representative Micro-Benchmarks",
       "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in \u003c100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 19:19:25.805",
+      "dateUpdated": "2018-12-01 05:00:09.129",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -817,7 +742,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -845,7 +770,7 @@
     {
       "text": "%md\n## Where to Go Next\n\nThe next notebook in this class shows you how you can [*Visualize Results in Zeppelin*](/#/notebook/2DY6YKEVA).",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:57:18.299",
+      "dateUpdated": "2018-12-01 05:00:13.255",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -857,7 +782,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -881,34 +806,6 @@
       "dateFinished": "2018-11-20 10:57:18.305",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395076269_-481006599",
-      "id": "20180125-142959_1101825868",
-      "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Developers, Part II - Intermediate/d. The Life of a Query",
@@ -917,7 +814,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

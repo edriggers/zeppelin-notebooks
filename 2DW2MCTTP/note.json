@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\nIn this notebook, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. About TPCH Data*\n* *2. Creating the Tables*\n* *3. Importing TPCH-1 Data From S3*\n* *4. Creating Indexes*\n* *5. Compacting and Collecting Statistics*\n* *6. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:03:08.255",
+      "dateUpdated": "2018-12-01 04:19:15.048",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -16,7 +16,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -41,21 +41,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 1. Creating the Tables\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  next paragraph to create the `TPCH1` schema and tables in your database:\n",
+      "text": "%md\n\n## 1. Creating the Tables\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  next paragraph to create the `DEV2_TPCH1` schema and tables in your database:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:20:51.515",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -66,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating the Tables\u003c/h2\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph next paragraph to create the \u003ccode\u003eTPCH1\u003c/code\u003e schema and tables in your database:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating the Tables\u003c/h2\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph next paragraph to create the \u003ccode\u003eDEV2_TPCH1\u003c/code\u003e schema and tables in your database:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -74,15 +75,16 @@
       "jobName": "paragraph_1542394755824_-1820910494",
       "id": "20171016-140050_518907300",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 04:20:44.484",
+      "dateFinished": "2018-12-01 04:20:44.499",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Create Tables",
-      "text": "%splicemachine\nCREATE SCHEMA TPCH1;\n\nCREATE TABLE TPCH1.LINEITEM (\n L_ORDERKEY BIGINT NOT NULL,\n L_PARTKEY INTEGER NOT NULL,\n L_SUPPKEY INTEGER NOT NULL, \n L_LINENUMBER INTEGER NOT NULL, \n L_QUANTITY DECIMAL(15,2),\n L_EXTENDEDPRICE DECIMAL(15,2),\n L_DISCOUNT DECIMAL(15,2),\n L_TAX DECIMAL(15,2),\n L_RETURNFLAG VARCHAR(1), \n L_LINESTATUS VARCHAR(1),\n L_SHIPDATE DATE,\n L_COMMITDATE DATE,\n L_RECEIPTDATE DATE,\n L_SHIPINSTRUCT VARCHAR(25),\n L_SHIPMODE VARCHAR(10),\n L_COMMENT VARCHAR(44),\n PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)\n );\n \n CREATE TABLE TPCH1.ORDERS (\n O_ORDERKEY BIGINT NOT NULL PRIMARY KEY,\n O_CUSTKEY INTEGER,\n O_ORDERSTATUS VARCHAR(1),\n O_TOTALPRICE DECIMAL(15,2),\n O_ORDERDATE DATE,\n O_ORDERPRIORITY VARCHAR(15),\n O_CLERK VARCHAR(15),\n O_SHIPPRIORITY INTEGER ,\n O_COMMENT VARCHAR(79)\n );\n \n CREATE TABLE TPCH1.CUSTOMER (\n C_CUSTKEY INTEGER NOT NULL PRIMARY KEY,\n C_NAME VARCHAR(25),\n C_ADDRESS VARCHAR(40),\n C_NATIONKEY INTEGER NOT NULL,\n C_PHONE VARCHAR(15),\n C_ACCTBAL DECIMAL(15,2),\n C_MKTSEGMENT VARCHAR(10),\n C_COMMENT VARCHAR(117)\n );\n \n CREATE TABLE TPCH1.PARTSUPP (\n PS_PARTKEY INTEGER NOT NULL ,\n PS_SUPPKEY INTEGER NOT NULL , \n PS_AVAILQTY INTEGER,\n PS_SUPPLYCOST DECIMAL(15,2),\n PS_COMMENT VARCHAR(199),\n PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY) \n );\n \n CREATE TABLE TPCH1.SUPPLIER (\n S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,\n S_NAME VARCHAR(25) ,\n S_ADDRESS VARCHAR(40) ,\n S_NATIONKEY INTEGER ,\n S_PHONE VARCHAR(15) ,\n S_ACCTBAL DECIMAL(15,2),\n S_COMMENT VARCHAR(101)\n );\n \n CREATE TABLE TPCH1.PART (\n P_PARTKEY INTEGER NOT NULL PRIMARY KEY,\n P_NAME VARCHAR(55) ,\n P_MFGR VARCHAR(25) ,\n P_BRAND VARCHAR(10) ,\n P_TYPE VARCHAR(25) ,\n P_SIZE INTEGER ,\n P_CONTAINER VARCHAR(10) ,\n P_RETAILPRICE DECIMAL(15,2),\n P_COMMENT VARCHAR(23)\n );\n \n CREATE TABLE TPCH1.REGION (\n R_REGIONKEY INTEGER NOT NULL PRIMARY KEY,\n R_NAME VARCHAR(25),\n R_COMMENT VARCHAR(152)\n );\n \n CREATE TABLE TPCH1.NATION (\n N_NATIONKEY INTEGER NOT NULL,\n N_NAME VARCHAR(25),\n N_REGIONKEY INTEGER NOT NULL,\n N_COMMENT VARCHAR(152),\n PRIMARY KEY (N_NATIONKEY)\n );",
+      "text": "%splicemachine\nCREATE SCHEMA DEV2_TPCH1;\n\nCREATE TABLE TPCH1.LINEITEM (\n L_ORDERKEY BIGINT NOT NULL,\n L_PARTKEY INTEGER NOT NULL,\n L_SUPPKEY INTEGER NOT NULL, \n L_LINENUMBER INTEGER NOT NULL, \n L_QUANTITY DECIMAL(15,2),\n L_EXTENDEDPRICE DECIMAL(15,2),\n L_DISCOUNT DECIMAL(15,2),\n L_TAX DECIMAL(15,2),\n L_RETURNFLAG VARCHAR(1), \n L_LINESTATUS VARCHAR(1),\n L_SHIPDATE DATE,\n L_COMMITDATE DATE,\n L_RECEIPTDATE DATE,\n L_SHIPINSTRUCT VARCHAR(25),\n L_SHIPMODE VARCHAR(10),\n L_COMMENT VARCHAR(44),\n PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)\n );\n \n CREATE TABLE TPCH1.ORDERS (\n O_ORDERKEY BIGINT NOT NULL PRIMARY KEY,\n O_CUSTKEY INTEGER,\n O_ORDERSTATUS VARCHAR(1),\n O_TOTALPRICE DECIMAL(15,2),\n O_ORDERDATE DATE,\n O_ORDERPRIORITY VARCHAR(15),\n O_CLERK VARCHAR(15),\n O_SHIPPRIORITY INTEGER ,\n O_COMMENT VARCHAR(79)\n );\n \n CREATE TABLE TPCH1.CUSTOMER (\n C_CUSTKEY INTEGER NOT NULL PRIMARY KEY,\n C_NAME VARCHAR(25),\n C_ADDRESS VARCHAR(40),\n C_NATIONKEY INTEGER NOT NULL,\n C_PHONE VARCHAR(15),\n C_ACCTBAL DECIMAL(15,2),\n C_MKTSEGMENT VARCHAR(10),\n C_COMMENT VARCHAR(117)\n );\n \n CREATE TABLE TPCH1.PARTSUPP (\n PS_PARTKEY INTEGER NOT NULL ,\n PS_SUPPKEY INTEGER NOT NULL , \n PS_AVAILQTY INTEGER,\n PS_SUPPLYCOST DECIMAL(15,2),\n PS_COMMENT VARCHAR(199),\n PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY) \n );\n \n CREATE TABLE TPCH1.SUPPLIER (\n S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,\n S_NAME VARCHAR(25) ,\n S_ADDRESS VARCHAR(40) ,\n S_NATIONKEY INTEGER ,\n S_PHONE VARCHAR(15) ,\n S_ACCTBAL DECIMAL(15,2),\n S_COMMENT VARCHAR(101)\n );\n \n CREATE TABLE TPCH1.PART (\n P_PARTKEY INTEGER NOT NULL PRIMARY KEY,\n P_NAME VARCHAR(55) ,\n P_MFGR VARCHAR(25) ,\n P_BRAND VARCHAR(10) ,\n P_TYPE VARCHAR(25) ,\n P_SIZE INTEGER ,\n P_CONTAINER VARCHAR(10) ,\n P_RETAILPRICE DECIMAL(15,2),\n P_COMMENT VARCHAR(23)\n );\n \n CREATE TABLE TPCH1.REGION (\n R_REGIONKEY INTEGER NOT NULL PRIMARY KEY,\n R_NAME VARCHAR(25),\n R_COMMENT VARCHAR(152)\n );\n \n CREATE TABLE TPCH1.NATION (\n N_NATIONKEY INTEGER NOT NULL,\n N_NAME VARCHAR(25),\n N_REGIONKEY INTEGER NOT NULL,\n N_COMMENT VARCHAR(152),\n PRIMARY KEY (N_NATIONKEY)\n );",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:20:44.407",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -102,47 +104,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394755824_-1223331692",
       "id": "20170406-153604_1986172856",
@@ -154,7 +115,7 @@
     {
       "text": "%md\n\n## 2. Importing the Data From S3\n\nWe have pre-loaded flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\n\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 19:05:14.619",
+      "dateUpdated": "2018-12-01 04:21:12.140",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -164,10 +125,10 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -178,7 +139,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing the Data From S3\u003c/h2\u003e\n\u003cp\u003eWe have pre-loaded flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing the Data From S3\u003c/h2\u003e\n\u003cp\u003eWe have pre-loaded flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -186,15 +147,16 @@
       "jobName": "paragraph_1542394755825_235164113",
       "id": "20171016-140317_176321024",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 04:21:07.053",
+      "dateFinished": "2018-12-01 04:21:07.060",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Import Data from S3",
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2_TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:14:21.299",
+      "dateUpdated": "2018-12-01 06:09:22.040",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -463,43 +425,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n6001215\t0\t1\t759863287\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n1500000\t0\t1\t171952161\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n150000\t0\t1\t24346144\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n800000\t0\t1\t118984616\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n10000\t0\t1\t1409184\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n200000\t0\t1\t24135125\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n5\t0\t1\t389\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n25\t0\t1\t2224\tNONE\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394755825_-446084919",
       "id": "20170406-153809_1285888971",
@@ -511,7 +436,7 @@
     {
       "text": "%md\n\n## 3. Creating Indexes\n\nNext we\u0027ll create indexes for our table. We\u0027ll actually run three steps in the next three paragraphs in this notebook:\n\n* Run the next paragraph to count the records in each table (without indexes), so you can what\u0027s been imported.\n* Run the following paragraph to create four indexes.\n* Finally, re-run some of the counts using the indexes and confirm that the counts are the same.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 15:56:41.960",
+      "dateUpdated": "2018-12-01 04:21:53.296",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -524,7 +449,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -550,9 +475,9 @@
     },
     {
       "title": "Run a Count on Each Table",
-      "text": "%splicemachine\n\nSELECT COUNT(*) AS LINEITEM FROM TPCH1.LINEITEM --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS ORDERS FROM TPCH1.ORDERS --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS CUSTOMER FROM TPCH1.CUSTOMER --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS PARTSUPP FROM TPCH1.PARTSUPP --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS SUPPLIER FROM TPCH1.SUPPLIER --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS PART FROM TPCH1.PART --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS REGION FROM TPCH1.REGION --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS NATION FROM TPCH1.NATION --SPLICE-PROPERTIES index\u003dnull\n;",
+      "text": "%splicemachine\n\nSELECT COUNT(*) AS LINEITEM FROM DEV2_TPCH1.LINEITEM --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS ORDERS FROM DEV2_TPCH1.ORDERS --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS CUSTOMER FROM DEV2_TPCH1.CUSTOMER --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS PARTSUPP FROM DEV2_TPCH1.PARTSUPP --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS SUPPLIER FROM DEV2_TPCH1.SUPPLIER --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS PART FROM DEV2_TPCH1.PART --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS REGION FROM DEV2_TPCH1.REGION --SPLICE-PROPERTIES index\u003dnull\n;\nSELECT COUNT(*) AS NATION FROM DEV2_TPCH1.NATION --SPLICE-PROPERTIES index\u003dnull\n;",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:25:32.356",
+      "dateUpdated": "2018-12-01 04:22:15.612",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -789,43 +714,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "LINEITEM\n6001215\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "ORDERS\n1500000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "CUSTOMER\n150000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "PARTSUPP\n800000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "SUPPLIER\n10000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "PART\n200000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "REGION\n5\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "NATION\n25\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394755827_2115696921",
       "id": "20170406-154157_316847142",
@@ -836,9 +724,9 @@
     },
     {
       "title": "Create Indexes",
-      "text": "%splicemachine\n\ncreate index TPCH1.O_CUST_IDX on TPCH1.ORDERS(\n O_CUSTKEY,\n O_ORDERKEY\n );\n \n create index TPCH1.O_DATE_PRI_KEY_IDX on TPCH1.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n \n create index TPCH1.L_SHIPDATE_IDX on TPCH1.LINEITEM(\n L_SHIPDATE,\n L_PARTKEY,\n L_EXTENDEDPRICE,\n L_DISCOUNT\n );\n \n create index TPCH1.L_PART_IDX on TPCH1.LINEITEM(\n L_PARTKEY,\n L_ORDERKEY,\n L_SUPPKEY,\n L_SHIPDATE,\n L_EXTENDEDPRICE,\n L_DISCOUNT,\n L_QUANTITY,\n L_SHIPMODE,\n L_SHIPINSTRUCT\n );",
+      "text": "%splicemachine\n\ncreate index DEV2_TPCH1.O_CUST_IDX on TPCH1.ORDERS(\n O_CUSTKEY,\n O_ORDERKEY\n );\n \n create index DEV2_TPCH1.O_DATE_PRI_KEY_IDX on TPCH1.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n \n create index DEV2_TPCH1.L_SHIPDATE_IDX on TPCH1.LINEITEM(\n L_SHIPDATE,\n L_PARTKEY,\n L_EXTENDEDPRICE,\n L_DISCOUNT\n );\n \n create index DEV2_TPCH1.L_PART_IDX on TPCH1.LINEITEM(\n L_PARTKEY,\n L_ORDERKEY,\n L_SUPPKEY,\n L_SHIPDATE,\n L_EXTENDEDPRICE,\n L_DISCOUNT,\n L_QUANTITY,\n L_SHIPMODE,\n L_SHIPINSTRUCT\n );",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:22:49.624",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -857,27 +745,6 @@
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542394755827_-1664956046",
@@ -1020,27 +887,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "ORDERS\n1500000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "ORDERS\n1500000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "LINEITEM\n6001215\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "LINEITEM\n6001215\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394755828_-1424960456",
       "id": "20170406-154442_212169007",
@@ -1052,7 +898,7 @@
     {
       "text": "%md\n\n## 4. Compacting and Collecting Statistics\n\nSince you\u0027ve just imported a large amount of data into your database, it\u0027s a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:23:02.300",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1064,7 +910,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1089,9 +935,9 @@
     },
     {
       "title": "Perform Major Compaction",
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA(\u0027TPCH1\u0027);",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA(\u0027DEV2_TPCH1\u0027);",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:23:16.531",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1105,7 +951,7 @@
         "fontSize": 9.0,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1187,15 +1033,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTPCH1\tLINEITEM\t-All-\t6001215\t528106920\t29\t2\t0.0\nTPCH1\tORDERS\t-All-\t1500000\t150000000\t6\t2\t0.0\nTPCH1\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nTPCH1\tPARTSUPP\t-All-\t800000\t112000000\t7\t2\t0.0\nTPCH1\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nTPCH1\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nTPCH1\tREGION\t-All-\t5\t380\t1\t2\t0.0\nTPCH1\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394755838_108196250",
       "id": "20170406-154656_1940284364",
@@ -1207,7 +1044,7 @@
     {
       "text": "%md\n\n## Running the TPCH-1 Queries\n\nEach of the remaining paragraphs in this notebook runs one of the TPC-H queries, starting with Query 01 and through to the last query, Query 22. You can click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in each query to run that query. \n\n\u003cp class\u003d\"noteIcon\"\u003eAlthough we include each of the TPC-H queries in this notebook, you may want to just run one or two of them for now; after you complete this course, you can always return to this notebook to run the other queries.\u003c/p\u003e\n\nNote that the final two queries in this notebook are variations of Query 01: the first changes what is selected and how the results are presented, and the second demonstrates using an input field and variable subsitution.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 19:33:57.214",
+      "dateUpdated": "2018-12-01 04:23:22.910",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1220,7 +1057,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1246,9 +1083,9 @@
     },
     {
       "title": "TPC-H Query 1",
-      "text": "%splicemachine\n-- QUERY 01\nselect\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate \u003c\u003d date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast(\u00271998-12-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 01\nselect\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tDEV2_TPCH1.lineitem\nwhere\n\tl_shipdate \u003c\u003d date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast(\u00271998-12-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:35.000",
+      "dateUpdated": "2018-12-01 04:23:54.826",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1325,15 +1162,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "L_RETURNFLAG\tL_LINESTATUS\tSUM_QTY\tSUM_BASE_PRICE\tSUM_DISC_PRICE\tSUM_CHARGE\tAVG_QTY\tAVG_PRICE\tAVG_DISC\tCOUNT_ORDER\nA\tF\t37734107.00\t56586554400.73\t53758257134.8700\t55909065222.827692\t25.5220\t38273.1297\t0.0499\t1478493\nN\tF\t991417.00\t1487504710.38\t1413082168.0541\t1469649223.194375\t25.5164\t38284.4677\t0.0500\t38854\nN\tO\t74476040.00\t111701729697.74\t106118230307.6056\t110367043872.497010\t25.5022\t38249.1179\t0.0499\t2920374\nR\tF\t37719753.00\t56568041380.90\t53741292684.6040\t55889619119.831932\t25.5057\t38250.8546\t0.0500\t1478870\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542394755840_-778021701",
       "id": "20170406-154718_1568658794",
@@ -1344,9 +1172,9 @@
     },
     {
       "title": "TPC-H Query 2",
-      "text": "%splicemachine\n-- QUERY 02\nselect\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tTPCH1.part,\n\tTPCH1.supplier,\n\tTPCH1.partsupp,\n\tTPCH1.nation,\n\tTPCH1.region\nwhere\n\tp_partkey \u003d ps_partkey\n\tand s_suppkey \u003d ps_suppkey\n\tand p_size \u003d 15\n\tand p_type like \u0027%BRASS\u0027\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027EUROPE\u0027\n\tand ps_supplycost \u003d (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tTPCH1.partsupp,\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.nation,\n\t\t\tTPCH1.region\n\t\twhere\n\t\t\tp_partkey \u003d ps_partkey\n\t\t\tand s_suppkey \u003d ps_suppkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027EUROPE\u0027\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 02\nselect\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tDEV2_TPCH1.part,\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.partsupp,\n\tDEV2_TPCH1.nation,\n\tDEV2_TPCH1.region\nwhere\n\tp_partkey \u003d ps_partkey\n\tand s_suppkey \u003d ps_suppkey\n\tand p_size \u003d 15\n\tand p_type like \u0027%BRASS\u0027\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027EUROPE\u0027\n\tand ps_supplycost \u003d (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tDEV2_TPCH1.partsupp,\n\t\t\tDEV2_TPCH1.supplier,\n\t\t\tDEV2_TPCH1.nation,\n\t\t\tDEV2_TPCH1.region\n\t\twhere\n\t\t\tp_partkey \u003d ps_partkey\n\t\t\tand s_suppkey \u003d ps_suppkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027EUROPE\u0027\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:24:42.729",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1376,9 +1204,9 @@
     },
     {
       "title": "TPC-H Query 3",
-      "text": "%splicemachine\n-- QUERY 03\nselect\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tTPCH1.customer,\n\tTPCH1.orders,\n\tTPCH1.lineitem\nwhere\n\tc_mktsegment \u003d \u0027BUILDING\u0027 \n\tand c_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand o_orderdate \u003c date(\u00271995-03-15\u0027) \n\tand l_shipdate \u003e date(\u00271995-03-15\u0027) \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 03\nselect\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tDEV2_TPCH1.customer,\n\tDEV2_TPCH1.orders,\n\tDEV2_TPCH1.lineitem\nwhere\n\tc_mktsegment \u003d \u0027BUILDING\u0027 \n\tand c_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand o_orderdate \u003c date(\u00271995-03-15\u0027) \n\tand l_shipdate \u003e date(\u00271995-03-15\u0027) \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:25:01.075",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1407,9 +1235,9 @@
     },
     {
       "title": "TPC-H Query 4",
-      "text": "%splicemachine\n-- QUERY 04\nselect\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tTPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 04\nselect\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:25:11.487",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1438,9 +1266,9 @@
     },
     {
       "title": "TPC-H Query 5",
-      "text": "%splicemachine\n-- QUERY 05\nselect\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tTPCH1.customer,\n\tTPCH1.orders,\n\tTPCH1.lineitem,\n\tTPCH1.supplier,\n\tTPCH1.nation,\n\tTPCH1.region\nwhere\n\tc_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand l_suppkey \u003d s_suppkey\n\tand c_nationkey \u003d s_nationkey\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027ASIA\u0027\n\tand o_orderdate \u003e\u003d date(\u00271994-01-01\u0027)\n\tand o_orderdate \u003c date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast(\u00271994-01-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tn_name\norder by\n\trevenue desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 05\nselect\n\tn_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue\nfrom\n\tDEV2_TPCH1.customer,\n\tDEV2_TPCH1.orders,\n\tDEV2_TPCH1.lineitem,\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.nation,\n\tDEV2_TPCH1.region\nwhere\n\tc_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand l_suppkey \u003d s_suppkey\n\tand c_nationkey \u003d s_nationkey\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027ASIA\u0027\n\tand o_orderdate \u003e\u003d date(\u00271994-01-01\u0027)\n\tand o_orderdate \u003c date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast(\u00271994-01-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tn_name\norder by\n\trevenue desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:25:26.438",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1469,9 +1297,9 @@
     },
     {
       "title": "TPC-H Query 6",
-      "text": "%splicemachine\n-- QUERY 06\nselect\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate \u003e\u003d date(\u00271994-01-01\u0027)\n\tand l_shipdate \u003c date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast(\u00271994-01-01 00:00:00\u0027 as timestamp))})\n\tand l_discount between .06 - 0.01 and .06 + 0.01\n\tand l_quantity \u003c 24\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 06\nselect\n\tsum(l_extendedprice * l_discount) as revenue\nfrom\n\tDEV2_TPCH1.lineitem\nwhere\n\tl_shipdate \u003e\u003d date(\u00271994-01-01\u0027)\n\tand l_shipdate \u003c date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast(\u00271994-01-01 00:00:00\u0027 as timestamp))})\n\tand l_discount between .06 - 0.01 and .06 + 0.01\n\tand l_quantity \u003c 24\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:25:31.555",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1500,9 +1328,9 @@
     },
     {
       "title": "TPC-H Query 7",
-      "text": "%splicemachine\n-- QUERY 07\nselect\n\tsupp_nation,\n\tcust_nation,\n\tl_year,\n\tsum(volume) as revenue\nfrom\n\t(\n\t\tselect\n\t\t\tn1.n_name as supp_nation,\n\t\t\tn2.n_name as cust_nation,\n\t\t\tyear(l_shipdate) as l_year,\n\t\t\tl_extendedprice * (1 - l_discount) as volume\n\t\tfrom\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.lineitem,\n\t\t\tTPCH1.orders,\n\t\t\tTPCH1.customer,\n\t\t\tTPCH1.nation n1,\n\t\t\tTPCH1.nation n2\n\t\twhere\n\t\t\ts_suppkey \u003d l_suppkey\n\t\t\tand o_orderkey \u003d l_orderkey\n\t\t\tand c_custkey \u003d o_custkey\n\t\t\tand s_nationkey \u003d n1.n_nationkey\n\t\t\tand c_nationkey \u003d n2.n_nationkey\n\t\t\tand (\n\t\t\t\t(n1.n_name \u003d \u0027FRANCE\u0027 and n2.n_name \u003d \u0027GERMANY\u0027)\n\t\t\t\tor (n1.n_name \u003d \u0027GERMANY\u0027 and n2.n_name \u003d \u0027FRANCE\u0027)\n\t\t\t)\n\t\t\tand l_shipdate between date(\u00271995-01-01\u0027) and date(\u00271996-12-31\u0027)\n\t) as shipping\ngroup by\n\tsupp_nation,\n\tcust_nation,\n\tl_year\norder by\n\tsupp_nation,\n\tcust_nation,\n\tl_year\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 07\nselect\n\tsupp_nation,\n\tcust_nation,\n\tl_year,\n\tsum(volume) as revenue\nfrom\n\t(\n\t\tselect\n\t\t\tn1.n_name as supp_nation,\n\t\t\tn2.n_name as cust_nation,\n\t\t\tyear(l_shipdate) as l_year,\n\t\t\tl_extendedprice * (1 - l_discount) as volume\n\t\tfrom\n\t\t\tDEV2_TPCH1.supplier,\n\t\t\tDEV2_TPCH1.lineitem,\n\t\t\tDEV2_TPCH1.orders,\n\t\t\tDEV2_TPCH1.customer,\n\t\t\tDEV2_TPCH1.nation n1,\n\t\t\tDEV2_TPCH1.nation n2\n\t\twhere\n\t\t\ts_suppkey \u003d l_suppkey\n\t\t\tand o_orderkey \u003d l_orderkey\n\t\t\tand c_custkey \u003d o_custkey\n\t\t\tand s_nationkey \u003d n1.n_nationkey\n\t\t\tand c_nationkey \u003d n2.n_nationkey\n\t\t\tand (\n\t\t\t\t(n1.n_name \u003d \u0027FRANCE\u0027 and n2.n_name \u003d \u0027GERMANY\u0027)\n\t\t\t\tor (n1.n_name \u003d \u0027GERMANY\u0027 and n2.n_name \u003d \u0027FRANCE\u0027)\n\t\t\t)\n\t\t\tand l_shipdate between date(\u00271995-01-01\u0027) and date(\u00271996-12-31\u0027)\n\t) as shipping\ngroup by\n\tsupp_nation,\n\tcust_nation,\n\tl_year\norder by\n\tsupp_nation,\n\tcust_nation,\n\tl_year\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:25:48.966",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1531,9 +1359,9 @@
     },
     {
       "title": "TPC-H Query 8",
-      "text": "%splicemachine\n-- QUERY 08\nselect\n\to_year,\n\tsum(case\n\t\twhen nation \u003d \u0027BRAZIL\u0027 then volume\n\t\telse 0\n\tend) / sum(volume) as mkt_share\nfrom\n\t(\n\t\tselect\n\t\t\tyear(o_orderdate) as o_year,\n\t\t\tl_extendedprice * (1 - l_discount) as volume,\n\t\t\tn2.n_name as nation\n\t\tfrom\n\t\t\tTPCH1.part,\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.lineitem,\n\t\t\tTPCH1.orders,\n\t\t\tTPCH1.customer,\n\t\t\tTPCH1.nation n1,\n\t\t\tTPCH1.nation n2,\n\t\t\tTPCH1.region\n\t\twhere\n\t\t\tp_partkey \u003d l_partkey\n\t\t\tand s_suppkey \u003d l_suppkey\n\t\t\tand l_orderkey \u003d o_orderkey\n\t\t\tand o_custkey \u003d c_custkey\n\t\t\tand c_nationkey \u003d n1.n_nationkey\n\t\t\tand n1.n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027AMERICA\u0027\n\t\t\tand s_nationkey \u003d n2.n_nationkey\n\t\t\tand o_orderdate between date(\u00271995-01-01\u0027) and date(\u00271996-12-31\u0027)\n\t\t\tand p_type \u003d \u0027ECONOMY ANODIZED STEEL\u0027\n\t) as all_nations\ngroup by\n\to_year\norder by\n\to_year\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 08\nselect\n\to_year,\n\tsum(case\n\t\twhen nation \u003d \u0027BRAZIL\u0027 then volume\n\t\telse 0\n\tend) / sum(volume) as mkt_share\nfrom\n\t(\n\t\tselect\n\t\t\tyear(o_orderdate) as o_year,\n\t\t\tl_extendedprice * (1 - l_discount) as volume,\n\t\t\tn2.n_name as nation\n\t\tfrom\n\t\t\tDEV2_TPCH1.part,\n\t\t\tDEV2_TPCH1.supplier,\n\t\t\tDEV2_TPCH1.lineitem,\n\t\t\tDEV2_TPCH1.orders,\n\t\t\tDEV2_TPCH1.customer,\n\t\t\tDEV2_TPCH1.nation n1,\n\t\t\tDEV2_TPCH1.nation n2,\n\t\t\tDEV2_TPCH1.region\n\t\twhere\n\t\t\tp_partkey \u003d l_partkey\n\t\t\tand s_suppkey \u003d l_suppkey\n\t\t\tand l_orderkey \u003d o_orderkey\n\t\t\tand o_custkey \u003d c_custkey\n\t\t\tand c_nationkey \u003d n1.n_nationkey\n\t\t\tand n1.n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027AMERICA\u0027\n\t\t\tand s_nationkey \u003d n2.n_nationkey\n\t\t\tand o_orderdate between date(\u00271995-01-01\u0027) and date(\u00271996-12-31\u0027)\n\t\t\tand p_type \u003d \u0027ECONOMY ANODIZED STEEL\u0027\n\t) as all_nations\ngroup by\n\to_year\norder by\n\to_year\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:26:10.647",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1562,9 +1390,9 @@
     },
     {
       "title": "TPC-H Query 9",
-      "text": "%splicemachine\n-- QUERY 09\nselect\n\tnation,\n\to_year,\n\tsum(amount) as sum_profit\nfrom\n\t(\n\t\tselect\n\t\t\tn_name as nation,\n\t\t\tyear(o_orderdate) as o_year,\n\t\t\tl_extendedprice * (1 - l_discount) - ps_supplycost * l_quantity as amount\n\t\tfrom\n\t\t\tTPCH1.part,\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.lineitem,\n\t\t\tTPCH1.partsupp,\n\t\t\tTPCH1.orders,\n\t\t\tTPCH1.nation\n\t\twhere\n\t\t\ts_suppkey \u003d l_suppkey\n\t\t\tand ps_suppkey \u003d l_suppkey\n\t\t\tand ps_partkey \u003d l_partkey\n\t\t\tand p_partkey \u003d l_partkey\n\t\t\tand o_orderkey \u003d l_orderkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand p_name like \u0027%green%\u0027\n\t) as profit\ngroup by\n\tnation,\n\to_year\norder by\n\tnation,\n\to_year desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 09\nselect\n\tnation,\n\to_year,\n\tsum(amount) as sum_profit\nfrom\n\t(\n\t\tselect\n\t\t\tn_name as nation,\n\t\t\tyear(o_orderdate) as o_year,\n\t\t\tl_extendedprice * (1 - l_discount) - ps_supplycost * l_quantity as amount\n\t\tfrom\n\t\t\tDEV2_TPCH1.part,\n\t\t\tDEV2_TPCH1.supplier,\n\t\t\tDEV2_TPCH1.lineitem,\n\t\t\tDEV2_TPCH1.partsupp,\n\t\t\tDEV2_TPCH1.orders,\n\t\t\tDEV2_TPCH1.nation\n\t\twhere\n\t\t\ts_suppkey \u003d l_suppkey\n\t\t\tand ps_suppkey \u003d l_suppkey\n\t\t\tand ps_partkey \u003d l_partkey\n\t\t\tand p_partkey \u003d l_partkey\n\t\t\tand o_orderkey \u003d l_orderkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand p_name like \u0027%green%\u0027\n\t) as profit\ngroup by\n\tnation,\n\to_year\norder by\n\tnation,\n\to_year desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:26:23.103",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1593,9 +1421,9 @@
     },
     {
       "title": "TPC-H Query 10",
-      "text": "%splicemachine\n-- QUERY 10\nselect\n\tc_custkey,\n\tc_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\tc_acctbal,\n\tn_name,\n\tc_address,\n\tc_phone,\n\tc_comment\nfrom\n\tTPCH1.customer,\n\tTPCH1.orders,\n\tTPCH1.lineitem,\n\tTPCH1.nation\nwhere\n\tc_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand o_orderdate \u003e\u003d date(\u00271993-10-01\u0027)\n\tand o_orderdate \u003c ADD_MONTHS(\u00271993-10-01\u0027,3) \n\tand l_returnflag \u003d \u0027R\u0027\n\tand c_nationkey \u003d n_nationkey\ngroup by\n\tc_custkey,\n\tc_name,\n\tc_acctbal,\n\tc_phone,\n\tn_name,\n\tc_address,\n\tc_comment\norder by\n\trevenue desc\n{limit 20}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 10\nselect\n\tc_custkey,\n\tc_name,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\tc_acctbal,\n\tn_name,\n\tc_address,\n\tc_phone,\n\tc_comment\nfrom\n\tDEV2_TPCH1.customer,\n\tDEV2_TPCH1.orders,\n\tDEV2_TPCH1.lineitem,\n\tDEV2_TPCH1.nation\nwhere\n\tc_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand o_orderdate \u003e\u003d date(\u00271993-10-01\u0027)\n\tand o_orderdate \u003c ADD_MONTHS(\u00271993-10-01\u0027,3) \n\tand l_returnflag \u003d \u0027R\u0027\n\tand c_nationkey \u003d n_nationkey\ngroup by\n\tc_custkey,\n\tc_name,\n\tc_acctbal,\n\tc_phone,\n\tn_name,\n\tc_address,\n\tc_comment\norder by\n\trevenue desc\n{limit 20}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:26:31.967",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1624,9 +1452,9 @@
     },
     {
       "title": "TPC-H Query 11",
-      "text": "%splicemachine\n-- QUERY 11\nselect\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tTPCH1.partsupp,\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\tps_suppkey \u003d s_suppkey\n\tand s_nationkey \u003d n_nationkey\n\tand n_name \u003d \u0027GERMANY\u0027\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) \u003e (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tTPCH1.partsupp,\n\t\t\t\tTPCH1.supplier,\n\t\t\t\tTPCH1.nation\n\t\t\twhere\n\t\t\t\tps_suppkey \u003d s_suppkey\n\t\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\t\tand n_name \u003d \u0027GERMANY\u0027\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 11\nselect\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tDEV2_TPCH1.partsupp,\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.nation\nwhere\n\tps_suppkey \u003d s_suppkey\n\tand s_nationkey \u003d n_nationkey\n\tand n_name \u003d \u0027GERMANY\u0027\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) \u003e (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tDEV2_TPCH1.partsupp,\n\t\t\t\tDEV2_TPCH1.supplier,\n\t\t\t\tDEV2_TPCH1.nation\n\t\t\twhere\n\t\t\t\tps_suppkey \u003d s_suppkey\n\t\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\t\tand n_name \u003d \u0027GERMANY\u0027\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:26:47.604",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1655,9 +1483,9 @@
     },
     {
       "title": "TPC-H Query 12",
-      "text": "%splicemachine\n-- QUERY 12\nselect\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority \u003d \u00271-URGENT\u0027\n\t\t\tor o_orderpriority \u003d \u00272-HIGH\u0027\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority \u003c\u003e \u00271-URGENT\u0027\n\t\t\tand o_orderpriority \u003c\u003e \u00272-HIGH\u0027\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\tTPCH1.orders,\n\tTPCH1.lineitem\nwhere\n\to_orderkey \u003d l_orderkey\n\tand l_shipmode in (\u0027MAIL\u0027, \u0027SHIP\u0027)\n\tand l_commitdate \u003c l_receiptdate\n\tand l_shipdate \u003c l_commitdate\n        and l_receiptdate \u003e\u003d date(\u00271994-01-01\u0027)\n        and l_receiptdate \u003c date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast(\u00271994-01-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 12\nselect\n\tl_shipmode,\n\tsum(case\n\t\twhen o_orderpriority \u003d \u00271-URGENT\u0027\n\t\t\tor o_orderpriority \u003d \u00272-HIGH\u0027\n\t\t\tthen 1\n\t\telse 0\n\tend) as high_line_count,\n\tsum(case\n\t\twhen o_orderpriority \u003c\u003e \u00271-URGENT\u0027\n\t\t\tand o_orderpriority \u003c\u003e \u00272-HIGH\u0027\n\t\t\tthen 1\n\t\telse 0\n\tend) as low_line_count\nfrom\n\tDEV2_TPCH1.orders,\n\tDEV2_TPCH1.lineitem\nwhere\n\to_orderkey \u003d l_orderkey\n\tand l_shipmode in (\u0027MAIL\u0027, \u0027SHIP\u0027)\n\tand l_commitdate \u003c l_receiptdate\n\tand l_shipdate \u003c l_commitdate\n        and l_receiptdate \u003e\u003d date(\u00271994-01-01\u0027)\n        and l_receiptdate \u003c date({fn TIMESTAMPADD(SQL_TSI_YEAR, 1, cast(\u00271994-01-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_shipmode\norder by\n\tl_shipmode\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:26:59.689",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1686,9 +1514,9 @@
     },
     {
       "title": "TPC-H Query 13",
-      "text": "%splicemachine\n-- QUERY 13\nselect\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tTPCH1.customer left outer join tpch1.orders on\n\t\t\t\tc_custkey \u003d o_custkey\n\t\t\t\tand o_comment not like \u0027%special%requests%\u0027\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 13\nselect\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tDEV2_TPCH1.customer left outer join tpch1.orders on\n\t\t\t\tc_custkey \u003d o_custkey\n\t\t\t\tand o_comment not like \u0027%special%requests%\u0027\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:27:12.839",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1717,9 +1545,9 @@
     },
     {
       "title": "TPC-H Query 14",
-      "text": "%splicemachine\n-- QUERY 14\nselect\n\t100.00 * sum(case\n\t\twhen p_type like \u0027PROMO%\u0027\n\t\t\tthen l_extendedprice * (1 - l_discount)\n\t\telse 0\n\tend) / sum(l_extendedprice * (1 - l_discount)) as promo_revenue\nfrom\n\tTPCH1.lineitem,\n\tTPCH1.part\nwhere\n\tl_partkey \u003d p_partkey\n\tand l_shipdate \u003e\u003d date(\u00271995-09-01\u0027)\n\tand l_shipdate \u003c add_months(\u00271995-09-01\u0027,1)\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 14\nselect\n\t100.00 * sum(case\n\t\twhen p_type like \u0027PROMO%\u0027\n\t\t\tthen l_extendedprice * (1 - l_discount)\n\t\telse 0\n\tend) / sum(l_extendedprice * (1 - l_discount)) as promo_revenue\nfrom\n\tDEV2_TPCH1.lineitem,\n\tDEV2_TPCH1.part\nwhere\n\tl_partkey \u003d p_partkey\n\tand l_shipdate \u003e\u003d date(\u00271995-09-01\u0027)\n\tand l_shipdate \u003c add_months(\u00271995-09-01\u0027,1)\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:27:24.296",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1748,9 +1576,9 @@
     },
     {
       "title": "TPC-H Query 15",
-      "text": "%splicemachine\n-- QUERY 15\ncreate view TPCH1.revenue0 (supplier_no, total_revenue) as\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tTPCH1.lineitem\n\twhere\n\t\tl_shipdate \u003e\u003d date(\u00271996-01-01\u0027)\n\t\tand l_shipdate \u003c add_months(\u00271996-01-01\u0027,3)\n\tgroup by\n\t\tl_suppkey;\n-- END OF QUERY\n\n-- QUERY 15\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tTPCH1.supplier,\n\tTPCH1.revenue0\nwhere\n\ts_suppkey \u003d supplier_no\n\tand total_revenue \u003d (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\tTPCH1.revenue0\n\t)\norder by\n\ts_suppkey;\n-- END OF QUERY\n\n-- QUERY 15\ndrop view TPCH1.revenue0\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 15\ncreate view TPCH1.revenue0 (supplier_no, total_revenue) as\n\tselect\n\t\tl_suppkey,\n\t\tsum(l_extendedprice * (1 - l_discount))\n\tfrom\n\t\tDEV2_TPCH1.lineitem\n\twhere\n\t\tl_shipdate \u003e\u003d date(\u00271996-01-01\u0027)\n\t\tand l_shipdate \u003c add_months(\u00271996-01-01\u0027,3)\n\tgroup by\n\t\tl_suppkey;\n-- END OF QUERY\n\n-- QUERY 15\nselect\n\ts_suppkey,\n\ts_name,\n\ts_address,\n\ts_phone,\n\ttotal_revenue\nfrom\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.revenue0\nwhere\n\ts_suppkey \u003d supplier_no\n\tand total_revenue \u003d (\n\t\tselect\n\t\t\tmax(total_revenue)\n\t\tfrom\n\t\t\tDEV2_TPCH1.revenue0\n\t)\norder by\n\ts_suppkey;\n-- END OF QUERY\n\n-- QUERY 15\ndrop view DEV2_TPCH1.revenue0\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:28:31.256",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1779,9 +1607,9 @@
     },
     {
       "title": "TPC-H Query 16",
-      "text": "%splicemachine\n-- QUERY 16\nselect\n\tp_brand,\n\tp_type,\n\tp_size,\n\tcount(distinct ps_suppkey) as supplier_cnt\nfrom\n\tTPCH1.partsupp,\n\tTPCH1.part\nwhere\n\tp_partkey \u003d ps_partkey\n\tand p_brand \u003c\u003e \u0027Brand#45\u0027\n\tand p_type not like \u0027MEDIUM POLISHED%\u0027\n\tand p_size in (49, 14, 23, 45, 19, 3, 36, 9)\n\tand ps_suppkey not in (\n\t\tselect\n\t\t\ts_suppkey\n\t\tfrom\n\t\t\tTPCH1.supplier\n\t\twhere\n\t\t\ts_comment like \u0027%Customer%Complaints%\u0027\n\t)\ngroup by\n\tp_brand,\n\tp_type,\n\tp_size\norder by\n\tsupplier_cnt desc,\n\tp_brand,\n\tp_type,\n\tp_size\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 16\nselect\n\tp_brand,\n\tp_type,\n\tp_size,\n\tcount(distinct ps_suppkey) as supplier_cnt\nfrom\n\tDEV2_TPCH1.partsupp,\n\tDEV2_TPCH1.part\nwhere\n\tp_partkey \u003d ps_partkey\n\tand p_brand \u003c\u003e \u0027Brand#45\u0027\n\tand p_type not like \u0027MEDIUM POLISHED%\u0027\n\tand p_size in (49, 14, 23, 45, 19, 3, 36, 9)\n\tand ps_suppkey not in (\n\t\tselect\n\t\t\ts_suppkey\n\t\tfrom\n\t\t\tDEV2_TPCH1.supplier\n\t\twhere\n\t\t\ts_comment like \u0027%Customer%Complaints%\u0027\n\t)\ngroup by\n\tp_brand,\n\tp_type,\n\tp_size\norder by\n\tsupplier_cnt desc,\n\tp_brand,\n\tp_type,\n\tp_size\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:28:40.307",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1810,9 +1638,9 @@
     },
     {
       "title": "TPC-H Query 17",
-      "text": "%splicemachine\n-- QUERY 17\nselect\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tTPCH1.lineitem,\n\tTPCH1.part\nwhere\n\tp_partkey \u003d l_partkey\n\tand p_brand \u003d \u0027Brand#23\u0027\n\tand p_container \u003d \u0027MED BOX\u0027\n\tand l_quantity \u003c (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tTPCH1.lineitem\n\t\twhere\n\t\t\tl_partkey \u003d p_partkey\n\t)\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 17\nselect\n\tsum(l_extendedprice) / 7.0 as avg_yearly\nfrom\n\tDEV2_TPCH1.lineitem,\n\tDEV2_TPCH1.part\nwhere\n\tp_partkey \u003d l_partkey\n\tand p_brand \u003d \u0027Brand#23\u0027\n\tand p_container \u003d \u0027MED BOX\u0027\n\tand l_quantity \u003c (\n\t\tselect\n\t\t\t0.2 * avg(l_quantity)\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_partkey \u003d p_partkey\n\t)\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:28:49.705",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1841,9 +1669,9 @@
     },
     {
       "title": "TPC-H Query 19",
-      "text": "%splicemachine\n-- QUERY 19\nselect\n\tsum(l_extendedprice* (1 - l_discount)) as revenue\nfrom\n\tTPCH1.lineitem,\n\tTPCH1.part\nwhere\n\t(\n\t\tp_partkey \u003d l_partkey\n\t\tand p_brand \u003d \u0027Brand#12\u0027\n\t\tand p_container in (\u0027SM CASE\u0027, \u0027SM BOX\u0027, \u0027SM PACK\u0027, \u0027SM PKG\u0027)\n\t\tand l_quantity \u003e\u003d 1 and l_quantity \u003c\u003d 1 + 10\n\t\tand p_size between 1 and 5\n\t\tand l_shipmode in (\u0027AIR\u0027, \u0027AIR REG\u0027)\n\t\tand l_shipinstruct \u003d \u0027DELIVER IN PERSON\u0027\n\t)\n\tor\n\t(\n\t\tp_partkey \u003d l_partkey\n\t\tand p_brand \u003d \u0027Brand#23\u0027\n\t\tand p_container in (\u0027MED BAG\u0027, \u0027MED BOX\u0027, \u0027MED PKG\u0027, \u0027MED PACK\u0027)\n\t\tand l_quantity \u003e\u003d 10 and l_quantity \u003c\u003d 10 + 10\n\t\tand p_size between 1 and 10\n\t\tand l_shipmode in (\u0027AIR\u0027, \u0027AIR REG\u0027)\n\t\tand l_shipinstruct \u003d \u0027DELIVER IN PERSON\u0027\n\t)\n\tor\n\t(\n\t\tp_partkey \u003d l_partkey\n\t\tand p_brand \u003d \u0027Brand#34\u0027\n\t\tand p_container in (\u0027LG CASE\u0027, \u0027LG BOX\u0027, \u0027LG PACK\u0027, \u0027LG PKG\u0027)\n\t\tand l_quantity \u003e\u003d 20 and l_quantity \u003c\u003d 20 + 10\n\t\tand p_size between 1 and 15\n\t\tand l_shipmode in (\u0027AIR\u0027, \u0027AIR REG\u0027)\n\t\tand l_shipinstruct \u003d \u0027DELIVER IN PERSON\u0027\n\t)\n-- END OF QUERY\n",
+      "text": "%splicemachine\n-- QUERY 19\nselect\n\tsum(l_extendedprice* (1 - l_discount)) as revenue\nfrom\n\tDEV2_TPCH1.lineitem,\n\tDEV2_TPCH1.part\nwhere\n\t(\n\t\tp_partkey \u003d l_partkey\n\t\tand p_brand \u003d \u0027Brand#12\u0027\n\t\tand p_container in (\u0027SM CASE\u0027, \u0027SM BOX\u0027, \u0027SM PACK\u0027, \u0027SM PKG\u0027)\n\t\tand l_quantity \u003e\u003d 1 and l_quantity \u003c\u003d 1 + 10\n\t\tand p_size between 1 and 5\n\t\tand l_shipmode in (\u0027AIR\u0027, \u0027AIR REG\u0027)\n\t\tand l_shipinstruct \u003d \u0027DELIVER IN PERSON\u0027\n\t)\n\tor\n\t(\n\t\tp_partkey \u003d l_partkey\n\t\tand p_brand \u003d \u0027Brand#23\u0027\n\t\tand p_container in (\u0027MED BAG\u0027, \u0027MED BOX\u0027, \u0027MED PKG\u0027, \u0027MED PACK\u0027)\n\t\tand l_quantity \u003e\u003d 10 and l_quantity \u003c\u003d 10 + 10\n\t\tand p_size between 1 and 10\n\t\tand l_shipmode in (\u0027AIR\u0027, \u0027AIR REG\u0027)\n\t\tand l_shipinstruct \u003d \u0027DELIVER IN PERSON\u0027\n\t)\n\tor\n\t(\n\t\tp_partkey \u003d l_partkey\n\t\tand p_brand \u003d \u0027Brand#34\u0027\n\t\tand p_container in (\u0027LG CASE\u0027, \u0027LG BOX\u0027, \u0027LG PACK\u0027, \u0027LG PKG\u0027)\n\t\tand l_quantity \u003e\u003d 20 and l_quantity \u003c\u003d 20 + 10\n\t\tand p_size between 1 and 15\n\t\tand l_shipmode in (\u0027AIR\u0027, \u0027AIR REG\u0027)\n\t\tand l_shipinstruct \u003d \u0027DELIVER IN PERSON\u0027\n\t)\n-- END OF QUERY\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:28:58.997",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1872,9 +1700,9 @@
     },
     {
       "title": "TPC-H Query 21(variant)",
-      "text": "%splicemachine\n-- QUERY 21-var\nselect\n\tn_name,\n\tcount(*) as numwait\nfrom\n\tTPCH1.supplier,\n\tTPCH1.lineitem l1,\n\tTPCH1.orders,\n\tTPCH1.nation\nwhere\n\ts_suppkey \u003d l1.l_suppkey\n\tand o_orderkey \u003d l1.l_orderkey\n\tand o_orderstatus \u003d \u0027F\u0027\n\tand l1.l_receiptdate \u003e l1.l_commitdate\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem l2\n\t\twhere\n\t\t\tl2.l_orderkey \u003d l1.l_orderkey\n\t\t\tand l2.l_suppkey \u003c\u003e l1.l_suppkey\n\t)\n\tand not exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tTPCH1.lineitem l3\n\t\twhere\n\t\t\tl3.l_orderkey \u003d l1.l_orderkey\n\t\t\tand l3.l_suppkey \u003c\u003e l1.l_suppkey\n\t\t\tand l3.l_receiptdate \u003e l3.l_commitdate\n\t)\n\tand s_nationkey \u003d n_nationkey\ngroup by\n\tn_name\norder by\n\tnumwait desc\n{limit 100}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 21-var\nselect\n\tn_name,\n\tcount(*) as numwait\nfrom\n\tDEV2_TPCH1.supplier,\n\tDEV2_TPCH1.lineitem l1,\n\tDEV2_TPCH1.orders,\n\tDEV2_TPCH1.nation\nwhere\n\ts_suppkey \u003d l1.l_suppkey\n\tand o_orderkey \u003d l1.l_orderkey\n\tand o_orderstatus \u003d \u0027F\u0027\n\tand l1.l_receiptdate \u003e l1.l_commitdate\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem l2\n\t\twhere\n\t\t\tl2.l_orderkey \u003d l1.l_orderkey\n\t\t\tand l2.l_suppkey \u003c\u003e l1.l_suppkey\n\t)\n\tand not exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem l3\n\t\twhere\n\t\t\tl3.l_orderkey \u003d l1.l_orderkey\n\t\t\tand l3.l_suppkey \u003c\u003e l1.l_suppkey\n\t\t\tand l3.l_receiptdate \u003e l3.l_commitdate\n\t)\n\tand s_nationkey \u003d n_nationkey\ngroup by\n\tn_name\norder by\n\tnumwait desc\n{limit 100}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:29:20.879",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1936,9 +1764,9 @@
     },
     {
       "title": "TPC-H Query 22",
-      "text": "%splicemachine\n-- QUERY 22\nselect\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tTPCH1.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\tand c_acctbal \u003e (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tTPCH1.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal \u003e 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tTPCH1.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey \u003d c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 22\nselect\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tDEV2_TPCH1.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\tand c_acctbal \u003e (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tDEV2_TPCH1.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal \u003e 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tDEV2_TPCH1.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey \u003d c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:29:49.433",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1996,9 +1824,9 @@
     },
     {
       "title": "TPC-H Query 1 (variant)",
-      "text": "%splicemachine\n-- QUERY 01-variant\nselect\n\tl_linestatus,\n\tl_shipdate,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tcount(*) as count_order\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate \u003c\u003d date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast(\u00271998-12-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_shipdate,\n\tl_linestatus\norder by\n    l_shipdate\n\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 01-variant\nselect\n\tl_linestatus,\n\tl_shipdate,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tcount(*) as count_order\nfrom\n\tDEV2_TPCH1.lineitem\nwhere\n\tl_shipdate \u003c\u003d date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast(\u00271998-12-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_shipdate,\n\tl_linestatus\norder by\n    l_shipdate\n\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:29:59.290",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -2081,9 +1909,9 @@
     },
     {
       "title": "TPC-H Query 1 (variant with input field)",
-      "text": "%splicemachine\n-- QUERY 01-variant with variable substitution enabled\nselect\n\tl_linestatus,\n\tl_shipdate,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tcount(*) as count_order\nfrom\n\tTPCH1.lineitem\nwhere\n\tl_shipdate \u003c\u003d ${maxDate\u003d\u00271992-07-20\u0027}\ngroup by\n\tl_shipdate,\n\tl_linestatus\norder by\n    l_shipdate\n\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 01-variant with variable substitution enabled\nselect\n\tl_linestatus,\n\tl_shipdate,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tcount(*) as count_order\nfrom\n\tDEV2_TPCH1.lineitem\nwhere\n\tl_shipdate \u003c\u003d ${maxDate\u003d\u00271992-07-20\u0027}\ngroup by\n\tl_shipdate,\n\tl_linestatus\norder by\n    l_shipdate\n\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:59:15.000",
+      "dateUpdated": "2018-12-01 04:30:04.346",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -2150,7 +1978,7 @@
     {
       "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Common Utilities*](/#/notebook/2DUK929SD), introduces some common utilities that you may find useful when working with Splice Machine.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:56:13.730",
+      "dateUpdated": "2018-12-01 04:30:11.739",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -2163,7 +1991,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -2186,22 +2014,6 @@
       "dateFinished": "2018-11-20 10:56:13.736",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:24:38.607",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542738278606_-1140486838",
-      "id": "20181120-102438_1070239267",
-      "dateCreated": "2018-11-20 10:24:38.606",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Developers, Part II - Intermediate/b. Running TPCH-1 Benchmark Queries",
@@ -2210,7 +2022,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

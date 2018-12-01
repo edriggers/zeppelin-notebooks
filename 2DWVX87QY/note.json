@@ -3,11 +3,11 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# ETL Pipeline\n\nThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:07:31.000",
+      "dateUpdated": "2018-12-01 07:14:38.085",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -62,15 +62,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "\nimport org.apache.commons.io.IOUtils\n\nimport java.net.URL\n\nimport java.nio.charset.Charset\n\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\n\nimport com.splicemachine.spark.splicemachine._\n\ntelcoText: org.apache.spark.rdd.RDD[String] \u003d ParallelCollectionRDD[126] at parallelize at \u003cconsole\u003e:307\n\ndefined class TelcoChurn\n\ntelcoDF: org.apache.spark.sql.DataFrame \u003d [customerID: string, gender: string ... 19 more fields]\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|customerID|gender|SeniorCitizen|Partner|Dependents|tenure|PhoneService|   MultipleLines|InternetService|OnlineSecurity|OnlineBackup|DeviceProtection|TechSupport|StreamingTV|StreamingMovies|      Contract|PaperlessBilling|       PaymentMethod|MonthlyCharges|TotalCharges|Churn|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\n|7590-VHVEG|Female|        false|    Yes|        No|     1|          No|No phone service|            DSL|            No|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|         29.85|       29.85|  No\r|\n|5575-GNVDE|  Male|        false|     No|        No|    34|         Yes|              No|            DSL|           Yes|          No|             Yes|         No|         No|             No|      One year|              No|        Mailed check|         56.95|      1889.5|  No\r|\n|3668-QPYBK|  Male|        false|     No|        No|     2|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|Month-to-month|             Yes|        Mailed check|         53.85|      108.15| Yes\r|\n|7795-CFOCW|  Male|        false|     No|        No|    45|          No|No phone service|            DSL|           Yes|          No|             Yes|        Yes|         No|             No|      One year|              No|Bank transfer (au...|          42.3|     1840.75|  No\r|\n|9237-HQITU|Female|        false|     No|        No|     2|         Yes|              No|    Fiber optic|            No|          No|              No|         No|         No|             No|Month-to-month|             Yes|    Electronic check|          70.7|      151.65| Yes\r|\n|9305-CDSKC|Female|        false|     No|        No|     8|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|         No|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         99.65|       820.5| Yes\r|\n|1452-KIOVK|  Male|        false|     No|       Yes|    22|         Yes|             Yes|    Fiber optic|            No|         Yes|              No|         No|        Yes|             No|Month-to-month|             Yes|Credit card (auto...|          89.1|      1949.4|  No\r|\n|6713-OKOMC|Female|        false|     No|        No|    10|          No|No phone service|            DSL|           Yes|          No|              No|         No|         No|             No|Month-to-month|              No|        Mailed check|         29.75|       301.9|  No\r|\n|7892-POOKP|Female|        false|    Yes|        No|    28|         Yes|             Yes|    Fiber optic|            No|          No|             Yes|        Yes|        Yes|            Yes|Month-to-month|             Yes|    Electronic check|         104.8|     3046.05| Yes\r|\n|6388-TABGU|  Male|        false|     No|       Yes|    62|         Yes|              No|            DSL|           Yes|         Yes|              No|         No|         No|             No|      One year|              No|Bank transfer (au...|         56.15|     3487.95|  No\r|\n+----------+------+-------------+-------+----------+------+------------+----------------+---------------+--------------+------------+----------------+-----------+-----------+---------------+--------------+----------------+--------------------+--------------+------------+-----+\nonly showing top 10 rows\n\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542398760211_172845743",
       "id": "20170413-100458_275811262",
@@ -82,12 +73,12 @@
     {
       "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Data Science Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 18:15:51.612",
+      "dateUpdated": "2018-12-01 07:15:00.729",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -119,22 +110,6 @@
       "dateFinished": "2018-11-29 18:15:51.623",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:21:56.467",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542738116466_692657264",
-      "id": "20181120-102156_435083735",
-      "dateCreated": "2018-11-20 10:21:56.466",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Data Scientists/l. ETL Pipeline",
@@ -142,7 +117,9 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": []
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

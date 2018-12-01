@@ -4,7 +4,7 @@
       "title": "Spark Adapter",
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Splice Machine Native Spark DataSource\nThis notebook demonstrates using the Spark Adapter with Python, in these steps:\n\n1. *Create the `PySpliceContextClass` to interface with the Python API.*\n2. *Use the `spark.pyspark` Python interpreter in Zeppelin to create a Spark context.*\n3. *Create a simple table in Splice Machine.*\n4. *Create a Spark dataframe and insert that into Splice Machine.*\n5. *Run a simple Splice Machine transaction using the Spark context.*\n6. *Rollback that transaction using the same context.*\n\n## About the Native Spark DataSource\nData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\n\nThe Splice Machine Spark adapter provides:\n\n* A durable, ACID compliant persistence model for Spark Dataframes.\n* Lazy result sets returned as Spark Dataframes.\n* Access to Spark libraries such as MLLib and GraphX.\n* Avoidance of expensive ETL of data from OLTP to OLAP.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:13:52.544",
+      "dateUpdated": "2018-12-01 05:12:01.323",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -17,7 +17,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -45,11 +45,11 @@
     {
       "text": "%md\n## 1. Create the PySpliceContext Class\n\nYour first step is to use the `PySpark` interpreter in Zeppelin to create the `PySpliceContext` class:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 05:13:59.048",
+      "dateUpdated": "2018-12-01 05:12:05.893",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -107,10 +107,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
       "apps": [],
       "jobName": "paragraph_1542395654306_1053279453",
       "id": "20180118-015126_1752791454",
@@ -122,7 +118,7 @@
     {
       "text": "%md\n\n## 2. Create a Spark context\n\nNext, we use the `PySpliceContext` to create a connection to Splice Machine:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-01 05:12:24.700",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -133,7 +129,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -153,8 +149,9 @@
       "jobName": "paragraph_1542395654306_745071231",
       "id": "20180129-153516_1751825816",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 05:12:23.355",
+      "dateFinished": "2018-12-01 05:12:23.363",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -182,10 +179,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
       "apps": [],
       "jobName": "paragraph_1542395654307_517477292",
       "id": "20180118-014113_2141603268",
@@ -195,20 +188,21 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 3. Create a Simple Table\n\nNow we create a simple table in Splice Machine that we\u0027ll subsequently populate:\n",
+      "text": "%md\n## 3. Create a Simple Table\n\nNow we create a schema named `DEV2`, make it our default schema, and then simple table in Splice Machine that we\u0027ll subsequently populate:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-01 05:16:42.549",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -220,7 +214,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Create a Simple Table\u003c/h2\u003e\n\u003cp\u003eNow we create a simple table in Splice Machine that we\u0026rsquo;ll subsequently populate:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Create a Simple Table\u003c/h2\u003e\n\u003cp\u003eNow we create a schema named \u003ccode\u003eDEV2\u003c/code\u003e, make it our default schema, and then simple table in Splice Machine that we\u0026rsquo;ll subsequently populate:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -228,15 +222,16 @@
       "jobName": "paragraph_1542395654308_-1855904705",
       "id": "20180129-153654_674823995",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 05:16:36.869",
+      "dateFinished": "2018-12-01 05:16:36.878",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Create a simple table",
-      "text": "%splicemachine\ndrop table if exists foo;\ncreate table foo (I int, F float, V varchar(100), primary key (I));\n",
+      "text": "%splicemachine\ncreate schema DEV2;\nset schema DEV2;\ncreate table foo (I int, F float, V varchar(100), primary key (I));\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-01 05:16:14.402",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -254,19 +249,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395654308_-66941472",
       "id": "20180118-015418_1427121084",
@@ -278,7 +260,7 @@
     {
       "text": "%md\n## 4. Create a Spark Dataframe and Insert into Splice Machine\n\nThen we use `spark.pyspark` to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\n\nAfter inserting the data, we do a `select *` to display the contents of the Splice Machine table. ",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-01 05:12:58.698",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -289,7 +271,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -309,8 +291,9 @@
       "jobName": "paragraph_1542395654309_1060518389",
       "id": "20180129-153818_1709035487",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 05:12:55.979",
+      "dateFinished": "2018-12-01 05:12:55.989",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -337,10 +320,6 @@
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
       },
       "apps": [],
       "jobName": "paragraph_1542395654309_1802628017",
@@ -400,15 +379,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395654310_-1396800287",
       "id": "20180118-015510_1158645327",
@@ -420,7 +390,7 @@
     {
       "text": "%md\n\n## 5. Run a Simple Splice Machine Transaction\n\nNow we\u0027ll add more data to that table in a transactional context: ",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-01 05:16:57.760",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -431,7 +401,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -451,8 +421,9 @@
       "jobName": "paragraph_1542395654310_1501089403",
       "id": "20180129-154333_772550654",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 05:16:54.835",
+      "dateFinished": "2018-12-01 05:16:54.848",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -510,15 +481,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n4\t3.14\tTuring\n5\t4.14\tNewell\n6\t5.14\tSimon\n7\t6.14\tMinsky\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395654311_-252240147",
       "id": "20180118-015525_2011115580",
@@ -530,7 +492,7 @@
     {
       "text": "%md\n\n## 6. Rollback the transaction\n\nFinally, we\u0027ll rollback the transaction we just ran:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-01 05:17:17.649",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -541,7 +503,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -561,8 +523,9 @@
       "jobName": "paragraph_1542395654311_324284397",
       "id": "20180129-154912_774169413",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-01 05:17:14.717",
+      "dateFinished": "2018-12-01 05:17:14.730",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -618,15 +581,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542395654313_1836815294",
       "id": "20180118-015552_1456308237",
@@ -638,7 +592,7 @@
     {
       "text": "%md\n## Where to Go Next\n\nNow let\u0027s explore Machine Learning with these Splice Machine, starting with our next notebook: [*ML with Spark MLib using Python*](/#/notebook/2DWTYCFTY).",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:03:00.647",
+      "dateUpdated": "2018-12-01 05:18:03.033",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -650,7 +604,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -670,37 +624,9 @@
       "jobName": "paragraph_1542395654314_71425482",
       "id": "20180122-173624_509126525",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-11-20 11:03:00.648",
-      "dateFinished": "2018-11-20 11:03:00.652",
+      "dateStarted": "2018-12-01 05:17:58.353",
+      "dateFinished": "2018-12-01 05:17:58.364",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395654314_682197011",
-      "id": "20180125-142959_1101825868",
-      "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -710,7 +636,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

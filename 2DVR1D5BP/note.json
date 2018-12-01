@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Importing Data into Your Splice Machine Database\n\nThis notebook shows you how to import data into your Splice Machine database from flat files; we\u0027ll walk you through a simple example, after which you\u0027ll be able to import your own data into your database. This notebook contains these sections:\n\n* The *Import Data Checklist* summarizes important details about the format of the data you\u0027re importing.\n* *Using the `IMPORT_DATA` Command* shows the syntax for importing data using our `IMPORT_DATA` system procedure, and include\n\n\u003eBefore starting to work with this notebook, you should already have your data stored in delimited format (such as CSV); if that\u0027s not yet true, please review the previous notebook in this class, [*Preparing Data for Import*](/#/notebook/2DX8XQH89), which walks you through getting your data ready to import.\n\n\n## Additional Data Ingestion Information\nIn addition to using our `import_data` procedure to load flat files into a database, Splice Machine provides a number of *advanced* import processes for loading very large datasets into your database, including the use of bulk HFiles, and pre-splitting data for more efficient mapping into HBase regions. These are described, along with examples, in the  \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:04:20.415",
+      "dateUpdated": "2018-12-01 03:27:50.886",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -43,11 +43,11 @@
     {
       "text": "%md\n## Import Data Checklist\n\nWhen you import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure your data formats will work, as defined here:\n\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eData File Detail\u003c/th\u003e\n            \u003cth\u003eSpecific Requirements\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eField delimited?\u003c/td\u003e\n            \u003ctd\u003eThe fields in each row \u003cstrong\u003emust\u003c/strong\u003e have delimiters between them\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRows terminated?\u003c/td\u003e\n            \u003ctd\u003eEach row \u003cstrong\u003emust\u003c/strong\u003e be terminated with a newline character\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eHeader row included?\u003c/td\u003e\n            \u003ctd\u003eHeader rows are not allowed; if your data contains one, you \u003cstrong\u003emust\u003c/strong\u003e remove it.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eDate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, \u003ccode\u003etimestamp\u003c/code\u003e data types\u003c/td\u003e\n            \u003ctd\u003e If you are using \u003ccode\u003edate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, and/or \u003ccode\u003etimestamp\u003c/code\u003e data types in the target table, you need to know how that data is represented in the flat file; your file \u003cstrong\u003emust\u003c/strong\u003e use a consistent representation, and you must specify that format when using the import command.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eChar\u003c/code\u003e and \u003ccode\u003eVarchar\u003c/code\u003e data\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains your delimiter character, you \u003cstrong\u003eneed to use\u003c/strong\u003e a special character delimiter.\u003c/p\u003e\n                \u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains newline characters, you \u003cstrong\u003eneed to use\u003c/strong\u003e the \u003ccode\u003eoneLineRecords\u003c/code\u003e parameter.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\u003cp class\u003d\"noteIcon\"\u003eIt is a good idea to test your import, delimiting, date formatting, etc., on a small amount of data first before loading all of your data. That\u0027s what we\u0027ll do in this notebook.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:09:36.826",
+      "dateUpdated": "2018-12-01 03:27:56.100",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -83,7 +83,7 @@
     {
       "text": "%md\n## Using the IMPORT_DATA Command\n\nSyntax for the `IMPORT_DATA` command looks like this:\n```\ncall SYSCS_UTIL.IMPORT_DATA (\n\tschemaName,\n\ttableName,\n\tinsertColumnList | null,\n\tfileOrDirectoryName,\n\tcolumnDelimiter | null,\n\tcharacterDelimiter | null,\n\ttimestampFormat | null,\n\tdateFormat | null,\n\ttimeFormat | null,\n\tbadRecordsAllowed,\n\tbadRecordDirectory | null,\n\toneLineRecords | null,\n\tcharset | null \n);\n```\nNotice that many of the parameters allow you to apply the default value by specifying `null`.\n\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_importdata.html\" target\u003d\"_blank\"\u003eour `IMPORT_DATA` documentation.\u003c/a\u003e\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:11:43.901",
+      "dateUpdated": "2018-12-01 03:28:14.474",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -93,9 +93,9 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -121,9 +121,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Step-by-Step Example of Importing Data\n\nThis example allows you to walk through importing data one step at a time, in these steps:\n\n1. *Create our Database Table*\n2. *Import a Small Data Sample* to make sure our data format is okay\n3. *Make Minor Data Changes and Corresponding Parameter Changes*\n4. *Imported Updated Data*\n4. *Review Parameter Changes*\n",
+      "text": "%md\n\n## Step-by-Step Example of Importing Data\n\nThis example allows you to walk through importing data one step at a time, in these steps:\n\n1. *Create our Database Schema and Table*\n2. *Import a Small Data Sample* to make sure our data format is okay\n3. *Make Minor Data Changes and Corresponding Parameter Changes*\n4. *Imported Updated Data*\n4. *Review Parameter Changes*\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:20:33.633",
+      "dateUpdated": "2018-12-01 03:31:55.973",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -147,7 +147,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Importing Data\u003c/h2\u003e\n\u003cp\u003eThis example allows you to walk through importing data one step at a time, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate our Database Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImport a Small Data Sample\u003c/em\u003e to make sure our data format is okay\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eMake Minor Data Changes and Corresponding Parameter Changes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImported Updated Data\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Parameter Changes\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Importing Data\u003c/h2\u003e\n\u003cp\u003eThis example allows you to walk through importing data one step at a time, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate our Database Schema and Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImport a Small Data Sample\u003c/em\u003e to make sure our data format is okay\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eMake Minor Data Changes and Corresponding Parameter Changes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImported Updated Data\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Parameter Changes\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -155,19 +155,19 @@
       "jobName": "paragraph_1542670815330_-1563444435",
       "id": "20171012-115333_567951903",
       "dateCreated": "2018-11-19 15:40:15.330",
-      "dateStarted": "2018-11-29 20:20:33.635",
-      "dateFinished": "2018-11-29 20:20:33.644",
+      "dateStarted": "2018-12-01 03:31:55.975",
+      "dateFinished": "2018-12-01 03:31:55.981",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n### 1. Create our Database Table\n\nYou can get started by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph in this Notebook, which uses the *%splicemachine* interpreter to create a table in your Splice Machine database.",
+      "text": "%md\n\n### 1. Create our Database Schema and  Table\n\nYou can get started by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph in this Notebook, which uses the `%splicemachine` interpreter to:\n\n* Create a new schema named DEV1 in your database\n* Make DEV1 the default schema\n* Create the `import_example` table in your database.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:17:54.270",
+      "dateUpdated": "2018-12-01 03:35:19.535",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -187,7 +187,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create our Database Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter to create a table in your Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create our Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate a new schema named DEV1 in your database\u003c/li\u003e\n  \u003cli\u003eMake DEV1 the default schema\u003c/li\u003e\n  \u003cli\u003eCreate the \u003ccode\u003eimport_example\u003c/code\u003e table in your database.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -195,51 +195,45 @@
       "jobName": "paragraph_1543522435568_-1029960094",
       "id": "20181129-201355_405386607",
       "dateCreated": "2018-11-29 20:13:55.569",
-      "dateStarted": "2018-11-29 20:17:54.278",
-      "dateFinished": "2018-11-29 20:17:54.286",
+      "dateStarted": "2018-12-01 03:35:16.445",
+      "dateFinished": "2018-12-01 03:35:16.459",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table import_example (i int, v varchar(20), t timestamp);",
+      "text": "%splicemachine\n\ncreate schema DEV1;\nset schema DEV1;\ncreate table import_example (i int, v varchar(20), t timestamp);",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 15:40:15.331",
+      "dateUpdated": "2018-12-01 03:36:32.983",
       "config": {
         "editorSetting": {
-          "language": "text",
+          "language": "sql",
           "editOnDblClick": false
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/text",
+        "editorMode": "ace/mode/sql",
         "editorHide": false,
         "results": {},
-        "enabled": true
+        "enabled": true,
+        "fontSize": 9.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542670815331_1664761845",
       "id": "20170916-145839_408808168",
       "dateCreated": "2018-11-19 15:40:15.331",
-      "status": "READY",
+      "dateStarted": "2018-12-01 03:36:33.002",
+      "dateFinished": "2018-12-01 03:36:33.183",
+      "status": "ERROR",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\n### 2. Import a Small Data Sample\n\nNow we\u0027ll import a small sample of our data to make sure that we\u0027ve got our import set up correctly. We\u0027ve created a sample data file named *example1.csv* that contains these two records:\n\n\u003cpre\u003e100,hello there,2017-01-01 00:00:00\n200,how are you,2017-02-01 00:00:00\u003c/pre\u003e\n\nImport the data in this file by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph, which calls our `IMPORT_DATA` function",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:18:01.122",
+      "dateUpdated": "2018-12-01 03:37:09.342",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -251,7 +245,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -271,22 +265,22 @@
       "jobName": "paragraph_1542670815331_-1729711631",
       "id": "20170916-164024_410953951",
       "dateCreated": "2018-11-19 15:40:15.331",
-      "dateStarted": "2018-11-29 20:18:01.133",
-      "dateFinished": "2018-11-29 20:18:01.141",
+      "dateStarted": "2018-12-01 03:29:29.189",
+      "dateFinished": "2018-12-01 03:29:29.199",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027splice\u0027,\u0027import_example\u0027,null,\u0027s3a://splice-examples/import/example1.csv\u0027,null,null,null,null,null,0,null,null,null);",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027DEV1\u0027,\u0027import_example\u0027,null,\u0027s3a://splice-examples/import/example1.csv\u0027,null,null,null,null,null,0,null,null,null);",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 15:40:22.396",
+      "dateUpdated": "2018-12-01 03:38:13.452",
       "config": {
         "editorSetting": {
-          "language": "text",
+          "language": "sql",
           "editOnDblClick": false
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/text",
+        "editorMode": "ace/mode/sql",
         "editorHide": false,
         "results": {
           "0": {
@@ -328,15 +322,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n2\t0\t1\t72\tNONE\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542670815332_1556691646",
       "id": "20170916-164026_68551836",
@@ -348,7 +333,7 @@
     {
       "text": "%md\n\u003cbr /\u003e\n\nYou\u0027ll notice that after you run the paragraph, you see a short report that indicates how many rows were successfully loaded, and how many failed to load, In this example, all 2 rows were successfully loaded.\n\nYou have probably also noticed that we used default values by specifying `null` for all of the parameters that have defaults; here\u0027s what those defaults mean:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParameter\u003c/th\u003e\n            \u003cth\u003eNULL Value Details\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003einsertColumnList\u003c/td\u003e\n            \u003ctd\u003eOur column list exactly matches the columns and ordering of columns in the table, so there\u0027s not need to specify a list.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ecolumnDelimiter\u003c/td\u003e\n            \u003ctd\u003eOur data uses the default comma character (\u003ccode\u003e,\u003c/code\u003e) to delimit columns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003estringDelimiter\u003c/td\u003e\n            \u003ctd\u003eNone of our data fields contain the comma character, so we don\u0027t need a string delimiter character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003etimestampFormat\u003c/td\u003e\n            \u003ctd\u003eOur data matches the default timestamp format, which is \u003ccode\u003eyyyy-MM-dd HH:mm:ss\u003c/code\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003edateFormat\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any date columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003etimeFormat\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any time columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ebadRecordDirectory\u003c/td\u003e\n            \u003ctd\u003eWe left this \u003ccode\u003enull\u003c/code\u003e, which is allowable, but not considered a good practice. Splice Machine advises specifying a bad record directory so that you can diagnose any record import problems.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eoneLineRecords\u003c/td\u003e\n            \u003ctd\u003eWe were able to leave this as \u003ccode\u003enull\u003c/code\u003e because our records each fit on one line. If your data contains any newline characters, you must specify \u003ccode\u003efalse\u003c/code\u003e for this parameter, and you must include delimiters around the data.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003echarset\u003c/td\u003e\n            \u003ctd\u003eThis parameter is currently ignored; Splice Machine assumes that your data uses utf-8 encoding.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:18:07.108",
+      "dateUpdated": "2018-12-01 03:37:04.220",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -367,7 +352,7 @@
             }
           }
         },
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -395,7 +380,7 @@
     {
       "text": "%md\n\n### 3. Make Minor Data Changes and Corresponding Parameter Changes\n\nNow we\u0027ll make a few minor changes in our input data to see how that influences our import command. The modified data is stored in a CSV file in an S3 bucket on AWS. \nLet\u0027s change the data a bit, and see how that influences the `import_data` command. \n\nThe updated data, stored in *example2.csv*, looks like this:\n\n\u003cpre\u003e\n\u0027hello\nthere\u0027|2017-01-01 00:00:00.123456\n\u0027how, are you\u0027|2017-02-01 00:00:00.123456\n\u003c/pre\u003e\n\n### 4. Import the Updated Data\nNow import the data in the example2.csv file by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph, which again uses the *%splicemachine* interpreter:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:20:59.717",
+      "dateUpdated": "2018-12-01 03:37:17.909",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -407,7 +392,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -433,9 +418,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA(\u0027splice\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)",
+      "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA(\u0027DEV1\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 15:40:22.441",
+      "dateUpdated": "2018-12-01 03:38:23.591",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -484,15 +469,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n2\t0\t1\t83\tNONE\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542670815333_1411750085",
       "id": "20170916-182305_148259237",
@@ -504,7 +480,7 @@
     {
       "text": "%md\n### 5. Review our Parameter Changes\n\nLet\u0027s examine the changes in our call to `IMPORT_DATA` due to changes in our data file:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParameter\u003c/th\u003e\n            \u003cth\u003eDetails\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003einsertColumnList\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIn this case, we only want to import two of the three columns in our input data, so we specify the names of the columns we want imported.\u003c/p\u003e\n                \u003cp class\u003d\"noteNote\"\u003eThe default value (or \u003ccode\u003enull\u003c/code\u003e if no default value is defined in the database) is inserted for records that don\u0027t contain a value in a column being imported.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ecolumnDelimiter\u003c/td\u003e\n            \u003ctd\u003eAt least one of our records includes a string that contains the default delimiter (comma), so need to use a different delimiter character. Our sample file uses the \u003ccode\u003e|\u003c/code\u003e character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003estringDelimiter\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eWe want to be able to include commas and newlines in our input data fields, so we enclose string data in our input file in single quote (\u003ccode\u003e\u0027\u003c/code\u003e) characters.\u003c/p\u003e\n                \u003cp class\u003d\"noteNote\"\u003eYou need to escape the single quote character in your parameter values, which is why you see four single quotes (\u003ccode\u003e\u0027\u0027\u0027\u0027\u003c/code\u003e).\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003etimestampFormat\u003c/td\u003e\n            \u003ctd\u003eOur data now includes microseconds, so we need to change our format specification to \u003ccode\u003eyyyy-MM-dd HH:mm:ss.SSSSSS\u003c/code\u003e.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eoneLineRecords\u003c/td\u003e\n            \u003ctd\u003eOne of our input records contains a newline, so we must explicitly set this value to \u003ccode\u003efalse\u003c/code\u003e.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 20:21:12.510",
+      "dateUpdated": "2018-12-01 03:37:42.663",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -516,7 +492,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -544,11 +520,11 @@
     {
       "text": "%md\n## Where to Go Next\n\nOnce you have successfully imported your own data, you\u0027re ready to run queries. See our next tutorial, [*Running Queries*](/#/notebook/2DUGVN2K2).\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:35:55.094",
+      "dateUpdated": "2018-12-01 03:37:48.410",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -585,7 +561,7 @@
     {
       "text": "%md\n## Related Documentation\nThe \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation provides details about and examples of using our different data importation processes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 13:02:27.678",
+      "dateUpdated": "2018-12-01 03:37:51.857",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -597,7 +573,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -621,33 +597,6 @@
       "dateFinished": "2018-11-20 13:02:27.684",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-19 15:40:15.335",
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": true,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542670815334_1280881023",
-      "id": "20170907-080029_765242977",
-      "dateCreated": "2018-11-19 15:40:15.334",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Developers, Part I - Beginning/d. Importing Data",
@@ -656,7 +605,9 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

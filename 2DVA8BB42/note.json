@@ -43,9 +43,49 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%md\n### WE NEED TO CREATE DS_TPCH1 and tables and import the data -- at least for supplier and nation tables",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:16:41.000",
+      "dateUpdated": "2018-12-01 06:44:01.197",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eWE NEED TO CREATE DS_TPCH1 and tables and import the data \u0026ndash; at least for supplier and nation tables\u003c/h3\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543646543544_1102295187",
+      "id": "20181201-064223_40498192",
+      "dateCreated": "2018-12-01 06:42:23.545",
+      "dateStarted": "2018-12-01 06:44:01.198",
+      "dateFinished": "2018-12-01 06:44:01.210",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tDS_TPCH1.supplier,\n\tDS_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-01 06:43:01.447",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -87,15 +127,6 @@
           }
         }
       },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "paragraph_1520184238152_198426925\u0027s Interpreter splicemachine not found"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542399401996_-1777323590",
       "id": "20180115-083533_1027074665",
@@ -105,9 +136,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS_TPCH1.supplier,\n\tDS_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:16:41.000",
+      "dateUpdated": "2018-12-01 06:43:09.194",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -151,15 +182,6 @@
           }
         }
       },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "paragraph_1520184238153_198042176\u0027s Interpreter splicemachine not found"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542399401997_1395828042",
       "id": "20180129-123733_1126963025",
@@ -169,9 +191,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS_TPCH1.supplier,\n\tDS_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:16:41.000",
+      "dateUpdated": "2018-12-01 06:43:14.865",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -213,15 +235,6 @@
             "hidden": false
           }
         }
-      },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "paragraph_1520184238153_198042176\u0027s Interpreter splicemachine not found"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542399401997_1103263814",
@@ -232,9 +245,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS_TPCH1.supplier,\n\tDS_TPCH1.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:16:41.000",
+      "dateUpdated": "2018-12-01 06:43:25.587",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -276,15 +289,6 @@
             "hidden": false
           }
         }
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "BALANCE\tSUPPLIER\n-19.63\tSupplier#000007973\n-21.75\tSupplier#000002398\n-60.23\tSupplier#000009484\n-112.15\tSupplier#000002729\n-127.07\tSupplier#000009585\n-132.77\tSupplier#000003390\n-144.48\tSupplier#000001765\n-165.23\tSupplier#000004814\n-201.93\tSupplier#000004223\n-228.32\tSupplier#000002200\n-258.71\tSupplier#000007578\n-314.06\tSupplier#000000510\n-338.23\tSupplier#000004438\n-345.82\tSupplier#000001805\n-389.86\tSupplier#000004317\n-417.15\tSupplier#000008474\n-488.86\tSupplier#000008250\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542399401998_-67124120",
@@ -332,34 +336,6 @@
       "dateStarted": "2018-11-20 11:00:15.968",
       "dateFinished": "2018-11-20 11:00:15.974",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:16:42.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "enabled": true,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542399401999_-1555384142",
-      "id": "20180125-142959_1101825868",
-      "dateCreated": "2018-11-16 12:16:41.000",
-      "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],

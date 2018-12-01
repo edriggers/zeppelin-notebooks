@@ -3,7 +3,7 @@
     {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction to Splice Machine Administration\nThis curriculum is recommended for database administrators, Hadoop administrators, and Application Support specialists who are working with Splice Machine. To understand the topics in this section, you need to have experience with databases and be comfortable working with Hadoop. You can expect to spend 2-3 hours completing this curriculum.\n\nNote that each notebook contains a link to the next notebook in the sequence, and most notebooks also contain links to related pages in our Splice Machine Documentation web.\n\nThis is the sequence of notebooks in our *Splice Machine Administrator\u0027s* class:\n\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e1.\u003c/td\u003e\n            \u003ctd\u003eIf you\u0027ve not already done so, please visit our \u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eGeneral Introduction to Splice Machine\u003c/em\u003e\u003c/a\u003e notebook for an overview of Splice Machine before diving into this set of notebooks.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e2.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DY5CJ4CS\"\u003e\u003cem\u003eNotebook Basics\u003c/em\u003e\u003c/a\u003e notebook is a brief introduction to running and creating/modifying Zeppelin notebooks, which you\u0027ll need to know before proceeding with the other notebooks in this section..\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e3.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DUMZ6BTQ\"\u003e\u003cem\u003eRunning Queries\u003c/em\u003e\u003c/a\u003e notebook introduces you to querying your Splice Machine database.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e4.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DX9MPD59\"\u003e\u003cem\u003eTuning Queries for Performance\u003c/em\u003e\u003c/a\u003e notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, including: collecting statistics, compacting, creating primary keys and indexes, and strategies for joining tables.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e5.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXU61KR1\"\u003e\u003cem\u003eUsing the Database Console UI\u003c/em\u003e\u003c/a\u003e notebook introduces the dashboard you can use to monitor queries sent to the Spark engine; this allows you to follow the progress of queries running in Spark, monitor GC usage, and terminate queries when necessary.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e6.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eUsing Explain and Hints\u003c/em\u003e\u003c/a\u003e notebook teaches you how to understand query execution plans and how to use \u003cem\u003ehints\u003c/em\u003e to influence execution plans.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e7.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXCBRCK2\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e notebook is a more in-depth walk-through of creating, populating, and querying TPCH benchmark data in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e8.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DVCDT3ND\"\u003e\u003cem\u003eMonitoring Queries with the Database Console\u003c/em\u003e\u003c/a\u003e notebook introduces you to using our Database Console to monitor, interrogate, and terminate queries.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e9.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXZUCREK\"\u003e\u003cem\u003eCreating Custom Stored Procedures\u003c/em\u003e\u003c/a\u003e notebook show you how to create and deploy custom, stored functions and procedures that you can call from your SQL queries in Splice Machine .\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e",
       "user": "anonymous",
-      "dateUpdated": "2018-11-19 20:44:39.222",
+      "dateUpdated": "2018-12-01 07:19:24.426",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -17,7 +17,7 @@
         "fontSize": 9.0,
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -44,7 +44,7 @@
     {
       "text": "%md\n## Where to Go Next\nPlease start this class with the [*Notebook Basics*](/#/notebook/2DY5CJ4CS) notebook for a brief introduction to running and creating/modifying Zeppelin notebooks.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:30:24.051",
+      "dateUpdated": "2018-12-01 07:19:29.889",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -56,7 +56,7 @@
         "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorHide": true,
         "tableHide": false
       },
@@ -81,22 +81,6 @@
       "dateFinished": "2018-11-20 11:30:24.058",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 11:30:24.046",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542742224045_-1446338898",
-      "id": "20181120-113024_762397842",
-      "dateCreated": "2018-11-20 11:30:24.045",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training/For Administrators/a. Introduction",
@@ -105,7 +89,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "angular:shared_process": [],
+    "splicemachine:shared_process": [],
     "spark:shared_process": []
   },
   "config": {
