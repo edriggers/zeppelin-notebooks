@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542402279556_2022526649",
       "id": "20170912-074720_358235395",
       "dateCreated": "2018-11-16 13:04:39.000",
-      "dateStarted": "2018-11-29 23:48:35.700",
-      "dateFinished": "2018-11-29 23:48:35.740",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1543535337481_931917680",
       "id": "20181129-234857_102155126",
       "dateCreated": "2018-11-29 23:48:57.481",
-      "dateStarted": "2018-11-29 23:49:01.627",
-      "dateFinished": "2018-11-29 23:49:01.642",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -122,12 +118,13 @@
     {
       "text": "%md\n## Working with Paragraphs\n\nEach paragraph in a notebook contains code that is interpreted by the interpreter associated with the paragraph. You associate an interpreter with a paragraph by specifying the Zeppelin interpreter `%[name]` directive at the beginning of the paragraph; for example `%splicemachine` will use the `splicemachine` interpreter for the paragraph, `%md` is the Markdown interpreter, `%spark` is the Spark interpreter, and so on. \n\nSee the *Using Interpreters* section below for more information about working with interpreters.\n\n### Running and Editing Paragraphs\n\nYou\u0027ll notice a set of icons in the upper right section of each paragraph. Use these to work with the paragraphs in your Notebook:\n\n* Click the \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Play button\"\u003e *Play* icon (or press `Shift-Enter`) to run the paragraph.\n* Click the  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepResultsIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Results button\"\u003e *Results* icon after running the paragraph to show or hide the results of running the paragraph.\n* Click the  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepEditorIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Edit button\"\u003e *Edit* icon (or press `Ctrl-Option-E`) to show/edit or hide the code in the paragraph. Each interpreter has an associated editor that you can use to directly modify the code and then re-run it.\n* Click the  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Settings button\"\u003e *Settings* icon to reveal a list of other operations that are available for paragraphs.\n\nWhen you run a paragraph, Zeppelin temporarily shows its status as *Running*. If the paragraph runs successfully, you\u0027ll see the results displayed, and the status displays as *Finished*: \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepFinished.png\" class\u003d\"inline\" style\u003d\"width:145px; height:28px\" alt\u003d\"Zeppelin Notebook Finished status display\"\u003e\n\nIf Zeppelin encounters an error in running the paragraph, the status displays as *Error*:  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepError.png\" class\u003d\"inline\" style\u003d\"height:24px; width:125px\" alt\u003d\"Zeppelin Notebook Error status display\"\u003e and an error message is displayed instead of the results. If you encounter an error, you can easily edit the code and rerun the paragraph.\n\nNote that a common error occurs when you\u0027ve not yet bound the required interpreter to your notebook, as described in the *Using Interpreters* section, below.\n\n\n### How Long Did it Take?\n\nAfter the execution of a paragraph, Zeppelin reports how long it took to execute. The timing is displayed at the bottom of the results; for example:\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepExecTime.png\" style\u003d\"height:100%\" alt\u003d\"Zeppelin Notebook Execution Time display\"\u003e\n\nKnowing how long a query took to complete can be vital information when we get to running more complex queries.\n\n\n### Adding/Removing Paragraphs\n\nThe next thing to try is to add more empty paragraphs to your notebook. You can easily add a paragraph by hovering your mouse in the *grey* area between two paragraphs. As you hover, you\u0027ll see a `+` appear in the center of the grey area:\n\u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepNewPgf.png\" alt\u003d\"Zeppelin create new paragraph\"\u003e\n\nClick the `+` to insert a new paragraph.\n\nIf you want to remove a paragraph, click the \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook settings button\"\u003e *Settings* icon and then click *Remove* (or press `Ctrl-Option-D`).\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:20:31.803",
+      "dateUpdated": "2018-12-01 18:52:29.341",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -192,8 +189,6 @@
       "jobName": "paragraph_1542402279558_774733592",
       "id": "20170915-152602_2113988964",
       "dateCreated": "2018-11-16 13:04:39.000",
-      "dateStarted": "2018-11-29 23:49:29.149",
-      "dateFinished": "2018-11-29 23:49:29.173",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -232,8 +227,6 @@
       "jobName": "paragraph_1543535371874_-203811641",
       "id": "20181129-234931_1366395440",
       "dateCreated": "2018-11-29 23:49:31.874",
-      "dateStarted": "2018-11-29 23:49:46.196",
-      "dateFinished": "2018-11-29 23:49:46.213",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -338,8 +331,6 @@
       "jobName": "paragraph_1542402279559_-1478160315",
       "id": "20170916-110419_656653056",
       "dateCreated": "2018-11-16 13:04:39.000",
-      "dateStarted": "2018-12-01 07:21:02.545",
-      "dateFinished": "2018-12-01 07:21:02.562",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -377,8 +368,6 @@
       "jobName": "paragraph_1542402279559_460846172",
       "id": "20170916-112917_1551286672",
       "dateCreated": "2018-11-16 13:04:39.000",
-      "dateStarted": "2018-11-20 11:36:58.357",
-      "dateFinished": "2018-11-20 11:36:58.360",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -418,8 +407,6 @@
       "jobName": "paragraph_1542742591532_-842102581",
       "id": "20181120-113631_890599513",
       "dateCreated": "2018-11-20 11:36:31.532",
-      "dateStarted": "2018-11-20 11:36:55.975",
-      "dateFinished": "2018-11-20 11:36:55.980",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -430,8 +417,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

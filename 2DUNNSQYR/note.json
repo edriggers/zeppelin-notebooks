@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542396609161_392509380",
       "id": "20170912-074720_358235395",
       "dateCreated": "2018-11-16 11:30:09.000",
-      "dateStarted": "2018-11-29 23:45:43.479",
-      "dateFinished": "2018-11-29 23:45:46.353",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1543535171507_104994086",
       "id": "20181129-234611_562277203",
       "dateCreated": "2018-11-29 23:46:11.507",
-      "dateStarted": "2018-11-29 23:46:18.016",
-      "dateFinished": "2018-11-29 23:46:18.046",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -192,15 +188,13 @@
       "jobName": "paragraph_1542396609164_2096227859",
       "id": "20170915-152602_2113988964",
       "dateCreated": "2018-11-16 11:30:09.000",
-      "dateStarted": "2018-11-29 23:47:04.669",
-      "dateFinished": "2018-11-29 23:47:04.690",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Running a Simple Database Query\nIn the next paragraph, we use the `%splicemachine` interpreter to run an SQL example against your Splice Machine database. Run the query by clicking the \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" class\u003d\"inline\" alt\u003d\"Zeppelin Notebook Play button\"\u003e *Play* icon to:\n\n* create a table named `a`\n* populate the table with 3 rows of data\n* select the contents of the table\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:53:56.339",
+      "dateUpdated": "2018-12-01 18:51:26.964",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -232,8 +226,6 @@
       "jobName": "paragraph_1543535227837_-1153027648",
       "id": "20181129-234707_1537384621",
       "dateCreated": "2018-11-29 23:47:07.837",
-      "dateStarted": "2018-11-30 18:35:50.884",
-      "dateFinished": "2018-11-30 18:35:50.910",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -306,7 +298,7 @@
     {
       "text": "%md\n\u003cbr /\u003e\nAs you can see, the above example successfully used the `splicemachine` interpreter to create, populate, and select the contents of the table named `a` in your Splice Machine database. A few notes about the results of these operations:\n\n* The output from the execution of the `create` and `insert` statement displays as `Query executed successfully...`\n* The output of the `select` statement is the displayed table\n* If the output contains many rows or columns, Zeppelin automatically adds scroll bars to allow you to view all of the data\n* The results are initially displayed in tabular format; you can apply different graphical displays of the results by clicking one of the visualization icons that are shown above the results:\n  \u003cimg src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepVis1.png\" alt\u003d\"Zeppelin Visualization Choices display\"\u003e\n  * Simply click a visualization icon to display the results using a different visualization. Most of the visualizations offer `settings` that you can configure.\n  * Click the rightmost icon to download the results in CSV or TSV format.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:54:34.540",
+      "dateUpdated": "2018-12-01 18:51:31.793",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -318,7 +310,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -338,8 +330,6 @@
       "jobName": "paragraph_1542396609165_1933624042",
       "id": "20170916-110419_656653056",
       "dateCreated": "2018-11-16 11:30:09.000",
-      "dateStarted": "2018-12-01 05:54:34.544",
-      "dateFinished": "2018-12-01 05:54:34.559",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -379,15 +369,13 @@
       "jobName": "paragraph_1542739251961_-2083230718",
       "id": "20181120-104051_81299709",
       "dateCreated": "2018-11-20 10:40:51.961",
-      "dateStarted": "2018-11-20 10:42:31.527",
-      "dateFinished": "2018-11-20 10:42:31.531",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\n## Related Documentation\n\nWe encourage you to visit the \u003ca href\u003d\"https://zeppelin.apache.org/docs/\" target\u003d\"_blank\"\u003eZeppelin documentation site\u003c/a\u003e to learn about other Zeppelin features, including copying, saving, and importing notebooks.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-20 10:42:38.478",
+      "dateUpdated": "2018-12-01 18:51:35.080",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -399,7 +387,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -419,8 +407,6 @@
       "jobName": "paragraph_1542396609166_-850522470",
       "id": "20170916-112917_1551286672",
       "dateCreated": "2018-11-16 11:30:09.000",
-      "dateStarted": "2018-11-20 10:42:38.479",
-      "dateFinished": "2018-11-20 10:42:38.482",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -431,8 +417,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

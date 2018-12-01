@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542670815328_1646270231",
       "id": "20170907-071238_703539388",
       "dateCreated": "2018-11-19 15:40:15.328",
-      "dateStarted": "2018-11-30 00:04:20.416",
-      "dateFinished": "2018-11-30 00:04:20.445",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1543521850784_1553905963",
       "id": "20181129-200410_267060208",
       "dateCreated": "2018-11-29 20:04:10.784",
-      "dateStarted": "2018-11-29 20:09:36.827",
-      "dateFinished": "2018-11-29 20:09:36.839",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -115,8 +111,6 @@
       "jobName": "paragraph_1542670815329_855436182",
       "id": "20170907-074507_462416683",
       "dateCreated": "2018-11-19 15:40:15.329",
-      "dateStarted": "2018-11-21 15:48:58.163",
-      "dateFinished": "2018-11-21 15:48:58.171",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -155,8 +149,6 @@
       "jobName": "paragraph_1542670815330_-1563444435",
       "id": "20171012-115333_567951903",
       "dateCreated": "2018-11-19 15:40:15.330",
-      "dateStarted": "2018-12-01 03:31:55.975",
-      "dateFinished": "2018-12-01 03:31:55.981",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -195,15 +187,13 @@
       "jobName": "paragraph_1543522435568_-1029960094",
       "id": "20181129-201355_405386607",
       "dateCreated": "2018-11-29 20:13:55.569",
-      "dateStarted": "2018-12-01 03:35:16.445",
-      "dateFinished": "2018-12-01 03:35:16.459",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\ncreate schema DEV1;\nset schema DEV1;\ncreate table import_example (i int, v varchar(20), t timestamp);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 03:36:32.983",
+      "dateUpdated": "2018-12-01 18:38:28.622",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -214,7 +204,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -224,9 +215,7 @@
       "jobName": "paragraph_1542670815331_1664761845",
       "id": "20170916-145839_408808168",
       "dateCreated": "2018-11-19 15:40:15.331",
-      "dateStarted": "2018-12-01 03:36:33.002",
-      "dateFinished": "2018-12-01 03:36:33.183",
-      "status": "ERROR",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -265,15 +254,13 @@
       "jobName": "paragraph_1542670815331_-1729711631",
       "id": "20170916-164024_410953951",
       "dateCreated": "2018-11-19 15:40:15.331",
-      "dateStarted": "2018-12-01 03:29:29.189",
-      "dateFinished": "2018-12-01 03:29:29.199",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027DEV1\u0027,\u0027import_example\u0027,null,\u0027s3a://splice-examples/import/example1.csv\u0027,null,null,null,null,null,0,null,null,null);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 03:38:13.452",
+      "dateUpdated": "2018-12-01 18:39:48.562",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -316,7 +303,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -326,7 +314,7 @@
       "jobName": "paragraph_1542670815332_1556691646",
       "id": "20170916-164026_68551836",
       "dateCreated": "2018-11-19 15:40:15.332",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -372,15 +360,13 @@
       "jobName": "paragraph_1542670815332_-551680906",
       "id": "20170916-164258_1714730049",
       "dateCreated": "2018-11-19 15:40:15.332",
-      "dateStarted": "2018-11-29 20:18:07.112",
-      "dateFinished": "2018-11-29 20:18:07.125",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\n### 3. Make Minor Data Changes and Corresponding Parameter Changes\n\nNow we\u0027ll make a few minor changes in our input data to see how that influences our import command. The modified data is stored in a CSV file in an S3 bucket on AWS. \nLet\u0027s change the data a bit, and see how that influences the `import_data` command. \n\nThe updated data, stored in *example2.csv*, looks like this:\n\n\u003cpre\u003e\n\u0027hello\nthere\u0027|2017-01-01 00:00:00.123456\n\u0027how, are you\u0027|2017-02-01 00:00:00.123456\n\u003c/pre\u003e\n\n### 4. Import the Updated Data\nNow import the data in the example2.csv file by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph, which again uses the *%splicemachine* interpreter:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 03:37:17.909",
+      "dateUpdated": "2018-12-01 18:40:49.971",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -412,15 +398,13 @@
       "jobName": "paragraph_1542670815332_271639112",
       "id": "20170916-182114_1562378772",
       "dateCreated": "2018-11-19 15:40:15.332",
-      "dateStarted": "2018-11-29 20:20:59.718",
-      "dateFinished": "2018-11-29 20:20:59.730",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA(\u0027DEV1\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 03:38:23.591",
+      "dateUpdated": "2018-12-01 18:41:17.474",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -463,7 +447,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -473,7 +458,7 @@
       "jobName": "paragraph_1542670815333_1411750085",
       "id": "20170916-182305_148259237",
       "dateCreated": "2018-11-19 15:40:15.333",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -512,8 +497,6 @@
       "jobName": "paragraph_1542670815333_-28512832",
       "id": "20170916-183543_1181641403",
       "dateCreated": "2018-11-19 15:40:15.333",
-      "dateStarted": "2018-11-29 20:21:12.511",
-      "dateFinished": "2018-11-29 20:21:12.523",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -553,8 +536,6 @@
       "jobName": "paragraph_1542676116226_1799695660",
       "id": "20181119-170836_461498674",
       "dateCreated": "2018-11-19 17:08:36.226",
-      "dateStarted": "2018-11-20 10:35:55.095",
-      "dateFinished": "2018-11-20 10:35:55.099",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -593,8 +574,6 @@
       "jobName": "paragraph_1542670815334_1983767364",
       "id": "20170907-074700_1452777231",
       "dateCreated": "2018-11-19 15:40:15.334",
-      "dateStarted": "2018-11-20 13:02:27.679",
-      "dateFinished": "2018-11-20 13:02:27.684",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -605,9 +584,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "angular:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
