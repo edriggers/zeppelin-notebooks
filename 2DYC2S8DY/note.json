@@ -122,48 +122,31 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.pyspark\n \ndefaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
+      "text": "%spark.pyspark\ndefaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 21:42:33.478",
+      "dateUpdated": "2018-12-02 20:12:46.266",
       "config": {
-        "tableHide": false,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
+          "completionSupport": true,
+          "completionKey": "TAB"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "editorMode": "ace/mode/python"
       },
       "settings": {
-        "params": {
-          "JDBCurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
-          "JDBCurl Scala": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
-          "JDBCxurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin;useSpark\u003dtrue",
-          "JDBCURL Scala": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
-          "Scala JDBCurl": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin"
-        },
-        "forms": {
-          "JDBCurl": {
-            "type": "TextBox",
-            "name": "JDBCurl",
-            "displayName": "JDBCurl",
-            "defaultValue": "jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin",
-            "hidden": false
-          }
-        }
+        "params": {},
+        "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1542399525610_-1851922174",
-      "id": "20180215-062654_2077965041",
-      "dateCreated": "2018-11-16 12:18:45.000",
+      "jobName": "paragraph_1543781558644_-1081260206",
+      "id": "20181202-201238_1375270948",
+      "dateCreated": "2018-12-02 20:12:38.644",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -514,9 +497,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\ndrop table IF EXISTS ASN.FEATURES;\nCREATE table ASN.FEATURES AS\n    SELECT \n    SHIPMENTID,\n    STATUS,\n    SHIPMODE,\n    PRODUCT_DESCRIPTION,\n    CONSIGNEE,\n    SHIPPER,\n    ARRIVAL_DATE,\n    GROSS_WEIGHT_LB,\n    GROSS_WEIGHT_KG,\n    FOREIGN_PORT,\n    US_PORT,\n    VESSEL_NAME,\n    COUNTRY_OF_ORIGIN,\n    CONSIGNEE_ADDRESS,\n    SHIPPER_ADDRESS,\n    ZIPCODE,\n    NO_OF_CONTAINERS,\n    CONTAINER_NUMBER,\n    CONTAINER_TYPE,\n    QUANTITY,\n    QUANTITY_UNIT,\n    MEASUREMENT,\n    MEASUREMENT_UNIT,\n    BILL_OF_LADING,\n    HOUSE_VS_MASTER,\n    DISTRIBUTION_PORT,\n    MASTER_BL,\n    VOYAGE_NUMBER,\n    SEAL,\n    SHIP_REGISTERED_IN,\n    INBOND_ENTRY_TYPE,\n    CARRIER_CODE,\n    CARRIER_NAME,\n    CARRIER_CITY,\n    CARRIER_STATE,\n    CARRIER_ZIP,\n    CARRIER_ADDRESS,\n    NOTIFY_PARTY,\n    NOTIFY_ADDRESS,\n    PLACE_OF_RECEIPT,\n    DATE_OF_RECEIPT,\n    CASE\n    WHEN ASN.SHIPMENT_HISTORY.QUANTITY \u003e 10\n    THEN\n        CASE\n            WHEN ASN.SHIPMENT_HISTORY.QUANTITY \u003e 100\n            THEN\n                CASE\n                    WHEN ASN.SHIPMENT_HISTORY.QUANTITY \u003e 1000\n                    THEN 3\n                    ELSE 2\n                END\n            ELSE 1\n    END\n    ELSE 0\n    END AS QUANTITY_BIN,\n    ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - ASN.SHIPMENT_HISTORY.ARRIVAL_DATE as LATENESS,\n    CASE\n    WHEN  ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 0\n    THEN\n        CASE\n            WHEN  ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 5\n            THEN\n                CASE\n                    WHEN  ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 10\n                    THEN 3\n                    ELSE 2\n                END\n            ELSE 1\n    END\n    ELSE 0\n    END AS LABEL\nFROM ASN.SHIPMENT_HISTORY ",
+      "text": "%splicemachine\ndrop table IF EXISTS DS_ASN.FEATURES;\nCREATE table DS_ASN.FEATURES AS\n    SELECT \n    SHIPMENTID,\n    STATUS,\n    SHIPMODE,\n    PRODUCT_DESCRIPTION,\n    CONSIGNEE,\n    SHIPPER,\n    ARRIVAL_DATE,\n    GROSS_WEIGHT_LB,\n    GROSS_WEIGHT_KG,\n    FOREIGN_PORT,\n    US_PORT,\n    VESSEL_NAME,\n    COUNTRY_OF_ORIGIN,\n    CONSIGNEE_ADDRESS,\n    SHIPPER_ADDRESS,\n    ZIPCODE,\n    NO_OF_CONTAINERS,\n    CONTAINER_NUMBER,\n    CONTAINER_TYPE,\n    QUANTITY,\n    QUANTITY_UNIT,\n    MEASUREMENT,\n    MEASUREMENT_UNIT,\n    BILL_OF_LADING,\n    HOUSE_VS_MASTER,\n    DISTRIBUTION_PORT,\n    MASTER_BL,\n    VOYAGE_NUMBER,\n    SEAL,\n    SHIP_REGISTERED_IN,\n    INBOND_ENTRY_TYPE,\n    CARRIER_CODE,\n    CARRIER_NAME,\n    CARRIER_CITY,\n    CARRIER_STATE,\n    CARRIER_ZIP,\n    CARRIER_ADDRESS,\n    NOTIFY_PARTY,\n    NOTIFY_ADDRESS,\n    PLACE_OF_RECEIPT,\n    DATE_OF_RECEIPT,\n    CASE\n    WHEN DS_ASN.SHIPMENT_HISTORY.QUANTITY \u003e 10\n    THEN\n        CASE\n            WHEN DS_ASN.SHIPMENT_HISTORY.QUANTITY \u003e 100\n            THEN\n                CASE\n                    WHEN DS_ASN.SHIPMENT_HISTORY.QUANTITY \u003e 1000\n                    THEN 3\n                    ELSE 2\n                END\n            ELSE 1\n    END\n    ELSE 0\n    END AS QUANTITY_BIN,\n    DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE as LATENESS,\n    CASE\n    WHEN  DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 0\n    THEN\n        CASE\n            WHEN  DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 5\n            THEN\n                CASE\n                    WHEN  DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 10\n                    THEN 3\n                    ELSE 2\n                END\n            ELSE 1\n    END\n    ELSE 0\n    END AS LABEL\nFROM DS_ASN.SHIPMENT_HISTORY ",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:18:45.000",
+      "dateUpdated": "2018-12-02 20:14:30.378",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -582,9 +565,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 1. Perform Spark + MLlib Setup Tasks\n\nThe Python Splice Machine API communicates with your database through the `PySparkContext` class, the implementation of which is shown below.\n",
+      "text": "%md\n### 1. Perform Spark + MLlib Setup Tasks\n\nThe Python Splice Machine API communicates with your database through the `PySparkContext` class.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 06:46:36.000",
+      "dateUpdated": "2018-12-02 20:15:26.070",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -608,7 +591,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Perform Spark + MLlib Setup Tasks\u003c/h3\u003e\n\u003cp\u003eThe Python Splice Machine API communicates with your database through the \u003ccode\u003ePySparkContext\u003c/code\u003e class, the implementation of which is shown below.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Perform Spark + MLlib Setup Tasks\u003c/h3\u003e\n\u003cp\u003eThe Python Splice Machine API communicates with your database through the \u003ccode\u003ePySparkContext\u003c/code\u003e class.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -616,42 +599,9 @@
       "jobName": "paragraph_1542399525626_-684199627",
       "id": "20180611-203433_1201670218",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:53:36.967",
-      "dateFinished": "2018-11-20 17:53:36.970",
+      "dateStarted": "2018-12-02 20:15:18.873",
+      "dateFinished": "2018-12-02 20:15:18.916",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\nfrom __future__ import print_function\n\nfrom pyspark.sql import DataFrame\nfrom py4j.java_gateway import java_import\n\n\nclass PySpliceContext:\n    \"\"\"\n    This class implements a SpliceMachineContext object (similar to the SparkContext object)\n    \"\"\"\n\n    def __init__(self, JDBC_URL, sparkSQLContext, _unitTesting\u003dFalse):\n        \"\"\"\n        :param JDBC_URL: (string) The JDBC URL Connection String for your Splice Machine Cluster\n        :param sparkSQLContext: (sparkContext) A SparkContext Object for executing Spark Queries\n        \"\"\"\n        self.jdbcurl \u003d JDBC_URL\n        self._unitTesting \u003d _unitTesting\n\n        if not _unitTesting:  # Private Internal Argument to Override Using JVM\n            self.sparkSQLContext \u003d sparkSQLContext\n            self.jvm \u003d self.sparkSQLContext._sc._jvm\n            java_import(self.jvm, \"com.splicemachine.spark.splicemachine.*\")\n            java_import(self.jvm, \"org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\")\n            java_import(self.jvm, \"scala.collection.JavaConverters._\")\n            self.context \u003d self.jvm.com.splicemachine.spark.splicemachine.SplicemachineContext(self.jdbcurl)\n\n        else:\n            self.sparkSQLContext \u003d sparkSQLContext\n            self.jvm \u003d \u0027\u0027\n            self.context \u003d FakeJContext(self.jdbcurl)\n\n    def getConnection(self):\n        \"\"\"\n        Return a connection to the database\n        \"\"\"\n        return self.context.getConnection()\n\n    def tableExists(self, schemaTableName):\n        \"\"\"\n        Check whether or not a table exists\n\n        :param schemaTableName: (string) Table Name\n        \"\"\"\n        return self.context.tableExists(schemaTableName)\n\n    def dropTable(self, schemaTableName):  # works\n        \"\"\"\n        Drop a specified table.\n\n        :param schemaTableName (optional): (string) schemaName.tableName\n        \"\"\"\n        return self.context.dropTable(schemaTableName)\n\n    def df(self, sql):\n        \"\"\"\n        Return a Spark Dataframe from the results of a Splice Machine SQL Query\n\n        :param sql: (string) SQL Query (eg. SELECT * FROM table1 WHERE column2 \u003e 3)\n        :return: A Spark DataFrame containing the results\n        \"\"\"\n        if self._unitTesting:\n            return self.context.df(sql)\n        return DataFrame(self.context.df(sql), self.sparkSQLContext)\n\n    def insert(self, dataFrame, schemaTableName):\n        \"\"\"\n        Insert a RDD into a table (schema.table).  The schema is required since RDD\u0027s do not have schema.\n\n        :param dataFrame: (RDD) The dataFrame you would like to insert\n        :param schemaTableName: (string) The table in which you would like to insert the RDD\n        \"\"\"\n        return self.context.insert(dataFrame._jdf, schemaTableName)\n\n    def delete(self, dataFrame, schemaTableName):\n        \"\"\"\n        Delete records in a dataframe based on joining by primary keys from the data frame.\n        Be careful with column naming and case sensitivity.\n\n        :param dataFrame: (RDD) The dataFrame you would like to delete\n        :param schemaTableName: (string) Splice Machine Table\n        \"\"\"\n        return self.context.delete(dataFrame._jdf, schemaTableName)\n\n    def update(self, dataFrame, schemaTableName):\n        \"\"\"\n        Update data from a dataframe for a specified schemaTableName (schema.table).\n        The keys are required for the update and any other columns provided will be updated in the rows.\n\n        :param dataFrame: (RDD) The dataFrame you would like to update\n        :param schemaTableName: (string) Splice Machine Table\n        :return:\n        \"\"\"\n        return self.context.update(dataFrame._jdf, schemaTableName)\n\n    def getSchema(self, schemaTableName):\n        \"\"\"\n        Return the schema via JDBC.\n\n        :param schemaTableName: (string) Table name\n        \"\"\"\n        return self.context.getSchema(schemaTableName)\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-20 16:58:05.853",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
-      "apps": [],
-      "jobName": "paragraph_1542399525626_-1873554128",
-      "id": "20180611-203503_2054048772",
-      "dateCreated": "2018-11-16 12:18:45.000",
-      "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1283,9 +1233,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*ML with Spark MLib using Scala*](/#/notebook/2DXZ2JK4E), is another implementation of this code, using Scala.",
+      "text": "%md\n## Where to Go Next\nNow we\u0027re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our [*Predicting Supply Chain Shortages*](/#/notebook/2DY411M2A) program.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 06:49:43.921",
+      "dateUpdated": "2018-12-02 20:18:12.564",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -1310,7 +1260,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DXZ2JK4E\"\u003e\u003cem\u003eML with Spark MLib using Scala\u003c/em\u003e\u003c/a\u003e, is another implementation of this code, using Scala.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our \u003ca href\u003d\"/#/notebook/2DY411M2A\"\u003e\u003cem\u003ePredicting Supply Chain Shortages\u003c/em\u003e\u003c/a\u003e program.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1318,8 +1268,8 @@
       "jobName": "paragraph_1542399525634_100720025",
       "id": "20180726-013341_1392399267",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 11:04:31.197",
-      "dateFinished": "2018-11-20 11:04:31.200",
+      "dateStarted": "2018-12-02 20:18:02.018",
+      "dateFinished": "2018-12-02 20:18:02.039",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

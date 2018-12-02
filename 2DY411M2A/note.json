@@ -2021,15 +2021,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/i. Predicting Supply Chain Shortages",
+  "name": "Splice Machine Training/For Data Scientists/h. Predicting Supply Chain Shortages",
   "id": "2DY411M2A",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
