@@ -37,8 +37,6 @@
       "jobName": "paragraph_1542395654304_-247900930",
       "id": "20180118-005945_1825119026",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-11-30 05:13:52.547",
-      "dateFinished": "2018-11-30 05:13:52.602",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -77,8 +75,6 @@
       "jobName": "paragraph_1543554773885_-394962344",
       "id": "20181130-051253_1322450311",
       "dateCreated": "2018-11-30 05:12:53.885",
-      "dateStarted": "2018-11-30 05:13:59.050",
-      "dateFinished": "2018-11-30 05:13:59.069",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -86,9 +82,9 @@
       "title": "PySpliceContext Class",
       "text": "%spark.pyspark\nfrom __future__ import print_function\nimport string\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql import Row\nfrom pyspark.sql import DataFrame\n\n#java imports                                                                                                                               \nfrom py4j.java_gateway import java_import\nfrom py4j.java_gateway import JavaGateway, GatewayParameters\n\nclass PySpliceContext:\n    def __init__(self,JDBC_URL,sparkSQLContext):\n        self.jdbcurl \u003d JDBC_URL\n        self.sparkSQLContext \u003d sparkSQLContext\n        self.jvm \u003d self.sparkSQLContext._sc._jvm\n        java_import(self.jvm,\"com.splicemachine.spark.splicemachine.*\")\n        java_import(self.jvm, \"org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\")\n        java_import(self.jvm, \"scala.collection.JavaConverters._\")\n        self.context \u003d self.jvm.com.splicemachine.spark.splicemachine.SplicemachineContext(self.jdbcurl)\n    def getConnection(self):\n        return self.context.getConnection()\n        def getConnection(): Connection \n    def tableExists(self, schemaTableName):\n        return self.context.tableExists(schemaTableName)\n    def dropTable(self,schemaName, tableName):\n        return self.context.dropTable(schemaName, tableName)\n    def dropTable(self,schemaTableName):\n        return self.context.dropTable(schemaTableName)\n    def df(self,sql):\n        return DataFrame(self.context.df(sql), self.sparkSQLContext)\n    def insert(self,dataFrame,schemaTableName): \n        return self.context.insert(dataFrame._jdf,schemaTableName)\n    def delete(self, dataFrame, schemaTableName):\n        return self.context.delete(dataFrame._jdf, schemaTableName)\n    def update(self, dataFrame, schemaTableName):\n        return self.context.update(dataFrame._jdf, schemaTableName) \n    def bulkImportHFile(self, dataFrame, schemaTableName, options):\n        return self.context.bulkImportHFile(dataFrame._jdf, schemaTableName, options)\n    def getSchema(self,schemaTableName):\n        return self.context.getSchema(schemaTableName)\n    def createTable(self, tableName, structType, keys, createTableOptions):\n        keyAsString \u003d self.jvm.java.util.ArrayList()\n        for key in keys:\n            keyAsString.append(key)\n        return self.context.createTable(tableName, structType, self.jvm.scala.collection.JavaConversions.asScalaBuffer(keyAsString).toSeq(), createTableOptions)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-02 17:39:23.792",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "python",
           "editOnDblClick": false,
@@ -111,7 +107,7 @@
       "jobName": "paragraph_1542395654306_1053279453",
       "id": "20180118-015126_1752791454",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -149,8 +145,6 @@
       "jobName": "paragraph_1542395654306_745071231",
       "id": "20180129-153516_1751825816",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-12-01 05:12:23.355",
-      "dateFinished": "2018-12-01 05:12:23.363",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -158,7 +152,7 @@
       "title": "Create Context",
       "text": "%spark.pyspark\n\nsplice \u003d PySpliceContext(\u0027jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\u0027, sqlContext)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-21 17:45:51.209",
+      "dateUpdated": "2018-12-02 17:35:18.058",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -179,18 +173,21 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
       "apps": [],
       "jobName": "paragraph_1542395654307_517477292",
       "id": "20180118-014113_2141603268",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
-      "errorMessage": "",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 3. Create a Simple Table\n\nNow we create a schema named `DEV2`, make it our default schema, and then simple table in Splice Machine that we\u0027ll subsequently populate:\n",
+      "text": "%md\n## 3. Create a Simple Table\n\nNow we create simple table in Splice Machine that we\u0027ll subsequently populate:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:16:42.549",
+      "dateUpdated": "2018-12-02 17:41:50.987",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -214,7 +211,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Create a Simple Table\u003c/h2\u003e\n\u003cp\u003eNow we create a schema named \u003ccode\u003eDEV2\u003c/code\u003e, make it our default schema, and then simple table in Splice Machine that we\u0026rsquo;ll subsequently populate:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Create a Simple Table\u003c/h2\u003e\n\u003cp\u003eNow we create simple table in Splice Machine that we\u0026rsquo;ll subsequently populate:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -222,16 +219,14 @@
       "jobName": "paragraph_1542395654308_-1855904705",
       "id": "20180129-153654_674823995",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-12-01 05:16:36.869",
-      "dateFinished": "2018-12-01 05:16:36.878",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Create a simple table",
-      "text": "%splicemachine\ncreate schema DEV2;\nset schema DEV2;\ncreate table foo (I int, F float, V varchar(100), primary key (I));\n",
+      "text": "%splicemachine\n\ncreate table DEV2.foo (I int, F float, V varchar(100), primary key (I));\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:16:14.402",
+      "dateUpdated": "2018-12-02 17:39:38.867",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -243,7 +238,8 @@
         "title": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -253,7 +249,7 @@
       "jobName": "paragraph_1542395654308_-66941472",
       "id": "20180118-015418_1427121084",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -291,16 +287,14 @@
       "jobName": "paragraph_1542395654309_1060518389",
       "id": "20180129-153818_1709035487",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-12-01 05:12:55.979",
-      "dateFinished": "2018-12-01 05:12:55.989",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Create a dataframe and insert into Splice",
-      "text": "%spark.pyspark\nfrom pyspark.sql import Row\nl \u003d [(0,3.14,\u0027Turing\u0027), (1,4.14,\u0027Newell\u0027), (2,5.14,\u0027Simon\u0027), (3,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027foo\u0027)\n",
+      "text": "%spark.pyspark\nfrom pyspark.sql import Row\nl \u003d [(0,3.14,\u0027Turing\u0027), (1,4.14,\u0027Newell\u0027), (2,5.14,\u0027Simon\u0027), (3,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027DEV2.foo\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:14.000",
+      "dateUpdated": "2018-12-02 17:39:48.246",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -325,14 +319,53 @@
       "jobName": "paragraph_1542395654309_1802628017",
       "id": "20180118-015449_13133342",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect * from foo;",
+      "text": "%md\n\n### Native Spark Datasource\n\nIf you look closely, you\u0027ll see that we went straight from a Spark Dataframe into Splice Machine\u0027s database. \n\nThis is Splice Machine\u0027s Native Spark Datasource.  Not only is this mechanism convenient, it is also very performant, leveraging parallelism in large datasets.  The main API for the Python version we just used is just in the paragraph at the top of this notebook.\n\nHere\u0027s the result:",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:42.000",
+      "dateUpdated": "2018-12-02 17:47:34.347",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eNative Spark Datasource\u003c/h3\u003e\n\u003cp\u003eIf you look closely, you\u0026rsquo;ll see that we went straight from a Spark Dataframe into Splice Machine\u0026rsquo;s database. \u003c/p\u003e\n\u003cp\u003eThis is Splice Machine\u0026rsquo;s Native Spark Datasource. Not only is this mechanism convenient, it is also very performant, leveraging parallelism in large datasets. The main API for the Python version we just used is just in the paragraph at the top of this notebook.\u003c/p\u003e\n\u003cp\u003eHere\u0026rsquo;s the result:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543772230686_822702000",
+      "id": "20181202-173710_908436948",
+      "dateCreated": "2018-12-02 17:37:10.686",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect * from DEV2.foo;",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-02 17:39:57.522",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -373,7 +406,8 @@
           "editOnDblClick": false,
           "completionKey": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -383,7 +417,7 @@
       "jobName": "paragraph_1542395654310_-1396800287",
       "id": "20180118-015510_1158645327",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -421,16 +455,14 @@
       "jobName": "paragraph_1542395654310_1501089403",
       "id": "20180129-154333_772550654",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-12-01 05:16:54.835",
-      "dateFinished": "2018-12-01 05:16:54.848",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Transactional Context",
-      "text": "%spark.pyspark\nconn \u003d splice.getConnection()\nconn.setAutoCommit(False)\nl \u003d [(4,3.14,\u0027Turing\u0027), (5,4.14,\u0027Newell\u0027), (6,5.14,\u0027Simon\u0027), (7,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027foo\u0027)\ndf \u003d splice.df(\"select * from foo\")\ndf.collect\nz.show(df)",
+      "text": "%spark.pyspark\nconn \u003d splice.getConnection()\nconn.setAutoCommit(False)\nl \u003d [(4,3.14,\u0027Turing\u0027), (5,4.14,\u0027Newell\u0027), (6,5.14,\u0027Simon\u0027), (7,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027DEV2.foo\u0027)\ndf \u003d splice.df(\"select * from DEV2.foo\")\ndf.collect\nz.show(df)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:42.000",
+      "dateUpdated": "2018-12-02 17:40:06.397",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -485,7 +517,7 @@
       "jobName": "paragraph_1542395654311_-252240147",
       "id": "20180118-015525_2011115580",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -523,16 +555,14 @@
       "jobName": "paragraph_1542395654311_324284397",
       "id": "20180129-154912_774169413",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-12-01 05:17:14.717",
-      "dateFinished": "2018-12-01 05:17:14.730",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Rollback",
-      "text": "%spark.pyspark\nconn.rollback()\ndf \u003d splice.df(\"select * from foo\")\ndf.collect\nz.show(df)",
+      "text": "%spark.pyspark\nconn.rollback()\ndf \u003d splice.df(\"select * from DEV2.foo\")\ndf.collect\nz.show(df)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:14:42.000",
+      "dateUpdated": "2018-12-02 17:40:18.312",
       "config": {
         "editorSetting": {
           "language": "python",
@@ -575,7 +605,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -585,7 +616,7 @@
       "jobName": "paragraph_1542395654313_1836815294",
       "id": "20180118-015552_1456308237",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -624,8 +655,6 @@
       "jobName": "paragraph_1542395654314_71425482",
       "id": "20180122-173624_509126525",
       "dateCreated": "2018-11-16 11:14:14.000",
-      "dateStarted": "2018-12-01 05:17:58.353",
-      "dateFinished": "2018-12-01 05:17:58.364",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
