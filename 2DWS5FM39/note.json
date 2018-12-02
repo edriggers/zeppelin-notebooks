@@ -2,9 +2,9 @@
   "paragraphs": [
     {
       "title": "Tutorial Data Schema - TPC-H",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# The Life of a Query\n\nThis notebook walks you through running and optimizing a query in Splice Machine, using the TPC-H benchmarking data that we imported into your database at the beginning of this class. We explore these topics:\n\n* *Examining a Query Execution Plan*\n* *Informing the Optimizer*\n* *Adding Indexes to the Database*\n* *A Glimpse at Splice Machine Benchmark Results*\n* *Running Queries*\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# The Life of a Query\n\nThis notebook walks you through running and optimizing a query in Splice Machine, using the TPC-H benchmarking data that we imported into your database at the beginning of this class. We explore these topics:\n\n* *Examining a Query Execution Plan*\n* *Informing the Optimizer*\n* *Adding Indexes to the Database*\n* *A Glimpse at Splice Machine Benchmark Results*\n* *Running Queries*\n\nNote - this notebook assumes that you have already loaded the TPCH-1 data with the earlier notebook run.\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:56:28.425",
+      "dateUpdated": "2018-12-02 16:32:54.276",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eThe Life of a Query\u003c/h1\u003e\n\u003cp\u003eThis notebook walks you through running and optimizing a query in Splice Machine, using the TPC-H benchmarking data that we imported into your database at the beginning of this class. We explore these topics:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eExamining a Query Execution Plan\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eInforming the Optimizer\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAdding Indexes to the Database\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eA Glimpse at Splice Machine Benchmark Results\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eThe Life of a Query\u003c/h1\u003e\n\u003cp\u003eThis notebook walks you through running and optimizing a query in Splice Machine, using the TPC-H benchmarking data that we imported into your database at the beginning of this class. We explore these topics:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eExamining a Query Execution Plan\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eInforming the Optimizer\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAdding Indexes to the Database\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eA Glimpse at Splice Machine Benchmark Results\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eNote - this notebook assumes that you have already loaded the TPCH-1 data with the earlier notebook run.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with Splice Machine using ANSI SQL.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -37,8 +37,8 @@
       "jobName": "paragraph_1542395076251_1367215274",
       "id": "20180113-213553_290656873",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-11-30 03:08:00.030",
-      "dateFinished": "2018-11-30 03:08:00.053",
+      "dateStarted": "2018-12-02 15:51:26.612",
+      "dateFinished": "2018-12-02 15:51:28.004",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -83,9 +83,121 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n-- QUERY 04\nexplain  select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%md\n### Dropping Statistics\n\nYou\u0027ll recall we collected statistics when we loaded the TPCH-1 data.  But what if we hadn\u0027t?  We can see the effect of this by first dropping the statistics:",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:57:12.916",
+      "dateUpdated": "2018-12-02 16:32:58.948",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eDropping Statistics\u003c/h3\u003e\n\u003cp\u003eYou\u0026rsquo;ll recall we collected statistics when we loaded the TPCH-1 data. But what if we hadn\u0026rsquo;t? We can see the effect of this by first dropping the statistics:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543766382806_321064611",
+      "id": "20181202-155942_923562859",
+      "dateCreated": "2018-12-02 15:59:42.806",
+      "dateStarted": "2018-12-02 16:00:45.327",
+      "dateFinished": "2018-12-02 16:00:45.349",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n\nCALL SYSCS_UTIL.DROP_SCHEMA_STATISTICS(\u0027DEV2\u0027);",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-02 16:32:45.025",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543766154524_1140754655",
+      "id": "20181202-155554_1611635049",
+      "dateCreated": "2018-12-02 15:55:54.524",
+      "dateStarted": "2018-12-02 15:58:41.492",
+      "dateFinished": "2018-12-02 15:58:42.269",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\nNow when we run explain on Query 4, we\u0027ll see that the row counts are back to approximated estimates \n\n(for example, recall that the LINEITEM table has about 6M rows - compare that to the bottom scannedRows count in the explain output):\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-02 16:33:02.145",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow when we run explain on Query 4, we\u0026rsquo;ll see that the row counts are back to approximated estimates \u003c/p\u003e\n\u003cp\u003e(for example, recall that the LINEITEM table has about 6M rows - compare that to the bottom scannedRows count in the explain output):\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543766455817_-433475846",
+      "id": "20181202-160055_419066069",
+      "dateCreated": "2018-12-02 16:00:55.817",
+      "dateStarted": "2018-12-02 16:14:30.107",
+      "dateFinished": "2018-12-02 16:14:30.121",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n-- QUERY 04\nexplain  select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-02 16:33:11.013",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -96,7 +208,8 @@
           "editOnDblClick": false,
           "completionKey": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -106,15 +219,17 @@
       "jobName": "paragraph_1542395076257_-893719305",
       "id": "20180201-123806_1712783827",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
+      "dateStarted": "2018-12-02 15:59:27.265",
+      "dateFinished": "2018-12-02 15:59:27.357",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Splice Machine Optimizer",
-      "text": "%md\n## Optimizing Query Performance\n\nIn this section we\u0027ll look at optimizing the execution plan for TPCH Query 4. We\u0027ll:\n\n* Collect Statistics to Inform the Optimizer\n* Add Indexes to Further Optimize the Plan\n* Compare Execution Plans\n\nThe *Splice Machine Optimizer* is a cost-based optimizer that generates optimal execution plans for database queries. You use our `analyze` command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\n\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\nWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\n\n* It creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\n* When joining tables, the optimizer evaluates the best *join order* and the *join strategy* to use.\n* The optimizer unrolls subqueries to reduce processing time\n\nThese metrics are usually extremely expensive but if approximate results are acceptable, there is a class of specialized algorithms, called streaming algorithms, or *sketches*, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the [Yahoo Sketches Library](https://datasketches.github.io/docs/TheChallenge.html) for its statistics gathering. \n\n### Collect Statistics\nOur first optimization is to collect statistics to inform the optimizer about our database. We use our `analyze` command to collect statistics on a schema (or table). This process requires a couple minutes.\n",
+      "text": "%md\n## Optimizing Query Performance\n\nIn this section we\u0027ll look at optimizing the execution plan for TPCH Query 4. We\u0027ll:\n\n* Collect Statistics to Inform the Optimizer\n* Add Indexes to Further Optimize the Plan\n* Compare Execution Plans\n\nWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\n\n* It creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\n* When joining tables, the optimizer evaluates the best *join order* and the *join strategy* to use.\n* The optimizer unrolls subqueries to reduce processing time\n\nSince there often are different options available (whether or not to use an index, which join order, etc.), we evaluate the different possibilities, score them, then choose the best we find.  Of course coming up with good scores requires good knowledge about your database, and that\u0027s where the statistics collection comes in.\n\nYou use our `analyze` command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\n\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\nCollecting these metrics can be extremely expensive but if approximate results are acceptable (which is typically the case with query optimization), there is a class of specialized algorithms, called streaming algorithms, or *sketches*, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the [Yahoo Sketches Library](https://datasketches.github.io/docs/TheChallenge.html) for its statistics gathering. \n\n### Collect Statistics\nOur first optimization is to collect statistics to inform the optimizer about our database. We use our `analyze` command to collect statistics on a schema (or table). This process requires a couple minutes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:57:14.737",
+      "dateUpdated": "2018-12-02 16:33:16.782",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -139,7 +254,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eOptimizing Query Performance\u003c/h2\u003e\n\u003cp\u003eIn this section we\u0026rsquo;ll look at optimizing the execution plan for TPCH Query 4. We\u0026rsquo;ll:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCollect Statistics to Inform the Optimizer\u003c/li\u003e\n  \u003cli\u003eAdd Indexes to Further Optimize the Plan\u003c/li\u003e\n  \u003cli\u003eCompare Execution Plans\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThe \u003cem\u003eSplice Machine Optimizer\u003c/em\u003e is a cost-based optimizer that generates optimal execution plans for database queries. You use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\u003cp\u003eWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIt creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\u003c/li\u003e\n  \u003cli\u003eWhen joining tables, the optimizer evaluates the best \u003cem\u003ejoin order\u003c/em\u003e and the \u003cem\u003ejoin strategy\u003c/em\u003e to use.\u003c/li\u003e\n  \u003cli\u003eThe optimizer unrolls subqueries to reduce processing time\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eThese metrics are usually extremely expensive but if approximate results are acceptable, there is a class of specialized algorithms, called streaming algorithms, or \u003cem\u003esketches\u003c/em\u003e, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the \u003ca href\u003d\"https://datasketches.github.io/docs/TheChallenge.html\"\u003eYahoo Sketches Library\u003c/a\u003e for its statistics gathering. \u003c/p\u003e\n\u003ch3\u003eCollect Statistics\u003c/h3\u003e\n\u003cp\u003eOur first optimization is to collect statistics to inform the optimizer about our database. We use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics on a schema (or table). This process requires a couple minutes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eOptimizing Query Performance\u003c/h2\u003e\n\u003cp\u003eIn this section we\u0026rsquo;ll look at optimizing the execution plan for TPCH Query 4. We\u0026rsquo;ll:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCollect Statistics to Inform the Optimizer\u003c/li\u003e\n  \u003cli\u003eAdd Indexes to Further Optimize the Plan\u003c/li\u003e\n  \u003cli\u003eCompare Execution Plans\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIt creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\u003c/li\u003e\n  \u003cli\u003eWhen joining tables, the optimizer evaluates the best \u003cem\u003ejoin order\u003c/em\u003e and the \u003cem\u003ejoin strategy\u003c/em\u003e to use.\u003c/li\u003e\n  \u003cli\u003eThe optimizer unrolls subqueries to reduce processing time\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eSince there often are different options available (whether or not to use an index, which join order, etc.), we evaluate the different possibilities, score them, then choose the best we find. Of course coming up with good scores requires good knowledge about your database, and that\u0026rsquo;s where the statistics collection comes in.\u003c/p\u003e\n\u003cp\u003eYou use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\u003cp\u003eCollecting these metrics can be extremely expensive but if approximate results are acceptable (which is typically the case with query optimization), there is a class of specialized algorithms, called streaming algorithms, or \u003cem\u003esketches\u003c/em\u003e, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the \u003ca href\u003d\"https://datasketches.github.io/docs/TheChallenge.html\"\u003eYahoo Sketches Library\u003c/a\u003e for its statistics gathering. \u003c/p\u003e\n\u003ch3\u003eCollect Statistics\u003c/h3\u003e\n\u003cp\u003eOur first optimization is to collect statistics to inform the optimizer about our database. We use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics on a schema (or table). This process requires a couple minutes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -147,16 +262,16 @@
       "jobName": "paragraph_1542395076258_2094574479",
       "id": "20180115-053838_672371514",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-11-30 03:11:01.594",
-      "dateFinished": "2018-11-30 03:11:01.662",
+      "dateStarted": "2018-12-02 16:10:46.170",
+      "dateFinished": "2018-12-02 16:10:46.217",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Collect Statistics",
-      "text": "%splicemachine\nanalyze schema DEV2_TPCH1;\n",
+      "text": "%splicemachine\nanalyze schema DEV2;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:57:31.923",
+      "dateUpdated": "2018-12-02 16:33:24.707",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -204,7 +319,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -214,14 +330,16 @@
       "jobName": "paragraph_1542395076258_2086275353",
       "id": "20180115-053719_1393443514",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
+      "dateStarted": "2018-12-02 16:11:02.834",
+      "dateFinished": "2018-12-02 16:12:35.916",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Rerun the Explain Plan After Collecting Statistics\n\nNow let\u0027s re-run the `explain` plan for Query 4 and see how the optimizer changed the plan after gathering statistics.\n",
+      "text": "%md\n### Rerun the Explain Plan After Collecting Statistics\n\nNow let\u0027s re-run the `explain` plan for Query 4 and see how the optimizer changed the plan after gathering statistics. LINEITEM\u0027s scannedRows estimate is appropriately at 6M rows, etc:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:57:34.175",
+      "dateUpdated": "2018-12-02 16:33:28.706",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -245,7 +363,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRerun the Explain Plan After Collecting Statistics\u003c/h3\u003e\n\u003cp\u003eNow let\u0026rsquo;s re-run the \u003ccode\u003eexplain\u003c/code\u003e plan for Query 4 and see how the optimizer changed the plan after gathering statistics.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRerun the Explain Plan After Collecting Statistics\u003c/h3\u003e\n\u003cp\u003eNow let\u0026rsquo;s re-run the \u003ccode\u003eexplain\u003c/code\u003e plan for Query 4 and see how the optimizer changed the plan after gathering statistics. LINEITEM\u0026rsquo;s scannedRows estimate is appropriately at 6M rows, etc:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -253,15 +371,15 @@
       "jobName": "paragraph_1542395076258_1375056611",
       "id": "20180201-160453_2099057216",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-11-30 03:11:26.741",
-      "dateFinished": "2018-11-30 03:11:26.752",
+      "dateStarted": "2018-12-02 16:16:07.828",
+      "dateFinished": "2018-12-02 16:16:07.846",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:57:56.377",
+      "dateUpdated": "2018-12-02 16:33:38.150",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -273,7 +391,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -283,176 +402,16 @@
       "jobName": "paragraph_1542395076259_1233915627",
       "id": "20180115-071650_158099310",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n### Compare Execution Plans After Analyzing the Database\n\nNow let\u0027s compare the plans to see what changed. At a quick glance, you\u0027ll notice that a very large difference in the `totalCost` numbers for every operation in the plan:\n\n#### After Collecting Statistics\n```\nPlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```\n\n#### Before Collecting Statistics\n```\nPlan\nCursor(n\u003d13,rows\u003d36753750,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d1576165.614,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d838921.423,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d400696.835,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d75629,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d7,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d75629,scannedRows\u003d37812500,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d6717.476,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d275004,scannedRows\u003d137500000,outputRows\u003d137500000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n```\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:11:45.135",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCompare Execution Plans After Analyzing the Database\u003c/h3\u003e\n\u003cp\u003eNow let\u0026rsquo;s compare the plans to see what changed. At a quick glance, you\u0026rsquo;ll notice that a very large difference in the \u003ccode\u003etotalCost\u003c/code\u003e numbers for every operation in the plan:\u003c/p\u003e\n\u003ch4\u003eAfter Collecting Statistics\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u0026gt;\u003d 1993-07-01),(O_ORDERDATE[5:2] \u0026lt; dataTypeServices: DATE )])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eBefore Collecting Statistics\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d13,rows\u003d36753750,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d12,totalCost\u003d1576165.614,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d11,totalCost\u003d838921.423,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d10,totalCost\u003d400696.835,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d9,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d8,totalCost\u003d75629,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d7,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d75629,scannedRows\u003d37812500,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u0026gt;\u003d 1993-07-01),(O_ORDERDATE[5:2] \u0026lt; dataTypeServices: DATE )])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d6717.476,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d275004,scannedRows\u003d137500000,outputRows\u003d137500000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395076260_-1133795227",
-      "id": "20180201-160712_2000693903",
-      "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-11-30 03:11:45.135",
-      "dateFinished": "2018-11-30 03:11:45.174",
+      "dateStarted": "2018-12-02 16:15:07.206",
+      "dateFinished": "2018-12-02 16:15:07.528",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "Indexes",
-      "text": "%md\n\n### Optimize by Adding Indexes\n\nSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\n\n\u003cdiv class\u003d\"noteNote\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\nUnlike HBase and other key-value stores, Splice Machine can use *secondary indexes* to improve the performance of data manipulation statements. In addition, `UNIQUE` indexes provide a form of data integrity checking.\n\nJust as we did when creating new tables, we\u0027ll first drop the indexes we\u0027re going to create, in case they already exist.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:12:44.445",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "title": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eOptimize by Adding Indexes\u003c/h3\u003e\n\u003cp\u003eSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\u003c/p\u003e\n\u003cdiv class\u003d\"noteNote\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\u003cp\u003eUnlike HBase and other key-value stores, Splice Machine can use \u003cem\u003esecondary indexes\u003c/em\u003e to improve the performance of data manipulation statements. In addition, \u003ccode\u003eUNIQUE\u003c/code\u003e indexes provide a form of data integrity checking.\u003c/p\u003e\n\u003cp\u003eJust as we did when creating new tables, we\u0026rsquo;ll first drop the indexes we\u0026rsquo;re going to create, in case they already exist.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395076261_-456101360",
-      "id": "20180115-055551_1473914744",
-      "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-11-30 03:12:44.445",
-      "dateFinished": "2018-11-30 03:12:44.458",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\ndrop index DEV2_TPCH1.O_CUST_IDX;\ndrop index DEV2_TPCH1.O_DATE_PRI_KEY_IDX;\ndrop index DEV2_TPCH1.L_SHIPDATE_IDX;\ndrop index DEV2_TPCH1.L_PART_IDX;",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:58:13.143",
-      "config": {
-        "tableHide": true,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395076261_1890088763",
-      "id": "20180115-074728_655442192",
-      "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "Create Indexes",
-      "text": "%splicemachine\ncreate index DEV2_TPCH1.O_CUST_IDX on DEV2_TPCH1.ORDERS(\n O_CUSTKEY,\n O_ORDERKEY\n );\n \n create index DEV2_TPCH1.O_DATE_PRI_KEY_IDX on DEV2_TPCH1.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n \n create index TPCH1.L_SHIPDATE_IDX on TPCH1.LINEITEM(\n L_SHIPDATE,\n L_PARTKEY,\n L_EXTENDEDPRICE,\n L_DISCOUNT\n );\n \n create index TPCH1.L_PART_IDX on TPCH1.LINEITEM(\n L_PARTKEY,\n L_ORDERKEY,\n L_SUPPKEY,\n L_SHIPDATE,\n L_EXTENDEDPRICE,\n L_DISCOUNT,\n L_QUANTITY,\n L_SHIPMODE,\n L_SHIPINSTRUCT\n );",
+      "text": "%md\n### Compare Execution Plans After Analyzing the Database\n\nNow let\u0027s compare the plans to see what changed. At a quick glance, you\u0027ll notice that a very large difference in the `totalCost` numbers for every operation in the plan.  (Note \nthat your exact costs will vary slightly from what we show here, depending on your system):\n\n#### After Collecting Statistics\n```\nPlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```\n\n#### Before Collecting Statistics\n```\nPlan\nCursor(n\u003d13,rows\u003d36753750,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d1576165.614,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d838921.423,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d400696.835,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d75629,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d7,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d75629,scannedRows\u003d37812500,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d6717.476,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d275004,scannedRows\u003d137500000,outputRows\u003d137500000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n```\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:58:35.045",
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "title": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395076262_-1758413344",
-      "id": "20180115-055326_1726784632",
-      "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n### Analyze and Explain Again After Indexing\n\nNow that we\u0027ve added indexes to our database, let\u0027s re-analyze the database and then re-run the `explain` plan for Query 4 one more time to see how indexing has affected our execution plan.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:59:00.567",
+      "dateUpdated": "2018-12-02 16:33:42.871",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -476,86 +435,138 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAnalyze and Explain Again After Indexing\u003c/h3\u003e\n\u003cp\u003eNow that we\u0026rsquo;ve added indexes to our database, let\u0026rsquo;s re-analyze the database and then re-run the \u003ccode\u003eexplain\u003c/code\u003e plan for Query 4 one more time to see how indexing has affected our execution plan.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCompare Execution Plans After Analyzing the Database\u003c/h3\u003e\n\u003cp\u003eNow let\u0026rsquo;s compare the plans to see what changed. At a quick glance, you\u0026rsquo;ll notice that a very large difference in the \u003ccode\u003etotalCost\u003c/code\u003e numbers for every operation in the plan. (Note\u003cbr/\u003ethat your exact costs will vary slightly from what we show here, depending on your system):\u003c/p\u003e\n\u003ch4\u003eAfter Collecting Statistics\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u0026gt;\u003d 1993-07-01),(O_ORDERDATE[5:2] \u0026lt; dataTypeServices: DATE )])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eBefore Collecting Statistics\u003c/h4\u003e\n\u003cpre\u003e\u003ccode\u003ePlan\nCursor(n\u003d13,rows\u003d36753750,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u0026gt;  ScrollInsensitive(n\u003d12,totalCost\u003d1576165.614,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n    -\u0026gt;  OrderBy(n\u003d11,totalCost\u003d838921.423,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n      -\u0026gt;  ProjectRestrict(n\u003d10,totalCost\u003d400696.835,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n        -\u0026gt;  GroupBy(n\u003d9,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n          -\u0026gt;  ProjectRestrict(n\u003d8,totalCost\u003d75629,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41)\n            -\u0026gt;  MergeSortJoin(n\u003d7,totalCost\u003d98186.501,outputRows\u003d36753750,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u0026gt;  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d75629,scannedRows\u003d37812500,outputRows\u003d11837789,outputHeapSize\u003d139.022 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u0026gt;\u003d 1993-07-01),(O_ORDERDATE[5:2] \u0026lt; dataTypeServices: DATE )])\n              -\u0026gt;  ProjectRestrict(n\u003d5,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                -\u0026gt;  Distinct(n\u003d4,totalCost\u003d6717.476,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d1)\n                  -\u0026gt;  ProjectRestrict(n\u003d3,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n                    -\u0026gt;  ProjectRestrict(n\u003d2,totalCost\u003d275416.5,outputRows\u003d45375000,outputHeapSize\u003d129.819 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u0026lt; L_RECEIPTDATE[0:3])])\n                      -\u0026gt;  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d275004,scannedRows\u003d137500000,outputRows\u003d137500000,outputHeapSize\u003d129.819 MB,partitions\u003d41)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1542395076263_-1057463671",
-      "id": "20180125-203451_1030911184",
+      "jobName": "paragraph_1542395076260_-1133795227",
+      "id": "20180201-160712_2000693903",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-11-30 03:13:24.587",
-      "dateFinished": "2018-11-30 03:13:24.627",
+      "dateStarted": "2018-12-02 16:18:29.888",
+      "dateFinished": "2018-12-02 16:18:29.917",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nanalyze schema DEV2_TPCH1;",
+      "title": "Indexes",
+      "text": "%md\n\n### Optimize by Adding Indexes\n\nSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\n\n\u003cdiv class\u003d\"noteNote\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\nUnlike HBase and other key-value stores, Splice Machine can use *secondary indexes* to improve the performance of data manipulation statements. In addition, `UNIQUE` indexes provide a form of data integrity checking.\n\nIn Splice Machine, an index is just another HBase table, keyed on the index itself.\n\n### Adding an index on ORDERS\n\nNote that in the explain for this query, we are scanning the entire ORDERS table, even though we only will require a subset of the data?  Adding an index on O_ORDERDATE should help.  BUT it\u0027s important to know\nthat the plan is telling us even if we use an index, we still will be returning many rows to the next step (outputRows\u003e400K).  So we should be careful to avoid the IndexLookup problem discussed previously, and\nadd other columns we\u0027ll need as well.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:59:11.369",
+      "dateUpdated": "2018-12-02 16:33:47.340",
       "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "schemaName": "string",
-                      "tableName": "string",
-                      "partition": "string",
-                      "rowsCollected": "string",
-                      "partitionSize": "string",
-                      "partitionCount": "string",
-                      "statsType": "string",
-                      "sampleFraction": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true,
+        "tableHide": false,
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
         },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eOptimize by Adding Indexes\u003c/h3\u003e\n\u003cp\u003eSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\u003c/p\u003e\n\u003cdiv class\u003d\"noteNote\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\u003cp\u003eUnlike HBase and other key-value stores, Splice Machine can use \u003cem\u003esecondary indexes\u003c/em\u003e to improve the performance of data manipulation statements. In addition, \u003ccode\u003eUNIQUE\u003c/code\u003e indexes provide a form of data integrity checking.\u003c/p\u003e\n\u003cp\u003eIn Splice Machine, an index is just another HBase table, keyed on the index itself.\u003c/p\u003e\n\u003ch3\u003eAdding an index on ORDERS\u003c/h3\u003e\n\u003cp\u003eNote that in the explain for this query, we are scanning the entire ORDERS table, even though we only will require a subset of the data? Adding an index on O_ORDERDATE should help. BUT it\u0026rsquo;s important to know\u003cbr/\u003ethat the plan is telling us even if we use an index, we still will be returning many rows to the next step (outputRows\u0026gt;400K). So we should be careful to avoid the IndexLookup problem discussed previously, and\u003cbr/\u003eadd other columns we\u0026rsquo;ll need as well.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
       "apps": [],
-      "jobName": "paragraph_1542395076263_840107085",
-      "id": "20180115-075331_1211951910",
+      "jobName": "paragraph_1542395076261_-456101360",
+      "id": "20180115-055551_1473914744",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
+      "dateStarted": "2018-12-02 16:25:59.790",
+      "dateFinished": "2018-12-02 16:25:59.798",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Create Indexes",
+      "text": "%splicemachine\n\ncreate index DEV2.O_DATE_PRI_KEY_IDX on DEV2.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-02 16:33:57.472",
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1542395076262_-1758413344",
+      "id": "20180115-055326_1726784632",
+      "dateCreated": "2018-11-16 11:04:36.000",
+      "dateStarted": "2018-12-02 16:26:45.065",
+      "dateFinished": "2018-12-02 16:27:05.161",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%md\nHere\u0027s the query again to rerun explain on to compare the difference:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:59:29.911",
+      "dateUpdated": "2018-12-02 16:35:07.218",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eHere\u0026rsquo;s the query again to rerun explain on to compare the difference:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543768452491_-1098357107",
+      "id": "20181202-163412_872074749",
+      "dateCreated": "2018-12-02 16:34:12.491",
+      "dateStarted": "2018-12-02 16:34:53.625",
+      "dateFinished": "2018-12-02 16:34:53.661",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-02 16:27:57.679",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -577,7 +588,9 @@
       "jobName": "paragraph_1542395076264_805638871",
       "id": "20180115-064548_1062136708",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
+      "dateStarted": "2018-12-02 16:27:57.714",
+      "dateFinished": "2018-12-02 16:27:57.869",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -624,112 +637,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Running TPC-H Queries\n\nNow we\u0027ll run TPC-H Query 02, so you can see the database in action.",
+      "text": "%md\n### Running Query 4\n\nNow go ahead and run TPC-H Query 4.  Again feel free to use `localhost:4040` to monitor while it runs.",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:36.000",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRunning TPC-H Queries\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;ll run TPC-H Query 02, so you can see the database in action.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395076267_541205424",
-      "id": "20180125-204204_1935879463",
-      "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n-- QUERY 02\nselect\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tTPCH1.part,\n\tTPCH1.supplier,\n\tTPCH1.partsupp,\n\tTPCH1.nation,\n\tTPCH1.region\nwhere\n\tp_partkey \u003d ps_partkey\n\tand s_suppkey \u003d ps_suppkey\n\tand p_size \u003d 15\n\tand p_type like \u0027%BRASS\u0027\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027EUROPE\u0027\n\tand ps_supplycost \u003d (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tTPCH1.partsupp,\n\t\t\tTPCH1.supplier,\n\t\t\tTPCH1.nation,\n\t\t\tTPCH1.region\n\t\twhere\n\t\t\tp_partkey \u003d ps_partkey\n\t\t\tand s_suppkey \u003d ps_suppkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027EUROPE\u0027\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:04:55.000",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "S_ACCTBAL": "string",
-                      "S_NAME": "string",
-                      "N_NAME": "string",
-                      "P_PARTKEY": "string",
-                      "P_MFGR": "string",
-                      "S_ADDRESS": "string",
-                      "S_PHONE": "string",
-                      "S_COMMENT": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            },
-            "helium": {}
-          }
-        },
-        "enabled": true,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "fontSize": 9.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395076267_271039718",
-      "id": "20180115-083845_542565773",
-      "dateCreated": "2018-11-16 11:04:36.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "Representative Micro-Benchmarks",
-      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in \u003c100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:00:09.129",
+      "dateUpdated": "2018-12-02 16:35:48.995",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -740,7 +650,6 @@
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "title": false,
         "results": {},
         "enabled": false,
         "fontSize": 9.0
@@ -754,7 +663,49 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Glimpse at Splice Machine Benchmark Results\u003c/h2\u003e\n\u003cp\u003eHere are some micro-results from Splice Machine running TPC-H benchmarks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e2ms single record lookups on primary keys at petabyte scale\u003c/li\u003e\n  \u003cli\u003e20ms single record updates at petabyte scale\u003c/li\u003e\n  \u003cli\u003e40-way OLTP indexed joins return in \u0026lt;100ms\u003c/li\u003e\n  \u003cli\u003e150-way OLAP style joins execute in under 2 minutes\u003c/li\u003e\n  \u003cli\u003e440-way join executes where others can’t parse\u003c/li\u003e\n  \u003cli\u003eIngestion at 80MB/sec/node\u003c/li\u003e\n  \u003cli\u003eCan run TPC-C and TPC-H simultaneously\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eRunning Query 4\u003c/h3\u003e\n\u003cp\u003eNow go ahead and run TPC-H Query 4. Again feel free to use \u003ccode\u003elocalhost:4040\u003c/code\u003e to monitor while it runs.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542395076267_541205424",
+      "id": "20180125-204204_1935879463",
+      "dateCreated": "2018-11-16 11:04:36.000",
+      "dateStarted": "2018-12-02 16:35:35.026",
+      "dateFinished": "2018-12-02 16:35:35.067",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Representative Micro-Benchmarks",
+      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-benchmark results from Splice Machine running TPC-H and other benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in \u003c100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-02 16:32:18.351",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "title": false,
+        "results": {},
+        "enabled": true,
+        "fontSize": 9.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Glimpse at Splice Machine Benchmark Results\u003c/h2\u003e\n\u003cp\u003eHere are some micro-benchmark results from Splice Machine running TPC-H and other benchmarks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e2ms single record lookups on primary keys at petabyte scale\u003c/li\u003e\n  \u003cli\u003e20ms single record updates at petabyte scale\u003c/li\u003e\n  \u003cli\u003e40-way OLTP indexed joins return in \u0026lt;100ms\u003c/li\u003e\n  \u003cli\u003e150-way OLAP style joins execute in under 2 minutes\u003c/li\u003e\n  \u003cli\u003e440-way join executes where others can’t parse\u003c/li\u003e\n  \u003cli\u003eIngestion at 80MB/sec/node\u003c/li\u003e\n  \u003cli\u003eCan run TPC-C and TPC-H simultaneously\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -762,8 +713,8 @@
       "jobName": "paragraph_1542395076266_349602136",
       "id": "20180118-022657_414327443",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-11-29 19:19:25.806",
-      "dateFinished": "2018-11-29 19:19:25.830",
+      "dateStarted": "2018-12-02 16:32:18.360",
+      "dateFinished": "2018-12-02 16:32:18.397",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -814,8 +765,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

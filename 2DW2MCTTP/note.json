@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\nIn this notebook, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. About TPCH Data*\n* *2. Creating the Tables*\n* *3. Importing TPCH-1 Data From S3*\n* *4. Creating Indexes*\n* *5. Compacting and Collecting Statistics*\n* *6. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\nIn this notebook, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. About TPCH Data*\n* *2. Creating the Tables*\n* *3. Importing TPCH-1 Data From S3*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:19:15.048",
+      "dateUpdated": "2018-12-02 15:33:31.899",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -16,7 +16,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003e1. About TPCH Data\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e2. Creating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e3. Importing TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e4. Creating Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e5. Compacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e6. Running Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003e1. About TPCH Data\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e2. Creating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e3. Importing TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e4. Compacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e5. Running Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -428,9 +428,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 3. Creating Indexes\n\nNext we\u0027ll create a sample index for one of our tables. \n",
+      "text": "%md\n\n## 3. Compacting and Collecting Statistics\n\nSince you\u0027ve just imported a large amount of data into your database, it\u0027s a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:20:39.381",
+      "dateUpdated": "2018-12-02 15:34:00.820",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -443,87 +443,18 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Creating Indexes\u003c/h2\u003e\n\u003cp\u003eNext we\u0026rsquo;ll create a sample index for one of our tables.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542394755826_888705991",
-      "id": "20171016-140855_1554334339",
-      "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "Create Indexes",
-      "text": "%splicemachine\n\ncreate index DEV2.O_DATE_PRI_KEY_IDX on DEV2.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n ",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:21:55.767",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": false,
-        "fontSize": 9.0,
-        "title": true,
-        "results": {},
         "enabled": true
       },
       "settings": {
         "params": {},
         "forms": {}
       },
-      "apps": [],
-      "jobName": "paragraph_1542394755827_-1664956046",
-      "id": "20170406-154341_155611008",
-      "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n\n## 4. Compacting and Collecting Statistics\n\nSince you\u0027ve just imported a large amount of data into your database, it\u0027s a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:23:02.300",
-      "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "fontSize": 9.0,
-        "results": {},
-        "enabled": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
       "results": {
         "code": "SUCCESS",
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Compacting and Collecting Statistics\u003c/h2\u003e\n\u003cp\u003eSince you\u0026rsquo;ve just imported a large amount of data into your database, it\u0026rsquo;s a good idea to run a major compaction and collect statistics.\u003c/p\u003e\n\u003cp\u003eTo do so, run each of the next two paragraphs:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Compacting and Collecting Statistics\u003c/h2\u003e\n\u003cp\u003eSince you\u0026rsquo;ve just imported a large amount of data into your database, it\u0026rsquo;s a good idea to run a major compaction and collect statistics.\u003c/p\u003e\n\u003cp\u003eTo do so, run each of the next two paragraphs:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -531,8 +462,7 @@
       "jobName": "paragraph_1542394755829_1608185217",
       "id": "20171016-142543_1916990265",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -635,9 +565,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Running the TPCH-1 Queries\n\nWe\u0027ll now run a sampling of the TPCH queries.  The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them.  We include them with \"explain\" in front of them.  Run that first (always good practice), then rerun after removing the \"explain\" in the paragraph.\n",
+      "text": "%md\n\n## 4. Running the TPCH-1 Queries\n\nWe\u0027ll now run a sampling of the TPCH queries.  The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them.  We include them with \"explain\" in front of them.  Run that first (always good practice), then rerun after removing the \"explain\" in the paragraph.  It is also informative to go to `localhost:4040` to monitor these queries in the Spark Console while they are running.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 03:04:32.268",
+      "dateUpdated": "2018-12-02 15:37:44.165",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -661,7 +591,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning the TPCH-1 Queries\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll now run a sampling of the TPCH queries. The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them. We include them with \u0026ldquo;explain\u0026rdquo; in front of them. Run that first (always good practice), then rerun after removing the \u0026ldquo;explain\u0026rdquo; in the paragraph.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Running the TPCH-1 Queries\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll now run a sampling of the TPCH queries. The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them. We include them with \u0026ldquo;explain\u0026rdquo; in front of them. Run that first (always good practice), then rerun after removing the \u0026ldquo;explain\u0026rdquo; in the paragraph. It is also informative to go to \u003ccode\u003elocalhost:4040\u003c/code\u003e to monitor these queries in the Spark Console while they are running.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -676,7 +606,7 @@
       "title": "TPC-H Query 1",
       "text": "%splicemachine\n-- QUERY 01\nexplain select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tDEV2.lineitem\nwhere\n\tl_shipdate \u003c\u003d date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast(\u00271998-12-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:16:39.409",
+      "dateUpdated": "2018-12-02 15:38:09.489",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -765,7 +695,7 @@
       "title": "TPC-H Query 2",
       "text": "%splicemachine\n-- QUERY 02\nexplain select\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tDEV2.part,\n\tDEV2.supplier,\n\tDEV2.partsupp,\n\tDEV2.nation,\n\tDEV2.region\nwhere\n\tp_partkey \u003d ps_partkey\n\tand s_suppkey \u003d ps_suppkey\n\tand p_size \u003d 15\n\tand p_type like \u0027%BRASS\u0027\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027EUROPE\u0027\n\tand ps_supplycost \u003d (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tDEV2.partsupp,\n\t\t\tDEV2.supplier,\n\t\t\tDEV2.nation,\n\t\t\tDEV2.region\n\t\twhere\n\t\t\tp_partkey \u003d ps_partkey\n\t\t\tand s_suppkey \u003d ps_suppkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027EUROPE\u0027\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:16:58.807",
+      "dateUpdated": "2018-12-02 15:39:22.455",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -832,7 +762,7 @@
       "title": "TPC-H Query 3",
       "text": "%splicemachine\n-- QUERY 03\nexplain select\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tDEV2.customer,\n\tDEV2.orders,\n\tDEV2.lineitem\nwhere\n\tc_mktsegment \u003d \u0027BUILDING\u0027 \n\tand c_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand o_orderdate \u003c date(\u00271995-03-15\u0027) \n\tand l_shipdate \u003e date(\u00271995-03-15\u0027) \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:17:10.746",
+      "dateUpdated": "2018-12-02 15:39:29.573",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -861,42 +791,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "TPC-H Query 4",
-      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tDEV2.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:17:23.051",
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": false,
-        "fontSize": 9.0,
-        "title": true,
-        "results": {},
-        "enabled": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542394755842_1468017695",
-      "id": "20170406-155520_1963165823",
-      "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
       "title": "TPC-H Query 11",
       "text": "%splicemachine\n-- QUERY 11\nexplain select\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tDEV2.partsupp,\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\tps_suppkey \u003d s_suppkey\n\tand s_nationkey \u003d n_nationkey\n\tand n_name \u003d \u0027GERMANY\u0027\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) \u003e (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tDEV2.partsupp,\n\t\t\t\tDEV2.supplier,\n\t\t\t\tDEV2.nation\n\t\t\twhere\n\t\t\t\tps_suppkey \u003d s_suppkey\n\t\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\t\tand n_name \u003d \u0027GERMANY\u0027\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:17:36.800",
+      "dateUpdated": "2018-12-02 15:39:39.639",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -957,7 +855,7 @@
       "title": "TPC-H Query 13",
       "text": "%splicemachine\n-- QUERY 13\nexplain select\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tDEV2.customer left outer join DEV2.orders on\n\t\t\t\tc_custkey \u003d o_custkey\n\t\t\t\tand o_comment not like \u0027%special%requests%\u0027\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:18:47.298",
+      "dateUpdated": "2018-12-02 15:39:48.565",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1018,7 +916,7 @@
       "title": "TPC-H Query 22",
       "text": "%splicemachine\n-- QUERY 22\nexplain select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tDEV2.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\tand c_acctbal \u003e (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal \u003e 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey \u003d c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:18:44.144",
+      "dateUpdated": "2018-12-02 15:39:57.708",
       "config": {
         "editorSetting": {
           "language": "sql",
