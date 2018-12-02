@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542668232093_-508053973",
       "id": "20180125-141757_1025631852",
       "dateCreated": "2018-11-19 14:57:12.093",
-      "dateStarted": "2018-12-01 15:20:39.887",
-      "dateFinished": "2018-12-01 15:20:39.910",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1542668232094_-885192667",
       "id": "20180125-141830_1881954222",
       "dateCreated": "2018-11-19 14:57:12.094",
-      "dateStarted": "2018-11-19 16:28:20.036",
-      "dateFinished": "2018-11-19 16:28:20.065",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -115,8 +111,6 @@
       "jobName": "paragraph_1542668232095_631512533",
       "id": "20180113-194734_1961030416",
       "dateCreated": "2018-11-19 14:57:12.095",
-      "dateStarted": "2018-11-19 20:47:01.067",
-      "dateFinished": "2018-11-19 20:47:01.073",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -155,8 +149,6 @@
       "jobName": "paragraph_1542668232097_-1445725140",
       "id": "20180125-150608_1902680448",
       "dateCreated": "2018-11-19 14:57:12.097",
-      "dateStarted": "2018-11-19 16:38:30.033",
-      "dateFinished": "2018-11-19 16:38:30.037",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -194,7 +186,7 @@
       "jobName": "paragraph_1542668232099_1462329725",
       "id": "20180125-145332_2050347825",
       "dateCreated": "2018-11-19 14:57:12.099",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -233,8 +225,6 @@
       "jobName": "paragraph_1542668232100_-730463153",
       "id": "20180125-141721_42146671",
       "dateCreated": "2018-11-19 14:57:12.100",
-      "dateStarted": "2018-11-19 16:41:42.872",
-      "dateFinished": "2018-11-19 16:41:42.884",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -273,8 +263,6 @@
       "jobName": "paragraph_1542668232101_1564913823",
       "id": "20180125-142959_1101825868",
       "dateCreated": "2018-11-19 14:57:12.101",
-      "dateStarted": "2018-11-29 18:13:21.839",
-      "dateFinished": "2018-11-29 18:13:21.859",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

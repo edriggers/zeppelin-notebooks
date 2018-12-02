@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542394204045_-1639069832",
       "id": "20170907-071606_1955118051",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-12-01 04:10:04.989",
-      "dateFinished": "2018-12-01 04:10:04.996",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,15 +73,13 @@
       "jobName": "paragraph_1542394204046_-1213191106",
       "id": "20171016-100728_1909675860",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-12-01 04:10:49.302",
-      "dateFinished": "2018-12-01 04:10:49.317",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select a.i, a.j from\n    index_example a\n    ,index_example b --splice-properties joinStrategy\u003dsortmerge\n     where a.i \u003d b.i\n     and a.j \u003d 700000",
+      "text": "%splicemachine\n\nexplain select a.i, a.j from\n    dev1.index_example a\n    ,dev1.index_example b --splice-properties joinStrategy\u003dsortmerge\n     where a.i \u003d b.i\n     and a.j \u003d 700000",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:50:04.000",
+      "dateUpdated": "2018-12-02 00:36:05.200",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -106,7 +102,7 @@
       "jobName": "paragraph_1542394204047_-1270834820",
       "id": "20170907-080208_586782998",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -145,8 +141,6 @@
       "jobName": "paragraph_1542394204050_-1589518069",
       "id": "20170917-151828_1052121991",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-29 22:44:27.381",
-      "dateFinished": "2018-11-29 22:44:27.394",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -185,8 +179,6 @@
       "jobName": "paragraph_1542394204051_-531252008",
       "id": "20170917-155926_2097194095",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-29 22:44:52.340",
-      "dateFinished": "2018-11-29 22:44:52.355",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -225,15 +217,13 @@
       "jobName": "paragraph_1542394204052_-266420455",
       "id": "20171016-094705_1165713084",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-29 22:58:52.235",
-      "dateFinished": "2018-11-29 22:58:52.250",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Syntax Matters\nAs you\u0027ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\n\n* If you\u0027re adding the hint to the end of a query, you must put the semicolon (`;`) that terminates that query on the next line:\n  `select count(*) from myTbl --splice-properties index\u003dmyIndex1`\n  `;`\n\n* Similarly, if you\u0027re specifying multiple hints, each will need to be at the end of its own line:\n  `explain select count(*) from`\n  `(select a.i, a.j from --splice-properties joinOrder\u003dfixed`\n   `index_example b --splice-properties index\u003dij`\n   `,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop`\n   `  where a.j \u003d 700000) ;`\n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\nHere\u0027s the syntax to use for each hint type:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  to see a full example:",
+      "text": "%md\n### Syntax Matters\nAs you\u0027ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\n\n* If you\u0027re adding the hint to the end of a query, you must put the semicolon (`;`) that terminates that query on the next line:\n  `select count(*) from myTbl --splice-properties index\u003dmyIndex1`\n  `;`\n\n* Similarly, if you\u0027re specifying multiple hints, each will need to be at the end of its own line:\n  `explain select count(*) from`\n  `(select a.i, a.j from --splice-properties joinOrder\u003dfixed`\n   `index_example b --splice-properties index\u003dij`\n   `,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop`\n   `  where a.j \u003d 700000) z ;`\n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\nHere\u0027s the syntax to use for each hint type:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  to see a full example:",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:12:06.107",
+      "dateUpdated": "2018-12-02 00:38:38.402",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -257,7 +247,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSyntax Matters\u003c/h3\u003e\n\u003cp\u003eAs you\u0026rsquo;ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eIf you\u0026rsquo;re adding the hint to the end of a query, you must put the semicolon (\u003ccode\u003e;\u003c/code\u003e) that terminates that query on the next line:\u003cbr/\u003e \u003ccode\u003eselect count(*) from myTbl --splice-properties index\u003dmyIndex1\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e;\u003c/code\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eSimilarly, if you\u0026rsquo;re specifying multiple hints, each will need to be at the end of its own line:\u003cbr/\u003e \u003ccode\u003eexplain select count(*) from\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e(select a.i, a.j from --splice-properties joinOrder\u003dfixed\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003eindex_example b --splice-properties index\u003dij\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003ewhere a.j \u003d 700000) ;\u003c/code\u003e\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\u003cp\u003eHere\u0026rsquo;s the syntax to use for each hint type:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to see a full example:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSyntax Matters\u003c/h3\u003e\n\u003cp\u003eAs you\u0026rsquo;ll see in the following example, hint syntax can look odd, because each hint needs to be at the very end of a line. For example:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eIf you\u0026rsquo;re adding the hint to the end of a query, you must put the semicolon (\u003ccode\u003e;\u003c/code\u003e) that terminates that query on the next line:\u003cbr/\u003e \u003ccode\u003eselect count(*) from myTbl --splice-properties index\u003dmyIndex1\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e;\u003c/code\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eSimilarly, if you\u0026rsquo;re specifying multiple hints, each will need to be at the end of its own line:\u003cbr/\u003e \u003ccode\u003eexplain select count(*) from\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e(select a.i, a.j from --splice-properties joinOrder\u003dfixed\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003eindex_example b --splice-properties index\u003dij\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003e,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\u003c/code\u003e\u003cbr/\u003e \u003ccode\u003ewhere a.j \u003d 700000) z ;\u003c/code\u003e\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n    \u003cp\u003eHints must be specified exactly; any misspelling or any extra text can result in the hint not working because it is considered a comment; for example, you \u003cstrong\u003emust\u003c/strong\u003e spell joinOrder and joinStrategy in exactly that way.\u003c/p\u003e\n    \u003cp\u003eSplice Machine \u003cstrong\u003estrongly recommends\u003c/strong\u003e that you run an \u003ccode\u003eexplain\u003c/code\u003e on any query that contains a hint before actually executing the query, so you can verify that the hint is correctly specified.\n\u003c/div\u003e\n\u003cp\u003eHere\u0026rsquo;s the syntax to use for each hint type:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eSyntax Example\u003c/th\u003e\n            \u003cth\u003eUsage Notes\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinOrder\u003dfixed\u003c/td\u003e\n            \u003ctd\u003eOn the \u003ccode\u003eFROM\u003c/code\u003e line in the query\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003ejoinStrategy\u003dbroadcast\u003c/td\u003e\n            \u003ctd\u003eAfter the right-hand-side table. This is typically used with \u003ccode\u003ejoinOrder\u003dfixed\u003c/code\u003e to control which tables are joined.\u003c/td\u003e\n       \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dix\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNo index\u003c/td\u003e\n            \u003ctd class\u003d\"CodeFont\"\u003eindex\u003dnull\u003c/td\u003e\n            \u003ctd\u003eAfter the specified table\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to see a full example:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -265,15 +255,13 @@
       "jobName": "paragraph_1543532181121_-243910551",
       "id": "20181129-225621_2052865998",
       "dateCreated": "2018-11-29 22:56:21.121",
-      "dateStarted": "2018-11-30 01:12:00.908",
-      "dateFinished": "2018-11-30 01:12:00.929",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from\n  (select a.i, a.j from --splice-properties joinOrder\u003dfixed\n    index_example b --splice-properties index\u003dij\n    ,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\n     where a.j \u003d 700000) ;\n",
+      "text": "%splicemachine\n\nexplain select count(*) from\n  (select a.i, a.j from --splice-properties joinOrder\u003dfixed\n    dev1.index_example b --splice-properties index\u003dij\n    , dev1.index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\n     where a.j \u003d 700000) z ;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-29 22:52:30.374",
+      "dateUpdated": "2018-12-02 00:39:55.912",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -284,7 +272,8 @@
           "editOnDblClick": false,
           "completionKey": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -294,7 +283,7 @@
       "jobName": "paragraph_1542394204053_1576240295",
       "id": "20170917-162419_1730040169",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -333,8 +322,6 @@
       "jobName": "paragraph_1542394204053_-1820594503",
       "id": "20170917-161208_1733120671",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-29 23:06:31.989",
-      "dateFinished": "2018-11-29 23:06:31.998",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -373,8 +360,6 @@
       "jobName": "paragraph_1542394204054_-1107415519",
       "id": "20170917-162201_1369089111",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-11-29 18:14:52.429",
-      "dateFinished": "2018-11-29 18:14:52.457",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -383,7 +368,10 @@
   "id": "2DVFUM14R",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

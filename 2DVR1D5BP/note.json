@@ -191,9 +191,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "title": "Run this step:",
       "text": "%splicemachine\n\ncreate schema DEV1;\nset schema DEV1;\ncreate table import_example (i int, v varchar(20), t timestamp);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 18:38:28.622",
+      "dateUpdated": "2018-12-01 23:24:55.807",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -205,7 +206,8 @@
         "results": {},
         "enabled": true,
         "fontSize": 9.0,
-        "tableHide": false
+        "tableHide": false,
+        "title": false
       },
       "settings": {
         "params": {},

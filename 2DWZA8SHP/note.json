@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Database Console User Interface\n\nThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\n\n* *Accessing the Console*\n* *Basic UI Features*\n* *Running a Basic Query*\n* *Drilling Down into a Query*\n* \n\n## About Spark Jobs in Splice Machine\n\nYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the `control` side) or in Apache Spark. You can see which engine is used (`control` or `Spark`) from examining the top line of the `explain` for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\n\nYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Database Console User Interface\n\nThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\n\n* *Accessing the Console*\n* *Basic UI Features*\n* *Running a Basic Query*\n* *Drilling Down into a Query*\n* *Parallelism and Spark*\n\n## About Spark Jobs in Splice Machine\n\nYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the `control` side) or in Apache Spark. You can see which engine is used (`control` or `Spark`) from examining the top line of the `explain` for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\n\nYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:04:40.682",
+      "dateUpdated": "2018-12-01 23:56:45.147",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing the Database Console User Interface\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eAccessing the Console\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eBasic UI Features\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning a Basic Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDrilling Down into a Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAbout Spark Jobs in Splice Machine\u003c/h2\u003e\n\u003cp\u003eYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the \u003ccode\u003econtrol\u003c/code\u003e side) or in Apache Spark. You can see which engine is used (\u003ccode\u003econtrol\u003c/code\u003e or \u003ccode\u003eSpark\u003c/code\u003e) from examining the top line of the \u003ccode\u003eexplain\u003c/code\u003e for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\u003c/p\u003e\n\u003cp\u003eYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing the Database Console User Interface\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eAccessing the Console\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eBasic UI Features\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning a Basic Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDrilling Down into a Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eParallelism and Spark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAbout Spark Jobs in Splice Machine\u003c/h2\u003e\n\u003cp\u003eYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the \u003ccode\u003econtrol\u003c/code\u003e side) or in Apache Spark. You can see which engine is used (\u003ccode\u003econtrol\u003c/code\u003e or \u003ccode\u003eSpark\u003c/code\u003e) from examining the top line of the \u003ccode\u003eexplain\u003c/code\u003e for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\u003c/p\u003e\n\u003cp\u003eYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,15 +35,13 @@
       "jobName": "paragraph_1542394040007_-1398056758",
       "id": "20170917-123302_29623660",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-12-01 04:04:37.926",
-      "dateFinished": "2018-12-01 04:04:37.942",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Accessing the Console\n\nYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0027s URL:\n\n* For our training classes, open a new browser tab and point at `localhost:4040`. \n* If you\u0027re running the Database-as-Service cluster version of Splice Machine, you can click the *DB  Console* button in the upper right-hand corner of the Splice Machine Cluster Management screen.\n\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\nOnce you\u0027ve started a Spark query, you\u0027ll see the DB Console ( *Spark* ) UI:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\n",
+      "text": "%md\n\n## Accessing the Console\n\nYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0027s URL:\n\n* For our training classes, open a new browser tab and point at `localhost:4040`. \n* For actual clusters, the access path depends on whether you are using Splice Machine\u0027s cloud service or your own infrastructre.  See our documentation for specifics.\n\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\nOnce you\u0027ve started a Spark query, you\u0027ll see the DB Console ( *Spark* ) UI:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:04:54.607",
+      "dateUpdated": "2018-12-02 00:12:44.977",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -67,7 +65,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAccessing the Console\u003c/h2\u003e\n\u003cp\u003eYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0026rsquo;s URL:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eFor our training classes, open a new browser tab and point at \u003ccode\u003elocalhost:4040\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003eIf you\u0026rsquo;re running the Database-as-Service cluster version of Splice Machine, you can click the \u003cem\u003eDB Console\u003c/em\u003e button in the upper right-hand corner of the Splice Machine Cluster Management screen.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve started a Spark query, you\u0026rsquo;ll see the DB Console ( \u003cem\u003eSpark\u003c/em\u003e ) UI:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAccessing the Console\u003c/h2\u003e\n\u003cp\u003eYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0026rsquo;s URL:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eFor our training classes, open a new browser tab and point at \u003ccode\u003elocalhost:4040\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003eFor actual clusters, the access path depends on whether you are using Splice Machine\u0026rsquo;s cloud service or your own infrastructre. See our documentation for specifics.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve started a Spark query, you\u0026rsquo;ll see the DB Console ( \u003cem\u003eSpark\u003c/em\u003e ) UI:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1542394040008_1771615449",
       "id": "20170917-124100_1569077601",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-12-01 04:04:51.747",
-      "dateFinished": "2018-12-01 04:04:51.759",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -114,8 +110,6 @@
       "jobName": "paragraph_1542394040009_-2120021183",
       "id": "20171017-143511_678293042",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-11-29 22:05:13.236",
-      "dateFinished": "2018-11-29 22:05:13.262",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -154,15 +148,13 @@
       "jobName": "paragraph_1542394040010_-648162934",
       "id": "20171017-143616_602504010",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-12-01 04:05:15.676",
-      "dateFinished": "2018-12-01 04:05:15.685",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from index_example",
+      "text": "%splicemachine\n\nexplain select count(*) from dev1.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:47:20.000",
+      "dateUpdated": "2018-12-02 00:15:15.736",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -173,7 +165,8 @@
           "editOnDblClick": false,
           "completionKey": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -183,7 +176,7 @@
       "jobName": "paragraph_1542394040010_-1729614881",
       "id": "20170917-132020_1057477927",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -222,18 +215,16 @@
       "jobName": "paragraph_1542394040010_2042120987",
       "id": "20170917-132212_1886331781",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-11-29 22:08:13.659",
-      "dateFinished": "2018-11-29 22:08:13.678",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nselect count(*) from index_example",
+      "text": "%splicemachine\n\nselect count(*) from dev1.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 10:47:26.000",
+      "dateUpdated": "2018-12-02 00:26:10.644",
       "config": {
         "colWidth": 12.0,
-        "editorMode": "ace/mode/text",
+        "editorMode": "ace/mode/sql",
         "results": {
           "0": {
             "graph": {
@@ -265,10 +256,11 @@
         },
         "enabled": true,
         "editorSetting": {
-          "language": "text",
+          "language": "sql",
           "editOnDblClick": false
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -278,14 +270,14 @@
       "jobName": "paragraph_1542394040011_516023306",
       "id": "20170917-132246_733531409",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nNow let\u0027s use the DB Console to view the query. You should see something like this:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\n\nIf you got to the DB Console quickly enough after running the query, it may show as an *Active Job* instead of being a *Completed Job.*\n",
+      "text": "%md\n\u003cbr /\u003e\n\nNow let\u0027s use the DB Console to view the query - remember to go to `localhost:4040` in a new browser window. You should see something like this:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\n\nIf you got to the DB Console quickly enough after running the query, it may show as an *Active Job* instead of being a *Completed Job.*\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:05:43.100",
+      "dateUpdated": "2018-12-02 00:15:33.416",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -309,7 +301,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNow let\u0026rsquo;s use the DB Console to view the query. You should see something like this:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eIf you got to the DB Console quickly enough after running the query, it may show as an \u003cem\u003eActive Job\u003c/em\u003e instead of being a \u003cem\u003eCompleted Job.\u003c/em\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNow let\u0026rsquo;s use the DB Console to view the query - remember to go to \u003ccode\u003elocalhost:4040\u003c/code\u003e in a new browser window. You should see something like this:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eIf you got to the DB Console quickly enough after running the query, it may show as an \u003cem\u003eActive Job\u003c/em\u003e instead of being a \u003cem\u003eCompleted Job.\u003c/em\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -317,8 +309,6 @@
       "jobName": "paragraph_1542394040011_553181826",
       "id": "20170917-132259_1390907931",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-11-29 22:20:59.558",
-      "dateFinished": "2018-11-29 22:20:59.573",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -357,20 +347,19 @@
       "jobName": "paragraph_1542394040012_948698935",
       "id": "20171017-123420_788068928",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-11-30 01:03:31.858",
-      "dateFinished": "2018-11-30 01:03:31.869",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Viewing Stage Details\n\nTo drill down into the detail of the first Stage of our query, click anywhere in the box representing the Stage (`Stage 135` in this context) in the DAG visualization. The Console displays the details of that Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\n\nThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the *Summary Metrics* for the Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails.png\" alt\u003d\"Stage Details \"\u003e\n\nAt the very bottom of this view, we see *Tasks.*  These are the most basic work units in the Spark Engine. For each task you will see:\n\n* a duration\n* garbage collection time\n* other information relevant to the task activity\n\nIn the above example, we see that this Task:\n\n* performed a TableScan\n* read 1310720 rows\n* wrote out 71 bytes of records for the next processing Stage\n\n",
+      "text": "%md\n### Viewing Stage Details\n\nTo drill down into the detail of the first Stage of our query, click anywhere in the box representing that Stage starting with TableScan in the DAG visualization. The Console displays the details of that Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\n\nThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the *Summary Metrics* for the Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails.png\" alt\u003d\"Stage Details \"\u003e\n\nAt the very bottom of this view, we see *Tasks.*  These are the most basic work units in the Spark Engine. For each task you will see:\n\n* a duration\n* garbage collection time\n* other information relevant to the task activity\n\nIn the above example, we see that the set of Tasks:\n\n* performed a TableScan\n* read around 1.3M rows total\n* wrote out some bytes of records for processing by the next Stage\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:08:17.096",
+      "dateUpdated": "2018-12-02 00:25:01.159",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -388,7 +377,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eViewing Stage Details\u003c/h3\u003e\n\u003cp\u003eTo drill down into the detail of the first Stage of our query, click anywhere in the box representing the Stage (\u003ccode\u003eStage 135\u003c/code\u003e in this context) in the DAG visualization. The Console displays the details of that Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the \u003cem\u003eSummary Metrics\u003c/em\u003e for the Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails.png\" alt\u003d\"Stage Details \"\u003e\u003c/p\u003e\n\u003cp\u003eAt the very bottom of this view, we see \u003cem\u003eTasks.\u003c/em\u003e These are the most basic work units in the Spark Engine. For each task you will see:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ea duration\u003c/li\u003e\n  \u003cli\u003egarbage collection time\u003c/li\u003e\n  \u003cli\u003eother information relevant to the task activity\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn the above example, we see that this Task:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eperformed a TableScan\u003c/li\u003e\n  \u003cli\u003eread 1310720 rows\u003c/li\u003e\n  \u003cli\u003ewrote out 71 bytes of records for the next processing Stage\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eViewing Stage Details\u003c/h3\u003e\n\u003cp\u003eTo drill down into the detail of the first Stage of our query, click anywhere in the box representing that Stage starting with TableScan in the DAG visualization. The Console displays the details of that Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the \u003cem\u003eSummary Metrics\u003c/em\u003e for the Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails.png\" alt\u003d\"Stage Details \"\u003e\u003c/p\u003e\n\u003cp\u003eAt the very bottom of this view, we see \u003cem\u003eTasks.\u003c/em\u003e These are the most basic work units in the Spark Engine. For each task you will see:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ea duration\u003c/li\u003e\n  \u003cli\u003egarbage collection time\u003c/li\u003e\n  \u003cli\u003eother information relevant to the task activity\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn the above example, we see that the set of Tasks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eperformed a TableScan\u003c/li\u003e\n  \u003cli\u003eread around 1.3M rows total\u003c/li\u003e\n  \u003cli\u003ewrote out some bytes of records for processing by the next Stage\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -396,8 +385,7 @@
       "jobName": "paragraph_1542394040012_883672813",
       "id": "20170917-143720_391125668",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "status": "READY",
-      "errorMessage": "",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -439,9 +427,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## About Parallelism and Spark\n\nThe power of Splice Machine in performing large analytic queries quickly lies in its ability to run those queries with parallel resources.  Spark has the capability of running a number of Job/Stages/Tasks in parallel.  How much parallelism you see, and where, depends on the following:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParallelism Factor\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive executors\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eHow many executors are running your query or queries?\u003c/p\u003e\n                \u003cp\u003eThe executor count starts at 4 and is equal to your selected number of *OLAP Splice Units*; each executor can run typically 4 tasks in parallel, which means that a cluster configured for 4 *OLAP Splice Units* can run up to 16 tasks in parallel.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eTasks per stage in one query\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOur example data set contains only 1 million rows; as a result, our example query had only 1 Task per Stage. With more data in your tables, you will see more tasks in parallel in a given Stage.\u003c/p\u003e\n                \u003cp\u003eSplice Machine will dynamically split up the workload across many tasks for large data sets.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e# of Queries being run simultaneously\u003c/td\u003e\n            \u003ctd\u003eSpark can run queries simultaneously with available resources.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n",
+      "text": "%md\n## About Parallelism and Spark\n\nThe power of Splice Machine in performing large analytic queries quickly lies in its ability to run those queries with parallel resources.  Spark has the capability of running a number of Job/Stages/Tasks in parallel.  How much parallelism you see, and where, depends on the following:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParallelism Factor\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive executors\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eHow many executors are available to run your query?\u003c/p\u003e\n                \u003cp\u003eThe available executor count on your cluster depends on your configuration; in our training example we have just one, but clusters can have many executors.  Each executor is typically configured to run 4 tasks in parallel.  Therefore your maximum parallelism is typically the number of executors * 4 simultaneous tasks.  For example if your cluster had 12 executors, you can run 48 tasks in parallel across all running jobs.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eTasks per stage in one query\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eSplice Machine and Spark will dynamically split up the workload across many tasks for large data sets.\u003c/p\u003e\n            \u003cp\u003eOur example data set contains only 1 million rows; as a result, our example query won\u0027t have many Tasks per Stage. With more data in your tables, you will see more tasks in parallel in a given Stage.\u003c/p\u003e\n                \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e# of Queries being run simultaneously\u003c/td\u003e\n            \u003ctd\u003eSpark can run queries simultaneously with available resources.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:08:28.144",
+      "dateUpdated": "2018-12-02 00:25:51.752",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -465,7 +453,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAbout Parallelism and Spark\u003c/h2\u003e\n\u003cp\u003eThe power of Splice Machine in performing large analytic queries quickly lies in its ability to run those queries with parallel resources. Spark has the capability of running a number of Job/Stages/Tasks in parallel. How much parallelism you see, and where, depends on the following:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParallelism Factor\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive executors\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eHow many executors are running your query or queries?\u003c/p\u003e\n                \u003cp\u003eThe executor count starts at 4 and is equal to your selected number of *OLAP Splice Units*; each executor can run typically 4 tasks in parallel, which means that a cluster configured for 4 *OLAP Splice Units* can run up to 16 tasks in parallel.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eTasks per stage in one query\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eOur example data set contains only 1 million rows; as a result, our example query had only 1 Task per Stage. With more data in your tables, you will see more tasks in parallel in a given Stage.\u003c/p\u003e\n                \u003cp\u003eSplice Machine will dynamically split up the workload across many tasks for large data sets.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e# of Queries being run simultaneously\u003c/td\u003e\n            \u003ctd\u003eSpark can run queries simultaneously with available resources.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAbout Parallelism and Spark\u003c/h2\u003e\n\u003cp\u003eThe power of Splice Machine in performing large analytic queries quickly lies in its ability to run those queries with parallel resources. Spark has the capability of running a number of Job/Stages/Tasks in parallel. How much parallelism you see, and where, depends on the following:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParallelism Factor\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive executors\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eHow many executors are available to run your query?\u003c/p\u003e\n                \u003cp\u003eThe available executor count on your cluster depends on your configuration; in our training example we have just one, but clusters can have many executors.  Each executor is typically configured to run 4 tasks in parallel.  Therefore your maximum parallelism is typically the number of executors * 4 simultaneous tasks.  For example if your cluster had 12 executors, you can run 48 tasks in parallel across all running jobs.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eTasks per stage in one query\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eSplice Machine and Spark will dynamically split up the workload across many tasks for large data sets.\u003c/p\u003e\n            \u003cp\u003eOur example data set contains only 1 million rows; as a result, our example query won\u0027t have many Tasks per Stage. With more data in your tables, you will see more tasks in parallel in a given Stage.\u003c/p\u003e\n                \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e# of Queries being run simultaneously\u003c/td\u003e\n            \u003ctd\u003eSpark can run queries simultaneously with available resources.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -473,15 +461,13 @@
       "jobName": "paragraph_1542394040013_-895876818",
       "id": "20170917-144928_60745059",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-11-29 22:23:34.409",
-      "dateFinished": "2018-11-29 22:23:34.418",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Where to Go Next\nNow, please continue on to the next notebook in this class, [*Using Explain and Hints*](/#/notebook/2DVFUM14R), to discover more about tuning your Splice Machine queries.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:08:50.276",
+      "dateUpdated": "2018-12-02 00:11:47.890",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -513,15 +499,13 @@
       "jobName": "paragraph_1542394040013_-395136509",
       "id": "20170917-145935_2044886732",
       "dateCreated": "2018-11-16 10:47:20.000",
-      "dateStarted": "2018-12-01 04:08:34.909",
-      "dateFinished": "2018-12-01 04:08:34.922",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## For Additional Help\nAs you\u0027ve seen in this notebook, the Database Console UI is extremely useful in getting a view into how well your queries are getting processed.  \n\nOnce you have your data loaded at or near target scale, if you are not seeing good throughput (task activity, etc), please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0027ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:08:53.094",
+      "dateUpdated": "2018-12-02 00:25:34.114",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -554,8 +538,6 @@
       "jobName": "paragraph_1542688084762_1789984110",
       "id": "20181119-202804_1936495102",
       "dateCreated": "2018-11-19 20:28:04.762",
-      "dateStarted": "2018-12-01 04:08:46.129",
-      "dateFinished": "2018-12-01 04:08:46.139",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -564,7 +546,10 @@
   "id": "2DWZA8SHP",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
