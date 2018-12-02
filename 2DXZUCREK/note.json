@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Creating Custom Stored Procedures\n\nThis notebook describes how to create and use custom stored procedures in Splice Machine, in these sections:\n\n* *Your Stored Procedure Development Environment*\n* *Local Deployment of the Jar File*\n* *Running Your Custom Procedure Locally*\n\nYou can create custom functions and procedures to deploy in your database; you can then call them as needed from your SQL.\n\n\u003cp class\u003d\"noteIcon\"\u003eWhen creating custom functions and procedures as described here, the code must be in Java.\u003c/p\u003e\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Creating Custom Stored Procedures\n\nThis notebook describes how to create and use custom stored procedures written in Java in Splice Machine, in these sections:\n\n* *Your Stored Procedure Development Environment*\n* *Local Deployment of the Jar File*\n* *Running Your Custom Procedure Locally*\n\nYou can create custom functions and procedures to deploy in your database; you can then call them as needed from your SQL.\n\n\u003cp class\u003d\"noteIcon\"\u003eThis notebook describes how to create custom stored procedures. You will need to adapt this to your own development environment.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:44:33.949",
+      "dateUpdated": "2018-12-02 21:50:46.052",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eCreating Custom Stored Procedures\u003c/h1\u003e\n\u003cp\u003eThis notebook describes how to create and use custom stored procedures in Splice Machine, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eYour Stored Procedure Development Environment\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eLocal Deployment of the Jar File\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning Your Custom Procedure Locally\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eYou can create custom functions and procedures to deploy in your database; you can then call them as needed from your SQL.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eWhen creating custom functions and procedures as described here, the code must be in Java.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eCreating Custom Stored Procedures\u003c/h1\u003e\n\u003cp\u003eThis notebook describes how to create and use custom stored procedures written in Java in Splice Machine, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eYour Stored Procedure Development Environment\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eLocal Deployment of the Jar File\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning Your Custom Procedure Locally\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eYou can create custom functions and procedures to deploy in your database; you can then call them as needed from your SQL.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThis notebook describes how to create custom stored procedures. You will need to adapt this to your own development environment.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,8 +35,8 @@
       "jobName": "paragraph_1542403025850_-533276268",
       "id": "20171130-160641_2246962",
       "dateCreated": "2018-11-16 13:17:05.000",
-      "dateStarted": "2018-12-01 07:44:26.056",
-      "dateFinished": "2018-12-01 07:44:26.065",
+      "dateStarted": "2018-12-02 21:50:35.264",
+      "dateFinished": "2018-12-02 21:50:35.292",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -83,7 +83,7 @@
     {
       "text": "%md\n## Local Development of the Custom Code in an IDE\n\nAs mentioned above, Splice Machine strongly recommends that you develop your custom Java code using an Integrated Development Environment (IDE) on your local machine. This is most frequently done on a Mac or Linux computer. That way you can develop, test, and tune locally, before deploying to a full cluster. The product of your code should be a JDK 1.8-compatible JAR file.\n\nThe following steps are for developing your procedure using the IntelliJ IDEA on MacOS:\n\n### Setting Up Your Project\n\nInside of IntelliJ IDEA, do the following:\n1. Select `File -\u003e New -\u003e Project...`\n2. Choose `Java with 1.8` as the Project SDK\n3. Skip creating from a template unless you prefer to use one\n4. Give your project a name and location; for example: `CompanyACustom1`\n5. If desired, create a new package (`File -\u003e New -\u003e Package`), such as `com.splicemachine.companya`\n\n### Configuring to output a JAR file\nInside of IntelliJ IDEA, do the following:\n\n1. Select `File -\u003e Project Structure...`\n2. Select `Artifacts`, and click `+`\n3. Choose `JAR -\u003e From modules with dependencies `\n3. Check `Build on make` and then click `OK`\n\n### Coding your function or procedure\n\n1. Create a file by right-clicking on your src or package folder, and selecting `New -\u003e Java Class`\n2. Paste in code like the following:\n\n```\npackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\"jdbc:default:connection\")) {\n\n            String incrementSQL \u003d \"update SPLICE.INCREMENTTEST set i \u003d i + 1\";\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n```\n\n### Build your JAR file\n1. `Build -\u003e Artifacts... JAR`\n2. Use your command line interface to navigate to where the JAR file is created, e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar\n\nYou are now ready to deploy your JAR file to test!\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:44:42.034",
+      "dateUpdated": "2018-12-02 20:57:18.739",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -95,7 +95,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -115,15 +115,15 @@
       "jobName": "paragraph_1542403025852_-514042174",
       "id": "20171130-161030_1002161632",
       "dateCreated": "2018-11-16 13:17:05.000",
-      "dateStarted": "2018-12-01 07:44:42.033",
-      "dateFinished": "2018-12-01 07:44:42.064",
+      "dateStarted": "2018-12-02 20:57:15.690",
+      "dateFinished": "2018-12-02 20:57:15.725",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Development Guidelines\nBefore we develop the code and deploy the JAR file, it is worth going through some simple best practices:\n\n1. It\u0027s useful for code organization to use a package for the code, e.g. com.splicemachine.yourcompanyname.\n2. Notice you don\u0027t need a *main* code block in your class, because you\u0027ll be directly calling the class\u0027s specific method.\n3. The example we\u0027ve shown is a stored procedure, which means it does not return any results. When you create a function, it must return a result.\n4. You need to ensure that your method throws `SQLException` if SQL is being executed.  Be sure to use `try/catch` blocks similar to those shown in the example, to deal with any possible run-time exceptions.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:44:48.800",
+      "dateUpdated": "2018-12-02 20:57:53.338",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -135,7 +135,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -155,15 +155,15 @@
       "jobName": "paragraph_1542403025853_486197790",
       "id": "20171130-162809_2009777442",
       "dateCreated": "2018-11-16 13:17:05.000",
-      "dateStarted": "2018-12-01 07:44:48.800",
-      "dateFinished": "2018-12-01 07:44:48.813",
+      "dateStarted": "2018-12-02 20:57:49.333",
+      "dateFinished": "2018-12-02 20:57:49.359",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Local Deployment of the JAR file\n\nOnce you\u0027ve got your code up and running  you can deploy into your development environment. Carefully edit and execute the commands below IN YOUR LOCAL ENVIRONMENT (not in Zeppelin) to align to your custom procedure and environment:\n\n```\nCALL SQLJ.INSTALL_JAR(\u0027\u003cyour-full-path-to\u003e/Custom1.jar\u0027, \u0027SPLICE.Custom1\u0027, 0);\nCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(\u0027derby.database.classpath\u0027, \u0027SPLICE.custom1\u0027);\nCREATE PROCEDURE SPLICE.customincrement() PARAMETER STYLE JAVA MODIFIES SQL DATA LANGUAGE JAVA DYNAMIC RESULT SETS 0 EXTERNAL NAME \u0027com.splicemachine.companya.Custom1.customIncrement\u0027;\n```\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:44:59.519",
+      "dateUpdated": "2018-12-02 20:58:01.965",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -175,7 +175,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -241,9 +241,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Administrator\u0027s Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine DBAs Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:46:42.994",
+      "dateUpdated": "2018-12-02 20:45:27.863",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -268,7 +268,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Administrator\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine DBAs Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -276,21 +276,17 @@
       "jobName": "paragraph_1542738021380_905658858",
       "id": "20181120-102021_863876507",
       "dateCreated": "2018-11-20 10:20:21.380",
-      "dateStarted": "2018-11-29 18:15:20.504",
-      "dateFinished": "2018-11-29 18:15:20.514",
+      "dateStarted": "2018-12-02 20:45:22.474",
+      "dateFinished": "2018-12-02 20:45:22.488",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Administrators/i. Creating Custom Stored Procedures",
+  "name": "Splice Machine Training/For DBAs/h. Creating Custom Stored Procedures",
   "id": "2DXZUCREK",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

@@ -411,14 +411,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Administrators/b. Notebook Basics",
+  "name": "Splice Machine Training/For DBAs/b. Notebook Basics",
   "id": "2DY5CJ4CS",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

@@ -83,7 +83,7 @@
     {
       "text": "%splicemachine\n\nCREATE SCHEMA DS;\nSET SCHEMA DS;\nCREATE TABLE import_example (i int, v varchar(20), t timestamp);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027DS\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 19:41:02.839",
+      "dateUpdated": "2018-12-02 20:49:35.970",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -122,12 +122,12 @@
           }
         },
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
+          "language": "sql",
+          "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": false
         },
-        "editorMode": "ace/mode/markdown",
+        "editorMode": "ace/mode/sql",
         "editorHide": false,
         "tableHide": false
       },
@@ -399,7 +399,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

@@ -79,9 +79,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select * from import_example a, import_example b\nwhere a.i \u003d 100",
+      "text": "%splicemachine\n\nexplain select * from admin.import_example a, admin.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-02 22:55:58.555",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -148,9 +148,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nanalyze table import_example;\n\nexplain select * from import_example a, import_example b\nwhere a.i \u003d 100",
+      "text": "%splicemachine\n\nanalyze table admin.import_example;\n\nexplain select * from admin.import_example a, admin.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 00:45:16.350",
+      "dateUpdated": "2018-12-02 22:56:29.432",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -280,14 +280,15 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an index improperly used can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\nLet\u0027s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.",
+      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an improperly used index can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\nLet\u0027s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:27:38.723",
+      "dateUpdated": "2018-12-02 22:57:26.001",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
@@ -305,7 +306,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating Primary Keys and Indexes\u003c/h2\u003e\n\u003cp\u003eSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe primary key becomes the key for the HBase table.\u003c/li\u003e\n  \u003cli\u003eAn index is another HBase table whose key consists of the columns in the index.\u003c/li\u003e\n  \u003cli\u003eCompound (multi-column) primary keys and indexes are supported.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an index improperly used can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating Primary Keys and Indexes\u003c/h2\u003e\n\u003cp\u003eSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe primary key becomes the key for the HBase table.\u003c/li\u003e\n  \u003cli\u003eAn index is another HBase table whose key consists of the columns in the index.\u003c/li\u003e\n  \u003cli\u003eCompound (multi-column) primary keys and indexes are supported.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an improperly used index can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -313,15 +314,15 @@
       "jobName": "paragraph_1542402464283_-1067363641",
       "id": "20170916-192947_215578585",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-12-01 07:27:35.901",
-      "dateFinished": "2018-12-01 07:27:35.912",
+      "dateStarted": "2018-12-02 22:57:10.316",
+      "dateFinished": "2018-12-02 22:57:10.335",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table index_example (i int primary key, j int);\ninsert into index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into index_example select i+10,j+10 from index_example;\ninsert into index_example select i+20,j+20 from index_example;\ninsert into index_example select i+40,j+40 from index_example;\ninsert into index_example select i+80,j+80 from index_example;\ninsert into index_example select i+160,j+160 from index_example;\ninsert into index_example select i+320,j+320 from index_example;\ninsert into index_example select i+640,j+640 from index_example;\ninsert into index_example select i+1280,j+1280 from index_example;\ninsert into index_example select i+2560,j+2560 from index_example;\ninsert into index_example select i+6000,j+6000 from index_example;\ninsert into index_example select i+12000,j+12000 from index_example;\ninsert into index_example select i+24000,j+24000 from index_example;\ninsert into index_example select i+48000,j+48000 from index_example;\ninsert into index_example select i+96000,j+96000 from index_example;\ninsert into index_example select i+200000,j+200000 from index_example;\ninsert into index_example select i+400000,j+400000 from index_example;\ninsert into index_example select i+800000,j+800000 from index_example;\nanalyze table index_example",
+      "text": "%splicemachine\n\ncreate table admin.index_example (i int primary key, j int);\ninsert into index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into index_example select i+10,j+10 from index_example;\ninsert into index_example select i+20,j+20 from index_example;\ninsert into index_example select i+40,j+40 from index_example;\ninsert into index_example select i+80,j+80 from index_example;\ninsert into index_example select i+160,j+160 from index_example;\ninsert into index_example select i+320,j+320 from index_example;\ninsert into index_example select i+640,j+640 from index_example;\ninsert into index_example select i+1280,j+1280 from index_example;\ninsert into index_example select i+2560,j+2560 from index_example;\ninsert into index_example select i+6000,j+6000 from index_example;\ninsert into index_example select i+12000,j+12000 from index_example;\ninsert into index_example select i+24000,j+24000 from index_example;\ninsert into index_example select i+48000,j+48000 from index_example;\ninsert into index_example select i+96000,j+96000 from index_example;\ninsert into index_example select i+200000,j+200000 from index_example;\ninsert into index_example select i+400000,j+400000 from index_example;\ninsert into index_example select i+800000,j+800000 from index_example;\nanalyze table admin.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:59.000",
+      "dateUpdated": "2018-12-02 22:58:02.303",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -421,9 +422,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nselect * from index_example where i \u003d 300000",
+      "text": "%splicemachine\n\nselect * from admin.index_example where i \u003d 300000",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:59.000",
+      "dateUpdated": "2018-12-02 22:58:17.644",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -518,9 +519,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nselect * from index_example where j \u003d 300000",
+      "text": "%splicemachine\n\nselect * from admin.index_example where j \u003d 300000",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:59.000",
+      "dateUpdated": "2018-12-02 22:58:32.698",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -615,9 +616,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate index ij on index_example (j)",
+      "text": "%splicemachine\n\ncreate index ij on admin.index_example (j)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-02 22:58:45.371",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -683,9 +684,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select j from index_example where j \u003d 300000",
+      "text": "%splicemachine\n\nexplain select j from admin.index_example where j \u003d 300000",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-02 22:58:58.002",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -750,9 +751,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from\n  (select j,i from index_example\n     where j \u003e 950000) a",
+      "text": "%splicemachine\n\nexplain select count(i) from admin.index_example where j \u003e 950000",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-02 23:00:58.246",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -818,9 +819,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from\n  (select j,i from index_example --splice-properties index\u003dij\n     where j \u003e 950000) a",
+      "text": "%splicemachine\n\n\nexplain select count(i) from admin.index_example --splice-properties index\u003dij\n     where j \u003e 950000",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-02 23:00:51.580",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -847,9 +848,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Learning About Hints\nYou add Splice Machine __hints__ to your queries by appending a specially formatted *comment*. The different kinds of available hints and the syntax required for them is described in detail later in this class, in the [*Using Explain and Hints*](/#/notebook/2DUVSWQRW) notebook.\n\nThe *index hint* in the above example  (`--splice-properties index\u003dij`) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses `IndexScan` instead of the `TableScan`. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\n\nIt\u0027s because the index only contains information for column `J`, and this query calls for information about column `I` as well. This means that we still have to get information from the base table for column I, and we have to do it *many* times.  You can see this in the plan: there is a step, `IndexLookup`, that is part of the plan.  You\u0027ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column `I`.  In distributed architectures like Splice Machine, this can be a very expensive operation.\n\nIf you want, you can run these these two queries by removing the `explains`; you\u0027ll noticed a significant performance difference between them.\n\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\nWhen faced with situations where you have __many__ matching rows however, like our original query, you can address the issue by creating a compound index that includes both `j` and `i` in it:",
+      "text": "%md\n### Learning About Hints\n\nYou add Splice Machine __hints__ to your queries by appending a specially formatted *comment*. The different kinds of available hints and the syntax required for them is described in detail later in this class, in the [*Using Explain and Hints*](/#/notebook/2DVFUM14R) notebook.\n\nThe *index hint* in the above example  (`--splice-properties index\u003dij`) is an explicit instruction to the optimizer to use that named index instead of what the Optimizer might have chosen. And the results of using the index are evident in the generated plan, which now uses `IndexScan` instead of the `TableScan`. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\n\n### Index Lookup\nThe reason is because the index only contains information for column `J`, and this query calls for information about column `I` as well. This means that we still have to get information from the base table for column I, and we have to do it *many* times.  You can see this in the plan: there is a step, `IndexLookup`, that is part of the plan.  You\u0027ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more than half a million matches), we have to go back over to the base table to get the information about column `I`.  In distributed architectures like Splice Machine, this can be a very expensive operation.\n\nIf you want, you can run these these two queries by removing the `explains`; you\u0027ll noticed a significant performance difference between them.\n\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\nWhen faced with situations where you have __many__ matching rows however, like our original query, you can address the issue by creating a compound index that includes both `j` and `i` in it:",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:28:46.737",
+      "dateUpdated": "2018-12-02 23:00:24.864",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -873,7 +874,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLearning About Hints\u003c/h3\u003e\n\u003cp\u003eYou add Splice Machine \u003cstrong\u003ehints\u003c/strong\u003e to your queries by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. The different kinds of available hints and the syntax required for them is described in detail later in this class, in the \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eUsing Explain and Hints\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003cp\u003eThe \u003cem\u003eindex hint\u003c/em\u003e in the above example (\u003ccode\u003e--splice-properties index\u003dij\u003c/code\u003e) is an explicit instruction to the optimizer to use that named index now. And the results of using the index are evident in the generated plan, which now uses \u003ccode\u003eIndexScan\u003c/code\u003e instead of the \u003ccode\u003eTableScan\u003c/code\u003e. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\u003c/p\u003e\n\u003cp\u003eIt\u0026rsquo;s because the index only contains information for column \u003ccode\u003eJ\u003c/code\u003e, and this query calls for information about column \u003ccode\u003eI\u003c/code\u003e as well. This means that we still have to get information from the base table for column I, and we have to do it \u003cem\u003emany\u003c/em\u003e times. You can see this in the plan: there is a step, \u003ccode\u003eIndexLookup\u003c/code\u003e, that is part of the plan. You\u0026rsquo;ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more then a million matches), we have to go back over to the base table to get the information about column \u003ccode\u003eI\u003c/code\u003e. In distributed architectures like Splice Machine, this can be a very expensive operation.\u003c/p\u003e\n\u003cp\u003eIf you want, you can run these these two queries by removing the \u003ccode\u003eexplains\u003c/code\u003e; you\u0026rsquo;ll noticed a significant performance difference between them.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\u003cp\u003eWhen faced with situations where you have \u003cstrong\u003emany\u003c/strong\u003e matching rows however, like our original query, you can address the issue by creating a compound index that includes both \u003ccode\u003ej\u003c/code\u003e and \u003ccode\u003ei\u003c/code\u003e in it:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLearning About Hints\u003c/h3\u003e\n\u003cp\u003eYou add Splice Machine \u003cstrong\u003ehints\u003c/strong\u003e to your queries by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. The different kinds of available hints and the syntax required for them is described in detail later in this class, in the \u003ca href\u003d\"/#/notebook/2DVFUM14R\"\u003e\u003cem\u003eUsing Explain and Hints\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003cp\u003eThe \u003cem\u003eindex hint\u003c/em\u003e in the above example (\u003ccode\u003e--splice-properties index\u003dij\u003c/code\u003e) is an explicit instruction to the optimizer to use that named index instead of what the Optimizer might have chosen. And the results of using the index are evident in the generated plan, which now uses \u003ccode\u003eIndexScan\u003c/code\u003e instead of the \u003ccode\u003eTableScan\u003c/code\u003e. We can also see that the total cost (at the top of each plan) is much higher when using the index. Why is that?\u003c/p\u003e\n\u003ch3\u003eIndex Lookup\u003c/h3\u003e\n\u003cp\u003eThe reason is because the index only contains information for column \u003ccode\u003eJ\u003c/code\u003e, and this query calls for information about column \u003ccode\u003eI\u003c/code\u003e as well. This means that we still have to get information from the base table for column I, and we have to do it \u003cem\u003emany\u003c/em\u003e times. You can see this in the plan: there is a step, \u003ccode\u003eIndexLookup\u003c/code\u003e, that is part of the plan. You\u0026rsquo;ll also see the cost jump up on that step, because for every row of where column J matches the criteria that we need to scan (and the optimizer estimates there are more than half a million matches), we have to go back over to the base table to get the information about column \u003ccode\u003eI\u003c/code\u003e. In distributed architectures like Splice Machine, this can be a very expensive operation.\u003c/p\u003e\n\u003cp\u003eIf you want, you can run these these two queries by removing the \u003ccode\u003eexplains\u003c/code\u003e; you\u0026rsquo;ll noticed a significant performance difference between them.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf we change the \u003ccode\u003e\u0026gt;\u003c/code\u003e to \u003ccode\u003e\u003d\u003c/code\u003e in the query, things change dramatically. Even though there is still an \u003ccode\u003eIndexLookup\u003c/code\u003e, it\u0027s only called once, so clearly use of the Index vs the Table is a better and faster plan.  Try it and see!\u003c/p\u003e\n\u003cp\u003eWhen faced with situations where you have \u003cstrong\u003emany\u003c/strong\u003e matching rows however, like our original query, you can address the issue by creating a compound index that includes both \u003ccode\u003ej\u003c/code\u003e and \u003ccode\u003ei\u003c/code\u003e in it:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -881,15 +882,15 @@
       "jobName": "paragraph_1542402464289_-996725073",
       "id": "20170917-102229_72455203",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-12-01 07:28:42.450",
-      "dateFinished": "2018-12-01 07:28:42.478",
+      "dateStarted": "2018-12-02 23:00:15.432",
+      "dateFinished": "2018-12-02 23:00:15.476",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\ncreate index iji on index_example (j, i)",
+      "text": "%splicemachine\ncreate index iji on admin.index_example (j, i)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-02 23:00:45.089",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -992,9 +993,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table join1 (i int);\ncreate table join2 (i int);\ncreate table join3 (i int);\ncreate table join4 (i int);\n\nexplain select * from join1 a, join2 b, join3 c, join4 d\nwhere a.i \u003d b.i\nand a.i \u003d c.i\nand a.i \u003d d.i\n",
+      "text": "%splicemachine\n\ncreate table admin.join1 (i int);\ncreate table admin.join2 (i int);\ncreate table admin.join3 (i int);\ncreate table admin.join4 (i int);\n\nexplain select * from admin.join1 a, admin.join2 b, admin.join3 c, admin.join4 d\nwhere a.i \u003d b.i\nand a.i \u003d c.i\nand a.i \u003d d.i\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:07:44.000",
+      "dateUpdated": "2018-12-02 23:01:59.713",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1178,7 +1179,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Administrators/d. Tuning Queries",
+  "name": "Splice Machine Training/For DBAs/d. Tuning Queries",
   "id": "2DX9MPD59",
   "noteParams": {},
   "noteForms": {},

@@ -227,9 +227,9 @@
     },
     {
       "title": "Splice Machine Optimizer",
-      "text": "%md\n## Optimizing Query Performance\n\nIn this section we\u0027ll look at optimizing the execution plan for TPCH Query 4. We\u0027ll:\n\n* Collect Statistics to Inform the Optimizer\n* Add Indexes to Further Optimize the Plan\n* Compare Execution Plans\n\nWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\n\n* It creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\n* When joining tables, the optimizer evaluates the best *join order* and the *join strategy* to use.\n* The optimizer unrolls subqueries to reduce processing time\n\nSince there often are different options available (whether or not to use an index, which join order, etc.), we evaluate the different possibilities, score them, then choose the best we find.  Of course coming up with good scores requires good knowledge about your database, and that\u0027s where the statistics collection comes in.\n\nYou use our `analyze` command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\n\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\nCollecting these metrics can be extremely expensive but if approximate results are acceptable (which is typically the case with query optimization), there is a class of specialized algorithms, called streaming algorithms, or *sketches*, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the [Yahoo Sketches Library](https://datasketches.github.io/docs/TheChallenge.html) for its statistics gathering. \n\n### Collect Statistics\nOur first optimization is to collect statistics to inform the optimizer about our database. We use our `analyze` command to collect statistics on a schema (or table). This process requires a couple minutes.\n",
+      "text": "%md\n## Optimizing Query Performance\n\nIn this section we\u0027ll look at optimizing the execution plan for TPCH Query 4. We\u0027ll:\n\n* Collect Statistics to Inform the Optimizer\n* Add Indexes to Further Optimize the Plan\n* Compare Execution Plans\n\nWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\n\n* It creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\n* When joining tables, the optimizer evaluates the best *join order* and the *join strategy* to use.\n* The optimizer unrolls subqueries to reduce processing time\n\nSince there often are different options available (whether or not to use an index, which join order, etc.), we evaluate the different possibilities, score them, then choose the best we find.  Of course coming up with good scores requires good knowledge about your database, and that\u0027s where the statistics collection comes in.\n\nYou use our `analyze` command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\n\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\nCollecting these metrics can be extremely expensive but if approximate results are acceptable (which is typically the case with query optimization), there is a class of specialized algorithms, called streaming algorithms, or *sketches*, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the \u003ca href\u003d\"https://datasketches.github.io/docs/TheChallenge.html\" target\u003d\"_blank\"\u003eYahoo Sketches Library\u003c/a\u003e for its statistics gathering. \n\n### Collect Statistics\nOur first optimization is to collect statistics to inform the optimizer about our database. We use our `analyze` command to collect statistics on a schema (or table). This process requires a couple minutes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:33:16.782",
+      "dateUpdated": "2018-12-02 23:37:10.654",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -254,7 +254,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eOptimizing Query Performance\u003c/h2\u003e\n\u003cp\u003eIn this section we\u0026rsquo;ll look at optimizing the execution plan for TPCH Query 4. We\u0026rsquo;ll:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCollect Statistics to Inform the Optimizer\u003c/li\u003e\n  \u003cli\u003eAdd Indexes to Further Optimize the Plan\u003c/li\u003e\n  \u003cli\u003eCompare Execution Plans\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIt creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\u003c/li\u003e\n  \u003cli\u003eWhen joining tables, the optimizer evaluates the best \u003cem\u003ejoin order\u003c/em\u003e and the \u003cem\u003ejoin strategy\u003c/em\u003e to use.\u003c/li\u003e\n  \u003cli\u003eThe optimizer unrolls subqueries to reduce processing time\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eSince there often are different options available (whether or not to use an index, which join order, etc.), we evaluate the different possibilities, score them, then choose the best we find. Of course coming up with good scores requires good knowledge about your database, and that\u0026rsquo;s where the statistics collection comes in.\u003c/p\u003e\n\u003cp\u003eYou use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\u003cp\u003eCollecting these metrics can be extremely expensive but if approximate results are acceptable (which is typically the case with query optimization), there is a class of specialized algorithms, called streaming algorithms, or \u003cem\u003esketches\u003c/em\u003e, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the \u003ca href\u003d\"https://datasketches.github.io/docs/TheChallenge.html\"\u003eYahoo Sketches Library\u003c/a\u003e for its statistics gathering. \u003c/p\u003e\n\u003ch3\u003eCollect Statistics\u003c/h3\u003e\n\u003cp\u003eOur first optimization is to collect statistics to inform the optimizer about our database. We use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics on a schema (or table). This process requires a couple minutes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eOptimizing Query Performance\u003c/h2\u003e\n\u003cp\u003eIn this section we\u0026rsquo;ll look at optimizing the execution plan for TPCH Query 4. We\u0026rsquo;ll:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCollect Statistics to Inform the Optimizer\u003c/li\u003e\n  \u003cli\u003eAdd Indexes to Further Optimize the Plan\u003c/li\u003e\n  \u003cli\u003eCompare Execution Plans\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen creating a plan for a query, our optimizer performs a number of important and valuable actions, including:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIt creates an access plan, which determine the best path for accessing the data the query will operate upon; for example, the access path might be to scan an entire table or to use an index.\u003c/li\u003e\n  \u003cli\u003eWhen joining tables, the optimizer evaluates the best \u003cem\u003ejoin order\u003c/em\u003e and the \u003cem\u003ejoin strategy\u003c/em\u003e to use.\u003c/li\u003e\n  \u003cli\u003eThe optimizer unrolls subqueries to reduce processing time\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eSince there often are different options available (whether or not to use an index, which join order, etc.), we evaluate the different possibilities, score them, then choose the best we find. Of course coming up with good scores requires good knowledge about your database, and that\u0026rsquo;s where the statistics collection comes in.\u003c/p\u003e\n\u003cp\u003eYou use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics from your database, which the optimizer uses when planning the execution of a query.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eCost-based optimizers are powerful features of modern databases that enable query plans to change as the data profiles change. Optimizers make use of count distinct, quantiles, and most frequent item counts as heuristics.\u003c/p\u003e\n\u003cp\u003eCollecting these metrics can be extremely expensive but if approximate results are acceptable (which is typically the case with query optimization), there is a class of specialized algorithms, called streaming algorithms, or \u003cem\u003esketches\u003c/em\u003e, that can produce results orders-of magnitude faster and with mathematically proven error bounds. Splice Machine leverages the \u003ca href\u003d\"https://datasketches.github.io/docs/TheChallenge.html\" target\u003d\"_blank\"\u003eYahoo Sketches Library\u003c/a\u003e for its statistics gathering. \u003c/p\u003e\n\u003ch3\u003eCollect Statistics\u003c/h3\u003e\n\u003cp\u003eOur first optimization is to collect statistics to inform the optimizer about our database. We use our \u003ccode\u003eanalyze\u003c/code\u003e command to collect statistics on a schema (or table). This process requires a couple minutes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -262,8 +262,8 @@
       "jobName": "paragraph_1542395076258_2094574479",
       "id": "20180115-053838_672371514",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-12-02 16:10:46.170",
-      "dateFinished": "2018-12-02 16:10:46.217",
+      "dateStarted": "2018-12-02 21:12:44.189",
+      "dateFinished": "2018-12-02 21:12:44.227",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -339,7 +339,7 @@
     {
       "text": "%md\n### Rerun the Explain Plan After Collecting Statistics\n\nNow let\u0027s re-run the `explain` plan for Query 4 and see how the optimizer changed the plan after gathering statistics. LINEITEM\u0027s scannedRows estimate is appropriately at 6M rows, etc:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:33:28.706",
+      "dateUpdated": "2018-12-02 23:38:55.391",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -351,7 +351,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": false,
+        "enabled": true,
         "fontSize": 9.0
       },
       "settings": {
@@ -371,8 +371,8 @@
       "jobName": "paragraph_1542395076258_1375056611",
       "id": "20180201-160453_2099057216",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-12-02 16:16:07.828",
-      "dateFinished": "2018-12-02 16:16:07.846",
+      "dateStarted": "2018-12-02 23:38:55.397",
+      "dateFinished": "2018-12-02 23:38:55.427",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -452,7 +452,7 @@
       "title": "Indexes",
       "text": "%md\n\n### Optimize by Adding Indexes\n\nSplice Machine tables have primary keys either implicit or explicitly defined. Data is stored in order of these keys.\n\n\u003cdiv class\u003d\"noteNote\" style\u003d\"max-width:40%;\"\u003eThe primary key is not optimal for all queries.\u003c/div\u003e\n\nUnlike HBase and other key-value stores, Splice Machine can use *secondary indexes* to improve the performance of data manipulation statements. In addition, `UNIQUE` indexes provide a form of data integrity checking.\n\nIn Splice Machine, an index is just another HBase table, keyed on the index itself.\n\n### Adding an index on ORDERS\n\nNote that in the explain for this query, we are scanning the entire ORDERS table, even though we only will require a subset of the data?  Adding an index on O_ORDERDATE should help.  BUT it\u0027s important to know\nthat the plan is telling us even if we use an index, we still will be returning many rows to the next step (outputRows\u003e400K).  So we should be careful to avoid the IndexLookup problem discussed previously, and\nadd other columns we\u0027ll need as well.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:33:47.340",
+      "dateUpdated": "2018-12-02 23:43:53.485",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -494,7 +494,7 @@
       "title": "Create Indexes",
       "text": "%splicemachine\n\ncreate index DEV2.O_DATE_PRI_KEY_IDX on DEV2.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:33:57.472",
+      "dateUpdated": "2018-12-02 23:45:02.939",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -507,7 +507,8 @@
         "results": {},
         "enabled": true,
         "fontSize": 9.0,
-        "tableHide": false
+        "tableHide": false,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -524,9 +525,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nHere\u0027s the query again to rerun explain on to compare the difference:\n",
+      "text": "%md\nHere\u0027s the query again on which to rerun explain, so we can compare plans.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:35:07.218",
+      "dateUpdated": "2018-12-02 23:47:27.056",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -550,7 +551,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eHere\u0026rsquo;s the query again to rerun explain on to compare the difference:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eHere\u0026rsquo;s the query again on which to rerun explain, so we can compare plans.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -558,8 +559,8 @@
       "jobName": "paragraph_1543768452491_-1098357107",
       "id": "20181202-163412_872074749",
       "dateCreated": "2018-12-02 16:34:12.491",
-      "dateStarted": "2018-12-02 16:34:53.625",
-      "dateFinished": "2018-12-02 16:34:53.661",
+      "dateStarted": "2018-12-02 23:47:23.153",
+      "dateFinished": "2018-12-02 23:47:23.168",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -598,7 +599,7 @@
       "title": "Plan Comparison After Indexes",
       "text": "%md\n### Compare Updated Execution Plans\n\nWe can now compare how the query will execute with indexing in place versus without indexes. You\u0027ll again notice that, among other differences, the `totalCost` values are lower for most operations because the optimizer was able to take advantage of the indexes we added.\n\n#### Query Plan After Indexing\n```\nPlan\nCursor(n\u003d14,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d13,totalCost\u003d15353.855,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d12,totalCost\u003d15353.753,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d11,totalCost\u003d14988.138,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d10,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d9,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d8,totalCost\u003d2463.089,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  ProjectRestrict(n\u003d7,totalCost\u003d6001884,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n                -\u003e  IndexScan[O_DATE_PRI_KEY_IDX(1745)](n\u003d6,totalCost\u003d1547.029,scannedRows\u003d1160172,outputRows\u003d435332,outputHeapSize\u003d39.081 MB,partitions\u003d41,baseTable\u003dORDERS(1616),preds\u003d[(O_ORDERDATE[5:1] \u003c dataTypeServices: DATE ),(O_ORDERDATE[5:1] \u003e\u003d 1993-07-01)])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```\n\n#### Query Plan Before Indexing\n```\nPlan\nCursor(n\u003d13,rows\u003d5,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d16920.058,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d16919.956,outputRows\u003d5,outputHeapSize\u003d127 B,partitions\u003d41)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d16517.046,outputRows\u003d1604125,outputHeapSize\u003d127 B,partitions\u003d41)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d3004,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41)\n            -\u003e  MergeSortJoin(n\u003d7,totalCost\u003d3955.595,outputRows\u003d1604125,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] \u003d O_ORDERKEY[7:2])])\n              -\u003e  TableScan[ORDERS(1616)](n\u003d6,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d435327,outputHeapSize\u003d39.081 MB,partitions\u003d41,preds\u003d[(O_ORDERDATE[5:2] \u003e\u003d 1993-07-01),(O_ORDERDATE[5:2] \u003c dataTypeServices: DATE )])\n              -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                -\u003e  Distinct(n\u003d4,totalCost\u003d277.69,outputRows\u003d1501009,outputHeapSize\u003d23.619 MB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n                    -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11385.304,outputRows\u003d1980401,outputHeapSize\u003d31.163 MB,partitions\u003d41,preds\u003d[(L_COMMITDATE[0:2] \u003c L_RECEIPTDATE[0:3])])\n                      -\u003e  TableScan[LINEITEM(1600)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d6001215,outputHeapSize\u003d31.163 MB,partitions\u003d41)\n```",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 03:14:07.333",
+      "dateUpdated": "2018-12-02 23:48:38.018",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -639,7 +640,7 @@
     {
       "text": "%md\n### Running Query 4\n\nNow go ahead and run TPC-H Query 4.  Again feel free to use `localhost:4040` to monitor while it runs.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:35:48.995",
+      "dateUpdated": "2018-12-02 23:48:49.078",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -649,7 +650,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": false,
         "fontSize": 9.0

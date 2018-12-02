@@ -81,9 +81,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nCREATE SCHEMA ADMIN;\nSET SCHEMA ADMIN;\nCREATE TABLE import_example (i int, v varchar(20), t timestamp);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027ADMIN\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example2.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)\n",
+      "text": "%splicemachine\n\nCREATE SCHEMA ADMIN;\nSET SCHEMA ADMIN;\nCREATE TABLE import_example (i int, v varchar(20), t timestamp);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027ADMIN\u0027,\u0027import_example\u0027,\u0027v,t\u0027,\u0027s3a://splice-examples/import/example1.csv\u0027,\u0027|\u0027,\u0027\u0027\u0027\u0027,\u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,null,null,0,null,false,null)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:25:08.374",
+      "dateUpdated": "2018-12-02 22:52:28.352",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -187,9 +187,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nselect * from import_example\nwhere i \u003d 100",
+      "text": "%splicemachine\n\nselect * from admin.import_example\nwhere i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:37:00.280",
+      "dateUpdated": "2018-12-02 22:52:45.583",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/text",
@@ -294,9 +294,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select * from import_example a, import_example b\nwhere a.i \u003d 100",
+      "text": "%splicemachine\n\nexplain select * from admin.import_example a, admin.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-11-30 18:37:00.328",
+      "dateUpdated": "2018-12-02 22:53:01.640",
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -332,9 +332,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Some Explain Plan Details\n\nTo see the flow of the execution of the query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above. You can see the costs and row count estimates for each step.\n\nIn the *explain* example that we just ran, we can see we are scanning table `import_example` twice, then joining them with a particular strategy; in this case, the strategy is a nested join loop.\n\nThe final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:\n\n    Cursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\nThis line shows you which *engine* is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n",
+      "text": "%md\n### Some Explain Plan Details\n\nTo see the execution flow of a query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above. \n\nEach row includes the action being performed (a Scan, Join, grouping, etc.) followed by:\n\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003en count\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe step of the plan (and again you can see as we go from the bottom up the count starts from 1 and goes up from there)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003etotalCost\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated cost for this step (and any substeps below it)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003escannedRows (for Table or Index Scan steps)\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows need to be scanned in this step\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputRows\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows are passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputHeapSize\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how much data is passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epartitions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated number of (HBase) regions are involved in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epreds\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eWhich filtering predicates are applied in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nWe will see that the scannedRows and outputRows are key numbers to monitor as we tune query performance.\n\nIn the *explain* example that we just ran, we can see we are scanning table `import_example` twice, then joining them with a particular strategy; in this case, the strategy is a nested-loop join.\n\n### Which Engine?\nThe final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:\n\n    Cursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\nThis line shows you which *engine* is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\nWe\u0027ll cover more about the engines, and the Spark engine in particular, later in this class.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:25:36.194",
+      "dateUpdated": "2018-12-02 22:54:35.827",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -346,7 +346,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -358,7 +358,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSome Explain Plan Details\u003c/h3\u003e\n\u003cp\u003eTo see the flow of the execution of the query, look at the generated plan from the \u003cem\u003ebottom up.\u003c/em\u003e The very first steps of the query are at the bottom, then each step follows above. You can see the costs and row count estimates for each step.\u003c/p\u003e\n\u003cp\u003eIn the \u003cem\u003eexplain\u003c/em\u003e example that we just ran, we can see we are scanning table \u003ccode\u003eimport_example\u003c/code\u003e twice, then joining them with a particular strategy; in this case, the strategy is a nested join loop.\u003c/p\u003e\n\u003cp\u003eThe final steps, \u003ccode\u003eScroll Insensitive\u003c/code\u003e and \u003ccode\u003eCursor\u003c/code\u003e are typical end steps to the query execution. There is one \u003cstrong\u003every important\u003c/strong\u003e piece of information shown on the \u003ccode\u003eCursor\u003c/code\u003e line at the end:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis line shows you which \u003cem\u003eengine\u003c/em\u003e is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \u003c/p\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSome Explain Plan Details\u003c/h3\u003e\n\u003cp\u003eTo see the execution flow of a query, look at the generated plan from the \u003cem\u003ebottom up.\u003c/em\u003e The very first steps of the query are at the bottom, then each step follows above. \u003c/p\u003e\n\u003cp\u003eEach row includes the action being performed (a Scan, Join, grouping, etc.) followed by:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003en count\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe step of the plan (and again you can see as we go from the bottom up the count starts from 1 and goes up from there)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003etotalCost\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated cost for this step (and any substeps below it)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003escannedRows (for Table or Index Scan steps)\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows need to be scanned in this step\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputRows\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows are passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputHeapSize\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how much data is passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epartitions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated number of (HBase) regions are involved in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epreds\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eWhich filtering predicates are applied in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eWe will see that the scannedRows and outputRows are key numbers to monitor as we tune query performance.\u003c/p\u003e\n\u003cp\u003eIn the \u003cem\u003eexplain\u003c/em\u003e example that we just ran, we can see we are scanning table \u003ccode\u003eimport_example\u003c/code\u003e twice, then joining them with a particular strategy; in this case, the strategy is a nested-loop join.\u003c/p\u003e\n\u003ch3\u003eWhich Engine?\u003c/h3\u003e\n\u003cp\u003eThe final steps, \u003ccode\u003eScroll Insensitive\u003c/code\u003e and \u003ccode\u003eCursor\u003c/code\u003e are typical end steps to the query execution. There is one \u003cstrong\u003every important\u003c/strong\u003e piece of information shown on the \u003ccode\u003eCursor\u003c/code\u003e line at the end:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis line shows you which \u003cem\u003eengine\u003c/em\u003e is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \u003c/p\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\u003cp\u003eWe\u0026rsquo;ll cover more about the engines, and the Spark engine in particular, later in this class.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -366,8 +366,8 @@
       "jobName": "paragraph_1542402377083_1513156442",
       "id": "20170916-191001_544321918",
       "dateCreated": "2018-11-16 13:06:17.000",
-      "dateStarted": "2018-12-01 07:25:36.195",
-      "dateFinished": "2018-12-01 07:25:36.207",
+      "dateStarted": "2018-12-02 22:54:10.047",
+      "dateFinished": "2018-12-02 22:54:10.082",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -412,7 +412,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Administrators/c. Running Queries",
+  "name": "Splice Machine Training/For DBAs/c. Running Queries",
   "id": "2DUMZ6BTQ",
   "noteParams": {},
   "noteForms": {},

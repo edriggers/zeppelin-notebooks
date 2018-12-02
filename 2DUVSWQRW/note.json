@@ -80,9 +80,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select a.i, a.j from\n    index_example a\n    ,index_example b --splice-properties joinStrategy\u003dsortmerge\n     where a.i \u003d b.i\n     and a.j \u003d 700000",
+      "text": "%splicemachine\n\nexplain select a.i, a.j from\n    admin.index_example a\n    ,admin.index_example b --splice-properties joinStrategy\u003dsortmerge\n     where a.i \u003d b.i\n     and a.j \u003d 700000",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:12:22.000",
+      "dateUpdated": "2018-12-02 23:10:51.713",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -110,9 +110,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### About Predicates\n\nStarting on the bottom line, we see an `IndexScan` with the preds specification on it; this is called a *Predicate Pushdown*. A pushdown means: when we perform this `IndexScan`, we\u0027ll bring this predicate (`A.J \u003d 700000`) along with us, and will return ONLY the rows that match.  Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\n\nThe other kind of predicate shown here is of the form `[(A.I[4:2] \u003d B.I[4:1])]`. You can ignore the numbers for now; the key part is `A.I \u003d B.I`.  You can see that this is the join predicate, required for the actual join operation.\n\nThe main takeaway is that, as with most databases: when you can *push down* a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.",
+      "text": "%md\n### About Predicates\n\nStarting on the bottom line, we see an `IndexScan` with the preds specification on it; this is called a *Predicate Pushdown*. A pushdown means: when we perform this `IndexScan`, we\u0027ll bring this predicate (`A.J \u003d 700000`) along with us, and will perform the scan using this predicate, passing up to the next part of the plan ONLY the rows that match. Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\n\nThe other kind of predicate shown here is of the form `[(A.I[4:2] \u003d B.I[4:1])]`. You can ignore the numbers for now; the key part is `A.I \u003d B.I`.  You can see that this is the join predicate, required for the actual join operation.\n\nThe main takeaway is that, as with most databases: when you can *push down* a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:32:34.902",
+      "dateUpdated": "2018-12-02 23:12:22.801",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -136,7 +136,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAbout Predicates\u003c/h3\u003e\n\u003cp\u003eStarting on the bottom line, we see an \u003ccode\u003eIndexScan\u003c/code\u003e with the preds specification on it; this is called a \u003cem\u003ePredicate Pushdown\u003c/em\u003e. A pushdown means: when we perform this \u003ccode\u003eIndexScan\u003c/code\u003e, we\u0026rsquo;ll bring this predicate (\u003ccode\u003eA.J \u003d 700000\u003c/code\u003e) along with us, and will return ONLY the rows that match. Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\u003c/p\u003e\n\u003cp\u003eThe other kind of predicate shown here is of the form \u003ccode\u003e[(A.I[4:2] \u003d B.I[4:1])]\u003c/code\u003e. You can ignore the numbers for now; the key part is \u003ccode\u003eA.I \u003d B.I\u003c/code\u003e. You can see that this is the join predicate, required for the actual join operation.\u003c/p\u003e\n\u003cp\u003eThe main takeaway is that, as with most databases: when you can \u003cem\u003epush down\u003c/em\u003e a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eAbout Predicates\u003c/h3\u003e\n\u003cp\u003eStarting on the bottom line, we see an \u003ccode\u003eIndexScan\u003c/code\u003e with the preds specification on it; this is called a \u003cem\u003ePredicate Pushdown\u003c/em\u003e. A pushdown means: when we perform this \u003ccode\u003eIndexScan\u003c/code\u003e, we\u0026rsquo;ll bring this predicate (\u003ccode\u003eA.J \u003d 700000\u003c/code\u003e) along with us, and will perform the scan using this predicate, passing up to the next part of the plan ONLY the rows that match. Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\u003c/p\u003e\n\u003cp\u003eThe other kind of predicate shown here is of the form \u003ccode\u003e[(A.I[4:2] \u003d B.I[4:1])]\u003c/code\u003e. You can ignore the numbers for now; the key part is \u003ccode\u003eA.I \u003d B.I\u003c/code\u003e. You can see that this is the join predicate, required for the actual join operation.\u003c/p\u003e\n\u003cp\u003eThe main takeaway is that, as with most databases: when you can \u003cem\u003epush down\u003c/em\u003e a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -144,8 +144,8 @@
       "jobName": "paragraph_1542402742670_-1389706961",
       "id": "20170917-151828_1052121991",
       "dateCreated": "2018-11-16 13:12:22.000",
-      "dateStarted": "2018-12-01 07:32:31.796",
-      "dateFinished": "2018-12-01 07:32:31.812",
+      "dateStarted": "2018-12-02 23:12:13.335",
+      "dateFinished": "2018-12-02 23:12:13.367",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -188,9 +188,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Influencing the Query Execution Plan with Hints\n\nIf your query is still slower than you expect or if you want to experiment with plan alternatives, you can use Splice Machine *query hints*, which provide additional information to our optimizer.\n\nWe introduced hints in an earlier notebook, *Tuning for Performance.* To recap: you add a hint to a query by appending a specially formatted *comment*. These hints must always be placed at the end of a line, and can be used either after a table name or after a `FROM` clause. Most hints are used for these reasons:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n",
+      "text": "%md\n## Influencing the Query Execution Plan with Hints\n\nIf your query is still slower than you expect or if you want to experiment with plan alternatives, you can use Splice Machine *query hints*, which provide additional information to our optimizer.\n\nWe introduced hints in an earlier notebook, *Tuning for Performance.* To recap: you add a hint to a query by appending a specially formatted *comment*. These hints must always be placed at the end of a line, and are used either after a table name or after a `FROM` clause, as shown below. Most hints are used for these reasons:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:32:42.898",
+      "dateUpdated": "2018-12-02 22:27:10.537",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -214,7 +214,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInfluencing the Query Execution Plan with Hints\u003c/h2\u003e\n\u003cp\u003eIf your query is still slower than you expect or if you want to experiment with plan alternatives, you can use Splice Machine \u003cem\u003equery hints\u003c/em\u003e, which provide additional information to our optimizer.\u003c/p\u003e\n\u003cp\u003eWe introduced hints in an earlier notebook, \u003cem\u003eTuning for Performance.\u003c/em\u003e To recap: you add a hint to a query by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. These hints must always be placed at the end of a line, and can be used either after a table name or after a \u003ccode\u003eFROM\u003c/code\u003e clause. Most hints are used for these reasons:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInfluencing the Query Execution Plan with Hints\u003c/h2\u003e\n\u003cp\u003eIf your query is still slower than you expect or if you want to experiment with plan alternatives, you can use Splice Machine \u003cem\u003equery hints\u003c/em\u003e, which provide additional information to our optimizer.\u003c/p\u003e\n\u003cp\u003eWe introduced hints in an earlier notebook, \u003cem\u003eTuning for Performance.\u003c/em\u003e To recap: you add a hint to a query by appending a specially formatted \u003cem\u003ecomment\u003c/em\u003e. These hints must always be placed at the end of a line, and are used either after a table name or after a \u003ccode\u003eFROM\u003c/code\u003e clause, as shown below. Most hints are used for these reasons:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eHint Type\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Order\u003c/td\u003e\n            \u003ctd\u003eIndicates that the join order of the tables in the plan should be exactly the same as entered in the query SQL (first to last)\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eJoin Strategy\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eExplicitly specifies the join strategy to use:\u003c/p\u003e\n                \u003cul\u003e\n                    \u003cli\u003e\u003ccode\u003ebroadcast\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003esortmerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003emerge\u003c/code\u003e\u003c/li\u003e\n                    \u003cli\u003e\u003ccode\u003enestedloop\u003c/code\u003e\u003c/li\u003e\n                \u003c/ul\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eIndex Selection\u003c/td\u003e\n            \u003ctd\u003eExplicitly specifies the use of a specific index, or explicitly specifies to NOT use an index\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -222,8 +222,8 @@
       "jobName": "paragraph_1542402742671_-2042242012",
       "id": "20171016-094705_1165713084",
       "dateCreated": "2018-11-16 13:12:22.000",
-      "dateStarted": "2018-11-30 01:11:49.265",
-      "dateFinished": "2018-11-30 01:11:49.276",
+      "dateStarted": "2018-12-02 22:27:01.936",
+      "dateFinished": "2018-12-02 22:27:01.956",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -268,9 +268,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from\n  (select a.i, a.j from --splice-properties joinOrder\u003dfixed\n    index_example b --splice-properties index\u003dij\n    ,index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\n     where a.j \u003d 700000) x\n",
+      "text": "%splicemachine\n\nexplain select count(*) from\n  (select a.i, a.j from --splice-properties joinOrder\u003dfixed\n    admin.index_example b --splice-properties index\u003dij\n    ,admin.index_example a --splice-properties index\u003dnull, joinStrategy\u003dnestedloop\n     where a.j \u003d 700000) x\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:12:22.000",
+      "dateUpdated": "2018-12-02 23:13:40.734",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -376,7 +376,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Administrators/f. Using Explain and Hints",
+  "name": "Splice Machine Training/For DBAs/f. Using Explain and Hints",
   "id": "2DUVSWQRW",
   "noteParams": {},
   "noteForms": {},

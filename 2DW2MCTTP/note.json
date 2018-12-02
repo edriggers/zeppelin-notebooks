@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\nIn this notebook, we\u0027ll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. About TPCH Data*\n* *2. Creating the Tables*\n* *3. Importing TPCH-1 Data From S3*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\nIn this notebook, we\u0027ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:33:31.899",
+      "dateUpdated": "2018-12-02 21:09:11.047",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -16,7 +16,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003e1. About TPCH Data\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e2. Creating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e3. Importing TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e4. Compacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003e5. Running Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImporting the TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCompacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning TPCH-1 Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,6 +35,8 @@
       "jobName": "paragraph_1542394755823_-1090847122",
       "id": "20170517-225129_1383056312",
       "dateCreated": "2018-11-16 10:59:15.000",
+      "dateStarted": "2018-12-02 21:08:09.595",
+      "dateFinished": "2018-12-02 21:08:09.620",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -109,9 +111,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 2. Importing the Data From S3\n\nWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\n\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\n",
+      "text": "%md\n\n## 2. Importing the TPCH-1 Data From S3\n\nWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\n\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 02:36:35.083",
+      "dateUpdated": "2018-12-02 21:08:47.437",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -135,7 +137,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing the Data From S3\u003c/h2\u003e\n\u003cp\u003eWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing the TPCH-1 Data From S3\u003c/h2\u003e\n\u003cp\u003eWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -143,6 +145,8 @@
       "jobName": "paragraph_1542394755825_235164113",
       "id": "20171016-140317_176321024",
       "dateCreated": "2018-11-16 10:59:15.000",
+      "dateStarted": "2018-12-02 21:08:42.015",
+      "dateFinished": "2018-12-02 21:08:42.026",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -430,9 +434,9 @@
     {
       "text": "%md\n\n## 3. Compacting and Collecting Statistics\n\nSince you\u0027ve just imported a large amount of data into your database, it\u0027s a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:34:00.820",
+      "dateUpdated": "2018-12-02 21:10:19.438",
       "config": {
-        "tableHide": false,
+        "tableHide": true,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -440,10 +444,10 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -567,7 +571,7 @@
     {
       "text": "%md\n\n## 4. Running the TPCH-1 Queries\n\nWe\u0027ll now run a sampling of the TPCH queries.  The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them.  We include them with \"explain\" in front of them.  Run that first (always good practice), then rerun after removing the \"explain\" in the paragraph.  It is also informative to go to `localhost:4040` to monitor these queries in the Spark Console while they are running.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:37:44.165",
+      "dateUpdated": "2018-12-02 21:10:23.921",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -580,7 +584,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1048,7 +1052,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,
