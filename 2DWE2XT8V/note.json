@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Spark in a Zeppelin Notebook\nThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\n\n* *Loading Data Into A Table Using Spark*\n* *Using Spark SQL to Query the Loaded Data*\n\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Spark in Zeppelin Notebooks\nThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\n\n* *Loading Data Into A Table Using Spark*\n* *Using Spark SQL to Query the Loaded Data*\n\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:00:26.157",
       "config": {
@@ -427,15 +427,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/d. Basics of Using Spark in Zeppelin",
+  "name": "Splice Machine Training/For Data Scientists/c. Using Spark in Zeppelin Notebooks",
   "id": "2DWE2XT8V",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

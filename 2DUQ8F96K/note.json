@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n# Decision Trees\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\nThis notebook provides an example of implementing a *Decision Tree* algorithm that:\n\n* Loads a data file\n* Parses the data as an RDD of LabeledPoint\n* Performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\n\nThe \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eDecision Tree Algorithm\u003c/a\u003e is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: \n\n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it\u0027s greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\n\n\u003cimg class\u003d\"splice\" src\u003d\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\"\u003e",
+      "text": "%md\n# Decision Trees Example\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\nThis notebook provides an example of implementing a *Decision Tree* algorithm that:\n\n* Loads a data file\n* Parses the data as an RDD of LabeledPoint\n* Performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\n\nThe \u003ca href\u003d\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target\u003d\"_blank\"\u003eDecision Tree Algorithm\u003c/a\u003e is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: \n\n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it\u0027s greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\n\n\u003cimg class\u003d\"splice\" src\u003d\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\"\u003e",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:13:03.558",
       "config": {
@@ -147,7 +147,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/i. Decision Trees",
+  "name": "Splice Machine Training/For Data Scientists/f. Decision Trees Example",
   "id": "2DUQ8F96K",
   "noteParams": {},
   "noteForms": {},

@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Implementing a KMeans Algorithm\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n",
+      "text": "%md\n\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# KMeans Example\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 02:45:31.000",
       "config": {
@@ -232,7 +232,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/h. KMeans",
+  "name": "Splice Machine Training/For Data Scientists/e. KMeans Example",
   "id": "2DX6TGACY",
   "noteParams": {},
   "noteForms": {},

@@ -364,15 +364,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part I - Beginning/h. Using Explain and Hints",
+  "name": "Splice Machine Training/For Developers, Part I - Beginning/g. Explaining and Hinting",
   "id": "2DVFUM14R",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

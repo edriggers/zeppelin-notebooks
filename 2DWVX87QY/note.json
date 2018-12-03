@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# ETL Pipeline\n\nThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# ETL Pipeline Example\n\nThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:14:38.085",
       "config": {
@@ -108,7 +108,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/j. ETL Pipeline",
+  "name": "Splice Machine Training/For Data Scientists/g. ETL Pipeline Example",
   "id": "2DWVX87QY",
   "noteParams": {},
   "noteForms": {},

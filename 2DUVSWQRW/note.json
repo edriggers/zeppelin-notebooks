@@ -363,14 +363,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For DBAs/f. Using Explain and Hints",
+  "name": "Splice Machine Training/For DBAs/e. Explaining and Hinting",
   "id": "2DUVSWQRW",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

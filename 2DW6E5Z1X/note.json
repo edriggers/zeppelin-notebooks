@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "title": "Spark Adapter",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Splice Machine Native Spark DataSource\nThis notebook demonstrates using the Spark Adapter with Python, in these steps:\n\n1. *Create the `PySpliceContextClass` to interface with the Python API.*\n2. *Use the `spark.pyspark` Python interpreter in Zeppelin to create a Spark context.*\n3. *Create a simple table in Splice Machine.*\n4. *Create a Spark dataframe and insert that into Splice Machine.*\n5. *Run a simple Splice Machine transaction using the Spark context.*\n6. *Rollback that transaction using the same context.*\n\n## About the Native Spark DataSource\nData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\n\nThe Splice Machine Spark adapter provides:\n\n* A durable, ACID compliant persistence model for Spark Dataframes.\n* Lazy result sets returned as Spark Dataframes.\n* Access to Spark libraries such as MLLib and GraphX.\n* Avoidance of expensive ETL of data from OLTP to OLAP.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using our Native Spark DataSource\nThis notebook demonstrates using the Spark Adapter with Python, in these steps:\n\n1. *Create the `PySpliceContextClass` to interface with the Python API.*\n2. *Use the `spark.pyspark` Python interpreter in Zeppelin to create a Spark context.*\n3. *Create a simple table in Splice Machine.*\n4. *Create a Spark dataframe and insert that into Splice Machine.*\n5. *Run a simple Splice Machine transaction using the Spark context.*\n6. *Rollback that transaction using the same context.*\n\n## About the Native Spark DataSource\nData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\n\nThe Splice Machine Spark adapter provides:\n\n* A durable, ACID compliant persistence model for Spark Dataframes.\n* Lazy result sets returned as Spark Dataframes.\n* Access to Spark libraries such as MLLib and GraphX.\n* Avoidance of expensive ETL of data from OLTP to OLAP.",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:12:01.323",
       "config": {
@@ -659,7 +659,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part II - Intermediate/h. Using the Native Spark DataSource",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/h. Using our Native Spark DataSource",
   "id": "2DW6E5Z1X",
   "noteParams": {},
   "noteForms": {},

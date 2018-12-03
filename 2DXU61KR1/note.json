@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Database Console User Interface\n\nThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\n\n* *Accessing the Console*\n* *Basic UI Features*\n* *Running a Basic Query*\n* *Drilling Down into a Query*\n* *Parallelsim and Spark*\n\n## About Spark Jobs in Splice Machine\n\nYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the `control` side) or in Apache Spark. You can see which engine is used (`control` or `Spark`) from examining the top line of the `explain` for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\n\nYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Database Console\n\nThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\n\n* *Accessing the Console*\n* *Basic UI Features*\n* *Running a Basic Query*\n* *Drilling Down into a Query*\n* *Parallelsim and Spark*\n\n## About Spark Jobs in Splice Machine\n\nYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the `control` side) or in Apache Spark. You can see which engine is used (`control` or `Spark`) from examining the top line of the `explain` for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\n\nYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 23:03:03.377",
       "config": {
@@ -543,14 +543,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For DBAs/e. Using the DB Console",
+  "name": "Splice Machine Training/For DBAs/d. Using the Database Console",
   "id": "2DXU61KR1",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

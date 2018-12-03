@@ -117,14 +117,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part I - Beginning/c. Preparing Data for Import",
+  "name": "Splice Machine Training/For Developers, Part I - Beginning/b. Preparing Data for Import",
   "id": "2DX8XQH89",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
