@@ -229,7 +229,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*ETL Pipeline*](/#/notebook/2DXK4FQKX) provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\n",
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*ETL Pipeline Example*](/#/notebook/2DXK4FQKX) provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:43:28.875",
       "config": {
@@ -256,7 +256,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DXK4FQKX\"\u003e\u003cem\u003eETL Pipeline\u003c/em\u003e\u003c/a\u003e provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DXK4FQKX\"\u003e\u003cem\u003eETL Pipeline Example\u003c/em\u003e\u003c/a\u003e provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },

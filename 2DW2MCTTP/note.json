@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Running TPCH-1 Benchmark Queries\nIn this notebook, we\u0027ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Running the TPCH-1 Benchmark Queries\nIn this notebook, we\u0027ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:09:11.047",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImporting the TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCompacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning TPCH-1 Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eRunning the TPCH-1 Benchmark Queries\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImporting the TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCompacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning TPCH-1 Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1004,7 +1004,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Common Utilities*](/#/notebook/2DUK929SD), introduces some common utilities that you may find useful when working with Splice Machine.\n",
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Useful Database Utilities*](/#/notebook/2DUK929SD), introduces some common utilities that you may find useful when working with Splice Machine.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 04:30:11.739",
       "config": {
@@ -1030,7 +1030,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUK929SD\"\u003e\u003cem\u003eCommon Utilities\u003c/em\u003e\u003c/a\u003e, introduces some common utilities that you may find useful when working with Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUK929SD\"\u003e\u003cem\u003eUseful Database Utilities\u003c/em\u003e\u003c/a\u003e, introduces some common utilities that you may find useful when working with Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1042,7 +1042,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part II - Intermediate/b. Running TPCH-1 Benchmark Queries",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/b. Running the TPCH-1 Benchmark Queries",
   "id": "2DW2MCTTP",
   "noteParams": {},
   "noteForms": {},

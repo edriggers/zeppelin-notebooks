@@ -325,7 +325,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nYou\u0027re now ready to learn about the [*The Life of a Splice Machine Query*](/#/notebook/2DXCBRCK2) in the next notebook in this class.",
+      "text": "%md\n## Where to Go Next\n\nYou\u0027re now ready to learn about the [*The Life of a Query*](/#/notebook/2DXCBRCK2) in the next notebook in this class.",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:34:01.045",
       "config": {
@@ -351,7 +351,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;re now ready to learn about the \u003ca href\u003d\"/#/notebook/2DXCBRCK2\"\u003e\u003cem\u003eThe Life of a Splice Machine Query\u003c/em\u003e\u003c/a\u003e in the next notebook in this class.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;re now ready to learn about the \u003ca href\u003d\"/#/notebook/2DXCBRCK2\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e in the next notebook in this class.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },

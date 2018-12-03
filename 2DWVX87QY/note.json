@@ -28,7 +28,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eETL Pipeline\u003c/h1\u003e\n\u003cp\u003eThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eETL Pipeline Example\u003c/h1\u003e\n\u003cp\u003eThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },

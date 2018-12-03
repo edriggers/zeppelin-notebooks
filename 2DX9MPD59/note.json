@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTuning for Performance\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eCollecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003ePerforming Major Compactions\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Primary Keys and Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJoining Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSelecting a Join Strategy\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the \u003cem\u003ecost\u003c/em\u003e of each possible plan, and chooses the lowest-cost option.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTuning Queries for Performance\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eCollecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003ePerforming Major Compactions\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Primary Keys and Indexes\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJoining Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSelecting a Join Strategy\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the \u003cem\u003ecost\u003c/em\u003e of each possible plan, and chooses the lowest-cost option.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1125,7 +1125,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Where to Go Next\n\nThe next notebook in this class, [*Using the DB Console*](/#/notebook/2DXU61KR1), explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.\n\n",
+      "text": "%md\n\n## Where to Go Next\n\nThe next notebook in this class, [*Using the Database Console*](/#/notebook/2DXU61KR1), explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:29:37.147",
       "config": {
@@ -1150,7 +1150,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DXU61KR1\"\u003e\u003cem\u003eUsing the DB Console\u003c/em\u003e\u003c/a\u003e, explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DXU61KR1\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e, explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },

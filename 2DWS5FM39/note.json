@@ -686,7 +686,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class shows you how you can [*Visualize Results in Zeppelin*](/#/notebook/2DY6YKEVA).",
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class shows you how you can [*Visualize Results with Zeppelin*](/#/notebook/2DY6YKEVA).",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:00:13.255",
       "config": {
@@ -712,7 +712,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class shows you how you can \u003ca href\u003d\"/#/notebook/2DY6YKEVA\"\u003e\u003cem\u003eVisualize Results in Zeppelin\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class shows you how you can \u003ca href\u003d\"/#/notebook/2DY6YKEVA\"\u003e\u003cem\u003eVisualize Results with Zeppelin\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },

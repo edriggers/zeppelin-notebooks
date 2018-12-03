@@ -39,7 +39,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Spark in a Zeppelin Notebook\u003c/h1\u003e\n\u003cp\u003eThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eLoading Data Into A Table Using Spark\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing Spark SQL to Query the Loaded Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Spark in Zeppelin Notebooks\u003c/h1\u003e\n\u003cp\u003eThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eLoading Data Into A Table Using Spark\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing Spark SQL to Query the Loaded Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -388,7 +388,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nYou\u0027ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Machine Learning with Spark MLlib Using Python*](/#/notebook/2DYC2S8DY), shows you how to use R to program with Spark in a Zeppelin Notebook.",
+      "text": "%md\n## Where to Go Next\nYou\u0027ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Machine Learning with Spark MLlib*](/#/notebook/2DYC2S8DY), shows you how to use R to program with Spark in a Zeppelin Notebook.",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 07:31:49.310",
       "config": {
@@ -415,7 +415,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DYC2S8DY\"\u003e\u003cem\u003eMachine Learning with Spark MLlib Using Python\u003c/em\u003e\u003c/a\u003e, shows you how to use R to program with Spark in a Zeppelin Notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DYC2S8DY\"\u003e\u003cem\u003eMachine Learning with Spark MLlib \u003c/em\u003e\u003c/a\u003e, shows you how to use R to program with Spark in a Zeppelin Notebook.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },

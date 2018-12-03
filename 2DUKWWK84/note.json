@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "title": "Transactions ",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Splice Transactions with Spark and JDBC\nThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we\u0027ll:\n\n1. *Run setup code to create our variables and define a simple Spark procedure named `checkBalance`.*\n2. *Use JDBC calls to set and check values from the database.*\n3. *Show the use of `commit` and `rollback` to control transactional persistence of our updates.*\n\u003cbr /\u003e\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Transactions with Spark and JDBC\nThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we\u0027ll:\n\n1. *Run setup code to create our variables and define a simple Spark procedure named `checkBalance`.*\n2. *Use JDBC calls to set and check values from the database.*\n3. *Show the use of `commit` and `rollback` to control transactional persistence of our updates.*\n\u003cbr /\u003e\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:08:58.775",
       "config": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eSplice Transactions with Spark and JDBC\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eRun setup code to create our variables and define a simple Spark procedure named \u003ccode\u003echeckBalance\u003c/code\u003e.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUse JDBC calls to set and check values from the database.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eShow the use of \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e to control transactional persistence of our updates.\u003c/em\u003e\u003cbr/\u003e\u003cbr /\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTransactions with Spark and JDBC\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eRun setup code to create our variables and define a simple Spark procedure named \u003ccode\u003echeckBalance\u003c/code\u003e.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUse JDBC calls to set and check values from the database.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eShow the use of \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e to control transactional persistence of our updates.\u003c/em\u003e\u003cbr/\u003e\u003cbr /\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -436,7 +436,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class walks you through [*Creating Apps with Splice Machine*](/#/notebook/2DVU2ESP3).\n",
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class walks you through [*Deploying Apps with Spring*](/#/notebook/2DVU2ESP3).\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:10:10.403",
       "config": {
@@ -462,7 +462,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class walks you through \u003ca href\u003d\"/#/notebook/2DVU2ESP3\"\u003e\u003cem\u003eCreating Apps with Splice Machine\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class walks you through \u003ca href\u003d\"/#/notebook/2DVU2ESP3\"\u003e\u003cem\u003eDeploying Apps with Spring\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -474,7 +474,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part II - Intermediate/f. Splice Transactions with Spark and JDBC",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/f. Transactions with Spark and JDBC",
   "id": "2DUKWWK84",
   "noteParams": {},
   "noteForms": {},
