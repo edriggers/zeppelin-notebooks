@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Implementing a KMeans Algorithm\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up a KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n",
+      "text": "%md\n\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Implementing a KMeans Algorithm\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:11:45.764",
+      "dateUpdated": "2018-12-03 02:45:31.000",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -35,7 +35,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eImplementing a KMeans Algorithm\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you how to implement a simple \u003cem\u003eKMeans\u003c/em\u003e algorithm in a Zeppelin notebook, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eSetting Up a KMeans\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eComputing KMEans\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSimple KMeans Example\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eImplementing a KMeans Algorithm\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you how to implement a simple \u003cem\u003eKMeans\u003c/em\u003e algorithm in a Zeppelin notebook, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eSetting Up KMeans\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eComputing KMEans\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSimple KMeans Example\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -43,8 +43,6 @@
       "jobName": "paragraph_1542398329138_264893937",
       "id": "20170620-100414_1484018649",
       "dateCreated": "2018-11-16 11:58:49.000",
-      "dateStarted": "2018-12-01 07:11:41.613",
-      "dateFinished": "2018-12-01 07:11:41.623",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -83,8 +81,6 @@
       "jobName": "paragraph_1543619984600_1733167874",
       "id": "20181130-231944_212485663",
       "dateCreated": "2018-11-30 23:19:44.600",
-      "dateStarted": "2018-11-30 23:19:56.299",
-      "dateFinished": "2018-11-30 23:19:56.312",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -123,8 +119,6 @@
       "jobName": "paragraph_1543619580933_-851893031",
       "id": "20181130-231300_283923131",
       "dateCreated": "2018-11-30 23:13:00.933",
-      "dateStarted": "2018-11-30 23:19:59.087",
-      "dateFinished": "2018-11-30 23:19:59.107",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -164,15 +158,13 @@
       "jobName": "paragraph_1542767394316_90114078",
       "id": "20181120-182954_729821940",
       "dateCreated": "2018-11-20 18:29:54.316",
-      "dateStarted": "2018-11-30 23:23:22.009",
-      "dateFinished": "2018-11-30 23:23:22.020",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.mllib.clustering.{KMeans, KMeansModel}\nimport org.apache.spark.mllib.linalg.Vectors\n\n//Grabbing data and parsing to vectors\n\nval data \u003d sc.textFile(\"/Users/benepstein/Downloads/kmeans_data.csv\")\nval formatted \u003d  data.map(s \u003d\u003e s.split(\"\\t\")).map(s \u003d\u003e s.drop(1)).collect().drop(1).map(s \u003d\u003e s.map(_.toDouble))\nval parsedData \u003d formatted.map(s \u003d\u003e Vectors.dense(s))\nval rddData \u003d sc.parallelize(parsedData)\n\n//Clustering data into 3 groups\nval K \u003d 4\nval maxIterations \u003d 5000\nval clusters \u003d KMeans.train(rddData, K, maxIterations)\n\n//Compute cost Within Set Sum of Squared Errors\nval WSSSE \u003d clusters.computeCost(rddData)\nprintln(\"Within Set Sum of Squared Errors: \" + WSSSE)",
+      "text": "%spark\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.mllib.clustering.{KMeans, KMeansModel}\nimport org.apache.spark.mllib.linalg.Vectors\n\n//Grabbing data and parsing to vectors\n\nval data \u003d sc.textFile(\"/opt/data/kmeans_data.txt\")\nval formatted \u003d  data.map(s \u003d\u003e s.split(\" \")).map(s \u003d\u003e s.drop(1)).collect().drop(1).map(s \u003d\u003e s.map(_.toDouble))\nval parsedData \u003d formatted.map(s \u003d\u003e Vectors.dense(s))\nval rddData \u003d sc.parallelize(parsedData)\n\n//Clustering data into 3 groups\nval K \u003d 4\nval maxIterations \u003d 5000\nval clusters \u003d KMeans.train(rddData, K, maxIterations)\n\n//Compute cost Within Set Sum of Squared Errors\nval WSSSE \u003d clusters.computeCost(rddData)\nprintln(\"Within Set Sum of Squared Errors: \" + WSSSE)",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 11:58:49.000",
+      "dateUpdated": "2018-12-03 04:29:39.322",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -196,7 +188,7 @@
       "jobName": "paragraph_1542398329139_490492218",
       "id": "20170620-100456_224981933",
       "dateCreated": "2018-11-16 11:58:49.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -236,8 +228,6 @@
       "jobName": "paragraph_1542398329139_288790578",
       "id": "20170620-140030_993087114",
       "dateCreated": "2018-11-16 11:58:49.000",
-      "dateStarted": "2018-11-20 10:52:24.906",
-      "dateFinished": "2018-11-20 10:52:24.910",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -246,7 +236,11 @@
   "id": "2DX6TGACY",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

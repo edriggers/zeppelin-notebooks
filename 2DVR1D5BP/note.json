@@ -192,9 +192,9 @@
     },
     {
       "title": "Run this step:",
-      "text": "%splicemachine\n\ncreate schema DEV1;\nset schema DEV1;\ncreate table import_example (i int, v varchar(20), t timestamp);",
+      "text": "%splicemachine\n\ncreate table dev1.import_example (i int, v varchar(20), t timestamp);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 23:24:55.807",
+      "dateUpdated": "2018-12-03 04:58:35.106",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -586,7 +586,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

@@ -231,9 +231,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table a (i int, j int);\n\ninsert into a values (1,1),(10,2),(100,3);\n\nselect * from a;\n",
+      "text": "%splicemachine\n\ncreate table dev1.a (i int, j int);\n\ninsert into dev1.a values (1,1),(10,2),(100,3);\n\nselect * from dev1.a;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 15:55:30.245",
+      "dateUpdated": "2018-12-03 04:56:44.411",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -255,7 +255,7 @@
             "graph": {
               "mode": "table",
               "height": 122.0,
-              "optionOpen": true,
+              "optionOpen": false,
               "setting": {
                 "table": {
                   "tableGridState": {},
@@ -419,7 +419,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,
