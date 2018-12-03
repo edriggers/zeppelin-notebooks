@@ -86,17 +86,16 @@ for nf in notefiles:
                                 i['status'] = 'FINISHED'
                     if 'editorHide' in i['config']:
                         if i['config']['editorHide'] == False:
-                            # if 'MarkdownEditorOpen' in sanity_exceptions['Exceptions'][notebook_id][i['id']]:
-                            if notebook_id in sanity_exceptions['Exceptions']:
-                                if i['id'] in sanity_exceptions['Exceptions'][notebook_id]:
-                                    if 'MarkdownEditorOpen' in sanity_exceptions['Exceptions'][notebook_id][i['id']]:
-                                        if sanity_exceptions['Exceptions'][notebook_id][i['id']]['MarkdownEditorOpen'] != True:
-                                            print (notebook_id + ': paragraph #' + str(x) + ' Editor is NOT hidden')
-                                            if modify == True:
-                                                i['config']['editorHide'] = True
-                                                if 'enabled' in i['config']:
-                                                    if i['config']['enabled'] == False:
-                                                        i['config']['enabled'] == True
+                            print (notebook_id + ': paragraph #' + str(x) + ' Editor is NOT hidden')
+                            if modify == True:
+                                i['config']['editorHide'] = True
+                    # handle exceptions, apply these last
+                    if notebook_id in sanity_exceptions['Exceptions']:
+                        if i['id'] in sanity_exceptions['Exceptions'][notebook_id]:
+                            if 'MarkdownEditorOpen' in sanity_exceptions['Exceptions'][notebook_id][i['id']]:
+                                if sanity_exceptions['Exceptions'][notebook_id][i['id']]['MarkdownEditorOpen'] == True:
+                                    i['config']['editorHide'] = False
+                                    i['config']['enabled'] = True
             else:
                 # all other paragraph editors
                 if tests == 'CodeBlockFix':

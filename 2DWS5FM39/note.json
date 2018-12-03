@@ -650,7 +650,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
         "enabled": false,
         "fontSize": 9.0

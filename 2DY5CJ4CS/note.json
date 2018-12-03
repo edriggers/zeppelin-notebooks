@@ -91,7 +91,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": false,
         "results": {},
-        "enabled": false,
+        "enabled": true,
         "fontSize": 9.0
       },
       "settings": {
