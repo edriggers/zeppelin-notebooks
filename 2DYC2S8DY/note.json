@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542399525608_215622602",
       "id": "20180129-160012_924943773",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 09:51:15.326",
-      "dateFinished": "2018-11-20 09:51:15.360",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1542399525609_1503682954",
       "id": "20180202-100849_1233744001",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 16:54:46.890",
-      "dateFinished": "2018-11-20 16:54:48.896",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -116,8 +112,6 @@
       "jobName": "paragraph_1542761691574_1241165585",
       "id": "20181120-165451_980528848",
       "dateCreated": "2018-11-20 16:54:51.574",
-      "dateStarted": "2018-11-30 21:42:15.794",
-      "dateFinished": "2018-11-30 21:42:15.803",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -185,8 +179,6 @@
       "jobName": "paragraph_1542761754046_2134446326",
       "id": "20181120-165554_2133462028",
       "dateCreated": "2018-11-20 16:55:54.046",
-      "dateStarted": "2018-11-20 17:53:21.238",
-      "dateFinished": "2018-11-20 17:53:21.242",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -491,8 +483,6 @@
       "jobName": "paragraph_1542399525624_-1228621631",
       "id": "20180202-104618_659628734",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:53:28.372",
-      "dateFinished": "2018-11-20 17:53:28.378",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -559,8 +549,6 @@
       "jobName": "paragraph_1542399525625_1011168258",
       "id": "20180131-172852_644197695",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:53:32.193",
-      "dateFinished": "2018-11-20 17:53:32.197",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -599,8 +587,6 @@
       "jobName": "paragraph_1542399525626_-684199627",
       "id": "20180611-203433_1201670218",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-02 20:15:18.873",
-      "dateFinished": "2018-12-02 20:15:18.916",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -639,8 +625,6 @@
       "jobName": "paragraph_1542399525627_-1996463809",
       "id": "20180611-203526_1071983380",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:53:45.902",
-      "dateFinished": "2018-11-20 17:53:45.905",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -679,8 +663,6 @@
       "jobName": "paragraph_1542399525627_312390310",
       "id": "20180611-211856_605292217",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:54:11.998",
-      "dateFinished": "2018-11-20 17:54:12.002",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -757,8 +739,6 @@
       "jobName": "paragraph_1542399525628_-849294510",
       "id": "20180611-215932_1084664308",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 16:59:07.631",
-      "dateFinished": "2018-11-20 16:59:07.643",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -837,8 +817,6 @@
       "jobName": "paragraph_1542399525629_66114845",
       "id": "20180118-020316_1913850778",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:54:28.616",
-      "dateFinished": "2018-11-20 17:54:28.620",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -979,8 +957,6 @@
       "jobName": "paragraph_1542399525630_1144007950",
       "id": "20180611-220822_612758436",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:53:12.056",
-      "dateFinished": "2018-11-20 17:53:12.061",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1078,8 +1054,6 @@
       "jobName": "paragraph_1542399525631_-1987536723",
       "id": "20180612-031608_1101973053",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-11-20 17:00:54.887",
-      "dateFinished": "2018-11-20 17:00:54.895",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1267,8 +1241,6 @@
       "jobName": "paragraph_1543822186137_1137563246",
       "id": "20181203-072946_810795437",
       "dateCreated": "2018-12-03 07:29:46.137",
-      "dateStarted": "2018-12-03 07:33:11.596",
-      "dateFinished": "2018-12-03 07:33:11.609",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

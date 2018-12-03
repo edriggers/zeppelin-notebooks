@@ -36,8 +36,6 @@
       "jobName": "paragraph_1542400270189_-23293669",
       "id": "20181115-233342_1215178080",
       "dateCreated": "2018-11-16 12:31:10.000",
-      "dateStarted": "2018-12-02 23:40:06.966",
-      "dateFinished": "2018-12-02 23:40:06.985",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -77,8 +75,6 @@
       "jobName": "paragraph_1542400270191_-1390200436",
       "id": "20181115-233415_1155220323",
       "dateCreated": "2018-11-16 12:31:10.000",
-      "dateStarted": "2018-11-20 11:30:24.051",
-      "dateFinished": "2018-11-20 11:30:24.058",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
