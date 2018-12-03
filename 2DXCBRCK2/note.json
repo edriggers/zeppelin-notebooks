@@ -1164,9 +1164,9 @@
     },
     {
       "title": "Representative Micro-Benchmarks",
-      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in \u003c100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
+      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-benchmark results from Splice Machine running TPC-H and other benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in \u003c100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:43:29.740",
+      "dateUpdated": "2018-12-03 07:48:41.862",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1190,7 +1190,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Glimpse at Splice Machine Benchmark Results\u003c/h2\u003e\n\u003cp\u003eHere are some micro-results from Splice Machine running TPC-H benchmarks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e2ms single record lookups on primary keys at petabyte scale\u003c/li\u003e\n  \u003cli\u003e20ms single record updates at petabyte scale\u003c/li\u003e\n  \u003cli\u003e40-way OLTP indexed joins return in \u0026lt;100ms\u003c/li\u003e\n  \u003cli\u003e150-way OLAP style joins execute in under 2 minutes\u003c/li\u003e\n  \u003cli\u003e440-way join executes where others can’t parse\u003c/li\u003e\n  \u003cli\u003eIngestion at 80MB/sec/node\u003c/li\u003e\n  \u003cli\u003eCan run TPC-C and TPC-H simultaneously\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Glimpse at Splice Machine Benchmark Results\u003c/h2\u003e\n\u003cp\u003eHere are some micro-benchmark results from Splice Machine running TPC-H and other benchmarks:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e2ms single record lookups on primary keys at petabyte scale\u003c/li\u003e\n  \u003cli\u003e20ms single record updates at petabyte scale\u003c/li\u003e\n  \u003cli\u003e40-way OLTP indexed joins return in \u0026lt;100ms\u003c/li\u003e\n  \u003cli\u003e150-way OLAP style joins execute in under 2 minutes\u003c/li\u003e\n  \u003cli\u003e440-way join executes where others can’t parse\u003c/li\u003e\n  \u003cli\u003eIngestion at 80MB/sec/node\u003c/li\u003e\n  \u003cli\u003eCan run TPC-C and TPC-H simultaneously\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1198,8 +1198,9 @@
       "jobName": "paragraph_1542402827722_-438213067",
       "id": "20180118-022657_414327443",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-03 07:48:35.091",
+      "dateFinished": "2018-12-03 07:48:35.102",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1247,7 +1248,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

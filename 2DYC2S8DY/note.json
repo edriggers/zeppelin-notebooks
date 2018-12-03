@@ -1233,21 +1233,20 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nNow we\u0027re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our [*Predicting Supply Chain Shortages*](/#/notebook/2DY411M2A) program.\n",
+      "text": "%md\n## Where to Go Next\nNow we\u0027re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our [*KMeans Example*]((/#/notebook/2DX6TGACY)).",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 20:18:12.564",
+      "dateUpdated": "2018-12-03 07:33:17.151",
       "config": {
         "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
+        "fontSize": 9.0,
         "enabled": false,
+        "results": {},
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
-          "completionKey": true,
           "completionSupport": false
         },
-        "fontSize": 9.0,
+        "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "tableHide": false
       },
@@ -1260,16 +1259,16 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our \u003ca href\u003d\"/#/notebook/2DY411M2A\"\u003e\u003cem\u003ePredicting Supply Chain Shortages\u003c/em\u003e\u003c/a\u003e program.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our \u003ca href\u003d\"/#/notebook/2DX6TGACY\"\u003e\u003cem\u003eKMeans Example\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1542399525634_100720025",
-      "id": "20180726-013341_1392399267",
-      "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-02 20:18:02.018",
-      "dateFinished": "2018-12-02 20:18:02.039",
+      "jobName": "paragraph_1543822186137_1137563246",
+      "id": "20181203-072946_810795437",
+      "dateCreated": "2018-12-03 07:29:46.137",
+      "dateStarted": "2018-12-03 07:33:11.596",
+      "dateFinished": "2018-12-03 07:33:11.609",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
