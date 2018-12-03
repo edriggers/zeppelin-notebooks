@@ -49,8 +49,12 @@ for nf in notefiles:
     with open(nf, 'r+') as f:
         notebook_id = nf.split('/')[1]
         data = json.load(f)
-        x = 0
+        # We will start at normal counting, so when you load the notebook,
+        # you can simply count to match with the reported paragraph number.
+        x = 1
         for i in data['paragraphs']:
+            if 'title' in i:
+                paragraph_title = i['title']
             # MARKDOWN %md items
             if i['config']['editorMode'] == 'ace/mode/markdown':
                 if tests.lower() == 'MDBlockGeneration' or tests == 'All':
@@ -96,14 +100,17 @@ for nf in notefiles:
                                 if sanity_exceptions['Exceptions'][notebook_id][i['id']]['MarkdownEditorOpen'] == True:
                                     i['config']['editorHide'] = False
                                     i['config']['enabled'] = True
+                                    i['status'] = 'READY'
             else:
                 # all other paragraph editors
                 if tests == 'CodeBlockFix':
                     if i['text'].startswith('%md'):
-                        print (notebook_id + ': paragraph #' + str(x) + ' Editor is set to something other than MARKDOWN.')
+                        print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Editor is set to something other than MARKDOWN.')
                     if 'editorHide' in i['config']:
                         if i['config']['editorHide'] == True:
-                            print (notebook_id + ': paragraph #' + str(x) + ' Editor IS hidden')
+                            print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Editor IS hidden')
+                            if modify == True:
+                                i['config']['editorHide'] = False
                     if 'results' in i:
                         if 'msg' in i['results']:
                             if 'dateStarted' in i:

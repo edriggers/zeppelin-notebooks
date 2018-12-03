@@ -170,14 +170,14 @@
       "dateUpdated": "2018-11-16 13:15:42.000",
       "config": {
         "editorSetting": {
-          "language": "scala"
+          "language": "markdown"
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
+        "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -196,7 +196,7 @@
       "jobName": "paragraph_1542402942053_1115004310",
       "id": "20180130-192834_1002483789",
       "dateCreated": "2018-11-16 13:15:42.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },

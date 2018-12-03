@@ -1151,7 +1151,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/undefined",
-        "editorHide": true,
+        "editorHide": false,
         "fontSize": 9.0,
         "results": {},
         "enabled": true
@@ -1471,7 +1471,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
-        "editorHide": true,
+        "editorHide": false,
         "fontSize": 9.0,
         "results": {},
         "enabled": true
