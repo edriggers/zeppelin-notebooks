@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using SparkR in Zeppelin\n\nThis notebook presents a large number of examples of using SparkR in Zeppelin, in these sections:\n\n* *Simple Examples of Using the %r Interpreter*\n* *Spark R*\n* *Using R with Scala*\n* *Using DataFrames with R*\n* *Data Visualizations with R*\n\n",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Using SparkR in Zeppelin\n\nThis notebook presents a large number of examples of using SparkR in Zeppelin, in these sections:\n\n* *Simple Examples of Using the %r Interpreter*\n* *Spark R*\n* *Using R with Scala*\n* *Using DataFrames with R*\n* *Data Visualizations with R*\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:02:42.851",
       "config": {
@@ -28,7 +28,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing SparkR in Zeppelin\u003c/h1\u003e\n\u003cp\u003eThis notebook presents a large number of examples of using SparkR in Zeppelin, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eSimple Examples of Using the %r Interpreter\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSpark R\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing R with Scala\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing DataFrames with R\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eData Visualizations with R\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Using SparkR in Zeppelin</h1>\n<p>This notebook presents a large number of examples of using SparkR in Zeppelin, in these sections:</p>\n<ul>\n  <li><em>Simple Examples of Using the %r Interpreter</em></li>\n  <li><em>Spark R</em></li>\n  <li><em>Using R with Scala</em></li>\n  <li><em>Using DataFrames with R</em></li>\n  <li><em>Data Visualizations with R</em></li>\n</ul>\n</div>"
           }
         ]
       },
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSimple Examples of Using the %r Interpreter\u003c/h2\u003e\n\u003cp\u003eThe simple examples in this section show you how to start using R in your Zeppelin notebooks.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Simple Examples of Using the %r Interpreter</h2>\n<p>The simple examples in this section show you how to start using R in your Zeppelin notebooks.</p>\n</div>"
           }
         ]
       },
@@ -83,7 +83,7 @@
     },
     {
       "title": "Hello R",
-      "text": "%r\nfoo \u003c- TRUE\nprint(foo)\nbare \u003c- c(1, 2.5, 4)\nprint(bare)\ndouble \u003c- 15.0\nprint(double)",
+      "text": "%r\nfoo <- TRUE\nprint(foo)\nbare <- c(1, 2.5, 4)\nprint(bare)\ndouble <- 15.0\nprint(double)",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:14:44.774",
       "config": {
@@ -152,7 +152,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Spark R in Action\n\nThe next three paragraphs show examples of Spark R in action; you can click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in each to see the action. These examples include:\n\n* Loading the Iris dataset\n* Displaying a table\n* Using HTML to display output\n",
+      "text": "%md\n## Spark R in Action\n\nThe next three paragraphs show examples of Spark R in action; you can click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button in each to see the action. These examples include:\n\n* Loading the Iris dataset\n* Displaying a table\n* Using HTML to display output\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:03:00.100",
       "config": {
@@ -178,7 +178,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSpark R in Action\u003c/h2\u003e\n\u003cp\u003eThe next three paragraphs show examples of Spark R in action; you can click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in each to see the action. These examples include:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eLoading the Iris dataset\u003c/li\u003e\n  \u003cli\u003eDisplaying a table\u003c/li\u003e\n  \u003cli\u003eUsing HTML to display output\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Spark R in Action</h2>\n<p>The next three paragraphs show examples of Spark R in action; you can click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button in each to see the action. These examples include:</p>\n<ul>\n  <li>Loading the Iris dataset</li>\n  <li>Displaying a table</li>\n  <li>Using HTML to display output</li>\n</ul>\n</div>"
           }
         ]
       },
@@ -322,7 +322,7 @@
     },
     {
       "title": "Using HTML to Display Output",
-      "text": "%r \n\nprint(\"%html \u003ch3\u003eHello HTML\u003c/h3\u003e\")\nprint(\"\u003cfont color\u003d\u0027blue\u0027\u003e\u003cspan class\u003d\u0027fa fa-bars\u0027\u003e Easy...\u003c/font\u003e\u003c/span\u003e\")\nfor (i in 1:10) {\n  print(paste0(\"\u003ch4\u003e\", i, \" * 2 \u003d \", i*2, \"\u003c/h4\u003e\"))\n}",
+      "text": "%r \n\nprint(\"%html <h3>Hello HTML</h3>\")\nprint(\"<font color='blue'><span class='fa fa-bars'> Easy...</font></span>\")\nfor (i in 1:10) {\n  print(paste0(\"<h4>\", i, \" * 2 = \", i*2, \"</h4>\"))\n}",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:54:10.009",
       "config": {
@@ -389,7 +389,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing R with Scala\u003c/h2\u003e\n\u003cp\u003eThe examples in this section demonstrate:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eReading Scala variables from R\u003c/li\u003e\n  \u003cli\u003eReading R variables from Scala\u003c/li\u003e\n  \u003cli\u003eWriting to Scala from R\u003c/li\u003e\n  \u003cli\u003eWriting to R from Scala\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Using R with Scala</h2>\n<p>The examples in this section demonstrate:</p>\n<ul>\n  <li>Reading Scala variables from R</li>\n  <li>Reading R variables from Scala</li>\n  <li>Writing to Scala from R</li>\n  <li>Writing to R from Scala</li>\n</ul>\n</div>"
           }
         ]
       },
@@ -404,7 +404,7 @@
     },
     {
       "title": "Writing to R From Scala",
-      "text": "%spark\nval s \u003d \"Hello R from Scala\"\nz.put(\"s\", s)\nval b \u003d new Integer(42)\nz.put(\"b\", b)\nval a: Array[Double] \u003d Array[Double](30.1, 20.0)\nz.put(\"a\", a)\nval m \u003d Array(Array(1, 4), Array(8, 16))\nz.put(\"m\", m)\nval v \u003d Vector(1, 2, 3, 4)\nz.put(\"v\", v)",
+      "text": "%spark\nval s = \"Hello R from Scala\"\nz.put(\"s\", s)\nval b = new Integer(42)\nz.put(\"b\", b)\nval a: Array[Double] = Array[Double](30.1, 20.0)\nz.put(\"a\", a)\nval m = Array(Array(1, 4), Array(8, 16))\nz.put(\"m\", m)\nval v = Vector(1, 2, 3, 4)\nz.put(\"v\", v)",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:56:39.043",
       "config": {
@@ -492,7 +492,7 @@
     },
     {
       "title": "Writing to Scala from R",
-      "text": "%r\ns \u003c- \"Hello Scala from R\"\nprint(s)\nz.put(\"rs\", s)\nb \u003c- TRUE\nprint(b)\nz.put(\"rb\", b)\nd \u003c- 15.0\nprint(d)\nz.put(\"rd\", d)\nm \u003c- c(2.4, 2.5, 4)\nprint(m)\nz.put(\"rm\", m)",
+      "text": "%r\ns <- \"Hello Scala from R\"\nprint(s)\nz.put(\"rs\", s)\nb <- TRUE\nprint(b)\nz.put(\"rb\", b)\nd <- 15.0\nprint(d)\nz.put(\"rd\", d)\nm <- c(2.4, 2.5, 4)\nprint(m)\nz.put(\"rm\", m)",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:57:54.331",
       "config": {
@@ -535,7 +535,7 @@
     },
     {
       "title": "Reading R Variables from Scala",
-      "text": "%spark\nprintln(\"rs \u003d \"+ z.get(\"rs\"))\nprintln(\"rb \u003d \"+ z.get(\"rb\"))\nprintln(\"rd \u003d \"+ z.get(\"rd\"))\nprintln(\"rm \u003d \"+ z.get(\"rm\"))\n// println(z.get(\"rm\").getClass)\n// println(\"rm \u003d \"+ z.get(\"rm\").asInstanceOf[Array[Double]].toSeq)",
+      "text": "%spark\nprintln(\"rs = \"+ z.get(\"rs\"))\nprintln(\"rb = \"+ z.get(\"rb\"))\nprintln(\"rd = \"+ z.get(\"rd\"))\nprintln(\"rm = \"+ z.get(\"rm\"))\n// println(z.get(\"rm\").getClass)\n// println(\"rm = \"+ z.get(\"rm\").asInstanceOf[Array[Double]].toSeq)",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:58:01.769",
       "config": {
@@ -579,7 +579,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Using DataFrames in R\nThis section demonstrate using Spark Dataframes in R and using R Dataframe in Spark, in these examples:\n\n* Creating a Spark DataFrame\n* Reading a Spark DataFrame from R\n* Querying a Spark DataFrame with SQL\n* Creating an R DataFrame\n* Reading an R Dataframe from Spark\n* Querying an R Dataframe with SQL\n\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe paragraphs in this section use public data; here is the ccess information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e\n",
+      "text": "%md\n## Using DataFrames in R\nThis section demonstrate using Spark Dataframes in R and using R Dataframe in Spark, in these examples:\n\n* Creating a Spark DataFrame\n* Reading a Spark DataFrame from R\n* Querying a Spark DataFrame with SQL\n* Creating an R DataFrame\n* Reading an R Dataframe from Spark\n* Querying an R Dataframe with SQL\n\n<div class=\"notePlain\" style=\"font-size:12px\">\nThe paragraphs in this section use public data; here is the ccess information for it:\n<p style=\"margin-left:60px;\">[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. <em>Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.</em> In P. Novais et al. (Eds.), <em>Proceedings of the European Simulation and Modelling Conference - ESM'2011</em>, pp. 117-121, Guimar\u00e3es, Portugal, October, 2011. EUROSIS.</p>\n\n<p style=\"margin-left:60px;\">Available at: <a href=\"http://hdl.handle.net/1822/14838\">http://hdl.handle.net/1822/14838</a></p>\n</div>\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:03:48.487",
       "config": {
@@ -606,7 +606,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing DataFrames in R\u003c/h2\u003e\n\u003cp\u003eThis section demonstrate using Spark Dataframes in R and using R Dataframe in Spark, in these examples:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreating a Spark DataFrame\u003c/li\u003e\n  \u003cli\u003eReading a Spark DataFrame from R\u003c/li\u003e\n  \u003cli\u003eQuerying a Spark DataFrame with SQL\u003c/li\u003e\n  \u003cli\u003eCreating an R DataFrame\u003c/li\u003e\n  \u003cli\u003eReading an R Dataframe from Spark\u003c/li\u003e\n  \u003cli\u003eQuerying an R Dataframe with SQL\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe paragraphs in this section use public data; here is the ccess information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Using DataFrames in R</h2>\n<p>This section demonstrate using Spark Dataframes in R and using R Dataframe in Spark, in these examples:</p>\n<ul>\n  <li>Creating a Spark DataFrame</li>\n  <li>Reading a Spark DataFrame from R</li>\n  <li>Querying a Spark DataFrame with SQL</li>\n  <li>Creating an R DataFrame</li>\n  <li>Reading an R Dataframe from Spark</li>\n  <li>Querying an R Dataframe with SQL</li>\n</ul>\n<div class=\"notePlain\" style=\"font-size:12px\">\nThe paragraphs in this section use public data; here is the ccess information for it:\n<p style=\"margin-left:60px;\">[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. <em>Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.</em> In P. Novais et al. (Eds.), <em>Proceedings of the European Simulation and Modelling Conference - ESM'2011</em>, pp. 117-121, Guimar\u00e3es, Portugal, October, 2011. EUROSIS.</p>\n\n<p style=\"margin-left:60px;\">Available at: <a href=\"http://hdl.handle.net/1822/14838\">http://hdl.handle.net/1822/14838</a></p>\n</div>\n</div>"
           }
         ]
       },
@@ -621,7 +621,7 @@
     },
     {
       "title": "Creating a Spark DataFrame",
-      "text": "%spark\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\n\nval bankText \u003d sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://s3.amazonaws.com/apache-zeppelin/tutorial/bank/bank.csv\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\ncase class Bank(age: Integer, job: String, marital: String, education: String, balance: Integer)\n\nval bank \u003d bankText.map(s \u003d\u003e s.split(\";\")).filter(s \u003d\u003e s(0) !\u003d \"\\\"age\\\"\").map(\n    s \u003d\u003e Bank(s(0).toInt, \n            s(1).replaceAll(\"\\\"\", \"\"),\n            s(2).replaceAll(\"\\\"\", \"\"),\n            s(3).replaceAll(\"\\\"\", \"\"),\n            s(5).replaceAll(\"\\\"\", \"\").toInt\n        )\n).toDF()\nbank.registerTempTable(\"bank\")",
+      "text": "%spark\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\n\nval bankText = sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://s3.amazonaws.com/apache-zeppelin/tutorial/bank/bank.csv\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\ncase class Bank(age: Integer, job: String, marital: String, education: String, balance: Integer)\n\nval bank = bankText.map(s => s.split(\";\")).filter(s => s(0) != \"\\\"age\\\"\").map(\n    s => Bank(s(0).toInt, \n            s(1).replaceAll(\"\\\"\", \"\"),\n            s(2).replaceAll(\"\\\"\", \"\"),\n            s(3).replaceAll(\"\\\"\", \"\"),\n            s(5).replaceAll(\"\\\"\", \"\").toInt\n        )\n).toDF()\nbank.registerTempTable(\"bank\")",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:58:38.428",
       "config": {
@@ -667,7 +667,7 @@
     },
     {
       "title": "Reading a Spark DataFrame from R",
-      "text": "%r\n\ndf \u003c- sql(sqlContext, \"select count(*) from bank\")\nprintSchema(df)\nSparkR::head(df)",
+      "text": "%r\n\ndf <- sql(sqlContext, \"select count(*) from bank\")\nprintSchema(df)\nSparkR::head(df)",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:58:49.725",
       "config": {
@@ -774,7 +774,7 @@
     },
     {
       "title": "Creating an R DataFrame",
-      "text": "%r \n\nlocalNames \u003c- data.frame(name\u003dc(\"John\", \"Smith\", \"Sarah\"), budget\u003dc(19, 53, 18))\nnames \u003c- createDataFrame(sqlContext, localNames)\nprintSchema(names)\nregisterTempTable(names, \"names\")\n\n# SparkR::head(names)",
+      "text": "%r \n\nlocalNames <- data.frame(name=c(\"John\", \"Smith\", \"Sarah\"), budget=c(19, 53, 18))\nnames <- createDataFrame(sqlContext, localNames)\nprintSchema(names)\nregisterTempTable(names, \"names\")\n\n# SparkR::head(names)",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 20:00:38.691",
       "config": {
@@ -953,7 +953,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eData Visualizations with R\u003c/h2\u003e\n\u003cp\u003eThe examples in this section demonstrate using different graphical visualizations in R, including these:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eBar Chart using GoogleVis\u003c/li\u003e\n  \u003cli\u003eCandlestick Chart using GoogleVis\u003c/li\u003e\n  \u003cli\u003eLine Chart using GoogleVis\u003c/li\u003e\n  \u003cli\u003eR Pairs Plot\u003c/li\u003e\n  \u003cli\u003eR Heat Map\u003c/li\u003e\n  \u003cli\u003eR GGPlot\u003c/li\u003e\n  \u003cli\u003eBubble Chart using GoogleVis\u003c/li\u003e\n  \u003cli\u003eGeo Chart using GoogleVis\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Data Visualizations with R</h2>\n<p>The examples in this section demonstrate using different graphical visualizations in R, including these:</p>\n<ul>\n  <li>Bar Chart using GoogleVis</li>\n  <li>Candlestick Chart using GoogleVis</li>\n  <li>Line Chart using GoogleVis</li>\n  <li>R Pairs Plot</li>\n  <li>R Heat Map</li>\n  <li>R GGPlot</li>\n  <li>Bubble Chart using GoogleVis</li>\n  <li>Geo Chart using GoogleVis</li>\n</ul>\n</div>"
           }
         ]
       },
@@ -968,7 +968,7 @@
     },
     {
       "title": "GoogleVis: Bar Chart",
-      "text": "%r\nlibrary(googleVis)\ndf\u003ddata.frame(country\u003dc(\"US\", \"GB\", \"BR\"), \n              val1\u003dc(10,13,14), \n              val2\u003dc(23,12,32))\nBar \u003c- gvisBarChart(df)\nprint(Bar, tag \u003d \u0027chart\u0027)\n",
+      "text": "%r\nlibrary(googleVis)\ndf=data.frame(country=c(\"US\", \"GB\", \"BR\"), \n              val1=c(10,13,14), \n              val2=c(23,12,32))\nBar <- gvisBarChart(df)\nprint(Bar, tag = 'chart')\n",
       "user": "anonymous",
       "dateUpdated": "2018-11-16 11:52:52.000",
       "config": {
@@ -1008,7 +1008,7 @@
     },
     {
       "title": "GoogleVis: Candlestick Chart",
-      "text": "%r\nlibrary(googleVis)\n\nCandle \u003c- gvisCandlestickChart(OpenClose, \n                               options\u003dlist(legend\u003d\u0027none\u0027))\n\nprint(Candle, tag \u003d \u0027chart\u0027)",
+      "text": "%r\nlibrary(googleVis)\n\nCandle <- gvisCandlestickChart(OpenClose, \n                               options=list(legend='none'))\n\nprint(Candle, tag = 'chart')",
       "user": "anonymous",
       "dateUpdated": "2018-11-20 17:50:12.825",
       "config": {
@@ -1048,7 +1048,7 @@
     },
     {
       "title": "GoogleVis: Line Chart",
-      "text": "%r\nlibrary(googleVis)\ndf\u003ddata.frame(country\u003dc(\"US\", \"GB\", \"BR\"), \n              val1\u003dc(10,13,14), \n              val2\u003dc(23,12,32))\n\nLine \u003c- gvisLineChart(df)\n\nprint(Line, tag \u003d \u0027chart\u0027)\n",
+      "text": "%r\nlibrary(googleVis)\ndf=data.frame(country=c(\"US\", \"GB\", \"BR\"), \n              val1=c(10,13,14), \n              val2=c(23,12,32))\n\nLine <- gvisLineChart(df)\n\nprint(Line, tag = 'chart')\n",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 20:02:16.131",
       "config": {
@@ -1129,7 +1129,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%r \nplot(iris, col \u003d heat.colors(3))",
+      "text": "%r \nplot(iris, col = heat.colors(3))",
       "user": "anonymous",
       "dateUpdated": "2018-11-16 11:52:52.000",
       "config": {
@@ -1169,7 +1169,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%r\nlibrary(ggplot2)\npres_rating \u003c- data.frame(\n  rating \u003d as.numeric(presidents),\n  year \u003d as.numeric(floor(time(presidents))),\n  quarter \u003d as.numeric(cycle(presidents))\n)\np \u003c- ggplot(pres_rating, aes(x\u003dyear, y\u003dquarter, fill\u003drating))\np + geom_raster()",
+      "text": "%r\nlibrary(ggplot2)\npres_rating <- data.frame(\n  rating = as.numeric(presidents),\n  year = as.numeric(floor(time(presidents))),\n  quarter = as.numeric(cycle(presidents))\n)\np <- ggplot(pres_rating, aes(x=year, y=quarter, fill=rating))\np + geom_raster()",
       "user": "anonymous",
       "dateUpdated": "2018-11-16 11:52:52.000",
       "config": {
@@ -1211,7 +1211,7 @@
     },
     {
       "title": "GoogleVis: Bubble Chart",
-      "text": "%r\nlibrary(googleVis)\nbubble \u003c- gvisBubbleChart(Fruits, idvar\u003d\"Fruit\", \n                          xvar\u003d\"Sales\", yvar\u003d\"Expenses\",\n                          colorvar\u003d\"Year\", sizevar\u003d\"Profit\",\n                          options\u003dlist(\n                            hAxis\u003d\u0027{minValue:75, maxValue:125}\u0027))\nprint(bubble, tag \u003d \u0027chart\u0027)",
+      "text": "%r\nlibrary(googleVis)\nbubble <- gvisBubbleChart(Fruits, idvar=\"Fruit\", \n                          xvar=\"Sales\", yvar=\"Expenses\",\n                          colorvar=\"Year\", sizevar=\"Profit\",\n                          options=list(\n                            hAxis='{minValue:75, maxValue:125}'))\nprint(bubble, tag = 'chart')",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:36:37.533",
       "config": {
@@ -1254,7 +1254,7 @@
     },
     {
       "title": "GoogleVis: Geo Chart",
-      "text": "%r\nlibrary(googleVis)\ngeo \u003d gvisGeoChart(Exports, locationvar \u003d \"Country\", colorvar\u003d\"Profit\", options\u003dlist(Projection \u003d \"kavrayskiy-vii\"))\nprint(geo, tag \u003d \u0027chart\u0027)",
+      "text": "%r\nlibrary(googleVis)\ngeo = gvisGeoChart(Exports, locationvar = \"Country\", colorvar=\"Profit\", options=list(Projection = \"kavrayskiy-vii\"))\nprint(geo, tag = 'chart')",
       "user": "anonymous",
       "dateUpdated": "2018-11-30 19:36:58.081",
       "config": {
@@ -1296,7 +1296,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nYou\u0027ve now learned about using Spark with R in Zeppelin notebooks! And you\u0027re ready to move onto the next notebook in this class: [*Visualizing Results with Zeppelin*](/#/notebook/2DVA8BB42).\n",
+      "text": "%md\n## Where to Go Next\nYou've now learned about using Spark with R in Zeppelin notebooks! And you're ready to move onto the next notebook in this class: [*Visualizing Results with Zeppelin*](/#/notebook/2DVA8BB42).\n",
       "user": "anonymous",
       "dateUpdated": "2018-11-20 10:49:25.668",
       "config": {
@@ -1311,7 +1311,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1322,7 +1322,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;ve now learned about using Spark with R in Zeppelin notebooks! And you\u0026rsquo;re ready to move onto the next notebook in this class: \u003ca href\u003d\"/#/notebook/2DVA8BB42\"\u003e\u003cem\u003eVisualizing Results with Zeppelin\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>You&rsquo;ve now learned about using Spark with R in Zeppelin notebooks! And you&rsquo;re ready to move onto the next notebook in this class: <a href=\"/#/notebook/2DVA8BB42\"><em>Visualizing Results with Zeppelin</em></a>.</p>\n</div>"
           }
         ]
       },

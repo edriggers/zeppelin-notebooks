@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# TCPH-1 Walk Through\nIn this notebook, we\u0027ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# TCPH-1 Walk Through\nIn this notebook, we'll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere's a view of the TPC-H schema:\n\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:09:11.047",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTCPH-1 Walk Through\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImporting the TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCompacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning TPCH-1 Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>TCPH-1 Walk Through</h1>\n<p>In this notebook, we&rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:</p>\n<ol>\n  <li><em>Creating the Tables</em></li>\n  <li><em>Importing the TPCH-1 Data From S3</em></li>\n  <li><em>Compacting and Collecting Statistics</em></li>\n  <li><em>Running TPCH-1 Queries</em></li>\n</ol>\n<p>At the bottom you will also see some graphical output from some queries (or slight variations).</p>\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n<h2>About TPCH Data</h2>\n<p>TPC-H (aka <em>TPCH</em>) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.</p>\n<h3>The TPCH Schema</h3>\n<p>Here&rsquo;s a view of the TPC-H schema:</p>\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n</div>"
           }
         ]
       },
@@ -41,7 +41,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 1. Creating the Tables\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  next paragraph to create the `DEV2` schema and tables in your database:\n",
+      "text": "%md\n\n## 1. Creating the Tables\n\nClick <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph  next paragraph to create the `DEV2` schema and tables in your database:\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 02:35:15.950",
       "config": {
@@ -67,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating the Tables\u003c/h2\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph next paragraph to create the \u003ccode\u003eDEV2\u003c/code\u003e schema and tables in your database:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>1. Creating the Tables</h2>\n<p>Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph next paragraph to create the <code>DEV2</code> schema and tables in your database:</p>\n</div>"
           }
         ]
       },
@@ -106,12 +106,12 @@
       "jobName": "paragraph_1542394755824_-1223331692",
       "id": "20170406-153604_1986172856",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 2. Importing the TPCH-1 Data From S3\n\nWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\n\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\n",
+      "text": "%md\n\n## 2. Importing the TPCH-1 Data From S3\n\nWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph to import all of the data from those files:\n\n<p class=\"noteNote\">Importing this much data can take a few minutes; you'll see the result of each import displayed below the <code>IMPORT</code> statements as they complete.</p>\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:08:47.437",
       "config": {
@@ -137,7 +137,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing the TPCH-1 Data From S3\u003c/h2\u003e\n\u003cp\u003eWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>2. Importing the TPCH-1 Data From S3</h2>\n<p>We have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph to import all of the data from those files:</p>\n<p class=\"noteNote\">Importing this much data can take a few minutes; you'll see the result of each import displayed below the <code>IMPORT</code> statements as they complete.</p>\n</div>"
           }
         ]
       },
@@ -152,7 +152,7 @@
     },
     {
       "title": "Import Data from S3",
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'LINEITEM', null, 's3a://splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'ORDERS',   null, 's3a://splice-benchmark-data/flat/TPCH/1/orders',   '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'CUSTOMER', null, 's3a://splice-benchmark-data/flat/TPCH/1/customer', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'PARTSUPP', null, 's3a://splice-benchmark-data/flat/TPCH/1/partsupp', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'SUPPLIER', null, 's3a://splice-benchmark-data/flat/TPCH/1/supplier', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'PART',     null, 's3a://splice-benchmark-data/flat/TPCH/1/part',     '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'REGION',   null, 's3a://splice-benchmark-data/flat/TPCH/1/region',   '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'NATION',   null, 's3a://splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp', true, null);",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 05:20:54.413",
       "config": {
@@ -427,12 +427,12 @@
       "jobName": "paragraph_1542394755825_-446084919",
       "id": "20170406-153809_1285888971",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 3. Compacting and Collecting Statistics\n\nSince you\u0027ve just imported a large amount of data into your database, it\u0027s a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
+      "text": "%md\n\n## 3. Compacting and Collecting Statistics\n\nSince you've just imported a large amount of data into your database, it's a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:10:19.438",
       "config": {
@@ -458,7 +458,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Compacting and Collecting Statistics\u003c/h2\u003e\n\u003cp\u003eSince you\u0026rsquo;ve just imported a large amount of data into your database, it\u0026rsquo;s a good idea to run a major compaction and collect statistics.\u003c/p\u003e\n\u003cp\u003eTo do so, run each of the next two paragraphs:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>3. Compacting and Collecting Statistics</h2>\n<p>Since you&rsquo;ve just imported a large amount of data into your database, it&rsquo;s a good idea to run a major compaction and collect statistics.</p>\n<p>To do so, run each of the next two paragraphs:</p>\n</div>"
           }
         ]
       },
@@ -471,7 +471,7 @@
     },
     {
       "title": "Perform Major Compaction",
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA(\u0027DEV2\u0027);",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA('DEV2');",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 05:19:03.884",
       "config": {
@@ -497,7 +497,7 @@
       "jobName": "paragraph_1542394755830_2120269249",
       "id": "20170406-154629_1395682435",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -564,12 +564,12 @@
       "jobName": "paragraph_1542394755838_108196250",
       "id": "20170406-154656_1940284364",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 4. Running the TPCH-1 Queries\n\nWe\u0027ll now run a sampling of the TPCH queries.  The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them.  We include them with \"explain\" in front of them.  Run that first (always good practice), then rerun after removing the \"explain\" in the paragraph.  It is also informative to go to `localhost:4040` to monitor these queries in the Spark Console while they are running.\n",
+      "text": "%md\n\n## 4. Running the TPCH-1 Queries\n\nWe'll now run a sampling of the TPCH queries.  The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them.  We include them with \"explain\" in front of them.  Run that first (always good practice), then rerun after removing the \"explain\" in the paragraph.  It is also informative to go to `localhost:4040` to monitor these queries in the Spark Console while they are running.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:10:23.921",
       "config": {
@@ -595,7 +595,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Running the TPCH-1 Queries\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll now run a sampling of the TPCH queries. The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them. We include them with \u0026ldquo;explain\u0026rdquo; in front of them. Run that first (always good practice), then rerun after removing the \u0026ldquo;explain\u0026rdquo; in the paragraph. It is also informative to go to \u003ccode\u003elocalhost:4040\u003c/code\u003e to monitor these queries in the Spark Console while they are running.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>4. Running the TPCH-1 Queries</h2>\n<p>We&rsquo;ll now run a sampling of the TPCH queries. The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them. We include them with &ldquo;explain&rdquo; in front of them. Run that first (always good practice), then rerun after removing the &ldquo;explain&rdquo; in the paragraph. It is also informative to go to <code>localhost:4040</code> to monitor these queries in the Spark Console while they are running.</p>\n</div>"
           }
         ]
       },
@@ -608,7 +608,7 @@
     },
     {
       "title": "TPC-H Query 1",
-      "text": "%splicemachine\n-- QUERY 01\nexplain select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tDEV2.lineitem\nwhere\n\tl_shipdate \u003c\u003d date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast(\u00271998-12-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 01\nexplain select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tDEV2.lineitem\nwhere\n\tl_shipdate <= date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 15:38:09.489",
       "config": {
@@ -691,13 +691,13 @@
       "jobName": "paragraph_1542394755840_-778021701",
       "id": "20170406-154718_1568658794",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 2",
-      "text": "%splicemachine\n-- QUERY 02\nexplain select\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tDEV2.part,\n\tDEV2.supplier,\n\tDEV2.partsupp,\n\tDEV2.nation,\n\tDEV2.region\nwhere\n\tp_partkey \u003d ps_partkey\n\tand s_suppkey \u003d ps_suppkey\n\tand p_size \u003d 15\n\tand p_type like \u0027%BRASS\u0027\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027EUROPE\u0027\n\tand ps_supplycost \u003d (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tDEV2.partsupp,\n\t\t\tDEV2.supplier,\n\t\t\tDEV2.nation,\n\t\t\tDEV2.region\n\t\twhere\n\t\t\tp_partkey \u003d ps_partkey\n\t\t\tand s_suppkey \u003d ps_suppkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027EUROPE\u0027\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 02\nexplain select\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tDEV2.part,\n\tDEV2.supplier,\n\tDEV2.partsupp,\n\tDEV2.nation,\n\tDEV2.region\nwhere\n\tp_partkey = ps_partkey\n\tand s_suppkey = ps_suppkey\n\tand p_size = 15\n\tand p_type like '%BRASS'\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'EUROPE'\n\tand ps_supplycost = (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tDEV2.partsupp,\n\t\t\tDEV2.supplier,\n\t\t\tDEV2.nation,\n\t\t\tDEV2.region\n\t\twhere\n\t\t\tp_partkey = ps_partkey\n\t\t\tand s_suppkey = ps_suppkey\n\t\t\tand s_nationkey = n_nationkey\n\t\t\tand n_regionkey = r_regionkey\n\t\t\tand r_name = 'EUROPE'\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 15:39:22.455",
       "config": {
@@ -758,13 +758,13 @@
       "jobName": "paragraph_1542394755840_-1026755348",
       "id": "20170406-154748_2032636417",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 3",
-      "text": "%splicemachine\n-- QUERY 03\nexplain select\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tDEV2.customer,\n\tDEV2.orders,\n\tDEV2.lineitem\nwhere\n\tc_mktsegment \u003d \u0027BUILDING\u0027 \n\tand c_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand o_orderdate \u003c date(\u00271995-03-15\u0027) \n\tand l_shipdate \u003e date(\u00271995-03-15\u0027) \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 03\nexplain select\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tDEV2.customer,\n\tDEV2.orders,\n\tDEV2.lineitem\nwhere\n\tc_mktsegment = 'BUILDING' \n\tand c_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand o_orderdate < date('1995-03-15') \n\tand l_shipdate > date('1995-03-15') \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 15:39:29.573",
       "config": {
@@ -790,13 +790,13 @@
       "jobName": "paragraph_1542394755841_1582479351",
       "id": "20170406-155338_1478784227",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 11",
-      "text": "%splicemachine\n-- QUERY 11\nexplain select\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tDEV2.partsupp,\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\tps_suppkey \u003d s_suppkey\n\tand s_nationkey \u003d n_nationkey\n\tand n_name \u003d \u0027GERMANY\u0027\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) \u003e (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tDEV2.partsupp,\n\t\t\t\tDEV2.supplier,\n\t\t\t\tDEV2.nation\n\t\t\twhere\n\t\t\t\tps_suppkey \u003d s_suppkey\n\t\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\t\tand n_name \u003d \u0027GERMANY\u0027\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 11\nexplain select\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tDEV2.partsupp,\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\tps_suppkey = s_suppkey\n\tand s_nationkey = n_nationkey\n\tand n_name = 'GERMANY'\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) > (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tDEV2.partsupp,\n\t\t\t\tDEV2.supplier,\n\t\t\t\tDEV2.nation\n\t\t\twhere\n\t\t\t\tps_suppkey = s_suppkey\n\t\t\t\tand s_nationkey = n_nationkey\n\t\t\t\tand n_name = 'GERMANY'\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 15:39:39.639",
       "config": {
@@ -851,13 +851,13 @@
       "jobName": "paragraph_1542394755848_1421068308",
       "id": "20170406-155954_424082601",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 13",
-      "text": "%splicemachine\n-- QUERY 13\nexplain select\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tDEV2.customer left outer join DEV2.orders on\n\t\t\t\tc_custkey \u003d o_custkey\n\t\t\t\tand o_comment not like \u0027%special%requests%\u0027\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 13\nexplain select\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tDEV2.customer left outer join DEV2.orders on\n\t\t\t\tc_custkey = o_custkey\n\t\t\t\tand o_comment not like '%special%requests%'\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 15:39:48.565",
       "config": {
@@ -912,13 +912,13 @@
       "jobName": "paragraph_1542394755849_-1850931653",
       "id": "20170406-160031_290929306",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 22",
-      "text": "%splicemachine\n-- QUERY 22\nexplain select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tDEV2.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\tand c_acctbal \u003e (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal \u003e 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey \u003d c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 22\nexplain select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tDEV2.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t('13', '31', '23', '29', '30', '18', '17')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t('13', '31', '23', '29', '30', '18', '17')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 15:39:57.708",
       "config": {
@@ -1003,7 +1003,7 @@
       "jobName": "paragraph_1542394755852_-549892480",
       "id": "20170406-160357_2054277666",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "FINISHED",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -1034,7 +1034,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUK929SD\"\u003e\u003cem\u003eCommon Utilities\u003c/em\u003e\u003c/a\u003e, introduces some common utilities that you may find useful when working with Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DUK929SD\"><em>Common Utilities</em></a>, introduces some common utilities that you may find useful when working with Splice Machine.</p>\n</div>"
           }
         ]
       },

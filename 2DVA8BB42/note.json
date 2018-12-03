@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "title": "Using Zeppelin for Graphing and Filtering",
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Zeppelin for Graphing and Filtering\n\nThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\n\nIn this notebook, we\u0027ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0027ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0027ll:\n\n1. *Simplify Query 2, adding two additional filters and a default value*. This allows us to change the values directly in the input fields instead of editing the queries.\n2. *Run the query \"as-is\".*\n3. *Change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats*, so you can see some of the power of Zeppelin visualizations.\n\nRun each of these paragraphs to compare the outputs, then feel free to change the filters, graphs, etc. yourself.",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Using Zeppelin for Graphing and Filtering\n\nThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\n\nIn this notebook, we'll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we'll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We'll:\n\n1. *Simplify Query 2, adding two additional filters and a default value*. This allows us to change the values directly in the input fields instead of editing the queries.\n2. *Run the query \"as-is\".*\n3. *Change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats*, so you can see some of the power of Zeppelin visualizations.\n\nRun each of these paragraphs to compare the outputs, then feel free to change the filters, graphs, etc. yourself.",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 20:04:35.897",
       "config": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Zeppelin for Graphing and Filtering\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.\u003c/p\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0026rsquo;ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eSimplify Query 2, adding two additional filters and a default value\u003c/em\u003e. This allows us to change the values directly in the input fields instead of editing the queries.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the query \u0026ldquo;as-is\u0026rdquo;.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eChange the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats\u003c/em\u003e, so you can see some of the power of Zeppelin visualizations.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eRun each of these paragraphs to compare the outputs, then feel free to change the filters, graphs, etc. yourself.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Using Zeppelin for Graphing and Filtering</h1>\n<p>This notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats.</p>\n<p>In this notebook, we&rsquo;ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we&rsquo;ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We&rsquo;ll:</p>\n<ol>\n  <li><em>Simplify Query 2, adding two additional filters and a default value</em>. This allows us to change the values directly in the input fields instead of editing the queries.</li>\n  <li><em>Run the query &ldquo;as-is&rdquo;.</em></li>\n  <li><em>Change the <code>nationName</code> in the input box from <code>FRANCE</code> to <code>ROMANIA</code> and display the results in several different formats</em>, so you can see some of the power of Zeppelin visualizations.</li>\n</ol>\n<p>Run each of these paragraphs to compare the outputs, then feel free to change the filters, graphs, etc. yourself.</p>\n</div>"
           }
         ]
       },
@@ -49,7 +49,7 @@
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -69,7 +69,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eGene: WE NEED TO CREATE DS_TPCH1 HERE and tables and import the data \u0026ndash; at least for supplier and nation tables\u003c/h3\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h3>Gene: WE NEED TO CREATE DS_TPCH1 HERE and tables and import the data &ndash; at least for supplier and nation tables</h3>\n</div>"
           }
         ]
       },
@@ -83,7 +83,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0} \norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 20:06:21.872",
       "config": {
@@ -109,14 +109,14 @@
       },
       "settings": {
         "params": {
-          "nationName": "\u0027FRANCE\u0027",
+          "nationName": "'FRANCE'",
           "balanceThreshold": "-500"
         },
         "forms": {
           "nationName": {
             "type": "TextBox",
             "name": "nationName",
-            "defaultValue": "\u0027FRANCE\u0027",
+            "defaultValue": "'FRANCE'",
             "hidden": false
           },
           "balanceThreshold": {
@@ -136,7 +136,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 20:06:59.722",
       "config": {
@@ -164,14 +164,14 @@
       },
       "settings": {
         "params": {
-          "nationName": "\u0027ROMANIA\u0027",
+          "nationName": "'ROMANIA'",
           "balanceThreshold": "-500"
         },
         "forms": {
           "nationName": {
             "type": "TextBox",
             "name": "nationName",
-            "defaultValue": "\u0027FRANCE\u0027",
+            "defaultValue": "'FRANCE'",
             "hidden": false
           },
           "balanceThreshold": {
@@ -191,7 +191,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 20:07:07.020",
       "config": {
@@ -218,14 +218,14 @@
       },
       "settings": {
         "params": {
-          "nationName": "\u0027ROMANIA\u0027",
+          "nationName": "'ROMANIA'",
           "balanceThreshold": "-500"
         },
         "forms": {
           "nationName": {
             "type": "TextBox",
             "name": "nationName",
-            "defaultValue": "\u0027FRANCE\u0027",
+            "defaultValue": "'FRANCE'",
             "hidden": false
           },
           "balanceThreshold": {
@@ -245,7 +245,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDS.supplier,\n\tDS.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 20:07:23.630",
       "config": {
@@ -272,14 +272,14 @@
       },
       "settings": {
         "params": {
-          "nationName": "\u0027ROMANIA\u0027",
+          "nationName": "'ROMANIA'",
           "balanceThreshold": "-500"
         },
         "forms": {
           "nationName": {
             "type": "TextBox",
             "name": "nationName",
-            "defaultValue": "\u0027FRANCE\u0027",
+            "defaultValue": "'FRANCE'",
             "hidden": false
           },
           "balanceThreshold": {
@@ -299,7 +299,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nNow that you have an understanding of using Zeppelin with Spark and Splice Machine, let\u0027s explore machine learning with these technologies, starting with our next notebook: [*ML with Spark MLib using Python*](/#/notebook/2DYC2S8DY).\n",
+      "text": "%md\n## Where to Go Next\n\nNow that you have an understanding of using Zeppelin with Spark and Splice Machine, let's explore machine learning with these technologies, starting with our next notebook: [*ML with Spark MLib using Python*](/#/notebook/2DYC2S8DY).\n",
       "user": "anonymous",
       "dateUpdated": "2018-11-20 11:00:15.968",
       "config": {
@@ -313,7 +313,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -325,7 +325,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow that you have an understanding of using Zeppelin with Spark and Splice Machine, let\u0026rsquo;s explore machine learning with these technologies, starting with our next notebook: \u003ca href\u003d\"/#/notebook/2DYC2S8DY\"\u003e\u003cem\u003eML with Spark MLib using Python\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Now that you have an understanding of using Zeppelin with Spark and Splice Machine, let&rsquo;s explore machine learning with these technologies, starting with our next notebook: <a href=\"/#/notebook/2DYC2S8DY\"><em>ML with Spark MLib using Python</em></a>.</p>\n</div>"
           }
         ]
       },
