@@ -111,6 +111,11 @@ for nf in notefiles:
                             print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Editor IS hidden')
                             if modify == True:
                                 i['config']['editorHide'] = False
+                    if 'enabled' in i['config']:
+                        if i['config']['enabled'] == False:
+                            print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Run button DISABLED')
+                            if modify == True:
+                                i['config']['enabled'] = True
                     if 'results' in i:
                         if 'msg' in i['results']:
                             if 'dateStarted' in i:

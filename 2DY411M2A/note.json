@@ -509,7 +509,7 @@
         "fontSize": 9.0,
         "title": true,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -540,7 +540,7 @@
         "fontSize": 9.0,
         "title": true,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
