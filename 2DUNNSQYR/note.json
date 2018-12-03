@@ -230,9 +230,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table a (i int, j int);\n\ninsert into a values (1,1),(10,2),(100,3);\n\nselect * from a;\n",
+      "text": "%splicemachine\n\ncreate table ds.a (i int, j int);\n\ninsert into ds.a values (1,1),(10,2),(100,3);\n\nselect * from ds.a;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:55:20.510",
+      "dateUpdated": "2018-12-03 02:16:33.389",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -281,7 +281,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -291,7 +292,7 @@
       "jobName": "paragraph_1542396609164_791413961",
       "id": "20170915-162010_998743126",
       "dateCreated": "2018-11-16 11:30:09.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
