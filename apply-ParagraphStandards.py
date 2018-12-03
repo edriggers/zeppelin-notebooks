@@ -46,6 +46,7 @@ with open("./NotebookSanityExceptions.yaml", 'r') as stream:
 notefiles = glob.glob('./**/note.json')
 
 for nf in notefiles:
+    has_changes = False
     with open(nf, 'r+') as f:
         notebook_id = nf.split('/')[1]
         data = json.load(f)
@@ -83,16 +84,19 @@ for nf in notefiles:
                             print (notebook_id + ': paragraph #' + str(x) + ' has execution enabled')
                             if modify == True:
                                 i['config']['enabled'] = False
+                                has_changes = True
                     if 'status' in i:
                         if i['status'] == "READY":
                             print (notebook_id + ': paragraph #' + str(x) + ' status is READY, should be FINISHED')
                             if modify == True:
                                 i['status'] = 'FINISHED'
+                                has_changes = True
                     if 'editorHide' in i['config']:
                         if i['config']['editorHide'] == False:
                             print (notebook_id + ': paragraph #' + str(x) + ' Editor is NOT hidden')
                             if modify == True:
                                 i['config']['editorHide'] = True
+                                has_changes = True
                     # handle exceptions, apply these last
                     if notebook_id in sanity_exceptions['Exceptions']:
                         if i['id'] in sanity_exceptions['Exceptions'][notebook_id]:
@@ -101,6 +105,7 @@ for nf in notefiles:
                                     i['config']['editorHide'] = False
                                     i['config']['enabled'] = True
                                     i['status'] = 'READY'
+                                    has_changes = True
             else:
                 # all other paragraph editors
                 if tests == 'CodeBlockFix':
@@ -111,11 +116,13 @@ for nf in notefiles:
                             print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Editor IS hidden')
                             if modify == True:
                                 i['config']['editorHide'] = False
+                                has_changes = True
                     if 'enabled' in i['config']:
                         if i['config']['enabled'] == False:
                             print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Run button DISABLED')
                             if modify == True:
                                 i['config']['enabled'] = True
+                                has_changes = True
                     if 'results' in i:
                         if 'msg' in i['results']:
                             if 'dateStarted' in i:
@@ -124,12 +131,15 @@ for nf in notefiles:
                                     if modify == True:
                                         i.pop('dateStarted',None)
                                         i.pop('dateFinished',None)
+                                        has_changes = True
                     if i['status'] != 'READY':
                         print (notebook_id + ': paragraph #' + str(x) + ' Paragraph not marked as READY.')
                         if modify == True:
                             i['status'] = 'READY'
+                            has_changes = True
             x = x + 1
-        if modify == True:
+        if modify == True and has_changes == True:
+            print ("Saving " + notebook_id)
             f.seek(0)
             json.dump(data, f, indent=2, sort_keys=False)
             f.truncate()
