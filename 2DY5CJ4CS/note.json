@@ -231,9 +231,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table a (i int, j int);\n\ninsert into a values (1,1),(10,2),(100,3);\n\nselect * from a;\n",
+      "text": "%splicemachine\n\ncreate table admin.a (i int, j int);\n\ninsert into admin.a values (1,1),(10,2),(100,3);\n\nselect * from admin.a;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 13:04:46.000",
+      "dateUpdated": "2018-12-03 00:52:17.372",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -255,7 +255,7 @@
             "graph": {
               "mode": "table",
               "height": 122.0,
-              "optionOpen": true,
+              "optionOpen": false,
               "setting": {
                 "table": {
                   "tableGridState": {},
@@ -282,7 +282,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -292,7 +293,7 @@
       "jobName": "paragraph_1542402279558_500870520",
       "id": "20170915-162010_998743126",
       "dateCreated": "2018-11-16 13:04:39.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -415,7 +416,10 @@
   "id": "2DY5CJ4CS",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

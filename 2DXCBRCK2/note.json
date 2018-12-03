@@ -37,8 +37,6 @@
       "jobName": "paragraph_1542402827707_-1442760902",
       "id": "20180113-213553_290656873",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-11-30 01:16:51.853",
-      "dateFinished": "2018-11-30 01:16:51.866",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -76,8 +74,6 @@
       "jobName": "paragraph_1542402827708_759617580",
       "id": "20180125-195425_1198649470",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-11-30 01:20:32.677",
-      "dateFinished": "2018-11-30 01:20:32.687",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -116,8 +112,6 @@
       "jobName": "paragraph_1543540813943_2120816045",
       "id": "20181130-012013_175160479",
       "dateCreated": "2018-11-30 01:20:13.943",
-      "dateStarted": "2018-11-30 01:23:05.638",
-      "dateFinished": "2018-11-30 01:23:05.660",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -157,17 +151,15 @@
       "jobName": "paragraph_1542824214518_-229717905",
       "id": "20181121-101654_1595830508",
       "dateCreated": "2018-11-21 10:16:54.518",
-      "dateStarted": "2018-12-01 07:37:48.174",
-      "dateFinished": "2018-12-01 07:37:48.179",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\nCREATE SCHEMA ADMIN_TPCH1;",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:38:21.123",
+      "dateUpdated": "2018-12-03 01:55:02.543",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
@@ -183,22 +175,12 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402827709_690823560",
       "id": "20180115-053038_1611909604",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-11-30 01:18:11.965",
-      "dateFinished": "2018-11-30 01:18:12.589",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -236,17 +218,15 @@
       "jobName": "paragraph_1543540867920_1906678968",
       "id": "20181130-012107_272512523",
       "dateCreated": "2018-11-30 01:21:07.920",
-      "dateStarted": "2018-11-30 01:27:59.798",
-      "dateFinished": "2018-11-30 01:27:59.804",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\nCREATE TABLE ADMIN_TPCH1.LINEITEM (\n L_ORDERKEY BIGINT NOT NULL,\n L_PARTKEY INTEGER NOT NULL,\n L_SUPPKEY INTEGER NOT NULL, \n L_LINENUMBER INTEGER NOT NULL, \n L_QUANTITY DECIMAL(15,2),\n L_EXTENDEDPRICE DECIMAL(15,2),\n L_DISCOUNT DECIMAL(15,2),\n L_TAX DECIMAL(15,2),\n L_RETURNFLAG VARCHAR(1), \n L_LINESTATUS VARCHAR(1),\n L_SHIPDATE DATE,\n L_COMMITDATE DATE,\n L_RECEIPTDATE DATE,\n L_SHIPINSTRUCT VARCHAR(25),\n L_SHIPMODE VARCHAR(10),\n L_COMMENT VARCHAR(44),\n PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)\n );\n \n CREATE TABLE ADMIN_TPCH1.ORDERS (\n O_ORDERKEY BIGINT NOT NULL PRIMARY KEY,\n O_CUSTKEY INTEGER,\n O_ORDERSTATUS VARCHAR(1),\n O_TOTALPRICE DECIMAL(15,2),\n O_ORDERDATE DATE,\n O_ORDERPRIORITY VARCHAR(15),\n O_CLERK VARCHAR(15),\n O_SHIPPRIORITY INTEGER ,\n O_COMMENT VARCHAR(79)\n );\n \n CREATE TABLE ADMIN_TPCH1.CUSTOMER (\n C_CUSTKEY INTEGER NOT NULL PRIMARY KEY,\n C_NAME VARCHAR(25),\n C_ADDRESS VARCHAR(40),\n C_NATIONKEY INTEGER NOT NULL,\n C_PHONE VARCHAR(15),\n C_ACCTBAL DECIMAL(15,2),\n C_MKTSEGMENT VARCHAR(10),\n C_COMMENT VARCHAR(117)\n );\n \n CREATE TABLE ADMIN_TPCH1.PARTSUPP (\n PS_PARTKEY INTEGER NOT NULL ,\n PS_SUPPKEY INTEGER NOT NULL , \n PS_AVAILQTY INTEGER,\n PS_SUPPLYCOST DECIMAL(15,2),\n PS_COMMENT VARCHAR(199),\n PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY) \n );\n \n CREATE TABLE ADMIN_TPCH1.SUPPLIER (\n S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,\n S_NAME VARCHAR(25) ,\n S_ADDRESS VARCHAR(40) ,\n S_NATIONKEY INTEGER ,\n S_PHONE VARCHAR(15) ,\n S_ACCTBAL DECIMAL(15,2),\n S_COMMENT VARCHAR(101)\n );\n \n CREATE TABLE ADMIN_TPCH1.PART (\n P_PARTKEY INTEGER NOT NULL PRIMARY KEY,\n P_NAME VARCHAR(55) ,\n P_MFGR VARCHAR(25) ,\n P_BRAND VARCHAR(10) ,\n P_TYPE VARCHAR(25) ,\n P_SIZE INTEGER ,\n P_CONTAINER VARCHAR(10) ,\n P_RETAILPRICE DECIMAL(15,2),\n P_COMMENT VARCHAR(23)\n );\n \n CREATE TABLE ADMIN_TPCH1.REGION (\n R_REGIONKEY INTEGER NOT NULL PRIMARY KEY,\n R_NAME VARCHAR(25),\n R_COMMENT VARCHAR(152)\n );\n \n CREATE TABLE ADMIN_TPCH1.NATION (\n N_NATIONKEY INTEGER NOT NULL,\n N_NAME VARCHAR(25),\n N_REGIONKEY INTEGER NOT NULL,\n N_COMMENT VARCHAR(152),\n PRIMARY KEY (N_NATIONKEY)\n );",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:39:33.104",
+      "dateUpdated": "2018-12-03 01:55:29.793",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
@@ -262,24 +242,11 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "java.sql.SQLException: table \u0027ORDERS\u0027 already exists in schema \u0027TPCH1\u0027.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:905)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:580)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:692)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:95)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:490)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:175)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: com.splicemachine.db.client.am.SqlException: table \u0027ORDERS\u0027 already exists in schema \u0027TPCH1\u0027.\n\tat com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1845)\n\tat com.splicemachine.db.client.am.Statement.completeExecuteImmediate(Statement.java:1433)\n\tat com.splicemachine.db.client.net.NetStatementReply.parseEXCSQLIMMreply(NetStatementReply.java:210)\n\tat com.splicemachine.db.client.net.NetStatementReply.readExecuteImmediate(NetStatementReply.java:61)\n\tat com.splicemachine.db.client.net.StatementReply.readExecuteImmediate(StatementReply.java:49)\n\tat com.splicemachine.db.client.net.NetStatement.readExecuteImmediate_(NetStatement.java:128)\n\tat com.splicemachine.db.client.am.Statement.readExecuteImmediate(Statement.java:1429)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2153)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:910)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:896)\n\t... 15 more\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402827711_-31204128",
       "id": "20180129-104639_365354120",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -317,8 +284,6 @@
       "jobName": "paragraph_1542402827711_838191504",
       "id": "20180125-201815_611540808",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-11-30 01:18:35.639",
-      "dateFinished": "2018-11-30 01:18:35.648",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -326,7 +291,7 @@
       "title": "Import Data",
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027ADMIN_TPCH1\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:40:02.120",
+      "dateUpdated": "2018-12-03 02:04:44.297",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -656,7 +621,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -666,7 +632,7 @@
       "jobName": "paragraph_1542402827712_1447779480",
       "id": "20180115-012619_1984460020",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -713,7 +679,7 @@
     {
       "text": "%splicemachine\n-- QUERY 04\nexplain  select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tADMIN_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tADMIN_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:40:27.881",
+      "dateUpdated": "2018-12-03 02:05:09.092",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -724,7 +690,8 @@
           "editOnDblClick": false,
           "completionKey": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -734,7 +701,7 @@
       "jobName": "paragraph_1542402827713_-1521787110",
       "id": "20180201-123806_1712783827",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -775,8 +742,6 @@
       "jobName": "paragraph_1542402827714_-329059560",
       "id": "20180115-053838_672371514",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-12-02 23:37:50.384",
-      "dateFinished": "2018-12-02 23:37:50.450",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -784,7 +749,7 @@
       "title": "Collect Statistics",
       "text": "%splicemachine\nanalyze schema ADMIN_TPCH1;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:41:10.185",
+      "dateUpdated": "2018-12-03 02:07:05.530",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -832,7 +797,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -842,7 +808,7 @@
       "jobName": "paragraph_1542402827714_1662034899",
       "id": "20180115-053719_1393443514",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -881,15 +847,13 @@
       "jobName": "paragraph_1542402827715_827433681",
       "id": "20180201-160453_2099057216",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-12-02 23:39:08.294",
-      "dateFinished": "2018-12-02 23:39:08.321",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tADMIN_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tADMIN_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:41:29.754",
+      "dateUpdated": "2018-12-03 02:07:25.315",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -901,7 +865,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -911,7 +876,7 @@
       "jobName": "paragraph_1542402827716_-1466879460",
       "id": "20180115-071650_158099310",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -950,8 +915,6 @@
       "jobName": "paragraph_1542402827716_1662708226",
       "id": "20180201-160712_2000693903",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-12-02 23:42:29.219",
-      "dateFinished": "2018-12-02 23:42:29.237",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -992,17 +955,15 @@
       "jobName": "paragraph_1542402827717_-370921750",
       "id": "20180115-055551_1473914744",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-12-02 23:43:42.138",
-      "dateFinished": "2018-12-02 23:43:42.176",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\ncreate index ADMIN_TPCH1.O_DATE_PRI_KEY_IDX on ADMIN_TPCH1.ORDERS(\n O_ORDERDATE,\n O_ORDERPRIORITY,\n O_ORDERKEY\n );\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:46:07.230",
+      "dateUpdated": "2018-12-03 02:08:36.037",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false,
@@ -1018,32 +979,11 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542402827718_-707002639",
       "id": "20180115-074728_655442192",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -1082,16 +1022,14 @@
       "jobName": "paragraph_1543794375555_-1661460251",
       "id": "20181202-234615_1157797533",
       "dateCreated": "2018-12-02 23:46:15.556",
-      "dateStarted": "2018-12-02 23:47:03.593",
-      "dateFinished": "2018-12-02 23:47:03.603",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Create Indexes",
-      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tADMIN_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tDEV2.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 04\nexplain select\n\to_orderpriority,\n\tcount(*) as order_count\nfrom\n\tADMIN_TPCH1.orders\nwhere\n\to_orderdate \u003e\u003d date(\u00271993-07-01\u0027)\n\tand o_orderdate \u003c add_months(\u00271993-07-01\u0027,3)\n\tand exists (\n\t\tselect\n\t\t\t*\n\t\tfrom\n\t\t\tADMIN_TPCH1.lineitem\n\t\twhere\n\t\t\tl_orderkey \u003d o_orderkey\n\t\t\tand l_commitdate \u003c l_receiptdate\n\t)\ngroup by\n\to_orderpriority\norder by\n\to_orderpriority\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:48:07.898",
+      "dateUpdated": "2018-12-03 02:10:39.374",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1101,10 +1039,40 @@
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
         "title": false,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "O_ORDERPRIORITY": "string",
+                      "ORDER_COUNT": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
         "enabled": true,
         "fontSize": 9.0,
-        "editorHide": false
+        "editorHide": false,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -1114,7 +1082,7 @@
       "jobName": "paragraph_1542402827718_317360885",
       "id": "20180115-055326_1726784632",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -1153,8 +1121,6 @@
       "jobName": "paragraph_1543794501320_442193795",
       "id": "20181202-234821_1110185852",
       "dateCreated": "2018-12-02 23:48:21.320",
-      "dateStarted": "2018-12-02 23:48:29.614",
-      "dateFinished": "2018-12-02 23:48:29.641",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1193,8 +1159,6 @@
       "jobName": "paragraph_1542402827719_-891352269",
       "id": "20180125-203451_1030911184",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-12-02 23:49:29.090",
-      "dateFinished": "2018-12-02 23:49:29.107",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1273,8 +1237,6 @@
       "jobName": "paragraph_1542402827724_-691876709",
       "id": "20180122-173624_509126525",
       "dateCreated": "2018-11-16 13:13:47.000",
-      "dateStarted": "2018-12-02 23:51:07.519",
-      "dateFinished": "2018-12-02 23:51:07.529",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

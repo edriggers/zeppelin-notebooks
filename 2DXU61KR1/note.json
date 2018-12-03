@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542402549801_-1780050763",
       "id": "20170917-123302_29623660",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-12-02 23:03:00.936",
-      "dateFinished": "2018-12-02 23:03:00.962",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1542402549802_-141162614",
       "id": "20170917-124100_1569077601",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-12-02 22:45:58.300",
-      "dateFinished": "2018-12-02 22:45:58.333",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -115,8 +111,6 @@
       "jobName": "paragraph_1542402549803_779570644",
       "id": "20171017-143511_678293042",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-11-30 01:01:02.833",
-      "dateFinished": "2018-11-30 01:01:02.852",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -155,15 +149,13 @@
       "jobName": "paragraph_1542402549807_-610744706",
       "id": "20171017-143616_602504010",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-12-01 07:30:41.406",
-      "dateFinished": "2018-12-01 07:30:41.412",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from admin1.index_example",
+      "text": "%splicemachine\n\nexplain select count(*) from admin.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:04:07.857",
+      "dateUpdated": "2018-12-03 01:29:47.442",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -174,7 +166,8 @@
           "editOnDblClick": false,
           "completionKey": true
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -184,7 +177,7 @@
       "jobName": "paragraph_1542402549808_921489269",
       "id": "20170917-132020_1057477927",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -227,9 +220,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nselect count(*) from admin1.index_example",
+      "text": "%splicemachine\n\nselect count(*) from admin.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:04:19.728",
+      "dateUpdated": "2018-12-03 01:30:39.172",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -267,7 +260,8 @@
           "language": "sql",
           "editOnDblClick": false
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -277,7 +271,7 @@
       "jobName": "paragraph_1542402549809_-1319996524",
       "id": "20170917-132246_733531409",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -316,8 +310,6 @@
       "jobName": "paragraph_1542402549809_-5679196",
       "id": "20170917-132259_1390907931",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-12-02 22:43:22.418",
-      "dateFinished": "2018-12-02 22:43:22.438",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -356,8 +348,6 @@
       "jobName": "paragraph_1542402549809_-338777467",
       "id": "20171017-123420_788068928",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-11-30 01:03:36.847",
-      "dateFinished": "2018-11-30 01:03:36.861",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -396,8 +386,6 @@
       "jobName": "paragraph_1542402549810_-1040941288",
       "id": "20170917-143720_391125668",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-12-02 23:06:27.926",
-      "dateFinished": "2018-12-02 23:06:27.955",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -474,8 +462,6 @@
       "jobName": "paragraph_1542402549811_-1159393916",
       "id": "20170917-144928_60745059",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-12-02 23:08:46.286",
-      "dateFinished": "2018-12-02 23:08:46.303",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -514,8 +500,6 @@
       "jobName": "paragraph_1542402549812_1189965804",
       "id": "20170917-145935_2044886732",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-11-20 11:50:44.719",
-      "dateFinished": "2018-11-20 11:50:44.727",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -555,8 +539,6 @@
       "jobName": "paragraph_1542743394707_-884152187",
       "id": "20181120-114954_1716608409",
       "dateCreated": "2018-11-20 11:49:54.707",
-      "dateStarted": "2018-11-21 15:42:54.133",
-      "dateFinished": "2018-11-21 15:42:54.142",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -567,8 +549,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

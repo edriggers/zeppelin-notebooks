@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542402464279_-1504886143",
       "id": "20170907-071526_832974549",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-30 00:14:07.314",
-      "dateFinished": "2018-11-30 00:14:07.331",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -81,7 +79,7 @@
     {
       "text": "%splicemachine\n\nexplain select * from admin.import_example a, admin.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:55:58.555",
+      "dateUpdated": "2018-12-03 01:12:37.505",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -93,7 +91,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -103,7 +102,7 @@
       "jobName": "paragraph_1542402464280_1220225039",
       "id": "20170916-210243_1737687704",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -142,15 +141,13 @@
       "jobName": "paragraph_1542402464281_-1793022678",
       "id": "20170916-210342_1463344047",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-30 00:47:00.944",
-      "dateFinished": "2018-11-30 00:47:00.963",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\nanalyze table admin.import_example;\n\nexplain select * from admin.import_example a, admin.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:56:29.432",
+      "dateUpdated": "2018-12-03 01:12:45.668",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -196,7 +193,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -206,9 +204,7 @@
       "jobName": "paragraph_1542402464281_1953344349",
       "id": "20170916-210539_1235333677",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-30 00:45:16.420",
-      "dateFinished": "2018-11-30 00:45:16.583",
-      "status": "ERROR",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -253,7 +249,7 @@
     {
       "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_TABLE(\u0027ADMIN\u0027,\u0027IMPORT_EXAMPLE\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:27:30.165",
+      "dateUpdated": "2018-12-03 01:13:05.009",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -265,7 +261,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -275,14 +272,14 @@
       "jobName": "paragraph_1542402464282_-1750439418",
       "id": "20170916-211302_1479353620",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an improperly used index can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\nLet\u0027s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.",
+      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an improperly used index can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\nLet\u0027s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take around a minute.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:57:26.001",
+      "dateUpdated": "2018-12-03 01:16:15.297",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -306,7 +303,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating Primary Keys and Indexes\u003c/h2\u003e\n\u003cp\u003eSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe primary key becomes the key for the HBase table.\u003c/li\u003e\n  \u003cli\u003eAn index is another HBase table whose key consists of the columns in the index.\u003c/li\u003e\n  \u003cli\u003eCompound (multi-column) primary keys and indexes are supported.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an improperly used index can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take less than a minute.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreating Primary Keys and Indexes\u003c/h2\u003e\n\u003cp\u003eSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe primary key becomes the key for the HBase table.\u003c/li\u003e\n  \u003cli\u003eAn index is another HBase table whose key consists of the columns in the index.\u003c/li\u003e\n  \u003cli\u003eCompound (multi-column) primary keys and indexes are supported.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteIcon\"\u003eAs with all databases that support indexes, an improperly used index can actually \u003cstrong\u003eslow down\u003c/strong\u003e a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally \u003cstrong\u003eNOT\u003c/strong\u003e use an index when one is available.\u003c/p\u003e\n\u003cp\u003eLet\u0026rsquo;s run through some quick examples. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run the next paragraph, which creates an example table; this should take around a minute.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -314,15 +311,13 @@
       "jobName": "paragraph_1542402464283_-1067363641",
       "id": "20170916-192947_215578585",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-12-02 22:57:10.316",
-      "dateFinished": "2018-12-02 22:57:10.335",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table admin.index_example (i int primary key, j int);\ninsert into index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into index_example select i+10,j+10 from index_example;\ninsert into index_example select i+20,j+20 from index_example;\ninsert into index_example select i+40,j+40 from index_example;\ninsert into index_example select i+80,j+80 from index_example;\ninsert into index_example select i+160,j+160 from index_example;\ninsert into index_example select i+320,j+320 from index_example;\ninsert into index_example select i+640,j+640 from index_example;\ninsert into index_example select i+1280,j+1280 from index_example;\ninsert into index_example select i+2560,j+2560 from index_example;\ninsert into index_example select i+6000,j+6000 from index_example;\ninsert into index_example select i+12000,j+12000 from index_example;\ninsert into index_example select i+24000,j+24000 from index_example;\ninsert into index_example select i+48000,j+48000 from index_example;\ninsert into index_example select i+96000,j+96000 from index_example;\ninsert into index_example select i+200000,j+200000 from index_example;\ninsert into index_example select i+400000,j+400000 from index_example;\ninsert into index_example select i+800000,j+800000 from index_example;\nanalyze table admin.index_example",
+      "text": "%splicemachine\n\nset schema admin;\n\ncreate table index_example (i int primary key, j int);\ninsert into index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into index_example select i+10,j+10 from index_example;\ninsert into index_example select i+20,j+20 from index_example;\ninsert into index_example select i+40,j+40 from index_example;\ninsert into index_example select i+80,j+80 from index_example;\ninsert into index_example select i+160,j+160 from index_example;\ninsert into index_example select i+320,j+320 from index_example;\ninsert into index_example select i+640,j+640 from index_example;\ninsert into index_example select i+1280,j+1280 from index_example;\ninsert into index_example select i+2560,j+2560 from index_example;\ninsert into index_example select i+6000,j+6000 from index_example;\ninsert into index_example select i+12000,j+12000 from index_example;\ninsert into index_example select i+24000,j+24000 from index_example;\ninsert into index_example select i+48000,j+48000 from index_example;\ninsert into index_example select i+96000,j+96000 from index_example;\ninsert into index_example select i+200000,j+200000 from index_example;\ninsert into index_example select i+400000,j+400000 from index_example;\ninsert into index_example select i+800000,j+800000 from index_example;\n\nanalyze table admin.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:58:02.303",
+      "dateUpdated": "2018-12-03 01:16:25.201",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -366,10 +361,45 @@
               },
               "commonSetting": {}
             }
+          },
+          "20": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "schemaName": "string",
+                      "tableName": "string",
+                      "partition": "string",
+                      "rowsCollected": "string",
+                      "partitionSize": "string",
+                      "partitionCount": "string",
+                      "statsType": "string",
+                      "sampleFraction": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -379,7 +409,7 @@
       "jobName": "paragraph_1542402464283_-1159521920",
       "id": "20170916-213118_1059322916",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -424,7 +454,7 @@
     {
       "text": "%splicemachine\n\nselect * from admin.index_example where i \u003d 300000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:58:17.644",
+      "dateUpdated": "2018-12-03 01:16:44.432",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -465,7 +495,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -475,7 +506,7 @@
       "jobName": "paragraph_1542402464284_1494843294",
       "id": "20170916-211529_1481528006",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -513,15 +544,13 @@
       "jobName": "paragraph_1542402464284_-1568315423",
       "id": "20170917-094320_895722307",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-21 09:48:02.267",
-      "dateFinished": "2018-11-21 09:48:02.272",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\nselect * from admin.index_example where j \u003d 300000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:58:32.698",
+      "dateUpdated": "2018-12-03 01:17:29.290",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -562,7 +591,8 @@
           }
         },
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -572,7 +602,7 @@
       "jobName": "paragraph_1542402464285_1429498569",
       "id": "20170917-094346_1396272310",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -610,15 +640,13 @@
       "jobName": "paragraph_1542402464285_151424432",
       "id": "20170917-094404_1058792111",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-21 09:48:15.832",
-      "dateFinished": "2018-11-21 09:48:15.841",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\ncreate index ij on admin.index_example (j)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:58:45.371",
+      "dateUpdated": "2018-12-03 01:17:59.714",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -630,7 +658,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -640,7 +669,7 @@
       "jobName": "paragraph_1542402464286_1884860213",
       "id": "20170917-094549_1951923955",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -678,15 +707,13 @@
       "jobName": "paragraph_1542402464286_-1683779077",
       "id": "20170917-094813_1546634594",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-21 09:48:34.614",
-      "dateFinished": "2018-11-21 09:48:34.624",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\nexplain select j from admin.index_example where j \u003d 300000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:58:58.002",
+      "dateUpdated": "2018-12-03 01:18:34.912",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -698,7 +725,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -708,7 +736,7 @@
       "jobName": "paragraph_1542402464287_-1757265349",
       "id": "20170917-101311_771962907",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -753,7 +781,7 @@
     {
       "text": "%splicemachine\n\nexplain select count(i) from admin.index_example where j \u003e 950000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:00:58.246",
+      "dateUpdated": "2018-12-03 01:20:02.616",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -765,7 +793,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -775,7 +804,7 @@
       "jobName": "paragraph_1542402464288_-2063270503",
       "id": "20170917-095320_239489898",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -813,15 +842,13 @@
       "jobName": "paragraph_1542402464288_-1391229295",
       "id": "20170917-101802_1032211186",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-30 00:49:01.452",
-      "dateFinished": "2018-11-30 00:49:01.461",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\n\nexplain select count(i) from admin.index_example --splice-properties index\u003dij\n     where j \u003e 950000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:00:51.580",
+      "dateUpdated": "2018-12-03 01:20:23.087",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -833,7 +860,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -843,7 +871,7 @@
       "jobName": "paragraph_1542402464288_-2005088107",
       "id": "20170917-102130_1017436977",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -882,15 +910,13 @@
       "jobName": "paragraph_1542402464289_-996725073",
       "id": "20170917-102229_72455203",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-12-02 23:00:15.432",
-      "dateFinished": "2018-12-02 23:00:15.476",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\ncreate index iji on admin.index_example (j, i)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:00:45.089",
+      "dateUpdated": "2018-12-03 01:21:21.221",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -902,7 +928,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -912,7 +939,7 @@
       "jobName": "paragraph_1542402464290_1882625791",
       "id": "20170917-103810_1471531808",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -995,7 +1022,7 @@
     {
       "text": "%splicemachine\n\ncreate table admin.join1 (i int);\ncreate table admin.join2 (i int);\ncreate table admin.join3 (i int);\ncreate table admin.join4 (i int);\n\nexplain select * from admin.join1 a, admin.join2 b, admin.join3 c, admin.join4 d\nwhere a.i \u003d b.i\nand a.i \u003d c.i\nand a.i \u003d d.i\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:01:59.713",
+      "dateUpdated": "2018-12-03 01:21:56.633",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -1007,7 +1034,8 @@
         "editorHide": false,
         "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -1017,7 +1045,7 @@
       "jobName": "paragraph_1542402464292_-2101187881",
       "id": "20170917-111631_1232092004",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -1093,8 +1121,6 @@
       "jobName": "paragraph_1542402464294_-307946997",
       "id": "20170917-105934_534798535",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-21 09:49:39.150",
-      "dateFinished": "2018-11-21 09:49:39.163",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1132,8 +1158,6 @@
       "jobName": "paragraph_1542402464295_755061009",
       "id": "20170917-104827_2026891470",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-11-20 11:47:35.222",
-      "dateFinished": "2018-11-20 11:47:35.228",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1173,8 +1197,6 @@
       "jobName": "paragraph_1542743089802_-695951897",
       "id": "20181120-114449_1281362339",
       "dateCreated": "2018-11-20 11:44:49.802",
-      "dateStarted": "2018-11-20 11:47:38.303",
-      "dateFinished": "2018-11-20 11:47:38.307",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -1185,8 +1207,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,
