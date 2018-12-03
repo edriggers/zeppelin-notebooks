@@ -640,7 +640,7 @@
     {
       "text": "%md\n### Running Query 4\n\nNow go ahead and run TPC-H Query 4.  Again feel free to use `localhost:4040` to monitor while it runs.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:48:49.078",
+      "dateUpdated": "2018-12-03 07:47:30.109",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -681,7 +681,7 @@
       "title": "Representative Micro-Benchmarks",
       "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-benchmark results from Splice Machine running TPC-H and other benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in <100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can\u2019t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:32:18.351",
+      "dateUpdated": "2018-12-03 07:47:38.519",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -714,8 +714,8 @@
       "jobName": "paragraph_1542395076266_349602136",
       "id": "20180118-022657_414327443",
       "dateCreated": "2018-11-16 11:04:36.000",
-      "dateStarted": "2018-12-02 16:32:18.360",
-      "dateFinished": "2018-12-02 16:32:18.397",
+      "dateStarted": "2018-12-03 07:47:22.518",
+      "dateFinished": "2018-12-03 07:47:22.543",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -766,7 +766,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

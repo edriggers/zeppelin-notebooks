@@ -277,9 +277,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n<p class=\"noteIcon\">As with all databases that support indexes, an improperly used index can actually <strong>slow down</strong> a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally <strong>NOT</strong> use an index when one is available.</p>\n\nLet's run through some quick examples. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run the next paragraph, which creates an example table; this should take around a minute.",
+      "text": "%md\n## Creating Primary Keys and Indexes\n\nSplice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:\n\n* The primary key becomes the key for the HBase table.\n* An index is another HBase table whose key consists of the columns in the index.\n* Compound (multi-column) primary keys and indexes are supported.\n\n<p class=\"noteIcon\">As with all databases that support indexes, an improperly used index can actually <strong>slow down</strong> a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally <strong>NOT</strong> use an index when one is available.</p>\n\nLet's run through some quick examples. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run the next paragraph, which creates an example table; this should take only a minute or two.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:16:15.297",
+      "dateUpdated": "2018-12-03 07:39:44.710",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -303,7 +303,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Creating Primary Keys and Indexes</h2>\n<p>Splice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:</p>\n<ul>\n  <li>The primary key becomes the key for the HBase table.</li>\n  <li>An index is another HBase table whose key consists of the columns in the index.</li>\n  <li>Compound (multi-column) primary keys and indexes are supported.</li>\n</ul>\n<p class=\"noteIcon\">As with all databases that support indexes, an improperly used index can actually <strong>slow down</strong> a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally <strong>NOT</strong> use an index when one is available.</p>\n<p>Let&rsquo;s run through some quick examples. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run the next paragraph, which creates an example table; this should take around a minute.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Creating Primary Keys and Indexes</h2>\n<p>Splice Machine, like other databases, supports the creation of primary keys and indexes; in Splice Machine:</p>\n<ul>\n  <li>The primary key becomes the key for the HBase table.</li>\n  <li>An index is another HBase table whose key consists of the columns in the index.</li>\n  <li>Compound (multi-column) primary keys and indexes are supported.</li>\n</ul>\n<p class=\"noteIcon\">As with all databases that support indexes, an improperly used index can actually <strong>slow down</strong> a query. This is especially true with Splice Machine because it is a distributed system, which means that there may be a significant cost to looking up the non-indexed information in a query. This is why you may see Splice Machine intentionally <strong>NOT</strong> use an index when one is available.</p>\n<p>Let&rsquo;s run through some quick examples. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run the next paragraph, which creates an example table; this should take only a minute or two.</p>\n</div>"
           }
         ]
       },
@@ -311,6 +311,8 @@
       "jobName": "paragraph_1542402464283_-1067363641",
       "id": "20170916-192947_215578585",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-03 07:39:39.316",
+      "dateFinished": "2018-12-03 07:39:39.339",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1207,7 +1209,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

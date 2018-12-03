@@ -330,9 +330,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nCongratulations! You've just completed the *Beginning Splice Machine Developer's Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
+      "text": "%md\n## Where to Go Next\nCongratulations! You've just completed the *Beginning Splice Machine Developer's Class*. \n\nTo continue learn more about developing with Splice Machine, consider taking our  [*Intermediate Splice Machine Developer's Class*](/#/notebook/2DXRNNKXG).\n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:12:42.150",
+      "dateUpdated": "2018-12-03 07:45:07.991",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -356,7 +356,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Congratulations! You&rsquo;ve just completed the <em>Beginning Splice Machine Developer&rsquo;s Class</em>. </p>\n<p>Visit <a href=\"/#/notebook/2DWTR5ZBH\"><em>Our Training Courses</em></a> notebook learn about our other training classes.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Congratulations! You&rsquo;ve just completed the <em>Beginning Splice Machine Developer&rsquo;s Class</em>. </p>\n<p>To continue learn more about developing with Splice Machine, consider taking our <a href=\"/#/notebook/2DXRNNKXG\"><em>Intermediate Splice Machine Developer&rsquo;s Class</em></a>.</p>\n<p>Visit <a href=\"/#/notebook/2DWTR5ZBH\"><em>Our Training Courses</em></a> notebook learn about our other training classes.</p>\n</div>"
           }
         ]
       },
@@ -364,6 +364,8 @@
       "jobName": "paragraph_1542394204054_-1107415519",
       "id": "20170917-162201_1369089111",
       "dateCreated": "2018-11-16 10:50:04.000",
+      "dateStarted": "2018-12-03 07:44:58.565",
+      "dateFinished": "2018-12-03 07:44:58.577",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

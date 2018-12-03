@@ -388,9 +388,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nYou've learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Zeppelin Using SparkR*](/#/notebook/2DXQ24QYP), shows you how to use R to program with Spark in a Zeppelin Notebook.",
+      "text": "%md\n## Where to Go Next\nYou've learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Machine Learning with Spark MLlib Using Python*](/#/notebook/2DYC2S8DY), shows you how to use R to program with Spark in a Zeppelin Notebook.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 06:02:25.090",
+      "dateUpdated": "2018-12-03 07:31:49.310",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -415,7 +415,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>You&rsquo;ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, <a href=\"/#/notebook/2DXQ24QYP\"><em>Zeppelin Using SparkR</em></a>, shows you how to use R to program with Spark in a Zeppelin Notebook.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>You&rsquo;ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, <a href=\"/#/notebook/2DYC2S8DY\"><em>Machine Learning with Spark MLlib Using Python</em></a>, shows you how to use R to program with Spark in a Zeppelin Notebook.</p>\n</div>"
           }
         ]
       },
@@ -423,6 +423,8 @@
       "jobName": "paragraph_1542397883901_1883049237",
       "id": "20150703-133047_853701097",
       "dateCreated": "2018-11-16 11:51:23.000",
+      "dateStarted": "2018-12-03 07:28:42.967",
+      "dateFinished": "2018-12-03 07:28:43.046",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

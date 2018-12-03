@@ -434,9 +434,9 @@
     {
       "text": "%md\n\n## 3. Compacting and Collecting Statistics\n\nSince you've just imported a large amount of data into your database, it's a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 21:10:19.438",
+      "dateUpdated": "2018-12-03 05:03:08.992",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -473,7 +473,7 @@
       "title": "Perform Major Compaction",
       "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA('DEV2');",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:19:03.884",
+      "dateUpdated": "2018-12-03 05:03:00.836",
       "config": {
         "tableHide": false,
         "editorSetting": {

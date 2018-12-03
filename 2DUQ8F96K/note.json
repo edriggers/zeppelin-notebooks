@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542398443304_1947682620",
       "id": "20170620-141909_771490751",
       "dateCreated": "2018-11-16 12:00:43.000",
-      "dateStarted": "2018-11-30 23:26:37.923",
-      "dateFinished": "2018-11-30 23:26:37.936",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -76,15 +74,13 @@
       "jobName": "paragraph_1542767864123_962201816",
       "id": "20181120-183744_1917061299",
       "dateCreated": "2018-11-20 18:37:44.123",
-      "dateStarted": "2018-11-30 23:31:28.299",
-      "dateFinished": "2018-11-30 23:31:28.315",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nimport org.apache.spark.mllib.tree.DecisionTree\nimport org.apache.spark.mllib.tree.model.DecisionTreeModel\nimport org.apache.spark.mllib.util.MLUtils\n\n// Load and parse the data file.\nval data = MLUtils.loadLibSVMFile(sc, \"/Users/benepstein/Desktop/sample_libsvm_data.txt\")\n// Split the data into training and test sets (30% held out for testing)\nval splits = data.randomSplit(Array(0.7, 0.3))\nval (trainingData, testData) = (splits(0), splits(1))\n\n// Train a DecisionTree model.\n//  Empty categoricalFeaturesInfo indicates all features are continuous.\nval numClasses = 2\nval categoricalFeaturesInfo = Map[Int, Int]()\nval impurity = \"gini\"\nval maxDepth = 5\nval maxBins = 32\n\nval model = DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,\n  impurity, maxDepth, maxBins)\n\n// Evaluate model on test instances and compute test error\nval labelAndPreds = testData.map { point =>\n  val prediction = model.predict(point.features)\n  (point.label, prediction)\n}\nval testErr = labelAndPreds.filter(r => r._1 != r._2).count().toDouble / testData.count()\nprintln(\"Test Error = \" + testErr)\nprintln(\"Learned classification tree model:\\n\" + model.toDebugString)\n\n// Save and load model\n// model.save(sc, \"target/tmp/myDecisionTreeClassificationModel\")\n// val sameModel = DecisionTreeModel.load(sc, \"target/tmp/myDecisionTreeClassificationModel\")",
+      "text": "%spark\nimport org.apache.spark.mllib.tree.DecisionTree\nimport org.apache.spark.mllib.tree.model.DecisionTreeModel\nimport org.apache.spark.mllib.util.MLUtils\n\n// Load and parse the data file.\nval data = MLUtils.loadLibSVMFile(sc, \"/opt/data/sample_libsvm_data.txt\")\n// Split the data into training and test sets (30% held out for testing)\nval splits = data.randomSplit(Array(0.7, 0.3))\nval (trainingData, testData) = (splits(0), splits(1))\n\n// Train a DecisionTree model.\n//  Empty categoricalFeaturesInfo indicates all features are continuous.\nval numClasses = 2\nval categoricalFeaturesInfo = Map[Int, Int]()\nval impurity = \"gini\"\nval maxDepth = 5\nval maxBins = 32\n\nval model = DecisionTree.trainClassifier(trainingData, numClasses, categoricalFeaturesInfo,\n  impurity, maxDepth, maxBins)\n\n// Evaluate model on test instances and compute test error\nval labelAndPreds = testData.map { point =>\n  val prediction = model.predict(point.features)\n  (point.label, prediction)\n}\nval testErr = labelAndPreds.filter(r => r._1 != r._2).count().toDouble / testData.count()\nprintln(\"Test Error = \" + testErr)\nprintln(\"Learned classification tree model:\\n\" + model.toDebugString)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:00:43.000",
+      "dateUpdated": "2018-12-03 04:32:10.161",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -96,7 +92,8 @@
         "editorMode": "ace/mode/scala",
         "fontSize": 9.0,
         "results": {},
-        "enabled": true
+        "enabled": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -146,13 +143,11 @@
       "jobName": "paragraph_1542398443306_-1240311123",
       "id": "20170620-153620_626385294",
       "dateCreated": "2018-11-16 12:00:43.000",
-      "dateStarted": "2018-12-01 07:14:04.976",
-      "dateFinished": "2018-12-01 07:14:04.984",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/j. Decision Trees",
+  "name": "Splice Machine Training/For Data Scientists/i. Decision Trees",
   "id": "2DUQ8F96K",
   "noteParams": {},
   "noteForms": {},

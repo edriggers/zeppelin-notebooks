@@ -1164,9 +1164,9 @@
     },
     {
       "title": "Representative Micro-Benchmarks",
-      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in <100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can\u2019t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
+      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-benchmark results from Splice Machine running TPC-H and other benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in <100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can\u2019t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:43:29.740",
+      "dateUpdated": "2018-12-03 07:48:41.862",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1190,7 +1190,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>A Glimpse at Splice Machine Benchmark Results</h2>\n<p>Here are some micro-results from Splice Machine running TPC-H benchmarks:</p>\n<ul>\n  <li>2ms single record lookups on primary keys at petabyte scale</li>\n  <li>20ms single record updates at petabyte scale</li>\n  <li>40-way OLTP indexed joins return in &lt;100ms</li>\n  <li>150-way OLAP style joins execute in under 2 minutes</li>\n  <li>440-way join executes where others can\u2019t parse</li>\n  <li>Ingestion at 80MB/sec/node</li>\n  <li>Can run TPC-C and TPC-H simultaneously</li>\n</ul>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>A Glimpse at Splice Machine Benchmark Results</h2>\n<p>Here are some micro-benchmark results from Splice Machine running TPC-H and other benchmarks:</p>\n<ul>\n  <li>2ms single record lookups on primary keys at petabyte scale</li>\n  <li>20ms single record updates at petabyte scale</li>\n  <li>40-way OLTP indexed joins return in &lt;100ms</li>\n  <li>150-way OLAP style joins execute in under 2 minutes</li>\n  <li>440-way join executes where others can\u2019t parse</li>\n  <li>Ingestion at 80MB/sec/node</li>\n  <li>Can run TPC-C and TPC-H simultaneously</li>\n</ul>\n</div>"
           }
         ]
       },
@@ -1198,8 +1198,9 @@
       "jobName": "paragraph_1542402827722_-438213067",
       "id": "20180118-022657_414327443",
       "dateCreated": "2018-11-16 13:13:47.000",
+      "dateStarted": "2018-12-03 07:48:35.091",
+      "dateFinished": "2018-12-03 07:48:35.102",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1247,7 +1248,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,
