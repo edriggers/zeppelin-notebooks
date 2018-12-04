@@ -141,8 +141,6 @@
       "jobName": "paragraph_1542394204050_-1589518069",
       "id": "20170917-151828_1052121991",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-12-02 22:30:09.357",
-      "dateFinished": "2018-12-02 22:30:09.380",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -219,8 +217,6 @@
       "jobName": "paragraph_1542394204052_-266420455",
       "id": "20171016-094705_1165713084",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-12-02 22:28:10.273",
-      "dateFinished": "2018-12-02 22:28:10.310",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -364,21 +360,15 @@
       "jobName": "paragraph_1542394204054_-1107415519",
       "id": "20170917-162201_1369089111",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-12-03 07:44:58.565",
-      "dateFinished": "2018-12-03 07:44:58.577",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part I - Beginning/h. Using Explain and Hints",
+  "name": "Splice Machine Training/For Developers, Part I - Beginning/g. Explaining and Hinting",
   "id": "2DVFUM14R",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

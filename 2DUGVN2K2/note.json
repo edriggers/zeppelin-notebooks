@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Running Queries in Splice Machine\n\nThis notebook introduces you to:\n\n1. *Running database queries from a Zeppelin notebook*\n2. *Using `Explain Plan`* to explore the execution plan for a query \n",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Running Queries\n\nThis notebook introduces you to:\n\n1. *Running database queries from a Zeppelin notebook*\n2. *Using `Explain Plan`* to explore the execution plan for a query \n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 22:44:40.240",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Running Queries in Splice Machine</h1>\n<p>This notebook introduces you to:</p>\n<ol>\n  <li><em>Running database queries from a Zeppelin notebook</em></li>\n  <li><em>Using <code>Explain Plan</code></em> to explore the execution plan for a query</li>\n</ol>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Running Queries</h1>\n<p>This notebook introduces you to:</p>\n<ol>\n  <li><em>Running database queries from a Zeppelin notebook</em></li>\n  <li><em>Using <code>Explain Plan</code></em> to explore the execution plan for a query</li>\n</ol>\n</div>"
           }
         ]
       },
@@ -237,13 +237,11 @@
       "jobName": "paragraph_1542393642888_50909611",
       "id": "20170916-191001_544321918",
       "dateCreated": "2018-11-16 10:40:42.000",
-      "dateStarted": "2018-12-02 20:01:19.182",
-      "dateFinished": "2018-12-02 20:01:19.212",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nNow that you've learned about running queries, please continue on to the [*Tuning Queries*](/#/notebook/2DVGS3CZ2) notebook.\n",
+      "text": "%md\n## Where to Go Next\nNow that you've learned about running queries, please continue on to the [*Tuning Queries for Performance*](/#/notebook/2DVGS3CZ2) notebook.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 03:43:28.745",
       "config": {
@@ -269,7 +267,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Now that you&rsquo;ve learned about running queries, please continue on to the <a href=\"/#/notebook/2DVGS3CZ2\"><em>Tuning Queries</em></a> notebook.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Now that you&rsquo;ve learned about running queries, please continue on to the <a href=\"/#/notebook/2DVGS3CZ2\"><em>Tuning Queries for Performance</em></a> notebook.</p>\n</div>"
           }
         ]
       },
@@ -281,15 +279,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part I - Beginning/e. Running Queries",
+  "name": "Splice Machine Training/For Developers, Part I - Beginning/d. Running Queries",
   "id": "2DUGVN2K2",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

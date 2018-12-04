@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n# Decision Trees\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\nThis notebook provides an example of implementing a *Decision Tree* algorithm that:\n\n* Loads a data file\n* Parses the data as an RDD of LabeledPoint\n* Performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\n\nThe <a href=\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target=\"_blank\">Decision Tree Algorithm</a> is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: \n\n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it's greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\n\n<img class=\"splice\" src=\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\">",
+      "text": "%md\n# Decision Trees Example\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\nThis notebook provides an example of implementing a *Decision Tree* algorithm that:\n\n* Loads a data file\n* Parses the data as an RDD of LabeledPoint\n* Performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.\n\nThe <a href=\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target=\"_blank\">Decision Tree Algorithm</a> is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: \n\n* Locally optimal decisions are made at each node in hopes of a globally optimal decision\n* Because of it's greedy nature, it cannot guarantee the globally optimal tree\n\nAt its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:\n\n<img class=\"splice\" src=\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\">",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:13:03.558",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h1>Decision Trees</h1>\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<p>This notebook provides an example of implementing a <em>Decision Tree</em> algorithm that:</p>\n<ul>\n  <li>Loads a data file</li>\n  <li>Parses the data as an RDD of LabeledPoint</li>\n  <li>Performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.</li>\n</ul>\n<p>The <a href=\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target=\"_blank\">Decision Tree Algorithm</a> is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: </p>\n<ul>\n  <li>Locally optimal decisions are made at each node in hopes of a globally optimal decision</li>\n  <li>Because of it&rsquo;s greedy nature, it cannot guarantee the globally optimal tree</li>\n</ul>\n<p>At its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:</p>\n<img class=\"splice\" src=\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\">\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h1>Decision Trees</h1>\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<p>This notebook provides an example of implementing a <em>Decision Trees Example</em> algorithm that:</p>\n<ul>\n  <li>Loads a data file</li>\n  <li>Parses the data as an RDD of LabeledPoint</li>\n  <li>Performs classification using a decision tree with Gini impurity as an impurity measure and a maximum tree depth of 5.</li>\n</ul>\n<p>The <a href=\"https://spark.apache.org/docs/latest/mllib-decision-tree.html\" target=\"_blank\">Decision Tree Algorithm</a> is a greedy algorithm that performs a recursive binary partitioning of the feature space for predictive modeling. Here are some interesting points about this algorithm: </p>\n<ul>\n  <li>Locally optimal decisions are made at each node in hopes of a globally optimal decision</li>\n  <li>Because of it&rsquo;s greedy nature, it cannot guarantee the globally optimal tree</li>\n</ul>\n<p>At its core (and most simplified), decision trees are simply a system of if-else statements, always taking the most optimal answer, resulting in (hopefully) the most optimal decision, as shown in this diagram:</p>\n<img class=\"splice\" src=\"http://mines.humanoriented.com/classes/2010/fall/csci568/portfolio_exports/lguo/image/decisionTree/classification.jpg\">\n</div>"
           }
         ]
       },
@@ -108,7 +108,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe final notebook in this class shows you an example of implementing a simple [*ETL Pipeline*](/#/notebook/2DWVX87QY) in a Splice Machine Zeppelin notebook.\n",
+      "text": "%md\n## Where to Go Next\n\nThe final notebook in this class shows you an example of implementing a simple [*ETL Pipeline Example*](/#/notebook/2DWVX87QY) in a Splice Machine Zeppelin notebook.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:14:04.975",
       "config": {
@@ -135,7 +135,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The final notebook in this class shows you an example of implementing a simple <a href=\"/#/notebook/2DWVX87QY\"><em>ETL Pipeline</em></a> in a Splice Machine Zeppelin notebook.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The final notebook in this class shows you an example of implementing a simple <a href=\"/#/notebook/2DWVX87QY\"><em>ETL Pipeline Example</em></a> in a Splice Machine Zeppelin notebook.</p>\n</div>"
           }
         ]
       },
@@ -147,7 +147,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/i. Decision Trees",
+  "name": "Splice Machine Training/For Data Scientists/g. Decision Trees Example",
   "id": "2DUQ8F96K",
   "noteParams": {},
   "noteForms": {},

@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n# Implementing a KMeans Algorithm\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n",
+      "text": "%md\n\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n# KMeans Example\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 02:45:31.000",
       "config": {
@@ -35,7 +35,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Implementing a KMeans Algorithm</h1>\n<p>This notebook shows you how to implement a simple <em>KMeans</em> algorithm in a Zeppelin notebook, in these sections:</p>\n<ul>\n  <li><em>Setting Up KMeans</em></li>\n  <li><em>Computing KMEans</em></li>\n  <li><em>Simple KMeans Example</em></li>\n</ul>\n<p>KMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>KMeans Example</h1>\n<p>This notebook shows you how to implement a simple <em>KMeans</em> algorithm in a Zeppelin notebook, in these sections:</p>\n<ul>\n  <li><em>Setting Up KMeans</em></li>\n  <li><em>Computing KMEans</em></li>\n  <li><em>Simple KMeans Example</em></li>\n</ul>\n<p>KMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.</p>\n</div>"
           }
         ]
       },
@@ -193,7 +193,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Decision Trees*](/#/notebook/2DUQ8F96K), walks you through another Machine Learning example: using a decision tree to perform classification.\n",
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Decision Trees Example*](/#/notebook/2DUQ8F96K), walks you through another Machine Learning example: using a decision tree to perform classification.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:12:18.735",
       "config": {
@@ -220,7 +220,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DUQ8F96K\"><em>Decision Trees</em></a>, walks you through another Machine Learning example: using a decision tree to perform classification.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DUQ8F96K\"><em>Decision Trees Example</em></a>, walks you through another Machine Learning example: using a decision tree to perform classification.</p>\n</div>"
           }
         ]
       },
@@ -232,7 +232,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/h. KMeans",
+  "name": "Splice Machine Training/For Data Scientists/f. KMeans Example",
   "id": "2DX6TGACY",
   "noteParams": {},
   "noteForms": {},

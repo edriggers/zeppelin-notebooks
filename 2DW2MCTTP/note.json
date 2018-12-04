@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# TCPH-1 Walk Through\nIn this notebook, we'll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere's a view of the TPC-H schema:\n\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n\n",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Running the TPCH-1 Benchmark Queries\nIn this notebook, we'll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere's a view of the TPC-H schema:\n\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:09:11.047",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>TCPH-1 Walk Through</h1>\n<p>In this notebook, we&rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:</p>\n<ol>\n  <li><em>Creating the Tables</em></li>\n  <li><em>Importing the TPCH-1 Data From S3</em></li>\n  <li><em>Compacting and Collecting Statistics</em></li>\n  <li><em>Running TPCH-1 Queries</em></li>\n</ol>\n<p>At the bottom you will also see some graphical output from some queries (or slight variations).</p>\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n<h2>About TPCH Data</h2>\n<p>TPC-H (aka <em>TPCH</em>) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.</p>\n<h3>The TPCH Schema</h3>\n<p>Here&rsquo;s a view of the TPC-H schema:</p>\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n</div>"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Running the TPCH-1 Benchmark Queries</h1>\n<p>In this notebook, we&rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:</p>\n<ol>\n  <li><em>Creating the Tables</em></li>\n  <li><em>Importing the TPCH-1 Data From S3</em></li>\n  <li><em>Compacting and Collecting Statistics</em></li>\n  <li><em>Running TPCH-1 Queries</em></li>\n</ol>\n<p>At the bottom you will also see some graphical output from some queries (or slight variations).</p>\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n<h2>About TPCH Data</h2>\n<p>TPC-H (aka <em>TPCH</em>) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.</p>\n<h3>The TPCH Schema</h3>\n<p>Here&rsquo;s a view of the TPC-H schema:</p>\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n</div>"
           }
         ]
       },
@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542394755823_-1090847122",
       "id": "20170517-225129_1383056312",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "dateStarted": "2018-12-02 21:08:09.595",
-      "dateFinished": "2018-12-02 21:08:09.620",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -145,8 +143,6 @@
       "jobName": "paragraph_1542394755825_235164113",
       "id": "20171016-140317_176321024",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "dateStarted": "2018-12-02 21:08:42.015",
-      "dateFinished": "2018-12-02 21:08:42.026",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1008,7 +1004,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Common Utilities*](/#/notebook/2DUK929SD), introduces some common utilities that you may find useful when working with Splice Machine.\n",
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Useful Database Utilities*](/#/notebook/2DUK929SD), introduces some common utilities that you may find useful when working with Splice Machine.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 04:30:11.739",
       "config": {
@@ -1034,7 +1030,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DUK929SD\"><em>Common Utilities</em></a>, introduces some common utilities that you may find useful when working with Splice Machine.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DUK929SD\"><em>Useful Database Utilities</em></a>, introduces some common utilities that you may find useful when working with Splice Machine.</p>\n</div>"
           }
         ]
       },
@@ -1046,7 +1042,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part II - Intermediate/b. Running TPCH-1 Benchmark Queries",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/b. Running the TPCH-1 Benchmark Queries",
   "id": "2DW2MCTTP",
   "noteParams": {},
   "noteForms": {},

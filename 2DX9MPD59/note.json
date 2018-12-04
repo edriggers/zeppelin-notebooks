@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Tuning for Performance\n\nThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*\n\nTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Tuning Queries for Performance\n\nThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*\n\nTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:26:43.291",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Tuning for Performance</h1>\n<p>This notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:</p>\n<ul>\n  <li><em>Collecting Statistics</em></li>\n  <li><em>Performing Major Compactions</em></li>\n  <li><em>Creating Primary Keys and Indexes</em></li>\n  <li><em>Joining Tables</em></li>\n  <li><em>Selecting a Join Strategy</em></li>\n</ul>\n<p>Tuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the <em>cost</em> of each possible plan, and chooses the lowest-cost option.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Tuning Queries for Performance</h1>\n<p>This notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:</p>\n<ul>\n  <li><em>Collecting Statistics</em></li>\n  <li><em>Performing Major Compactions</em></li>\n  <li><em>Creating Primary Keys and Indexes</em></li>\n  <li><em>Joining Tables</em></li>\n  <li><em>Selecting a Join Strategy</em></li>\n</ul>\n<p>Tuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the <em>cost</em> of each possible plan, and chooses the lowest-cost option.</p>\n</div>"
           }
         ]
       },
@@ -311,8 +311,6 @@
       "jobName": "paragraph_1542402464283_-1067363641",
       "id": "20170916-192947_215578585",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "dateStarted": "2018-12-03 07:39:39.316",
-      "dateFinished": "2018-12-03 07:39:39.339",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1127,7 +1125,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Where to Go Next\n\nThe next notebook in this class, [*Using the DB Console*](/#/notebook/2DXU61KR1), explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.\n\n",
+      "text": "%md\n\n## Where to Go Next\n\nThe next notebook in this class, [*Using the Database Console*](/#/notebook/2DXU61KR1), explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:29:37.147",
       "config": {
@@ -1152,7 +1150,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DXU61KR1\"><em>Using the DB Console</em></a>, explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DXU61KR1\"><em>Using the Database Console</em></a>, explores using the Database Console to learn about where your queries are bogging down and how to use that information for additional query tuning.</p>\n</div>"
           }
         ]
       },
@@ -1203,15 +1201,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For DBAs/d. Tuning Queries",
+  "name": "Splice Machine Training/For DBAs/c. Tuning Queries for Performance",
   "id": "2DX9MPD59",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

@@ -35,8 +35,6 @@
       "jobName": "paragraph_1542396049296_-1872102274",
       "id": "20171130-160641_2246962",
       "dateCreated": "2018-11-16 11:20:49.000",
-      "dateStarted": "2018-12-02 21:49:57.846",
-      "dateFinished": "2018-12-02 21:49:57.876",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -75,8 +73,6 @@
       "jobName": "paragraph_1542396049297_1356453695",
       "id": "20171130-161001_579045840",
       "dateCreated": "2018-11-16 11:20:49.000",
-      "dateStarted": "2018-11-30 05:17:36.737",
-      "dateFinished": "2018-11-30 05:17:36.765",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -115,8 +111,6 @@
       "jobName": "paragraph_1542396049298_-265258066",
       "id": "20171130-161030_1002161632",
       "dateCreated": "2018-11-16 11:20:49.000",
-      "dateStarted": "2018-11-30 05:18:25.370",
-      "dateFinished": "2018-11-30 05:18:25.399",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -155,8 +149,6 @@
       "jobName": "paragraph_1542396049299_394994822",
       "id": "20171130-162809_2009777442",
       "dateCreated": "2018-11-16 11:20:49.000",
-      "dateStarted": "2018-11-30 05:18:53.295",
-      "dateFinished": "2018-11-30 05:18:53.307",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -195,8 +187,6 @@
       "jobName": "paragraph_1542396049299_-566675317",
       "id": "20171201-001544_2091534540",
       "dateCreated": "2018-11-16 11:20:49.000",
-      "dateStarted": "2018-11-30 05:19:40.467",
-      "dateFinished": "2018-11-30 05:19:40.474",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -235,13 +225,11 @@
       "jobName": "paragraph_1542396049300_-642175262",
       "id": "20171201-001610_1286108786",
       "dateCreated": "2018-11-16 11:20:49.000",
-      "dateStarted": "2018-11-30 05:20:10.264",
-      "dateFinished": "2018-11-30 05:20:10.271",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*ETL Pipeline*](/#/notebook/2DXK4FQKX) provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\n",
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*ETL Pipeline Example*](/#/notebook/2DXK4FQKX) provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:43:28.875",
       "config": {
@@ -268,7 +256,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DXK4FQKX\"><em>ETL Pipeline</em></a> provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DXK4FQKX\"><em>ETL Pipeline Example</em></a> provides an example of implementing a simple ETL pipeline in a Splice Machine Zeppelin notbook.</p>\n</div>"
           }
         ]
       },
@@ -276,8 +264,6 @@
       "jobName": "paragraph_1542740950015_-481719233",
       "id": "20181120-110910_1667651518",
       "dateCreated": "2018-11-20 11:09:10.015",
-      "dateStarted": "2018-12-01 05:43:28.875",
-      "dateFinished": "2018-12-01 05:43:28.909",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

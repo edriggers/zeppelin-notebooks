@@ -411,14 +411,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For DBAs/c. Running Queries",
+  "name": "Splice Machine Training/For DBAs/b. Importing Data and Running Queries",
   "id": "2DUMZ6BTQ",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

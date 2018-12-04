@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Tuning for Performance\n\nThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*\n\nTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Tuning Queries for Performance\n\nThis notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:\n\n* *Collecting Statistics*\n* *Performing Major Compactions*\n* *Creating Primary Keys and Indexes*\n* *Joining Tables*\n* *Selecting a Join Strategy*\n\nTuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the *cost* of each possible plan, and chooses the lowest-cost option.",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 03:43:56.929",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Tuning for Performance</h1>\n<p>This notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:</p>\n<ul>\n  <li><em>Collecting Statistics</em></li>\n  <li><em>Performing Major Compactions</em></li>\n  <li><em>Creating Primary Keys and Indexes</em></li>\n  <li><em>Joining Tables</em></li>\n  <li><em>Selecting a Join Strategy</em></li>\n</ul>\n<p>Tuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the <em>cost</em> of each possible plan, and chooses the lowest-cost option.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Tuning Queries for Performance</h1>\n<p>This notebook introduces a number of options you can employ to help generate the lowest cost plan and best performance for your queries, in these sections:</p>\n<ul>\n  <li><em>Collecting Statistics</em></li>\n  <li><em>Performing Major Compactions</em></li>\n  <li><em>Creating Primary Keys and Indexes</em></li>\n  <li><em>Joining Tables</em></li>\n  <li><em>Selecting a Join Strategy</em></li>\n</ul>\n<p>Tuning for performance is a critical topic for any database, and is especially true for Splice Machine because its distributed, dual-engine architecture may influence performance in ways unexpected by experienced database users. Splice Machine uses a cost-based optimizer, which means that the database determines different plans (ways it can run) for a query. The optimizer estimates the <em>cost</em> of each possible plan, and chooses the lowest-cost option.</p>\n</div>"
           }
         ]
       },
@@ -312,8 +312,6 @@
       "jobName": "paragraph_1542393888847_-639620927",
       "id": "20170916-192947_215578585",
       "dateCreated": "2018-11-16 10:44:48.000",
-      "dateStarted": "2018-12-03 07:40:25.706",
-      "dateFinished": "2018-12-03 07:40:25.742",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -678,8 +676,6 @@
       "jobName": "paragraph_1542393888852_1457395704",
       "id": "20170917-094813_1546634594",
       "dateCreated": "2018-11-16 10:44:48.000",
-      "dateStarted": "2018-12-01 23:55:12.988",
-      "dateFinished": "2018-12-01 23:55:14.616",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1156,9 +1152,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nPlease continue on to the next notebook in this class, [*Using the DB Console*](/#/notebook/2DWZA8SHP), in which we'll get deeper into learning about tuning queries.\n",
+      "text": "%md\n## Where to Go Next\nPlease continue on to the next notebook in this class, [*Using the Database Console*](/#/notebook/2DWZA8SHP), in which we'll get deeper into learning about monitoring and learning about query execution.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 03:54:48.216",
+      "dateUpdated": "2018-12-04 00:08:03.707",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1183,7 +1179,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Please continue on to the next notebook in this class, <a href=\"/#/notebook/2DWZA8SHP\"><em>Using the DB Console</em></a>, in which we&rsquo;ll get deeper into learning about tuning queries.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Please continue on to the next notebook in this class, <a href=\"/#/notebook/2DWZA8SHP\"><em>Using the Database Console</em></a>, in which we&rsquo;ll get deeper into learning about monitoring and learning about query execution.</p>\n</div>"
           }
         ]
       },
@@ -1191,6 +1187,8 @@
       "jobName": "paragraph_1542687789874_-1703145826",
       "id": "20181119-202309_319047251",
       "dateCreated": "2018-11-19 20:23:09.874",
+      "dateStarted": "2018-12-04 00:07:58.216",
+      "dateFinished": "2018-12-04 00:07:58.226",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1233,7 +1231,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part I - Beginning/f. Tuning Queries",
+  "name": "Splice Machine Training/For Developers, Part I - Beginning/e. Tuning Queries for Performance",
   "id": "2DVGS3CZ2",
   "noteParams": {},
   "noteForms": {},

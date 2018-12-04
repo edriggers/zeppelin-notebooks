@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Useful Database Utilities\n\nThis notebook describes a number of utilities that you may find useful. We'll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run each paragraph and see the results.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Useful Database Utilities\n\nThis notebook describes a number of utilities that you may find useful. We\u0027ll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 04:55:13.079",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Useful Database Utilities</h1>\n<p>This notebook describes a number of utilities that you may find useful. We&rsquo;ll expand this list over time. For now, we have these sections:</p>\n<ul>\n  <li><em>Discovering the Splice Machine Versions</em> shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.</li>\n  <li><em>Listing the Tables in Your Database</em> shows you a <code>SELECT</code> statement that displays all of the tables in your database</li>\n</ul>\n<p>All you need to do is click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run each paragraph and see the results.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUseful Database Utilities\u003c/h1\u003e\n\u003cp\u003eThis notebook describes a number of utilities that you may find useful. We\u0026rsquo;ll expand this list over time. For now, we have these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eDiscovering the Splice Machine Versions\u003c/em\u003e shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eListing the Tables in Your Database\u003c/em\u003e shows you a \u003ccode\u003eSELECT\u003c/code\u003e statement that displays all of the tables in your database\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -101,7 +101,7 @@
     },
     {
       "title": "Listing the Tables in Your Database",
-      "text": "%splicemachine\n\nselect t.TABLENAME, s.SCHEMANAME from SYS.SYSTABLES t, SYS.SYSSCHEMAS s where t.SCHEMAID = s.SCHEMAID;",
+      "text": "%splicemachine\n\nselect t.TABLENAME, s.SCHEMANAME from SYS.SYSTABLES t, SYS.SYSSCHEMAS s where t.SCHEMAID \u003d s.SCHEMAID;",
       "user": "anonymous",
       "dateUpdated": "2018-11-16 11:01:38.000",
       "config": {
@@ -159,7 +159,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nYou're now ready to learn about the [*The Life of a Splice Machine Query*](/#/notebook/2DWS5FM39) in the next notebook in this class.",
+      "text": "%md\n## Where to Go Next\n\nYou\u0027re now ready to learn about the [*The Life of a Query*](/#/notebook/2DWS5FM39) in the next notebook in this class.",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 04:55:56.961",
       "config": {
@@ -186,7 +186,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>You&rsquo;re now ready to learn about the <a href=\"/#/notebook/2DWS5FM39\"><em>The Life of a Splice Machine Query</em></a> in the next notebook in this class.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;re now ready to learn about the \u003ca href\u003d\"/#/notebook/2DWS5FM39\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e in the next notebook in this class.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -198,7 +198,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Developers, Part II - Intermediate/c. Common Utilities",
+  "name": "Splice Machine Training/For Developers, Part II - Intermediate/c. Useful Database Utilities",
   "id": "2DUK929SD",
   "noteParams": {},
   "noteForms": {},

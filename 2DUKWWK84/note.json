@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "title": "Transactions ",
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Splice Transactions with Spark and JDBC\nThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we'll:\n\n1. *Run setup code to create our variables and define a simple Spark procedure named `checkBalance`.*\n2. *Use JDBC calls to set and check values from the database.*\n3. *Show the use of `commit` and `rollback` to control transactional persistence of our updates.*\n<br />\n",
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Transactions with Spark and JDBC\nThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we'll:\n\n1. *Run setup code to create our variables and define a simple Spark procedure named `checkBalance`.*\n2. *Use JDBC calls to set and check values from the database.*\n3. *Show the use of `commit` and `rollback` to control transactional persistence of our updates.*\n<br />\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:08:58.775",
       "config": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Splice Transactions with Spark and JDBC</h1>\n<p>This notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we&rsquo;ll:</p>\n<ol>\n  <li><em>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</em></li>\n  <li><em>Use JDBC calls to set and check values from the database.</em></li>\n  <li><em>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</em><br/><br /></li>\n</ol>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Transactions with Spark and JDBC</h1>\n<p>This notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we&rsquo;ll:</p>\n<ol>\n  <li><em>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</em></li>\n  <li><em>Use JDBC calls to set and check values from the database.</em></li>\n  <li><em>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</em><br/><br /></li>\n</ol>\n</div>"
           }
         ]
       },
@@ -436,7 +436,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class walks you through [*Creating Apps with Splice Machine*](/#/notebook/2DVU2ESP3).\n",
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class walks you through [*Deploying Apps with Spring*](/#/notebook/2DVU2ESP3).\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:10:10.403",
       "config": {
@@ -462,7 +462,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class walks you through <a href=\"/#/notebook/2DVU2ESP3\"><em>Creating Apps with Splice Machine</em></a>.</p>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class walks you through <a href=\"/#/notebook/2DVU2ESP3\"><em>Deploying Apps with Spring</em></a>.</p>\n</div>"
           }
         ]
       },
