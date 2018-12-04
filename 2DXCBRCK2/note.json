@@ -1202,9 +1202,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class introduces you to [*Creating Custom Stored Procedures*](/#/notebook/2DXZUCREK) with the Splice Machine Database Console.",
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class introduces you to [*Creating Custom Stored Procedures*](/#/notebook/2DXZUCREK) with Splice Machine.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:51:12.154",
+      "dateUpdated": "2018-12-04 00:06:14.182",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -1228,7 +1228,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class introduces you to \u003ca href\u003d\"/#/notebook/2DXZUCREK\"\u003e\u003cem\u003eCreating Custom Stored Procedures\u003c/em\u003e\u003c/a\u003e with the Splice Machine Database Console.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class introduces you to \u003ca href\u003d\"/#/notebook/2DXZUCREK\"\u003e\u003cem\u003eCreating Custom Stored Procedures\u003c/em\u003e\u003c/a\u003e with Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1236,6 +1236,8 @@
       "jobName": "paragraph_1542402827724_-691876709",
       "id": "20180122-173624_509126525",
       "dateCreated": "2018-11-16 13:13:47.000",
+      "dateStarted": "2018-12-04 00:06:00.271",
+      "dateFinished": "2018-12-04 00:06:00.282",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -1244,7 +1246,11 @@
   "id": "2DXCBRCK2",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

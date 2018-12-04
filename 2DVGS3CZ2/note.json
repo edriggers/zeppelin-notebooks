@@ -1152,9 +1152,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nPlease continue on to the next notebook in this class, [*Using the Database Console*](/#/notebook/2DWZA8SHP), in which we\u0027ll get deeper into learning about tuning queries.\n",
+      "text": "%md\n## Where to Go Next\nPlease continue on to the next notebook in this class, [*Using the Database Console*](/#/notebook/2DWZA8SHP), in which we\u0027ll get deeper into learning about monitoring and learning about query execution.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 03:54:48.216",
+      "dateUpdated": "2018-12-04 00:08:03.707",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -1179,7 +1179,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003ePlease continue on to the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DWZA8SHP\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e, in which we\u0026rsquo;ll get deeper into learning about tuning queries.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003ePlease continue on to the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DWZA8SHP\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e, in which we\u0026rsquo;ll get deeper into learning about monitoring and learning about query execution.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1187,6 +1187,8 @@
       "jobName": "paragraph_1542687789874_-1703145826",
       "id": "20181119-202309_319047251",
       "dateCreated": "2018-11-19 20:23:09.874",
+      "dateStarted": "2018-12-04 00:07:58.216",
+      "dateFinished": "2018-12-04 00:07:58.226",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1233,7 +1235,11 @@
   "id": "2DVGS3CZ2",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

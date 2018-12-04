@@ -388,9 +388,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nYou\u0027ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Machine Learning with Spark MLlib*](/#/notebook/2DYC2S8DY), shows you how to use R to program with Spark in a Zeppelin Notebook.",
+      "text": "%md\n## Where to Go Next\nYou\u0027ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Using our Native Spark DataSource*](/#/notebook/2DWHEE99H), demonstrates how our Native Spark DataSource allows you to adopt the full power of Spark and manipulate dataframes while also having the power of full ANSI, ACID-compliant SQL.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 07:31:49.310",
+      "dateUpdated": "2018-12-03 23:59:37.001",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -415,7 +415,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DYC2S8DY\"\u003e\u003cem\u003eMachine Learning with Spark MLlib \u003c/em\u003e\u003c/a\u003e, shows you how to use R to program with Spark in a Zeppelin Notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DWHEE99H\"\u003e\u003cem\u003eUsing our Native Spark DataSource\u003c/em\u003e\u003c/a\u003e, demonstrates how our Native Spark DataSource allows you to adopt the full power of Spark and manipulate dataframes while also having the power of full ANSI, ACID-compliant SQL.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -423,6 +423,8 @@
       "jobName": "paragraph_1542397883901_1883049237",
       "id": "20150703-133047_853701097",
       "dateCreated": "2018-11-16 11:51:23.000",
+      "dateStarted": "2018-12-03 23:59:30.272",
+      "dateFinished": "2018-12-03 23:59:30.282",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -431,7 +433,11 @@
   "id": "2DWE2XT8V",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

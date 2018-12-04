@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Database Console\n\nThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\n\n* *Accessing the Console*\n* *Basic UI Features*\n* *Running a Basic Query*\n* *Drilling Down into a Query*\n* *Parallelsim and Spark*\n\n## About Spark Jobs in Splice Machine\n\nYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the `control` side) or in Apache Spark. You can see which engine is used (`control` or `Spark`) from examining the top line of the `explain` for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\n\nYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using the Database Console\n\nThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\n\n* *Accessing the Console*\n* *Basic UI Features*\n* *Running a Basic Query*\n* *Drilling Down into a Query*\n* *Parallelism and Spark*\n\n## About Spark Jobs in Splice Machine\n\nYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the `control` side) or in Apache Spark. You can see which engine is used (`control` or `Spark`) from examining the top line of the `explain` for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\n\nYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:03:03.377",
+      "dateUpdated": "2018-12-04 00:04:58.759",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -15,7 +15,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "fontSize": 9.0
       },
       "settings": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing the Database Console\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eAccessing the Console\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eBasic UI Features\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning a Basic Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDrilling Down into a Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eParallelsim and Spark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAbout Spark Jobs in Splice Machine\u003c/h2\u003e\n\u003cp\u003eYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the \u003ccode\u003econtrol\u003c/code\u003e side) or in Apache Spark. You can see which engine is used (\u003ccode\u003econtrol\u003c/code\u003e or \u003ccode\u003eSpark\u003c/code\u003e) from examining the top line of the \u003ccode\u003eexplain\u003c/code\u003e for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\u003c/p\u003e\n\u003cp\u003eYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing the Database Console\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eAccessing the Console\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eBasic UI Features\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning a Basic Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDrilling Down into a Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eParallelism and Spark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAbout Spark Jobs in Splice Machine\u003c/h2\u003e\n\u003cp\u003eYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the \u003ccode\u003econtrol\u003c/code\u003e side) or in Apache Spark. You can see which engine is used (\u003ccode\u003econtrol\u003c/code\u003e or \u003ccode\u003eSpark\u003c/code\u003e) from examining the top line of the \u003ccode\u003eexplain\u003c/code\u003e for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\u003c/p\u003e\n\u003cp\u003eYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,6 +35,8 @@
       "jobName": "paragraph_1542402549801_-1780050763",
       "id": "20170917-123302_29623660",
       "dateCreated": "2018-11-16 13:09:09.000",
+      "dateStarted": "2018-12-04 00:04:55.582",
+      "dateFinished": "2018-12-04 00:04:55.626",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -547,7 +549,11 @@
   "id": "2DXU61KR1",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
