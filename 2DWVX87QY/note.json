@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# ETL Pipeline Example\n\nThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# ETL Pipeline Example\n\nThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\n\n### Extract\nFirst we\u0027ll extract some data from a public URL, containing historical data about Telco customers and whether they discontinued service.  This is a good dataset for demonstrating machine learning algorithms for predicting customer churn:\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:14:38.085",
+      "dateUpdated": "2018-12-04 01:07:31.185",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -28,7 +28,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eETL Pipeline Example\u003c/h1\u003e\n\u003cp\u003eThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eETL Pipeline Example\u003c/h1\u003e\n\u003cp\u003eThis notebook presents a simple example of an ETL pipeline that reads a dataset from a public URL, performs simple transformations, and inserts data into a Splice Machine database.\u003c/p\u003e\n\u003ch3\u003eExtract\u003c/h3\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll extract some data from a public URL, containing historical data about Telco customers and whether they discontinued service. This is a good dataset for demonstrating machine learning algorithms for predicting customer churn:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -36,20 +36,22 @@
       "jobName": "paragraph_1542398782256_-1098742411",
       "id": "20181116-200622_1729314692",
       "dateCreated": "2018-11-16 12:06:22.000",
+      "dateStarted": "2018-12-04 01:07:16.865",
+      "dateFinished": "2018-12-04 01:07:16.877",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\nimport org.apache.spark.sql.execution.datasources.jdbc.JDBCOptions\nimport com.splicemachine.spark.splicemachine._\n\n// Grab available dataset from Watson\nval telcoText \u003d sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://community.watsonanalytics.com/wp-content/uploads/2015/03/WA_Fn-UseC_-Telco-Customer-Churn.csv?cm_mc_uid\u003d93701979699314920973859\u0026cm_mc_sid_50200000\u003d1492097385\u0026cm_mc_sid_52640000\u003d1492097385\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\n// Declare the Schema of the Data Set         \ncase class TelcoChurn (customerID: String, gender: String, SeniorCitizen: Boolean,Partner: String,Dependents: String,tenure: Integer ,PhoneService: String,\nMultipleLines: String,InternetService: String,OnlineSecurity: String,OnlineBackup: String,DeviceProtection: String,TechSupport: String,StreamingTV: String,\nStreamingMovies: String,Contract: String,PaperlessBilling: String,PaymentMethod: String,MonthlyCharges: Double,TotalCharges: Double,Churn: String)\n\n// Perform Data Transformation\nval telcoDF \u003d telcoText.map(s \u003d\u003e s.split(\",\")).filter(s \u003d\u003e s(0) !\u003d \"customerID\").map ( p \u003d\u003e TelcoChurn (\n    p(0), p(1), \n    if (p(2).equals(\"0\")) \n        false \n    else \n        true, \n    p(3), p(4), p(5).toInt, p(6), p(7), p(8), p(9), p(10), p(11), p(12), p(13), p(14), p(15), p(16), p(17), p(18).toDouble, p(19).toDouble, p(20))).toDF()\n\n// Show First 10 Values from Data Frame\ntelcoDF.show(10)\n\n// Insert Data Into Database\n",
+      "text": "%spark.pyspark\nimport urllib2\nfrom io import StringIO\nimport csv\nfrom pyspark.sql.types import *\n\n#get file\nurl \u003d \"https://community.watsonanalytics.com/wp-content/uploads/2015/03/WA_Fn-UseC_-Telco-Customer-Churn.csv?cm_mc_uid\u003d93701979699314920973859\u0026cm_mc_sid_50200000\u003d1492097385\u0026cm_mc_sid_52640000\u003d1492097385\"\nresponse \u003d urllib2.urlopen(url)\ntelcoText \u003d csv.reader(response)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-11-16 12:06:00.000",
+      "dateUpdated": "2018-12-04 00:03:49.295",
       "config": {
         "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
+        "editorMode": "ace/mode/python",
         "results": {},
         "enabled": true,
         "editorSetting": {
-          "language": "scala",
+          "language": "python",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
@@ -60,11 +62,343 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
       "apps": [],
       "jobName": "paragraph_1542398760211_172845743",
       "id": "20170413-100458_275811262",
       "dateCreated": "2018-11-16 12:06:00.000",
+      "dateStarted": "2018-12-03 23:49:26.401",
+      "dateFinished": "2018-12-03 23:49:29.036",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Transform\n\nNext we\u0027ll do some transformation of the data stream.  In this case we are doing some simple data cleansing and type conversions, and adding an additional column whose value is a function of other data in the existing columns:",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-04 01:07:42.412",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eTransform\u003c/h3\u003e\n\u003cp\u003eNext we\u0026rsquo;ll do some transformation of the data stream. In this case we are doing some simple data cleansing and type conversions, and adding an additional column whose value is a function of other data in the existing columns:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543881567920_-375245497",
+      "id": "20181203-235927_1901042538",
+      "dateCreated": "2018-12-03 23:59:27.920",
+      "dateStarted": "2018-12-04 01:00:40.477",
+      "dateFinished": "2018-12-04 01:00:40.499",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\n#grab header and rows\nheader \u003d telcoText.next()\nheader \u003d [name.upper() for name in header]\n#handle some missing values\nrows \u003d [row for row in telcoText if row[19] !\u003d \u0027 \u0027]\n#convert SeniorCitizen to boolean\nfor i in range(len(rows)):\n    rows[i][2] \u003d bool(int(rows[i][2]))\n    rows[i][5] \u003d int(rows[i][5])\n    rows[i][18] \u003d float(rows[i][18])\n    rows[i][19] \u003d float(rows[i][19])\n\n#get fields for schema\nfields \u003d []\nfor col in header:\n    if col \u003d\u003d \u0027SeniorCitizen\u0027:\n        t \u003d BooleanType()\n    elif col \u003d\u003d \u0027tenure\u0027:\n        t \u003d IntegerType()\n    elif col \u003d\u003d \u0027MonthlyCharges\u0027 or col\u003d\u003d\u0027TotalCharges\u0027:\n        t \u003d\u003d DoubleType()\n    else:\n        t \u003d StringType()\n    fields.append(StructField(col, t, True))\n#create schema\nschema \u003d StructType(fields)\n\n#create DF\ntelcoDF \u003d sc.parallelize(rows).toDF(schema)",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-04 00:03:43.078",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543881562884_-1104532329",
+      "id": "20181203-235922_428595853",
+      "dateCreated": "2018-12-03 23:59:22.884",
       "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\n\nz.show(telcoDF)",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-03 23:49:34.298",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "CUSTOMERID": "string",
+                      "GENDER": "string",
+                      "SENIORCITIZEN": "string",
+                      "PARTNER": "string",
+                      "DEPENDENTS": "string",
+                      "TENURE": "string",
+                      "PHONESERVICE": "string",
+                      "MULTIPLELINES": "string",
+                      "INTERNETSERVICE": "string",
+                      "ONLINESECURITY": "string",
+                      "ONLINEBACKUP": "string",
+                      "DEVICEPROTECTION": "string",
+                      "TECHSUPPORT": "string",
+                      "STREAMINGTV": "string",
+                      "STREAMINGMOVIES": "string",
+                      "CONTRACT": "string",
+                      "PAPERLESSBILLING": "string",
+                      "PAYMENTMETHOD": "string",
+                      "MONTHLYCHARGES": "string",
+                      "TOTALCHARGES": "string",
+                      "CHURN": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543878604344_895472787",
+      "id": "20181203-231004_1433349316",
+      "dateCreated": "2018-12-03 23:10:04.344",
+      "dateStarted": "2018-12-03 23:49:34.327",
+      "dateFinished": "2018-12-03 23:49:35.133",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n### Load\n\nNow that we have the data we want to load into the database, we\u0027ll define the schema and load it directly in using the Native Spark DataSource:",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-04 01:07:46.400",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLoad\u003c/h3\u003e\n\u003cp\u003eNow that we have the data we want to load into the database, we\u0026rsquo;ll define the schema and load it directly in using the Native Spark DataSource:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543881935953_-1349075694",
+      "id": "20181204-000535_1508547964",
+      "dateCreated": "2018-12-04 00:05:35.953",
+      "dateStarted": "2018-12-04 01:02:27.399",
+      "dateFinished": "2018-12-04 01:02:27.423",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n\ncreate table DS.etl_example(\n        CUSTOMERID  varchar(150),\n        gender varchar(50),\n        SeniorCitizen boolean,\n        Partner varchar(150),\n        Dependents varchar(150),\n        tenure int,\n        PhoneService varchar(150),\n        MultipleLines varchar(150),\n        InternetService varchar(150),\n        OnlineSecurity varchar(150),\n        OnlineBackup varchar(150),\n        DeviceProtection varchar(150),\n        TechSupport varchar(150),\n        StreamingTV varchar(150),\n        StreamingMovies varchar(150),\n        Contract varchar(150),\n        PaperlessBilling varchar(150),\n        PaymentMethod varchar(150),\n        MonthlyCharges double,\n        TotalCharges double,\n        Churn varchar(150));",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-03 23:04:56.774",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {}
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543878213422_242753669",
+      "id": "20181203-230333_366541620",
+      "dateCreated": "2018-12-03 23:03:33.423",
+      "dateStarted": "2018-12-03 23:04:56.912",
+      "dateFinished": "2018-12-03 23:04:59.092",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\n\nsplice \u003d PySpliceContext(\u0027jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\u0027, sqlContext)\n\nsplice.insert(telcoDF, \u0027DS.etl_example\u0027)",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-03 23:56:00.231",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543878654510_-852744704",
+      "id": "20181203-231054_1077587499",
+      "dateCreated": "2018-12-03 23:10:54.510",
+      "dateStarted": "2018-12-03 23:56:00.249",
+      "dateFinished": "2018-12-03 23:56:03.099",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect * from DS.etl_example;",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-03 23:56:34.131",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "CUSTOMERID": "string",
+                      "GENDER": "string",
+                      "SENIORCITIZEN": "string",
+                      "PARTNER": "string",
+                      "DEPENDENTS": "string",
+                      "TENURE": "string",
+                      "PHONESERVICE": "string",
+                      "MULTIPLELINES": "string",
+                      "INTERNETSERVICE": "string",
+                      "ONLINESECURITY": "string",
+                      "ONLINEBACKUP": "string",
+                      "DEVICEPROTECTION": "string",
+                      "TECHSUPPORT": "string",
+                      "STREAMINGTV": "string",
+                      "STREAMINGMOVIES": "string",
+                      "CONTRACT": "string",
+                      "PAPERLESSBILLING": "string",
+                      "PAYMENTMETHOD": "string",
+                      "MONTHLYCHARGES": "string",
+                      "TOTALCHARGES": "string",
+                      "CHURN": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543881368201_-1402926950",
+      "id": "20181203-235608_954903633",
+      "dateCreated": "2018-12-03 23:56:08.201",
+      "dateStarted": "2018-12-03 23:56:32.233",
+      "dateFinished": "2018-12-03 23:56:32.588",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -104,15 +438,21 @@
       "jobName": "paragraph_1542398760212_662535765",
       "id": "20170413-100618_77420174",
       "dateCreated": "2018-11-16 12:06:00.000",
+      "dateStarted": "2018-11-29 18:15:51.613",
+      "dateFinished": "2018-11-29 18:15:51.623",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training/For Data Scientists/h. ETL Pipeline Example",
+  "name": "Splice Machine Training/For Data Scientists/h. ETL Pipeline",
   "id": "2DWVX87QY",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
