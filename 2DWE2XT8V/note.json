@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Using Spark in Zeppelin Notebooks\nThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\n\n* *Loading Data Into A Table Using Spark*\n* *Using Spark SQL to Query the Loaded Data*\n\n<div class=\"notePlain\" style=\"font-size:12px\">\nThe data we use in this notebook is public data; here is access information for it:\n<p style=\"margin-left:60px;\">[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. <em>Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.</em> In P. Novais et al. (Eds.), <em>Proceedings of the European Simulation and Modelling Conference - ESM'2011</em>, pp. 117-121, Guimar\u00e3es, Portugal, October, 2011. EUROSIS.</p>\n\n<p style=\"margin-left:60px;\">Available at: <a href=\"http://hdl.handle.net/1822/14838\">http://hdl.handle.net/1822/14838</a></p>\n</div>",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using Spark in Zeppelin Notebooks\nThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\n\n* *Loading Data Into A Table Using Spark*\n* *Using Spark SQL to Query the Loaded Data*\n\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:00:26.157",
       "config": {
@@ -39,7 +39,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Using Spark in Zeppelin Notebooks</h1>\n<p>This notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:</p>\n<ul>\n  <li><em>Loading Data Into A Table Using Spark</em></li>\n  <li><em>Using Spark SQL to Query the Loaded Data</em></li>\n</ul>\n<div class=\"notePlain\" style=\"font-size:12px\">\nThe data we use in this notebook is public data; here is access information for it:\n<p style=\"margin-left:60px;\">[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. <em>Using Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.</em> In P. Novais et al. (Eds.), <em>Proceedings of the European Simulation and Modelling Conference - ESM'2011</em>, pp. 117-121, Guimar\u00e3es, Portugal, October, 2011. EUROSIS.</p>\n\n<p style=\"margin-left:60px;\">Available at: <a href=\"http://hdl.handle.net/1822/14838\">http://hdl.handle.net/1822/14838</a></p>\n</div>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing Spark in Zeppelin Notebooks\u003c/h1\u003e\n\u003cp\u003eThis notebook demonstrates how to use Spark in a Zeppelin notebook, in the following sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eLoading Data Into A Table Using Spark\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing Spark SQL to Query the Loaded Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class\u003d\"notePlain\" style\u003d\"font-size:12px\"\u003e\nThe data we use in this notebook is public data; here is access information for it:\n\u003cp style\u003d\"margin-left:60px;\"\u003e[Moro et al., 2011] S. Moro, R. Laureano and P. Cortez. \u003cem\u003eUsing Data Mining for Bank Direct Marketing: An Application of the CRISP-DM Methodology.\u003c/em\u003e In P. Novais et al. (Eds.), \u003cem\u003eProceedings of the European Simulation and Modelling Conference - ESM\u00272011\u003c/em\u003e, pp. 117-121, Guimarães, Portugal, October, 2011. EUROSIS.\u003c/p\u003e\n\n\u003cp style\u003d\"margin-left:60px;\"\u003eAvailable at: \u003ca href\u003d\"http://hdl.handle.net/1822/14838\"\u003ehttp://hdl.handle.net/1822/14838\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -51,7 +51,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Loading Data Into a Table Using Spark\n\nThe following paragraph uses the `%spark` interpreter to load public bank data into a table. Note that Zeppelin creates and injects the SparkContext (`sc`) and sqlContext (`HiveContext` or `SqlContext`) for you, so you don't need to create them manually.",
+      "text": "%md\n## Loading Data Into a Table Using Spark\n\nThe following paragraph uses the `%spark` interpreter to load public bank data into a table. Note that Zeppelin creates and injects the SparkContext (`sc`) and sqlContext (`HiveContext` or `SqlContext`) for you, so you don\u0027t need to create them manually.",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:00:57.796",
       "config": {
@@ -77,7 +77,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Loading Data Into a Table Using Spark</h2>\n<p>The following paragraph uses the <code>%spark</code> interpreter to load public bank data into a table. Note that Zeppelin creates and injects the SparkContext (<code>sc</code>) and sqlContext (<code>HiveContext</code> or <code>SqlContext</code>) for you, so you don&rsquo;t need to create them manually.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLoading Data Into a Table Using Spark\u003c/h2\u003e\n\u003cp\u003eThe following paragraph uses the \u003ccode\u003e%spark\u003c/code\u003e interpreter to load public bank data into a table. Note that Zeppelin creates and injects the SparkContext (\u003ccode\u003esc\u003c/code\u003e) and sqlContext (\u003ccode\u003eHiveContext\u003c/code\u003e or \u003ccode\u003eSqlContext\u003c/code\u003e) for you, so you don\u0026rsquo;t need to create them manually.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -90,7 +90,7 @@
     },
     {
       "title": "Load data into table",
-      "text": "%spark\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\n\n// Zeppelin creates and injects sc (SparkContext) and sqlContext (HiveContext or SqlContext)\n// So you don't need create them manually\n\n// load bank data\nval bankText = sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://s3.amazonaws.com/apache-zeppelin/tutorial/bank/bank.csv\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\ncase class Bank(age: Integer, job: String, marital: String, education: String, balance: Integer)\n\nval bank = bankText.map(s => s.split(\";\")).filter(s => s(0) != \"\\\"age\\\"\").map(\n    s => Bank(s(0).toInt, \n            s(1).replaceAll(\"\\\"\", \"\"),\n            s(2).replaceAll(\"\\\"\", \"\"),\n            s(3).replaceAll(\"\\\"\", \"\"),\n            s(5).replaceAll(\"\\\"\", \"\").toInt\n        )\n).toDF()\nbank.registerTempTable(\"bank\")",
+      "text": "%spark\nimport org.apache.commons.io.IOUtils\nimport java.net.URL\nimport java.nio.charset.Charset\n\n// Zeppelin creates and injects sc (SparkContext) and sqlContext (HiveContext or SqlContext)\n// So you don\u0027t need create them manually\n\n// load bank data\nval bankText \u003d sc.parallelize(\n    IOUtils.toString(\n        new URL(\"https://s3.amazonaws.com/apache-zeppelin/tutorial/bank/bank.csv\"),\n        Charset.forName(\"utf8\")).split(\"\\n\"))\n\ncase class Bank(age: Integer, job: String, marital: String, education: String, balance: Integer)\n\nval bank \u003d bankText.map(s \u003d\u003e s.split(\";\")).filter(s \u003d\u003e s(0) !\u003d \"\\\"age\\\"\").map(\n    s \u003d\u003e Bank(s(0).toInt, \n            s(1).replaceAll(\"\\\"\", \"\"),\n            s(2).replaceAll(\"\\\"\", \"\"),\n            s(3).replaceAll(\"\\\"\", \"\"),\n            s(5).replaceAll(\"\\\"\", \"\").toInt\n        )\n).toDF()\nbank.registerTempTable(\"bank\")",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 02:28:53.702",
       "config": {
@@ -157,7 +157,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Using Spark SQL to Query the Loaded Data</h2>\n<p>The three paragraphs below use the <code>%spark.sql</code> interpreter to query the loaded data; each displays the query results using one of the available Zeppelin data visualizations. </p>\n<p>We also demonstrate how you can substitute variables into your queries that can be populated in a textbox.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing Spark SQL to Query the Loaded Data\u003c/h2\u003e\n\u003cp\u003eThe three paragraphs below use the \u003ccode\u003e%spark.sql\u003c/code\u003e interpreter to query the loaded data; each displays the query results using one of the available Zeppelin data visualizations. \u003c/p\u003e\n\u003cp\u003eWe also demonstrate how you can substitute variables into your queries that can be populated in a textbox.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -169,7 +169,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.sql \nselect age, count(1) value\nfrom bank \nwhere age < 30 \ngroup by age \norder by age",
+      "text": "%spark.sql \nselect age, count(1) value\nfrom bank \nwhere age \u003c 30 \ngroup by age \norder by age",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 02:29:01.278",
       "config": {
@@ -232,7 +232,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere age < ${maxAge=30} \ngroup by age \norder by age",
+      "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere age \u003c ${maxAge\u003d30} \ngroup by age \norder by age",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 02:29:07.463",
       "config": {
@@ -304,7 +304,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere marital=\"${marital=single,single|divorced|married}\" \ngroup by age \norder by age",
+      "text": "%spark.sql \nselect age, count(1) value \nfrom bank \nwhere marital\u003d\"${marital\u003dsingle,single|divorced|married}\" \ngroup by age \norder by age",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 02:29:13.756",
       "config": {
@@ -388,9 +388,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nYou've learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, [*Using our Native Spark DataSource*](/#/notebook/2DWHEE99H), demonstrates how our Native Spark DataSource allows you to adopt the full power of Spark and manipulate dataframes while also having the power of full ANSI, ACID-compliant SQL.",
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Using the Database Console*](/#/notebook/2DYNK9CZT), explores using the Database Console to learn about where your queries are bogging donw and how to use that information for additional query tuning.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 23:59:37.001",
+      "dateUpdated": "2018-12-05 21:47:49.378",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -415,7 +415,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>You&rsquo;ve learned a bit about using Spark in Zeppelin notebooks; the next notebook in this class, <a href=\"/#/notebook/2DWHEE99H\"><em>Using our Native Spark DataSource</em></a>, demonstrates how our Native Spark DataSource allows you to adopt the full power of Spark and manipulate dataframes while also having the power of full ANSI, ACID-compliant SQL.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DYNK9CZT\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e, explores using the Database Console to learn about where your queries are bogging donw and how to use that information for additional query tuning.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -423,8 +423,8 @@
       "jobName": "paragraph_1542397883901_1883049237",
       "id": "20150703-133047_853701097",
       "dateCreated": "2018-11-16 11:51:23.000",
-      "dateStarted": "2018-12-03 23:59:30.272",
-      "dateFinished": "2018-12-03 23:59:30.282",
+      "dateStarted": "2018-12-05 21:47:43.397",
+      "dateFinished": "2018-12-05 21:47:43.418",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
@@ -435,8 +435,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

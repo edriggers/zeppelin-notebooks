@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "title": "Spark Adapter",
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Using our Native Spark DataSource\nThis notebook demonstrates using the Spark Adapter with Python, in these steps:\n\n1. *Create the `PySpliceContextClass` to interface with the Python API.*\n2. *Use the `spark.pyspark` Python interpreter in Zeppelin to create a Spark context.*\n3. *Create a simple table in Splice Machine.*\n4. *Create a Spark dataframe and insert that into Splice Machine.*\n5. *Run a simple Splice Machine transaction using the Spark context.*\n6. *Rollback that transaction using the same context.*\n\n## About the Native Spark DataSource\nData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\n\nThe Splice Machine Spark adapter provides:\n\n* A durable, ACID compliant persistence model for Spark Dataframes.\n* Lazy result sets returned as Spark Dataframes.\n* Access to Spark libraries such as MLLib and GraphX.\n* Avoidance of expensive ETL of data from OLTP to OLAP.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Using our Native Spark DataSource\nThis notebook demonstrates using the Spark Adapter with Python, in these steps:\n\n1. *Create the `PySpliceContextClass` to interface with the Python API.*\n2. *Use the `spark.pyspark` Python interpreter in Zeppelin to create a Spark context.*\n3. *Create a simple table in Splice Machine.*\n4. *Create a Spark dataframe and insert that into Splice Machine.*\n5. *Run a simple Splice Machine transaction using the Spark context.*\n6. *Rollback that transaction using the same context.*\n\n## About the Native Spark DataSource\nData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\n\nThe Splice Machine Spark adapter provides:\n\n* A durable, ACID compliant persistence model for Spark Dataframes.\n* Lazy result sets returned as Spark Dataframes.\n* Access to Spark libraries such as MLLib and GraphX.\n* Avoidance of expensive ETL of data from OLTP to OLAP.",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 23:38:53.394",
       "config": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Using our Native Spark DataSource</h1>\n<p>This notebook demonstrates using the Spark Adapter with Python, in these steps:</p>\n<ol>\n  <li><em>Create the <code>PySpliceContextClass</code> to interface with the Python API.</em></li>\n  <li><em>Use the <code>spark.pyspark</code> Python interpreter in Zeppelin to create a Spark context.</em></li>\n  <li><em>Create a simple table in Splice Machine.</em></li>\n  <li><em>Create a Spark dataframe and insert that into Splice Machine.</em></li>\n  <li><em>Run a simple Splice Machine transaction using the Spark context.</em></li>\n  <li><em>Rollback that transaction using the same context.</em></li>\n</ol>\n<h2>About the Native Spark DataSource</h2>\n<p>Data Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.</p>\n<p>The Splice Machine Spark adapter provides:</p>\n<ul>\n  <li>A durable, ACID compliant persistence model for Spark Dataframes.</li>\n  <li>Lazy result sets returned as Spark Dataframes.</li>\n  <li>Access to Spark libraries such as MLLib and GraphX.</li>\n  <li>Avoidance of expensive ETL of data from OLTP to OLAP.</li>\n</ul>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing our Native Spark DataSource\u003c/h1\u003e\n\u003cp\u003eThis notebook demonstrates using the Spark Adapter with Python, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate the \u003ccode\u003ePySpliceContextClass\u003c/code\u003e to interface with the Python API.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUse the \u003ccode\u003espark.pyspark\u003c/code\u003e Python interpreter in Zeppelin to create a Spark context.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreate a simple table in Splice Machine.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreate a Spark dataframe and insert that into Splice Machine.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun a simple Splice Machine transaction using the Spark context.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRollback that transaction using the same context.\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2\u003eAbout the Native Spark DataSource\u003c/h2\u003e\n\u003cp\u003eData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\u003c/p\u003e\n\u003cp\u003eThe Splice Machine Spark adapter provides:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eA durable, ACID compliant persistence model for Spark Dataframes.\u003c/li\u003e\n  \u003cli\u003eLazy result sets returned as Spark Dataframes.\u003c/li\u003e\n  \u003cli\u003eAccess to Spark libraries such as MLLib and GraphX.\u003c/li\u003e\n  \u003cli\u003eAvoidance of expensive ETL of data from OLTP to OLAP.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>1. Create the PySpliceContext Class</h2>\n<p>Your first step is to use the <code>PySpark</code> interpreter in Zeppelin to create the <code>PySpliceContext</code> class:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Create the PySpliceContext Class\u003c/h2\u003e\n\u003cp\u003eYour first step is to use the \u003ccode\u003ePySpark\u003c/code\u003e interpreter in Zeppelin to create the \u003ccode\u003ePySpliceContext\u003c/code\u003e class:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -82,7 +82,7 @@
     },
     {
       "title": "PySpliceContext Class",
-      "text": "%spark.pyspark\nfrom __future__ import print_function\nimport string\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql import Row\nfrom pyspark.sql import DataFrame\n\n#java imports                                                                                                                               \nfrom py4j.java_gateway import java_import\nfrom py4j.java_gateway import JavaGateway, GatewayParameters\n\nclass PySpliceContext:\n    def __init__(self,JDBC_URL,sparkSQLContext):\n        self.jdbcurl = JDBC_URL\n        self.sparkSQLContext = sparkSQLContext\n        self.jvm = self.sparkSQLContext._sc._jvm\n        java_import(self.jvm,\"com.splicemachine.spark.splicemachine.*\")\n        java_import(self.jvm, \"org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\")\n        java_import(self.jvm, \"scala.collection.JavaConverters._\")\n        self.context = self.jvm.com.splicemachine.spark.splicemachine.SplicemachineContext(self.jdbcurl)\n    def getConnection(self):\n        return self.context.getConnection()\n        def getConnection(): Connection \n    def tableExists(self, schemaTableName):\n        return self.context.tableExists(schemaTableName)\n    def dropTable(self,schemaName, tableName):\n        return self.context.dropTable(schemaName, tableName)\n    def dropTable(self,schemaTableName):\n        return self.context.dropTable(schemaTableName)\n    def df(self,sql):\n        return DataFrame(self.context.df(sql), self.sparkSQLContext)\n    def insert(self,dataFrame,schemaTableName): \n        return self.context.insert(dataFrame._jdf,schemaTableName)\n    def delete(self, dataFrame, schemaTableName):\n        return self.context.delete(dataFrame._jdf, schemaTableName)\n    def update(self, dataFrame, schemaTableName):\n        return self.context.update(dataFrame._jdf, schemaTableName) \n    def bulkImportHFile(self, dataFrame, schemaTableName, options):\n        return self.context.bulkImportHFile(dataFrame._jdf, schemaTableName, options)\n    def getSchema(self,schemaTableName):\n        return self.context.getSchema(schemaTableName)\n    def createTable(self, tableName, structType, keys, createTableOptions):\n        keyAsString = self.jvm.java.util.ArrayList()\n        for key in keys:\n            keyAsString.append(key)\n        return self.context.createTable(tableName, structType, self.jvm.scala.collection.JavaConversions.asScalaBuffer(keyAsString).toSeq(), createTableOptions)\n",
+      "text": "%spark.pyspark\nfrom __future__ import print_function\nimport string\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql import Row\nfrom pyspark.sql import DataFrame\n\n#java imports                                                                                                                               \nfrom py4j.java_gateway import java_import\nfrom py4j.java_gateway import JavaGateway, GatewayParameters\n\nclass PySpliceContext:\n    def __init__(self,JDBC_URL,sparkSQLContext):\n        self.jdbcurl \u003d JDBC_URL\n        self.sparkSQLContext \u003d sparkSQLContext\n        self.jvm \u003d self.sparkSQLContext._sc._jvm\n        java_import(self.jvm,\"com.splicemachine.spark.splicemachine.*\")\n        java_import(self.jvm, \"org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\")\n        java_import(self.jvm, \"scala.collection.JavaConverters._\")\n        self.context \u003d self.jvm.com.splicemachine.spark.splicemachine.SplicemachineContext(self.jdbcurl)\n    def getConnection(self):\n        return self.context.getConnection()\n        def getConnection(): Connection \n    def tableExists(self, schemaTableName):\n        return self.context.tableExists(schemaTableName)\n    def dropTable(self,schemaName, tableName):\n        return self.context.dropTable(schemaName, tableName)\n    def dropTable(self,schemaTableName):\n        return self.context.dropTable(schemaTableName)\n    def df(self,sql):\n        return DataFrame(self.context.df(sql), self.sparkSQLContext)\n    def insert(self,dataFrame,schemaTableName): \n        return self.context.insert(dataFrame._jdf,schemaTableName)\n    def delete(self, dataFrame, schemaTableName):\n        return self.context.delete(dataFrame._jdf, schemaTableName)\n    def update(self, dataFrame, schemaTableName):\n        return self.context.update(dataFrame._jdf, schemaTableName) \n    def bulkImportHFile(self, dataFrame, schemaTableName, options):\n        return self.context.bulkImportHFile(dataFrame._jdf, schemaTableName, options)\n    def getSchema(self,schemaTableName):\n        return self.context.getSchema(schemaTableName)\n    def createTable(self, tableName, structType, keys, createTableOptions):\n        keyAsString \u003d self.jvm.java.util.ArrayList()\n        for key in keys:\n            keyAsString.append(key)\n        return self.context.createTable(tableName, structType, self.jvm.scala.collection.JavaConversions.asScalaBuffer(keyAsString).toSeq(), createTableOptions)\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 23:38:53.401",
       "config": {
@@ -139,7 +139,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>2. Create a Spark context</h2>\n<p>Next, we use the <code>PySpliceContext</code> to create a connection to Splice Machine:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Create a Spark context\u003c/h2\u003e\n\u003cp\u003eNext, we use the \u003ccode\u003ePySpliceContext\u003c/code\u003e to create a connection to Splice Machine:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -153,7 +153,7 @@
     },
     {
       "title": "Create Context",
-      "text": "%spark.pyspark\n\nsplice = PySpliceContext('jdbc:splice://localhost:1527/splicedb;user=splice;password=admin', sqlContext)",
+      "text": "%spark.pyspark\n\nsplice \u003d PySpliceContext(\u0027jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\u0027, sqlContext)",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 23:38:53.404",
       "config": {
@@ -189,7 +189,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 3. Create a Simple Table\n\nNow we create simple table in Splice Machine that we'll subsequently populate:\n",
+      "text": "%md\n## 3. Create a Simple Table\n\nNow we create simple table in Splice Machine that we\u0027ll subsequently populate:\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 23:38:53.404",
       "config": {
@@ -215,7 +215,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>3. Create a Simple Table</h2>\n<p>Now we create simple table in Splice Machine that we&rsquo;ll subsequently populate:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Create a Simple Table\u003c/h2\u003e\n\u003cp\u003eNow we create simple table in Splice Machine that we\u0026rsquo;ll subsequently populate:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -284,7 +284,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>4. Create a Spark Dataframe and Insert into Splice Machine</h2>\n<p>Then we use <code>spark.pyspark</code> to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.</p>\n<p>After inserting the data, we do a <code>select *</code> to display the contents of the Splice Machine table.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Create a Spark Dataframe and Insert into Splice Machine\u003c/h2\u003e\n\u003cp\u003eThen we use \u003ccode\u003espark.pyspark\u003c/code\u003e to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\u003c/p\u003e\n\u003cp\u003eAfter inserting the data, we do a \u003ccode\u003eselect *\u003c/code\u003e to display the contents of the Splice Machine table.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -298,7 +298,7 @@
     },
     {
       "title": "Create a dataframe and insert into Splice",
-      "text": "%spark.pyspark\nfrom pyspark.sql import Row\nl = [(0,3.14,'Turing'), (1,4.14,'Newell'), (2,5.14,'Simon'), (3,6.14,'Minsky')]\nrdd = sc.parallelize(l)\nrows = rdd.map(lambda x: Row(I=x[0], F=float(x[1]), V=str(x[2])))\nschemaRows = sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,'DS.foo')\n",
+      "text": "%spark.pyspark\nfrom pyspark.sql import Row\nl \u003d [(0,3.14,\u0027Turing\u0027), (1,4.14,\u0027Newell\u0027), (2,5.14,\u0027Simon\u0027), (3,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027DS.foo\u0027)\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-04 00:01:02.183",
       "config": {
@@ -330,7 +330,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n### Native Spark Datasource\n\nIf you look closely, you'll see that we went straight from a Spark Dataframe into Splice Machine's database. \n\nThis is Splice Machine's Native Spark Datasource.  Not only is this mechanism convenient, it is also very performant, leveraging parallelism in large datasets.  The main API for the Python version we just used is just in the paragraph at the top of this notebook.\n\nHere's the result:",
+      "text": "%md\n\n### Native Spark Datasource\n\nIf you look closely, you\u0027ll see that we went straight from a Spark Dataframe into Splice Machine\u0027s database. \n\nThis is Splice Machine\u0027s Native Spark Datasource.  Not only is this mechanism convenient, it is also very performant, leveraging parallelism in large datasets.  The main API for the Python version we just used is just in the paragraph at the top of this notebook.\n\nHere\u0027s the result:",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 23:38:53.407",
       "config": {
@@ -357,7 +357,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h3>Native Spark Datasource</h3>\n<p>If you look closely, you&rsquo;ll see that we went straight from a Spark Dataframe into Splice Machine&rsquo;s database. </p>\n<p>This is Splice Machine&rsquo;s Native Spark Datasource. Not only is this mechanism convenient, it is also very performant, leveraging parallelism in large datasets. The main API for the Python version we just used is just in the paragraph at the top of this notebook.</p>\n<p>Here&rsquo;s the result:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eNative Spark Datasource\u003c/h3\u003e\n\u003cp\u003eIf you look closely, you\u0026rsquo;ll see that we went straight from a Spark Dataframe into Splice Machine\u0026rsquo;s database. \u003c/p\u003e\n\u003cp\u003eThis is Splice Machine\u0026rsquo;s Native Spark Datasource. Not only is this mechanism convenient, it is also very performant, leveraging parallelism in large datasets. The main API for the Python version we just used is just in the paragraph at the top of this notebook.\u003c/p\u003e\n\u003cp\u003eHere\u0026rsquo;s the result:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -429,7 +429,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 5. Run a Simple Splice Machine Transaction\n\nNow we'll add more data to that table in a transactional context: ",
+      "text": "%md\n\n## 5. Run a Simple Splice Machine Transaction\n\nNow we\u0027ll add more data to that table in a transactional context: ",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 23:38:53.409",
       "config": {
@@ -454,7 +454,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>5. Run a Simple Splice Machine Transaction</h2>\n<p>Now we&rsquo;ll add more data to that table in a transactional context:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e5. Run a Simple Splice Machine Transaction\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll add more data to that table in a transactional context:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -468,7 +468,7 @@
     },
     {
       "title": "Transactional Context",
-      "text": "%spark.pyspark\nconn = splice.getConnection()\nconn.setAutoCommit(False)\nl = [(4,3.14,'Turing'), (5,4.14,'Newell'), (6,5.14,'Simon'), (7,6.14,'Minsky')]\nrdd = sc.parallelize(l)\nrows = rdd.map(lambda x: Row(I=x[0], F=float(x[1]), V=str(x[2])))\nschemaRows = sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,'DS.foo')\ndf = splice.df(\"select * from DS.foo\")\ndf.collect\nz.show(df)",
+      "text": "%spark.pyspark\nconn \u003d splice.getConnection()\nconn.setAutoCommit(False)\nl \u003d [(4,3.14,\u0027Turing\u0027), (5,4.14,\u0027Newell\u0027), (6,5.14,\u0027Simon\u0027), (7,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027DS.foo\u0027)\ndf \u003d splice.df(\"select * from DS.foo\")\ndf.collect\nz.show(df)",
       "user": "anonymous",
       "dateUpdated": "2018-12-04 00:01:17.134",
       "config": {
@@ -530,7 +530,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 6. Rollback the transaction\n\nFinally, we'll rollback the transaction we just ran:\n",
+      "text": "%md\n\n## 6. Rollback the transaction\n\nFinally, we\u0027ll rollback the transaction we just ran:\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 23:38:53.411",
       "config": {
@@ -555,7 +555,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>6. Rollback the transaction</h2>\n<p>Finally, we&rsquo;ll rollback the transaction we just ran:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e6. Rollback the transaction\u003c/h2\u003e\n\u003cp\u003eFinally, we\u0026rsquo;ll rollback the transaction we just ran:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -569,7 +569,7 @@
     },
     {
       "title": "Rollback",
-      "text": "%spark.pyspark\nconn.rollback()\ndf = splice.df(\"select * from DS.foo\")\ndf.collect\nz.show(df)",
+      "text": "%spark.pyspark\nconn.rollback()\ndf \u003d splice.df(\"select * from DS.foo\")\ndf.collect\nz.show(df)",
       "user": "anonymous",
       "dateUpdated": "2018-12-04 00:01:26.219",
       "config": {
@@ -630,7 +630,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nNow let's explore Machine Learning with these Splice Machine, starting with our next notebook: [*Machine Learning with MLlib*](/#/notebook/2DYC2S8DY).",
+      "text": "%md\n## Where to Go Next\n\nNow let\u0027s explore Machine Learning with these Splice Machine, starting with our next notebook: [*Machine Learning with MLlib*](/#/notebook/2DYC2S8DY).",
       "user": "anonymous",
       "dateUpdated": "2018-12-04 00:02:13.427",
       "config": {
@@ -656,7 +656,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Now let&rsquo;s explore Machine Learning with these Splice Machine, starting with our next notebook: <a href=\"/#/notebook/2DYC2S8DY\"><em>Machine Learning with MLlib</em></a>.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow let\u0026rsquo;s explore Machine Learning with these Splice Machine, starting with our next notebook: \u003ca href\u003d\"/#/notebook/2DYC2S8DY\"\u003e\u003cem\u003eMachine Learning with MLlib\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -670,15 +670,11 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training / For Data Scientists / d. Using our Native Spark DataSource",
+  "name": "Splice Machine Training / For Data Scientists / e. Using our Native Spark DataSource",
   "id": "2DWHEE99H",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false
   },
