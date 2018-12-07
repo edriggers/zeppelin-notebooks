@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:44:39.175",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eMachine Learning with Spark MLlib\u003c/h1\u003e\n\u003cp\u003eThis notebook contains code that uses the Machine Learning (\u003cem\u003eML\u003c/em\u003e) Library embedded in Spark, \u003cem\u003eMLlib\u003c/em\u003e, with the Splice Machine Spark Adapter to realize in-process machine learning. Specifically, the example in this notebook uses data that tracks international shipments to learn, and then predicts how late a shipment will be, based on various factors.\u003c/p\u003e\n\u003cp\u003eIf you\u0026rsquo;re not familiar with Machine Learning with Spark MLlib, you can learn more about this library here: \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\"\u003ehttps://spark.apache.org/docs/latest/ml-guide.html\u003c/a\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eThe code in this project was written in the Scala programming language as well as the Python programming language.\u003c/p\u003e\n\u003cp\u003eThe remainder of this notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eBasic Terminology\u003c/em\u003e defines a few major ML terms used in this notebook.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAbout Our Sample Data\u003c/em\u003e introduces the shipping data that we use.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAbout our Learning Model\u003c/em\u003e describes the learning model method we\u0026rsquo;re using.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating our Splice Machine Database\u003c/em\u003e walks you through setting up our database with our sample data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating, Training, and Deploying our Learning Model\u003c/em\u003e walks you through our Machine Learning sample code.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eProgram Listing\u003c/em\u003e contains a listing of all of the code used in this notebook.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eBasic Terminology\u003c/h2\u003e\n\u003cp\u003eHere\u0026rsquo;s some basic terminology you need to be familiar with to understand the code in this notebook. These descriptions are paraphrased from the \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003eabove-mentioned Spark MLlib guide.\u003c/a\u003e\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eTerm\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eDataFrame\u003c/td\u003e\n            \u003ctd\u003eA DataFrame is a basic Spark SQL concept. A DataFrame is similar to a table in a database: it contains rows of data with columns of varying types. The MLlib operates on datasets that are organized in DataFrames. \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003ePipeline\u003c/td\u003e\n            \u003ctd\u003eIn MLlib, you chain together a sequence of algorithms, or \u003cem\u003estages\u003c/em\u003e that operate on your DataFrame into a \u003cem\u003epipeline\u003c/em\u003e that learns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eTransformer\u003c/td\u003e\n            \u003ctd\u003eAn algorithm that transforms a DataFrame into another DataFrame. Each transformer implements a method named \u003ccode\u003etransform\u003c/code\u003e that converts the DataFrame, typically by appending additional columns to it. A \u003cem\u003emodel\u003c/em\u003e is a kind of transformer.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eEstimator\u003c/td\u003e\n            \u003ctd\u003eA learning algorithm that trains or \u003cem\u003efits\u003c/em\u003e on a DataFrame and produces a \u003ccode\u003emodel\u003c/code\u003e. Each estimator implements a method named \u003ccode\u003efit\u003c/code\u003e that produces a model.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch2\u003eAbout our Sample Data\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ve obtained some actual shipping data that tracks international shipments between ports, and have imported that data into a Splice Machine database that we\u0026rsquo;ve named \u003ccode\u003eASN.\u003c/code\u003e The tables of interest are named \u003ccode\u003eSHIPMENT_IN_TRANSIT\u003c/code\u003e and \u003ccode\u003eSHIPMENT_HISTORY;\u003c/code\u003e you\u0026rsquo;ll see these table used in the sample code below. We also create a database table named \u003ccode\u003eFeatures\u003c/code\u003e that forms the basis of the DataFrame we use for our learning model; this is the table you\u0026rsquo;ll see featured in this notebook\u0026rsquo;s code. The idea of this model is to predict, in real-time, how late a specific shipment will be, based on past data and other factors. Over time, as more data is processed by the model, the predictions become more accurate. \u003c/p\u003e\n\u003ch2\u003eAbout our Learning Model\u003c/h2\u003e\n\u003cp\u003eWe use a Logistic Regression \u003cem\u003eestimator\u003c/em\u003e as the final stage in our pipeline to produce a Logistic Regression Model of lateness from our data, and then deploy that model on a dataset to predict lateness.\u003c/p\u003e\n\u003cp\u003eThe estimator operates on data that is formatted into vectors of integers. Since most of the fields in our input dataset contain string values, we need to convert any data that will be used by the estimator into this format, as you\u0026rsquo;ll see below.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eMachine Learning with Spark MLlib\u003c/h1\u003e\n\u003cp\u003eThis notebook contains code that uses the Machine Learning (\u003cem\u003eML\u003c/em\u003e) Library embedded in Spark, \u003cem\u003eMLlib\u003c/em\u003e, with the Splice Machine Spark Adapter to realize in-process machine learning. Specifically, the example in this notebook uses data that tracks international shipments to learn, and then predicts how late a shipment will be, based on various factors.\u003c/p\u003e\n\u003cp\u003eIf you\u0026rsquo;re not familiar with Machine Learning with Spark MLlib, you can learn more about this library here: \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\"\u003ehttps://spark.apache.org/docs/latest/ml-guide.html\u003c/a\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eThe code in this project was written in the Scala programming language as well as the Python programming language.\u003c/p\u003e\n\u003cp\u003eThe remainder of this notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eBasic Terminology\u003c/em\u003e defines a few major ML terms used in this notebook.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAbout Our Sample Data\u003c/em\u003e introduces the shipping data that we use.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAbout our Learning Model\u003c/em\u003e describes the learning model method we\u0026rsquo;re using.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating our Splice Machine Database\u003c/em\u003e walks you through setting up our database with our sample data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating, Training, and Deploying our Learning Model\u003c/em\u003e walks you through our Machine Learning sample code.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eProgram Listing\u003c/em\u003e contains a listing of all of the code used in this notebook.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eBasic Terminology\u003c/h2\u003e\n\u003cp\u003eHere\u0026rsquo;s some basic terminology you need to be familiar with to understand the code in this notebook. These descriptions are paraphrased from the \u003ca href\u003d\"https://spark.apache.org/docs/latest/ml-guide.html\" target\u003d\"_blank\"\u003eabove-mentioned Spark MLlib guide.\u003c/a\u003e\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eTerm\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eDataFrame\u003c/td\u003e\n            \u003ctd\u003eA DataFrame is a basic Spark SQL concept. A DataFrame is similar to a table in a database: it contains rows of data with columns of varying types. The MLlib operates on datasets that are organized in DataFrames. \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003ePipeline\u003c/td\u003e\n            \u003ctd\u003eIn MLlib, you chain together a sequence of algorithms, or \u003cem\u003estages\u003c/em\u003e that operate on your DataFrame into a \u003cem\u003epipeline\u003c/em\u003e that learns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eTransformer\u003c/td\u003e\n            \u003ctd\u003eAn algorithm that transforms a DataFrame into another DataFrame. Each transformer implements a method named \u003ccode\u003etransform\u003c/code\u003e that converts the DataFrame, typically by appending additional columns to it. A \u003cem\u003emodel\u003c/em\u003e is a kind of transformer.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eEstimator\u003c/td\u003e\n            \u003ctd\u003eA learning algorithm that trains or \u003cem\u003efits\u003c/em\u003e on a DataFrame and produces a \u003ccode\u003emodel\u003c/code\u003e. Each estimator implements a method named \u003ccode\u003efit\u003c/code\u003e that produces a model.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch2\u003eAbout our Sample Data\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ve obtained some actual shipping data that tracks international shipments between ports, and have imported that data into a Splice Machine database that we\u0026rsquo;ve named \u003ccode\u003eASN.\u003c/code\u003e The tables of interest are named \u003ccode\u003eSHIPMENT_IN_TRANSIT\u003c/code\u003e and \u003ccode\u003eSHIPMENT_HISTORY;\u003c/code\u003e you\u0026rsquo;ll see these table used in the sample code below. We also create a database table named \u003ccode\u003eFeatures\u003c/code\u003e that forms the basis of the DataFrame we use for our learning model; this is the table you\u0026rsquo;ll see featured in this notebook\u0026rsquo;s code. The idea of this model is to predict, in real-time, how late a specific shipment will be, based on past data and other factors. Over time, as more data is processed by the model, the predictions become more accurate. \u003c/p\u003e\n\u003ch2\u003eAbout our Learning Model\u003c/h2\u003e\n\u003cp\u003eWe use a Logistic Regression \u003cem\u003eestimator\u003c/em\u003e as the final stage in our pipeline to produce a Logistic Regression Model of lateness from our data, and then deploy that model on a dataset to predict lateness.\u003c/p\u003e\n\u003cp\u003eThe estimator operates on data that is formatted into vectors of integers. Since most of the fields in our input dataset contain string values, we need to convert any data that will be used by the estimator into this format, as you\u0026rsquo;ll see below.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525608_215622602",
@@ -43,31 +43,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:44:44.348",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate our Splice Machine Database\u003c/h2\u003e\n\u003cp\u003eBefore working with the MLlib, we need to create a Splice Machine database that contains the shipping data we\u0026rsquo;re using. We:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eConnect to your database via JDBC\u003c/li\u003e\n  \u003cli\u003eCreate the schema and tables\u003c/li\u003e\n  \u003cli\u003eImport the data\u003c/li\u003e\n  \u003cli\u003eCreate our features table\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate our Splice Machine Database\u003c/h2\u003e\n\u003cp\u003eBefore working with the MLlib, we need to create a Splice Machine database that contains the shipping data we\u0026rsquo;re using. We:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eConnect to your database via JDBC\u003c/li\u003e\n  \u003cli\u003eCreate the schema and tables\u003c/li\u003e\n  \u003cli\u003eImport the data\u003c/li\u003e\n  \u003cli\u003eCreate our features table\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525609_1503682954",
@@ -81,32 +81,32 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-07 01:09:52.007",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Connect to your Database via JDBC\u003c/h3\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll configure the URL we\u0026rsquo;ll use in our JDBC connection to Splice Machine. For this class, you can simply use the \u003ccode\u003edefaultJDBCURL\u003c/code\u003e assignment in the next paragraph.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Connect to your Database via JDBC\u003c/h3\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll configure the URL we\u0026rsquo;ll use in our JDBC connection to Splice Machine. For this class, you can simply use the \u003ccode\u003edefaultJDBCURL\u003c/code\u003e assignment in the next paragraph.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542761691574_1241165585",
@@ -120,19 +120,19 @@
     {
       "text": "%spark.pyspark\ndefaultJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:40:35.633",
+      "dateUpdated": "2018-12-07 20:39:54.592",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "python",
+          "completionKey": "TAB",
           "editOnDblClick": false,
           "completionSupport": true,
-          "completionKey": "TAB"
+          "language": "python"
         },
-        "editorMode": "ace/mode/python"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -146,8 +146,8 @@
       "jobName": "paragraph_1543781558644_-1081260206",
       "id": "20181202-201238_1375270948",
       "dateCreated": "2018-12-02 20:12:38.644",
-      "dateStarted": "2018-12-07 00:40:35.813",
-      "dateFinished": "2018-12-07 00:41:12.754",
+      "dateStarted": "2018-12-07 20:39:54.792",
+      "dateFinished": "2018-12-07 20:39:54.803",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -156,32 +156,32 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:45:00.742",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Create the Schema and Tables\u003c/h3\u003e\n\u003cp\u003eWe\u0026rsquo;ll now create our new schema, make it our default schema, and then create the tables for the \u003ccode\u003eshipment_in_transit\u003c/code\u003e and \u003ccode\u003eshipment_history\u003c/code\u003e data that we will import.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Create the Schema and Tables\u003c/h3\u003e\n\u003cp\u003eWe\u0026rsquo;ll now create our new schema, make it our default schema, and then create the tables for the \u003ccode\u003eshipment_in_transit\u003c/code\u003e and \u003ccode\u003eshipment_history\u003c/code\u003e data that we will import.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542761754046_2134446326",
@@ -193,130 +193,95 @@
     {
       "text": "%splicemachine\n\nCREATE SCHEMA DS_ASN;\nSET SCHEMA DS_ASN;\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:41:56.418",
+      "dateUpdated": "2018-12-07 20:50:27.260",
       "config": {
-        "tableHide": true,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/sql",
         "editorHide": false,
-        "results": {},
         "enabled": true,
-        "fontSize": 9.0
+        "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": true,
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 4.0
       },
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542399525612_443487691",
       "id": "20180202-101539_620068341",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:41:56.574",
-      "dateFinished": "2018-12-07 00:41:56.776",
+      "dateStarted": "2018-12-07 20:40:04.223",
+      "dateFinished": "2018-12-07 20:40:07.136",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\n\nDROP TABLE IF EXISTS SHIPMENT_IN_TRANSIT;\nCREATE TABLE SHIPMENT_IN_TRANSIT(\n    SHIPMENTID VARCHAR(11) NOT NULL PRIMARY KEY,\n    STATUS VARCHAR(50),\n    SHIPMODE VARCHAR(30),\n    PRODUCT_DESCRIPTION VARCHAR(500),\n    CONSIGNEE VARCHAR(200),\n    SHIPPER VARCHAR(100),\n    ARRIVAL_DATE TIMESTAMP,\n    GROSS_WEIGHT_LB INTEGER,\n    GROSS_WEIGHT_KG INTEGER,\n    FOREIGN_PORT VARCHAR(50),\n    US_PORT VARCHAR(50),\n    VESSEL_NAME VARCHAR(40),\n    COUNTRY_OF_ORIGIN VARCHAR(40),\n    CONSIGNEE_ADDRESS VARCHAR(150),\n    SHIPPER_ADDRESS VARCHAR(150),\n    ZIPCODE VARCHAR(20),\n    NO_OF_CONTAINERS INTEGER,\n    CONTAINER_NUMBER VARCHAR(200),\n    CONTAINER_TYPE VARCHAR(80),\n    QUANTITY INTEGER,\n    QUANTITY_UNIT VARCHAR(10),\n    MEASUREMENT INTEGER,\n    MEASUREMENT_UNIT VARCHAR(5),\n    BILL_OF_LADING VARCHAR(20),\n    HOUSE_VS_MASTER CHAR(1),\n    DISTRIBUTION_PORT VARCHAR(40),\n    MASTER_BL VARCHAR(20),\n    VOYAGE_NUMBER VARCHAR(10),\n    SEAL VARCHAR(300),\n    SHIP_REGISTERED_IN VARCHAR(40),\n    INBOND_ENTRY_TYPE VARCHAR(30),\n    CARRIER_CODE VARCHAR(10),\n    CARRIER_NAME VARCHAR(40),\n    CARRIER_CITY VARCHAR(40),\n    CARRIER_STATE VARCHAR(10),\n    CARRIER_ZIP VARCHAR(10),\n    CARRIER_ADDRESS VARCHAR(200),\n    NOTIFY_PARTY VARCHAR(50),\n    NOTIFY_ADDRESS VARCHAR(200),\n    PLACE_OF_RECEIPT VARCHAR(50),\n    DATE_OF_RECEIPT TIMESTAMP\n    );\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:42:00.981",
+      "dateUpdated": "2018-12-07 20:50:34.500",
       "config": {
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 4.0
       },
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542399525612_-1727007489",
       "id": "20180202-102107_567153190",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:42:01.221",
-      "dateFinished": "2018-12-07 00:42:02.797",
+      "dateStarted": "2018-12-07 20:40:09.448",
+      "dateFinished": "2018-12-07 20:40:11.180",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\nDROP TABLE IF EXISTS SHIPMENT_HISTORY;\nCREATE TABLE SHIPMENT_HISTORY(\n    SHIPMENTID VARCHAR(11) NOT NULL PRIMARY KEY,\n    STATUS VARCHAR(50),\n    SHIPMODE VARCHAR(30),\n    PRODUCT_DESCRIPTION VARCHAR(500),\n    CONSIGNEE VARCHAR(200),\n    SHIPPER VARCHAR(100),\n    ARRIVAL_DATE TIMESTAMP,\n    GROSS_WEIGHT_LB INTEGER,\n    GROSS_WEIGHT_KG INTEGER,\n    FOREIGN_PORT VARCHAR(50),\n    US_PORT VARCHAR(50),\n    VESSEL_NAME VARCHAR(40),\n    COUNTRY_OF_ORIGIN VARCHAR(40),\n    CONSIGNEE_ADDRESS VARCHAR(150),\n    SHIPPER_ADDRESS VARCHAR(150),\n    ZIPCODE VARCHAR(20),\n    NO_OF_CONTAINERS INTEGER,\n    CONTAINER_NUMBER VARCHAR(200),\n    CONTAINER_TYPE VARCHAR(80),\n    QUANTITY INTEGER,\n    QUANTITY_UNIT VARCHAR(10),\n    MEASUREMENT INTEGER,\n    MEASUREMENT_UNIT VARCHAR(5),\n    BILL_OF_LADING VARCHAR(20),\n    HOUSE_VS_MASTER CHAR(1),\n    DISTRIBUTION_PORT VARCHAR(40),\n    MASTER_BL VARCHAR(20),\n    VOYAGE_NUMBER VARCHAR(10),\n    SEAL VARCHAR(300),\n    SHIP_REGISTERED_IN VARCHAR(40),\n    INBOND_ENTRY_TYPE VARCHAR(30),\n    CARRIER_CODE VARCHAR(10),\n    CARRIER_NAME VARCHAR(40),\n    CARRIER_CITY VARCHAR(40),\n    CARRIER_STATE VARCHAR(10),\n    CARRIER_ZIP VARCHAR(10),\n    CARRIER_ADDRESS VARCHAR(200),\n    NOTIFY_PARTY VARCHAR(50),\n    NOTIFY_ADDRESS VARCHAR(200),\n    PLACE_OF_RECEIPT VARCHAR(50),\n    DATE_OF_RECEIPT TIMESTAMP\n);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:42:07.637",
+      "dateUpdated": "2018-12-07 20:50:40.208",
       "config": {
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
         "enabled": true,
+        "results": {},
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 4.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542399525613_-1867149887",
       "id": "20180202-102130_85303245",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:42:07.738",
-      "dateFinished": "2018-12-07 00:42:09.372",
+      "dateStarted": "2018-12-07 20:40:14.947",
+      "dateFinished": "2018-12-07 20:40:16.370",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -324,180 +289,164 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:45:30.725",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eImport the Data\u003c/h3\u003e\n\u003cp\u003eNext we import the shipping data, which is in csv format, into our Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eImport the Data\u003c/h3\u003e\n\u003cp\u003eNext we import the shipping data, which is in csv format, into our Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525613_-754521781",
       "id": "20180202-104354_1962297047",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\n     \u0027DS_ASN\u0027,\n     \u0027SHIPMENT_IN_TRANSIT\u0027,\n     null,\n     \u0027s3a://splice-demo/shipment/shipment_in_transit.csv\u0027,\n     \u0027|\u0027,\n     null,\n     \u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,\n     \u0027yyyy-MM-dd\u0027,\n     null,\n     -1,\n     \u0027/tmp\u0027,\n     true, null);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:42:15.372",
+      "dateUpdated": "2018-12-07 20:50:47.967",
       "config": {
-        "tableHide": true,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 6.0,
-        "editorMode": "ace/mode/sql",
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
+              "commonSetting": {},
               "optionOpen": false,
               "setting": {
                 "table": {
+                  "updated": false,
                   "tableGridState": {},
                   "tableColumnTypeState": {
+                    "updated": false,
                     "names": {
-                      "rowsImported": "string",
-                      "failedRows": "string",
                       "files": "string",
+                      "failedRows": "string",
+                      "rowsImported": "string",
                       "dataSize": "string",
                       "failedLog": "string"
-                    },
-                    "updated": false
+                    }
                   },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
                   "tableOptionValue": {
-                    "useFilter": false,
                     "showPagination": false,
+                    "useFilter": false,
                     "showAggregationFooter": false
                   },
-                  "updated": false,
-                  "initialized": false
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "commonSetting": {}
+              "mode": "table",
+              "height": 300.0
             }
           }
         },
-        "enabled": true,
-        "fontSize": 9.0
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": true,
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 6.0
       },
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n801\t0\t1\t588584\tNONE\n"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542399525613_2133489498",
       "id": "20180202-104501_1686524282",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:42:15.463",
-      "dateFinished": "2018-12-07 00:42:47.155",
+      "dateStarted": "2018-12-07 20:40:20.961",
+      "dateFinished": "2018-12-07 20:40:44.040",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA (\n     \u0027DS_ASN\u0027,\n     \u0027SHIPMENT_HISTORY\u0027,\n     null,\n     \u0027s3a://splice-demo/shipment/shipment_history.csv\u0027,\n     \u0027|\u0027,\n     null,\n     \u0027yyyy-MM-dd HH:mm:ss.SSSSSS\u0027,\n     \u0027yyyy-MM-dd\u0027,\n     null,\n     -1,\n     \u0027/tmp\u0027,\n     true, null);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:42:51.496",
+      "dateUpdated": "2018-12-07 20:51:26.440",
       "config": {
-        "tableHide": true,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 6.0,
-        "editorMode": "ace/mode/sql",
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
+              "commonSetting": {},
               "optionOpen": false,
               "setting": {
                 "table": {
+                  "updated": false,
                   "tableGridState": {},
                   "tableColumnTypeState": {
+                    "updated": false,
                     "names": {
-                      "rowsImported": "string",
-                      "failedRows": "string",
                       "files": "string",
+                      "failedRows": "string",
+                      "rowsImported": "string",
                       "dataSize": "string",
                       "failedLog": "string"
-                    },
-                    "updated": false
+                    }
                   },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
                   "tableOptionValue": {
-                    "useFilter": false,
                     "showPagination": false,
+                    "useFilter": false,
                     "showAggregationFooter": false
                   },
-                  "updated": false,
-                  "initialized": false
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "commonSetting": {}
+              "mode": "table",
+              "height": 300.0
             },
             "helium": {}
           }
         },
-        "enabled": true,
-        "fontSize": 9.0
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": true,
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 6.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n10000\t0\t1\t8344066\tNONE\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542399525614_-745835057",
       "id": "20180202-104531_242494964",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:42:51.584",
-      "dateFinished": "2018-12-07 00:42:59.224",
+      "dateStarted": "2018-12-07 20:40:59.906",
+      "dateFinished": "2018-12-07 20:41:07.437",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -505,31 +454,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:45:47.250",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Create our Features Table\u003c/h3\u003e\n\u003cp\u003eWe create a features table in our database that we use with our learning model. We add three computed fields in the \u003ccode\u003efeatures\u003c/code\u003e table that are important to our model:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003equantity_bin\u003c/code\u003e categorizes shipping quantities into bins, to improve learning accuracy\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elateness\u003c/code\u003e computes how many days late a shipment was\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elabel\u003c/code\u003e categorizes lateness into one of four values:\u003c/li\u003e\n\u003c/ul\u003e\n\u003ctable class\u003d\"spliceZepNoBorder\" style\u003d\"margin: 0 0 100px 50px;\"\u003e\n    \u003ctbody\u003e\n            \u003ctr\u003e\u003ctd\u003e0\u003c/td\u003e\u003ctd\u003e0 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1-5 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e2\u003c/td\u003e\u003ctd\u003e5-10 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e3\u003c/td\u003e\u003ctd\u003e10 days or more late\u003c/td\u003e\u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Create our Features Table\u003c/h3\u003e\n\u003cp\u003eWe create a features table in our database that we use with our learning model. We add three computed fields in the \u003ccode\u003efeatures\u003c/code\u003e table that are important to our model:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003equantity_bin\u003c/code\u003e categorizes shipping quantities into bins, to improve learning accuracy\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elateness\u003c/code\u003e computes how many days late a shipment was\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003elabel\u003c/code\u003e categorizes lateness into one of four values:\u003c/li\u003e\n\u003c/ul\u003e\n\u003ctable class\u003d\"spliceZepNoBorder\" style\u003d\"margin: 0 0 100px 50px;\"\u003e\n    \u003ctbody\u003e\n            \u003ctr\u003e\u003ctd\u003e0\u003c/td\u003e\u003ctd\u003e0 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e1\u003c/td\u003e\u003ctd\u003e1-5 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e2\u003c/td\u003e\u003ctd\u003e5-10 days late\u003c/td\u003e\u003c/tr\u003e\n            \u003ctr\u003e\u003ctd\u003e3\u003c/td\u003e\u003ctd\u003e10 days or more late\u003c/td\u003e\u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525624_-1228621631",
@@ -541,43 +490,32 @@
     {
       "text": "%splicemachine\ndrop table IF EXISTS DS_ASN.FEATURES;\nCREATE table DS_ASN.FEATURES AS\n    SELECT \n    SHIPMENTID,\n    STATUS,\n    SHIPMODE,\n    PRODUCT_DESCRIPTION,\n    CONSIGNEE,\n    SHIPPER,\n    ARRIVAL_DATE,\n    GROSS_WEIGHT_LB,\n    GROSS_WEIGHT_KG,\n    FOREIGN_PORT,\n    US_PORT,\n    VESSEL_NAME,\n    COUNTRY_OF_ORIGIN,\n    CONSIGNEE_ADDRESS,\n    SHIPPER_ADDRESS,\n    ZIPCODE,\n    NO_OF_CONTAINERS,\n    CONTAINER_NUMBER,\n    CONTAINER_TYPE,\n    QUANTITY,\n    QUANTITY_UNIT,\n    MEASUREMENT,\n    MEASUREMENT_UNIT,\n    BILL_OF_LADING,\n    HOUSE_VS_MASTER,\n    DISTRIBUTION_PORT,\n    MASTER_BL,\n    VOYAGE_NUMBER,\n    SEAL,\n    SHIP_REGISTERED_IN,\n    INBOND_ENTRY_TYPE,\n    CARRIER_CODE,\n    CARRIER_NAME,\n    CARRIER_CITY,\n    CARRIER_STATE,\n    CARRIER_ZIP,\n    CARRIER_ADDRESS,\n    NOTIFY_PARTY,\n    NOTIFY_ADDRESS,\n    PLACE_OF_RECEIPT,\n    DATE_OF_RECEIPT,\n    CASE\n    WHEN DS_ASN.SHIPMENT_HISTORY.QUANTITY \u003e 10\n    THEN\n        CASE\n            WHEN DS_ASN.SHIPMENT_HISTORY.QUANTITY \u003e 100\n            THEN\n                CASE\n                    WHEN DS_ASN.SHIPMENT_HISTORY.QUANTITY \u003e 1000\n                    THEN 3\n                    ELSE 2\n                END\n            ELSE 1\n    END\n    ELSE 0\n    END AS QUANTITY_BIN,\n    DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE as LATENESS,\n    CASE\n    WHEN  DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 0\n    THEN\n        CASE\n            WHEN  DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 5\n            THEN\n                CASE\n                    WHEN  DS_ASN.SHIPMENT_HISTORY.DATE_OF_RECEIPT - DS_ASN.SHIPMENT_HISTORY.ARRIVAL_DATE \u003e 10\n                    THEN 3\n                    ELSE 2\n                END\n            ELSE 1\n    END\n    ELSE 0\n    END AS LABEL\nFROM DS_ASN.SHIPMENT_HISTORY ",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:43:04.697",
+      "dateUpdated": "2018-12-07 20:52:16.738",
       "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
         "enabled": true,
+        "results": {},
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 10000"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542399525625_-642797407",
       "id": "20180205-022847_1435938411",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:43:04.778",
-      "dateFinished": "2018-12-07 00:43:11.778",
+      "dateStarted": "2018-12-07 20:41:38.830",
+      "dateFinished": "2018-12-07 20:41:44.512",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -585,31 +523,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:46:32.436",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate, Train, and Deploy our Learning Model\u003c/h2\u003e\n\u003cp\u003eThe remainder of this notebook walks you through the code we use to create, train, and deploy our learning model, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003ePerform Spark+MLlib Setup Tasks\u003c/li\u003e\n  \u003cli\u003eCreate our DataFrame\u003c/li\u003e\n  \u003cli\u003eCreate Pipeline Stages\u003c/li\u003e\n  \u003cli\u003eAssemble the Pipeline\u0026gt;Train our Model\u003c/li\u003e\n  \u003cli\u003eDeploy our Model\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eWe include the entire program at the end of this notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate, Train, and Deploy our Learning Model\u003c/h2\u003e\n\u003cp\u003eThe remainder of this notebook walks you through the code we use to create, train, and deploy our learning model, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003ePerform Spark+MLlib Setup Tasks\u003c/li\u003e\n  \u003cli\u003eCreate our DataFrame\u003c/li\u003e\n  \u003cli\u003eCreate Pipeline Stages\u003c/li\u003e\n  \u003cli\u003eAssemble the Pipeline\u0026gt;Train our Model\u003c/li\u003e\n  \u003cli\u003eDeploy our Model\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eWe include the entire program at the end of this notebook.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525625_1011168258",
@@ -623,31 +561,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-02 20:15:26.070",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Perform Spark + MLlib Setup Tasks\u003c/h3\u003e\n\u003cp\u003eThe Python Splice Machine API communicates with your database through the \u003ccode\u003ePySparkContext\u003c/code\u003e class.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Perform Spark + MLlib Setup Tasks\u003c/h3\u003e\n\u003cp\u003eThe Python Splice Machine API communicates with your database through the \u003ccode\u003ePySparkContext\u003c/code\u003e class.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525626_-684199627",
@@ -661,31 +599,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:46:48.360",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe use the following code to instantiate \u003ccode\u003ePySpliceContext\u003c/code\u003e and import our modules:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003efrom pyspark.ml.feature import StringIndexer, VectorAssembler\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe use the following code to instantiate \u003ccode\u003ePySpliceContext\u003c/code\u003e and import our modules:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003efrom pyspark.ml.feature import StringIndexer, VectorAssembler\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525627_-1996463809",
@@ -699,31 +637,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:46:52.182",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Create our DataFrame\u003c/h3\u003e\n\u003cp\u003eNow we create a Python DataFrame from the results of a SQL \u003ccode\u003eSELECT\u003c/code\u003e query from the database. This allows us to manipulate our Splice Machine data as a Spark DataFrame:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edf_with_uppercase_schema \u003d PySpliceContext.df(\u0026quot;select * from ASN.Features\u0026quot;)\nnewNames \u003d [\n    \u0026quot;consignee\u0026quot;,\n    \u0026quot;shipper\u0026quot;,\n    \u0026quot;shipmode\u0026quot;,\n    \u0026quot;gross_weight_lb\u0026quot;,\n    \u0026quot;foreign_port\u0026quot;,\n    \u0026quot;us_port\u0026quot;,\n    \u0026quot;vessel_name\u0026quot;,\n    \u0026quot;country_of_origin\u0026quot;,\n    \u0026quot;container_number\u0026quot;,\n    \u0026quot;container_type\u0026quot;,\n    \u0026quot;quantity\u0026quot;,\n    \u0026quot;ship_registered_in\u0026quot;,\n    \u0026quot;carrier_code\u0026quot;,\n    \u0026quot;carrier_city\u0026quot;,\n    \u0026quot;notify_party\u0026quot;,\n    \u0026quot;place_of_receipt\u0026quot;,\n    \u0026quot;zipcode\u0026quot;,\n    \u0026quot;quantity_bin\u0026quot;\n    ]\ndf \u003d df_with_uppercase_schema.toDF(newNames)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Create our DataFrame\u003c/h3\u003e\n\u003cp\u003eNow we create a Python DataFrame from the results of a SQL \u003ccode\u003eSELECT\u003c/code\u003e query from the database. This allows us to manipulate our Splice Machine data as a Spark DataFrame:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edf_with_uppercase_schema \u003d PySpliceContext.df(\u0026quot;select * from ASN.Features\u0026quot;)\nnewNames \u003d [\n    \u0026quot;consignee\u0026quot;,\n    \u0026quot;shipper\u0026quot;,\n    \u0026quot;shipmode\u0026quot;,\n    \u0026quot;gross_weight_lb\u0026quot;,\n    \u0026quot;foreign_port\u0026quot;,\n    \u0026quot;us_port\u0026quot;,\n    \u0026quot;vessel_name\u0026quot;,\n    \u0026quot;country_of_origin\u0026quot;,\n    \u0026quot;container_number\u0026quot;,\n    \u0026quot;container_type\u0026quot;,\n    \u0026quot;quantity\u0026quot;,\n    \u0026quot;ship_registered_in\u0026quot;,\n    \u0026quot;carrier_code\u0026quot;,\n    \u0026quot;carrier_city\u0026quot;,\n    \u0026quot;notify_party\u0026quot;,\n    \u0026quot;place_of_receipt\u0026quot;,\n    \u0026quot;zipcode\u0026quot;,\n    \u0026quot;quantity_bin\u0026quot;\n    ]\ndf \u003d df_with_uppercase_schema.toDF(newNames)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525627_312390310",
@@ -737,36 +675,36 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:47:14.725",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Create Pipeline Stages\u003c/h3\u003e\n\u003cp\u003eOur pipeline stages are fairly simple:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eTransform each row of data in the input dataset into an integer vector.\u003c/li\u003e\n  \u003cli\u003eAssemble the vectors into a DataFrame\u003c/li\u003e\n  \u003cli\u003eUse a Logistic Regression Estimator to create our model\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eTransform each row of data into an integer vector\u003c/h4\u003e\n\u003cp\u003eThe Logistic Regression estimator operates on integer vectors, so we need to convert each row in our input dataframe into an integer vector. Remember that each row contains only the fields from our database that are of interest to our model: the fields that previously included in our sequence and concatenated onto our DataFrame.\u003c/p\u003e\n\u003cp\u003eSpark includes a \u003ccode\u003eStringIndexer\u003c/code\u003e function that does exactly that, so we create a \u003ccode\u003eStringIndexer\u003c/code\u003e for each field, and we\u0026rsquo;ll later use each of these as a stage in our learning pipeline. The \u003ccode\u003eStringIndexer\u003c/code\u003e transforms the data from a specified input column in our DataFrame and stores the output in a specified and new output column. By convention, we name each string indexer with the name of the field+\u003ccode\u003eIndexer,\u003c/code\u003e and name the output column the name of the field+\u003ccode\u003eIndex,\u003c/code\u003e e.g. we create a transformer named \u003ccode\u003econsigneeIndexer\u003c/code\u003e to transform the input column \u003ccode\u003econsignee\u003c/code\u003e into the new output column \u003ccode\u003econsigneeIndex.\u003c/code\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Transform strings into numbers\nconsigneeIndexer \u003d  StringIndexer(inputCol\u003d\u0026quot;consignee\u0026quot;, outputCol\u003d\u0026quot;consigneeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nshipperIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;shipper\u0026quot;, outputCol\u003d\u0026quot;shipperIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nshipmodeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;shipmode\u0026quot;, outputCol\u003d\u0026quot;shipmodeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ngross_weight_lbIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;gross_weight_lb\u0026quot;, outputCol\u003d\u0026quot;gross_weight_lbIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nforeign_portIndexer \u003d  StringIndexer(inputCol\u003d\u0026quot;foreign_port\u0026quot;, outputCol\u003d\u0026quot;foreign_portIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nus_portIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;us_port\u0026quot;, outputCol\u003d\u0026quot;us_portIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nvessel_nameIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;vessel_name\u0026quot;, outputCol\u003d\u0026quot;vessel_nameIndex\u0026quot;,  handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncountry_of_originIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;country_of_origin\u0026quot;, outputCol\u003d\u0026quot;country_of_originIndex\u0026quot;,  handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncontainer_numberIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;container_number\u0026quot;, outputCol\u003d\u0026quot;container_numberIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncontainer_typeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;container_type\u0026quot;, outputCol\u003d\u0026quot;container_typeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nship_registered_inIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;ship_registered_in\u0026quot;, outputCol\u003d\u0026quot;ship_registered_inIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncarrier_codeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;carrier_code\u0026quot;, outputCol\u003d\u0026quot;carrier_codeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncarrier_cityIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;carrier_city\u0026quot;, outputCol\u003d\u0026quot;carrier_cityIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nnotify_partyIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;notify_party\u0026quot;, outputCol\u003d\u0026quot;notify_partyIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nplace_of_receiptIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;place_of_receipt\u0026quot;, outputCol\u003d\u0026quot;place_of_receiptIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nzipcodeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;zipcode\u0026quot;, outputCol\u003d\u0026quot;zipcodeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eAssemble the Vectors\u003c/h4\u003e\n\u003cp\u003eAfter our pipeline has transformed data into numbers, we need to assemble those into vectors. Spark includes a \u003ccode\u003eVectorAssembler\u003c/code\u003e object that does just that, transforming a set of input columns into a vector that is stored in the \u003ccode\u003efeatures\u003c/code\u003e column in the DataFrame:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e//assemble raw features\nassembler \u003d VectorAssembler(inputCols\u003d[\n                    \u0026quot;shipmodeIndex\u0026quot;,\n                    \u0026quot;consigneeIndex\u0026quot;,\n                    \u0026quot;shipperIndex\u0026quot;,\n                    \u0026quot;gross_weight_lbIndex\u0026quot;,\n                    \u0026quot;foreign_portIndex\u0026quot;,\n                    \u0026quot;us_portIndex\u0026quot;,\n                    \u0026quot;vessel_nameIndex\u0026quot;,\n                    \u0026quot;country_of_originIndex\u0026quot;,\n                    \u0026quot;container_numberIndex\u0026quot;,\n                    \u0026quot;container_typeIndex\u0026quot;,\n                    \u0026quot;quantity_bin\u0026quot;,\n                    \u0026quot;ship_registered_inIndex\u0026quot;,\n                    \u0026quot;carrier_codeIndex\u0026quot;,\n                    \u0026quot;carrier_cityIndex\u0026quot;,\n                    \u0026quot;notify_partyIndex\u0026quot;,\n                    \u0026quot;place_of_receiptIndex\u0026quot;,\n                    \u0026quot;zipcodeIndex\u0026quot;,\n                    \u0026quot;quantity_bin\u0026quot;\n                    ], outputCol\u003d\u0026#39;features\u0026#39;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eCreate the Estimator\u003c/h4\u003e\n\u003cp\u003eCreating the estimator is a simple matter of specifying a few parameters, including which column in the DataFrame is the label, and which column contains the feature set:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e//Create ML analytic\nlr \u003d LogisticRegression(maxIter\u003d30, labelCol\u003d\u0026quot;label\u0026quot;, featuresCol\u003d\u0026quot;features\u0026quot;, regParam\u003d0.3)\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Create Pipeline Stages\u003c/h3\u003e\n\u003cp\u003eOur pipeline stages are fairly simple:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eTransform each row of data in the input dataset into an integer vector.\u003c/li\u003e\n  \u003cli\u003eAssemble the vectors into a DataFrame\u003c/li\u003e\n  \u003cli\u003eUse a Logistic Regression Estimator to create our model\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eTransform each row of data into an integer vector\u003c/h4\u003e\n\u003cp\u003eThe Logistic Regression estimator operates on integer vectors, so we need to convert each row in our input dataframe into an integer vector. Remember that each row contains only the fields from our database that are of interest to our model: the fields that previously included in our sequence and concatenated onto our DataFrame.\u003c/p\u003e\n\u003cp\u003eSpark includes a \u003ccode\u003eStringIndexer\u003c/code\u003e function that does exactly that, so we create a \u003ccode\u003eStringIndexer\u003c/code\u003e for each field, and we\u0026rsquo;ll later use each of these as a stage in our learning pipeline. The \u003ccode\u003eStringIndexer\u003c/code\u003e transforms the data from a specified input column in our DataFrame and stores the output in a specified and new output column. By convention, we name each string indexer with the name of the field+\u003ccode\u003eIndexer,\u003c/code\u003e and name the output column the name of the field+\u003ccode\u003eIndex,\u003c/code\u003e e.g. we create a transformer named \u003ccode\u003econsigneeIndexer\u003c/code\u003e to transform the input column \u003ccode\u003econsignee\u003c/code\u003e into the new output column \u003ccode\u003econsigneeIndex.\u003c/code\u003e\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Transform strings into numbers\nconsigneeIndexer \u003d  StringIndexer(inputCol\u003d\u0026quot;consignee\u0026quot;, outputCol\u003d\u0026quot;consigneeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nshipperIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;shipper\u0026quot;, outputCol\u003d\u0026quot;shipperIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nshipmodeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;shipmode\u0026quot;, outputCol\u003d\u0026quot;shipmodeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ngross_weight_lbIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;gross_weight_lb\u0026quot;, outputCol\u003d\u0026quot;gross_weight_lbIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nforeign_portIndexer \u003d  StringIndexer(inputCol\u003d\u0026quot;foreign_port\u0026quot;, outputCol\u003d\u0026quot;foreign_portIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nus_portIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;us_port\u0026quot;, outputCol\u003d\u0026quot;us_portIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nvessel_nameIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;vessel_name\u0026quot;, outputCol\u003d\u0026quot;vessel_nameIndex\u0026quot;,  handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncountry_of_originIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;country_of_origin\u0026quot;, outputCol\u003d\u0026quot;country_of_originIndex\u0026quot;,  handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncontainer_numberIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;container_number\u0026quot;, outputCol\u003d\u0026quot;container_numberIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncontainer_typeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;container_type\u0026quot;, outputCol\u003d\u0026quot;container_typeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nship_registered_inIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;ship_registered_in\u0026quot;, outputCol\u003d\u0026quot;ship_registered_inIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncarrier_codeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;carrier_code\u0026quot;, outputCol\u003d\u0026quot;carrier_codeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\ncarrier_cityIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;carrier_city\u0026quot;, outputCol\u003d\u0026quot;carrier_cityIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nnotify_partyIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;notify_party\u0026quot;, outputCol\u003d\u0026quot;notify_partyIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nplace_of_receiptIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;place_of_receipt\u0026quot;, outputCol\u003d\u0026quot;place_of_receiptIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\nzipcodeIndexer \u003d StringIndexer(inputCol\u003d\u0026quot;zipcode\u0026quot;, outputCol\u003d\u0026quot;zipcodeIndex\u0026quot;, handleInvalid\u003d\u0026quot;skip\u0026quot;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eAssemble the Vectors\u003c/h4\u003e\n\u003cp\u003eAfter our pipeline has transformed data into numbers, we need to assemble those into vectors. Spark includes a \u003ccode\u003eVectorAssembler\u003c/code\u003e object that does just that, transforming a set of input columns into a vector that is stored in the \u003ccode\u003efeatures\u003c/code\u003e column in the DataFrame:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e//assemble raw features\nassembler \u003d VectorAssembler(inputCols\u003d[\n                    \u0026quot;shipmodeIndex\u0026quot;,\n                    \u0026quot;consigneeIndex\u0026quot;,\n                    \u0026quot;shipperIndex\u0026quot;,\n                    \u0026quot;gross_weight_lbIndex\u0026quot;,\n                    \u0026quot;foreign_portIndex\u0026quot;,\n                    \u0026quot;us_portIndex\u0026quot;,\n                    \u0026quot;vessel_nameIndex\u0026quot;,\n                    \u0026quot;country_of_originIndex\u0026quot;,\n                    \u0026quot;container_numberIndex\u0026quot;,\n                    \u0026quot;container_typeIndex\u0026quot;,\n                    \u0026quot;quantity_bin\u0026quot;,\n                    \u0026quot;ship_registered_inIndex\u0026quot;,\n                    \u0026quot;carrier_codeIndex\u0026quot;,\n                    \u0026quot;carrier_cityIndex\u0026quot;,\n                    \u0026quot;notify_partyIndex\u0026quot;,\n                    \u0026quot;place_of_receiptIndex\u0026quot;,\n                    \u0026quot;zipcodeIndex\u0026quot;,\n                    \u0026quot;quantity_bin\u0026quot;\n                    ], outputCol\u003d\u0026#39;features\u0026#39;)\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch4\u003eCreate the Estimator\u003c/h4\u003e\n\u003cp\u003eCreating the estimator is a simple matter of specifying a few parameters, including which column in the DataFrame is the label, and which column contains the feature set:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e//Create ML analytic\nlr \u003d LogisticRegression(maxIter\u003d30, labelCol\u003d\u0026quot;label\u0026quot;, featuresCol\u003d\u0026quot;features\u0026quot;, regParam\u003d0.3)\n\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525627_-599496233",
       "id": "20180611-212921_295690204",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -775,31 +713,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:47:23.596",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Assemble our Pipeline\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003e// Chain indexers and tree in a Pipeline\nlrPipeline \u003d Pipeline(stages\u003d\n        [consigneeIndexer,\n        shipperIndexer,\n        shipmodeIndexer,\n        gross_weight_lbIndexer,\n        foreign_portIndexer,\n        us_portIndexer,\n        vessel_nameIndexer,\n        country_of_originIndexer,\n        container_numberIndexer,\n        container_typeIndexer,\n        ship_registered_inIndexer,\n        carrier_codeIndexer,\n        carrier_cityIndexer,\n        notify_partyIndexer,\n        place_of_receiptIndexer,\n        zipcodeIndexer,\n        assembler,\n        lr]\n        )\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Assemble our Pipeline\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003e// Chain indexers and tree in a Pipeline\nlrPipeline \u003d Pipeline(stages\u003d\n        [consigneeIndexer,\n        shipperIndexer,\n        shipmodeIndexer,\n        gross_weight_lbIndexer,\n        foreign_portIndexer,\n        us_portIndexer,\n        vessel_nameIndexer,\n        country_of_originIndexer,\n        container_numberIndexer,\n        container_typeIndexer,\n        ship_registered_inIndexer,\n        carrier_codeIndexer,\n        carrier_cityIndexer,\n        notify_partyIndexer,\n        place_of_receiptIndexer,\n        zipcodeIndexer,\n        assembler,\n        lr]\n        )\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525628_-849294510",
@@ -813,36 +751,36 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:47:27.071",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e5. Train our Model\u003c/h3\u003e\n\u003cp\u003eNow that our pipeline is set up, all we need to do to train our model is feed our dataframe into the pipeline\u0026rsquo;s \u003ccode\u003efit\u003c/code\u003e method, which learns from the data. \u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Train model. \nlrModel \u003d lrPipeline.fit(df)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e5. Train our Model\u003c/h3\u003e\n\u003cp\u003eNow that our pipeline is set up, all we need to do to train our model is feed our dataframe into the pipeline\u0026rsquo;s \u003ccode\u003efit\u003c/code\u003e method, which learns from the data. \u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e// Train model. \nlrModel \u003d lrPipeline.fit(df)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525628_568988097",
       "id": "20180611-220247_1750575070",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -852,32 +790,32 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:47:32.538",
       "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "title": false,
-        "results": {},
         "enabled": false,
-        "fontSize": 9.0
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Materialize the Model\u003c/h3\u003e\n\u003cp\u003eAfter training our model, we can apply it to real data and display the results. For simplicity sake, in this example, we\u0026rsquo;ll simply apply the model to our feature table itself.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003elrModel.transform(df).select(\u0026quot;prediction\u0026quot;, \u0026quot;probability\u0026quot;, \u0026quot;features\u0026quot;).show(100)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Materialize the Model\u003c/h3\u003e\n\u003cp\u003eAfter training our model, we can apply it to real data and display the results. For simplicity sake, in this example, we\u0026rsquo;ll simply apply the model to our feature table itself.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003elrModel.transform(df).select(\u0026quot;prediction\u0026quot;, \u0026quot;probability\u0026quot;, \u0026quot;features\u0026quot;).show(100)\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525629_66114845",
@@ -889,92 +827,92 @@
     {
       "text": "%splicemachine\nselect *  from DS_ASN.features { limit 100 }\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:44:36.643",
+      "dateUpdated": "2018-12-07 20:41:57.658",
       "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
         "editorHide": false,
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
+              "commonSetting": {},
               "optionOpen": false,
               "setting": {
                 "table": {
+                  "updated": false,
                   "tableGridState": {},
                   "tableColumnTypeState": {
+                    "updated": false,
                     "names": {
-                      "SHIPMENTID": "string",
-                      "STATUS": "string",
-                      "SHIPMODE": "string",
-                      "PRODUCT_DESCRIPTION": "string",
-                      "CONSIGNEE": "string",
-                      "SHIPPER": "string",
-                      "ARRIVAL_DATE": "string",
-                      "GROSS_WEIGHT_LB": "string",
-                      "GROSS_WEIGHT_KG": "string",
-                      "FOREIGN_PORT": "string",
-                      "US_PORT": "string",
-                      "VESSEL_NAME": "string",
-                      "COUNTRY_OF_ORIGIN": "string",
-                      "CONSIGNEE_ADDRESS": "string",
-                      "SHIPPER_ADDRESS": "string",
-                      "ZIPCODE": "string",
-                      "NO_OF_CONTAINERS": "string",
-                      "CONTAINER_NUMBER": "string",
-                      "CONTAINER_TYPE": "string",
-                      "QUANTITY": "string",
-                      "QUANTITY_UNIT": "string",
-                      "MEASUREMENT": "string",
-                      "MEASUREMENT_UNIT": "string",
-                      "BILL_OF_LADING": "string",
                       "HOUSE_VS_MASTER": "string",
-                      "DISTRIBUTION_PORT": "string",
-                      "MASTER_BL": "string",
-                      "VOYAGE_NUMBER": "string",
-                      "SEAL": "string",
-                      "SHIP_REGISTERED_IN": "string",
-                      "INBOND_ENTRY_TYPE": "string",
-                      "CARRIER_CODE": "string",
-                      "CARRIER_NAME": "string",
-                      "CARRIER_CITY": "string",
-                      "CARRIER_STATE": "string",
-                      "CARRIER_ZIP": "string",
-                      "CARRIER_ADDRESS": "string",
-                      "NOTIFY_PARTY": "string",
                       "NOTIFY_ADDRESS": "string",
-                      "PLACE_OF_RECEIPT": "string",
-                      "DATE_OF_RECEIPT": "string",
-                      "QUANTITY_BIN": "string",
+                      "COUNTRY_OF_ORIGIN": "string",
+                      "CARRIER_STATE": "string",
+                      "QUANTITY_UNIT": "string",
+                      "CARRIER_CODE": "string",
+                      "ZIPCODE": "string",
+                      "CONTAINER_TYPE": "string",
+                      "LABEL": "string",
+                      "CARRIER_ADDRESS": "string",
+                      "GROSS_WEIGHT_LB": "string",
+                      "SEAL": "string",
                       "LATENESS": "string",
-                      "LABEL": "string"
-                    },
-                    "updated": false
+                      "MEASUREMENT_UNIT": "string",
+                      "SHIP_REGISTERED_IN": "string",
+                      "GROSS_WEIGHT_KG": "string",
+                      "SHIPPER_ADDRESS": "string",
+                      "QUANTITY_BIN": "string",
+                      "US_PORT": "string",
+                      "CARRIER_ZIP": "string",
+                      "CONSIGNEE": "string",
+                      "VESSEL_NAME": "string",
+                      "CONTAINER_NUMBER": "string",
+                      "NOTIFY_PARTY": "string",
+                      "MEASUREMENT": "string",
+                      "PLACE_OF_RECEIPT": "string",
+                      "QUANTITY": "string",
+                      "STATUS": "string",
+                      "ARRIVAL_DATE": "string",
+                      "SHIPMODE": "string",
+                      "SHIPPER": "string",
+                      "CARRIER_CITY": "string",
+                      "MASTER_BL": "string",
+                      "BILL_OF_LADING": "string",
+                      "SHIPMENTID": "string",
+                      "CARRIER_NAME": "string",
+                      "DATE_OF_RECEIPT": "string",
+                      "VOYAGE_NUMBER": "string",
+                      "PRODUCT_DESCRIPTION": "string",
+                      "FOREIGN_PORT": "string",
+                      "CONSIGNEE_ADDRESS": "string",
+                      "DISTRIBUTION_PORT": "string",
+                      "NO_OF_CONTAINERS": "string",
+                      "INBOND_ENTRY_TYPE": "string"
+                    }
                   },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
                   "tableOptionValue": {
-                    "useFilter": false,
                     "showPagination": false,
+                    "useFilter": false,
                     "showAggregationFooter": false
                   },
-                  "updated": false,
-                  "initialized": false
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "commonSetting": {}
+              "mode": "table",
+              "height": 300.0
             },
             "helium": {}
           }
         },
-        "enabled": true,
-        "fontSize": 9.0
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": true,
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -993,8 +931,8 @@
       "jobName": "paragraph_1542399525629_-142666830",
       "id": "20180205-024307_1130627818",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:44:36.773",
-      "dateFinished": "2018-12-07 00:44:37.275",
+      "dateStarted": "2018-12-07 20:41:57.759",
+      "dateFinished": "2018-12-07 20:41:58.103",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -1003,31 +941,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-07 00:05:03.109",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eThe Python Code\u003c/h2\u003e\n\u003cp\u003eOur Python code is listed in the next paragraph.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can ignore the \u003ccode\u003eRuntimeWarning:\u003c/code\u003e warning messages that may display when you run the code in the next paragraph.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eThe Python Code\u003c/h2\u003e\n\u003cp\u003eOur Python code is listed in the next paragraph.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can ignore the \u003ccode\u003eRuntimeWarning:\u003c/code\u003e warning messages that may display when you run the code in the next paragraph.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525630_1144007950",
@@ -1041,84 +979,65 @@
     {
       "text": "%spark.pyspark\nfrom __future__ import print_function\nimport string\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql import Row\nfrom pyspark.sql import DataFrame\nfrom pyspark.ml.feature import StringIndexer, VectorAssembler\nfrom pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\nfrom pyspark.ml.evaluation import BinaryClassificationEvaluator\nfrom pyspark.ml.tuning import ParamGridBuilder, CrossValidator\n\nfrom __future__ import print_function\n\nfrom pyspark.sql import DataFrame\n\n# Setup our SpliceContext\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\n\n# Query Features\nquery_results \u003d splice.df(\"select * from DS_ASN.Features\")\nnewNames \u003d [\"shipmentid\",\n            \"status\",\n            \"shipmode\",\n            \"product_description\",\n            \"consignee\",\n            \"shipper\",\n            \"arrival_date\",\n            \"gross_weight_lb\",\n            \"gross_weight_kg\",\n            \"foreign_port\",\n            \"us_port\",\n            \"vessel_name\",\n            \"country_of_origin\",\n            \"consignee_address\",\n            \"shipper_address\",\n            \"zipcode\",\n            \"no_of_containers\",\n            \"container_number\",\n            \"container_type\",\n            \"quantity\",\n            \"quantity_unit\",\n            \"measurement\",\n            \"measurement_unit\",\n            \"bill_of_lading\",\n            \"house_vs_master\",\n            \"distribution_port\",\n            \"master_bl\",\n            \"voyage_number\",\n            \"seal\",\n            \"ship_registered_in\",\n            \"inbond_entry_type\",\n            \"carrier_code\",\n            \"carrier_name\",\n            \"carrier_city\",\n            \"carrier_state\",\n            \"carrier_zip\",\n            \"carrier_address\",\n            \"notify_party\",\n            \"notify_address\",\n            \"place_of_receipt\",\n            \"date_of_receipt\",\n            \"quantity_bin\",\n            \"lateness\",\n            \"label\"]\n\ndf \u003d query_results.toDF(*newNames)\n\n# Assemble Vectors\nassembler \u003d VectorAssembler(inputCols\u003d[\n    \"shipmodeIndex\",\n    \"consigneeIndex\",\n    \"shipperIndex\",\n    \"gross_weight_lbIndex\",\n    \"foreign_portIndex\",\n    \"us_portIndex\",\n    \"vessel_nameIndex\",\n    \"country_of_originIndex\",\n    \"container_numberIndex\",\n    \"container_typeIndex\",\n    \"ship_registered_inIndex\",\n    \"carrier_codeIndex\",\n    \"carrier_cityIndex\",\n    \"notify_partyIndex\",\n    \"place_of_receiptIndex\",\n    \"zipcodeIndex\",\n    \"quantity_bin\"\n], outputCol\u003d\u0027features\u0027)\n\n# Transform strings into numbers\nzipcodeIndexer \u003d StringIndexer(inputCol\u003d\"zipcode\", outputCol\u003d\"zipcodeIndex\", handleInvalid\u003d\"skip\")\nconsigneeIndexer \u003d StringIndexer(inputCol\u003d\"consignee\", outputCol\u003d\"consigneeIndex\", handleInvalid\u003d\"skip\")\nshipperIndexer \u003d StringIndexer(inputCol\u003d\"shipper\", outputCol\u003d\"shipperIndex\", handleInvalid\u003d\"skip\")\nstatusIndexer \u003d StringIndexer(inputCol\u003d\"status\", outputCol\u003d\"statusIndex\", handleInvalid\u003d\"skip\")\nshipmodeIndexer \u003d StringIndexer(inputCol\u003d\"shipmode\", outputCol\u003d\"shipmodeIndex\", handleInvalid\u003d\"skip\")\ngross_weight_lbIndexer \u003d StringIndexer(inputCol\u003d\"gross_weight_lb\", outputCol\u003d\"gross_weight_lbIndex\",\n                                       handleInvalid\u003d\"skip\")\nforeign_portIndexer \u003d StringIndexer(inputCol\u003d\"foreign_port\", outputCol\u003d\"foreign_portIndex\", handleInvalid\u003d\"skip\")\nus_portIndexer \u003d StringIndexer(inputCol\u003d\"us_port\", outputCol\u003d\"us_portIndex\", handleInvalid\u003d\"skip\")\nvessel_nameIndexer \u003d StringIndexer(inputCol\u003d\"vessel_name\", outputCol\u003d\"vessel_nameIndex\", handleInvalid\u003d\"skip\")\ncountry_of_originIndexer \u003d StringIndexer(inputCol\u003d\"country_of_origin\", outputCol\u003d\"country_of_originIndex\",\n                                         handleInvalid\u003d\"skip\")\ncontainer_numberIndexer \u003d StringIndexer(inputCol\u003d\"container_number\", outputCol\u003d\"container_numberIndex\",\n                                        handleInvalid\u003d\"skip\")\ncontainer_typeIndexer \u003d StringIndexer(inputCol\u003d\"container_type\", outputCol\u003d\"container_typeIndex\",\n                                      handleInvalid\u003d\"skip\")\ndistribution_portIndexer \u003d StringIndexer(inputCol\u003d\"distribution_port\", outputCol\u003d\"distribution_portIndex\",\n                                         handleInvalid\u003d\"skip\")\nship_registered_inIndexer \u003d StringIndexer(inputCol\u003d\"ship_registered_in\", outputCol\u003d\"ship_registered_inIndex\",\n                                          handleInvalid\u003d\"skip\")\ninbond_entry_typeIndexer \u003d StringIndexer(inputCol\u003d\"inbond_entry_type\", outputCol\u003d\"inbond_entry_typeIndex\",\n                                         handleInvalid\u003d\"skip\")\ncarrier_codeIndexer \u003d StringIndexer(inputCol\u003d\"carrier_code\", outputCol\u003d\"carrier_codeIndex\", handleInvalid\u003d\"skip\")\ncarrier_cityIndexer \u003d StringIndexer(inputCol\u003d\"carrier_city\", outputCol\u003d\"carrier_cityIndex\", handleInvalid\u003d\"skip\")\ncarrier_stateIndexer \u003d StringIndexer(inputCol\u003d\"carrier_state\", outputCol\u003d\"carrier_stateIndex\", handleInvalid\u003d\"skip\")\ncarrier_zipIndexer \u003d StringIndexer(inputCol\u003d\"carrier_zip\", outputCol\u003d\"carrier_zipIndex\", handleInvalid\u003d\"skip\")\nnotify_partyIndexer \u003d StringIndexer(inputCol\u003d\"notify_party\", outputCol\u003d\"notify_partyIndex\", handleInvalid\u003d\"skip\")\nplace_of_receiptIndexer \u003d StringIndexer(inputCol\u003d\"place_of_receipt\", outputCol\u003d\"place_of_receiptIndex\",\n                                        handleInvalid\u003d\"skip\")\n\nlr \u003d LogisticRegression(maxIter\u003d30, labelCol\u003d\"label\", featuresCol\u003d\"features\", regParam\u003d0.3)\n\nlrPipeline \u003d Pipeline(stages\u003d\n                      [consigneeIndexer,\n                       shipperIndexer,\n                       shipmodeIndexer,\n                       gross_weight_lbIndexer,\n                       foreign_portIndexer,\n                       us_portIndexer,\n                       vessel_nameIndexer,\n                       country_of_originIndexer,\n                       container_numberIndexer,\n                       container_typeIndexer,\n                       ship_registered_inIndexer,\n                       carrier_codeIndexer,\n                       carrier_cityIndexer,\n                       notify_partyIndexer,\n                       place_of_receiptIndexer,\n                       zipcodeIndexer,\n                       assembler,\n                       lr]\n                      )\nparamGrid \u003d ParamGridBuilder() \\\n    .addGrid(lr.regParam, [0.1, 0.01]) \\\n    .build()\n\ncrossval \u003d CrossValidator(estimator\u003dlrPipeline,\n                          estimatorParamMaps\u003dparamGrid,\n                          evaluator\u003dBinaryClassificationEvaluator(),\n                          numFolds\u003d2)  # use 3+ folds in practice\n\n# Run cross-validation, and choose the best parameters to demonstate GridSearch in Spark MLlib\nlrModel \u003d crossval.fit(df)\n\ntransformed_df \u003d lrModel.transform(df)\ntransformed_df.createOrReplaceTempView(\"res_view\")\nresults \u003d sqlContext.sql(\u0027SELECT prediction, probability, features from res_view\u0027)\nresults.show(20)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:04:28.669",
+      "dateUpdated": "2018-12-07 20:52:35.254",
       "config": {
+        "editorHide": false,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
           "completionKey": "TAB",
-          "completionSupport": true
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "python"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "/usr/lib64/python2.7/site-packages/scipy/sparse/lil.py:19: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from . import _csparsetools\n/usr/lib64/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:165: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from ._shortest_path import shortest_path, floyd_warshall, dijkstra,\\\n/usr/lib64/python2.7/site-packages/scipy/sparse/csgraph/_validation.py:5: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from ._tools import csgraph_to_dense, csgraph_from_dense,\\\n/usr/lib64/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:167: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from ._traversal import breadth_first_order, depth_first_order, \\\n/usr/lib64/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:169: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from ._min_spanning_tree import minimum_spanning_tree\n/usr/lib64/python2.7/site-packages/scipy/sparse/csgraph/__init__.py:170: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from ._reordering import reverse_cuthill_mckee, maximum_bipartite_matching, \\\n+----------+--------------------+--------------------+\n|prediction|         probability|            features|\n+----------+--------------------+--------------------+\n|       2.0|[0.07087610588278...|(17,[2,3,4,8,9,10...|\n|       2.0|[0.07647301225524...|[0.0,1.0,0.0,3.0,...|\n|       2.0|[0.06554979717368...|(17,[2,3,6,8,9,16...|\n|       2.0|[0.07018598190737...|[0.0,3.0,4.0,1.0,...|\n|       2.0|[0.07087610588278...|(17,[2,3,4,8,9,10...|\n|       2.0|[0.07647301225524...|[0.0,1.0,0.0,3.0,...|\n|       2.0|[0.06554979717368...|(17,[2,3,6,8,9,16...|\n|       2.0|[0.07018598190737...|[0.0,3.0,4.0,1.0,...|\n|       2.0|[0.07087610588278...|(17,[2,3,4,8,9,10...|\n|       2.0|[0.07647301225524...|[0.0,1.0,0.0,3.0,...|\n|       2.0|[0.06554979717368...|(17,[2,3,6,8,9,16...|\n|       2.0|[0.07018598190737...|[0.0,3.0,4.0,1.0,...|\n|       2.0|[0.07087610588278...|(17,[2,3,4,8,9,10...|\n|       2.0|[0.07647301225524...|[0.0,1.0,0.0,3.0,...|\n|       2.0|[0.06554979717368...|(17,[2,3,6,8,9,16...|\n|       2.0|[0.07018598190737...|[0.0,3.0,4.0,1.0,...|\n|       2.0|[0.07087610588278...|(17,[2,3,4,8,9,10...|\n|       2.0|[0.07647301225524...|[0.0,1.0,0.0,3.0,...|\n|       2.0|[0.06554979717368...|(17,[2,3,6,8,9,16...|\n|       2.0|[0.07018598190737...|[0.0,3.0,4.0,1.0,...|\n+----------+--------------------+--------------------+\nonly showing top 20 rows\n\n"
-          }
-        ]
       },
       "apps": [],
       "jobName": "paragraph_1542399525631_-80376965",
       "id": "20180611-220729_615649684",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:04:28.728",
-      "dateFinished": "2018-12-07 00:06:07.892",
+      "dateStarted": "2018-12-07 20:42:05.224",
+      "dateFinished": "2018-12-07 20:45:39.397",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\ndrop table IF EXISTS DS_ASN.TEST_FEATURES;\nCREATE table DS_ASN.TEST_FEATURES AS\n    SELECT \n    SHIPMENTID,\n    STATUS,\n    SHIPMODE,\n    PRODUCT_DESCRIPTION,\n    CONSIGNEE,\n    SHIPPER,\n    ARRIVAL_DATE,\n    GROSS_WEIGHT_LB,\n    GROSS_WEIGHT_KG,\n    FOREIGN_PORT,\n    US_PORT,\n    VESSEL_NAME,\n    COUNTRY_OF_ORIGIN,\n    CONSIGNEE_ADDRESS,\n    SHIPPER_ADDRESS,\n    ZIPCODE,\n    NO_OF_CONTAINERS,\n    CONTAINER_NUMBER,\n    CONTAINER_TYPE,\n    QUANTITY,\n    QUANTITY_UNIT,\n    MEASUREMENT,\n    MEASUREMENT_UNIT,\n    BILL_OF_LADING,\n    HOUSE_VS_MASTER,\n    DISTRIBUTION_PORT,\n    MASTER_BL,\n    VOYAGE_NUMBER,\n    SEAL,\n    SHIP_REGISTERED_IN,\n    INBOND_ENTRY_TYPE,\n    CARRIER_CODE,\n    CARRIER_NAME,\n    CARRIER_CITY,\n    CARRIER_STATE,\n    CARRIER_ZIP,\n    CARRIER_ADDRESS,\n    NOTIFY_PARTY,\n    NOTIFY_ADDRESS,\n    PLACE_OF_RECEIPT,\n    DATE_OF_RECEIPT,\n    CASE\n    WHEN DS_ASN.SHIPMENT_IN_TRANSIT.QUANTITY \u003e 10\n    THEN\n        CASE\n            WHEN DS_ASN.SHIPMENT_IN_TRANSIT.QUANTITY \u003e 100\n            THEN\n                CASE\n                    WHEN DS_ASN.SHIPMENT_IN_TRANSIT.QUANTITY \u003e 1000\n                    THEN 3\n                    ELSE 2\n                END\n            ELSE 1\n\tEND\n    ELSE 0\n    END AS QUANTITY_BIN\n    FROM DS_ASN.SHIPMENT_IN_TRANSIT;\n    \n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:14:31.501",
+      "dateUpdated": "2018-12-07 20:52:47.687",
       "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
         "enabled": true,
+        "results": {},
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 801"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542399525631_1761438708",
       "id": "20180304-185514_1167859763",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:14:31.561",
-      "dateFinished": "2018-12-07 00:14:34.516",
+      "dateStarted": "2018-12-07 20:47:24.773",
+      "dateFinished": "2018-12-07 20:47:26.579",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1126,31 +1045,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-07 00:06:32.256",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTesting the Code\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll test our code on the \u003ccode\u003etesting\u003c/code\u003e features table:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTesting the Code\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll test our code on the \u003ccode\u003etesting\u003c/code\u003e features table:\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542399525631_-1987536723",
@@ -1162,62 +1081,54 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.pyspark\nsplice \u003d PySpliceContext(\u0027jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\u0027, sqlContext)\ntest_data_with_uppercase_schema \u003d splice.df(\u0027SELECT * FROM DS_ASN.TEST_FEATURES\u0027)\n\nnewNames \u003d [\"shipmentid\",\n            \"status\",\n            \"shipmode\",\n            \"product_description\",\n            \"consignee\",\n            \"shipper\",\n            \"arrival_date\",\n            \"gross_weight_lb\",\n            \"gross_weight_kg\",\n            \"foreign_port\",\n            \"us_port\",\n            \"vessel_name\",\n            \"country_of_origin\",\n            \"consignee_address\",\n            \"shipper_address\",\n            \"zipcode\",\n            \"no_of_containers\",\n            \"container_number\",\n            \"container_type\",\n            \"quantity\",\n            \"quantity_unit\",\n            \"measurement\",\n            \"measurement_unit\",\n            \"bill_of_lading\",\n            \"house_vs_master\",\n            \"distribution_port\",\n            \"master_bl\",\n            \"voyage_number\",\n            \"seal\",\n            \"ship_registered_in\",\n            \"inbond_entry_type\",\n            \"carrier_code\",\n            \"carrier_name\",\n            \"carrier_city\",\n            \"carrier_state\",\n            \"carrier_zip\",\n            \"carrier_address\",\n            \"notify_party\",\n            \"notify_address\",\n            \"place_of_receipt\",\n            \"date_of_receipt\",\n            \"quantity_bin\"]\n\ndf\u003d test_data_with_uppercase_schema.toDF(*newNames)\nlrPredictions \u003d lrModel.transform(df)\nlrPredictions.createOrReplaceTempView(\"pred_view\")\nresults \u003d sqlContext.sql(\u0027SELECT prediction, probability, features FROM pred_view ORDER BY features\u0027)\nresults.show(20)",
+      "text": "%spark.pyspark\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\ntest_data_with_uppercase_schema \u003d splice.df(\u0027SELECT * FROM DS_ASN.TEST_FEATURES\u0027)\n\nnewNames \u003d [\"shipmentid\",\n            \"status\",\n            \"shipmode\",\n            \"product_description\",\n            \"consignee\",\n            \"shipper\",\n            \"arrival_date\",\n            \"gross_weight_lb\",\n            \"gross_weight_kg\",\n            \"foreign_port\",\n            \"us_port\",\n            \"vessel_name\",\n            \"country_of_origin\",\n            \"consignee_address\",\n            \"shipper_address\",\n            \"zipcode\",\n            \"no_of_containers\",\n            \"container_number\",\n            \"container_type\",\n            \"quantity\",\n            \"quantity_unit\",\n            \"measurement\",\n            \"measurement_unit\",\n            \"bill_of_lading\",\n            \"house_vs_master\",\n            \"distribution_port\",\n            \"master_bl\",\n            \"voyage_number\",\n            \"seal\",\n            \"ship_registered_in\",\n            \"inbond_entry_type\",\n            \"carrier_code\",\n            \"carrier_name\",\n            \"carrier_city\",\n            \"carrier_state\",\n            \"carrier_zip\",\n            \"carrier_address\",\n            \"notify_party\",\n            \"notify_address\",\n            \"place_of_receipt\",\n            \"date_of_receipt\",\n            \"quantity_bin\"]\n\ndf\u003d test_data_with_uppercase_schema.toDF(*newNames)\nlrPredictions \u003d lrModel.transform(df)\nlrPredictions.createOrReplaceTempView(\"pred_view\")\nresults \u003d sqlContext.sql(\u0027SELECT prediction, probability, features FROM pred_view ORDER BY features\u0027)\nresults.show(20)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 01:20:32.407",
+      "dateUpdated": "2018-12-07 20:52:59.013",
       "config": {
+        "editorHide": false,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
           "completionKey": "TAB",
-          "completionSupport": true
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "python"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "+----------+--------------------+--------------------+\n|prediction|         probability|            features|\n+----------+--------------------+--------------------+\n|       2.0|[0.06342174170322...|(17,[2,3,4,6,8,9,...|\n|       2.0|[0.07087610588278...|(17,[2,3,4,8,9,10...|\n|       2.0|[0.06437474900337...|(17,[2,3,6,8,9,16...|\n|       2.0|[0.06554979717368...|(17,[2,3,6,8,9,16...|\n|       2.0|[0.07069246304587...|(17,[2,6,8,10,16]...|\n|       2.0|[0.07068176478795...|(17,[2,6,8,16],[1...|\n|       1.0|[0.07439721912676...|[0.0,1.0,0.0,2.0,...|\n|       2.0|[0.07647301225524...|[0.0,1.0,0.0,3.0,...|\n|       2.0|[0.07779517550968...|[0.0,1.0,0.0,5.0,...|\n|       1.0|[0.06950407877962...|[0.0,1.0,0.0,8.0,...|\n|       1.0|[0.05972500976323...|[0.0,2.0,3.0,9.0,...|\n|       2.0|[0.07018598190737...|[0.0,3.0,4.0,1.0,...|\n|       1.0|[0.06475389028580...|[0.0,4.0,5.0,11.0...|\n+----------+--------------------+--------------------+\n\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1542399525632_-1646431221",
       "id": "20180612-031749_1939890694",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "dateStarted": "2018-12-07 00:15:33.977",
-      "dateFinished": "2018-12-07 00:15:37.379",
+      "dateStarted": "2018-12-07 20:48:05.502",
+      "dateFinished": "2018-12-07 20:48:08.489",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\nDROP TABLE IF EXISTS DS_ASN.PREDICTIONS;\nCREATE TABLE DS_ASN.PREDICTIONS (\n    SHIPMENTID VARCHAR(11) NOT NULL PRIMARY KEY,\n    PREDICTION DOUBLE\n    );",
+      "text": "%splicemachine\nDROP TABLE IF EXISTS DS_ASN.PREDICTIONS;\nCREATE TABLE DS_ASN2.PREDICTIONS (\n    SHIPMENTID VARCHAR(11) NOT NULL PRIMARY KEY,\n    PREDICTION DOUBLE\n    );",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 06:50:57.959",
+      "dateUpdated": "2018-12-07 20:53:18.400",
       "config": {
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -1227,28 +1138,30 @@
       "jobName": "paragraph_1542399525632_-949532290",
       "id": "20180205-024429_478433529",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "status": "READY",
+      "dateStarted": "2018-12-07 20:49:24.351",
+      "dateFinished": "2018-12-07 20:49:25.657",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark.pyspark\npredictions \u003d lrPredictions.select(\"SHIPMENTID\", \"PREDICTION\")\npredictions.printSchema()\nsplice.insert(predictions, \u0027DS_ASN.predictions\u0027)",
+      "text": "%spark.pyspark\nsplice \u003d PySpliceContext(defaultJDBCURL, sqlContext)\npredictions \u003d lrPredictions.select(\"SHIPMENTID\", \"PREDICTION\")\npredictions.printSchema()\nsplice.insert(predictions, \u0027DS_ASN.predictions\u0027)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 06:51:00.064",
+      "dateUpdated": "2018-12-07 20:53:31.086",
       "config": {
+        "editorHide": false,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
           "completionKey": "TAB",
-          "completionSupport": true
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "python"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/python",
-        "editorHide": false,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -1258,7 +1171,9 @@
       "jobName": "paragraph_1542399525633_-911843047",
       "id": "20180612-161439_366937269",
       "dateCreated": "2018-11-16 12:18:45.000",
-      "status": "READY",
+      "dateStarted": "2018-12-07 20:49:39.898",
+      "dateFinished": "2018-12-07 20:49:41.858",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
@@ -1267,46 +1182,46 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 06:51:12.471",
       "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 318.0,
+              "commonSetting": {},
               "optionOpen": false,
               "setting": {
                 "table": {
+                  "updated": false,
                   "tableGridState": {},
                   "tableColumnTypeState": {
+                    "updated": false,
                     "names": {
-                      "SHIPMENTID": "string",
-                      "PREDICTION": "string"
-                    },
-                    "updated": false
+                      "PREDICTION": "string",
+                      "SHIPMENTID": "string"
+                    }
                   },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
                   "tableOptionValue": {
-                    "useFilter": false,
                     "showPagination": false,
+                    "useFilter": false,
                     "showAggregationFooter": false
                   },
-                  "updated": false,
-                  "initialized": false
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "commonSetting": {}
+              "mode": "table",
+              "height": 318.0
             },
             "helium": {}
           }
         },
-        "enabled": true,
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
-        "fontSize": 9.0
+        "fontSize": 9.0,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -1325,31 +1240,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-03 07:33:17.151",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our \u003ca href\u003d\"/#/notebook/2DX6TGACY\"\u003e\u003cem\u003eKMeans Example\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to move onto exploring other examples of Machine Learning with Splice Machine, starting with our \u003ca href\u003d\"/#/notebook/2DX6TGACY\"\u003e\u003cem\u003eKMeans Example\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1543822186137_1137563246",
@@ -1363,11 +1278,15 @@
   "id": "2DYC2S8DY",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
-    "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
-    "personalizedMode": "false"
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
   },
   "info": {}
 }
