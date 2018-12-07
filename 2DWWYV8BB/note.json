@@ -79,7 +79,7 @@
     {
       "text": "%splicemachine\n\nCREATE TABLE ds.import_example (i int, v varchar(20), t timestamp);\n\ncall SYSCS_UTIL.IMPORT_DATA(\u0027DS\u0027,\u0027import_example\u0027,null,\u0027s3a://splice-examples/import/example1.csv\u0027,null,null,null,null,null,0,null,null,null);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 02:24:50.287",
+      "dateUpdated": "2018-12-06 23:46:07.179",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -162,12 +162,26 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n2\t0\t1\t72\tNONE\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542847016398_1675620418",
       "id": "20181121-163656_1329065364",
       "dateCreated": "2018-11-21 16:36:56.398",
+      "dateStarted": "2018-12-06 23:46:07.390",
+      "dateFinished": "2018-12-06 23:46:43.255",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -212,7 +226,7 @@
     {
       "text": "%splicemachine\n\nselect * from ds.import_example\nwhere i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 02:24:47.280",
+      "dateUpdated": "2018-12-06 23:46:53.459",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
@@ -259,12 +273,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "I\tV\tT\n100\thello there\t2017-01-01 00:00:00.0\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542396707543_183893762",
       "id": "20170916-185904_635367698",
       "dateCreated": "2018-11-16 11:31:47.000",
+      "dateStarted": "2018-12-06 23:46:53.553",
+      "dateFinished": "2018-12-06 23:46:53.719",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -308,7 +332,7 @@
     {
       "text": "%splicemachine\n\nexplain select * from ds.import_example a, ds.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 02:25:11.975",
+      "dateUpdated": "2018-12-06 23:46:59.292",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -326,12 +350,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d5,rows\u003d360,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d1744.96,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d1657.16,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1648)](n\u003d2,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1648)](n\u003d1,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d18,outputHeapSize\u003d54 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542396707546_582852631",
       "id": "20170916-190855_22811088",
       "dateCreated": "2018-11-16 11:31:47.000",
+      "dateStarted": "2018-12-06 23:46:59.357",
+      "dateFinished": "2018-12-06 23:46:59.451",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -415,7 +449,9 @@
   "id": "2DWWYV8BB",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "splicemachine:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

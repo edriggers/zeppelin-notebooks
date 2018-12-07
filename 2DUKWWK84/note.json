@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "title": "Transactions ",
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Transactions with Spark and JDBC\nThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we'll:\n\n1. *Run setup code to create our variables and define a simple Spark procedure named `checkBalance`.*\n2. *Use JDBC calls to set and check values from the database.*\n3. *Show the use of `commit` and `rollback` to control transactional persistence of our updates.*\n<br />\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Transactions with Spark and JDBC\nThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we\u0027ll:\n\n1. *Run setup code to create our variables and define a simple Spark procedure named `checkBalance`.*\n2. *Use JDBC calls to set and check values from the database.*\n3. *Show the use of `commit` and `rollback` to control transactional persistence of our updates.*\n\u003cbr /\u003e\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:08:58.775",
       "config": {
@@ -29,7 +29,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Transactions with Spark and JDBC</h1>\n<p>This notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we&rsquo;ll:</p>\n<ol>\n  <li><em>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</em></li>\n  <li><em>Use JDBC calls to set and check values from the database.</em></li>\n  <li><em>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</em><br/><br /></li>\n</ol>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTransactions with Spark and JDBC\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces using Spark and Scala to programmatically interact with Splice Machine via a JDBC connection. In this notebook, we\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eRun setup code to create our variables and define a simple Spark procedure named \u003ccode\u003echeckBalance\u003c/code\u003e.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUse JDBC calls to set and check values from the database.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eShow the use of \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e to control transactional persistence of our updates.\u003c/em\u003e\u003cbr/\u003e\u003cbr /\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -41,7 +41,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Run Setup Code and Define our Procedure\n\nFirst, we configure the JDBC URL we'll use to connect to your Splice Machine database:",
+      "text": "%md\n## Run Setup Code and Define our Procedure\n\nFirst, we configure the JDBC URL we\u0027ll use to connect to your Splice Machine database:",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:08:55.914",
       "config": {
@@ -68,7 +68,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Run Setup Code and Define our Procedure</h2>\n<p>First, we configure the JDBC URL we&rsquo;ll use to connect to your Splice Machine database:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRun Setup Code and Define our Procedure\u003c/h2\u003e\n\u003cp\u003eFirst, we configure the JDBC URL we\u0026rsquo;ll use to connect to your Splice Machine database:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -80,7 +80,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\n\nval localJDBCURL = \"\"\"jdbc:splice://localhost:1527/splicedb;user=splice;password=admin\"\"\"\n",
+      "text": "%spark\n\nval localJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 17:23:36.665",
       "config": {
@@ -110,7 +110,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n<br />\nNext, we define a simple procedure, `checkBalance` that checks and *pretty-prints* the current balance for a supplier:",
+      "text": "%md\n\u003cbr /\u003e\nNext, we define a simple procedure, `checkBalance` that checks and *pretty-prints* the current balance for a supplier:",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:09:05.591",
       "config": {
@@ -137,7 +137,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<br />\n<p>Next, we define a simple procedure, <code>checkBalance</code> that checks and <em>pretty-prints</em> the current balance for a supplier:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNext, we define a simple procedure, \u003ccode\u003echeckBalance\u003c/code\u003e that checks and \u003cem\u003epretty-prints\u003c/em\u003e the current balance for a supplier:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -150,7 +150,7 @@
     },
     {
       "title": "Simple Function to Pretty Print Balance",
-      "text": "%spark\nimport java.sql.{DriverManager,Connection}\nvar conn = DriverManager.getConnection(localJDBCURL)\nconn.setAutoCommit(false)\nvar statement = conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit = {\n    var resSet = statement.executeQuery(\"SELECT S_ACCTBAL FROM DEV2.SUPPLIER WHERE S_SUPPKEY = \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl = resSet.getString(\"S_ACCTBAL\")\n        println(\"================ Current account balance: \" + bl + \" ====================\");\n    }\n}\n",
+      "text": "%spark\nimport java.sql.{DriverManager,Connection}\nvar conn \u003d DriverManager.getConnection(localJDBCURL)\nconn.setAutoCommit(false)\nvar statement \u003d conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit \u003d {\n    var resSet \u003d statement.executeQuery(\"SELECT S_ACCTBAL FROM DEV2.SUPPLIER WHERE S_SUPPKEY \u003d \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl \u003d resSet.getString(\"S_ACCTBAL\")\n        println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: \" + bl + \" \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");\n    }\n}\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 17:23:39.694",
       "config": {
@@ -208,7 +208,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<p>Now we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -259,7 +259,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nOur setup code created two useful variables we can now employ:\n\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n\nThe first example shows an update statement which, upon committing, retains the value to which it is set.\n\n## Committing a Transaction",
+      "text": "%md\nOur setup code created two useful variables we can now employ:\n\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003estatement\u003c/td\u003e\n          \u003ctd\u003eThe standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      \u003c/tr\u003e\n      \u003ctr style\u003d\"background-color: transparent;\"\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003econn\u003c/td\u003e\n          \u003ctd style\u003d\"background-color: transparent;\" \u003eA standard JDBC Connection object, on which run `commit` and `rollback`.\n      \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nThe first example shows an update statement which, upon committing, retains the value to which it is set.\n\n## Committing a Transaction",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:10:39.621",
       "config": {
@@ -284,7 +284,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<p>Our setup code created two useful variables we can now employ:</p>\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n<p>The first example shows an update statement which, upon committing, retains the value to which it is set.</p>\n<h2>Committing a Transaction</h2>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eOur setup code created two useful variables we can now employ:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003estatement\u003c/td\u003e\n          \u003ctd\u003eThe standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      \u003c/tr\u003e\n      \u003ctr style\u003d\"background-color: transparent;\"\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003econn\u003c/td\u003e\n          \u003ctd style\u003d\"background-color: transparent;\" \u003eA standard JDBC Connection object, on which run `commit` and `rollback`.\n      \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eThe first example shows an update statement which, upon committing, retains the value to which it is set.\u003c/p\u003e\n\u003ch2\u003eCommitting a Transaction\u003c/h2\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -297,7 +297,7 @@
     },
     {
       "title": "Transaction Commit Example",
-      "text": "%spark\nstatement.executeUpdate(\"update DEV2.SUPPLIER SET S_ACCTBAL = 10000 WHERE S_SUPPKEY = 6517\");\ncheckBalance(6517);\nconn.commit();\ncheckBalance(6517);",
+      "text": "%spark\nstatement.executeUpdate(\"update DEV2.SUPPLIER SET S_ACCTBAL \u003d 10000 WHERE S_SUPPKEY \u003d 6517\");\ncheckBalance(6517);\nconn.commit();\ncheckBalance(6517);",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 17:23:56.923",
       "config": {
@@ -328,7 +328,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n<br />\nBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\n\n## Rolling Back a Transaction",
+      "text": "%md\n\u003cbr /\u003e\nBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\n\n## Rolling Back a Transaction",
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:10:05.466",
       "config": {
@@ -353,7 +353,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<br />\n<p>But if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.</p>\n<h2>Rolling Back a Transaction</h2>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\u003c/p\u003e\n\u003ch2\u003eRolling Back a Transaction\u003c/h2\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -366,7 +366,7 @@
     },
     {
       "title": "Transaction Rollback Example",
-      "text": "%spark\nstatement.executeUpdate(\"update DEV2.SUPPLIER SET S_ACCTBAL = 0 WHERE S_SUPPKEY = 6517\")\ncheckBalance(6517);\nconn.rollback();\ncheckBalance(6517);\n",
+      "text": "%spark\nstatement.executeUpdate(\"update DEV2.SUPPLIER SET S_ACCTBAL \u003d 0 WHERE S_SUPPKEY \u003d 6517\")\ncheckBalance(6517);\nconn.rollback();\ncheckBalance(6517);\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 17:24:10.365",
       "config": {
@@ -397,7 +397,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md \n\nThis was a simple demonstration of transactional commit and rollback, even from within Scala code.  Later on we'll get more involved with Spark libraries using the Native Spark Datasource.\n",
+      "text": "%md \n\nThis was a simple demonstration of transactional commit and rollback, even from within Scala code.  Later on we\u0027ll get more involved with Spark libraries using the Native Spark Datasource.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 17:24:15.496",
       "config": {
@@ -424,7 +424,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<p>This was a simple demonstration of transactional commit and rollback, even from within Scala code. Later on we&rsquo;ll get more involved with Spark libraries using the Native Spark Datasource.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis was a simple demonstration of transactional commit and rollback, even from within Scala code. Later on we\u0026rsquo;ll get more involved with Spark libraries using the Native Spark Datasource.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -436,9 +436,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class walks you through [*Deploying Apps with Spring*](/#/notebook/2DVU2ESP3).\n",
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class introduces you to [*Using our Native Spark DataSource*](/#/notebook/2DW6E5Z1X) to work with your database.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:10:10.403",
+      "dateUpdated": "2018-12-06 22:33:12.967",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -462,7 +462,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class walks you through <a href=\"/#/notebook/2DVU2ESP3\"><em>Deploying Apps with Spring</em></a>.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class introduces you to \u003ca href\u003d\"/#/notebook/2DW6E5Z1X\"\u003e\u003cem\u003eUsing our Native Spark DataSource\u003c/em\u003e\u003c/a\u003e to work with your database.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -470,6 +470,8 @@
       "jobName": "paragraph_1542395325475_-533431393",
       "id": "20180122-173624_509126525",
       "dateCreated": "2018-11-16 11:08:45.000",
+      "dateStarted": "2018-12-06 22:33:04.703",
+      "dateFinished": "2018-12-06 22:33:08.196",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

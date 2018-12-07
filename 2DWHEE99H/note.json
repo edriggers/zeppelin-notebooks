@@ -84,7 +84,7 @@
       "title": "PySpliceContext Class",
       "text": "%spark.pyspark\nfrom __future__ import print_function\nimport string\nfrom pyspark.sql import SparkSession\nfrom pyspark.sql import Row\nfrom pyspark.sql import DataFrame\n\n#java imports                                                                                                                               \nfrom py4j.java_gateway import java_import\nfrom py4j.java_gateway import JavaGateway, GatewayParameters\n\nclass PySpliceContext:\n    def __init__(self,JDBC_URL,sparkSQLContext):\n        self.jdbcurl \u003d JDBC_URL\n        self.sparkSQLContext \u003d sparkSQLContext\n        self.jvm \u003d self.sparkSQLContext._sc._jvm\n        java_import(self.jvm,\"com.splicemachine.spark.splicemachine.*\")\n        java_import(self.jvm, \"org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\")\n        java_import(self.jvm, \"scala.collection.JavaConverters._\")\n        self.context \u003d self.jvm.com.splicemachine.spark.splicemachine.SplicemachineContext(self.jdbcurl)\n    def getConnection(self):\n        return self.context.getConnection()\n        def getConnection(): Connection \n    def tableExists(self, schemaTableName):\n        return self.context.tableExists(schemaTableName)\n    def dropTable(self,schemaName, tableName):\n        return self.context.dropTable(schemaName, tableName)\n    def dropTable(self,schemaTableName):\n        return self.context.dropTable(schemaTableName)\n    def df(self,sql):\n        return DataFrame(self.context.df(sql), self.sparkSQLContext)\n    def insert(self,dataFrame,schemaTableName): \n        return self.context.insert(dataFrame._jdf,schemaTableName)\n    def delete(self, dataFrame, schemaTableName):\n        return self.context.delete(dataFrame._jdf, schemaTableName)\n    def update(self, dataFrame, schemaTableName):\n        return self.context.update(dataFrame._jdf, schemaTableName) \n    def bulkImportHFile(self, dataFrame, schemaTableName, options):\n        return self.context.bulkImportHFile(dataFrame._jdf, schemaTableName, options)\n    def getSchema(self,schemaTableName):\n        return self.context.getSchema(schemaTableName)\n    def createTable(self, tableName, structType, keys, createTableOptions):\n        keyAsString \u003d self.jvm.java.util.ArrayList()\n        for key in keys:\n            keyAsString.append(key)\n        return self.context.createTable(tableName, structType, self.jvm.scala.collection.JavaConversions.asScalaBuffer(keyAsString).toSeq(), createTableOptions)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 23:38:53.401",
+      "dateUpdated": "2018-12-06 23:59:53.954",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -105,12 +105,17 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
       "apps": [],
       "jobName": "paragraph_1543880333399_986445985",
       "id": "20180118-015126_1752791454",
       "dateCreated": "2018-12-03 23:38:53.400",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-06 23:59:54.009",
+      "dateFinished": "2018-12-06 23:59:56.901",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -155,7 +160,7 @@
       "title": "Create Context",
       "text": "%spark.pyspark\n\nsplice \u003d PySpliceContext(\u0027jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\u0027, sqlContext)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 23:38:53.404",
+      "dateUpdated": "2018-12-07 00:00:02.130",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -184,8 +189,9 @@
       "jobName": "paragraph_1543880333403_-1864855422",
       "id": "20180118-014113_2141603268",
       "dateCreated": "2018-12-03 23:38:53.403",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:00:02.197",
+      "dateFinished": "2018-12-07 00:00:11.616",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -231,7 +237,7 @@
       "title": "Create a simple table",
       "text": "%splicemachine\n\ncreate table DS.foo (I int, F float, V varchar(100), primary key (I));\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-04 00:00:57.039",
+      "dateUpdated": "2018-12-07 00:00:18.386",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -250,30 +256,41 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1543880333405_1076663825",
       "id": "20180118-015418_1427121084",
       "dateCreated": "2018-12-03 23:38:53.405",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:00:18.462",
+      "dateFinished": "2018-12-07 00:00:19.900",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 4. Create a Spark Dataframe and Insert into Splice Machine\n\nThen we use `spark.pyspark` to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\n\nAfter inserting the data, we do a `select *` to display the contents of the Splice Machine table. ",
+      "text": "%md\n## 4. Create a Spark Dataframe and Insert into Splice Machine\n\nThen we use `spark.pyspark` to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\n\n\u003cp class\u003d\"noteNote\"\u003eYou can ignore the \u003ccode\u003eRuntimeWarning:\u003c/code\u003e warning messages that may display when you run the code in the next paragraph.\u003c/p\u003e\n\nAfter inserting the data, we do a `select *` to display the contents of the Splice Machine table. ",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 23:38:53.406",
+      "dateUpdated": "2018-12-07 00:02:30.609",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -284,7 +301,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Create a Spark Dataframe and Insert into Splice Machine\u003c/h2\u003e\n\u003cp\u003eThen we use \u003ccode\u003espark.pyspark\u003c/code\u003e to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\u003c/p\u003e\n\u003cp\u003eAfter inserting the data, we do a \u003ccode\u003eselect *\u003c/code\u003e to display the contents of the Splice Machine table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Create a Spark Dataframe and Insert into Splice Machine\u003c/h2\u003e\n\u003cp\u003eThen we use \u003ccode\u003espark.pyspark\u003c/code\u003e to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can ignore the \u003ccode\u003eRuntimeWarning:\u003c/code\u003e warning messages that may display when you run the code in the next paragraph.\u003c/p\u003e\n\u003cp\u003eAfter inserting the data, we do a \u003ccode\u003eselect *\u003c/code\u003e to display the contents of the Splice Machine table.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -292,15 +309,16 @@
       "jobName": "paragraph_1543880333406_1515588593",
       "id": "20180129-153818_1709035487",
       "dateCreated": "2018-12-03 23:38:53.406",
+      "dateStarted": "2018-12-07 00:02:30.610",
+      "dateFinished": "2018-12-07 00:02:30.640",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Create a dataframe and insert into Splice",
       "text": "%spark.pyspark\nfrom pyspark.sql import Row\nl \u003d [(0,3.14,\u0027Turing\u0027), (1,4.14,\u0027Newell\u0027), (2,5.14,\u0027Simon\u0027), (3,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027DS.foo\u0027)\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-04 00:01:02.183",
+      "dateUpdated": "2018-12-07 00:00:29.599",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -321,12 +339,34 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "/usr/lib64/python2.7/site-packages/pandas/_libs/__init__.py:4: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from .tslib import iNaT, NaT, Timestamp, Timedelta, OutOfBoundsDatetime\n/usr/lib64/python2.7/site-packages/pandas/__init__.py:26: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs import (hashtable as _hashtable,\n/usr/lib64/python2.7/site-packages/pandas/core/dtypes/common.py:6: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs import algos, lib\n/usr/lib64/python2.7/site-packages/pandas/core/util/hashing.py:7: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs import hashing, tslib\n/usr/lib64/python2.7/site-packages/pandas/core/indexes/base.py:6: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs import (lib, index as libindex, tslib as libts,\n/usr/lib64/python2.7/site-packages/pandas/core/tools/datetimes.py:6: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs.tslibs.strptime import array_strptime\n/usr/lib64/python2.7/site-packages/pandas/tseries/frequencies.py:24: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs.tslibs.frequencies import (  # noqa\n/usr/lib64/python2.7/site-packages/pandas/core/indexes/datetimelike.py:28: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs.period import Period\n/usr/lib64/python2.7/site-packages/pandas/core/sparse/array.py:33: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  import pandas._libs.sparse as splib\n/usr/lib64/python2.7/site-packages/pandas/core/window.py:36: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  import pandas._libs.window as _window\n/usr/lib64/python2.7/site-packages/pandas/core/groupby.py:68: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs import lib, groupby as libgroupby, Timestamp, NaT, iNaT\n/usr/lib64/python2.7/site-packages/pandas/core/reshape/reshape.py:31: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  from pandas._libs import algos as _algos, reshape as _reshape\n/usr/lib64/python2.7/site-packages/pandas/io/parsers.py:45: RuntimeWarning: numpy.dtype size changed, may indicate binary incompatibility. Expected 96, got 88\n  import pandas._libs.parsers as parsers\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.17.0.2:4041/jobs/job?id\u003d1"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
       "apps": [],
       "jobName": "paragraph_1543880333406_563698802",
       "id": "20180118-015449_13133342",
       "dateCreated": "2018-12-03 23:38:53.406",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:00:29.648",
+      "dateFinished": "2018-12-07 00:00:48.107",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -372,7 +412,7 @@
     {
       "text": "%splicemachine\nselect * from DS.foo;",
       "user": "anonymous",
-      "dateUpdated": "2018-12-04 00:01:11.225",
+      "dateUpdated": "2018-12-07 00:01:29.034",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -420,12 +460,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1543880333408_1085566372",
       "id": "20180118-015510_1158645327",
       "dateCreated": "2018-12-03 23:38:53.408",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:01:29.088",
+      "dateFinished": "2018-12-07 00:01:29.331",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -470,7 +520,7 @@
       "title": "Transactional Context",
       "text": "%spark.pyspark\nconn \u003d splice.getConnection()\nconn.setAutoCommit(False)\nl \u003d [(4,3.14,\u0027Turing\u0027), (5,4.14,\u0027Newell\u0027), (6,5.14,\u0027Simon\u0027), (7,6.14,\u0027Minsky\u0027)]\nrdd \u003d sc.parallelize(l)\nrows \u003d rdd.map(lambda x: Row(I\u003dx[0], F\u003dfloat(x[1]), V\u003dstr(x[2])))\nschemaRows \u003d sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,\u0027DS.foo\u0027)\ndf \u003d splice.df(\"select * from DS.foo\")\ndf.collect\nz.show(df)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-04 00:01:17.134",
+      "dateUpdated": "2018-12-07 00:01:34.856",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -521,12 +571,35 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n4\t3.14\tTuring\n5\t4.14\tNewell\n6\t5.14\tSimon\n7\t6.14\tMinsky\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.17.0.2:4041/jobs/job?id\u003d4",
+            "http://172.17.0.2:4041/jobs/job?id\u003d7"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
       "apps": [],
       "jobName": "paragraph_1543880333409_1088068790",
       "id": "20180118-015525_2011115580",
       "dateCreated": "2018-12-03 23:38:53.409",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:01:34.895",
+      "dateFinished": "2018-12-07 00:01:38.887",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -571,7 +644,7 @@
       "title": "Rollback",
       "text": "%spark.pyspark\nconn.rollback()\ndf \u003d splice.df(\"select * from DS.foo\")\ndf.collect\nz.show(df)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-04 00:01:26.219",
+      "dateUpdated": "2018-12-07 00:01:44.103",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -621,12 +694,34 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.17.0.2:4041/jobs/job?id\u003d8"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
       "apps": [],
       "jobName": "paragraph_1543880333411_1402892373",
       "id": "20180118-015552_1456308237",
       "dateCreated": "2018-12-03 23:38:53.411",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:01:44.145",
+      "dateFinished": "2018-12-07 00:01:46.245",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -674,7 +769,11 @@
   "id": "2DWHEE99H",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false
   },

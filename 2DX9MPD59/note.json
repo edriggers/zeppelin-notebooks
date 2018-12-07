@@ -79,7 +79,7 @@
     {
       "text": "%splicemachine\n\nexplain select * from admin.import_example a, admin.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:12:37.505",
+      "dateUpdated": "2018-12-07 00:18:09.830",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -98,12 +98,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d5,rows\u003d360,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d1744.96,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d1657.16,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1776)](n\u003d2,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1776)](n\u003d1,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d18,outputHeapSize\u003d54 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464280_1220225039",
       "id": "20170916-210243_1737687704",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-07 00:18:09.924",
+      "dateFinished": "2018-12-07 00:18:09.983",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -147,7 +157,7 @@
     {
       "text": "%splicemachine\n\nanalyze table admin.import_example;\n\nexplain select * from admin.import_example a, admin.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:12:45.668",
+      "dateUpdated": "2018-12-07 00:18:13.354",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -200,12 +210,26 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nADMIN\tIMPORT_EXAMPLE\t-All-\t2\t54\t1\t2\t0.0\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d5,rows\u003d2,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d32.085,outputRows\u003d2,outputHeapSize\u003d108 B,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d20.045,outputRows\u003d2,outputHeapSize\u003d108 B,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1776)](n\u003d2,totalCost\u003d4.003,scannedRows\u003d2,outputRows\u003d2,outputHeapSize\u003d108 B,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1776)](n\u003d1,totalCost\u003d4.003,scannedRows\u003d2,outputRows\u003d1,outputHeapSize\u003d27 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464281_1953344349",
       "id": "20170916-210539_1235333677",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-07 00:18:13.400",
+      "dateFinished": "2018-12-07 00:18:15.337",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -317,7 +341,7 @@
     {
       "text": "%splicemachine\n\nset schema admin;\n\ncreate table index_example (i int primary key, j int);\ninsert into index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into index_example select i+10,j+10 from index_example;\ninsert into index_example select i+20,j+20 from index_example;\ninsert into index_example select i+40,j+40 from index_example;\ninsert into index_example select i+80,j+80 from index_example;\ninsert into index_example select i+160,j+160 from index_example;\ninsert into index_example select i+320,j+320 from index_example;\ninsert into index_example select i+640,j+640 from index_example;\ninsert into index_example select i+1280,j+1280 from index_example;\ninsert into index_example select i+2560,j+2560 from index_example;\ninsert into index_example select i+6000,j+6000 from index_example;\ninsert into index_example select i+12000,j+12000 from index_example;\ninsert into index_example select i+24000,j+24000 from index_example;\ninsert into index_example select i+48000,j+48000 from index_example;\ninsert into index_example select i+96000,j+96000 from index_example;\ninsert into index_example select i+200000,j+200000 from index_example;\ninsert into index_example select i+400000,j+400000 from index_example;\ninsert into index_example select i+800000,j+800000 from index_example;\n\nanalyze table admin.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:16:25.201",
+      "dateUpdated": "2018-12-07 00:18:22.731",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -405,12 +429,102 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 20"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 40"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 80"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 160"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 320"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 640"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 1280"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 2560"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 5120"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10240"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 20480"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 40960"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 81920"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 163840"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 327680"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 655360"
+          },
+          {
+            "type": "TABLE",
+            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nADMIN\tINDEX_EXAMPLE\t-All-\t1310720\t10485760\t1\t2\t0.0\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464283_-1159521920",
       "id": "20170916-213118_1059322916",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-07 00:18:22.793",
+      "dateFinished": "2018-12-07 00:19:50.624",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -454,7 +568,7 @@
     {
       "text": "%splicemachine\n\nselect * from admin.index_example where i \u003d 300000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:16:44.432",
+      "dateUpdated": "2018-12-07 00:18:43.890",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -502,12 +616,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "I\tJ\n300000\t300000\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464284_1494843294",
       "id": "20170916-211529_1481528006",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-07 00:18:45.095",
+      "dateFinished": "2018-12-07 00:19:50.698",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -646,7 +770,7 @@
     {
       "text": "%splicemachine\n\ncreate index ij on admin.index_example (j)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:17:59.714",
+      "dateUpdated": "2018-12-07 00:19:01.822",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -665,12 +789,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464286_1884860213",
       "id": "20170917-094549_1951923955",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-07 00:19:50.715",
+      "dateFinished": "2018-12-07 00:20:02.580",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -781,7 +915,7 @@
     {
       "text": "%splicemachine\n\nexplain select count(i) from admin.index_example where j \u003e 950000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:20:02.616",
+      "dateUpdated": "2018-12-07 00:20:16.333",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -800,12 +934,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d6748.7,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d1419.578,outputRows\u003d528384,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d3,totalCost\u003d1419.578,outputRows\u003d528384,outputHeapSize\u003d4.031 MB,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d1419.578,outputRows\u003d528384,outputHeapSize\u003d4.031 MB,partitions\u003d1)\n          -\u003e  TableScan[INDEX_EXAMPLE(1792)](n\u003d1,totalCost\u003d1419.578,scannedRows\u003d1310720,outputRows\u003d528384,outputHeapSize\u003d4.031 MB,partitions\u003d1,preds\u003d[(J[0:2] \u003e 950000)])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464288_-2063270503",
       "id": "20170917-095320_239489898",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-07 00:20:16.383",
+      "dateFinished": "2018-12-07 00:20:16.468",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -848,7 +992,7 @@
     {
       "text": "%splicemachine\n\n\nexplain select count(i) from admin.index_example --splice-properties index\u003dij\n     where j \u003e 950000",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:20:23.087",
+      "dateUpdated": "2018-12-07 00:20:19.680",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -867,12 +1011,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d7,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d6,totalCost\u003d2119422.64,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d2114089.519,outputRows\u003d528384,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d4,totalCost\u003d2114089.519,outputRows\u003d528384,outputHeapSize\u003d4.031 MB,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d2114089.519,outputRows\u003d528384,outputHeapSize\u003d4.031 MB,partitions\u003d1)\n          -\u003e  IndexLookup(n\u003d2,totalCost\u003d2114089.519,outputRows\u003d528384,outputHeapSize\u003d4.031 MB,partitions\u003d1)\n            -\u003e  IndexScan[IJ(1809)](n\u003d1,totalCost\u003d553.519,scannedRows\u003d528384,outputRows\u003d528384,outputHeapSize\u003d4.031 MB,partitions\u003d1,baseTable\u003dINDEX_EXAMPLE(1792),preds\u003d[(J[1:2] \u003e 950000)])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464288_-2005088107",
       "id": "20170917-102130_1017436977",
       "dateCreated": "2018-11-16 13:07:44.000",
+      "dateStarted": "2018-12-07 00:20:19.738",
+      "dateFinished": "2018-12-07 00:20:19.823",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -916,7 +1070,7 @@
     {
       "text": "%splicemachine\ncreate index iji on admin.index_example (j, i)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:21:21.221",
+      "dateUpdated": "2018-12-07 00:21:59.300",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -935,12 +1089,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "java.sql.SQLException: Index \u0027IJI\u0027 already exists in Schema \u0027ADMIN\u0027.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:904)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:718)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:801)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:103)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:633)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:188)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:140)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)\n\tat java.lang.Thread.run(Thread.java:748)\nCaused by: com.splicemachine.db.client.am.SqlException: Index \u0027IJI\u0027 already exists in Schema \u0027ADMIN\u0027.\n\tat com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1844)\n\tat com.splicemachine.db.client.am.Statement.completeExecuteImmediate(Statement.java:1432)\n\tat com.splicemachine.db.client.net.NetStatementReply.parseEXCSQLIMMreply(NetStatementReply.java:210)\n\tat com.splicemachine.db.client.net.NetStatementReply.readExecuteImmediate(NetStatementReply.java:61)\n\tat com.splicemachine.db.client.net.StatementReply.readExecuteImmediate(StatementReply.java:49)\n\tat com.splicemachine.db.client.net.NetStatement.readExecuteImmediate_(NetStatement.java:128)\n\tat com.splicemachine.db.client.am.Statement.readExecuteImmediate(Statement.java:1428)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2152)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:909)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:895)\n\t... 15 more\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402464290_1882625791",
       "id": "20170917-103810_1471531808",
       "dateCreated": "2018-11-16 13:07:44.000",
-      "status": "FINISHED",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:21:59.338",
+      "dateFinished": "2018-12-07 00:21:59.526",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1205,7 +1369,11 @@
   "id": "2DX9MPD59",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

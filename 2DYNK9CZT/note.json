@@ -119,9 +119,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Running a Basic Query\n\nLet\u0027s generate an `EXPLAIN` plan for a simple query that we previously ran: `explain select count(*) from index_example`. Generate the plan by clicking \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph:\n\n",
+      "text": "%md\n\n## Running a Basic Query\n\nLet\u0027s generate an `EXPLAIN` plan for a simple query. First we\u0027ll create an example table named `index_example`, then we\u0027ll populate the table and run statistics on it (`analyze table`); finally, we\u0027ll generate the plan. You can run the code by clicking \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph:\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:36:27.835",
+      "dateUpdated": "2018-12-07 00:51:49.945",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -134,7 +134,7 @@
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -145,7 +145,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning a Basic Query\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s generate an \u003ccode\u003eEXPLAIN\u003c/code\u003e plan for a simple query that we previously ran: \u003ccode\u003eexplain select count(*) from index_example\u003c/code\u003e. Generate the plan by clicking \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning a Basic Query\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s generate an \u003ccode\u003eEXPLAIN\u003c/code\u003e plan for a simple query. First we\u0026rsquo;ll create an example table named \u003ccode\u003eindex_example\u003c/code\u003e, then we\u0026rsquo;ll populate the table and run statistics on it (\u003ccode\u003eanalyze table\u003c/code\u003e); finally, we\u0026rsquo;ll generate the plan. You can run the code by clicking \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -153,14 +153,15 @@
       "jobName": "paragraph_1544045787835_-159704401",
       "id": "20171017-143616_602504010",
       "dateCreated": "2018-12-05 21:36:27.835",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:51:49.946",
+      "dateFinished": "2018-12-07 00:51:49.982",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nexplain select count(*) from admin.index_example",
+      "text": "%splicemachine\n\ncreate table ds.index_example (i int primary key, j int);\ninsert into  ds.index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into  ds.index_example select i+10,j+10 from index_example;\ninsert into  ds.index_example select i+20,j+20 from index_example;\ninsert into  ds.index_example select i+40,j+40 from index_example;\ninsert into  ds.index_example select i+80,j+80 from index_example;\ninsert into  ds.index_example select i+160,j+160 from index_example;\ninsert into  ds.index_example select i+320,j+320 from index_example;\ninsert into  ds.index_example select i+640,j+640 from index_example;\ninsert into  ds.index_example select i+1280,j+1280 from index_example;\ninsert into  ds.index_example select i+2560,j+2560 from index_example;\ninsert into  ds.index_example select i+6000,j+6000 from index_example;\ninsert into  ds.index_example select i+12000,j+12000 from index_example;\ninsert into  ds.index_example select i+24000,j+24000 from index_example;\ninsert into  ds.index_example select i+48000,j+48000 from index_example;\ninsert into  ds.index_example select i+96000,j+96000 from index_example;\ninsert into  ds.index_example select i+200000,j+200000 from index_example;\ninsert into  ds.index_example select i+400000,j+400000 from index_example;\ninsert into  ds.index_example select i+800000,j+800000 from index_example;\n\nanalyze table ds.index_example;\n\nexplain select count(*) from ds.index_example;",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:36:27.836",
+      "dateUpdated": "2018-12-07 00:50:22.097",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -171,25 +172,155 @@
         "colWidth": 12.0,
         "editorMode": "ace/mode/sql",
         "fontSize": 9.0,
-        "results": {},
-        "enabled": true
+        "results": {
+          "20": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "schemaName": "string",
+                      "tableName": "string",
+                      "partition": "string",
+                      "rowsCollected": "string",
+                      "partitionSize": "string",
+                      "partitionCount": "string",
+                      "statsType": "string",
+                      "sampleFraction": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "enabled": true,
+        "editorHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 20"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 40"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 80"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 160"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 320"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 640"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 1280"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 2560"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 5120"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10240"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 20480"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 40960"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 81920"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 163840"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 327680"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 655360"
+          },
+          {
+            "type": "TABLE",
+            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nDS\tINDEX_EXAMPLE\t-All-\t1310720\t10485760\t1\t2\t0.0\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d14530.779,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d3,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n          -\u003e  TableScan[INDEX_EXAMPLE(1712)](n\u003d1,totalCost\u003d1419.578,scannedRows\u003d1310720,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1544045787836_2061755360",
       "id": "20170917-132020_1057477927",
       "dateCreated": "2018-12-05 21:36:27.836",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:48:22.329",
+      "dateFinished": "2018-12-07 00:49:52.036",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\u003cbr /\u003e\n\nNotice the `engine\u003dSpark` on the top line, which indicates that this query will be processed by the Spark engine.\n\nNow let\u0027s actually run the query (click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph):",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:36:27.838",
+      "dateUpdated": "2018-12-07 00:30:02.680",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -225,9 +356,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\nselect count(*) from admin.index_example",
+      "text": "%splicemachine\n\nselect count(*) from ds.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:36:27.839",
+      "dateUpdated": "2018-12-07 00:31:37.694",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -272,12 +403,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "1\n1310720\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1544045787838_-879881672",
       "id": "20170917-132246_733531409",
       "dateCreated": "2018-12-05 21:36:27.838",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-07 00:31:37.763",
+      "dateFinished": "2018-12-07 00:31:42.924",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -600,7 +741,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

@@ -476,6 +476,46 @@
       "dateCreated": "2018-11-16 11:01:32.000",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Related Documentation\n\nFor more information about useful utility procedures for working with your Splice Machine database, see the \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_intro.html\" target\u003d\"_blank\"\u003eSystem Procedures\u003c/a\u003e section of our SQL Reference Manual.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-07 01:00:50.935",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRelated Documentation\u003c/h2\u003e\n\u003cp\u003eFor more information about useful utility procedures for working with your Splice Machine database, see the \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_intro.html\" target\u003d\"_blank\"\u003eSystem Procedures\u003c/a\u003e section of our SQL Reference Manual.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544144413213_1881342421",
+      "id": "20181207-010013_295291895",
+      "dateCreated": "2018-12-07 01:00:13.214",
+      "dateStarted": "2018-12-07 01:00:50.935",
+      "dateFinished": "2018-12-07 01:00:50.972",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training / For Developers, Part II - Intermediate / c. Useful Database Utilities",
