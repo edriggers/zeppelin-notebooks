@@ -36,7 +36,7 @@ for o, a in opts:
         elif a.lower() == 'codeblockfix':
             tests = 'CodeBlockFix'
     elif o in ("-m", "--modify"):
-            modify = True
+        modify = True
     else:
         assert False, "unhandled option"
 
@@ -57,6 +57,8 @@ for nf in notefiles:
             if 'title' in i:
                 paragraph_title = i['title']
             # MARKDOWN %md items
+            if 'editorMode' not in i['config']:
+                i['config']['editorMode'] = 'ace/mode/sql'
             if 'editorMode' in i['config']:
                 if i['config']['editorMode'] == 'ace/mode/markdown':
                     if tests.lower() == 'MDBlockGeneration' or tests == 'All':
@@ -118,6 +120,12 @@ for nf in notefiles:
                                 if modify == True:
                                     i['config']['editorHide'] = False
                                     has_changes = True
+                        if 'tableHide' in i['config']:
+                            if i['config']['tableHide'] == True:
+                                print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Table IS hidden')
+                                if modify == True:
+                                    i['config']['tableHide'] = False
+                                    has_changes = True
                         if 'enabled' in i['config']:
                             if i['config']['enabled'] == False:
                                 print (notebook_id + ': paragraph #' + str(x) + '(' + paragraph_title + ') Run button DISABLED')
@@ -126,6 +134,8 @@ for nf in notefiles:
                                     has_changes = True
                         if 'results' in i:
                             if 'msg' in i['results']:
+                                m = i['results']
+                                m.pop('msg',None)
                                 if 'dateStarted' in i:
                                     if 'dateFinished' in i:
                                         print (notebook_id + ': paragraph #' + str(x) + ' Results are STORED.')
