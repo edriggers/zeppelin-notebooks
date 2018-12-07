@@ -100,6 +100,13 @@ for nf in notefiles:
                                 if modify == True:
                                     i['config']['editorHide'] = True
                                     has_changes = True
+                        if 'tableHide' in i['config']:
+                            if i['config']['tableHide'] == True:
+                                print (notebook_id + ': paragraph #' + str(x) + ' Table IS hidden')
+                                if modify == True:
+                                    i['config']['tableHide'] = False
+                                    has_changes = True
+
                         # handle exceptions, apply these last
                         if notebook_id in sanity_exceptions['Exceptions']:
                             if i['id'] in sanity_exceptions['Exceptions'][notebook_id]:
