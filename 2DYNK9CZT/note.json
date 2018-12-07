@@ -159,9 +159,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%splicemachine\n\ncreate table ds.index_example (i int primary key, j int);\ninsert into  ds.index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into  ds.index_example select i+10,j+10 from index_example;\ninsert into  ds.index_example select i+20,j+20 from index_example;\ninsert into  ds.index_example select i+40,j+40 from index_example;\ninsert into  ds.index_example select i+80,j+80 from index_example;\ninsert into  ds.index_example select i+160,j+160 from index_example;\ninsert into  ds.index_example select i+320,j+320 from index_example;\ninsert into  ds.index_example select i+640,j+640 from index_example;\ninsert into  ds.index_example select i+1280,j+1280 from index_example;\ninsert into  ds.index_example select i+2560,j+2560 from index_example;\ninsert into  ds.index_example select i+6000,j+6000 from index_example;\ninsert into  ds.index_example select i+12000,j+12000 from index_example;\ninsert into  ds.index_example select i+24000,j+24000 from index_example;\ninsert into  ds.index_example select i+48000,j+48000 from index_example;\ninsert into  ds.index_example select i+96000,j+96000 from index_example;\ninsert into  ds.index_example select i+200000,j+200000 from index_example;\ninsert into  ds.index_example select i+400000,j+400000 from index_example;\ninsert into  ds.index_example select i+800000,j+800000 from index_example;\n\nanalyze table ds.index_example;\n\nexplain select count(*) from ds.index_example;",
+      "text": "%splicemachine\n\ncreate table ds.index_example (i int primary key, j int);\ninsert into  ds.index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into  ds.index_example select i+10,j+10 from ds.index_example;\ninsert into  ds.index_example select i+20,j+20 from ds.index_example;\ninsert into  ds.index_example select i+40,j+40 from ds.index_example;\ninsert into  ds.index_example select i+80,j+80 from ds.index_example;\ninsert into  ds.index_example select i+160,j+160 from ds.index_example;\ninsert into  ds.index_example select i+320,j+320 from ds.index_example;\ninsert into  ds.index_example select i+640,j+640 from ds.index_example;\ninsert into  ds.index_example select i+1280,j+1280 from ds.index_example;\ninsert into  ds.index_example select i+2560,j+2560 from ds.index_example;\ninsert into  ds.index_example select i+6000,j+6000 from ds.index_example;\ninsert into  ds.index_example select i+12000,j+12000 from ds.index_example;\ninsert into  ds.index_example select i+24000,j+24000 from ds.index_example;\ninsert into  ds.index_example select i+48000,j+48000 from ds.index_example;\ninsert into  ds.index_example select i+96000,j+96000 from ds.index_example;\ninsert into  ds.index_example select i+200000,j+200000 from ds.index_example;\ninsert into  ds.index_example select i+400000,j+400000 from ds.index_example;\ninsert into  ds.index_example select i+800000,j+800000 from ds.index_example;\n\nanalyze table ds.index_example;\n\nexplain select count(*) from ds.index_example;",
       "user": "anonymous",
-      "dateUpdated": "2018-12-07 00:50:22.097",
+      "dateUpdated": "2018-12-07 17:06:29.012",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -304,7 +304,7 @@
           },
           {
             "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d14530.779,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d3,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n          -\u003e  TableScan[INDEX_EXAMPLE(1712)](n\u003d1,totalCost\u003d1419.578,scannedRows\u003d1310720,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n"
+            "data": "Plan\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d14530.779,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d3,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d1419.578,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n          -\u003e  TableScan[INDEX_EXAMPLE(1664)](n\u003d1,totalCost\u003d1419.578,scannedRows\u003d1310720,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n"
           }
         ]
       },
@@ -312,8 +312,8 @@
       "jobName": "paragraph_1544045787836_2061755360",
       "id": "20170917-132020_1057477927",
       "dateCreated": "2018-12-05 21:36:27.836",
-      "dateStarted": "2018-12-07 00:48:22.329",
-      "dateFinished": "2018-12-07 00:49:52.036",
+      "dateStarted": "2018-12-07 17:04:55.230",
+      "dateFinished": "2018-12-07 17:06:14.725",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -740,9 +740,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
