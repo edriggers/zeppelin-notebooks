@@ -1,30 +1,68 @@
 import glob
 import json
 import yaml
-import getopt
+import argparse
 import sys
 from pprint import pprint
 from dateutil import parser
 
+"""Splice Machine is building Apache Zeppelin Notebooks as part of its
+training and product marketing efforts.  The Notebooks are primarily edited
+using the Apache Zeppelin application itself.  There are some shortcomings in
+the UI of this relatively young product that don't allow the user to set
+some settings that are available in the underlying JSON data files.  One such
+example is resetting the "READY"/"FINISHED"/"ERROR" status after testing a
+paragraph's RUN feature.  Another is removing the "time taken" output from the
+paragraph in the notebook.
 
-def usage():
-    """Print the standard usage for calling the script.
-    Outputs valid options.
+The script has two separate operations that it will perform.  The first is a
+"repair" type operation, in which it will apply our standardization changes to
+each paragraph object and optionally write back those changes to the original
+note.json files.  The second is a "reporting" option which will be used to
+identify potentially saved "editor" data that hasn't been rendered into
+"results" data.  As the "editor" code is "Run" inside of Apache Zeppelin and
+saved in a "results" object in the JSON as rendered HTML.  So it is possible
+to create content in Markdown style paragraphs and NOT Run them, in which
+case outdated content would be displayed.  This second operation hasn't been
+fully implemented/tested and is future intended as a potential process to run
+in a Jenkins job triggered by the push to a branch of the splicemachine
+zeppelin-notebooks repository on GitHub.
 
-    Arguments: none
-    """
+-t, --tests {All|MDTimeCheck|CodeBlockFix}
+    CodeBlockFix is the "repair" mode.
+    MDTimeCheck is the "report" mode.
+-m, --modify switch will write changes back to the note.json files.
 
-    print('Usage:')
-    print("\t -m                       : modify source files")
-    print("\t -t:{test}, --test {test} : run specific tests, or All (default)")
-    print("\t -h, or --help            : display help")
-    print("\t Test list:")
-    print("\t\t All")
-    print("\t\t MDTimeCheck")
-    print("\t\t CodeBlockFix")
+This script will recursively loop through all of the directories under the
+working directory and load all of the note.json files in the notebook
+directories and process each of the paragraphs inside the notebooks.  Each
+paragraph will have a set of standards applied based upon the
+'config'/'editorMode' section of the JSON for a paragraph object.
+
+There is an "exceptions" methodology that is being defined in the
+'notebook_standards_exceptions.yaml' file.
+
+The primary thoughts initially driving this script:
+
+1.  There are two primary types of paragraphs being used.  Markdown and Code
+2.  Markdown paragraphs are descriptive content of our notebooks.
+    a.  The "editor" should normally be hidden and only the rendered content
+        displayed.
+    b.  The "run" button should not be visible.
+    c.  The status of these blocks should read "FINISHED"
+3.  Code paragraphs are the scripting examples of our notebooks.
+    a.  The rendered "results" should be cleared.
+    b.  The "run" button should be visible.
+    c.  The "editor" should be visible.
+    d.  The status of these blocks should read "READY"
+
+Potentially there will be additional standard settings, like setting a
+"language" for a Code based paragraph so that the syntax highlighting will be
+correct.  These would be specific to a 'config'/'editorMode' type.
+"""
 
 
-def logline(logdata):
+def log_line(log_data):
     """Standardize the log output making it easier to scan through
 
     Arguments:
@@ -32,31 +70,28 @@ def logline(logdata):
                  notebook_id, paragraph #, paragraph title, log text
     """
 
-    print("{:<10} pg#{:<2} {:<40} {:<25}".format(logdata[0],
-          logdata[1], logdata[2][:40], logdata[3]))
+    print("{:<10} pg#{:<2} {:<40} {:<25}".format(log_data[0],
+          log_data[1], log_data[2][:40], log_data[3]))
 
 
-def get_exceptiondetail(notebook_id, paragraph_id,
-                        field_name, exceptions_list):
+def get_exception_detail(notebook_id, paragraph_id,
+                         field_name, exceptions):
     """Validate if the specified field for the paragraph has an exception
     listed and return the details.
     """
-    exception_detail = {}
-    exception_detail['exists'] = False
-    exception_detail['value'] = None
 
+    exception_detail = None
     # handle exceptions, apply these last
-    if notebook_id in exceptions_list['Exceptions']:
-        if paragraph_id in exceptions_list['Exceptions'][notebook_id]:
-            p_except = exceptions_list['Exceptions'][notebook_id][paragraph_id]
+    if notebook_id in exceptions['Exceptions']:
+        if paragraph_id in exceptions['Exceptions'][notebook_id]:
+            p_except = exceptions['Exceptions'][notebook_id][paragraph_id]
             if field_name in p_except:
-                exception_detail['exists'] = True
-                exception_detail['value'] = p_except[field_name]
+                exception_detail = p_except[field_name]
 
     return exception_detail
 
 
-def test_othercodeblockfix(paragraph, tracking):
+def repair_other_paragraph_block(paragraph, tracking):
     """This routine is called when no defined 'editorMode' is found in the
     paragraph.  We will apply a standard set of settings to paragraphs with an
     unhandled 'editorMode' type.
@@ -68,33 +103,31 @@ def test_othercodeblockfix(paragraph, tracking):
                        global variable contamination
     """
 
-    paragraph_title = 'empty title'
-    if 'title' in paragraph:
-        paragraph_title = paragraph['title']
+    paragraph_title = paragraph.get('title', 'empty title')
 
     if paragraph['text'].startswith('%md'):
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "Editor NOT MARKDOWN"])
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "Editor NOT MARKDOWN"])
 
     if 'editorHide' in paragraph['config']:
         if paragraph['config']['editorHide']:
-            logline([tracking['notebook_id'], tracking['para_count'],
-                    paragraph_title, "Editor IS HIDDEN"])
+            log_line([tracking['notebook_id'], tracking['para_count'],
+                     paragraph_title, "Editor IS HIDDEN"])
             if tracking['modify']:
                 paragraph['config']['editorHide'] = False
                 tracking['has_changes'] = True
 
     if 'tableHide' in paragraph['config']:
         if paragraph['config']['tableHide']:
-            logline([tracking['notebook_id'], tracking['para_count'],
-                    paragraph_title, "Table IS HIDDEN"])
+            log_line([tracking['notebook_id'], tracking['para_count'],
+                     paragraph_title, "Table IS HIDDEN"])
             if tracking['modify']:
                 paragraph['config']['tableHide'] = False
                 tracking['has_changes'] = True
 
     if 'enabled' in paragraph['config'] and not paragraph['config']['enabled']:
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "Run Button IS DISABLED"])
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "Run Button IS DISABLED"])
         if tracking['modify']:
             paragraph['config']['enabled'] = True
             tracking['has_changes'] = True
@@ -105,21 +138,21 @@ def test_othercodeblockfix(paragraph, tracking):
         tracking['has_changes'] = True
         if 'dateStarted' in paragraph:
             if 'dateFinished' in paragraph:
-                logline([tracking['notebook_id'], tracking['para_count'],
-                        paragraph_title, "Results ARE STORED"])
+                log_line([tracking['notebook_id'], tracking['para_count'],
+                         paragraph_title, "Results ARE STORED"])
                 if tracking['modify']:
                     paragraph.pop('dateStarted', None)
                     paragraph.pop('dateFinished', None)
 
     if paragraph['status'] != 'READY':
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "Paragraph NOT READY"])
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "Paragraph NOT READY"])
         if tracking['modify']:
             paragraph['status'] = 'READY'
             tracking['has_changes'] = True
 
 
-def test_mdcodeblockfix(paragraph, tracking, test_exceptions):
+def repair_md_paragraph_block(paragraph, tracking, test_exceptions):
     """This routine is called on paragraph blocks with an 'editorMode' of
     /ace/mode/markdown.
     This will set defaults in the original paragraph JSON to match what we want
@@ -134,59 +167,57 @@ def test_mdcodeblockfix(paragraph, tracking, test_exceptions):
                        only being used for the MD blocks.
     """
 
-    paragraph_title = 'empty title'
-    if 'title' in paragraph:
-        paragraph_title = paragraph['title']
+    paragraph_title = paragraph.get('title', 'empty title')
 
-    editoropen_override = get_exceptiondetail(
+    editor_open_override = get_exception_detail(
         tracking['notebook_id'], paragraph['id'],
         'MarkdownEditorOpen', test_exceptions
     )
 
     if not paragraph['text'].startswith('%md'):
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "%md NOT MARKDOWN EDITOR"])
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "%md NOT MARKDOWN EDITOR"])
 
     if 'enabled' in paragraph['config'] and paragraph['config']['enabled']:
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "%md Run Button IS ENABLED"])
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "%md Run Button IS ENABLED"])
         if tracking['modify']:
             paragraph['config']['enabled'] = False
             tracking['has_changes'] = True
 
     if 'status' in paragraph and paragraph['status'] == "READY":
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "%md Status IS READY"])
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "%md Status IS READY"])
         if tracking['modify']:
             paragraph['status'] = 'FINISHED'
             tracking['has_changes'] = True
 
     if 'editorHide' in paragraph['config']:
         if not paragraph['config']['editorHide']:
-            logline([tracking['notebook_id'], tracking['para_count'],
-                    paragraph_title, "Editor NOT HIDDEN"])
+            log_line([tracking['notebook_id'], tracking['para_count'],
+                     paragraph_title, "Editor NOT HIDDEN"])
             if tracking['modify']:
                 paragraph['config']['editorHide'] = True
                 tracking['has_changes'] = True
 
     if 'tableHide' in paragraph['config']:
         if paragraph['config']['tableHide']:
-            logline([tracking['notebook_id'], tracking['para_count'],
-                    paragraph_title, "Table IS HIDDEN"])
+            log_line([tracking['notebook_id'], tracking['para_count'],
+                     paragraph_title, "Table IS HIDDEN"])
             if tracking['modify']:
                 paragraph['config']['tableHide'] = False
                 tracking['has_changes'] = True
 
-    if editoropen_override['exists']:
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "%md Editor OVERRIDE, IGNORE ABOVE"])
+    if editor_open_override is not None:
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "%md Editor OVERRIDE, IGNORE ABOVE"])
         paragraph['config']['editorHide'] = False
         paragraph['config']['enabled'] = True
         paragraph['status'] = 'READY'
         tracking['has_changes'] = True
 
 
-def test_mdblockgeneration(paragraph, tracking):
+def report_md_paragraph_block(paragraph, tracking):
     """This routine is soley for reporting.  The paragraph block JSON
     contains a 'text' field, and a 'results/data' field.  The 'text' field is
     the 'source' and the 'results/data' field is the rendered data.  There are
@@ -208,9 +239,7 @@ def test_mdblockgeneration(paragraph, tracking):
                        global variable contamination
     """
 
-    paragraph_title = 'empty title'
-    if 'title' in paragraph:
-        paragraph_title = paragraph['title']
+    paragraph_title = paragraph.get('title', 'empty title')
 
     updated = parser.parse('1970-01-01 00:00:00.000')
     if 'dateUpdated' in paragraph:
@@ -225,17 +254,16 @@ def test_mdblockgeneration(paragraph, tracking):
 
     if updated > finished:
         timediff = updated - finished
-        diffminutes = divmod(timediff.total_seconds(), 60)[0]
-        if tracking['tests'] == 'All' or tracking['tests'] == 'MDTC':
-            if diffminutes > 5:
-                logline([tracking['notebook_id'], tracking['para_count'],
-                        paragraph_title, "Paragraph SAVED AFTER RUN" +
-                        str(diffminutes)])
-                print('        Saved:  ' + str(updated))
-                print('    Generated:  ' + str(finished))
+        diffminutes = timediff.total_seconds() // 60
+        if tracking['tests'] in ['All', 'Report'] and diffminutes > 5:
+            log_line([tracking['notebook_id'], tracking['para_count'],
+                     paragraph_title, "Paragraph SAVED AFTER RUN" +
+                     str(diffminutes)])
+            print('        Saved:  ' + str(updated))
+            print('    Generated:  ' + str(finished))
 
 
-def test_paragraph(paragraph, tracking, test_exceptions):
+def process_paragraph(paragraph, tracking, test_exceptions):
     """This is the main call that is made for each paragraph being looped
     through in the main program.  We parse the 'config/editorMode' of the
     paragraph and send the paragraph down the line for further processing.
@@ -259,96 +287,88 @@ def test_paragraph(paragraph, tracking, test_exceptions):
                        only being used for the MD blocks.
     """
 
-    paragraph_title = 'empty title'
-    if 'title' in paragraph:
-        paragraph_title = paragraph['title']
+    paragraph_title = paragraph.get('title', 'empty title')
 
-    editormode_override = get_exceptiondetail(
+    editor_mode_override = get_exception_detail(
         tracking['notebook_id'], paragraph['id'],
         'EditorMode', test_exceptions
     )
 
-    if editormode_override['exists']:
-        paragraph['config']['editorMode'] = editormode_override['value']
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "EditorMode OVERRIDE"])
+    if editor_mode_override is not None:
+        paragraph['config']['editorMode'] = editor_mode_override
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                  paragraph_title, "EditorMode OVERRIDE"])
     if 'editorMode' in paragraph['config']:
         if paragraph['config']['editorMode'] == 'ace/mode/markdown':
-            if tracking['tests'] == 'MDTC' or tracking['tests'] == 'All':
-                test_mdblockgeneration(paragraph, tracking)
+            if tracking['tests'] in ['Report', 'All']:
+                report_md_paragraph_block(paragraph, tracking)
 
-            if tracking['tests'] == 'CBF' or tracking['tests'] == 'All':
-                test_mdcodeblockfix(paragraph, tracking, test_exceptions)
+            if tracking['tests'] in ['Repair', 'All']:
+                repair_md_paragraph_block(paragraph, tracking, test_exceptions)
 
         elif paragraph['config']['editorMode'] == 'ace/mode/sql':
             # splicemachine blocks
-            if tracking['tests'] == 'CBF' or tracking['tests'] == 'All':
+            if tracking['tests'] in ['Repair', 'All']:
                 # currently we are calling the 'other' format routine as we
                 # have not identified the individual 'editorMode' features to
                 # set.  This elif block is simply a placeholder for the next
                 # iteration of the script
-                test_othercodeblockfix(paragraph, tracking)
+                repair_other_paragraph_block(paragraph, tracking)
         else:
             # all other blocks
-            if tracking['tests'] == 'CBF' or tracking['tests'] == 'All':
-                test_othercodeblockfix(paragraph, tracking)
+            if tracking['tests'] in ['Repair', 'All']:
+                repair_other_paragraph_block(paragraph, tracking)
     else:
-        logline([tracking['notebook_id'], tracking['para_count'],
-                paragraph_title, "Paragraph NO EDITORMODE"])
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                 paragraph_title, "Paragraph NO EDITORMODE"])
 
 
-def main(incoming_args):
+def main():
     """This routine will process the command line arguments and loop through
     all the note.json files in all subdirectories from the directory of
     execution.
 
-    Arguments:
-    incoming_args -- This value comes from the sys.argv variable
     """
-    try:
-        parsed_options, parsed_args = getopt.getopt(
-            incoming_args, "-t:hm", ["help", "test=", "--modify"])
-    except getopt.GetoptError as err:
-        # print help information and exit:
-        print(err)  # will print something like "option -a not recognized"
-        usage()
-        sys.exit(1)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-m", "--modify",
+                        help="switch to turn on writing back to note.json",
+                        action="store_true")
+    parser.add_argument("-t", "--tests",
+                        help="Specify the type of test being run",
+                        type=str, choices=['Report', 'Repair', 'All'])
 
-    with open("./NotebookSanityExceptions.yaml", 'r') as stream:
+    try:
+        args = parser.parse_args()
+    except SystemExit:
+        # the unfortunate trade off here is that even a successful -h run
+        # will raise "SystemExit" in order to terminate the execution, and
+        # there doesn't seem to be an easy way to determine the difference
+        # between a successful -h call, and a call with bad arguments.
+        # When running under a Jenkins job, we most certainly want to return
+        # a non-zero if the script hasn't run for any reason.
+        return 1
+
+    track_vars = {
+        'modify': args.modify,
+        'tests': 'All',
+        'has_changes': False,
+        'para_count': 1,
+        'notebook_id': "",
+        'status': 0
+    }
+
+    if args.tests is None:
+        track_vars['tests'] = "Repair"
+    else:
+        track_vars['tests'] = args.tests
+
+    # get our standards exceptions loaded
+    with open("./notebook_standards_exceptions.yaml", 'r') as stream:
         sanity_exceptions = yaml.load(stream)
 
-    track_vars = {}
-    track_vars['modify'] = False
-    track_vars['tests'] = 'All'
-    track_vars['has_changes'] = False
-    track_vars['para_count'] = 1
-    track_vars['notebook_id'] = ""
-    track_vars['status'] = 0
-
-    for options, option_args in parsed_options:
-        if options in ("-h", "--help"):
-            usage()
-            sys.exit(0)
-        elif options in ("-t", "--test"):
-            if option_args.lower() == 'all':
-                track_vars['tests'] = 'All'
-            elif option_args.lower() == 'mdtimecheck':
-                track_vars['tests'] = 'MDTC'
-            elif option_args.lower() == 'codeblockfix':
-                track_vars['tests'] = 'CBF'
-        elif options in ("-m", "--modify"):
-            track_vars['modify'] = True
-        else:
-            assert False, "unhandled option: " + options + \
-                ", option arguments (" + option_args + ")"
-        if len(parsed_args) > 0:
-            print("stand alone arguments have been ignored: ")
-            for ignored_arg in parsed_args:
-                print("\t" + ignored_arg)
-
-    notefiles = glob.glob('./**/note.json')
-
-    for note_file in notefiles:
+    # load and loop through the notebook json files.
+    note_files = glob.glob('./**/note.json')
+    for note_file in note_files:
         track_vars['has_changes'] = False
         with open(note_file, 'r+') as file_handler:
             track_vars['notebook_id'] = note_file.split('/')[1]
@@ -361,8 +381,8 @@ def main(incoming_args):
             # counting will have to be sufficient.
             track_vars['para_count'] = 1
             for notebook_paragraph in data['paragraphs']:
-                test_paragraph(notebook_paragraph,
-                               track_vars, sanity_exceptions)
+                process_paragraph(notebook_paragraph,
+                                  track_vars, sanity_exceptions)
                 track_vars['para_count'] = track_vars['para_count'] + 1
             if track_vars['modify'] and track_vars['has_changes']:
                 print("Saving " + track_vars['notebook_id'])
@@ -377,6 +397,4 @@ def main(incoming_args):
 
 
 # Call the main Routine
-exitcode = 0
-exitcode = main(sys.argv[1:])
-sys.exit(exitcode)
+sys.exit(main())
