@@ -395,4 +395,4 @@ def main():
 
 
 # Call the main Routine
-# sys.exit(main())
+sys.exit(main())
