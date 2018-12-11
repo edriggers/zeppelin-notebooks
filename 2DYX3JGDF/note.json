@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Exercises\n\nBelow are some follow-on exercises for the material covered in this section of the notebooks.  Go ahead and perform them straight in this notebook.\n\n## Background:  What we\u0027ll be doing in these exercises\n\nIn these exercises you\u0027ll be doing the following:\n\n1. Creating tables\n2. Importing data\n3. Writing Queries\n4. Monitoring Queries\n5. Tuning Queries\n\nThe data you\u0027ll be loading is on your local machine.  This will be useful in case you need to debug the importing process.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Exercises: Splice Machine Developers Class, Part I\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\n\nYou\u0027ll be performing the following actions in these exercises:\n\n1. Creating Tables\n2. Importing Data\n3. Collecting Statistics\n3. Running Queries\n4. Monitoring Queries\n5. Tuning Queries\n\nThe data you\u0027ll be loading is on your local machine, which will prove useful if you need to debug the data import process.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 18:29:08.394",
+      "dateUpdated": "2018-12-11 21:27:10.203",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises\u003c/h1\u003e\n\u003cp\u003eBelow are some follow-on exercises for the material covered in this section of the notebooks. Go ahead and perform them straight in this notebook.\u003c/p\u003e\n\u003ch2\u003eBackground: What we\u0026rsquo;ll be doing in these exercises\u003c/h2\u003e\n\u003cp\u003eIn these exercises you\u0026rsquo;ll be doing the following:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreating tables\u003c/li\u003e\n  \u003cli\u003eImporting data\u003c/li\u003e\n  \u003cli\u003eWriting Queries\u003c/li\u003e\n  \u003cli\u003eMonitoring Queries\u003c/li\u003e\n  \u003cli\u003eTuning Queries\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThe data you\u0026rsquo;ll be loading is on your local machine. This will be useful in case you need to debug the importing process.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Splice Machine Developers Class, Part I\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreating Tables\u003c/li\u003e\n  \u003cli\u003eImporting Data\u003c/li\u003e\n  \u003cli\u003eCollecting Statistics\u003c/li\u003e\n  \u003cli\u003eRunning Queries\u003c/li\u003e\n  \u003cli\u003eMonitoring Queries\u003c/li\u003e\n  \u003cli\u003eTuning Queries\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThe data you\u0026rsquo;ll be loading is on your local machine, which will prove useful if you need to debug the data import process.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1544545185801_825691724",
       "id": "20181211-161945_44645522",
       "dateCreated": "2018-12-11 16:19:45.801",
-      "dateStarted": "2018-12-11 18:29:08.395",
-      "dateFinished": "2018-12-11 18:29:08.417",
+      "dateStarted": "2018-12-11 21:27:10.203",
+      "dateFinished": "2018-12-11 21:27:10.218",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Looking at the data\n\nLet\u0027s look at the data first, and get ready to create a schema for it.  Over the course of the training sessions we will be loading up some sample\nmovie rating data.  We\u0027ll start with the raw ratings themselves:\n\nuser_id | item_id | rating | timestamp\n\nHere is some sample data:\n\u003cpre\u003e196|242|3|1997-12-04 07:55:49\n186|302|3|1998-04-04 11:22:22\n22|377|1|1997-11-06 23:18:360\u003c/pre\u003e",
+      "text": "%md\n## 1. Creating Tables\nIn this exercise, we\u0027ll:\n\n* Examine the data we want in the table\n* Create a table with a primary key\n\n### Our Sample Data\nWe\u0027ll be loading up sample movie rating data over the course of our training classes; for this exercise, we\u0027ll start by looking at a sample of the raw ratings data:\n\n```\n196|242|3|1997-12-04 07:55:49\n186|302|3|1998-04-04 11:22:22\n22|377|1|1997-11-06 23:18:360\n```\n\nThe data contains four fields, separated by `|` characters in the input:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `user_id | item_id | rating | timestamp`\n\n### Create the Table Definition\nNow, let\u0027s create a table specification for the raw ratings data shown above, and call it `RATING_DATA`. Be sure to put in a Primary Key definition.\n\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\nInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 18:38:12.365",
+      "dateUpdated": "2018-12-11 21:27:13.245",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -67,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLooking at the data\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s look at the data first, and get ready to create a schema for it. Over the course of the training sessions we will be loading up some sample\u003cbr/\u003emovie rating data. We\u0026rsquo;ll start with the raw ratings themselves:\u003c/p\u003e\n\u003cp\u003euser_id | item_id | rating | timestamp\u003c/p\u003e\n\u003cp\u003eHere is some sample data:\u003cbr/\u003e\u003cpre\u003e196|242|3|1997-12-04 07:55:49\u003cbr/\u003e186|302|3|1998-04-04 11:22:22\u003cbr/\u003e22|377|1|1997-11-06 23:18:360\u003c/pre\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating Tables\u003c/h2\u003e\n\u003cp\u003eIn this exercise, we\u0026rsquo;ll:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eExamine the data we want in the table\u003c/li\u003e\n  \u003cli\u003eCreate a table with a primary key\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eOur Sample Data\u003c/h3\u003e\n\u003cp\u003eWe\u0026rsquo;ll be loading up sample movie rating data over the course of our training classes; for this exercise, we\u0026rsquo;ll start by looking at a sample of the raw ratings data:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e196|242|3|1997-12-04 07:55:49\n186|302|3|1998-04-04 11:22:22\n22|377|1|1997-11-06 23:18:360\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe data contains four fields, separated by \u003ccode\u003e|\u003c/code\u003e characters in the input:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003euser_id | item_id | rating | timestamp\u003c/code\u003e\u003c/p\u003e\n\u003ch3\u003eCreate the Table Definition\u003c/h3\u003e\n\u003cp\u003eNow, let\u0026rsquo;s create a table specification for the raw ratings data shown above, and call it \u003ccode\u003eRATING_DATA\u003c/code\u003e. Be sure to put in a Primary Key definition.\u003c/p\u003e\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\u003cp\u003eInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually create the table in your database.\u003c/p\u003e\n\u003cp\u003eFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -75,48 +75,8 @@
       "jobName": "paragraph_1544546544316_406486067",
       "id": "20181211-164224_85720056",
       "dateCreated": "2018-12-11 16:42:24.316",
-      "dateStarted": "2018-12-11 18:38:12.366",
-      "dateFinished": "2018-12-11 18:38:12.377",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Create the table definition\n\nLook at the description above, and create a table specification next.  Call the table RATING_DATA.  For help with the syntax consult the previous notebook examples or doc.splicemachine.com\n\nQuestion: Be sure to put in a Primary Key definition.  What do you think the Primary Key should be?  ",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-11 18:39:36.301",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate the table definition\u003c/h2\u003e\n\u003cp\u003eLook at the description above, and create a table specification next. Call the table RATING_DATA. For help with the syntax consult the previous notebook examples or doc.splicemachine.com\u003c/p\u003e\n\u003cp\u003eQuestion: Be sure to put in a Primary Key definition. What do you think the Primary Key should be?\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544547002487_-1179751257",
-      "id": "20181211-165002_1382531926",
-      "dateCreated": "2018-12-11 16:50:02.487",
-      "dateStarted": "2018-12-11 18:39:36.301",
-      "dateFinished": "2018-12-11 18:39:36.320",
+      "dateStarted": "2018-12-11 21:27:13.246",
+      "dateFinished": "2018-12-11 21:27:13.262",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -152,9 +112,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Import the data\n\nNow you\u0027re going to import the data, with 100,000 rows (see a sample of the data above).  Enter the proper IMPORT call based on previous notebook examples and our documentation.\n\nThe data file is located at \u0027/opt/data/ratings.csv\u0027.  We put the file onto this image to help you see what\u0027s going on and see how to debug any issues.\n\nHint: use \u0027/opt/data/\u0027 as your BAD file directory.  If you have troubles importing, you can get out to your machine and take a look\n\nQuestions:\n1. What should the Schema specification be?\n2. What is the field delimiter?\n3. Do you need a character delimiter?\n4. What should the timestamp format be?\n5. What should the bad record count be?\n",
+      "text": "%md\n## 2. Importing Data\n\nNow we\u0027ll import all of our ratings data, which contains 100,000 rows. We\u0027ve copied the data file into this docker image, so you can examine it if needed; you\u0027ll find the data here:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `opt/data/ratings.csv`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n\u003cp class\u003d\"noteHint\"\u003euse `/opt/data` as your BAD records file directory; if you have trouble with the import, you\u0027ll find valuable information in that directory.\n\n#### Questions:\n1. What should the Schema specification be?\n2. What is the field delimiter?\n3. Do you need a character delimiter?\n4. What should the timestamp format be?\n5. What should the bad record count be?\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 18:46:25.738",
+      "dateUpdated": "2018-12-11 21:12:14.994",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -178,7 +138,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eImport the data\u003c/h2\u003e\n\u003cp\u003eNow you\u0026rsquo;re going to import the data, with 100,000 rows (see a sample of the data above). Enter the proper IMPORT call based on previous notebook examples and our documentation.\u003c/p\u003e\n\u003cp\u003eThe data file is located at \u0026lsquo;/opt/data/ratings.csv\u0026rsquo;. We put the file onto this image to help you see what\u0026rsquo;s going on and see how to debug any issues.\u003c/p\u003e\n\u003cp\u003eHint: use \u0026lsquo;/opt/data/\u0026rsquo; as your BAD file directory. If you have troubles importing, you can get out to your machine and take a look\u003c/p\u003e\n\u003cp\u003eQuestions:\u003cbr/\u003e1. What should the Schema specification be?\u003cbr/\u003e2. What is the field delimiter?\u003cbr/\u003e3. Do you need a character delimiter?\u003cbr/\u003e4. What should the timestamp format be?\u003cbr/\u003e5. What should the bad record count be?\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing Data\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll import all of our ratings data, which contains 100,000 rows. We\u0026rsquo;ve copied the data file into this docker image, so you can examine it if needed; you\u0026rsquo;ll find the data here:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003eopt/data/ratings.csv\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEnter the proper \u003ccode\u003eIMPORT\u003c/code\u003e call to load the data in the next paragraph, then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteHint\"\u003euse \u003ccode\u003e/opt/data\u003c/code\u003e as your BAD records file directory; if you have trouble with the import, you\u0026rsquo;ll find valuable information in that directory.\u003c/p\u003e\n\u003ch4\u003eQuestions:\u003c/h4\u003e\n\u003col\u003e\n  \u003cli\u003eWhat should the Schema specification be?\u003c/li\u003e\n  \u003cli\u003eWhat is the field delimiter?\u003c/li\u003e\n  \u003cli\u003eDo you need a character delimiter?\u003c/li\u003e\n  \u003cli\u003eWhat should the timestamp format be?\u003c/li\u003e\n  \u003cli\u003eWhat should the bad record count be?\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -186,8 +146,8 @@
       "jobName": "paragraph_1544553253568_-995095889",
       "id": "20181211-183413_840940296",
       "dateCreated": "2018-12-11 18:34:13.568",
-      "dateStarted": "2018-12-11 18:46:25.739",
-      "dateFinished": "2018-12-11 18:46:25.755",
+      "dateStarted": "2018-12-11 21:12:14.994",
+      "dateFinished": "2018-12-11 21:12:15.024",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -254,9 +214,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Collect Statistics\n\nNow run the simple command to collect statistics for your table.",
+      "text": "%md\n## 3. Collecting Statistics\n\nNow let\u0027s run the simple command to collect statistics for your table. Enter the command in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 18:54:31.892",
+      "dateUpdated": "2018-12-11 21:22:47.211",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -280,7 +240,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCollect Statistics\u003c/h2\u003e\n\u003cp\u003eNow run the simple command to collect statistics for your table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Collecting Statistics\u003c/h2\u003e\n\u003cp\u003eNow let\u0026rsquo;s run the simple command to collect statistics for your table. Enter the command in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -288,8 +248,8 @@
       "jobName": "paragraph_1544554418516_-1427703308",
       "id": "20181211-185338_2092169707",
       "dateCreated": "2018-12-11 18:53:38.516",
-      "dateStarted": "2018-12-11 18:54:31.905",
-      "dateFinished": "2018-12-11 18:54:31.963",
+      "dateStarted": "2018-12-11 21:12:57.403",
+      "dateFinished": "2018-12-11 21:12:57.414",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -358,9 +318,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Run Queries\n\nNow let\u0027s run some queries.  In the next few paragraphs, the paragraph title will describe the query you should write.",
+      "text": "%md\n## 4. Running Queries\n\nNow let\u0027s run some queries. \n\nEach of the following paragraphs poses a question; you should:\n\n* Enter a query that will answer that question\n* Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run your query.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 18:52:00.260",
+      "dateUpdated": "2018-12-11 21:28:10.816",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -384,7 +344,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRun Queries\u003c/h2\u003e\n\u003cp\u003eNow let\u0026rsquo;s run some queries. In the next few paragraphs, the paragraph title will describe the query you should write.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Running Queries\u003c/h2\u003e\n\u003cp\u003eNow let\u0026rsquo;s run some queries. \u003c/p\u003e\n\u003cp\u003eEach of the following paragraphs poses a question; you should:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eEnter a query that will answer that question\u003c/li\u003e\n  \u003cli\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run your query.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -392,16 +352,16 @@
       "jobName": "paragraph_1544553998057_-2131306158",
       "id": "20181211-184638_1372798534",
       "dateCreated": "2018-12-11 18:46:38.057",
-      "dateStarted": "2018-12-11 18:52:00.263",
-      "dateFinished": "2018-12-11 18:52:00.274",
+      "dateStarted": "2018-12-11 21:23:47.134",
+      "dateFinished": "2018-12-11 21:23:47.152",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "How many total records are there in RATING_DATA?",
+      "title": "a. How many total records are there in RATING_DATA?",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:50:48.928",
+      "dateUpdated": "2018-12-11 21:13:38.104",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -458,10 +418,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "Did the last query run through HBase (control) or Spark?  ",
+      "title": "b. Did the last query run through HBase (control) or Spark?  ",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:51:07.457",
+      "dateUpdated": "2018-12-11 21:13:44.016",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -489,10 +449,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "What are the top 20 movies based on average rating?  (Extra credit: your answer might need to do some cast-ing to be most accurate)",
+      "title": "c. What are the top 20 movies based on average rating?  (Extra credit: your answer might need to do some cast-ing to be most accurate)",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:51:13.087",
+      "dateUpdated": "2018-12-11 21:13:48.792",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -549,10 +509,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "What rating did User 100 give Movie 300?",
+      "title": "d. What rating did User 100 give Movie 300?",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:51:31.505",
+      "dateUpdated": "2018-12-11 21:13:53.927",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -608,10 +568,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "What is the most popular rating given out?",
+      "title": "e. What is the most popular rating given out?",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:51:39.974",
+      "dateUpdated": "2018-12-11 21:13:57.836",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -668,10 +628,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "How many ratings did Movie 50 get?",
+      "title": "f. How many ratings did Movie 50 get?",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:51:56.402",
+      "dateUpdated": "2018-12-11 21:14:02.532",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -727,10 +687,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "How might we have sped that query up?",
+      "title": "g. How might we have sped that query up?",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:24:31.041",
+      "dateUpdated": "2018-12-11 21:14:05.885",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -755,9 +715,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Monitoring Queries\n\nFirst, please rerun the query that told you how many records are in the RATING_DATA table.\n\nNow, if you haven\u0027t already, let\u0027s go out to `localhost:4040` and look at the queries that were run in Spark.\n\nQuestions:\n\n1. How long did the count(*) query take to run?\n2. How many stages was it?  Why?\n3. Which stage took longer to run?  Why?\n4. How many tasks ran in each stage?\n5. What do you think needs to happen in order for more tasks to be created?\n6. What query did we run earlier that we will NOT see in the Spark UI?",
+      "text": "%md\n## Monitoring Queries\n\nNow we\u0027ll monitor a query. \n\n* First, please rerun the query that told you how many records are in the `RATING_DATA` table.\n* Then, if you haven\u0027t already done so, point your browser to `localhost:4040` and look at the queries that were run in Spark.\n\n#### Questions:\n\n1. How long did the `count(*)` query take to run?\n2. How many stages was it?  Why?\n3. Which stage took longer to run?  Why?\n4. How many tasks ran in each stage?\n5. What do you think needs to happen in order for more tasks to be created?\n6. What query did we run earlier that we will NOT see in the Spark UI?",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:37:06.076",
+      "dateUpdated": "2018-12-11 21:27:02.870",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -781,7 +741,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eMonitoring Queries\u003c/h2\u003e\n\u003cp\u003eFirst, please rerun the query that told you how many records are in the RATING_DATA table.\u003c/p\u003e\n\u003cp\u003eNow, if you haven\u0026rsquo;t already, let\u0026rsquo;s go out to \u003ccode\u003elocalhost:4040\u003c/code\u003e and look at the queries that were run in Spark.\u003c/p\u003e\n\u003cp\u003eQuestions:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eHow long did the count(*) query take to run?\u003c/li\u003e\n  \u003cli\u003eHow many stages was it? Why?\u003c/li\u003e\n  \u003cli\u003eWhich stage took longer to run? Why?\u003c/li\u003e\n  \u003cli\u003eHow many tasks ran in each stage?\u003c/li\u003e\n  \u003cli\u003eWhat do you think needs to happen in order for more tasks to be created?\u003c/li\u003e\n  \u003cli\u003eWhat query did we run earlier that we will NOT see in the Spark UI?\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eMonitoring Queries\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll monitor a query. \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eFirst, please rerun the query that told you how many records are in the \u003ccode\u003eRATING_DATA\u003c/code\u003e table.\u003c/li\u003e\n  \u003cli\u003eThen, if you haven\u0026rsquo;t already done so, point your browser to \u003ccode\u003elocalhost:4040\u003c/code\u003e and look at the queries that were run in Spark.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch4\u003eQuestions:\u003c/h4\u003e\n\u003col\u003e\n  \u003cli\u003eHow long did the \u003ccode\u003ecount(*)\u003c/code\u003e query take to run?\u003c/li\u003e\n  \u003cli\u003eHow many stages was it? Why?\u003c/li\u003e\n  \u003cli\u003eWhich stage took longer to run? Why?\u003c/li\u003e\n  \u003cli\u003eHow many tasks ran in each stage?\u003c/li\u003e\n  \u003cli\u003eWhat do you think needs to happen in order for more tasks to be created?\u003c/li\u003e\n  \u003cli\u003eWhat query did we run earlier that we will NOT see in the Spark UI?\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -789,24 +749,104 @@
       "jobName": "paragraph_1544556304678_-122970612",
       "id": "20181211-192504_669948564",
       "dateCreated": "2018-12-11 19:25:04.678",
-      "dateStarted": "2018-12-11 19:37:06.077",
-      "dateFinished": "2018-12-11 19:37:06.091",
+      "dateStarted": "2018-12-11 21:27:02.871",
+      "dateFinished": "2018-12-11 21:27:02.894",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Tuning Queries\n\nFinally, let\u0027s do some tuning on a query.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 21:27:41.684",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTuning Queries\u003c/h2\u003e\n\u003cp\u003eFinally, let\u0026rsquo;s do some tuning on a query.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544556356385_-1977490772",
+      "id": "20181211-192556_1176121730",
+      "dateCreated": "2018-12-11 19:25:56.385",
+      "dateStarted": "2018-12-11 21:27:41.688",
+      "dateFinished": "2018-12-11 21:27:41.696",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Beginning Splice Machine Developer\u0027s Class*. \n\nTo continue learn more about developing with Splice Machine, consider taking our  [*Intermediate Splice Machine Developer\u0027s Class*](/#/notebook/2DXRNNKXG).\n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 21:37:05.944",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eBeginning Splice Machine Developer\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eTo continue learn more about developing with Splice Machine, consider taking our \u003ca href\u003d\"/#/notebook/2DXRNNKXG\"\u003e\u003cem\u003eIntermediate Splice Machine Developer\u0026rsquo;s Class\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544563661666_-750246851",
+      "id": "20181211-212741_303931509",
+      "dateCreated": "2018-12-11 21:27:41.667",
+      "dateStarted": "2018-12-11 21:37:05.944",
+      "dateFinished": "2018-12-11 21:37:05.959",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 19:25:56.386",
+      "dateUpdated": "2018-12-11 21:37:05.917",
       "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1544556356385_-1977490772",
-      "id": "20181211-192556_1176121730",
-      "dateCreated": "2018-12-11 19:25:56.385",
+      "jobName": "paragraph_1544564225912_591396242",
+      "id": "20181211-213705_839703928",
+      "dateCreated": "2018-12-11 21:37:05.912",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
