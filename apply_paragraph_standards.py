@@ -62,6 +62,14 @@ correct.  These would be specific to a 'config'/'editorMode' type.
 """
 
 
+def increment(x):
+    return x + 1
+
+
+def decrement(x):
+    return x - 1
+
+
 def log_line(log_data):
     """Standardize the log output making it easier to scan through
 
@@ -107,25 +115,23 @@ def repair_other_paragraph_block(paragraph, tracking):
 
     if paragraph['text'].startswith('%md'):
         log_line([tracking['notebook_id'], tracking['para_count'],
-                 paragraph_title, "Editor NOT MARKDOWN"])
+                 paragraph_title, "Editor NOT CODE"])
 
-    if 'editorHide' in paragraph['config']:
-        if paragraph['config']['editorHide']:
-            log_line([tracking['notebook_id'], tracking['para_count'],
-                     paragraph_title, "Editor IS HIDDEN"])
-            if tracking['modify']:
-                paragraph['config']['editorHide'] = False
-                tracking['has_changes'] = True
+    if paragraph['config'].get('editorHide', False):
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                paragraph_title, "Editor IS HIDDEN"])
+        if tracking['modify']:
+            paragraph['config']['editorHide'] = False
+            tracking['has_changes'] = True
 
-    if 'tableHide' in paragraph['config']:
-        if paragraph['config']['tableHide']:
-            log_line([tracking['notebook_id'], tracking['para_count'],
-                     paragraph_title, "Table IS HIDDEN"])
-            if tracking['modify']:
-                paragraph['config']['tableHide'] = False
-                tracking['has_changes'] = True
+    if paragraph['config'].get('tableHide', False):
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                    paragraph_title, "Table IS HIDDEN"])
+        if tracking['modify']:
+            paragraph['config']['tableHide'] = False
+            tracking['has_changes'] = True
 
-    if 'enabled' in paragraph['config'] and not paragraph['config']['enabled']:
+    if not paragraph['config'].get('enabled', False):
         log_line([tracking['notebook_id'], tracking['para_count'],
                  paragraph_title, "Run Button IS DISABLED"])
         if tracking['modify']:
@@ -136,15 +142,14 @@ def repair_other_paragraph_block(paragraph, tracking):
         msg = paragraph['results']
         msg.pop('msg', None)
         tracking['has_changes'] = True
-        if 'dateStarted' in paragraph:
-            if 'dateFinished' in paragraph:
-                log_line([tracking['notebook_id'], tracking['para_count'],
-                         paragraph_title, "Results ARE STORED"])
-                if tracking['modify']:
-                    paragraph.pop('dateStarted', None)
-                    paragraph.pop('dateFinished', None)
+        if 'dateStarted' in paragraph and 'dateFinished' in paragraph:
+            log_line([tracking['notebook_id'], tracking['para_count'],
+                        paragraph_title, "Results ARE STORED"])
+            if tracking['modify']:
+                paragraph.pop('dateStarted', None)
+                paragraph.pop('dateFinished', None)
 
-    if paragraph['status'] != 'READY':
+    if paragraph.get('status', '') != 'READY':
         log_line([tracking['notebook_id'], tracking['para_count'],
                  paragraph_title, "Paragraph NOT READY"])
         if tracking['modify']:
@@ -178,35 +183,33 @@ def repair_md_paragraph_block(paragraph, tracking, test_exceptions):
         log_line([tracking['notebook_id'], tracking['para_count'],
                  paragraph_title, "%md NOT MARKDOWN EDITOR"])
 
-    if 'enabled' in paragraph['config'] and paragraph['config']['enabled']:
+    if paragraph['config'].get('enabled', False):
         log_line([tracking['notebook_id'], tracking['para_count'],
                  paragraph_title, "%md Run Button IS ENABLED"])
         if tracking['modify']:
             paragraph['config']['enabled'] = False
             tracking['has_changes'] = True
 
-    if 'status' in paragraph and paragraph['status'] == "READY":
+    if paragraph.get('status', '') == "READY":
         log_line([tracking['notebook_id'], tracking['para_count'],
                  paragraph_title, "%md Status IS READY"])
         if tracking['modify']:
             paragraph['status'] = 'FINISHED'
             tracking['has_changes'] = True
 
-    if 'editorHide' in paragraph['config']:
-        if not paragraph['config']['editorHide']:
-            log_line([tracking['notebook_id'], tracking['para_count'],
-                     paragraph_title, "Editor NOT HIDDEN"])
-            if tracking['modify']:
-                paragraph['config']['editorHide'] = True
-                tracking['has_changes'] = True
+    if not paragraph['config'].get('editorHide', False):
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                    paragraph_title, "Editor NOT HIDDEN"])
+        if tracking['modify']:
+            paragraph['config']['editorHide'] = True
+            tracking['has_changes'] = True
 
-    if 'tableHide' in paragraph['config']:
-        if paragraph['config']['tableHide']:
-            log_line([tracking['notebook_id'], tracking['para_count'],
-                     paragraph_title, "Table IS HIDDEN"])
-            if tracking['modify']:
-                paragraph['config']['tableHide'] = False
-                tracking['has_changes'] = True
+    if paragraph['config'].get('tableHide', False):
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                    paragraph_title, "Table IS HIDDEN"])
+        if tracking['modify']:
+            paragraph['config']['tableHide'] = False
+            tracking['has_changes'] = True
 
     if editor_open_override is not None:
         log_line([tracking['notebook_id'], tracking['para_count'],
@@ -241,9 +244,8 @@ def report_md_paragraph_block(paragraph, tracking):
 
     paragraph_title = paragraph.get('title', 'empty title')
 
-    updated = parser.parse('1970-01-01 00:00:00.000')
-    if 'dateUpdated' in paragraph:
-        updated = parser.parse(paragraph['dateUpdated'])
+    updated = parser.parse(paragraph.get('dateUpdated',
+                           '1970-01-01 00:00:00.000'))
 
     if 'dateFinished' in paragraph:
         finished = parser.parse(paragraph['dateFinished'])
@@ -298,6 +300,7 @@ def process_paragraph(paragraph, tracking, test_exceptions):
         paragraph['config']['editorMode'] = editor_mode_override
         log_line([tracking['notebook_id'], tracking['para_count'],
                   paragraph_title, "EditorMode OVERRIDE"])
+
     if 'editorMode' in paragraph['config']:
         if paragraph['config']['editorMode'] == 'ace/mode/markdown':
             if tracking['tests'] in ['Report', 'All']:
@@ -350,17 +353,12 @@ def main():
 
     track_vars = {
         'modify': args.modify,
-        'tests': 'All',
+        'tests': args.tests or "Repair",
         'has_changes': False,
         'para_count': 1,
         'notebook_id': "",
         'status': 0
     }
-
-    if args.tests is None:
-        track_vars['tests'] = "Repair"
-    else:
-        track_vars['tests'] = args.tests
 
     # get our standards exceptions loaded
     with open("./notebook_standards_exceptions.yaml", 'r') as stream:
@@ -397,4 +395,4 @@ def main():
 
 
 # Call the main Routine
-sys.exit(main())
+# sys.exit(main())

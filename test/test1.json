@@ -1,0 +1,58 @@
+{
+    "paragraphs": [
+        {
+        "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Useful Database Utilities\n\nThis notebook describes a number of utilities that you may find useful. We\u0027ll expand this list over time.\n\nAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.",
+        "user": "anonymous",
+        "dateUpdated": "2018-12-06 22:31:01.011",
+        "config": {
+            "tableHide": true,
+            "editorSetting": {
+            "language": "markdown",
+            "editOnDblClick": true,
+            "completionSupport": false
+            },
+            "colWidth": 12.0,
+            "editorMode": "ace/mode/markdown",
+            "editorHide": true,
+            "results": {},
+            "enabled": false,
+            "fontSize": 9.0
+        },
+        "settings": {
+            "params": {},
+            "forms": {}
+        },
+        "results": {
+            "code": "SUCCESS",
+            "msg": [
+            {
+                "type": "HTML",
+                "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUseful Database Utilities\u003c/h1\u003e\n\u003cp\u003eThis notebook describes a number of utilities that you may find useful. We\u0026rsquo;ll expand this list over time.\u003c/p\u003e\n\u003cp\u003eAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.\u003c/p\u003e\n\u003c/div\u003e"
+            }
+            ]
+        },
+        "apps": [],
+        "jobName": "paragraph_1542394892708_1482012156",
+        "id": "20170917-165934_1261053428",
+        "dateCreated": "2018-11-16 11:01:32.000",
+        "dateStarted": "2018-12-07 01:00:50.935",
+        "dateFinished": "2018-12-07 01:00:50.972",
+        "status": "FINISHED",
+        "progressUpdateIntervalMs": 500
+        }
+    ],
+    "name": "Splice Machine Training / For Developers, Part II - Intermediate / c. Useful Database Utilities",
+    "id": "2DUK929SD",
+    "noteParams": {},
+    "noteForms": {},
+    "angularObjects": {
+        "md:shared_process": [],
+        "splicemachine:shared_process": []
+    },
+    "config": {
+        "isZeppelinNotebookCronEnable": false,
+        "looknfeel": "default",
+        "personalizedMode": "false"
+    },
+    "info": {}
+}
