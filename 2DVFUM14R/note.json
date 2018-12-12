@@ -328,7 +328,7 @@
     {
       "text": "%md\n## Where to Go Next\nTo complete this class, please complete the exercises in the  [*Exercises for This Class*](/#/notebook/2DYX3JGDF) notebook.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:19:01.781",
+      "dateUpdated": "2018-12-11 23:32:59.554",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -338,7 +338,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -360,8 +360,8 @@
       "jobName": "paragraph_1542394204054_-1107415519",
       "id": "20170917-162201_1369089111",
       "dateCreated": "2018-11-16 10:50:04.000",
-      "dateStarted": "2018-12-12 02:19:01.782",
-      "dateFinished": "2018-12-12 02:19:01.802",
+      "dateStarted": "2018-12-11 21:36:35.630",
+      "dateFinished": "2018-12-11 21:36:35.644",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -386,11 +386,7 @@
   "id": "2DVFUM14R",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

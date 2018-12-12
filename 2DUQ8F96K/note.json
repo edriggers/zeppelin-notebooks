@@ -108,9 +108,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class shows you an example of implementing a simple [*ETL Pipeline Example*](/#/notebook/2DWVX87QY) in a Splice Machine Zeppelin notebook.\n",
+      "text": "%md\n## Where to Go Next\n\nThe final notebook in this class shows you an example of implementing a simple [*ETL Pipeline Example*](/#/notebook/2DWVX87QY) in a Splice Machine Zeppelin notebook.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:12:36.887",
+      "dateUpdated": "2018-12-01 07:14:04.975",
       "config": {
         "editorSetting": {
           "language": "markdown",
@@ -122,7 +122,7 @@
         "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorHide": true,
         "tableHide": false
       },
@@ -135,7 +135,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class shows you an example of implementing a simple \u003ca href\u003d\"/#/notebook/2DWVX87QY\"\u003e\u003cem\u003eETL Pipeline Example\u003c/em\u003e\u003c/a\u003e in a Splice Machine Zeppelin notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe final notebook in this class shows you an example of implementing a simple \u003ca href\u003d\"/#/notebook/2DWVX87QY\"\u003e\u003cem\u003eETL Pipeline Example\u003c/em\u003e\u003c/a\u003e in a Splice Machine Zeppelin notebook.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -143,23 +143,7 @@
       "jobName": "paragraph_1542398443306_-1240311123",
       "id": "20170620-153620_626385294",
       "dateCreated": "2018-11-16 12:00:43.000",
-      "dateStarted": "2018-12-12 02:12:36.887",
-      "dateFinished": "2018-12-12 02:12:36.900",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "user": "anonymous",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544580748903_418431993",
-      "id": "20181212-021228_191417245",
-      "dateCreated": "2018-12-12 02:12:28.904",
-      "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -167,10 +151,7 @@
   "id": "2DUQ8F96K",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

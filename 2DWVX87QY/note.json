@@ -226,7 +226,7 @@
     {
       "text": "%md\n### Load\n\nNow that we have the data we want to load into the database, we\u0027ll define the schema and load it directly in using the Native Spark DataSource:",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:10:01.958",
+      "dateUpdated": "2018-12-04 01:07:46.400",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -403,14 +403,14 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nTo complete this class, please complete the exercises in the  [*Exercises for This Class*](/#/notebook/2DZQWAQ6Y) notebook.\n",
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Data Science Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook learn about our other training classes.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:17:40.874",
+      "dateUpdated": "2018-12-01 07:15:00.729",
       "config": {
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true,
@@ -430,7 +430,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eTo complete this class, please complete the exercises in the \u003ca href\u003d\"/#/notebook/2DZQWAQ6Y\"\u003e\u003cem\u003eExercises for This Class\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Data Science Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -438,25 +438,9 @@
       "jobName": "paragraph_1542398760212_662535765",
       "id": "20170413-100618_77420174",
       "dateCreated": "2018-11-16 12:06:00.000",
-      "dateStarted": "2018-12-12 02:17:40.875",
-      "dateFinished": "2018-12-12 02:17:40.884",
+      "dateStarted": "2018-11-29 18:15:51.613",
+      "dateFinished": "2018-11-29 18:15:51.623",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:17:40.853",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544581060852_-1613802303",
-      "id": "20181212-021740_1386489844",
-      "dateCreated": "2018-12-12 02:17:40.852",
-      "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -464,11 +448,7 @@
   "id": "2DWVX87QY",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
