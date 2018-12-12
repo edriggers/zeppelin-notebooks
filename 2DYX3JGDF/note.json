@@ -795,9 +795,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Beginning Developer\u0027s Class*. \n\nTo continue learn more about developing with Splice Machine, consider taking our  [*Splice Machine Intermediate Developer\u0027s Class*](/#/notebook/2DXRNNKXG).\n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n\n",
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Beginning Developer\u0027s Class*. \n\nTo continue learn more about developing with Splice Machine, consider taking our  [*Splice Machine Developers, Part II class*](/#/notebook/2DXRNNKXG).\n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 23:43:38.361",
+      "dateUpdated": "2018-12-12 01:06:41.006",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -821,7 +821,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Beginning Developer\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eTo continue learn more about developing with Splice Machine, consider taking our \u003ca href\u003d\"/#/notebook/2DXRNNKXG\"\u003e\u003cem\u003eSplice Machine Intermediate Developer\u0026rsquo;s Class\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Beginning Developer\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eTo continue learn more about developing with Splice Machine, consider taking our \u003ca href\u003d\"/#/notebook/2DXRNNKXG\"\u003e\u003cem\u003eSplice Machine Developers, Part II class\u003c/em\u003e\u003c/a\u003e.\u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -829,8 +829,8 @@
       "jobName": "paragraph_1544563661666_-750246851",
       "id": "20181211-212741_303931509",
       "dateCreated": "2018-12-11 21:27:41.667",
-      "dateStarted": "2018-12-11 23:43:28.468",
-      "dateFinished": "2018-12-11 23:43:28.479",
+      "dateStarted": "2018-12-12 01:06:41.015",
+      "dateFinished": "2018-12-12 01:06:41.081",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -856,9 +856,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "md:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
