@@ -290,7 +290,7 @@
     {
       "text": "%md\n### Examples of When to Hint\n\nIf the optimizer doesn\u0027t give you the execution plan that you were expecting, you can supply hints to guide it. You can also use hints as an experimental tool to discover what happens when a different plan gets chosen: you\u0027ll typically find that the cost shown when you use `explain` is higher than the cost chosen by the optimizer.\n\nIf you find that your plan (after hinting) is not running faster,  please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0027ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:35:23.164",
+      "dateUpdated": "2018-12-11 23:33:07.213",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -300,7 +300,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": false,
         "fontSize": 9.0
@@ -328,7 +328,7 @@
     {
       "text": "%md\n## Where to Go Next\nTo complete this class, please complete the exercises in the  [*Exercises for This Class*](/#/notebook/2DYX3JGDF) notebook.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:36:35.630",
+      "dateUpdated": "2018-12-11 23:32:59.554",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -338,7 +338,7 @@
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
         "enabled": true,
         "fontSize": 9.0
@@ -386,10 +386,7 @@
   "id": "2DVFUM14R",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
-  },
+  "angularObjects": {},
   "config": {
     "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",

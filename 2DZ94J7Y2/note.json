@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md \n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Exercises\n\nBelow are follow-on exercises for Part II of the Developer\u0027s training.  These exercises pick up after the exercises from Part I of the Developer\u0027s training.  If need be, go back there and at least load the required data before proceeding.\n\n## Background: What we\u0027ll be doing in these exercises\n\nIn these exercises you\u0027ll be doing the following:\n\n1.  Enhancing our exercise schema with an additional table and data\n2.  Writing and monitoring more advanced queries\n3.  More query tuning\n4.  Interacting with this data using the Native Spark DataSource",
+      "text": "%md \n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Exercises: Splice Machine Developer\u0027s Class, Part II\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understanding of what was covered.\n\n\u003cp class\u003d\"noteNote\"\u003eThese exercises build upon the exercises from our *Developer\u0027s Class, Part I* class, and assume that you\u0027ve already loaded the data used there. If that\u0027s not true, please go back to the \u003ca href\u003d\"/#/notebook/2DYX3JGDF\"\u003eExercises notebook from Part I\u003c/a\u003e, and at least create the table and load the data before continuing here.\u003c/p\u003e\n\nYou\u0027ll be performing the following actions in these exercises:\n\n1.  Enhancing our exercise schema with an additional table and data\n2.  Writing and monitoring more advanced queries\n3.  More query tuning\n4.  Interacting with this data using the Native Spark DataSource",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 20:07:22.933",
+      "dateUpdated": "2018-12-12 00:35:42.496",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises\u003c/h1\u003e\n\u003cp\u003eBelow are follow-on exercises for Part II of the Developer\u0026rsquo;s training. These exercises pick up after the exercises from Part I of the Developer\u0026rsquo;s training. If need be, go back there and at least load the required data before proceeding.\u003c/p\u003e\n\u003ch2\u003eBackground: What we\u0026rsquo;ll be doing in these exercises\u003c/h2\u003e\n\u003cp\u003eIn these exercises you\u0026rsquo;ll be doing the following:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eEnhancing our exercise schema with an additional table and data\u003c/li\u003e\n  \u003cli\u003eWriting and monitoring more advanced queries\u003c/li\u003e\n  \u003cli\u003eMore query tuning\u003c/li\u003e\n  \u003cli\u003eInteracting with this data using the Native Spark DataSource\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Splice Machine Developer\u0026rsquo;s Class, Part II\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understanding of what was covered.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eThese exercises build upon the exercises from our *Developer\u0027s Class, Part I* class, and assume that you\u0027ve already loaded the data used there. If that\u0027s not true, please go back to the \u003ca href\u003d\"/#/notebook/2DYX3JGDF\"\u003eExercises notebook from Part I\u003c/a\u003e, and at least create the table and load the data before continuing here.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eEnhancing our exercise schema with an additional table and data\u003c/li\u003e\n  \u003cli\u003eWriting and monitoring more advanced queries\u003c/li\u003e\n  \u003cli\u003eMore query tuning\u003c/li\u003e\n  \u003cli\u003eInteracting with this data using the Native Spark DataSource\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1544558512714_-332483652",
       "id": "20181211-200152_868125820",
       "dateCreated": "2018-12-11 20:01:52.714",
-      "dateStarted": "2018-12-11 20:07:22.938",
-      "dateFinished": "2018-12-11 20:07:22.952",
+      "dateStarted": "2018-12-12 00:35:42.497",
+      "dateFinished": "2018-12-12 00:35:42.514",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Looking at the data\n\nLet\u0027s look at the data first, and get ready to create a table for it.  Again we are extending our \"Movie Rating Data\" schema with the added table of User information:\n\nuser_id | age | gender | occupation | zip_code\n\nHere is some sample data:\n\n\u003cpre\u003e1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\u003c/pre\u003e",
+      "text": "%md\n## 1. Enhancing our Exercise Schema\nWe\u0027ll begin these exercises by:\n\n* Extending our *Moving Rating Data* schema with a new table for user information\n* Loading data into our new table\n* Collecting statistics on the table\n\n### Our Sample User Data\nThe sample user data that we\u0027ll be ingesting looks like this:\n\n```\n1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\n```\n\nThis data contains four fields, separated by `|` characters in the input:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `user_id | age | gender | occupation | zip_code`\n\n### Create the Table Definition\nNow, let\u0027s create a table specification for the new user information data shown above, and call it `USER_DATA`.  A couple notes about the data that you should take into consideration when defining the table:\n\n* Not all ZIP codes are integers.\n* Though we support Foreign Keys, for these exercises we will skip putting them in.\n\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\nInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 20:51:05.285",
+      "dateUpdated": "2018-12-12 00:35:56.870",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -67,63 +67,23 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLooking at the data\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s look at the data first, and get ready to create a table for it. Again we are extending our \u0026ldquo;Movie Rating Data\u0026rdquo; schema with the added table of User information:\u003c/p\u003e\n\u003cp\u003euser_id | age | gender | occupation | zip_code\u003c/p\u003e\n\u003cp\u003eHere is some sample data:\u003c/p\u003e\n\u003cpre\u003e1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Enhancing our Exercise Schema\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll begin these exercises by:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eExtending our \u003cem\u003eMoving Rating Data\u003c/em\u003e schema with a new table for user information\u003c/li\u003e\n  \u003cli\u003eLoading data into our new table\u003c/li\u003e\n  \u003cli\u003eCollecting statistics on the table\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eOur Sample User Data\u003c/h3\u003e\n\u003cp\u003eThe sample user data that we\u0026rsquo;ll be ingesting looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis data contains four fields, separated by \u003ccode\u003e|\u003c/code\u003e characters in the input:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003euser_id | age | gender | occupation | zip_code\u003c/code\u003e\u003c/p\u003e\n\u003ch3\u003eCreate the Table Definition\u003c/h3\u003e\n\u003cp\u003eNow, let\u0026rsquo;s create a table specification for the new user information data shown above, and call it \u003ccode\u003eUSER_DATA\u003c/code\u003e. A couple notes about the data that you should take into consideration when defining the table:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eNot all ZIP codes are integers.\u003c/li\u003e\n  \u003cli\u003eThough we support Foreign Keys, for these exercises we will skip putting them in.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\u003cp\u003eInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually create the table in your database.\u003c/p\u003e\n\u003cp\u003eFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1544558525151_727115216",
-      "id": "20181211-200205_108429212",
-      "dateCreated": "2018-12-11 20:02:05.151",
-      "dateStarted": "2018-12-11 20:51:05.285",
-      "dateFinished": "2018-12-11 20:51:05.291",
+      "jobName": "paragraph_1544571913365_-439362365",
+      "id": "20181211-234513_1971117521",
+      "dateCreated": "2018-12-11 23:45:13.365",
+      "dateStarted": "2018-12-12 00:35:56.871",
+      "dateFinished": "2018-12-12 00:35:56.898",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Create the table definition\n\nLook at the description above, and create a table specification next.  Call the table USER_DATA.  For help with the syntax consult the previous notebook examples or doc.splicemachine.com.\n\nNotes: \n\n1.  Not all ZIP codes are integers.\n2.  Though we support Foreign Keys, for these exercises we will skip putting them in.\n\nQuestion: Be sure to put in a Primary Key definition.  What do you think the Primary Key should be?",
+      "text": "%splicemachine\ndrop table user_data;\ncreate table USER_DATA (\n  user_id bigint primary key,\n  age integer,\n  gender varchar(1),\n  occupation varchar(20),\n  zip varchar(10)\n);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:44:11.255",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate the table definition\u003c/h2\u003e\n\u003cp\u003eLook at the description above, and create a table specification next. Call the table USER_DATA. For help with the syntax consult the previous notebook examples or doc.splicemachine.com.\u003c/p\u003e\n\u003cp\u003eNotes: \u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eNot all ZIP codes are integers.\u003c/li\u003e\n  \u003cli\u003eThough we support Foreign Keys, for these exercises we will skip putting them in.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eQuestion: Be sure to put in a Primary Key definition. What do you think the Primary Key should be?\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544561465275_-2128456704",
-      "id": "20181211-205105_1562437506",
-      "dateCreated": "2018-12-11 20:51:05.276",
-      "dateStarted": "2018-12-11 21:44:11.255",
-      "dateFinished": "2018-12-11 21:44:11.281",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\ndrop table user_data;\ncreate table USER_DATA (\n  user_id bigint primary key,\n  age integer,\n  gender varchar(1),\n  occupation varchar(20),\n  zip varchar(10)\n)",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:07:26.120",
+      "dateUpdated": "2018-12-12 00:24:42.367",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -140,19 +100,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1544561626173_1657731440",
       "id": "20181211-205346_1215206478",
@@ -160,12 +107,13 @@
       "dateStarted": "2018-12-11 21:07:26.131",
       "dateFinished": "2018-12-11 21:07:27.871",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Import the data\n\nNow you\u0027ll import the user data.  Enter the proper IMPORT call based on previous notebook examples and our documentation.\n\nThe data file is located at \u0027/opt/data/user.csv\u0027.  We put the file onto this image to help you see what\u0027s going on and see how to debug any issues.\n\nHint: use \u0027/opt/data/\u0027 as your BAD file directory.  If you have troubles importing, you can get out to your machine and take a look.\n\n",
+      "text": "%md\n### Loading Data into the User Data Table\n\nNow we\u0027ll import all of our user data. We\u0027ve copied the data file into this docker image, so you can examine it if needed; you\u0027ll find the data here:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `opt/data/user.csv`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n\u003cp class\u003d\"noteHint\"\u003euse `/opt/data` as your BAD records file directory; if you have trouble with the import, you\u0027ll find valuable information in that directory.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:01:33.772",
+      "dateUpdated": "2018-12-12 00:22:02.729",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -189,7 +137,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eImport the data\u003c/h2\u003e\n\u003cp\u003eNow you\u0026rsquo;ll import the user data. Enter the proper IMPORT call based on previous notebook examples and our documentation.\u003c/p\u003e\n\u003cp\u003eThe data file is located at \u0026lsquo;/opt/data/user.csv\u0026rsquo;. We put the file onto this image to help you see what\u0026rsquo;s going on and see how to debug any issues.\u003c/p\u003e\n\u003cp\u003eHint: use \u0026lsquo;/opt/data/\u0026rsquo; as your BAD file directory. If you have troubles importing, you can get out to your machine and take a look.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLoading Data into the User Data Table\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;ll import all of our user data. We\u0026rsquo;ve copied the data file into this docker image, so you can examine it if needed; you\u0026rsquo;ll find the data here:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003eopt/data/user.csv\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEnter the proper \u003ccode\u003eIMPORT\u003c/code\u003e call to load the data in the next paragraph, then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteHint\"\u003euse \u003ccode\u003e/opt/data\u003c/code\u003e as your BAD records file directory; if you have trouble with the import, you\u0026rsquo;ll find valuable information in that directory.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -197,8 +145,8 @@
       "jobName": "paragraph_1544561659393_-745075046",
       "id": "20181211-205419_1889950885",
       "dateCreated": "2018-12-11 20:54:19.393",
-      "dateStarted": "2018-12-11 21:01:33.774",
-      "dateFinished": "2018-12-11 21:01:33.781",
+      "dateStarted": "2018-12-12 00:22:02.730",
+      "dateFinished": "2018-12-12 00:22:02.748",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -254,15 +202,6 @@
         "params": {},
         "forms": {}
       },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n943\t0\t1\t22628\tNONE\n"
-          }
-        ]
-      },
       "apps": [],
       "jobName": "paragraph_1544562026983_-734898787",
       "id": "20181211-210026_190492134",
@@ -270,12 +209,13 @@
       "dateStarted": "2018-12-11 21:07:32.195",
       "dateFinished": "2018-12-11 21:07:32.710",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Collect Statistics\n\nAgain let\u0027s collect statistics against this table.",
+      "text": "%md\n## Collecting Statistics on the User Data Table\n\nAgain let\u0027s collect statistics against this table.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:08:16.740",
+      "dateUpdated": "2018-12-12 00:36:16.161",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -299,7 +239,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCollect Statistics\u003c/h2\u003e\n\u003cp\u003eAgain let\u0026rsquo;s collect statistics against this table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCollecting Statistics on the User Data Table\u003c/h2\u003e\n\u003cp\u003eAgain let\u0026rsquo;s collect statistics against this table.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -307,8 +247,8 @@
       "jobName": "paragraph_1544562469944_-1738230481",
       "id": "20181211-210749_2122927264",
       "dateCreated": "2018-12-11 21:07:49.945",
-      "dateStarted": "2018-12-11 21:08:16.743",
-      "dateFinished": "2018-12-11 21:08:16.756",
+      "dateStarted": "2018-12-12 00:36:16.162",
+      "dateFinished": "2018-12-12 00:36:16.197",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -329,9 +269,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Run Queries\n\nNow let\u0027s run some queries.  In the next few paragraphs, the paragraph title will describe the query you should write.\n",
+      "text": "%md\n## Writing and Monitoring Advanced Queries\n\nNow let\u0027s run some queries. \n\nEach of the following paragraphs poses a question; you should:\n\n* Enter a query that will answer that question.\n* Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run your query.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:09:08.739",
+      "dateUpdated": "2018-12-12 00:37:08.504",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -355,7 +295,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRun Queries\u003c/h2\u003e\n\u003cp\u003eNow let\u0026rsquo;s run some queries. In the next few paragraphs, the paragraph title will describe the query you should write.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWriting and Monitoring Advanced Queries\u003c/h2\u003e\n\u003cp\u003eNow let\u0026rsquo;s run some queries. \u003c/p\u003e\n\u003cp\u003eEach of the following paragraphs poses a question; you should:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eEnter a query that will answer that question.\u003c/li\u003e\n  \u003cli\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run your query.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -363,16 +303,16 @@
       "jobName": "paragraph_1544562500951_21148795",
       "id": "20181211-210820_418115778",
       "dateCreated": "2018-12-11 21:08:20.951",
-      "dateStarted": "2018-12-11 21:09:08.739",
-      "dateFinished": "2018-12-11 21:09:08.753",
+      "dateStarted": "2018-12-12 00:37:08.505",
+      "dateFinished": "2018-12-12 00:37:08.526",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "How many total records are there in USER_DATA?",
+      "title": "a. How many total records are there in USER_DATA?",
       "text": "%splicemachine\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:09:37.530",
+      "dateUpdated": "2018-12-12 00:37:20.327",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -397,10 +337,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "How many ratings were submitted by students?",
+      "title": "b. How many ratings were submitted by students?",
       "text": "%splicemachine\nselect count(*) from rating_data r, user_data u where r.user_id \u003d u.user_id and u.occupation \u003d \u0027student\u0027 ",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:11:12.343",
+      "dateUpdated": "2018-12-12 00:37:28.019",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -464,10 +404,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "Which gender gave higher average ratings?",
+      "title": "c. Which gender gave higher average ratings?",
       "text": "%splicemachine\nselect gender, avg(cast(rating as float)) from rating_data r, user_data u where r.user_id \u003d u.user_id group by gender",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:44:57.438",
+      "dateUpdated": "2018-12-12 00:37:32.333",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -554,10 +494,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "What is the average age of reviewers who submitted at least one review of 5?",
+      "title": "d. What is the average age of reviewers who submitted at least one review of 5?",
       "text": "%splicemachine\nselect avg(cast(age as float)) from user_data u where u.user_id in (select distinct r.user_id from rating_data r where rating \u003d 5)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:20:43.111",
+      "dateUpdated": "2018-12-12 00:37:43.686",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -621,10 +561,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "What is the review count by age?  Use a visualization option to make this association clearer",
+      "title": "e. What is the review count by age?  Use a visualization option to make this association clearer",
       "text": "%splicemachine\nselect u.age, count(rating) from user_data u, rating_data r where u.user_id \u003d r.user_id group by u.age",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 23:07:00.688",
+      "dateUpdated": "2018-12-12 00:37:52.718",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -711,10 +651,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "title": "What is the average review by age?  Use a visualization option to make this association clearer",
+      "title": "f. What is the average review by age?  Use a visualization option to make this association clearer",
       "text": "%splicemachine\nselect u.age, avg(cast(r.rating as float)) from user_data u, rating_data r where u.user_id \u003d r.user_id group by u.age order by u.age",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 23:07:00.847",
+      "dateUpdated": "2018-12-12 00:37:58.945",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -815,6 +755,169 @@
       "dateCreated": "2018-12-11 21:22:40.684",
       "status": "READY",
       "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Additional Query Tuning\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:38:18.276",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAdditional Query Tuning\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544573930215_2060219349",
+      "id": "20181212-001850_1357106139",
+      "dateCreated": "2018-12-12 00:18:50.216",
+      "dateStarted": "2018-12-12 00:38:14.722",
+      "dateFinished": "2018-12-12 00:38:14.727",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:19:15.938",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544573949036_-1849982979",
+      "id": "20181212-001909_190080455",
+      "dateCreated": "2018-12-12 00:19:09.036",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Using the Native Spark DataSource with Our Data\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:38:22.294",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing the Native Spark DataSource with Our Data\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544573956075_1119593173",
+      "id": "20181212-001916_1509275853",
+      "dateCreated": "2018-12-12 00:19:16.075",
+      "dateStarted": "2018-12-12 00:38:20.970",
+      "dateFinished": "2018-12-12 00:38:20.988",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Intermediate Developer\u0027s Class*. \n\nVisit [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 23:44:55.913",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Intermediate Developer\u0026rsquo;s Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544571374515_976792786",
+      "id": "20181211-233614_1414265645",
+      "dateCreated": "2018-12-11 23:36:14.515",
+      "dateStarted": "2018-12-11 23:44:55.913",
+      "dateFinished": "2018-12-11 23:44:55.930",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 23:44:55.886",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544571895884_-971216946",
+      "id": "20181211-234455_900190912",
+      "dateCreated": "2018-12-11 23:44:55.884",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training / For Developers, Part II - Intermediate / l. Exercises",
@@ -823,7 +926,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
