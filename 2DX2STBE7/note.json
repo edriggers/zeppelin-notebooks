@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Splice Machine General Introduction\n\nSplice Machine is a scale-out SQL RDBMS, Data Warehouse \u0026 Machine Learning Platform in one, seamlessly integrating analytics and AI into your mission-critical applications.\n\nThis notebook gives a brief introduction to Splice Machine\u0027s capabilities in the following sections:\n\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eHybrid Transactional and Analytical Processing\u003c/li\u003e\n    \u003cli\u003eANSI SQL Coverage\u003c/li\u003e\n    \u003cli\u003eArchitecture Overview\u003c/li\u003e\n    \u003cli\u003eTechnology Stack Overview\u003c/li\u003e\n    \u003cli\u003eInternal Storage Using HBase\u003c/li\u003e\n\u003c/ul\u003e\n\nOnce you\u0027ve read through this notebook, we encourage you to spend an hour or two learning more about Splice Machine by engaging in one of our training curricula, which are described in the [Introduction to Splice Machine Training](/#/notebook/2DWTR5ZBH) topic.\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Splice Machine Basics\n\nSplice Machine is a scale-out SQL RDBMS, Data Warehouse \u0026 Machine Learning Platform in one, seamlessly integrating analytics and AI into your mission-critical applications.\n\nThis notebook gives a brief introduction to Splice Machine\u0027s capabilities in the following sections:\n\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eHybrid Transactional and Analytical Processing\u003c/li\u003e\n    \u003cli\u003eANSI SQL Coverage\u003c/li\u003e\n    \u003cli\u003eArchitecture Overview\u003c/li\u003e\n    \u003cli\u003eTechnology Stack Overview\u003c/li\u003e\n    \u003cli\u003eInternal Storage Using HBase\u003c/li\u003e\n\u003c/ul\u003e\n\nOnce you\u0027ve read through this notebook, we encourage you to spend an hour or two learning more about Splice Machine by engaging in one of our training curricula, which are described in the [Introduction to Splice Machine Training](/#/notebook/2DWTR5ZBH) topic.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 15:21:35.330",
+      "dateUpdated": "2018-12-12 01:24:50.336",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eSplice Machine General Introduction\u003c/h1\u003e\n\u003cp\u003eSplice Machine is a scale-out SQL RDBMS, Data Warehouse \u0026amp; Machine Learning Platform in one, seamlessly integrating analytics and AI into your mission-critical applications.\u003c/p\u003e\n\u003cp\u003eThis notebook gives a brief introduction to Splice Machine\u0026rsquo;s capabilities in the following sections:\u003c/p\u003e\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eHybrid Transactional and Analytical Processing\u003c/li\u003e\n    \u003cli\u003eANSI SQL Coverage\u003c/li\u003e\n    \u003cli\u003eArchitecture Overview\u003c/li\u003e\n    \u003cli\u003eTechnology Stack Overview\u003c/li\u003e\n    \u003cli\u003eInternal Storage Using HBase\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve read through this notebook, we encourage you to spend an hour or two learning more about Splice Machine by engaging in one of our training curricula, which are described in the \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003eIntroduction to Splice Machine Training\u003c/a\u003e topic.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eSplice Machine Basics\u003c/h1\u003e\n\u003cp\u003eSplice Machine is a scale-out SQL RDBMS, Data Warehouse \u0026amp; Machine Learning Platform in one, seamlessly integrating analytics and AI into your mission-critical applications.\u003c/p\u003e\n\u003cp\u003eThis notebook gives a brief introduction to Splice Machine\u0026rsquo;s capabilities in the following sections:\u003c/p\u003e\n\u003cul class\u003d\"italic\"\u003e\n    \u003cli\u003eHybrid Transactional and Analytical Processing\u003c/li\u003e\n    \u003cli\u003eANSI SQL Coverage\u003c/li\u003e\n    \u003cli\u003eArchitecture Overview\u003c/li\u003e\n    \u003cli\u003eTechnology Stack Overview\u003c/li\u003e\n    \u003cli\u003eInternal Storage Using HBase\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve read through this notebook, we encourage you to spend an hour or two learning more about Splice Machine by engaging in one of our training curricula, which are described in the \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003eIntroduction to Splice Machine Training\u003c/a\u003e topic.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,6 +35,8 @@
       "jobName": "paragraph_1542668232093_-508053973",
       "id": "20180125-141757_1025631852",
       "dateCreated": "2018-11-19 14:57:12.093",
+      "dateStarted": "2018-12-12 01:24:45.444",
+      "dateFinished": "2018-12-12 01:24:45.488",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -229,9 +231,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Where to Go Next\n\nWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the [*Our Training Courses*](/#/notebook/2DWTR5ZBH) notebook. Each of our classes ranges from 1-3 hours time to complete.\n",
+      "text": "%md\n## Where to Go Next\n\nWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the [*Our Training Classes*](/#/notebook/2DWTR5ZBH) notebook. Each of our classes ranges from 1-3 hours time to complete.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 19:48:09.481",
+      "dateUpdated": "2018-12-12 02:22:21.366",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -255,7 +257,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Courses\u003c/em\u003e\u003c/a\u003e notebook. Each of our classes ranges from 1-3 hours time to complete.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eWe recommend that you work through the Splice Machine training class that best fits how you plan to work with Splice Machine; these are described in the \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Classes\u003c/em\u003e\u003c/a\u003e notebook. Each of our classes ranges from 1-3 hours time to complete.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -263,17 +265,36 @@
       "jobName": "paragraph_1542668232101_1564913823",
       "id": "20180125-142959_1101825868",
       "dateCreated": "2018-11-19 14:57:12.101",
+      "dateStarted": "2018-12-12 02:22:21.368",
+      "dateFinished": "2018-12-12 02:22:21.376",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 02:22:21.353",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544581341352_184995613",
+      "id": "20181212-022221_1631759540",
+      "dateCreated": "2018-12-12 02:22:21.352",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training / Courses Introduction / Splice Machine General Introduction",
+  "name": "Splice Machine Training / Basic Training / Splice Machine Basics",
   "id": "2DX2STBE7",
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

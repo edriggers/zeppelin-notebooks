@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Exercises: Data Scientsts\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\n\nYou\u0027ll be performing the following actions in these exercises:\n\n1. Creating Tables\n2. Importing Data\n3. Visualizing Data\n4. Performing some basic Machine Learning\n\nThe data you\u0027ll be loading is on your local machine, which will prove useful if you need to debug the data import process.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Exercises: Data Scientists\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\n\nYou\u0027ll be performing the following actions in these exercises:\n\n1. Creating Tables\n2. Importing Data\n3. Visualizing Data\n4. Performing some basic Machine Learning\n\nThe data you\u0027ll be loading is on your local machine, which will prove useful if you need to debug the data import process.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 23:21:48.782",
+      "dateUpdated": "2018-12-12 02:06:01.151",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Data Scientsts\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreating Tables\u003c/li\u003e\n  \u003cli\u003eImporting Data\u003c/li\u003e\n  \u003cli\u003eVisualizing Data\u003c/li\u003e\n  \u003cli\u003ePerforming some basic Machine Learning\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThe data you\u0026rsquo;ll be loading is on your local machine, which will prove useful if you need to debug the data import process.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Data Scientists\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreating Tables\u003c/li\u003e\n  \u003cli\u003eImporting Data\u003c/li\u003e\n  \u003cli\u003eVisualizing Data\u003c/li\u003e\n  \u003cli\u003ePerforming some basic Machine Learning\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThe data you\u0026rsquo;ll be loading is on your local machine, which will prove useful if you need to debug the data import process.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,15 +35,15 @@
       "jobName": "paragraph_1544570123998_669005398",
       "id": "20181211-231523_1137261745",
       "dateCreated": "2018-12-11 23:15:23.999",
-      "dateStarted": "2018-12-11 23:21:48.788",
-      "dateFinished": "2018-12-11 23:21:48.829",
+      "dateStarted": "2018-12-12 02:06:01.152",
+      "dateFinished": "2018-12-12 02:06:01.180",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 1. Creating Tables\n\nHere we\u0027ll be loading one more table to enhance our Movie Data schema.  In these exercises, we\u0027ll add the actual Movie table.  As we will see, it will be useful for our Machine Learning exercices.\n\n### Our Sample Data\n\nWe will be loading up a table of movie titles and genre information.  The raw data looks like:\n\n```\n1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n```\nThe data fields are as follows:\n\nitem_id | movie title | Action | Adventure | Animation | Children\u0027s | Comedy | Crime | Documentary | Drama | Fantasy |\n    Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western\n    \nThe columns starting with \"Action\" and ending with \"Western\" are genre flags with values of 1 or 0 indicating whether or not a particular genre applies to this movie.\n\n### Create the Table Definition\n\nNow, let\u0027s create a table specification for the movie and genre data shown above, and call it `ITEM_DATA`. Be sure to put in a Primary Key definition.\n\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\nInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\n\n",
+      "text": "%md\n## 1. Creating Tables\n\nHere we\u0027ll load one more table to enhance our Movie Data schema; this table will categorization information for individual movie titles. As you\u0027ll see, this will be useful for our Machine Learning exercices.\n\n### Our Sample Data\n\nThe sample movie data that we\u0027re using is a table of movie titles and genre information. The raw data looks like:\n\n```\n1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n```\n\nThe data fields contains the following fields:\n\n`item_id | movie title | Action | Adventure | Animation | Children\u0027s | Comedy | Crime | Documentary | Drama | Fantasy |`\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western`\n    \nEach of the columns after `movie title` is a genre flag; each flag has a value of either `1`, indicating that the genre does apply to this movie, or `0`, indicating that it does not.\n\n\n### Create the Table Definition\n\nNow, let\u0027s create a table specification for the movie and genre data shown above, and call it `ITEM_DATA`. Be sure to put in a Primary Key definition.\n\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\nInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:38:30.890",
+      "dateUpdated": "2018-12-12 01:46:20.949",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -67,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating Tables\u003c/h2\u003e\n\u003cp\u003eHere we\u0026rsquo;ll be loading one more table to enhance our Movie Data schema. In these exercises, we\u0026rsquo;ll add the actual Movie table. As we will see, it will be useful for our Machine Learning exercices.\u003c/p\u003e\n\u003ch3\u003eOur Sample Data\u003c/h3\u003e\n\u003cp\u003eWe will be loading up a table of movie titles and genre information. The raw data looks like:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe data fields are as follows:\u003c/p\u003e\n\u003cp\u003eitem_id | movie title | Action | Adventure | Animation | Children\u0026rsquo;s | Comedy | Crime | Documentary | Drama | Fantasy |\u003cbr/\u003e Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western\u003c/p\u003e\n\u003cp\u003eThe columns starting with \u0026ldquo;Action\u0026rdquo; and ending with \u0026ldquo;Western\u0026rdquo; are genre flags with values of 1 or 0 indicating whether or not a particular genre applies to this movie.\u003c/p\u003e\n\u003ch3\u003eCreate the Table Definition\u003c/h3\u003e\n\u003cp\u003eNow, let\u0026rsquo;s create a table specification for the movie and genre data shown above, and call it \u003ccode\u003eITEM_DATA\u003c/code\u003e. Be sure to put in a Primary Key definition.\u003c/p\u003e\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\u003cp\u003eInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually create the table in your database.\u003c/p\u003e\n\u003cp\u003eFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating Tables\u003c/h2\u003e\n\u003cp\u003eHere we\u0026rsquo;ll load one more table to enhance our Movie Data schema; this table will categorization information for individual movie titles. As you\u0026rsquo;ll see, this will be useful for our Machine Learning exercices.\u003c/p\u003e\n\u003ch3\u003eOur Sample Data\u003c/h3\u003e\n\u003cp\u003eThe sample movie data that we\u0026rsquo;re using is a table of movie titles and genre information. The raw data looks like:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe data fields contains the following fields:\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003eitem_id | movie title | Action | Adventure | Animation | Children\u0026#39;s | Comedy | Crime | Documentary | Drama | Fantasy |\u003c/code\u003e\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003eFilm-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEach of the columns after \u003ccode\u003emovie title\u003c/code\u003e is a genre flag; each flag has a value of either \u003ccode\u003e1\u003c/code\u003e, indicating that the genre does apply to this movie, or \u003ccode\u003e0\u003c/code\u003e, indicating that it does not.\u003c/p\u003e\n\u003ch3\u003eCreate the Table Definition\u003c/h3\u003e\n\u003cp\u003eNow, let\u0026rsquo;s create a table specification for the movie and genre data shown above, and call it \u003ccode\u003eITEM_DATA\u003c/code\u003e. Be sure to put in a Primary Key definition.\u003c/p\u003e\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\u003cp\u003eInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually create the table in your database.\u003c/p\u003e\n\u003cp\u003eFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -75,8 +75,8 @@
       "jobName": "paragraph_1544570146804_-975642888",
       "id": "20181211-231546_1567281510",
       "dateCreated": "2018-12-11 23:15:46.804",
-      "dateStarted": "2018-12-12 00:38:30.889",
-      "dateFinished": "2018-12-12 00:38:30.933",
+      "dateStarted": "2018-12-12 01:46:20.944",
+      "dateFinished": "2018-12-12 01:46:20.973",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -232,9 +232,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 3. Visualizing Data\n\nNow we have 3 tables loaded - ratings, reviewers, and movies/genres.  Our visualizations of data should become more interesting now as well.  Run the following paragraph (with query pre-entered), then try different visualization techniques to look for any possible interesting correlations.\n",
+      "text": "%md\n## 3. Visualizing Data\n\nNow we have 3 tables loaded:\n\n* Movie Ratings\n* Movie Reviewers\n* Movies and their Genres\n\nAnd now our visualizations of data should become more interesting now as well. Explore using different visualizations by:\n\n1. Running the pre-entered queries in the next paragraphs\n2. Applying different visualization techniques to look for any possible interesting correlations.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:01:25.581",
+      "dateUpdated": "2018-12-12 02:05:44.989",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -246,7 +246,7 @@
           "completionSupport": false
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
@@ -258,7 +258,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Visualizing Data\u003c/h2\u003e\n\u003cp\u003eNow we have 3 tables loaded - ratings, reviewers, and movies/genres. Our visualizations of data should become more interesting now as well. Run the following paragraph (with query pre-entered), then try different visualization techniques to look for any possible interesting correlations.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Visualizing Data\u003c/h2\u003e\n\u003cp\u003eNow we have 3 tables loaded:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eMovie Ratings\u003c/li\u003e\n  \u003cli\u003eMovie Reviewers\u003c/li\u003e\n  \u003cli\u003eMovies and their Genres\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAnd now our visualizations of data should become more interesting now as well:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eRun the pre-entered query in the next paragraph\u003c/li\u003e\n  \u003cli\u003eThen try different visualization techniques to look for any possible interesting correlations.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -266,8 +266,8 @@
       "jobName": "paragraph_1544572760623_-1108304602",
       "id": "20181211-235920_2111692545",
       "dateCreated": "2018-12-11 23:59:20.623",
-      "dateStarted": "2018-12-12 00:01:25.582",
-      "dateFinished": "2018-12-12 00:01:25.596",
+      "dateStarted": "2018-12-12 02:04:21.769",
+      "dateFinished": "2018-12-12 02:04:21.799",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -510,6 +510,62 @@
       "dateCreated": "2018-12-12 00:42:20.619",
       "status": "READY",
       "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Data Science Class*. \n\nVisit [*Our Training Classes*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 02:18:09.359",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Data Science Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Classes\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544580658509_-1650215622",
+      "id": "20181212-021058_632617266",
+      "dateCreated": "2018-12-12 02:10:58.509",
+      "dateStarted": "2018-12-12 02:18:09.360",
+      "dateFinished": "2018-12-12 02:18:09.369",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 02:11:16.869",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544580676868_1617642696",
+      "id": "20181212-021116_604366349",
+      "dateCreated": "2018-12-12 02:11:16.868",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training / For Data Scientists / j. Exercises",
@@ -518,7 +574,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
