@@ -1,0 +1,527 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Exercises: Data Scientsts\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\n\nYou\u0027ll be performing the following actions in these exercises:\n\n1. Creating Tables\n2. Importing Data\n3. Visualizing Data\n4. Performing some basic Machine Learning\n\nThe data you\u0027ll be loading is on your local machine, which will prove useful if you need to debug the data import process.",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 23:21:48.782",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Data Scientsts\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreating Tables\u003c/li\u003e\n  \u003cli\u003eImporting Data\u003c/li\u003e\n  \u003cli\u003eVisualizing Data\u003c/li\u003e\n  \u003cli\u003ePerforming some basic Machine Learning\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThe data you\u0026rsquo;ll be loading is on your local machine, which will prove useful if you need to debug the data import process.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544570123998_669005398",
+      "id": "20181211-231523_1137261745",
+      "dateCreated": "2018-12-11 23:15:23.999",
+      "dateStarted": "2018-12-11 23:21:48.788",
+      "dateFinished": "2018-12-11 23:21:48.829",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 1. Creating Tables\n\nHere we\u0027ll be loading one more table to enhance our Movie Data schema.  In these exercises, we\u0027ll add the actual Movie table.  As we will see, it will be useful for our Machine Learning exercices.\n\n### Our Sample Data\n\nWe will be loading up a table of movie titles and genre information.  The raw data looks like:\n\n```\n1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n```\nThe data fields are as follows:\n\nitem_id | movie title | Action | Adventure | Animation | Children\u0027s | Comedy | Crime | Documentary | Drama | Fantasy |\n    Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western\n    \nThe columns starting with \"Action\" and ending with \"Western\" are genre flags with values of 1 or 0 indicating whether or not a particular genre applies to this movie.\n\n### Create the Table Definition\n\nNow, let\u0027s create a table specification for the movie and genre data shown above, and call it `ITEM_DATA`. Be sure to put in a Primary Key definition.\n\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\nInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:38:30.890",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating Tables\u003c/h2\u003e\n\u003cp\u003eHere we\u0026rsquo;ll be loading one more table to enhance our Movie Data schema. In these exercises, we\u0026rsquo;ll add the actual Movie table. As we will see, it will be useful for our Machine Learning exercices.\u003c/p\u003e\n\u003ch3\u003eOur Sample Data\u003c/h3\u003e\n\u003cp\u003eWe will be loading up a table of movie titles and genre information. The raw data looks like:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe data fields are as follows:\u003c/p\u003e\n\u003cp\u003eitem_id | movie title | Action | Adventure | Animation | Children\u0026rsquo;s | Comedy | Crime | Documentary | Drama | Fantasy |\u003cbr/\u003e Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western\u003c/p\u003e\n\u003cp\u003eThe columns starting with \u0026ldquo;Action\u0026rdquo; and ending with \u0026ldquo;Western\u0026rdquo; are genre flags with values of 1 or 0 indicating whether or not a particular genre applies to this movie.\u003c/p\u003e\n\u003ch3\u003eCreate the Table Definition\u003c/h3\u003e\n\u003cp\u003eNow, let\u0026rsquo;s create a table specification for the movie and genre data shown above, and call it \u003ccode\u003eITEM_DATA\u003c/code\u003e. Be sure to put in a Primary Key definition.\u003c/p\u003e\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\u003cp\u003eInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually create the table in your database.\u003c/p\u003e\n\u003cp\u003eFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544570146804_-975642888",
+      "id": "20181211-231546_1567281510",
+      "dateCreated": "2018-12-11 23:15:46.804",
+      "dateStarted": "2018-12-12 00:38:30.889",
+      "dateFinished": "2018-12-12 00:38:30.933",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\ndrop table if exists item_data;\ncreate table ITEM_DATA (\n    item_id bigint primary key,\n    movie_title varchar(100),\n    action smallint,\n    adventure smallint,\n    animation smallint,\n    childrens smallint,\n    comedy smallint,\n    crime smallint,\n    documentary smallint,\n    drama smallint,\n    fantasy smallint,\n    filmnoir smallint,\n    horror smallint,\n    musical smallint,\n    mystery smallint,\n    romance smallint,\n    scifi smallint,\n    thriller smallint,\n    war smallint,\n    western smallint\n)\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 23:55:34.945",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544571607632_207107263",
+      "id": "20181211-234007_1059582155",
+      "dateCreated": "2018-12-11 23:40:07.632",
+      "dateStarted": "2018-12-11 23:55:34.958",
+      "dateFinished": "2018-12-11 23:55:36.541",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 2. Importing Data\n\nNow we\u0027ll import all of our movie/genre. We\u0027ve copied the data file into this docker image, so you can examine it if needed; you\u0027ll find the data here:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `opt/data/item.csv`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n\u003cp class\u003d\"noteHint\"\u003euse `/opt/data` as your BAD records file directory; if you have trouble with the import, you\u0027ll find valuable information in that directory.\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 23:58:51.428",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing Data\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll import all of our movie/genre. We\u0026rsquo;ve copied the data file into this docker image, so you can examine it if needed; you\u0026rsquo;ll find the data here:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003eopt/data/item.csv\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEnter the proper \u003ccode\u003eIMPORT\u003c/code\u003e call to load the data in the next paragraph, then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteHint\"\u003euse \u003ccode\u003e/opt/data\u003c/code\u003e as your BAD records file directory; if you have trouble with the import, you\u0026rsquo;ll find valuable information in that directory.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544572614016_-681778504",
+      "id": "20181211-235654_383130336",
+      "dateCreated": "2018-12-11 23:56:54.016",
+      "dateStarted": "2018-12-11 23:58:51.430",
+      "dateFinished": "2018-12-11 23:58:51.449",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\ncall syscs_util.import_data(\u0027SPLICE\u0027, \u0027ITEM_DATA\u0027, null, \u0027/opt/data/item.csv\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/opt/data/\u0027, null, null)",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 23:55:43.447",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "rowsImported": "string",
+                      "failedRows": "string",
+                      "files": "string",
+                      "dataSize": "string",
+                      "failedLog": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n531\t0\t1\t30540\tNONE\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544572132014_-1835056155",
+      "id": "20181211-234852_1489275376",
+      "dateCreated": "2018-12-11 23:48:52.014",
+      "dateStarted": "2018-12-11 23:55:42.503",
+      "dateFinished": "2018-12-11 23:55:43.120",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## 3. Visualizing Data\n\nNow we have 3 tables loaded - ratings, reviewers, and movies/genres.  Our visualizations of data should become more interesting now as well.  Run the following paragraph (with query pre-entered), then try different visualization techniques to look for any possible interesting correlations.\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:01:25.581",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Visualizing Data\u003c/h2\u003e\n\u003cp\u003eNow we have 3 tables loaded - ratings, reviewers, and movies/genres. Our visualizations of data should become more interesting now as well. Run the following paragraph (with query pre-entered), then try different visualization techniques to look for any possible interesting correlations.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544572760623_-1108304602",
+      "id": "20181211-235920_2111692545",
+      "dateCreated": "2018-12-11 23:59:20.623",
+      "dateStarted": "2018-12-12 00:01:25.582",
+      "dateFinished": "2018-12-12 00:01:25.596",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect occupation, avg(cast(age as float)), avg(cast(rating as float)), count(*) from rating_data r, user_data u, item_data i where r.user_id \u003d u.user_id and i.item_id \u003d r.item_id and i.animation \u003d 1 and i.childrens \u003d 1 and comedy \u003d 1 group by occupation order by avg(cast(rating as float)) desc",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:31:34.538",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "2": "string",
+                      "3": "string",
+                      "4": "string",
+                      "OCCUPATION": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [],
+              "groups": [],
+              "values": []
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "OCCUPATION\t2\t3\t4\nnone\t23.5\t4.125\t8\nlawyer\t34.25\t4.125\t8\nprogrammer\t31.862068965517242\t4.103448275862069\t58\nsalesman\t28.0\t4.0\t4\nengineer\t34.71232876712329\t3.9726027397260273\t73\ntechnician\t31.62962962962963\t3.962962962962963\t27\nother\t32.07142857142857\t3.9285714285714284\t84\nadministrator\t36.829268292682926\t3.926829268292683\t41\nmarketing\t32.714285714285715\t3.857142857142857\t14\nexecutive\t35.04347826086956\t3.8260869565217392\t23\nartist\t30.25\t3.8\t20\nscientist\t34.30769230769231\t3.769230769230769\t13\nstudent\t21.86549707602339\t3.7660818713450293\t171\neducator\t39.241379310344826\t3.689655172413793\t58\nhomemaker\t36.666666666666664\t3.6666666666666665\t3\nlibrarian\t35.06666666666667\t3.6333333333333333\t30\nretired\t60.2\t3.6\t5\nentertainment\t28.142857142857142\t3.4285714285714284\t14\nwriter\t33.23076923076923\t3.423076923076923\t26\ndoctor\t34.8\t3.4\t5\nhealthcare\t37.0\t3.0833333333333335\t12\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544572392963_-679131984",
+      "id": "20181211-235312_1866008550",
+      "dateCreated": "2018-12-11 23:53:12.963",
+      "dateStarted": "2018-12-12 00:31:31.414",
+      "dateFinished": "2018-12-12 00:31:34.459",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect occupation, count(*), avg(cast(rating as float)) from rating_data r, user_data u, item_data i where r.user_id \u003d u.user_id and i.item_id \u003d r.item_id group by occupation order by avg(cast(rating as float)) desc",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:54:58.458",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "2": "string",
+                      "3": "string",
+                      "OCCUPATION": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "OCCUPATION\t2\t3\nnone\t569\t3.854130052724077\nlawyer\t930\t3.8419354838709676\nartist\t1644\t3.7767639902676398\ndoctor\t367\t3.776566757493188\nsalesman\t583\t3.7735849056603774\neducator\t6521\t3.7606195368808466\nadministrator\t5224\t3.744448698315467\nprogrammer\t5397\t3.709282934963869\nscientist\t1571\t3.687460216422661\nengineer\t5811\t3.684047496128033\nother\t7335\t3.6546693933197\nexecutive\t2229\t3.6446837146702555\nstudent\t14543\t3.6442274633844463\nlibrarian\t3625\t3.640551724137931\ntechnician\t2512\t3.634156050955414\nentertainment\t1350\t3.6325925925925926\nmarketing\t1421\t3.5876143560872626\nretired\t1055\t3.5563981042654027\nwriter\t3643\t3.5015097447158934\nhomemaker\t195\t3.394871794871795\nhealthcare\t1544\t3.2221502590673574\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544575553652_-1102460025",
+      "id": "20181212-004553_950575811",
+      "dateCreated": "2018-12-12 00:45:53.652",
+      "dateStarted": "2018-12-12 00:54:55.318",
+      "dateFinished": "2018-12-12 00:54:58.341",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect occupation, count(*), avg(cast(rating as float)) from rating_data r, user_data u, item_data i where r.user_id \u003d u.user_id and i.item_id \u003d r.item_id and horror \u003d 1 group by occupation order by avg(cast(rating as float)) desc",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:54:31.153",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "2": "string",
+                      "3": "string",
+                      "OCCUPATION": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "OCCUPATION\t2\t3\nlawyer\t41\t4.048780487804878\nnone\t37\t4.027027027027027\nmarketing\t66\t3.5606060606060606\nscientist\t58\t3.5344827586206895\nadministrator\t279\t3.5340501792114694\nengineer\t298\t3.523489932885906\ntechnician\t134\t3.5223880597014925\nstudent\t896\t3.513392857142857\nartist\t74\t3.4864864864864864\nsalesman\t35\t3.4857142857142858\nentertainment\t117\t3.4615384615384617\nprogrammer\t292\t3.452054794520548\nother\t385\t3.387012987012987\neducator\t294\t3.370748299319728\nexecutive\t113\t3.3628318584070795\nlibrarian\t161\t3.360248447204969\ndoctor\t14\t3.357142857142857\nretired\t49\t3.3469387755102042\nwriter\t283\t3.3392226148409896\nhomemaker\t8\t3.25\nhealthcare\t73\t2.9863013698630136\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544573030292_1045477910",
+      "id": "20181212-000350_74595048",
+      "dateCreated": "2018-12-12 00:03:50.293",
+      "dateStarted": "2018-12-12 00:54:28.018",
+      "dateFinished": "2018-12-12 00:54:31.042",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 00:42:20.620",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544575340619_-1668409231",
+      "id": "20181212-004220_1019470658",
+      "dateCreated": "2018-12-12 00:42:20.619",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Splice Machine Training / For Data Scientists / j. Exercises",
+  "id": "2DZQWAQ6Y",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
