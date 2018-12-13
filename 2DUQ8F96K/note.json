@@ -147,20 +147,6 @@
       "dateFinished": "2018-12-12 02:12:36.900",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "user": "anonymous",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544580748903_418431993",
-      "id": "20181212-021228_191417245",
-      "dateCreated": "2018-12-12 02:12:28.904",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training / For Data Scientists / h. Decision Trees Example",
