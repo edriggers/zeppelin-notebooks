@@ -112,9 +112,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## 2. Importing Data\n\nNow we\u0027ll import all of our ratings data, which contains 100,000 rows. We\u0027ve copied the data file into this docker image, so you can examine it if needed; you\u0027ll find the data here:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `opt/data/ratings.csv`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n\u003cp class\u003d\"noteHint\"\u003euse `/opt/data` as your BAD records file directory; if you have trouble with the import, you\u0027ll find valuable information in that directory.\n\n#### Questions:\n1. What should the Schema specification be?\n2. What is the field delimiter?\n3. Do you need a character delimiter?\n4. What should the timestamp format be?\n5. What should the bad record count be?\n",
+      "text": "%md\n## 2. Importing Data\n\nNow we\u0027ll import all of our ratings data, which contains 100,000 rows. We\u0027ve copied the data file into this docker image, so you can examine it if needed; you\u0027ll find the data here:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `/opt/data/ratings.csv`\n\nNOTE: if you ever need to log into your docker image, go to a fresh terminal window and enter `docker exec -it spliceserver /bin/bash`, then navigate to the appropriate directory.\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n\u003cp class\u003d\"noteHint\"\u003euse `/opt/data` as your BAD records file directory; if you have trouble with the import, you\u0027ll find valuable information in that directory.\n\n#### Questions:\n1. What should the Schema specification be?\n2. What is the field delimiter?\n3. Do you need a character delimiter?\n4. What should the timestamp format be?\n5. What should the bad record count be?\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:38:44.042",
+      "dateUpdated": "2018-12-13 05:17:35.544",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -138,7 +138,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing Data\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll import all of our ratings data, which contains 100,000 rows. We\u0026rsquo;ve copied the data file into this docker image, so you can examine it if needed; you\u0026rsquo;ll find the data here:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003eopt/data/ratings.csv\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEnter the proper \u003ccode\u003eIMPORT\u003c/code\u003e call to load the data in the next paragraph, then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteHint\"\u003euse \u003ccode\u003e/opt/data\u003c/code\u003e as your BAD records file directory; if you have trouble with the import, you\u0026rsquo;ll find valuable information in that directory.\u003c/p\u003e\n\u003ch4\u003eQuestions:\u003c/h4\u003e\n\u003col\u003e\n  \u003cli\u003eWhat should the Schema specification be?\u003c/li\u003e\n  \u003cli\u003eWhat is the field delimiter?\u003c/li\u003e\n  \u003cli\u003eDo you need a character delimiter?\u003c/li\u003e\n  \u003cli\u003eWhat should the timestamp format be?\u003c/li\u003e\n  \u003cli\u003eWhat should the bad record count be?\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing Data\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll import all of our ratings data, which contains 100,000 rows. We\u0026rsquo;ve copied the data file into this docker image, so you can examine it if needed; you\u0026rsquo;ll find the data here:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003e/opt/data/ratings.csv\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eNOTE: if you ever need to log into your docker image, go to a fresh terminal window and enter \u003ccode\u003edocker exec -it spliceserver /bin/bash\u003c/code\u003e, then navigate to the appropriate directory.\u003c/p\u003e\n\u003cp\u003eEnter the proper \u003ccode\u003eIMPORT\u003c/code\u003e call to load the data in the next paragraph, then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteHint\"\u003euse \u003ccode\u003e/opt/data\u003c/code\u003e as your BAD records file directory; if you have trouble with the import, you\u0026rsquo;ll find valuable information in that directory.\u003c/p\u003e\n\u003ch4\u003eQuestions:\u003c/h4\u003e\n\u003col\u003e\n  \u003cli\u003eWhat should the Schema specification be?\u003c/li\u003e\n  \u003cli\u003eWhat is the field delimiter?\u003c/li\u003e\n  \u003cli\u003eDo you need a character delimiter?\u003c/li\u003e\n  \u003cli\u003eWhat should the timestamp format be?\u003c/li\u003e\n  \u003cli\u003eWhat should the bad record count be?\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -146,8 +146,8 @@
       "jobName": "paragraph_1544553253568_-995095889",
       "id": "20181211-183413_840940296",
       "dateCreated": "2018-12-11 18:34:13.568",
-      "dateStarted": "2018-12-12 00:38:44.043",
-      "dateFinished": "2018-12-12 00:38:44.067",
+      "dateStarted": "2018-12-13 05:17:35.554",
+      "dateFinished": "2018-12-13 05:17:35.603",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -755,9 +755,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Tuning Queries\n\nFinally, let\u0027s do some tuning on a query.\n",
+      "text": "%md\n## Tuning Queries\n\nFinally, let\u0027s do some tuning on a query.  Let\u0027s suppose we want to run a query where we find out how many users gave a rating of 1\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:27:41.684",
+      "dateUpdated": "2018-12-12 15:21:18.831",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -781,7 +781,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTuning Queries\u003c/h2\u003e\n\u003cp\u003eFinally, let\u0026rsquo;s do some tuning on a query.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTuning Queries\u003c/h2\u003e\n\u003cp\u003eFinally, let\u0026rsquo;s do some tuning on a query. Let\u0026rsquo;s suppose we want to run a query where we find out how many users gave a rating of 1\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -789,9 +789,103 @@
       "jobName": "paragraph_1544556356385_-1977490772",
       "id": "20181211-192556_1176121730",
       "dateCreated": "2018-12-11 19:25:56.385",
-      "dateStarted": "2018-12-11 21:27:41.688",
-      "dateFinished": "2018-12-11 21:27:41.696",
+      "dateStarted": "2018-12-12 15:21:18.844",
+      "dateFinished": "2018-12-12 15:21:18.869",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 15:21:33.734",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544628083883_-1928303953",
+      "id": "20181212-152123_1918985417",
+      "dateCreated": "2018-12-12 15:21:23.883",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNot bad, but can we do better?  \n\nIf you ran an EXPLAIN on the query first (and if you haven\u0027t yet, do that now), you\u0027ll see that we did a full table scan on the RATING_DATA table.\n\nCreate an index for this table to help the query run faster.  Once you have created your index, be sure to use EXPLAIN on the original query to help you see that the query will use the index.  There is a subtlety here - if EXPLAIN is not choosing your index, review the index sections of the Tuning Queries for Performance.\n\nOnce you have your index being chosen, you should see your query run faster.",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 15:29:28.043",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNot bad, but can we do better? \u003c/p\u003e\n\u003cp\u003eIf you ran an EXPLAIN on the query first (and if you haven\u0026rsquo;t yet, do that now), you\u0026rsquo;ll see that we did a full table scan on the RATING_DATA table.\u003c/p\u003e\n\u003cp\u003eCreate an index for this table to help the query run faster. Once you have created your index, be sure to use EXPLAIN on the original query to help you see that the query will use the index. There is a subtlety here - if EXPLAIN is not choosing your index, review the index sections of the Tuning Queries for Performance.\u003c/p\u003e\n\u003cp\u003eOnce you have your index being chosen, you should see your query run faster.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544628122979_-1393337702",
+      "id": "20181212-152202_611873255",
+      "dateCreated": "2018-12-12 15:22:02.979",
+      "dateStarted": "2018-12-12 15:29:28.051",
+      "dateFinished": "2018-12-12 15:29:28.078",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-12 15:25:46.623",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544628334969_1346114022",
+      "id": "20181212-152534_1770317910",
+      "dateCreated": "2018-12-12 15:25:34.969",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -833,22 +927,6 @@
       "dateFinished": "2018-12-12 02:20:49.871",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-11 23:43:28.405",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544571808404_912857746",
-      "id": "20181211-234328_36775012",
-      "dateCreated": "2018-12-11 23:43:28.404",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training / For Developers, Part I / h. Exercises",
@@ -857,7 +935,8 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "splicemachine:shared_process": [],
+    "spark:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
