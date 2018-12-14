@@ -28,9 +28,9 @@ fully implemented/tested and is future intended as a potential process to run
 in a Jenkins job triggered by the push to a branch of the splicemachine
 zeppelin-notebooks repository on GitHub.
 
--t, --tests {All|MDTimeCheck|CodeBlockFix}
-    CodeBlockFix is the "repair" mode.
-    MDTimeCheck is the "report" mode.
+-t, --tests {All|Repair|Report}
+      Report - This test is for reporting on items we cannot repair via script.
+      Repair - This test is to fix our identified problems.
 -m, --modify switch will write changes back to the note.json files.
 
 This script will recursively loop through all of the directories under the
@@ -50,24 +50,25 @@ The primary thoughts initially driving this script:
         displayed.
     b.  The "run" button should not be visible.
     c.  The status of these blocks should read "FINISHED"
+    d.  The "results table" should be visible, and displaying rendered content.
+        (see a.)
 3.  Code paragraphs are the scripting examples of our notebooks.
     a.  The rendered "results" should be cleared.
     b.  The "run" button should be visible.
     c.  The "editor" should be visible.
     d.  The status of these blocks should read "READY"
+    e.  The "results table" should be visible, and empty (see a.)
+4.  General Corrections
+    a.  If a paragraph has no 'text' field, it should be removed from the
+        notebook.
+5.  Apply overrides (these are specific coded overrides)
+    a.  Editor Open for MD blocks
+    b.  Specify an editorMode for a specific paragraph block.
 
 Potentially there will be additional standard settings, like setting a
 "language" for a Code based paragraph so that the syntax highlighting will be
 correct.  These would be specific to a 'config'/'editorMode' type.
 """
-
-
-def increment(x):
-    return x + 1
-
-
-def decrement(x):
-    return x - 1
 
 
 def log_line(log_data):
@@ -301,6 +302,10 @@ def process_paragraph(paragraph, tracking, test_exceptions):
         log_line([tracking['notebook_id'], tracking['para_count'],
                   paragraph_title, "EditorMode OVERRIDE"])
 
+    if 'text' not in paragraph:
+        tracking['empty_paragraph'] = True
+        log_line([tracking['notebook_id'], tracking['para_count'],
+                  paragraph_title, "Empty Paragraph REMOVE"])
     if 'editorMode' in paragraph['config']:
         if paragraph['config']['editorMode'] == 'ace/mode/markdown':
             if tracking['tests'] in ['Report', 'All']:
@@ -357,7 +362,8 @@ def main():
         'has_changes': False,
         'para_count': 1,
         'notebook_id': "",
-        'status': 0
+        'status': 0,
+        'empty_paragraph': False
     }
 
     # get our standards exceptions loaded
@@ -371,6 +377,7 @@ def main():
         with open(note_file, 'r+') as file_handler:
             track_vars['notebook_id'] = note_file.split('/')[1]
             data = json.load(file_handler)
+            empty_paragraph_index = []
             # We will start at normal counting, so when you load the notebook,
             # you can simply count to match with the reported paragraph number.
             # some notebook paragraphs have a 'title' set, at some point when
@@ -379,9 +386,15 @@ def main():
             # counting will have to be sufficient.
             track_vars['para_count'] = 1
             for notebook_paragraph in data['paragraphs']:
+                track_vars['empty_paragraph'] = False
                 process_paragraph(notebook_paragraph,
                                   track_vars, sanity_exceptions)
+                if track_vars['empty_paragraph']:
+                    empty_paragraph_index.insert(0,track_vars['para_count'] -1 )
                 track_vars['para_count'] = track_vars['para_count'] + 1
+            for empty_index in empty_paragraph_index:
+                print("Removing paragraph index: " + str(empty_index))
+                del data['paragraphs'][empty_index]
             if track_vars['modify'] and track_vars['has_changes']:
                 print("Saving " + track_vars['notebook_id'])
                 try:
@@ -395,4 +408,5 @@ def main():
 
 
 # Call the main Routine
-sys.exit(main())
+if __name__ == '__main__':
+    sys.exit(main())
