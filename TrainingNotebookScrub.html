@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Splice Machine Training Notebook Scrubber">
+<title>Splice Machine Training Notebook Scrubber</title>
+<link rel="shortcut icon" href="https://doc.splicemachine.com/images/favicon.ico">
+<link rel="stylesheet" href="https://doc.splicemachine.com/css/splicemain.css" />
+<style>
+    body {
+        margin: 20px 50px 20px 50px;
+    }
+    img.inline {
+        max-width: 18px;
+        max-height: 18px;
+        padding: 0;
+        margin: 0;
+    }
+    code {
+        color: #B03A2E;
+        font-weight: 600;
+    }
+</style>
+</head>
+<body">
+<h1>The Splice Machine Training Notebook Scrubber</h1>
+The <em>Training Notebook Scrubber</em> is a Python program, written by Chris Maahs, that is automatically run as part of the build process whenever a new Docker image is generated for our Zeppelin-based training classes.
+
+Our training notebooks contain two kinds of paragraphs:
+
+<ul>
+    <li><em>Markdown</em> paragraphs contain descriptive information that help guide the student through each notebook.</li>
+    <li><em>Code</em> paragraphs contain code that the student can run.</li>
+</ul>
+
+The scrubber iterates through the JSON representation of each paragraph in every notebook, and performs different actions on each type of paragraph; you can also manually perform or reverse most of these actions while running a notebook in Zeppelin by selecting an action from the paragraph's menu.
+
+<h2>Why It's Important</h2>
+Modifying a Zeppelin notebook can easily leave the paragraphs in a state that is not appropriate for someone using a fresh instance of the notebook in a training session. For example:
+
+<ul>
+    <li>It's not appropriate for a student to run a static Markdown paragraph; when you edit a Markdown paragraph, you need to run it for its display to be updated. Without the scrubber, you would need to re-disable.</li>
+    <li>A paragraph that the student needs to run should have its status displayed as <code>READY</code> and one that is not to be run should not display its status as <code>FINISHED</code>.</li>
+    <li>The output of a paragraph that the student needs to run should not display until it is run by the student.</li>
+    <li>Completely empty paragraphs should be removed to avoid confusion.</li>
+    <li>The status (or error) information the Zeppelin displays after a paragraph is run should be removed.</li>
+</ul>
+
+<h2>Scrubbing Markdown Paragraphs</h2>
+The scrubber resets the state of every Markdown paragraph in every training notebook as shown in the following table:
+
+<table>
+    <col width=60% />
+    <col width=40% />
+    <thead>
+        <tr>
+            <th>What the Scrubber Does</th>
+            <th>Paragraph Menu Equivalent</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <p>Disables running of the paragraph, so that the user is not presented with that possibility (the <img src="https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png" class="inline"> is not displayed.)</p>
+                <p>Note that the Scrubber maintains a list of override exceptions for any markdown paragraphs that do need to be run by the student;  for example, the <em>Zeppelin Basics<em> notebook includes a paragraph in which the student practices adding and running markdown. In these cases, the Scrubber enables running of the paragraph.</p>
+            </td>
+            <td>
+                <p>Click the the <img src="https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png" class="inline"> icon for the paragraph, and select <code>Disable Run</code>.</p>
+                <p>To reenable, click the icon again and select <code>Enable Run</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Set the status of the paragraph to <code>FINISHED</code>.</td>
+            <td>N/A.</td>
+        </tr>
+        <tr>
+            <td>
+                <p>Hides the paragraph editor.<p>
+                <p>Note that the Scrubber maintains a list of override exceptions for paragraphs that do need to have the editor open; for example, the <em>Zeppelin Basics</em> notebook includes a paragraph in which the student practices adding and running markdown. In these cases, the Scrubber does not hide the paragraph editor.</p>
+            </td>
+            <td>
+                <p>Click the the <img src="https://doc.splicemachine.com/zeppelin/images/zepEditorIcon.png" class="inline"> icon for the paragraph.</p>
+                <p>To re-display the editor, click the icon again.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Hides the status information that Zeppelin displays at the bottom of the paragraph's output after running a paragraph. </td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>Deletes empty markdown paragraphs.</td>
+            <td><p>Click the the <img src="https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png" class="inline"> icon for the paragraph, and select <code>Remove</code>.</p>
+                <p>Note that the Scrubber maintains a list of override exceptions for paragraphs that are empty and need to remain in the notebook; in these cases, the Scrubber does not delete the paragraph.</p>
+                <p><strong>NOTE: </strong> You cannot undo removal of a paragraph from a notebook!</p>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+
+<h2>Scrubbing Code Paragraphs</h2>
+The scrubber resets the state of every code (non-Markdown) paragraph in every training notebook as shown in the following table:
+
+<table>
+    <col width=60% />
+    <col width=40% />
+    <thead>
+        <tr>
+            <th>What the Scrubber Does</th>
+            <th>Paragraph Menu Equivalent</th>
+        </tr>
+    </thead>
+        <tr>
+            <td>
+                <p>Enables running of the paragraph, so that the user is sees the (the <img src="https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png" class="inline"> icon.</p>
+                <p>Note that the Scrubber maintains a list of override exceptions for any markdown paragraphs that should not be run by the student;  in these cases, the Scrubber disables running of the paragraph.</p>
+            </td>
+            <td>
+                <p>Click the the <img src="https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png" class="inline"> icon for the paragraph, and select <code>Enable Run</code>.</p>
+                <p>To reset to disabled, click the icon again and select <code>Disable Run</code>.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Set the status of the paragraph to <code>READY</code>.</td>
+            <td>N/A.</td>
+        </tr>
+        <tr>
+            <td>Enables the paragraph editor so that the student can see the code.</td>
+            <td>Click the the <img src="https://doc.splicemachine.com/zeppelin/images/zepEditorIcon.png" class="inline"> icon for the paragraph.</td>
+        </tr>
+        <tr>
+            <td>Hides the status information that Zeppelin displays at the bottom of the paragraph's output after running a paragraph, including the date it was started/finished, and how long it took. </td>
+            <td>N/A</td>
+        </tr>
+        <tr>
+            <td>Clears the output of the paragraph, so that the user must run it to generate results.</td>
+            <td>Click the the <img src="https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png" class="inline"> icon for the paragraph, and select <code>Clear Output</code>.</td>
+        </tr>
+        <tr>
+            <td>Deletes empty paragraphs, which are those without an assigned interpreter, e.g. <code>%splicemachine</code>, <code>%spark</code>, etc.</td>
+            <td><p>Click the the <img src="https://doc.splicemachine.com/zeppelin/images/zepSettingsIcon.png" class="inline"> icon for the paragraph, and select <code>Remove</code>.</p>
+                <p><strong>NOTE: </strong>You cannot undo removal of a paragraph from a notebook!</p>
+            </td>
+        </tr>
+    <tbody>
+</table>
+
+<h2>Adding Exceptions</h2>
+Currently, the exception types processed by the Scrubber are:
+
+<ul>
+    <li><code>MarkdownEditorOpen</code> exceptions indicate that the editor is to be displayed for specified Markdown paragraph.</li>
+</ul>
+
+Exceptions are stored in the <code>notebook_standards_exceptions.yaml</code> file. The following sample YAML content includes three exceptions: the <code>MarkdownEditorOverride</code> exception is to be applied to each paragraph indicated by the (notebook ID, paragraph ID) pair e.g. (<code>2DY5CJ4CS, 20170915-085028_60994898</code>).
+
+<pre>
+    Exceptions:
+      2DY5CJ4CS:
+        20170915-085028_60994898:
+          MarkdownEditorOpen: true
+      2DUNNSQYR:
+        20170915-085028_60994898:
+          MarkdownEditorOpen: true
+      2DV36AEJ2:
+        20170915-085028_60994898:
+          MarkdownEditorOpen: true
+</pre>
+</body>
+</html>
