@@ -1,246 +1,246 @@
 {
+  "noteForms": {}, 
+  "angularObjects": {}, 
+  "name": "Splice Machine Training / For Data Scientists / g. KMeans Example", 
+  "info": {}, 
+  "noteParams": {}, 
   "paragraphs": [
     {
-      "text": "%md\n\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# KMeans Example\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-03 02:45:31.000",
+      "status": "FINISHED", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n# KMeans Example\n\nThis notebook shows you how to implement a simple *KMeans* algorithm in a Zeppelin notebook, in these sections:\n\n* *Setting Up KMeans*\n* *Computing KMEans*\n* *Simple KMeans Example*\n\nKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\n", 
+      "apps": [], 
+      "results": {
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>KMeans Example</h1>\n<p>This notebook shows you how to implement a simple <em>KMeans</em> algorithm in a Zeppelin notebook, in these sections:</p>\n<ul>\n  <li><em>Setting Up KMeans</em></li>\n  <li><em>Computing KMEans</em></li>\n  <li><em>Simple KMeans Example</em></li>\n</ul>\n<p>KMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.</p>\n</div>", 
+            "type": "HTML"
+          }
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1542398329138_264893937", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-03 02:45:31.000", 
+      "dateCreated": "2018-11-16 11:58:49.000", 
       "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "fontSize": 9.0,
+        "editorHide": true, 
+        "enabled": false, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 70.375,
-              "optionOpen": false
+              "optionOpen": false, 
+              "mode": "table", 
+              "height": 70.375
             }
           }
-        },
-        "enabled": false
-      },
+        }, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20170620-100414_1484018649", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Setting up a KMeans\nYou need the following to implement KMeans:\n\n* A dataset of structured data. Learn about structured data <a href=\"https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid=33JGI\" target=\"_blank\">here</a>.\n* A value for K, which can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K <a href=\"https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set\" target=\"_blank\">here</a>.\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eKMeans Example\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you how to implement a simple \u003cem\u003eKMeans\u003c/em\u003e algorithm in a Zeppelin notebook, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eSetting Up KMeans\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eComputing KMEans\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSimple KMeans Example\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eKMeans is an unsupervised-learning, clustering algorithm used to determine similarities and trends within a given dataset. KMeans is an iterative process, where K clusters are created by the user and continually computed on a given dataset until the data converges and the algorithm ends.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Setting up a KMeans</h2>\n<p>You need the following to implement KMeans:</p>\n<ul>\n  <li>A dataset of structured data. Learn about structured data <a href=\"https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid=33JGI\" target=\"_blank\">here</a>.</li>\n  <li>A value for K, which can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K <a href=\"https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set\" target=\"_blank\">here</a>.</li>\n</ul>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542398329138_264893937",
-      "id": "20170620-100414_1484018649",
-      "dateCreated": "2018-11-16 11:58:49.000",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Setting up a KMeans\nYou need the following to implement KMeans:\n\n* A dataset of structured data. Learn about structured data \u003ca href\u003d\"https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid\u003d33JGI\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\n* A value for K, which can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K \u003ca href\u003d\"https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:11:53.658",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1543619984600_1733167874", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-01 07:11:53.658", 
+      "dateCreated": "2018-11-30 23:19:44.600", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": false,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181130-231944_212485663", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n\n## Computing KMeans\nA KMeans algorithm is computed in three main steps:\n\n1. K clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints\n2. For each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance\n3. After all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.\n\nSteps 2 and 3 are repeated until one of the following occurs:\n\n* A set number of iterations occurs\n* No datapoints are reassigned to new clusters\n* Minimum distance changes occur within clusters\n\nLearn more about the KMeans algorithm <a href=\"https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials\" target=\"blank\">here</a>.\nYoull find in-depth KMeans clustering documentation <a href=\"http://scikit-learn.org/stable/modules/clustering.html#k-means\" target=\"_blank\">here</a>.", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSetting up a KMeans\u003c/h2\u003e\n\u003cp\u003eYou need the following to implement KMeans:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eA dataset of structured data. Learn about structured data \u003ca href\u003d\"https://www.quora.com/What-are-Structured-semi-structured-and-unstructured-data-in-Big-Data/answer/Manoj-R-Patil?srid\u003d33JGI\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\u003c/li\u003e\n  \u003cli\u003eA value for K, which can be computed a number of ways, none of which are necessarily incorrect. It is dependent on the specific dataset you are working with. It is suggested to first plot your data and do trials with multiple values of K. Learn more about choosing a good K \u003ca href\u003d\"https://en.wikipedia.org/wiki/Determining_the_number_of_clusters_in_a_data_set\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Computing KMeans</h2>\n<p>A KMeans algorithm is computed in three main steps:</p>\n<ol>\n  <li>K clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints</li>\n  <li>For each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance</li>\n  <li>After all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.</li>\n</ol>\n<p>Steps 2 and 3 are repeated until one of the following occurs:</p>\n<ul>\n  <li>A set number of iterations occurs</li>\n  <li>No datapoints are reassigned to new clusters</li>\n  <li>Minimum distance changes occur within clusters</li>\n</ul>\n<p>Learn more about the KMeans algorithm <a href=\"https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials\" target=\"blank\">here</a>.<br/>Youll find in-depth KMeans clustering documentation <a href=\"http://scikit-learn.org/stable/modules/clustering.html#k-means\" target=\"_blank\">here</a>.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1543619984600_1733167874",
-      "id": "20181130-231944_212485663",
-      "dateCreated": "2018-11-30 23:19:44.600",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n\n## Computing KMeans\nA KMeans algorithm is computed in three main steps:\n\n1. K clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints\n2. For each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance\n3. After all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.\n\nSteps 2 and 3 are repeated until one of the following occurs:\n\n* A set number of iterations occurs\n* No datapoints are reassigned to new clusters\n* Minimum distance changes occur within clusters\n\nLearn more about the KMeans algorithm \u003ca href\u003d\"https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials\" target\u003d\"blank\"\u003ehere\u003c/a\u003e.\nYoull find in-depth KMeans clustering documentation \u003ca href\u003d\"http://scikit-learn.org/stable/modules/clustering.html#k-means\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:12:00.465",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1543619580933_-851893031", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-01 07:12:00.465", 
+      "dateCreated": "2018-11-30 23:13:00.933", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": false,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181130-231300_283923131", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## A Simple KMeans Example\n\nThe paragraph below implements a simple example of KMeans. You can:\n\n* Follow along by downloading the data from here: <a href=\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\" target=\"_blank\">https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv.\n* See more KMeans and Scala examples here: <a href=\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\" target=\"_blank\">https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib</a>.\n* Learn more about Sum of Squares for Errors, which is used in our algorithm, here: <a href=\"http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\" target=\"_blank\">https://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)</a>.", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eComputing KMeans\u003c/h2\u003e\n\u003cp\u003eA KMeans algorithm is computed in three main steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eK clusters are created and assigned locations, either randomly generated or randomly taken from K datapoints\u003c/li\u003e\n  \u003cli\u003eFor each datapoint in your dataset, the square Euclidian Distance is computed against all clusters until a minimum is found. That datapoint is assigned to the cluster of minimum distance\u003c/li\u003e\n  \u003cli\u003eAfter all datapoints are assigned, clusters are recomputed and reassigned locations using the mean distance of its assigned datapoints.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eSteps 2 and 3 are repeated until one of the following occurs:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eA set number of iterations occurs\u003c/li\u003e\n  \u003cli\u003eNo datapoints are reassigned to new clusters\u003c/li\u003e\n  \u003cli\u003eMinimum distance changes occur within clusters\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLearn more about the KMeans algorithm \u003ca href\u003d\"https://www.datascience.com/blog/introduction-to-k-means-clustering-algorithm-learn-data-science-tutorials\" target\u003d\"blank\"\u003ehere\u003c/a\u003e.\u003cbr/\u003eYoull find in-depth KMeans clustering documentation \u003ca href\u003d\"http://scikit-learn.org/stable/modules/clustering.html#k-means\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>A Simple KMeans Example</h2>\n<p>The paragraph below implements a simple example of KMeans. You can:</p>\n<ul>\n  <li>Follow along by downloading the data from here: <a href=\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\" target=\"_blank\"><a href=\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\">https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv</a>.</li>\n  <li>See more KMeans and Scala examples here: <a href=\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\" target=\"_blank\"><a href=\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\">https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib</a></a>.</li>\n  <li>Learn more about Sum of Squares for Errors, which is used in our algorithm, here: <a href=\"http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\" target=\"_blank\"><a href=\"https://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\">https://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)</a></a>.</li>\n</ul>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1543619580933_-851893031",
-      "id": "20181130-231300_283923131",
-      "dateCreated": "2018-11-30 23:13:00.933",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## A Simple KMeans Example\n\nThe paragraph below implements a simple example of KMeans. You can:\n\n* Follow along by downloading the data from here: \u003ca href\u003d\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\" target\u003d\"_blank\"\u003ehttps://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv.\n* See more KMeans and Scala examples here: \u003ca href\u003d\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\" target\u003d\"_blank\"\u003ehttps://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\u003c/a\u003e.\n* Learn more about Sum of Squares for Errors, which is used in our algorithm, here: \u003ca href\u003d\"http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\" target\u003d\"_blank\"\u003ehttps://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\u003c/a\u003e.",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:12:08.370",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1542767394316_90114078", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-01 07:12:08.370", 
+      "dateCreated": "2018-11-20 18:29:54.316", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": false,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181120-182954_729821940", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%spark\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.mllib.clustering.{KMeans, KMeansModel}\nimport org.apache.spark.mllib.linalg.Vectors\n\n//Grabbing data and parsing to vectors\n\nval data = sc.textFile(\"/opt/data/kmeans_data.txt\")\nval formatted =  data.map(s => s.split(\" \")).map(s => s.drop(1)).collect().drop(1).map(s => s.map(_.toDouble))\nval parsedData = formatted.map(s => Vectors.dense(s))\nval rddData = sc.parallelize(parsedData)\n\n//Clustering data into 3 groups\nval K = 4\nval maxIterations = 5000\nval clusters = KMeans.train(rddData, K, maxIterations)\n\n//Compute cost Within Set Sum of Squared Errors\nval WSSSE = clusters.computeCost(rddData)\nprintln(\"Within Set Sum of Squared Errors: \" + WSSSE)", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1542398329139_490492218", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-03 04:29:39.322", 
+      "dateCreated": "2018-11-16 11:58:49.000", 
+      "config": {
+        "editorHide": false, 
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/scala", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "scala"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20170620-100456_224981933", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Decision Trees Example*](/#/notebook/2DUQ8F96K), walks you through another Machine Learning example: using a decision tree to perform classification.\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eA Simple KMeans Example\u003c/h2\u003e\n\u003cp\u003eThe paragraph below implements a simple example of KMeans. You can:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eFollow along by downloading the data from here: \u003ca href\u003d\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\"\u003ehttps://raw.githubusercontent.com/datascienceinc/learn-data-science/master/Introduction-to-K-means-Clustering/Data/data_1024.csv\u003c/a\u003e.\u003c/li\u003e\n  \u003cli\u003eSee more KMeans and Scala examples here: \u003ca href\u003d\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\"\u003ehttps://github.com/apache/spark/tree/master/examples/src/main/scala/org/apache/spark/examples/mllib\u003c/a\u003e\u003c/a\u003e.\u003c/li\u003e\n  \u003cli\u003eLearn more about Sum of Squares for Errors, which is used in our algorithm, here: \u003ca href\u003d\"http://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\"\u003ehttps://www.wikihow.com/Calculate-the-Sum-of-Squares-for-Error-(SSE)\u003c/a\u003e\u003c/a\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DUQ8F96K\"><em>Decision Trees Example</em></a>, walks you through another Machine Learning example: using a decision tree to perform classification.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542767394316_90114078",
-      "id": "20181120-182954_729821940",
-      "dateCreated": "2018-11-20 18:29:54.316",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.mllib.clustering.{KMeans, KMeansModel}\nimport org.apache.spark.mllib.linalg.Vectors\n\n//Grabbing data and parsing to vectors\n\nval data \u003d sc.textFile(\"/opt/data/kmeans_data.txt\")\nval formatted \u003d  data.map(s \u003d\u003e s.split(\" \")).map(s \u003d\u003e s.drop(1)).collect().drop(1).map(s \u003d\u003e s.map(_.toDouble))\nval parsedData \u003d formatted.map(s \u003d\u003e Vectors.dense(s))\nval rddData \u003d sc.parallelize(parsedData)\n\n//Clustering data into 3 groups\nval K \u003d 4\nval maxIterations \u003d 5000\nval clusters \u003d KMeans.train(rddData, K, maxIterations)\n\n//Compute cost Within Set Sum of Squared Errors\nval WSSSE \u003d clusters.computeCost(rddData)\nprintln(\"Within Set Sum of Squared Errors: \" + WSSSE)",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-03 04:29:39.322",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1542398329139_288790578", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-01 07:12:18.735", 
+      "dateCreated": "2018-11-16 11:58:49.000", 
       "config": {
-        "tableHide": false,
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
-        "editorHide": false,
-        "fontSize": 9.0,
-        "results": {},
-        "enabled": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542398329139_490492218",
-      "id": "20170620-100456_224981933",
-      "dateCreated": "2018-11-16 11:58:49.000",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Decision Trees Example*](/#/notebook/2DUQ8F96K), walks you through another Machine Learning example: using a decision tree to perform classification.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:12:18.735",
-      "config": {
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "results": {},
-        "enabled": false,
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUQ8F96K\"\u003e\u003cem\u003eDecision Trees Example\u003c/em\u003e\u003c/a\u003e, walks you through another Machine Learning example: using a decision tree to perform classification.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1542398329139_288790578",
-      "id": "20170620-140030_993087114",
-      "dateCreated": "2018-11-16 11:58:49.000",
-      "status": "FINISHED",
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20170620-140030_993087114", 
       "progressUpdateIntervalMs": 500
     }
-  ],
-  "name": "Splice Machine Training / For Data Scientists / g. KMeans Example",
-  "id": "2DX6TGACY",
-  "noteParams": {},
-  "noteForms": {},
-  "angularObjects": {},
+  ], 
   "config": {
-    "isZeppelinNotebookCronEnable": false,
-    "looknfeel": "default",
-    "personalizedMode": "false"
-  },
-  "info": {}
+    "looknfeel": "default", 
+    "personalizedMode": "false", 
+    "isZeppelinNotebookCronEnable": false
+  }, 
+  "id": "2DX6TGACY"
 }

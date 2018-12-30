@@ -1,1129 +1,1128 @@
 {
+  "noteForms": {}, 
+  "angularObjects": {
+    "spark:shared_process": [], 
+    "splicemachine:shared_process": [], 
+    "md:shared_process": []
+  }, 
+  "name": "Splice Machine Training / For Developers, Part II / l. Exercises", 
+  "info": {}, 
+  "noteParams": {}, 
   "paragraphs": [
     {
-      "text": "%md \n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Exercises: Splice Machine Developer\u0027s Class, Part II\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understanding of what was covered.\n\n\u003cp class\u003d\"noteNote\"\u003eThese exercises build upon the exercises from our \u003cem\u003eDeveloper\u0027s Class, Part I\u003c/em\u003e class, and assume that you\u0027ve already loaded the data used there. If that\u0027s not true, please go back to the \u003ca href\u003d\"/#/notebook/2DYX3JGDF\"\u003eExercises notebook from Part I\u003c/a\u003e, and at least create the table and load the data before continuing here.\u003c/p\u003e\n\nYou\u0027ll be performing the following actions in these exercises:\n\n1.  Enhancing our exercise schema with an additional table and data\n2.  Writing and monitoring more advanced queries\n3.  More query tuning\n4.  Interacting with this data using the Native Spark DataSource",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 01:07:28.388",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 01:07:28.422", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md \n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n# Exercises: Splice Machine Developer's Class, Part II\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understanding of what was covered.\n\n<p class=\"noteNote\">These exercises build upon the exercises from our <em>Developer's Class, Part I</em> class, and assume that you've already loaded the data used there. If that's not true, please go back to the <a href=\"/#/notebook/2DYX3JGDF\">Exercises notebook from Part I</a>, and at least create the table and load the data before continuing here.</p>\n\nYou'll be performing the following actions in these exercises:\n\n1.  Enhancing our exercise schema with an additional table and data\n2.  Writing and monitoring more advanced queries\n3.  More query tuning\n4.  Interacting with this data using the Native Spark DataSource", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Splice Machine Developer\u0026rsquo;s Class, Part II\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understanding of what was covered.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eThese exercises build upon the exercises from our \u003cem\u003eDeveloper\u0027s Class, Part I\u003c/em\u003e class, and assume that you\u0027ve already loaded the data used there. If that\u0027s not true, please go back to the \u003ca href\u003d\"/#/notebook/2DYX3JGDF\"\u003eExercises notebook from Part I\u003c/a\u003e, and at least create the table and load the data before continuing here.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eEnhancing our exercise schema with an additional table and data\u003c/li\u003e\n  \u003cli\u003eWriting and monitoring more advanced queries\u003c/li\u003e\n  \u003cli\u003eMore query tuning\u003c/li\u003e\n  \u003cli\u003eInteracting with this data using the Native Spark DataSource\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Exercises: Splice Machine Developer&rsquo;s Class, Part II</h1>\n<p>This notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understanding of what was covered.</p>\n<p class=\"noteNote\">These exercises build upon the exercises from our <em>Developer's Class, Part I</em> class, and assume that you've already loaded the data used there. If that's not true, please go back to the <a href=\"/#/notebook/2DYX3JGDF\">Exercises notebook from Part I</a>, and at least create the table and load the data before continuing here.</p>\n<p>You&rsquo;ll be performing the following actions in these exercises:</p>\n<ol>\n  <li>Enhancing our exercise schema with an additional table and data</li>\n  <li>Writing and monitoring more advanced queries</li>\n  <li>More query tuning</li>\n  <li>Interacting with this data using the Native Spark DataSource</li>\n</ol>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544558512714_-332483652",
-      "id": "20181211-200152_868125820",
-      "dateCreated": "2018-12-11 20:01:52.714",
-      "dateStarted": "2018-12-12 01:07:28.388",
-      "dateFinished": "2018-12-12 01:07:28.422",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## 1. Enhancing our Exercise Schema\nWe\u0027ll begin these exercises by:\n\n* Extending our *Moving Rating Data* schema with a new table for user information\n* Loading data into our new table\n* Collecting statistics on the table\n\n### Our Sample User Data\nThe sample user data that we\u0027ll be ingesting looks like this:\n\n```\n1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\n```\n\nThis data contains four fields, separated by `|` characters in the input:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `user_id | age | gender | occupation | zip_code`\n\n### Create the Table Definition\nNow, let\u0027s create a table specification for the new user information data shown above, and call it `USER_DATA`.  A couple notes about the data that you should take into consideration when defining the table:\n\n* Not all ZIP codes are integers.\n* Though we support Foreign Keys, for these exercises we will skip putting them in.\n\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\nInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:35:56.870",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544558512714_-332483652", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 01:07:28.388", 
+      "dateUpdated": "2018-12-12 01:07:28.388", 
+      "dateCreated": "2018-12-11 20:01:52.714", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-200152_868125820", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 00:35:56.898", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## 1. Enhancing our Exercise Schema\nWe'll begin these exercises by:\n\n* Extending our *Moving Rating Data* schema with a new table for user information\n* Loading data into our new table\n* Collecting statistics on the table\n\n### Our Sample User Data\nThe sample user data that we'll be ingesting looks like this:\n\n```\n1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\n```\n\nThis data contains four fields, separated by `|` characters in the input:\n&nbsp;&nbsp;&nbsp;&nbsp; `user_id | age | gender | occupation | zip_code`\n\n### Create the Table Definition\nNow, let's create a table specification for the new user information data shown above, and call it `USER_DATA`.  A couple notes about the data that you should take into consideration when defining the table:\n\n* Not all ZIP codes are integers.\n* Though we support Foreign Keys, for these exercises we will skip putting them in.\n\n<p class=\"noteQuestion\">What do you think the Primary Key should be?</p>\n\nInsert the SQL to create the table in the next paragraph, and then click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in <a href=\"doc.splicemachine.com/sqlref_statements_createtable.html\" target=\"_blank\">our documentation.</a>\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Enhancing our Exercise Schema\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll begin these exercises by:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eExtending our \u003cem\u003eMoving Rating Data\u003c/em\u003e schema with a new table for user information\u003c/li\u003e\n  \u003cli\u003eLoading data into our new table\u003c/li\u003e\n  \u003cli\u003eCollecting statistics on the table\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eOur Sample User Data\u003c/h3\u003e\n\u003cp\u003eThe sample user data that we\u0026rsquo;ll be ingesting looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis data contains four fields, separated by \u003ccode\u003e|\u003c/code\u003e characters in the input:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003euser_id | age | gender | occupation | zip_code\u003c/code\u003e\u003c/p\u003e\n\u003ch3\u003eCreate the Table Definition\u003c/h3\u003e\n\u003cp\u003eNow, let\u0026rsquo;s create a table specification for the new user information data shown above, and call it \u003ccode\u003eUSER_DATA\u003c/code\u003e. A couple notes about the data that you should take into consideration when defining the table:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eNot all ZIP codes are integers.\u003c/li\u003e\n  \u003cli\u003eThough we support Foreign Keys, for these exercises we will skip putting them in.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\u003cp\u003eInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually create the table in your database.\u003c/p\u003e\n\u003cp\u003eFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>1. Enhancing our Exercise Schema</h2>\n<p>We&rsquo;ll begin these exercises by:</p>\n<ul>\n  <li>Extending our <em>Moving Rating Data</em> schema with a new table for user information</li>\n  <li>Loading data into our new table</li>\n  <li>Collecting statistics on the table</li>\n</ul>\n<h3>Our Sample User Data</h3>\n<p>The sample user data that we&rsquo;ll be ingesting looks like this:</p>\n<pre><code>1|24|M|technician|85711\n2|53|F|other|94043\n3|23|M|writer|32067\n</code></pre>\n<p>This data contains four fields, separated by <code>|</code> characters in the input:<br/>&nbsp;&nbsp;&nbsp;&nbsp; <code>user_id | age | gender | occupation | zip_code</code></p>\n<h3>Create the Table Definition</h3>\n<p>Now, let&rsquo;s create a table specification for the new user information data shown above, and call it <code>USER_DATA</code>. A couple notes about the data that you should take into consideration when defining the table:</p>\n<ul>\n  <li>Not all ZIP codes are integers.</li>\n  <li>Though we support Foreign Keys, for these exercises we will skip putting them in.</li>\n</ul>\n<p class=\"noteQuestion\">What do you think the Primary Key should be?</p>\n<p>Insert the SQL to create the table in the next paragraph, and then click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button to actually create the table in your database.</p>\n<p>For help with the syntax, review the notebooks in this class, or read about creating tables in <a href=\"doc.splicemachine.com/sqlref_statements_createtable.html\" target=\"_blank\">our documentation.</a></p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544571913365_-439362365",
-      "id": "20181211-234513_1971117521",
-      "dateCreated": "2018-12-11 23:45:13.365",
-      "dateStarted": "2018-12-12 00:35:56.871",
-      "dateFinished": "2018-12-12 00:35:56.898",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:15:08.157",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544571913365_-439362365", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 00:35:56.871", 
+      "dateUpdated": "2018-12-12 00:35:56.870", 
+      "dateCreated": "2018-12-11 23:45:13.365", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544561626173_1657731440",
-      "id": "20181211-205346_1215206478",
-      "dateCreated": "2018-12-11 20:53:46.173",
-      "dateStarted": "2018-12-11 21:07:26.131",
-      "dateFinished": "2018-12-11 21:07:27.871",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-234513_1971117521", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n### Loading Data into the User Data Table\n\nNow we\u0027ll import all of our user data. We\u0027ve copied the data file into this docker image, so you can examine it if needed; you\u0027ll find the data here:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `/opt/data/user.csv`\n\nNOTE: use the following command to log into your docker image:  `docker exec -it spliceserver /bin/bash`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n\u003cp class\u003d\"noteHint\"\u003euse `/opt/data` as your BAD records file directory; if you have trouble with the import, you\u0027ll find valuable information in that directory.\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:20:16.594",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
+      "dateFinished": "2018-12-11 21:07:27.871", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544561626173_1657731440", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-11 21:07:26.131", 
+      "dateUpdated": "2018-12-13 04:15:08.157", 
+      "dateCreated": "2018-12-11 20:53:46.173", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "editOnDblClick": false, 
+          "completionSupport": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-205346_1215206478", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 05:20:16.624", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n### Loading Data into the User Data Table\n\nNow we'll import all of our user data. We've copied the data file into this docker image, so you can examine it if needed; you'll find the data here:\n&nbsp;&nbsp;&nbsp;&nbsp; `/opt/data/user.csv`\n\nNOTE: use the following command to log into your docker image:  `docker exec -it spliceserver /bin/bash`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n<p class=\"noteHint\">use `/opt/data` as your BAD records file directory; if you have trouble with the import, you'll find valuable information in that directory.\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLoading Data into the User Data Table\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;ll import all of our user data. We\u0026rsquo;ve copied the data file into this docker image, so you can examine it if needed; you\u0026rsquo;ll find the data here:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003e/opt/data/user.csv\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eNOTE: use the following command to log into your docker image: \u003ccode\u003edocker exec -it spliceserver /bin/bash\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEnter the proper \u003ccode\u003eIMPORT\u003c/code\u003e call to load the data in the next paragraph, then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteHint\"\u003euse \u003ccode\u003e/opt/data\u003c/code\u003e as your BAD records file directory; if you have trouble with the import, you\u0026rsquo;ll find valuable information in that directory.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h3>Loading Data into the User Data Table</h3>\n<p>Now we&rsquo;ll import all of our user data. We&rsquo;ve copied the data file into this docker image, so you can examine it if needed; you&rsquo;ll find the data here:<br/>&nbsp;&nbsp;&nbsp;&nbsp; <code>/opt/data/user.csv</code></p>\n<p>NOTE: use the following command to log into your docker image: <code>docker exec -it spliceserver /bin/bash</code></p>\n<p>Enter the proper <code>IMPORT</code> call to load the data in the next paragraph, then click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.</p>\n<p><p class=\"noteHint\">use <code>/opt/data</code> as your BAD records file directory; if you have trouble with the import, you&rsquo;ll find valuable information in that directory.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544561659393_-745075046",
-      "id": "20181211-205419_1889950885",
-      "dateCreated": "2018-12-11 20:54:19.393",
-      "dateStarted": "2018-12-13 05:20:16.600",
-      "dateFinished": "2018-12-13 05:20:16.624",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:15:27.848",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544561659393_-745075046", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 05:20:16.600", 
+      "dateUpdated": "2018-12-13 05:20:16.594", 
+      "dateCreated": "2018-12-11 20:54:19.393", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-205419_1889950885", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "dateFinished": "2018-12-11 21:07:32.710", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544562026983_-734898787", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-11 21:07:32.195", 
+      "dateUpdated": "2018-12-13 04:15:27.848", 
+      "dateCreated": "2018-12-11 21:00:26.983", 
+      "config": {
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "rowsImported": "string",
-                      "failedRows": "string",
-                      "files": "string",
-                      "dataSize": "string",
+                      "files": "string", 
+                      "failedRows": "string", 
+                      "rowsImported": "string", 
+                      "dataSize": "string", 
                       "failedLog": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
+          "editOnDblClick": false, 
+          "completionSupport": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-210026_190492134", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 00:36:16.197", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Collecting Statistics on the User Data Table\n\nAgain let's collect statistics against this table.", 
+      "apps": [], 
+      "results": {
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<h2>Collecting Statistics on the User Data Table</h2>\n<p>Again let&rsquo;s collect statistics against this table.</p>\n</div>", 
+            "type": "HTML"
+          }
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544562469944_-1738230481", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 00:36:16.162", 
+      "dateUpdated": "2018-12-12 00:36:16.161", 
+      "dateCreated": "2018-12-11 21:07:49.945", 
+      "config": {
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-210749_2122927264", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "apps": [], 
+      "jobName": "paragraph_1544562240739_683472570", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-11 21:04:00.741", 
+      "dateCreated": "2018-12-11 21:04:00.740", 
+      "config": {
         "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562026983_-734898787",
-      "id": "20181211-210026_190492134",
-      "dateCreated": "2018-12-11 21:00:26.983",
-      "dateStarted": "2018-12-11 21:07:32.195",
-      "dateFinished": "2018-12-11 21:07:32.710",
-      "status": "FINISHED",
-      "errorMessage": "",
+      }, 
+      "id": "20181211-210400_1464007559", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n## Collecting Statistics on the User Data Table\n\nAgain let\u0027s collect statistics against this table.",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:36:16.161",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 00:37:08.526", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Writing and Monitoring Advanced Queries\n\nNow let's run some queries. \n\nEach of the following paragraphs poses a question; you should:\n\n* Enter a query that will answer that question.\n* Click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button to run your query.", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCollecting Statistics on the User Data Table\u003c/h2\u003e\n\u003cp\u003eAgain let\u0026rsquo;s collect statistics against this table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Writing and Monitoring Advanced Queries</h2>\n<p>Now let&rsquo;s run some queries. </p>\n<p>Each of the following paragraphs poses a question; you should:</p>\n<ul>\n  <li>Enter a query that will answer that question.</li>\n  <li>Click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button to run your query.</li>\n</ul>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562469944_-1738230481",
-      "id": "20181211-210749_2122927264",
-      "dateCreated": "2018-12-11 21:07:49.945",
-      "dateStarted": "2018-12-12 00:36:16.162",
-      "dateFinished": "2018-12-12 00:36:16.197",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-11 21:04:00.741",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562240739_683472570",
-      "id": "20181211-210400_1464007559",
-      "dateCreated": "2018-12-11 21:04:00.740",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Writing and Monitoring Advanced Queries\n\nNow let\u0027s run some queries. \n\nEach of the following paragraphs poses a question; you should:\n\n* Enter a query that will answer that question.\n* Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run your query.",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:37:08.504",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544562500951_21148795", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 00:37:08.505", 
+      "dateUpdated": "2018-12-12 00:37:08.504", 
+      "dateCreated": "2018-12-11 21:08:20.951", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWriting and Monitoring Advanced Queries\u003c/h2\u003e\n\u003cp\u003eNow let\u0026rsquo;s run some queries. \u003c/p\u003e\n\u003cp\u003eEach of the following paragraphs poses a question; you should:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eEnter a query that will answer that question.\u003c/li\u003e\n  \u003cli\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run your query.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562500951_21148795",
-      "id": "20181211-210820_418115778",
-      "dateCreated": "2018-12-11 21:08:20.951",
-      "dateStarted": "2018-12-12 00:37:08.505",
-      "dateFinished": "2018-12-12 00:37:08.526",
-      "status": "FINISHED",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-210820_418115778", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "title": "a. How many total records are there in USER_DATA?",
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:37:20.327",
+      "status": "READY", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "title": "a. How many total records are there in USER_DATA?", 
+      "apps": [], 
+      "jobName": "paragraph_1544562510536_2026844351", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-12 00:37:20.327", 
+      "dateCreated": "2018-12-11 21:08:30.536", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "title": true, 
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562510536_2026844351",
-      "id": "20181211-210830_594221652",
-      "dateCreated": "2018-12-11 21:08:30.536",
-      "status": "READY",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-210830_594221652", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "title": "b. How many ratings were submitted by students?",
-      "text": "%splicemachine\n ",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:15:50.598",
+      "status": "READY", 
+      "errorMessage": "", 
+      "dateFinished": "2018-12-11 21:11:12.007", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n ", 
+      "title": "b. How many ratings were submitted by students?", 
+      "apps": [], 
+      "jobName": "paragraph_1544562583804_-1544331822", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-11 21:11:11.199", 
+      "dateUpdated": "2018-12-13 04:15:50.598", 
+      "dateCreated": "2018-12-11 21:09:43.804", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "title": true, 
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
                       "1": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562583804_-1544331822",
-      "id": "20181211-210943_399153354",
-      "dateCreated": "2018-12-11 21:09:43.804",
-      "dateStarted": "2018-12-11 21:11:11.199",
-      "dateFinished": "2018-12-11 21:11:12.007",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-210943_399153354", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "title": "c. Which gender gave higher average ratings?",
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:16:07.854",
+      "status": "READY", 
+      "errorMessage": "", 
+      "dateFinished": "2018-12-11 21:15:32.799", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "title": "c. Which gender gave higher average ratings?", 
+      "apps": [], 
+      "jobName": "paragraph_1544562671185_1666023508", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-11 21:15:27.753", 
+      "dateUpdated": "2018-12-13 04:16:07.854", 
+      "dateCreated": "2018-12-11 21:11:11.185", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "title": true, 
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "keys": [
+                {
+                  "index": 0.0, 
+                  "name": "GENDER", 
+                  "aggr": "sum"
+                }
+              ], 
+              "optionOpen": false, 
+              "height": 300.0, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "2": "string",
-                      "GENDER": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                      "GENDER": "string", 
+                      "2": "string"
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }, 
                 "multiBarChart": {
                   "rotate": {
                     "degree": "-45"
-                  },
+                  }, 
                   "xLabelStatus": "default"
                 }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "GENDER",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [],
+              }, 
               "values": [
                 {
-                  "name": "2",
-                  "index": 1.0,
+                  "index": 1.0, 
+                  "name": "2", 
                   "aggr": "sum"
                 }
-              ]
-            },
+              ], 
+              "mode": "table", 
+              "groups": [], 
+              "commonSetting": {}
+            }, 
             "helium": {}
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562671185_1666023508",
-      "id": "20181211-211111_784602403",
-      "dateCreated": "2018-12-11 21:11:11.185",
-      "dateStarted": "2018-12-11 21:15:27.753",
-      "dateFinished": "2018-12-11 21:15:32.799",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-211111_784602403", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "title": "d. What is the average age of reviewers who submitted at least one review of 5?",
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:16:25.963",
+      "status": "READY", 
+      "errorMessage": "", 
+      "dateFinished": "2018-12-11 21:20:03.405", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "title": "d. What is the average age of reviewers who submitted at least one review of 5?", 
+      "apps": [], 
+      "jobName": "paragraph_1544562914972_-385053973", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-11 21:20:02.749", 
+      "dateUpdated": "2018-12-13 04:16:25.963", 
+      "dateCreated": "2018-12-11 21:15:14.972", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "title": true, 
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
                       "1": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544562914972_-385053973",
-      "id": "20181211-211514_780803252",
-      "dateCreated": "2018-12-11 21:15:14.972",
-      "dateStarted": "2018-12-11 21:20:02.749",
-      "dateFinished": "2018-12-11 21:20:03.405",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-211514_780803252", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "title": "e. What are the (distinct) occupations in this table?",
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:16:54.079",
+      "status": "READY", 
+      "errorMessage": "", 
+      "dateFinished": "2018-12-12 15:41:58.238", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "title": "e. What are the (distinct) occupations in this table?", 
+      "apps": [], 
+      "jobName": "paragraph_1544629249709_-174675282", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 15:41:58.192", 
+      "dateUpdated": "2018-12-13 04:16:54.079", 
+      "dateCreated": "2018-12-12 15:40:49.709", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "title": true, 
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
                       "OCCUPATION": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544629249709_-174675282",
-      "id": "20181212-154049_664353845",
-      "dateCreated": "2018-12-12 15:40:49.709",
-      "dateStarted": "2018-12-12 15:41:58.192",
-      "dateFinished": "2018-12-12 15:41:58.238",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-154049_664353845", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "title": "e. What is the review count by age, filtered by occupation?  Use a visualization option to make this association clearer, and include an input box to easily filter the occupation (including default to \u0027other\u0027)",
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:17:08.305",
+      "status": "READY", 
+      "errorMessage": "", 
+      "dateFinished": "2018-12-12 16:29:52.865", 
+      "settings": {
+        "forms": {
+          "occupationName": {
+            "defaultValue": "'other'", 
+            "hidden": false, 
+            "type": "TextBox", 
+            "name": "occupationName"
+          }
+        }, 
+        "params": {
+          "occupationName": "'programmer'"
+        }
+      }, 
+      "text": "%splicemachine\n", 
+      "title": "e. What is the review count by age, filtered by occupation?  Use a visualization option to make this association clearer, and include an input box to easily filter the occupation (including default to 'other')", 
+      "apps": [], 
+      "jobName": "paragraph_1544563427516_1286118906", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 16:29:48.806", 
+      "dateUpdated": "2018-12-13 04:17:08.305", 
+      "dateCreated": "2018-12-11 21:23:47.516", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "title": true, 
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "multiBarChart",
-              "height": 300.0,
-              "optionOpen": false,
+              "keys": [
+                {
+                  "index": 0.0, 
+                  "name": "AGE", 
+                  "aggr": "sum"
+                }
+              ], 
+              "optionOpen": false, 
+              "height": 300.0, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "2": "string",
-                      "AGE": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                      "AGE": "string", 
+                      "2": "string"
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }, 
                 "multiBarChart": {
                   "rotate": {
                     "degree": "-45"
-                  },
+                  }, 
                   "xLabelStatus": "default"
                 }
-              },
-              "commonSetting": {},
-              "keys": [
-                {
-                  "name": "AGE",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [],
+              }, 
               "values": [
                 {
-                  "name": "2",
-                  "index": 1.0,
+                  "index": 1.0, 
+                  "name": "2", 
                   "aggr": "sum"
                 }
-              ]
-            },
+              ], 
+              "mode": "multiBarChart", 
+              "groups": [], 
+              "commonSetting": {}
+            }, 
             "helium": {}
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true
-      },
-      "settings": {
-        "params": {
-          "occupationName": "\u0027programmer\u0027"
-        },
-        "forms": {
-          "occupationName": {
-            "type": "TextBox",
-            "name": "occupationName",
-            "defaultValue": "\u0027other\u0027",
-            "hidden": false
-          }
-        }
-      },
-      "apps": [],
-      "jobName": "paragraph_1544563427516_1286118906",
-      "id": "20181211-212347_293610498",
-      "dateCreated": "2018-12-11 21:23:47.516",
-      "dateStarted": "2018-12-12 16:29:48.806",
-      "dateFinished": "2018-12-12 16:29:52.865",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-212347_293610498", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n## Additional Query Tuning\n\nRun the following query, then create indexes to make it run faster:\n\nFind the average ratings for those users with ZIP codes that start with \u00279\u0027 and where the time_entered for the rating was on April 1, 1998.",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:40:12.776",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 04:40:12.794", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Additional Query Tuning\n\nRun the following query, then create indexes to make it run faster:\n\nFind the average ratings for those users with ZIP codes that start with '9' and where the time_entered for the rating was on April 1, 1998.", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAdditional Query Tuning\u003c/h2\u003e\n\u003cp\u003eRun the following query, then create indexes to make it run faster:\u003c/p\u003e\n\u003cp\u003eFind the average ratings for those users with ZIP codes that start with \u0026lsquo;9\u0026rsquo; and where the time_entered for the rating was on April 1, 1998.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Additional Query Tuning</h2>\n<p>Run the following query, then create indexes to make it run faster:</p>\n<p>Find the average ratings for those users with ZIP codes that start with &lsquo;9&rsquo; and where the time_entered for the rating was on April 1, 1998.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544573930215_2060219349",
-      "id": "20181212-001850_1357106139",
-      "dateCreated": "2018-12-12 00:18:50.216",
-      "dateStarted": "2018-12-13 04:40:12.785",
-      "dateFinished": "2018-12-13 04:40:12.794",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:19:15.938",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544573930215_2060219349", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 04:40:12.785", 
+      "dateUpdated": "2018-12-13 04:40:12.776", 
+      "dateCreated": "2018-12-12 00:18:50.216", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544573949036_-1849982979",
-      "id": "20181212-001909_190080455",
-      "dateCreated": "2018-12-12 00:19:09.036",
-      "status": "READY",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-001850_1357106139", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n## Using the Native Spark DataSource with Our Data\n\nWe\u0027ll now review some of the basics of the Native Spark DataSource.  First, create a PySpliceContext object:\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:46:23.905",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "apps": [], 
+      "jobName": "paragraph_1544573949036_-1849982979", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-12 00:19:15.938", 
+      "dateCreated": "2018-12-12 00:19:09.036", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "editOnDblClick": false, 
+          "completionSupport": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-001909_190080455", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 04:46:23.922", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Using the Native Spark DataSource with Our Data\n\nWe'll now review some of the basics of the Native Spark DataSource.  First, create a PySpliceContext object:\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing the Native Spark DataSource with Our Data\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll now review some of the basics of the Native Spark DataSource. First, create a PySpliceContext object:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Using the Native Spark DataSource with Our Data</h2>\n<p>We&rsquo;ll now review some of the basics of the Native Spark DataSource. First, create a PySpliceContext object:</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544573956075_1119593173",
-      "id": "20181212-001916_1509275853",
-      "dateCreated": "2018-12-12 00:19:16.075",
-      "dateStarted": "2018-12-13 04:46:23.906",
-      "dateFinished": "2018-12-13 04:46:23.922",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:12:38.509",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544573956075_1119593173", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 04:46:23.906", 
+      "dateUpdated": "2018-12-13 04:46:23.905", 
+      "dateCreated": "2018-12-12 00:19:16.075", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionSupport": true,
-          "completionKey": "TAB"
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
-      "apps": [],
-      "jobName": "paragraph_1544676341323_-38875420",
-      "id": "20181213-044541_883279868",
-      "dateCreated": "2018-12-13 04:45:41.323",
-      "dateStarted": "2018-12-13 05:03:46.183",
-      "dateFinished": "2018-12-13 05:03:49.622",
-      "status": "FINISHED",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-001916_1509275853", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n\nNow create a Splice table with 2-3 columns.  Don\u0027t put in any data yet:",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:12:21.148",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%spark.pyspark\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544676341323_-38875420", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-13 05:12:38.509", 
+      "dateCreated": "2018-12-13 04:45:41.323", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/python", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "python"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-044541_883279868", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 05:12:21.181", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n\nNow create a Splice table with 2-3 columns.  Don't put in any data yet:", 
+      "apps": [], 
+      "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow create a Splice table with 2-3 columns. Don\u0026rsquo;t put in any data yet:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<p>Now create a Splice table with 2-3 columns. Don&rsquo;t put in any data yet:</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544677910712_1786152747",
-      "id": "20181213-051150_972131295",
-      "dateCreated": "2018-12-13 05:11:50.712",
-      "dateStarted": "2018-12-13 05:12:21.162",
-      "dateFinished": "2018-12-13 05:12:21.181",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:11:43.064",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544677910712_1786152747", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 05:12:21.162", 
+      "dateUpdated": "2018-12-13 05:12:21.148", 
+      "dateCreated": "2018-12-13 05:11:50.712", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544677678469_403285373",
-      "id": "20181213-050758_1567881595",
-      "dateCreated": "2018-12-13 05:07:58.469",
-      "dateStarted": "2018-12-13 05:09:07.170",
-      "dateFinished": "2018-12-13 05:09:08.509",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-051150_972131295", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n\nNow create some Spark data (similar to what was done in the previous notebook), and populate the Splice table you just created:",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:12:40.248",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
+      "dateFinished": "2018-12-13 05:09:08.509", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544677678469_403285373", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 05:09:07.170", 
+      "dateUpdated": "2018-12-13 05:11:43.064", 
+      "dateCreated": "2018-12-13 05:07:58.469", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-050758_1567881595", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 05:12:40.255", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n\nNow create some Spark data (similar to what was done in the previous notebook), and populate the Splice table you just created:", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow create some Spark data (similar to what was done in the previous notebook), and populate the Splice table you just created:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<p>Now create some Spark data (similar to what was done in the previous notebook), and populate the Splice table you just created:</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544677663331_-384265465",
-      "id": "20181213-050743_390744146",
-      "dateCreated": "2018-12-13 05:07:43.331",
-      "dateStarted": "2018-12-13 05:12:40.247",
-      "dateFinished": "2018-12-13 05:12:40.255",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:11:36.791",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544677663331_-384265465", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 05:12:40.247", 
+      "dateUpdated": "2018-12-13 05:12:40.248", 
+      "dateCreated": "2018-12-13 05:07:43.331", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionSupport": true,
-          "completionKey": "TAB"
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544676141971_-1222160163",
-      "id": "20181213-044221_1507596132",
-      "dateCreated": "2018-12-13 04:42:21.971",
-      "dateStarted": "2018-12-13 05:10:16.973",
-      "dateFinished": "2018-12-13 05:10:19.206",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-050743_390744146", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n\nShow that it made it into the Splice table:",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:11:14.470",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
+      "dateFinished": "2018-12-13 05:10:19.206", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%spark.pyspark\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544676141971_-1222160163", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 05:10:16.973", 
+      "dateUpdated": "2018-12-13 05:11:36.791", 
+      "dateCreated": "2018-12-13 04:42:21.971", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/python", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "python"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-044221_1507596132", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 05:11:17.192", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n\nShow that it made it into the Splice table:", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eShow that it made it into the Splice table:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<p>Show that it made it into the Splice table:</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544677827232_-1560397229",
-      "id": "20181213-051027_1555680589",
-      "dateCreated": "2018-12-13 05:10:27.232",
-      "dateStarted": "2018-12-13 05:11:14.476",
-      "dateFinished": "2018-12-13 05:11:17.192",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 05:11:14.307",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544677827232_-1560397229", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 05:11:14.476", 
+      "dateUpdated": "2018-12-13 05:11:14.470", 
+      "dateCreated": "2018-12-13 05:10:27.232", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-051027_1555680589", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "dateFinished": "2018-12-13 05:10:55.552", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544677823768_351914687", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 05:10:55.396", 
+      "dateUpdated": "2018-12-13 05:11:14.307", 
+      "dateCreated": "2018-12-13 05:10:23.768", 
+      "config": {
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "I": "string",
-                      "F": "string",
-                      "V": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                      "I": "string", 
+                      "V": "string", 
+                      "F": "string"
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544677823768_351914687",
-      "id": "20181213-051023_494572003",
-      "dateCreated": "2018-12-13 05:10:23.768",
-      "dateStarted": "2018-12-13 05:10:55.396",
-      "dateFinished": "2018-12-13 05:10:55.552",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-051023_494572003", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Developer\u0027s Class, Part II*. \n\nVisit [*Our Training Classes*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:21:42.339",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 02:21:42.352", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Where to Go Next\nCongratulations! You've just completed the *Splice Machine Developer's Class, Part II*. \n\nVisit [*Our Training Classes*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Developer\u0026rsquo;s Class, Part II\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Classes\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Congratulations! You&rsquo;ve just completed the <em>Splice Machine Developer&rsquo;s Class, Part II</em>. </p>\n<p>Visit <a href=\"/#/notebook/2DWTR5ZBH\"><em>Our Training Classes</em></a> notebook to learn about our other training classes.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544571374515_976792786",
-      "id": "20181211-233614_1414265645",
-      "dateCreated": "2018-12-11 23:36:14.515",
-      "dateStarted": "2018-12-12 02:21:42.340",
-      "dateFinished": "2018-12-12 02:21:42.352",
-      "status": "FINISHED",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544571374515_976792786", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 02:21:42.340", 
+      "dateUpdated": "2018-12-12 02:21:42.339", 
+      "dateCreated": "2018-12-11 23:36:14.515", 
+      "config": {
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-233614_1414265645", 
       "progressUpdateIntervalMs": 500
     }
-  ],
-  "name": "Splice Machine Training / For Developers, Part II / l. Exercises",
-  "id": "2DZ94J7Y2",
-  "noteParams": {},
-  "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  ], 
   "config": {
     "isZeppelinNotebookCronEnable": false
-  },
-  "info": {}
+  }, 
+  "id": "2DZ94J7Y2"
 }

@@ -1,23 +1,23 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction to Splice Machine for DBAs\nThis curriculum is recommended for DBAs who are working with Splice Machine. To understand the topics in this section, you need to have experience with databases and be comfortable working with Hadoop. You can expect to spend 2-3 hours completing this curriculum.\n\nNote that each notebook contains a link to the next notebook in the sequence, and most notebooks also contain links to related pages in our Splice Machine Documentation web.\n\nThis is the sequence of notebooks in our *Splice Machine DBAs* class:\n\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e1.\u003c/td\u003e\n            \u003ctd\u003eIf you\u0027ve not already done so, please visit our \u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eSplice Machine Basics\u003c/em\u003e\u003c/a\u003e notebook for an overview of Splice Machine before diving into this set of notebooks.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e2.\u003c/td\u003e\n            \u003ctd\u003eAnd if you\u0027re new to using Zeppelin, our \u003ca href\u003d\"/#/notebook/2DV36AEJ2\"\u003e\u003cem\u003eZeppelin Notebook Basics\u003c/em\u003e\u003c/a\u003e notebook is a brief introduction to running and creating/modifying Zeppelin notebooks, which you\u0027ll need to know before proceeding with the other notebooks in this section.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e3.\u003c/td\u003e\n            \u003ctd\u003eThis class starts with our \u003ca href\u003d\"/#/notebook/2DUMZ6BTQ\"\u003e\u003cem\u003eImporting Data and Running Queries\u003c/em\u003e\u003c/a\u003e notebook, which introduces you to querying your Splice Machine database.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e4.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DX9MPD59\"\u003e\u003cem\u003eTuning Queries for Performance\u003c/em\u003e\u003c/a\u003e notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, including: collecting statistics, compacting, creating primary keys and indexes, and strategies for joining tables.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e5.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXU61KR1\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e notebook introduces the dashboard you can use to monitor queries sent to the Spark engine; this allows you to follow the progress of queries running in Spark, monitor GC usage, and terminate queries when necessary.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e6.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eExplaining and Hinting\u003c/em\u003e\u003c/a\u003e notebook teaches you how to understand query execution plans and how to use \u003cem\u003ehints\u003c/em\u003e to influence execution plans.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e7.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXCBRCK2\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e notebook is a more in-depth walk-through of creating, populating, and querying TPCH benchmark data in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e8.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXZUCREK\"\u003e\u003cem\u003eCreating Custom Stored Procedures\u003c/em\u003e\u003c/a\u003e notebook show you how to create and deploy custom, stored functions and procedures that you can call from your SQL queries in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Introduction to Splice Machine for DBAs\nThis class is recommended for DBAs who are working with Splice Machine. To understand this content, you need to:\n\n* have experience with databases\n* be comfortable working with Hadoop. \n\nYou can expect to spend 2-3 hours completing this *Splice Machine DBAs* class, which contains the following sequence of notebooks:\n\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e1.\u003c/td\u003e\n            \u003ctd\u003eIf you\u0027ve not already done so, please visit our \u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eSplice Machine Basics\u003c/em\u003e\u003c/a\u003e notebook for an overview of Splice Machine before diving into this set of notebooks.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e2.\u003c/td\u003e\n            \u003ctd\u003eAnd if you\u0027re new to using Zeppelin, our \u003ca href\u003d\"/#/notebook/2DV36AEJ2\"\u003e\u003cem\u003eZeppelin Notebook Basics\u003c/em\u003e\u003c/a\u003e notebook is a brief introduction to running and creating/modifying Zeppelin notebooks, which you\u0027ll need to know before proceeding with the other notebooks in this section.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e3.\u003c/td\u003e\n            \u003ctd\u003eThis class starts with our \u003ca href\u003d\"/#/notebook/2DUMZ6BTQ\"\u003e\u003cem\u003eImporting Data and Running Queries\u003c/em\u003e\u003c/a\u003e notebook, which introduces you to querying your Splice Machine database.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e4.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DX9MPD59\"\u003e\u003cem\u003eTuning Queries for Performance\u003c/em\u003e\u003c/a\u003e notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, including: collecting statistics, compacting, creating primary keys and indexes, and strategies for joining tables.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e5.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXU61KR1\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e notebook introduces the dashboard you can use to monitor queries sent to the Spark engine; this allows you to follow the progress of queries running in Spark, monitor GC usage, and terminate queries when necessary.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e6.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eExplaining and Hinting\u003c/em\u003e\u003c/a\u003e notebook teaches you how to understand query execution plans and how to use \u003cem\u003ehints\u003c/em\u003e to influence execution plans.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e7.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXCBRCK2\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e notebook is a more in-depth walk-through of creating, populating, and querying TPCH benchmark data in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e8.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXZUCREK\"\u003e\u003cem\u003eCreating Custom Stored Procedures\u003c/em\u003e\u003c/a\u003e notebook show you how to create and deploy custom, stored functions and procedures that you can call from your SQL queries in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\nNote that each notebook contains a link to the next notebook in the sequence, and most notebooks also contain links to related pages in our Splice Machine Documentation web.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-12 01:27:42.444",
+      "dateUpdated": "2018-12-26 19:16:03.270",
       "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
         "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
-        "editorHide": true,
-        "results": {},
-        "enabled": true
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -28,7 +28,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eIntroduction to Splice Machine for DBAs\u003c/h1\u003e\n\u003cp\u003eThis curriculum is recommended for DBAs who are working with Splice Machine. To understand the topics in this section, you need to have experience with databases and be comfortable working with Hadoop. You can expect to spend 2-3 hours completing this curriculum.\u003c/p\u003e\n\u003cp\u003eNote that each notebook contains a link to the next notebook in the sequence, and most notebooks also contain links to related pages in our Splice Machine Documentation web.\u003c/p\u003e\n\u003cp\u003eThis is the sequence of notebooks in our \u003cem\u003eSplice Machine DBAs\u003c/em\u003e class:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e1.\u003c/td\u003e\n            \u003ctd\u003eIf you\u0027ve not already done so, please visit our \u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eSplice Machine Basics\u003c/em\u003e\u003c/a\u003e notebook for an overview of Splice Machine before diving into this set of notebooks.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e2.\u003c/td\u003e\n            \u003ctd\u003eAnd if you\u0027re new to using Zeppelin, our \u003ca href\u003d\"/#/notebook/2DV36AEJ2\"\u003e\u003cem\u003eZeppelin Notebook Basics\u003c/em\u003e\u003c/a\u003e notebook is a brief introduction to running and creating/modifying Zeppelin notebooks, which you\u0027ll need to know before proceeding with the other notebooks in this section.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e3.\u003c/td\u003e\n            \u003ctd\u003eThis class starts with our \u003ca href\u003d\"/#/notebook/2DUMZ6BTQ\"\u003e\u003cem\u003eImporting Data and Running Queries\u003c/em\u003e\u003c/a\u003e notebook, which introduces you to querying your Splice Machine database.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e4.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DX9MPD59\"\u003e\u003cem\u003eTuning Queries for Performance\u003c/em\u003e\u003c/a\u003e notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, including: collecting statistics, compacting, creating primary keys and indexes, and strategies for joining tables.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e5.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXU61KR1\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e notebook introduces the dashboard you can use to monitor queries sent to the Spark engine; this allows you to follow the progress of queries running in Spark, monitor GC usage, and terminate queries when necessary.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e6.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eExplaining and Hinting\u003c/em\u003e\u003c/a\u003e notebook teaches you how to understand query execution plans and how to use \u003cem\u003ehints\u003c/em\u003e to influence execution plans.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e7.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXCBRCK2\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e notebook is a more in-depth walk-through of creating, populating, and querying TPCH benchmark data in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e8.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXZUCREK\"\u003e\u003cem\u003eCreating Custom Stored Procedures\u003c/em\u003e\u003c/a\u003e notebook show you how to create and deploy custom, stored functions and procedures that you can call from your SQL queries in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eIntroduction to Splice Machine for DBAs\u003c/h1\u003e\n\u003cp\u003eThis class is recommended for DBAs who are working with Splice Machine. To understand this content, you need to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ehave experience with databases\u003c/li\u003e\n  \u003cli\u003ebe comfortable working with Hadoop.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eYou can expect to spend 2-3 hours completing this \u003cem\u003eSplice Machine DBAs\u003c/em\u003e class, which contains the following sequence of notebooks:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e1.\u003c/td\u003e\n            \u003ctd\u003eIf you\u0027ve not already done so, please visit our \u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eSplice Machine Basics\u003c/em\u003e\u003c/a\u003e notebook for an overview of Splice Machine before diving into this set of notebooks.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e2.\u003c/td\u003e\n            \u003ctd\u003eAnd if you\u0027re new to using Zeppelin, our \u003ca href\u003d\"/#/notebook/2DV36AEJ2\"\u003e\u003cem\u003eZeppelin Notebook Basics\u003c/em\u003e\u003c/a\u003e notebook is a brief introduction to running and creating/modifying Zeppelin notebooks, which you\u0027ll need to know before proceeding with the other notebooks in this section.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e3.\u003c/td\u003e\n            \u003ctd\u003eThis class starts with our \u003ca href\u003d\"/#/notebook/2DUMZ6BTQ\"\u003e\u003cem\u003eImporting Data and Running Queries\u003c/em\u003e\u003c/a\u003e notebook, which introduces you to querying your Splice Machine database.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e4.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DX9MPD59\"\u003e\u003cem\u003eTuning Queries for Performance\u003c/em\u003e\u003c/a\u003e notebook introduces a number of tips you can employ to help generate the lowest cost plan and best performance for your queries, including: collecting statistics, compacting, creating primary keys and indexes, and strategies for joining tables.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e5.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXU61KR1\"\u003e\u003cem\u003eUsing the Database Console\u003c/em\u003e\u003c/a\u003e notebook introduces the dashboard you can use to monitor queries sent to the Spark engine; this allows you to follow the progress of queries running in Spark, monitor GC usage, and terminate queries when necessary.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e6.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eExplaining and Hinting\u003c/em\u003e\u003c/a\u003e notebook teaches you how to understand query execution plans and how to use \u003cem\u003ehints\u003c/em\u003e to influence execution plans.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e7.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXCBRCK2\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e notebook is a more in-depth walk-through of creating, populating, and querying TPCH benchmark data in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e8.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2DXZUCREK\"\u003e\u003cem\u003eCreating Custom Stored Procedures\u003c/em\u003e\u003c/a\u003e notebook show you how to create and deploy custom, stored functions and procedures that you can call from your SQL queries in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eNote that each notebook contains a link to the next notebook in the sequence, and most notebooks also contain links to related pages in our Splice Machine Documentation web.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -36,8 +36,8 @@
       "jobName": "paragraph_1542400270189_-23293669",
       "id": "20181115-233342_1215178080",
       "dateCreated": "2018-11-16 12:31:10.000",
-      "dateStarted": "2018-12-12 01:27:42.444",
-      "dateFinished": "2018-12-12 01:27:42.473",
+      "dateStarted": "2018-12-26 19:16:03.271",
+      "dateFinished": "2018-12-26 19:16:03.292",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -46,32 +46,32 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-03 19:42:20.846",
       "config": {
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
         "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
-        "results": {},
-        "enabled": false,
-        "editorHide": true,
-        "tableHide": false
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003ePlease start this class with the \u003ca href\u003d\"/#/notebook/2DUMZ6BTQ\"\u003e\u003cem\u003eImporting Data and Running Queries\u003c/em\u003e\u003c/a\u003e notebook for an introduction to running Splice Machine database queries.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003ePlease start this class with the \u003ca href\u003d\"/#/notebook/2DUMZ6BTQ\"\u003e\u003cem\u003eImporting Data and Running Queries\u003c/em\u003e\u003c/a\u003e notebook for an introduction to running Splice Machine database queries.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542400270191_-1390200436",
@@ -86,13 +86,12 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "md:shared_process": []
   },
   "config": {
-    "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
-    "personalizedMode": "false"
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
   },
   "info": {}
 }

@@ -6,32 +6,32 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-02 20:08:06.032",
       "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "title": false,
-        "results": {},
         "enabled": false,
-        "fontSize": 9.0
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eVisualizing Results with Zeppelin\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats. Filtering allows you to insert special variables into the query, which gives you an input field to use to populate. Once the query is run it can be displayed using the available graphing options. The default is a table but other options are available. Once the graphic option is selected, you\u0026rsquo;ll see you can mouse-over the values to get more details.\u003c/p\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0026rsquo;ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eSimplify Query 2, adding two additional filters with default values\u003c/em\u003e. This allows us to change the values directly in the input fields instead of editing the queries.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the query \u0026ldquo;as-is\u0026rdquo;.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eChange the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats\u003c/em\u003e, so you can see some of the power of Zeppelin visualizations.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eRun each of these paragraphs to compare the outputs, then feel free to change the filters, graphs, etc. yourself.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eVisualizing Results with Zeppelin\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces you to the graphing and filtering capabilities of Zeppelin, which allow you to easily visualize query results in various formats. Filtering allows you to insert special variables into the query, which gives you an input field to use to populate. Once the query is run it can be displayed using the available graphing options. The default is a table but other options are available. Once the graphic option is selected, you\u0026rsquo;ll see you can mouse-over the values to get more details.\u003c/p\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll query the TPCH data, looking at specific supplier nations, and looking for specific account balances; we\u0026rsquo;ll display our results in different graphic formats to illustrate how useful the Zeppelin visualization tools can be. We\u0026rsquo;ll:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eSimplify Query 2, adding two additional filters with default values\u003c/em\u003e. This allows us to change the values directly in the input fields instead of editing the queries.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the query \u0026ldquo;as-is\u0026rdquo;.\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eChange the \u003ccode\u003enationName\u003c/code\u003e in the input box from \u003ccode\u003eFRANCE\u003c/code\u003e to \u003ccode\u003eROMANIA\u003c/code\u003e and display the results in several different formats\u003c/em\u003e, so you can see some of the power of Zeppelin visualizations.\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eRun each of these paragraphs to compare the outputs, then feel free to change the filters, graphs, etc. yourself.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542395179280_-1447041975",
@@ -43,70 +43,70 @@
     {
       "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n    s_name as Supplier\nfrom\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0} \norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:58:12.291",
+      "dateUpdated": "2018-12-28 02:43:30.821",
       "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
+              "keys": [
+                {
+                  "index": 0.0,
+                  "name": "BALANCE",
+                  "aggr": "sum"
+                }
+              ],
               "optionOpen": false,
+              "height": 300.0,
               "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "SUPPLIER": "string",
+                      "BALANCE": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                },
                 "lineChart": {
                   "rotate": {
                     "degree": "-45"
                   },
                   "xLabelStatus": "default"
-                },
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "BALANCE": "string",
-                      "SUPPLIER": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
                 }
               },
-              "commonSetting": {},
-              "keys": [
+              "values": [
                 {
-                  "name": "BALANCE",
-                  "index": 0.0,
+                  "index": 1.0,
+                  "name": "SUPPLIER",
                   "aggr": "sum"
                 }
               ],
+              "mode": "table",
               "groups": [],
-              "values": [
-                {
-                  "name": "SUPPLIER",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ]
+              "commonSetting": {}
             },
             "helium": {}
           }
         },
-        "enabled": true,
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
         "fontSize": 9.0,
-        "tableHide": false
+        "tableHide": false,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0
       },
       "settings": {
         "params": {
@@ -128,40 +128,50 @@
           }
         }
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "BALANCE\tSUPPLIER\n-503.99\tSupplier#000008583\n-556.78\tSupplier#000006587\n-563.34\tSupplier#000002766\n-572.40\tSupplier#000001154\n-580.83\tSupplier#000006672\n-598.82\tSupplier#000009363\n-640.95\tSupplier#000003029\n-653.25\tSupplier#000007391\n-685.94\tSupplier#000000145\n-701.24\tSupplier#000003892\n-720.02\tSupplier#000002548\n-749.47\tSupplier#000006517\n-777.28\tSupplier#000008211\n-955.74\tSupplier#000005197\n-971.99\tSupplier#000001845\n-986.14\tSupplier#000003627\n-993.76\tSupplier#000007956\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395179281_1345098367",
       "id": "20180115-083533_1027074665",
       "dateCreated": "2018-11-16 11:06:19.000",
+      "dateStarted": "2018-12-28 02:43:30.907",
+      "dateFinished": "2018-12-28 02:43:31.474",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:58:05.851",
+      "dateUpdated": "2018-12-28 02:43:35.548",
       "config": {
-        "tableHide": false,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/sql",
         "editorHide": false,
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
+              "optionOpen": false,
               "mode": "scatterChart",
-              "height": 239.006,
-              "optionOpen": false
+              "height": 239.006
             },
             "helium": {}
           }
         },
-        "enabled": true,
-        "fontSize": 9.0
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": true,
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 4.0
       },
       "settings": {
         "params": {
@@ -183,42 +193,53 @@
           }
         }
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "BALANCE\tSUPPLIER\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395179281_-2040910926",
       "id": "20180129-123733_1126963025",
       "dateCreated": "2018-11-16 11:06:19.000",
+      "dateStarted": "2018-12-28 02:43:35.590",
+      "dateFinished": "2018-12-28 02:43:35.730",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:57:58.632",
+      "dateUpdated": "2018-12-28 02:45:29.886",
       "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/sql",
         "editorHide": false,
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "stackedAreaChart",
-              "height": 239.006,
+              "keys": [
+                {
+                  "index": 1.0,
+                  "name": "SUPPLIER",
+                  "aggr": "sum"
+                }
+              ],
               "optionOpen": false,
+              "height": 239.006,
               "setting": {
-                "lineChart": {
+                "stackedAreaChart": {
+                  "style": "stack",
                   "rotate": {
                     "degree": "-45"
                   },
                   "xLabelStatus": "default"
                 },
                 "pieChart": {},
-                "multiBarChart": {
+                "lineChart": {
                   "rotate": {
                     "degree": "-45"
                   },
@@ -226,132 +247,46 @@
                 },
                 "scatterChart": {
                   "xAxis": {
-                    "name": "SUPPLIER",
                     "index": 1.0,
+                    "name": "SUPPLIER",
                     "aggr": "sum"
                   },
                   "yAxis": {
-                    "name": "BALANCE",
                     "index": 0.0,
+                    "name": "BALANCE",
                     "aggr": "sum"
                   }
                 },
-                "stackedAreaChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default",
-                  "style": "stack"
-                }
-              },
-              "keys": [
-                {
-                  "name": "SUPPLIER",
-                  "index": 1.0,
-                  "aggr": "sum"
-                }
-              ],
-              "groups": [],
-              "values": [
-                {
-                  "name": "BALANCE",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ],
-              "commonSetting": {}
-            },
-            "helium": {}
-          }
-        },
-        "enabled": true,
-        "fontSize": 9.0,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {
-          "nationName": "\u0027ROMANIA\u0027",
-          "balanceThreshold": "-500"
-        },
-        "forms": {
-          "nationName": {
-            "type": "TextBox",
-            "name": "nationName",
-            "defaultValue": "\u0027FRANCE\u0027",
-            "hidden": false
-          },
-          "balanceThreshold": {
-            "type": "TextBox",
-            "name": "balanceThreshold",
-            "defaultValue": "0",
-            "hidden": false
-          }
-        }
-      },
-      "apps": [],
-      "jobName": "paragraph_1542395179282_-1341363300",
-      "id": "20180129-123839_391823179",
-      "dateCreated": "2018-11-16 11:06:19.000",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-02 16:57:52.172",
-      "config": {
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionKey": true
-        },
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/sql",
-        "editorHide": false,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "multiBarChart",
-              "height": 239.006,
-              "optionOpen": false,
-              "setting": {
                 "multiBarChart": {
                   "rotate": {
                     "degree": "-45"
                   },
                   "xLabelStatus": "default"
-                },
-                "stackedAreaChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
                 }
               },
-              "commonSetting": {},
-              "keys": [
+              "values": [
                 {
-                  "name": "SUPPLIER",
-                  "index": 1.0,
+                  "index": 0.0,
+                  "name": "BALANCE",
                   "aggr": "sum"
                 }
               ],
+              "mode": "stackedAreaChart",
               "groups": [],
-              "values": [
-                {
-                  "name": "BALANCE",
-                  "index": 0.0,
-                  "aggr": "sum"
-                }
-              ]
+              "commonSetting": {}
             },
             "helium": {}
           }
         },
-        "enabled": true,
+        "editorMode": "ace/mode/sql",
         "fontSize": 9.0,
-        "tableHide": false
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": true,
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 4.0
       },
       "settings": {
         "params": {
@@ -373,12 +308,117 @@
           }
         }
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "BALANCE\tSUPPLIER\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542395179282_-1341363300",
+      "id": "20180129-123839_391823179",
+      "dateCreated": "2018-11-16 11:06:19.000",
+      "dateStarted": "2018-12-28 02:45:29.599",
+      "dateFinished": "2018-12-28 02:45:29.694",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\ts_nationkey \u003d n_nationkey\n\tand n_name \u003d ${nationName\u003d\u0027FRANCE\u0027}\n\tand s_acctbal \u003c ${balanceThreshold\u003d0}\norder by\n\ts_acctbal desc\n{limit 100}",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-28 02:45:34.632",
+      "config": {
+        "editorHide": false,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "keys": [
+                {
+                  "index": 1.0,
+                  "name": "SUPPLIER",
+                  "aggr": "sum"
+                }
+              ],
+              "optionOpen": false,
+              "height": 239.006,
+              "setting": {
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "values": [
+                {
+                  "index": 0.0,
+                  "name": "BALANCE",
+                  "aggr": "sum"
+                }
+              ],
+              "mode": "multiBarChart",
+              "groups": [],
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": true,
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 4.0
+      },
+      "settings": {
+        "params": {
+          "nationName": "\u0027ROMANIA\u0027",
+          "balanceThreshold": "-500"
+        },
+        "forms": {
+          "nationName": {
+            "type": "TextBox",
+            "name": "nationName",
+            "defaultValue": "\u0027FRANCE\u0027",
+            "hidden": false
+          },
+          "balanceThreshold": {
+            "type": "TextBox",
+            "name": "balanceThreshold",
+            "defaultValue": "0",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "BALANCE\tSUPPLIER\n-507.89\tSupplier#000006126\n-553.98\tSupplier#000003258\n-567.65\tSupplier#000005688\n-574.94\tSupplier#000006272\n-578.26\tSupplier#000003602\n-674.40\tSupplier#000001748\n-692.96\tSupplier#000006112\n-784.16\tSupplier#000006528\n-807.05\tSupplier#000009588\n-814.14\tSupplier#000001815\n-828.89\tSupplier#000008710\n-845.44\tSupplier#000000704\n-858.86\tSupplier#000001008\n-927.36\tSupplier#000009402\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395179282_1826840501",
       "id": "20180129-124117_290278524",
       "dateCreated": "2018-11-16 11:06:19.000",
+      "dateStarted": "2018-12-28 02:45:34.367",
+      "dateFinished": "2018-12-28 02:45:34.481",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -386,31 +426,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:07:17.425",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUKWWK84\"\u003e\u003cem\u003eTransactions with Spark and JDBC\u003c/em\u003e\u003c/a\u003e, introduces you to the transactional nature of Splice Machine and using JDBC to program transactions.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUKWWK84\"\u003e\u003cem\u003eTransactions with Spark and JDBC\u003c/em\u003e\u003c/a\u003e, introduces you to the transactional nature of Splice Machine and using JDBC to program transactions.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542395179283_-1257598368",
@@ -429,9 +469,9 @@
     "splicemachine:shared_process": []
   },
   "config": {
-    "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
-    "personalizedMode": "false"
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
   },
   "info": {}
 }

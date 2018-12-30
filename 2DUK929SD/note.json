@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-06 22:31:01.011",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUseful Database Utilities\u003c/h1\u003e\n\u003cp\u003eThis notebook describes a number of utilities that you may find useful. We\u0026rsquo;ll expand this list over time.\u003c/p\u003e\n\u003cp\u003eAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUseful Database Utilities\u003c/h1\u003e\n\u003cp\u003eThis notebook describes a number of utilities that you may find useful. We\u0026rsquo;ll expand this list over time.\u003c/p\u003e\n\u003cp\u003eAll you need to do is click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e to run each paragraph and see the results.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542394892708_1482012156",
@@ -42,420 +42,51 @@
       "title": "Display your Splice Machine Version Information",
       "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_GET_VERSION_INFO();",
       "user": "anonymous",
-      "dateUpdated": "2018-12-06 22:30:20.530",
+      "dateUpdated": "2018-12-28 01:52:47.629",
       "config": {
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/text",
         "title": true,
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 104.0,
+              "commonSetting": {},
               "optionOpen": false,
               "setting": {
                 "table": {
+                  "updated": false,
                   "tableGridState": {},
                   "tableColumnTypeState": {
+                    "updated": false,
                     "names": {
-                      "HOSTNAME": "string",
                       "RELEASE": "string",
+                      "URL": "string",
+                      "HOSTNAME": "string",
                       "IMPLEMENTATION_VERSION": "string",
-                      "BUILD_TIME": "string",
-                      "URL": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true,
-        "fontSize": 9.0,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542394892708_394384365",
-      "id": "20170424-135902_1116885980",
-      "dateCreated": "2018-11-16 11:01:32.000",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "List the Schemas in Your Database",
-      "text": "%splicemachine\nselect schemaname from sys.sysschemas;",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-06 22:30:28.774",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {
-                    "columns": [
-                      {
-                        "name": "SCHEMANAME",
-                        "visible": true,
-                        "width": "*",
-                        "sort": {
-                          "priority": 0.0,
-                          "direction": "asc"
-                        },
-                        "filters": [
-                          {}
-                        ],
-                        "pinned": ""
-                      }
-                    ],
-                    "scrollFocus": {},
-                    "selection": [],
-                    "grouping": {
-                      "grouping": [],
-                      "aggregations": [],
-                      "rowExpandedStates": {}
-                    },
-                    "treeView": {},
-                    "pagination": {
-                      "paginationCurrentPage": 1.0,
-                      "paginationPageSize": 250.0
+                      "BUILD_TIME": "string"
                     }
                   },
-                  "tableColumnTypeState": {
-                    "names": {
-                      "SCHEMANAME": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
                   "tableOptionValue": {
-                    "useFilter": false,
                     "showPagination": false,
+                    "useFilter": false,
                     "showAggregationFooter": false
                   },
-                  "updated": false,
-                  "initialized": false
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "commonSetting": {}
+              "mode": "table",
+              "height": 104.0
             }
           }
         },
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544134270341_-614588702",
-      "id": "20181206-221110_733848045",
-      "dateCreated": "2018-12-06 22:11:10.341",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "List the Tables in Your Database",
-      "text": "%splicemachine\n\nselect t.TABLENAME, s.SCHEMANAME from SYS.SYSTABLES t, SYS.SYSSCHEMAS s where t.SCHEMAID \u003d s.SCHEMAID;",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-06 22:30:34.981",
-      "config": {
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        },
-        "colWidth": 12.0,
         "editorMode": "ace/mode/text",
-        "editorHide": false,
-        "title": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "TABLENAME": "string",
-                      "SCHEMANAME": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true,
         "fontSize": 9.0,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542394892709_-1175510987",
-      "id": "20170424-135930_879534749",
-      "dateCreated": "2018-11-16 11:01:32.000",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "List the Indexes in Your Database",
-      "text": "%splicemachine\nSELECT \n\t\t   S.SCHEMANAME AS TABLE_SCHEM, \n\t\t   T.TABLENAME AS TABLE_NAME, \n\t\t   (CASE WHEN CONGLOMS.DESCRIPTOR.isUnique() THEN FALSE ELSE TRUE END) AS NON_UNIQUE, \n\t\t   CONGLOMS.CONGLOMERATENAME AS INDEX_NAME, \n\t\t   CAST (CONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) AS SMALLINT) AS ORDINAL_POSITION, \n\t\t   COLS.COLUMNNAME AS COLUMN_NAME, \n\t\t   CASE WHEN CONGLOMS.DESCRIPTOR.isAscending( \n\t\t\t\tCONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER)) THEN \u0027A\u0027 ELSE \u0027D\u0027 END AS ASC_OR_DESC, \n\t\t   CONGLOMS.CONGLOMERATENUMBER AS CONGLOM_NO \n\tFROM \n\t\t\t SYS.SYSCOLUMNS COLS\n\t\t\t,SYS.SYSTABLES T \n\t\t\t,SYS.SYSCONGLOMERATES CONGLOMS \n\t\t\t,SYS.SYSSCHEMAS S \n\tWHERE T.TABLEID \u003d CONGLOMS.TABLEID AND T.TABLEID \u003d COLS.REFERENCEID \n\t  AND T.SCHEMAID \u003d S.SCHEMAID \n\t  AND CONGLOMS.ISINDEX \n\t  AND (CASE WHEN CONGLOMS.DESCRIPTOR IS NOT NULL THEN \n\t\t\t\tCONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) ELSE \n\t\t\t\t0 END) \u003c\u003e 0  \n\tORDER BY TABLE_SCHEM, TABLE_NAME, INDEX_NAME, ORDINAL_POSITION",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-06 22:30:42.663",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "TABLE_SCHEM": "string",
-                      "TABLE_NAME": "string",
-                      "NON_UNIQUE": "string",
-                      "INDEX_NAME": "string",
-                      "ORDINAL_POSITION": "string",
-                      "COLUMN_NAME": "string",
-                      "ASC_OR_DESC": "string",
-                      "CONGLOM_NO": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
+        "tableHide": false,
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
+          "editOnDblClick": false,
+          "language": "text"
         },
-        "editorMode": "ace/mode/sql",
-        "title": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544134122330_-1720313085",
-      "id": "20181206-220842_798160735",
-      "dateCreated": "2018-12-06 22:08:42.333",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "List the Primary Keys in Your Database",
-      "text": "%splicemachine\nSELECT  \n\t\t   S.SCHEMANAME AS TABLE_SCHEM, T.TABLENAME AS TABLE_NAME, \n\t\t   COLS.COLUMNNAME AS COLUMN_NAME, \n\t\t   CAST (CONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) AS SMALLINT) AS KEY_SEQ\n\tFROM  \n\t\t\tSYS.SYSTABLES T \n\t\t\t, SYS.SYSSCHEMAS S \n\t\t\t, SYS.SYSCONSTRAINTS CONS \n\t\t\t, SYS.SYSPRIMARYKEYS KEYS \n\t\t\t, SYS.SYSCONGLOMERATES CONGLOMS \n\t\t\t, SYS.SYSCOLUMNS COLS \n\tWHERE \n\t\t  T.SCHEMAID \u003d S.SCHEMAID AND\t\n\t\t  T.TABLEID \u003d COLS.REFERENCEID AND T.TABLEID \u003d CONGLOMS.TABLEID AND \n\t\t  CONS.TABLEID \u003d T.TABLEID AND CONS.TYPE \u003d \u0027P\u0027 AND \n\t\t  CONS.CONSTRAINTID \u003d KEYS.CONSTRAINTID AND \n\t\t  (CASE WHEN CONGLOMS.DESCRIPTOR IS NOT NULL THEN \n\t\t\t\tCONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) ELSE \n\t\t\t\t0 END) \u003c\u003e 0 AND \n\t\t  KEYS.CONGLOMERATEID \u003d CONGLOMS.CONGLOMERATEID ",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-06 22:41:41.041",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "TABLE_SCHEM": "string",
-                      "TABLE_NAME": "string",
-                      "COLUMN_NAME": "string",
-                      "KEY_SEQ": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544135921226_1831126128",
-      "id": "20181206-223841_893492919",
-      "dateCreated": "2018-12-06 22:38:41.226",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "List the Running Operations In Your Database (Both Control and Spark)",
-      "text": "%splicemachine\ncall syscs_util.syscs_get_running_operations();",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-06 22:30:51.077",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "UUID": "string",
-                      "USER": "string",
-                      "HOSTNAME": "string",
-                      "SESSION": "string",
-                      "SQL": "string",
-                      "SUBMITTED": "string",
-                      "ELAPSED": "string",
-                      "ENGINE": "string",
-                      "JOBTYPE": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": true,
-        "tableHide": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544134672132_-658787717",
-      "id": "20181206-221752_1019755981",
-      "dateCreated": "2018-12-06 22:17:52.132",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Where to Go Next\n\nYou\u0027re now ready to learn about the [*The Life of a Query*](/#/notebook/2DWS5FM39) in the next notebook in this class.",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-01 04:55:56.961",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "results": {},
-        "enabled": false,
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "fontSize": 9.0,
-        "editorHide": true,
-        "tableHide": false
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -465,10 +96,439 @@
         "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;re now ready to learn about the \u003ca href\u003d\"/#/notebook/2DWS5FM39\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e in the next notebook in this class.\u003c/p\u003e\n\u003c/div\u003e"
+            "type": "TABLE",
+            "data": "HOSTNAME\tRELEASE\tIMPLEMENTATION_VERSION\tBUILD_TIME\tURL\nlocalhost:1527\t2.7.0.1845\tUNKNOWN\t2018-12-07 05:21 +0000\thttp://www.splicemachine.com\n"
           }
         ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542394892708_394384365",
+      "id": "20170424-135902_1116885980",
+      "dateCreated": "2018-11-16 11:01:32.000",
+      "dateStarted": "2018-12-28 01:52:47.646",
+      "dateFinished": "2018-12-28 01:52:47.962",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "List the Schemas in Your Database",
+      "text": "%splicemachine\nselect schemaname from sys.sysschemas;",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-28 01:55:50.265",
+      "config": {
+        "title": true,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "commonSetting": {},
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {
+                    "pagination": {
+                      "paginationPageSize": 250.0,
+                      "paginationCurrentPage": 1.0
+                    },
+                    "selection": [],
+                    "columns": [
+                      {
+                        "sort": {
+                          "priority": 0.0,
+                          "direction": "asc"
+                        },
+                        "name": "SCHEMANAME",
+                        "width": "*",
+                        "pinned": "",
+                        "visible": true,
+                        "filters": [
+                          {}
+                        ]
+                      }
+                    ],
+                    "treeView": {},
+                    "scrollFocus": {},
+                    "grouping": {
+                      "rowExpandedStates": {},
+                      "aggregations": [],
+                      "grouping": []
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "SCHEMANAME": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }
+              },
+              "mode": "table",
+              "height": 300.0
+            }
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "SCHEMANAME\nDEV1\nDEV2\nDS\nNULLID\nSPLICE\nSQLJ\nSYS\nSYSCAT\nSYSCS_DIAG\nSYSCS_UTIL\nSYSFUN\nSYSIBM\nSYSPROC\nSYSSTAT\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544134270341_-614588702",
+      "id": "20181206-221110_733848045",
+      "dateCreated": "2018-12-06 22:11:10.341",
+      "dateStarted": "2018-12-28 01:55:50.280",
+      "dateFinished": "2018-12-28 01:55:50.359",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "List the Tables in Your Database",
+      "text": "%splicemachine\n\nselect t.TABLENAME, s.SCHEMANAME from SYS.SYSTABLES t, SYS.SYSSCHEMAS s where t.SCHEMAID \u003d s.SCHEMAID;",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-28 01:55:54.506",
+      "config": {
+        "editorHide": false,
+        "title": true,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "commonSetting": {},
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "SCHEMANAME": "string",
+                      "TABLENAME": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }
+              },
+              "mode": "table",
+              "height": 300.0
+            }
+          }
+        },
+        "editorMode": "ace/mode/text",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "text"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "TABLENAME\tSCHEMANAME\nCUSTOMER\tDEV2\nIMPORT_EXAMPLE\tDS\nIMPORT_EXAMPLE\tDEV1\nINDEX_EXAMPLE\tDEV1\nJOIN1\tDEV1\nJOIN2\tDEV1\nJOIN3\tDEV1\nJOIN4\tDEV1\nLINEITEM\tDEV2\nNATION\tDEV2\nORDERS\tDEV2\nPART\tDEV2\nPARTSUPP\tDEV2\nREGION\tDEV2\nSUPPLIER\tDEV2\nSYSALIASES\tSYS\nSYSBACKUP\tSYS\nSYSBACKUPFILESET\tSYS\nSYSBACKUPITEMS\tSYS\nSYSBACKUPJOBS\tSYS\nSYSCHECKS\tSYS\nSYSCOLPERMS\tSYS\nSYSCOLUMNS\tSYS\nSYSCOLUMNSTATISTICS\tSYS\nSYSCOLUMNSTATS\tSYS\nSYSCONGLOMERATES\tSYS\nSYSCONSTRAINTS\tSYS\nSYSDEPENDS\tSYS\nSYSDUMMY1\tSYSIBM\nSYSFILES\tSYS\nSYSFOREIGNKEYS\tSYS\nSYSKEYS\tSYS\nSYSPERMS\tSYS\nSYSPHYSICALSTATS\tSYS\nSYSPRIMARYKEYS\tSYS\nSYSROLES\tSYS\nSYSROUTINEPERMS\tSYS\nSYSSCHEMAPERMS\tSYS\nSYSSCHEMAS\tSYS\nSYSSEQUENCES\tSYS\nSYSSNAPSHOTS\tSYS\nSYSSOURCECODE\tSYS\nSYSSTATEMENTS\tSYS\nSYSTABLEPERMS\tSYS\nSYSTABLES\tSYS\nSYSTABLESTATISTICS\tSYS\nSYSTABLESTATS\tSYS\nSYSTOKENS\tSYS\nSYSTRIGGERS\tSYS\nSYSUSERS\tSYS\nSYSVIEWS\tSYS\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542394892709_-1175510987",
+      "id": "20170424-135930_879534749",
+      "dateCreated": "2018-11-16 11:01:32.000",
+      "dateStarted": "2018-12-28 01:55:54.524",
+      "dateFinished": "2018-12-28 01:55:54.596",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "List the Indexes in Your Database",
+      "text": "%splicemachine\nSELECT \n\t\t   S.SCHEMANAME AS TABLE_SCHEM, \n\t\t   T.TABLENAME AS TABLE_NAME, \n\t\t   (CASE WHEN CONGLOMS.DESCRIPTOR.isUnique() THEN FALSE ELSE TRUE END) AS NON_UNIQUE, \n\t\t   CONGLOMS.CONGLOMERATENAME AS INDEX_NAME, \n\t\t   CAST (CONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) AS SMALLINT) AS ORDINAL_POSITION, \n\t\t   COLS.COLUMNNAME AS COLUMN_NAME, \n\t\t   CASE WHEN CONGLOMS.DESCRIPTOR.isAscending( \n\t\t\t\tCONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER)) THEN \u0027A\u0027 ELSE \u0027D\u0027 END AS ASC_OR_DESC, \n\t\t   CONGLOMS.CONGLOMERATENUMBER AS CONGLOM_NO \n\tFROM \n\t\t\t SYS.SYSCOLUMNS COLS\n\t\t\t,SYS.SYSTABLES T \n\t\t\t,SYS.SYSCONGLOMERATES CONGLOMS \n\t\t\t,SYS.SYSSCHEMAS S \n\tWHERE T.TABLEID \u003d CONGLOMS.TABLEID AND T.TABLEID \u003d COLS.REFERENCEID \n\t  AND T.SCHEMAID \u003d S.SCHEMAID \n\t  AND CONGLOMS.ISINDEX \n\t  AND (CASE WHEN CONGLOMS.DESCRIPTOR IS NOT NULL THEN \n\t\t\t\tCONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) ELSE \n\t\t\t\t0 END) \u003c\u003e 0  \n\tORDER BY TABLE_SCHEM, TABLE_NAME, INDEX_NAME, ORDINAL_POSITION",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-28 01:56:02.534",
+      "config": {
+        "title": true,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "commonSetting": {},
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "ASC_OR_DESC": "string",
+                      "NON_UNIQUE": "string",
+                      "TABLE_SCHEM": "string",
+                      "CONGLOM_NO": "string",
+                      "INDEX_NAME": "string",
+                      "ORDINAL_POSITION": "string",
+                      "TABLE_NAME": "string",
+                      "COLUMN_NAME": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }
+              },
+              "mode": "table",
+              "height": 300.0
+            }
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "TABLE_SCHEM\tTABLE_NAME\tNON_UNIQUE\tINDEX_NAME\tORDINAL_POSITION\tCOLUMN_NAME\tASC_OR_DESC\tCONGLOM_NO\nDEV1\tINDEX_EXAMPLE\ttrue\tIJ\t1\tJ\tA\t1697\nDEV1\tINDEX_EXAMPLE\ttrue\tIJI\t1\tJ\tA\t1713\nDEV1\tINDEX_EXAMPLE\ttrue\tIJI\t2\tI\tA\t1713\nSYS\tSYSALIASES\tfalse\tSYSALIASES_INDEX1\t1\tSCHEMAID\tA\t513\nSYS\tSYSALIASES\tfalse\tSYSALIASES_INDEX1\t2\tALIAS\tA\t513\nSYS\tSYSALIASES\tfalse\tSYSALIASES_INDEX1\t3\tNAMESPACE\tA\t513\nSYS\tSYSALIASES\tfalse\tSYSALIASES_INDEX2\t1\tALIASID\tA\t641\nSYS\tSYSALIASES\tfalse\tSYSALIASES_INDEX3\t1\tSCHEMAID\tA\t801\nSYS\tSYSALIASES\tfalse\tSYSALIASES_INDEX3\t2\tSPECIFICNAME\tA\t801\nSYS\tSYSBACKUP\tfalse\tSYSBACKUP_INDEX1\t1\tBACKUP_ID\tA\t1009\nSYS\tSYSBACKUPFILESET\tfalse\tSYSBACKUPFILESET_INDEX1\t1\tBACKUP_ITEM\tA\t1153\nSYS\tSYSBACKUPFILESET\tfalse\tSYSBACKUPFILESET_INDEX1\t2\tREGION_NAME\tA\t1153\nSYS\tSYSBACKUPFILESET\tfalse\tSYSBACKUPFILESET_INDEX1\t3\tFILE_NAME\tA\t1153\nSYS\tSYSBACKUPITEMS\ttrue\tSYSBACKUPITEMS_INDEX1\t1\tBACKUP_ID\tA\t1329\nSYS\tSYSBACKUPITEMS\tfalse\tSYSBACKUPITEMS_INDEX2\t1\tBACKUP_ID\tA\t1489\nSYS\tSYSBACKUPITEMS\tfalse\tSYSBACKUPITEMS_INDEX2\t2\tITEM\tA\t1489\nSYS\tSYSBACKUPJOBS\tfalse\tSYSBACKUPJOBS_INDEX1\t1\tJOB_ID\tA\t1441\nSYS\tSYSCHECKS\tfalse\tSYSCHECKS_INDEX1\t1\tCONSTRAINTID\tA\t481\nSYS\tSYSCOLPERMS\tfalse\tSYSCOLPERMS_INDEX1\t1\tGRANTEE\tA\t753\nSYS\tSYSCOLPERMS\tfalse\tSYSCOLPERMS_INDEX1\t2\tTABLEID\tA\t753\nSYS\tSYSCOLPERMS\tfalse\tSYSCOLPERMS_INDEX1\t3\tTYPE\tA\t753\nSYS\tSYSCOLPERMS\tfalse\tSYSCOLPERMS_INDEX1\t4\tGRANTOR\tA\t753\nSYS\tSYSCOLPERMS\tfalse\tSYSCOLPERMS_INDEX2\t1\tCOLPERMSID\tA\t881\nSYS\tSYSCOLPERMS\ttrue\tSYSCOLPERMS_INDEX3\t1\tTABLEID\tA\t1121\nSYS\tSYSCOLUMNS\tfalse\tSYSCOLUMNS_INDEX1\t1\tREFERENCEID\tA\t177\nSYS\tSYSCOLUMNS\tfalse\tSYSCOLUMNS_INDEX1\t2\tCOLUMNNAME\tA\t177\nSYS\tSYSCOLUMNS\ttrue\tSYSCOLUMNS_INDEX2\t1\tCOLUMNDEFAULTID\tA\t193\nSYS\tSYSCOLUMNSTATS\tfalse\tSYSCOLUMNSTATS_INDEX1\t1\tCONGLOM_ID\tA\t1393\nSYS\tSYSCOLUMNSTATS\tfalse\tSYSCOLUMNSTATS_INDEX1\t2\tPARTITION_ID\tA\t1393\nSYS\tSYSCOLUMNSTATS\tfalse\tSYSCOLUMNSTATS_INDEX1\t3\tCOLUMN_ID\tA\t1393\nSYS\tSYSCOLUMNSTATS\ttrue\tSYSCOLUMNSTATS_INDEX2\t1\tCONGLOM_ID\tA\t1537\nSYS\tSYSCOLUMNSTATS\ttrue\tSYSCOLUMNSTATS_INDEX2\t2\tPARTITION_ID\tA\t1537\nSYS\tSYSCOLUMNSTATS\ttrue\tSYSCOLUMNSTATS_INDEX3\t1\tCONGLOM_ID\tA\t1617\nSYS\tSYSCONGLOMERATES\ttrue\tSYSCONGLOMERATES_INDEX1\t1\tCONGLOMERATEID\tA\t97\nSYS\tSYSCONGLOMERATES\tfalse\tSYSCONGLOMERATES_INDEX2\t1\tCONGLOMERATENAME\tA\t113\nSYS\tSYSCONGLOMERATES\tfalse\tSYSCONGLOMERATES_INDEX2\t2\tSCHEMAID\tA\t113\nSYS\tSYSCONGLOMERATES\ttrue\tSYSCONGLOMERATES_INDEX3\t1\tTABLEID\tA\t129\nSYS\tSYSCONSTRAINTS\tfalse\tSYSCONSTRAINTS_INDEX1\t1\tCONSTRAINTID\tA\t433\nSYS\tSYSCONSTRAINTS\tfalse\tSYSCONSTRAINTS_INDEX2\t1\tCONSTRAINTNAME\tA\t561\nSYS\tSYSCONSTRAINTS\tfalse\tSYSCONSTRAINTS_INDEX2\t2\tSCHEMAID\tA\t561\nSYS\tSYSCONSTRAINTS\ttrue\tSYSCONSTRAINTS_INDEX3\t1\tTABLEID\tA\t769\nSYS\tSYSDEPENDS\ttrue\tSYSDEPENDS_INDEX1\t1\tDEPENDENTID\tA\t417\nSYS\tSYSDEPENDS\ttrue\tSYSDEPENDS_INDEX2\t1\tPROVIDERID\tA\t577\nSYS\tSYSFILES\tfalse\tSYSFILES_INDEX1\t1\tFILENAME\tA\t545\nSYS\tSYSFILES\tfalse\tSYSFILES_INDEX1\t2\tSCHEMAID\tA\t545\nSYS\tSYSFILES\tfalse\tSYSFILES_INDEX2\t1\tFILEID\tA\t689\nSYS\tSYSFILES\tfalse\tSYSFILES_INDEX3\t1\tSCHEMAID\tA\t785\nSYS\tSYSFOREIGNKEYS\tfalse\tSYSFOREIGNKEYS_INDEX1\t1\tCONSTRAINTID\tA\t497\nSYS\tSYSFOREIGNKEYS\ttrue\tSYSFOREIGNKEYS_INDEX2\t1\tKEYCONSTRAINTID\tA\t657\nSYS\tSYSKEYS\tfalse\tSYSKEYS_INDEX1\t1\tCONSTRAINTID\tA\t449\nSYS\tSYSPERMS\tfalse\tSYSPERMS_INDEX1\t1\tUUID\tA\t1057\nSYS\tSYSPERMS\ttrue\tSYSPERMS_INDEX2\t1\tOBJECTID\tA\t1169\nSYS\tSYSPERMS\tfalse\tSYSPERMS_INDEX3\t1\tGRANTEE\tA\t1345\nSYS\tSYSPERMS\tfalse\tSYSPERMS_INDEX3\t2\tOBJECTID\tA\t1345\nSYS\tSYSPERMS\tfalse\tSYSPERMS_INDEX3\t3\tGRANTOR\tA\t1345\nSYS\tSYSPRIMARYKEYS\tfalse\tSYSPRIMARYKEYS_INDEX1\t1\tCONSTRAINTID\tA\t401\nSYS\tSYSROLES\tfalse\tSYSROLES_INDEX1\t1\tROLEID\tA\t977\nSYS\tSYSROLES\tfalse\tSYSROLES_INDEX1\t2\tGRANTEE\tA\t977\nSYS\tSYSROLES\tfalse\tSYSROLES_INDEX1\t3\tGRANTOR\tA\t977\nSYS\tSYSROLES\ttrue\tSYSROLES_INDEX2\t1\tROLEID\tA\t1201\nSYS\tSYSROLES\ttrue\tSYSROLES_INDEX2\t2\tISDEF\tA\t1201\nSYS\tSYSROLES\tfalse\tSYSROLES_INDEX3\t1\tUUID\tA\t1313\nSYS\tSYSROLES\ttrue\tSYSROLES_INDEX4\t1\tGRANTEE\tA\t1473\nSYS\tSYSROUTINEPERMS\tfalse\tSYSROUTINEPERMS_INDEX1\t1\tGRANTEE\tA\t817\nSYS\tSYSROUTINEPERMS\tfalse\tSYSROUTINEPERMS_INDEX1\t2\tALIASID\tA\t817\nSYS\tSYSROUTINEPERMS\tfalse\tSYSROUTINEPERMS_INDEX1\t3\tGRANTOR\tA\t817\nSYS\tSYSROUTINEPERMS\tfalse\tSYSROUTINEPERMS_INDEX2\t1\tROUTINEPERMSID\tA\t993\nSYS\tSYSROUTINEPERMS\ttrue\tSYSROUTINEPERMS_INDEX3\t1\tALIASID\tA\t1137\nSYS\tSYSSCHEMAPERMS\tfalse\tSYSSCHEMAPERMS_INDEX1\t1\tGRANTEE\tA\t1457\nSYS\tSYSSCHEMAPERMS\tfalse\tSYSSCHEMAPERMS_INDEX1\t2\tSCHEMAID\tA\t1457\nSYS\tSYSSCHEMAPERMS\tfalse\tSYSSCHEMAPERMS_INDEX1\t3\tGRANTOR\tA\t1457\nSYS\tSYSSCHEMAPERMS\tfalse\tSYSSCHEMAPERMS_INDEX2\t1\tSCHEMAPERMSID\tA\t1585\nSYS\tSYSSCHEMAPERMS\ttrue\tSYSSCHEMAPERMS_INDEX3\t1\tSCHEMAID\tA\t1633\nSYS\tSYSSCHEMAS\tfalse\tSYSSCHEMAS_INDEX1\t1\tSCHEMANAME\tA\t209\nSYS\tSYSSCHEMAS\tfalse\tSYSSCHEMAS_INDEX2\t1\tSCHEMAID\tA\t225\nSYS\tSYSSEQUENCES\tfalse\tSYSSEQUENCES_INDEX1\t1\tSEQUENCEID\tA\t961\nSYS\tSYSSEQUENCES\tfalse\tSYSSEQUENCES_INDEX2\t1\tSCHEMAID\tA\t1105\nSYS\tSYSSEQUENCES\tfalse\tSYSSEQUENCES_INDEX2\t2\tSEQUENCENAME\tA\t1105\nSYS\tSYSSNAPSHOTS\tfalse\tSYSSNAPSHOTS_INDEX1\t1\tSNAPSHOTNAME\tA\t1569\nSYS\tSYSSNAPSHOTS\tfalse\tSYSSNAPSHOTS_INDEX1\t2\tCONGLOMERATENUMBER\tA\t1569\nSYS\tSYSSOURCECODE\tfalse\tSYSSOURCECODE_INDEX1\t1\tSCHEMA_NAME\tA\t1505\nSYS\tSYSSOURCECODE\tfalse\tSYSSOURCECODE_INDEX1\t2\tOBJECT_NAME\tA\t1505\nSYS\tSYSSOURCECODE\tfalse\tSYSSOURCECODE_INDEX1\t3\tOBJECT_TYPE\tA\t1505\nSYS\tSYSSOURCECODE\tfalse\tSYSSOURCECODE_INDEX1\t4\tOBJECT_FORM\tA\t1505\nSYS\tSYSSTATEMENTS\tfalse\tSYSSTATEMENTS_INDEX1\t1\tSTMTID\tA\t529\nSYS\tSYSSTATEMENTS\tfalse\tSYSSTATEMENTS_INDEX2\t1\tSTMTNAME\tA\t673\nSYS\tSYSSTATEMENTS\tfalse\tSYSSTATEMENTS_INDEX2\t2\tSCHEMAID\tA\t673\nSYS\tSYSTABLEPERMS\tfalse\tSYSTABLEPERMS_INDEX1\t1\tGRANTEE\tA\t721\nSYS\tSYSTABLEPERMS\tfalse\tSYSTABLEPERMS_INDEX1\t2\tTABLEID\tA\t721\nSYS\tSYSTABLEPERMS\tfalse\tSYSTABLEPERMS_INDEX1\t3\tGRANTOR\tA\t721\nSYS\tSYSTABLEPERMS\tfalse\tSYSTABLEPERMS_INDEX2\t1\tTABLEPERMSID\tA\t913\nSYS\tSYSTABLEPERMS\ttrue\tSYSTABLEPERMS_INDEX3\t1\tTABLEID\tA\t1073\nSYS\tSYSTABLES\tfalse\tSYSTABLES_INDEX1\t1\tTABLENAME\tA\t145\nSYS\tSYSTABLES\tfalse\tSYSTABLES_INDEX1\t2\tSCHEMAID\tA\t145\nSYS\tSYSTABLES\tfalse\tSYSTABLES_INDEX2\t1\tTABLEID\tA\t161\nSYS\tSYSTABLESTATS\tfalse\tSYSTABLESTATS_INDEX1\t1\tCONGLOMERATEID\tA\t1377\nSYS\tSYSTABLESTATS\tfalse\tSYSTABLESTATS_INDEX1\t2\tPARTITIONID\tA\t1377\nSYS\tSYSTABLESTATS\tfalse\tSYSTABLESTATS_INDEX1\t3\tLAST_UPDATED\tA\t1377\nSYS\tSYSTABLESTATS\ttrue\tSYSTABLESTATS_INDEX2\t1\tCONGLOMERATEID\tA\t1521\nSYS\tSYSTABLESTATS\ttrue\tSYSTABLESTATS_INDEX2\t2\tPARTITIONID\tA\t1521\nSYS\tSYSTABLESTATS\ttrue\tSYSTABLESTATS_INDEX3\t1\tCONGLOMERATEID\tA\t1601\nSYS\tSYSTOKENS\tfalse\tSYSTOKENS_INDEX1\t1\tTOKEN\tA\t1553\nSYS\tSYSTRIGGERS\tfalse\tSYSTRIGGERS_INDEX1\t1\tTRIGGERID\tA\t737\nSYS\tSYSTRIGGERS\tfalse\tSYSTRIGGERS_INDEX2\t1\tTRIGGERNAME\tA\t929\nSYS\tSYSTRIGGERS\tfalse\tSYSTRIGGERS_INDEX2\t2\tSCHEMAID\tA\t929\nSYS\tSYSTRIGGERS\ttrue\tSYSTRIGGERS_INDEX3\t1\tTABLEID\tA\t1089\nSYS\tSYSTRIGGERS\ttrue\tSYSTRIGGERS_INDEX3\t2\tCREATIONTIMESTAMP\tA\t1089\nSYS\tSYSUSERS\tfalse\tSYSUSERS_INDEX1\t1\tUSERNAME\tA\t1041\nSYS\tSYSVIEWS\tfalse\tSYSVIEWS_INDEX1\t1\tTABLEID\tA\t465\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544134122330_-1720313085",
+      "id": "20181206-220842_798160735",
+      "dateCreated": "2018-12-06 22:08:42.333",
+      "dateStarted": "2018-12-28 01:56:02.566",
+      "dateFinished": "2018-12-28 01:56:02.835",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "List the Primary Keys in Your Database",
+      "text": "%splicemachine\nSELECT  \n\t\t   S.SCHEMANAME AS TABLE_SCHEM, T.TABLENAME AS TABLE_NAME, \n\t\t   COLS.COLUMNNAME AS COLUMN_NAME, \n\t\t   CAST (CONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) AS SMALLINT) AS KEY_SEQ\n\tFROM  \n\t\t\tSYS.SYSTABLES T \n\t\t\t, SYS.SYSSCHEMAS S \n\t\t\t, SYS.SYSCONSTRAINTS CONS \n\t\t\t, SYS.SYSPRIMARYKEYS KEYS \n\t\t\t, SYS.SYSCONGLOMERATES CONGLOMS \n\t\t\t, SYS.SYSCOLUMNS COLS \n\tWHERE \n\t\t  T.SCHEMAID \u003d S.SCHEMAID AND\t\n\t\t  T.TABLEID \u003d COLS.REFERENCEID AND T.TABLEID \u003d CONGLOMS.TABLEID AND \n\t\t  CONS.TABLEID \u003d T.TABLEID AND CONS.TYPE \u003d \u0027P\u0027 AND \n\t\t  CONS.CONSTRAINTID \u003d KEYS.CONSTRAINTID AND \n\t\t  (CASE WHEN CONGLOMS.DESCRIPTOR IS NOT NULL THEN \n\t\t\t\tCONGLOMS.DESCRIPTOR.getKeyColumnPosition(COLS.COLUMNNUMBER) ELSE \n\t\t\t\t0 END) \u003c\u003e 0 AND \n\t\t  KEYS.CONGLOMERATEID \u003d CONGLOMS.CONGLOMERATEID ",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-28 01:56:06.642",
+      "config": {
+        "title": true,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "commonSetting": {},
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "KEY_SEQ": "string",
+                      "TABLE_NAME": "string",
+                      "TABLE_SCHEM": "string",
+                      "COLUMN_NAME": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }
+              },
+              "mode": "table",
+              "height": 300.0
+            }
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "TABLE_SCHEM\tTABLE_NAME\tCOLUMN_NAME\tKEY_SEQ\nDEV1\tINDEX_EXAMPLE\tI\t1\nDEV2\tLINEITEM\tL_ORDERKEY\t1\nDEV2\tLINEITEM\tL_LINENUMBER\t2\nDEV2\tORDERS\tO_ORDERKEY\t1\nDEV2\tCUSTOMER\tC_CUSTKEY\t1\nDEV2\tPARTSUPP\tPS_PARTKEY\t1\nDEV2\tPARTSUPP\tPS_SUPPKEY\t2\nDEV2\tSUPPLIER\tS_SUPPKEY\t1\nDEV2\tPART\tP_PARTKEY\t1\nDEV2\tREGION\tR_REGIONKEY\t1\nDEV2\tNATION\tN_NATIONKEY\t1\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544135921226_1831126128",
+      "id": "20181206-223841_893492919",
+      "dateCreated": "2018-12-06 22:38:41.226",
+      "dateStarted": "2018-12-28 01:56:06.674",
+      "dateFinished": "2018-12-28 01:56:06.934",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "List the Running Operations In Your Database (Both Control and Spark)",
+      "text": "%splicemachine\ncall syscs_util.syscs_get_running_operations();",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-28 01:56:38.253",
+      "config": {
+        "title": true,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "commonSetting": {},
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "ENGINE": "string",
+                      "UUID": "string",
+                      "HOSTNAME": "string",
+                      "SUBMITTED": "string",
+                      "ELAPSED": "string",
+                      "SESSION": "string",
+                      "USER": "string",
+                      "SQL": "string",
+                      "JOBTYPE": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }
+              },
+              "mode": "table",
+              "height": 300.0
+            }
+          }
+        },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "UUID\tUSER\tHOSTNAME\tSESSION\tSQL\tSUBMITTED\tELAPSED\tENGINE\tJOBTYPE\n106faad3-3507-4582-bf67-e47ddb86397b\tSPLICE\tlocalhost:1527\t3\tcall syscs_util.syscs_get_running_operations()\t2018-12-28 01:56:38\t0 sec(s)\tCONTROL\tCall Procedure\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1544134672132_-658787717",
+      "id": "20181206-221752_1019755981",
+      "dateCreated": "2018-12-06 22:17:52.132",
+      "dateStarted": "2018-12-28 01:56:38.271",
+      "dateFinished": "2018-12-28 01:56:38.331",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nYou\u0027re now ready to learn about the [*The Life of a Query*](/#/notebook/2DWS5FM39) in the next notebook in this class.",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-01 04:55:56.961",
+      "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eYou\u0026rsquo;re now ready to learn about the \u003ca href\u003d\"/#/notebook/2DWS5FM39\"\u003e\u003cem\u003eThe Life of a Query\u003c/em\u003e\u003c/a\u003e in the next notebook in this class.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542394892709_-400293355",
@@ -482,31 +542,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-07 01:00:50.935",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRelated Documentation\u003c/h2\u003e\n\u003cp\u003eFor more information about useful utility procedures for working with your Splice Machine database, see the \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_intro.html\" target\u003d\"_blank\"\u003eSystem Procedures\u003c/a\u003e section of our SQL Reference Manual.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRelated Documentation\u003c/h2\u003e\n\u003cp\u003eFor more information about useful utility procedures for working with your Splice Machine database, see the \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_intro.html\" target\u003d\"_blank\"\u003eSystem Procedures\u003c/a\u003e section of our SQL Reference Manual.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1544144413213_1881342421",
@@ -527,9 +587,9 @@
     "splicemachine:shared_process": []
   },
   "config": {
-    "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
-    "personalizedMode": "false"
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
   },
   "info": {}
 }

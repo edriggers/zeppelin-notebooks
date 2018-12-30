@@ -82,7 +82,7 @@
     {
       "text": "%spark\n\nval localJDBCURL \u003d \"\"\"jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\"\"\"\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 17:23:36.665",
+      "dateUpdated": "2018-12-28 02:45:51.813",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -101,12 +101,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "localJDBCURL: String \u003d jdbc:splice://localhost:1527/splicedb;user\u003dsplice;password\u003dadmin\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395325471_1357966940",
       "id": "20180828-115218_491973685",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 02:45:51.851",
+      "dateFinished": "2018-12-28 02:46:29.560",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -152,7 +162,7 @@
       "title": "Simple Function to Pretty Print Balance",
       "text": "%spark\nimport java.sql.{DriverManager,Connection}\nvar conn \u003d DriverManager.getConnection(localJDBCURL)\nconn.setAutoCommit(false)\nvar statement \u003d conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit \u003d {\n    var resSet \u003d statement.executeQuery(\"SELECT S_ACCTBAL FROM DEV2.SUPPLIER WHERE S_SUPPKEY \u003d \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl \u003d resSet.getString(\"S_ACCTBAL\")\n        println(\"\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: \" + bl + \" \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\");\n    }\n}\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 17:23:39.694",
+      "dateUpdated": "2018-12-28 02:46:02.476",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -173,12 +183,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import java.sql.{DriverManager, Connection}\nconn: java.sql.Connection \u003d com.splicemachine.db.client.net.NetConnection40@2ae4ce5c\nstatement: java.sql.Statement \u003d com.splicemachine.db.client.am.Statement40@71f85c20\ncheckBalance: (suppKey: Integer)Unit\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395325472_1190484058",
       "id": "20180115-164841_170157787",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 02:46:02.522",
+      "dateFinished": "2018-12-28 02:46:30.874",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -222,7 +242,7 @@
     {
       "text": "%spark\ncheckBalance(6517)",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 17:23:48.794",
+      "dateUpdated": "2018-12-28 02:46:56.856",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -250,30 +270,41 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: -749.47 \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395325473_-1870806278",
       "id": "20180115-165115_1164524303",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 02:46:56.889",
+      "dateFinished": "2018-12-28 02:46:57.545",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\nOur setup code created two useful variables we can now employ:\n\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003estatement\u003c/td\u003e\n          \u003ctd\u003eThe standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      \u003c/tr\u003e\n      \u003ctr style\u003d\"background-color: transparent;\"\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003econn\u003c/td\u003e\n          \u003ctd style\u003d\"background-color: transparent;\" \u003eA standard JDBC Connection object, on which run `commit` and `rollback`.\n      \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nThe first example shows an update statement which, upon committing, retains the value to which it is set.\n\n## Committing a Transaction",
+      "text": "%md\nOur setup code created two useful variables we can now employ:\n\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e\u003ccode\u003estatement\u003c/code\u003e\u003c/td\u003e\n          \u003ctd\u003eThe standard JDBC Statement object, on which we run functions such as \u003ccode\u003eexecuteUpdate\u003c/code\u003e.\n      \u003c/tr\u003e\n      \u003ctr style\u003d\"background-color: transparent;\"\u003e\n          \u003ctd\u003e\u003ccode\u003econn\u003c/code\u003e\u003c/td\u003e\n          \u003ctd style\u003d\"background-color: transparent;\" \u003eA standard JDBC Connection object, on which run \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e.\n      \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n## Committing a Transaction\n\nThe first example shows an update statement which, upon committing, retains the value to which it is set.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:10:39.621",
+      "dateUpdated": "2018-12-28 02:51:17.775",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -284,7 +315,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eOur setup code created two useful variables we can now employ:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003estatement\u003c/td\u003e\n          \u003ctd\u003eThe standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      \u003c/tr\u003e\n      \u003ctr style\u003d\"background-color: transparent;\"\u003e\n          \u003ctd class\u003d\"CodeFont\"\u003econn\u003c/td\u003e\n          \u003ctd style\u003d\"background-color: transparent;\" \u003eA standard JDBC Connection object, on which run `commit` and `rollback`.\n      \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eThe first example shows an update statement which, upon committing, retains the value to which it is set.\u003c/p\u003e\n\u003ch2\u003eCommitting a Transaction\u003c/h2\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eOur setup code created two useful variables we can now employ:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n   \u003ctbody\u003e\n      \u003ctr\u003e\n          \u003ctd\u003e\u003ccode\u003estatement\u003c/code\u003e\u003c/td\u003e\n          \u003ctd\u003eThe standard JDBC Statement object, on which we run functions such as \u003ccode\u003eexecuteUpdate\u003c/code\u003e.\n      \u003c/tr\u003e\n      \u003ctr style\u003d\"background-color: transparent;\"\u003e\n          \u003ctd\u003e\u003ccode\u003econn\u003c/code\u003e\u003c/td\u003e\n          \u003ctd style\u003d\"background-color: transparent;\" \u003eA standard JDBC Connection object, on which run \u003ccode\u003ecommit\u003c/code\u003e and \u003ccode\u003erollback\u003c/code\u003e.\n      \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch2\u003eCommitting a Transaction\u003c/h2\u003e\n\u003cp\u003eThe first example shows an update statement which, upon committing, retains the value to which it is set.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -292,6 +323,8 @@
       "jobName": "paragraph_1542395325473_-1804326062",
       "id": "20180115-165133_1245971625",
       "dateCreated": "2018-11-16 11:08:45.000",
+      "dateStarted": "2018-12-28 02:51:17.789",
+      "dateFinished": "2018-12-28 02:51:17.820",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -299,7 +332,7 @@
       "title": "Transaction Commit Example",
       "text": "%spark\nstatement.executeUpdate(\"update DEV2.SUPPLIER SET S_ACCTBAL \u003d 10000 WHERE S_SUPPKEY \u003d 6517\");\ncheckBalance(6517);\nconn.commit();\ncheckBalance(6517);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 17:23:56.923",
+      "dateUpdated": "2018-12-28 02:48:48.146",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -319,30 +352,41 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res9: Int \u003d 1\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: 10000.00 \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: 10000.00 \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395325474_808184951",
       "id": "20180115-165153_163460075",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 02:48:48.163",
+      "dateFinished": "2018-12-28 02:48:49.169",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\nBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\n\n## Rolling Back a Transaction",
+      "text": "%md\n\n## Rolling Back a Transaction\n\nIf we decide to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example:\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 05:10:05.466",
+      "dateUpdated": "2018-12-28 02:51:41.998",
       "config": {
         "tableHide": false,
         "editorSetting": {
           "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "completionSupport": false
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "fontSize": 9.0,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -353,7 +397,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\u003c/p\u003e\n\u003ch2\u003eRolling Back a Transaction\u003c/h2\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRolling Back a Transaction\u003c/h2\u003e\n\u003cp\u003eIf we decide to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -361,6 +405,8 @@
       "jobName": "paragraph_1542395325474_1936619764",
       "id": "20180115-165208_1601331583",
       "dateCreated": "2018-11-16 11:08:45.000",
+      "dateStarted": "2018-12-28 02:51:42.037",
+      "dateFinished": "2018-12-28 02:51:42.068",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -368,7 +414,7 @@
       "title": "Transaction Rollback Example",
       "text": "%spark\nstatement.executeUpdate(\"update DEV2.SUPPLIER SET S_ACCTBAL \u003d 0 WHERE S_SUPPKEY \u003d 6517\")\ncheckBalance(6517);\nconn.rollback();\ncheckBalance(6517);\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 17:24:10.365",
+      "dateUpdated": "2018-12-28 02:48:56.229",
       "config": {
         "editorSetting": {
           "language": "scala",
@@ -388,22 +434,32 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "res14: Int \u003d 1\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: 0.00 \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Current account balance: 10000.00 \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542395325474_1159942425",
       "id": "20180115-165244_2028152757",
       "dateCreated": "2018-11-16 11:08:45.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 02:48:56.250",
+      "dateFinished": "2018-12-28 02:48:57.225",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md \n\nThis was a simple demonstration of transactional commit and rollback, even from within Scala code.  Later on we\u0027ll get more involved with Spark libraries using the Native Spark Datasource.\n",
+      "text": "%md \n\u003cbr /\u003e\nThis was a simple demonstration of transactional commit and rollback, even from within Scala code.  Later on we\u0027ll get more involved with Spark libraries using the Native Spark Datasource.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 17:24:15.496",
+      "dateUpdated": "2018-12-28 02:52:13.133",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -424,7 +480,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis was a simple demonstration of transactional commit and rollback, even from within Scala code. Later on we\u0026rsquo;ll get more involved with Spark libraries using the Native Spark Datasource.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eThis was a simple demonstration of transactional commit and rollback, even from within Scala code. Later on we\u0026rsquo;ll get more involved with Spark libraries using the Native Spark Datasource.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -432,6 +488,8 @@
       "jobName": "paragraph_1543771216564_1664455240",
       "id": "20181202-172016_778467171",
       "dateCreated": "2018-12-02 17:20:16.564",
+      "dateStarted": "2018-12-28 02:52:13.141",
+      "dateFinished": "2018-12-28 02:52:13.196",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

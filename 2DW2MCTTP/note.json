@@ -1,7 +1,7 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n\n# Running the TPCH-1 Benchmark Queries\nIn this notebook, we'll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere's a view of the TPC-H schema:\n\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Running the TPCH-1 Benchmark Queries\nIn this notebook, we\u0027ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\n\n1. *Creating the Tables*\n2. *Importing the TPCH-1 Data From S3*\n3. *Compacting and Collecting Statistics*\n4. *Running TPCH-1 Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\n## About TPCH Data\nTPC-H (aka *TPCH*) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\n\n### The TPCH Schema\nHere\u0027s a view of the TPC-H schema:\n\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:09:11.047",
       "config": {
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Running the TPCH-1 Benchmark Queries</h1>\n<p>In this notebook, we&rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:</p>\n<ol>\n  <li><em>Creating the Tables</em></li>\n  <li><em>Importing the TPCH-1 Data From S3</em></li>\n  <li><em>Compacting and Collecting Statistics</em></li>\n  <li><em>Running TPCH-1 Queries</em></li>\n</ol>\n<p>At the bottom you will also see some graphical output from some queries (or slight variations).</p>\n<p class=\"noteIcon\">The code paragraphs in this notebook all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n<h2>About TPCH Data</h2>\n<p>TPC-H (aka <em>TPCH</em>) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.</p>\n<h3>The TPCH Schema</h3>\n<p>Here&rsquo;s a view of the TPC-H schema:</p>\n<img class=\"fithalfwidth\" src=\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\">\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eRunning the TPCH-1 Benchmark Queries\u003c/h1\u003e\n\u003cp\u003eIn this notebook, we\u0026rsquo;ll introduce the TPCH data, and then walk you through using the TPCH-1 data set, in these steps:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreating the Tables\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eImporting the TPCH-1 Data From S3\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCompacting and Collecting Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning TPCH-1 Queries\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eAt the bottom you will also see some graphical output from some queries (or slight variations).\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe code paragraphs in this notebook all use the \u003cem\u003e%splicemachine\u003c/em\u003e interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.\u003c/p\u003e\n\u003ch2\u003eAbout TPCH Data\u003c/h2\u003e\n\u003cp\u003eTPC-H (aka \u003cem\u003eTPCH\u003c/em\u003e) is a decision support benchmark. It consists of a suite of business-oriented ad hoc queries and concurrent data modifications. The queries and the data populating the database have been chosen to have broad industry-wide relevance. This benchmark illustrates decision support systems that examine large volumes of data, execute queries with a high degree of complexity, and give answers to critical business questions.\u003c/p\u003e\n\u003ch3\u003eThe TPCH Schema\u003c/h3\u003e\n\u003cp\u003eHere\u0026rsquo;s a view of the TPC-H schema:\u003c/p\u003e\n\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-examples/images/tutorials/sample-data-tpch-schema.png\"\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -39,7 +39,7 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 1. Creating the Tables\n\nClick <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph  next paragraph to create the `DEV2` schema and tables in your database:\n",
+      "text": "%md\n\n## 1. Creating the Tables\n\nClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph  next paragraph to create the `DEV2` schema and tables in your database:\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 02:35:15.950",
       "config": {
@@ -65,7 +65,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>1. Creating the Tables</h2>\n<p>Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph next paragraph to create the <code>DEV2</code> schema and tables in your database:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating the Tables\u003c/h2\u003e\n\u003cp\u003eClick \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph next paragraph to create the \u003ccode\u003eDEV2\u003c/code\u003e schema and tables in your database:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -80,7 +80,7 @@
       "title": "Create Tables",
       "text": "%splicemachine\nCREATE SCHEMA DEV2;\n\nCREATE TABLE DEV2.LINEITEM (\n L_ORDERKEY BIGINT NOT NULL,\n L_PARTKEY INTEGER NOT NULL,\n L_SUPPKEY INTEGER NOT NULL, \n L_LINENUMBER INTEGER NOT NULL, \n L_QUANTITY DECIMAL(15,2),\n L_EXTENDEDPRICE DECIMAL(15,2),\n L_DISCOUNT DECIMAL(15,2),\n L_TAX DECIMAL(15,2),\n L_RETURNFLAG VARCHAR(1), \n L_LINESTATUS VARCHAR(1),\n L_SHIPDATE DATE,\n L_COMMITDATE DATE,\n L_RECEIPTDATE DATE,\n L_SHIPINSTRUCT VARCHAR(25),\n L_SHIPMODE VARCHAR(10),\n L_COMMENT VARCHAR(44),\n PRIMARY KEY(L_ORDERKEY,L_LINENUMBER)\n );\n \n CREATE TABLE DEV2.ORDERS (\n O_ORDERKEY BIGINT NOT NULL PRIMARY KEY,\n O_CUSTKEY INTEGER,\n O_ORDERSTATUS VARCHAR(1),\n O_TOTALPRICE DECIMAL(15,2),\n O_ORDERDATE DATE,\n O_ORDERPRIORITY VARCHAR(15),\n O_CLERK VARCHAR(15),\n O_SHIPPRIORITY INTEGER ,\n O_COMMENT VARCHAR(79)\n );\n \n CREATE TABLE DEV2.CUSTOMER (\n C_CUSTKEY INTEGER NOT NULL PRIMARY KEY,\n C_NAME VARCHAR(25),\n C_ADDRESS VARCHAR(40),\n C_NATIONKEY INTEGER NOT NULL,\n C_PHONE VARCHAR(15),\n C_ACCTBAL DECIMAL(15,2),\n C_MKTSEGMENT VARCHAR(10),\n C_COMMENT VARCHAR(117)\n );\n \n CREATE TABLE DEV2.PARTSUPP (\n PS_PARTKEY INTEGER NOT NULL ,\n PS_SUPPKEY INTEGER NOT NULL , \n PS_AVAILQTY INTEGER,\n PS_SUPPLYCOST DECIMAL(15,2),\n PS_COMMENT VARCHAR(199),\n PRIMARY KEY(PS_PARTKEY,PS_SUPPKEY) \n );\n \n CREATE TABLE DEV2.SUPPLIER (\n S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,\n S_NAME VARCHAR(25) ,\n S_ADDRESS VARCHAR(40) ,\n S_NATIONKEY INTEGER ,\n S_PHONE VARCHAR(15) ,\n S_ACCTBAL DECIMAL(15,2),\n S_COMMENT VARCHAR(101)\n );\n \n CREATE TABLE DEV2.PART (\n P_PARTKEY INTEGER NOT NULL PRIMARY KEY,\n P_NAME VARCHAR(55) ,\n P_MFGR VARCHAR(25) ,\n P_BRAND VARCHAR(10) ,\n P_TYPE VARCHAR(25) ,\n P_SIZE INTEGER ,\n P_CONTAINER VARCHAR(10) ,\n P_RETAILPRICE DECIMAL(15,2),\n P_COMMENT VARCHAR(23)\n );\n \n CREATE TABLE DEV2.REGION (\n R_REGIONKEY INTEGER NOT NULL PRIMARY KEY,\n R_NAME VARCHAR(25),\n R_COMMENT VARCHAR(152)\n );\n \n CREATE TABLE DEV2.NATION (\n N_NATIONKEY INTEGER NOT NULL,\n N_NAME VARCHAR(25),\n N_REGIONKEY INTEGER NOT NULL,\n N_COMMENT VARCHAR(152),\n PRIMARY KEY (N_NATIONKEY)\n );",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:21:12.111",
+      "dateUpdated": "2018-12-28 01:32:10.258",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -100,16 +100,58 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755824_-1223331692",
       "id": "20170406-153604_1986172856",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:32:10.286",
+      "dateFinished": "2018-12-28 01:32:20.821",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 2. Importing the TPCH-1 Data From S3\n\nWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph to import all of the data from those files:\n\n<p class=\"noteNote\">Importing this much data can take a few minutes; you'll see the result of each import displayed below the <code>IMPORT</code> statements as they complete.</p>\n\n",
+      "text": "%md\n\n## 2. Importing the TPCH-1 Data From S3\n\nWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\n\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:08:47.437",
       "config": {
@@ -135,7 +177,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>2. Importing the TPCH-1 Data From S3</h2>\n<p>We have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> in the next paragraph to import all of the data from those files:</p>\n<p class=\"noteNote\">Importing this much data can take a few minutes; you'll see the result of each import displayed below the <code>IMPORT</code> statements as they complete.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing the TPCH-1 Data From S3\u003c/h2\u003e\n\u003cp\u003eWe have pre-created flat files with the TPCH-1 data into an S3 bucket, to facilitate importing the data into your database. Click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e in the next paragraph to import all of the data from those files:\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eImporting this much data can take a few minutes; you\u0027ll see the result of each import displayed below the \u003ccode\u003eIMPORT\u003c/code\u003e statements as they complete.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -148,9 +190,9 @@
     },
     {
       "title": "Import Data from S3",
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'LINEITEM', null, 's3a://splice-benchmark-data/flat/TPCH/1/lineitem', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'ORDERS',   null, 's3a://splice-benchmark-data/flat/TPCH/1/orders',   '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'CUSTOMER', null, 's3a://splice-benchmark-data/flat/TPCH/1/customer', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'PARTSUPP', null, 's3a://splice-benchmark-data/flat/TPCH/1/partsupp', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'SUPPLIER', null, 's3a://splice-benchmark-data/flat/TPCH/1/supplier', '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'PART',     null, 's3a://splice-benchmark-data/flat/TPCH/1/part',     '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'REGION',   null, 's3a://splice-benchmark-data/flat/TPCH/1/region',   '|', null, null, null, null, 0, '/tmp', true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA ('DEV2', 'NATION',   null, 's3a://splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp', true, null);",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027LINEITEM\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/lineitem\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027ORDERS\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/orders\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027CUSTOMER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/customer\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027PARTSUPP\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/partsupp\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027SUPPLIER\u0027, null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/supplier\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027PART\u0027,     null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/part\u0027,     \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027REGION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/region\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);\n\ncall SYSCS_UTIL.IMPORT_DATA (\u0027DEV2\u0027, \u0027NATION\u0027,   null, \u0027s3a://splice-benchmark-data/flat/TPCH/1/nation\u0027,   \u0027|\u0027, null, null, null, null, 0, \u0027/tmp\u0027, true, null);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:20:54.413",
+      "dateUpdated": "2018-12-28 01:32:29.048",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -419,16 +461,54 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n6001215\t0\t1\t759863287\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n1500000\t0\t1\t171952161\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n150000\t0\t1\t24346144\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n800000\t0\t1\t118984616\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n10000\t0\t1\t1409184\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n200000\t0\t1\t24135125\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n5\t0\t1\t389\tNONE\n"
+          },
+          {
+            "type": "TABLE",
+            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n25\t0\t1\t2224\tNONE\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755825_-446084919",
       "id": "20170406-153809_1285888971",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:32:29.070",
+      "dateFinished": "2018-12-28 01:37:31.797",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 3. Compacting and Collecting Statistics\n\nSince you've just imported a large amount of data into your database, it's a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
+      "text": "%md\n\n## 3. Compacting and Collecting Statistics\n\nSince you\u0027ve just imported a large amount of data into your database, it\u0027s a good idea to run a major compaction and collect statistics.\n\nTo do so, run each of the next two paragraphs:\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-03 05:03:08.992",
       "config": {
@@ -454,7 +534,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>3. Compacting and Collecting Statistics</h2>\n<p>Since you&rsquo;ve just imported a large amount of data into your database, it&rsquo;s a good idea to run a major compaction and collect statistics.</p>\n<p>To do so, run each of the next two paragraphs:</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Compacting and Collecting Statistics\u003c/h2\u003e\n\u003cp\u003eSince you\u0026rsquo;ve just imported a large amount of data into your database, it\u0026rsquo;s a good idea to run a major compaction and collect statistics.\u003c/p\u003e\n\u003cp\u003eTo do so, run each of the next two paragraphs:\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -467,9 +547,9 @@
     },
     {
       "title": "Perform Major Compaction",
-      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA('DEV2');",
+      "text": "%splicemachine\n\ncall SYSCS_UTIL.SYSCS_PERFORM_MAJOR_COMPACTION_ON_SCHEMA(\u0027DEV2\u0027);",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 05:03:00.836",
+      "dateUpdated": "2018-12-28 01:47:06.245",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -489,19 +569,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : -1"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755830_2120269249",
       "id": "20170406-154629_1395682435",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:47:06.961",
+      "dateFinished": "2018-12-28 01:47:41.326",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Collect Statistics",
       "text": "%splicemachine\n\nanalyze schema DEV2;",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 05:19:11.303",
+      "dateUpdated": "2018-12-28 01:47:51.433",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -556,16 +646,26 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nDEV2\tLINEITEM\t-All-\t6001215\t528106920\t46\t2\t0.0\nDEV2\tORDERS\t-All-\t1500000\t150000000\t1\t2\t0.0\nDEV2\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nDEV2\tPARTSUPP\t-All-\t800000\t112000000\t1\t2\t0.0\nDEV2\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nDEV2\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nDEV2\tREGION\t-All-\t5\t380\t1\t2\t0.0\nDEV2\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755838_108196250",
       "id": "20170406-154656_1940284364",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:47:51.678",
+      "dateFinished": "2018-12-28 01:49:29.913",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 4. Running the TPCH-1 Queries\n\nWe'll now run a sampling of the TPCH queries.  The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them.  We include them with \"explain\" in front of them.  Run that first (always good practice), then rerun after removing the \"explain\" in the paragraph.  It is also informative to go to `localhost:4040` to monitor these queries in the Spark Console while they are running.\n",
+      "text": "%md\n\n## 4. Running the TPCH-1 Queries\n\nWe\u0027ll now run a sampling of the TPCH queries.  The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them.  We include them with \"explain\" in front of them.  Run that first (always good practice), then rerun after removing the \"explain\" in the paragraph.  It is also informative to go to `localhost:4040` to monitor these queries in the Spark Console while they are running.\n",
       "user": "anonymous",
       "dateUpdated": "2018-12-02 21:10:23.921",
       "config": {
@@ -591,7 +691,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>4. Running the TPCH-1 Queries</h2>\n<p>We&rsquo;ll now run a sampling of the TPCH queries. The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them. We include them with &ldquo;explain&rdquo; in front of them. Run that first (always good practice), then rerun after removing the &ldquo;explain&rdquo; in the paragraph. It is also informative to go to <code>localhost:4040</code> to monitor these queries in the Spark Console while they are running.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Running the TPCH-1 Queries\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll now run a sampling of the TPCH queries. The full set is available to run with our Zeppelin Notebook deployment for your cluster, or contact us and we will provide them. We include them with \u0026ldquo;explain\u0026rdquo; in front of them. Run that first (always good practice), then rerun after removing the \u0026ldquo;explain\u0026rdquo; in the paragraph. It is also informative to go to \u003ccode\u003elocalhost:4040\u003c/code\u003e to monitor these queries in the Spark Console while they are running.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -604,9 +704,9 @@
     },
     {
       "title": "TPC-H Query 1",
-      "text": "%splicemachine\n-- QUERY 01\nexplain select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tDEV2.lineitem\nwhere\n\tl_shipdate <= date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast('1998-12-01 00:00:00' as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 01\nexplain select\n\tl_returnflag,\n\tl_linestatus,\n\tsum(l_quantity) as sum_qty,\n\tsum(l_extendedprice) as sum_base_price,\n\tsum(l_extendedprice * (1 - l_discount)) as sum_disc_price,\n\tsum(l_extendedprice * (1 - l_discount) * (1 + l_tax)) as sum_charge,\n\tavg(l_quantity) as avg_qty,\n\tavg(l_extendedprice) as avg_price,\n\tavg(l_discount) as avg_disc,\n\tcount(*) as count_order\nfrom\n\tDEV2.lineitem\nwhere\n\tl_shipdate \u003c\u003d date({fn TIMESTAMPADD(SQL_TSI_DAY, -90, cast(\u00271998-12-01 00:00:00\u0027 as timestamp))})\ngroup by\n\tl_returnflag,\n\tl_linestatus\norder by\n\tl_returnflag,\n\tl_linestatus\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:38:09.489",
+      "dateUpdated": "2018-12-28 01:51:58.449",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -683,19 +783,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d7,rows\u003d2,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d6,totalCost\u003d12238.868,outputRows\u003d2,outputHeapSize\u003d76 B,partitions\u003d46)\n    -\u003e  OrderBy(n\u003d5,totalCost\u003d12238.847,outputRows\u003d2,outputHeapSize\u003d76 B,partitions\u003d46)\n      -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d11978.434,outputRows\u003d1980401,outputHeapSize\u003d76 B,partitions\u003d46)\n        -\u003e  GroupBy(n\u003d3,totalCost\u003d11286.284,outputRows\u003d1980401,outputHeapSize\u003d72.713 MB,partitions\u003d46)\n          -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d11286.284,outputRows\u003d1980401,outputHeapSize\u003d72.713 MB,partitions\u003d46)\n            -\u003e  TableScan[LINEITEM(1792)](n\u003d1,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d1980401,outputHeapSize\u003d72.713 MB,partitions\u003d46,preds\u003d[(L_SHIPDATE[0:7] \u003c\u003d date(TIMESTAMPADD(1998-12-01 00:00:00.0, 4, -90)))])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755840_-778021701",
       "id": "20170406-154718_1568658794",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:51:59.809",
+      "dateFinished": "2018-12-28 01:52:00.260",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 2",
-      "text": "%splicemachine\n-- QUERY 02\nexplain select\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tDEV2.part,\n\tDEV2.supplier,\n\tDEV2.partsupp,\n\tDEV2.nation,\n\tDEV2.region\nwhere\n\tp_partkey = ps_partkey\n\tand s_suppkey = ps_suppkey\n\tand p_size = 15\n\tand p_type like '%BRASS'\n\tand s_nationkey = n_nationkey\n\tand n_regionkey = r_regionkey\n\tand r_name = 'EUROPE'\n\tand ps_supplycost = (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tDEV2.partsupp,\n\t\t\tDEV2.supplier,\n\t\t\tDEV2.nation,\n\t\t\tDEV2.region\n\t\twhere\n\t\t\tp_partkey = ps_partkey\n\t\t\tand s_suppkey = ps_suppkey\n\t\t\tand s_nationkey = n_nationkey\n\t\t\tand n_regionkey = r_regionkey\n\t\t\tand r_name = 'EUROPE'\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 02\nexplain select\n\ts_acctbal,\n\ts_name,\n\tn_name,\n\tp_partkey,\n\tp_mfgr,\n\ts_address,\n\ts_phone,\n\ts_comment\nfrom\n\tDEV2.part,\n\tDEV2.supplier,\n\tDEV2.partsupp,\n\tDEV2.nation,\n\tDEV2.region\nwhere\n\tp_partkey \u003d ps_partkey\n\tand s_suppkey \u003d ps_suppkey\n\tand p_size \u003d 15\n\tand p_type like \u0027%BRASS\u0027\n\tand s_nationkey \u003d n_nationkey\n\tand n_regionkey \u003d r_regionkey\n\tand r_name \u003d \u0027EUROPE\u0027\n\tand ps_supplycost \u003d (\n\t\tselect\n\t\t\tmin(ps_supplycost)\n\t\tfrom\n\t\t\tDEV2.partsupp,\n\t\t\tDEV2.supplier,\n\t\t\tDEV2.nation,\n\t\t\tDEV2.region\n\t\twhere\n\t\t\tp_partkey \u003d ps_partkey\n\t\t\tand s_suppkey \u003d ps_suppkey\n\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\tand n_regionkey \u003d r_regionkey\n\t\t\tand r_name \u003d \u0027EUROPE\u0027\n\t)\norder by\n\ts_acctbal desc,\n\tn_name,\n\ts_name,\n\tp_partkey\n{limit 100}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:39:22.455",
+      "dateUpdated": "2018-12-28 01:52:08.134",
       "config": {
         "tableHide": false,
         "editorSetting": {
@@ -750,19 +860,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d26,rows\u003d100,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d25,totalCost\u003d2483148.586,outputRows\u003d100,outputHeapSize\u003d38.649 MB,partitions\u003d1)\n    -\u003e  Limit(n\u003d24,totalCost\u003d2482306.875,outputRows\u003d100,outputHeapSize\u003d38.649 MB,partitions\u003d1,offset\u003d0,fetchFirst\u003d100)\n      -\u003e  OrderBy(n\u003d23,totalCost\u003d2482306.875,outputRows\u003d100,outputHeapSize\u003d38.649 MB,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d22,totalCost\u003d8126.047,outputRows\u003d160000,outputHeapSize\u003d38.649 MB,partitions\u003d1)\n          -\u003e  MergeSortJoin(n\u003d21,totalCost\u003d695544.001,outputRows\u003d129643,outputHeapSize\u003d38.649 MB,partitions\u003d1,preds\u003d[(P_PARTKEY[36:4] \u003d AggFlatSub-0-1.PS_PARTKEY[36:21]),(PS_SUPPLYCOST[36:3] \u003d AggFlatSub-0-1.SQLCol1[36:20])])\n            -\u003e  ProjectRestrict(n\u003d20,totalCost\u003d4.009,outputRows\u003d1,outputHeapSize\u003d12.891 MB,partitions\u003d1)\n              -\u003e  GroupBy(n\u003d19,totalCost\u003d2075.464,outputRows\u003d160000,outputHeapSize\u003d12.891 MB,partitions\u003d1)\n                -\u003e  ProjectRestrict(n\u003d18,totalCost\u003d4.009,outputRows\u003d1,outputHeapSize\u003d12.891 MB,partitions\u003d1)\n                  -\u003e  BroadcastJoin(n\u003d17,totalCost\u003d2075.464,outputRows\u003d160000,outputHeapSize\u003d12.891 MB,partitions\u003d1,preds\u003d[(N_REGIONKEY[30:7] \u003d R_REGIONKEY[30:8])])\n                    -\u003e  TableScan[REGION(1888)](n\u003d16,totalCost\u003d4.009,scannedRows\u003d5,outputRows\u003d1,outputHeapSize\u003d12.891 MB,partitions\u003d1,preds\u003d[(R_NAME[28:2] \u003d EUROPE)])\n                    -\u003e  BroadcastJoin(n\u003d15,totalCost\u003d2067.445,outputRows\u003d800000,outputHeapSize\u003d64.453 MB,partitions\u003d1,preds\u003d[(S_NATIONKEY[26:5] \u003d N_NATIONKEY[26:6])])\n                      -\u003e  TableScan[NATION(1904)](n\u003d14,totalCost\u003d4.047,scannedRows\u003d25,outputRows\u003d25,outputHeapSize\u003d64.453 MB,partitions\u003d1)\n                      -\u003e  BroadcastJoin(n\u003d13,totalCost\u003d2059.138,outputRows\u003d800000,outputHeapSize\u003d64.452 MB,partitions\u003d1,preds\u003d[(S_SUPPKEY[22:4] \u003d PS_SUPPKEY[22:2])])\n                        -\u003e  TableScan[SUPPLIER(1856)](n\u003d12,totalCost\u003d27.4,scannedRows\u003d10000,outputRows\u003d10000,outputHeapSize\u003d64.452 MB,partitions\u003d1)\n                        -\u003e  TableScan[PARTSUPP(1840)](n\u003d11,totalCost\u003d1924,scannedRows\u003d800000,outputRows\u003d800000,outputHeapSize\u003d64.087 MB,partitions\u003d1)\n            -\u003e  BroadcastJoin(n\u003d10,totalCost\u003d2541.953,outputRows\u003d2376,outputHeapSize\u003d483.361 KB,partitions\u003d1,preds\u003d[(N_REGIONKEY[16:17] \u003d R_REGIONKEY[16:18])])\n              -\u003e  TableScan[REGION(1888)](n\u003d9,totalCost\u003d4.009,scannedRows\u003d5,outputRows\u003d1,outputHeapSize\u003d483.361 KB,partitions\u003d1,preds\u003d[(R_NAME[14:2] \u003d EUROPE)])\n              -\u003e  BroadcastJoin(n\u003d8,totalCost\u003d2533.934,outputRows\u003d11879,outputHeapSize\u003d2.36 MB,partitions\u003d1,preds\u003d[(S_NATIONKEY[12:11] \u003d N_NATIONKEY[12:15])])\n                -\u003e  TableScan[NATION(1904)](n\u003d7,totalCost\u003d4.047,scannedRows\u003d25,outputRows\u003d25,outputHeapSize\u003d2.36 MB,partitions\u003d1)\n                -\u003e  BroadcastJoin(n\u003d6,totalCost\u003d2525.621,outputRows\u003d11879,outputHeapSize\u003d2.358 MB,partitions\u003d1,preds\u003d[(S_SUPPKEY[8:8] \u003d PS_SUPPKEY[8:2])])\n                  -\u003e  TableScan[SUPPLIER(1856)](n\u003d5,totalCost\u003d27.4,scannedRows\u003d10000,outputRows\u003d10000,outputHeapSize\u003d2.358 MB,partitions\u003d1)\n                  -\u003e  MergeJoin(n\u003d4,totalCost\u003d2381.136,outputRows\u003d11879,outputHeapSize\u003d1.08 MB,partitions\u003d1,preds\u003d[(P_PARTKEY[4:4] \u003d PS_PARTKEY[4:1])])\n                    -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d424.191,outputRows\u003d2763,outputHeapSize\u003d1.08 MB,partitions\u003d1,preds\u003d[like(P_TYPE[2:3], %BRASS)])\n                      -\u003e  TableScan[PART(1872)](n\u003d2,totalCost\u003d424,scannedRows\u003d200000,outputRows\u003d3907,outputHeapSize\u003d1.08 MB,partitions\u003d1,preds\u003d[(P_SIZE[2:4] \u003d 15)])\n                    -\u003e  TableScan[PARTSUPP(1840)](n\u003d1,totalCost\u003d1924,scannedRows\u003d800000,outputRows\u003d800000,outputHeapSize\u003d64.087 MB,partitions\u003d1)\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755840_-1026755348",
       "id": "20170406-154748_2032636417",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:52:08.532",
+      "dateFinished": "2018-12-28 01:52:10.756",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 3",
-      "text": "%splicemachine\n-- QUERY 03\nexplain select\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tDEV2.customer,\n\tDEV2.orders,\n\tDEV2.lineitem\nwhere\n\tc_mktsegment = 'BUILDING' \n\tand c_custkey = o_custkey\n\tand l_orderkey = o_orderkey\n\tand o_orderdate < date('1995-03-15') \n\tand l_shipdate > date('1995-03-15') \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 03\nexplain select\n\tl_orderkey,\n\tsum(l_extendedprice * (1 - l_discount)) as revenue,\n\to_orderdate,\n\to_shippriority\nfrom\n\tDEV2.customer,\n\tDEV2.orders,\n\tDEV2.lineitem\nwhere\n\tc_mktsegment \u003d \u0027BUILDING\u0027 \n\tand c_custkey \u003d o_custkey\n\tand l_orderkey \u003d o_orderkey\n\tand o_orderdate \u003c date(\u00271995-03-15\u0027) \n\tand l_shipdate \u003e date(\u00271995-03-15\u0027) \ngroup by\n\tl_orderkey,\n\to_orderdate,\n\to_shippriority\norder by\n\trevenue desc,\n\to_orderdate \n{limit 10}\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:39:29.573",
+      "dateUpdated": "2018-12-28 01:52:18.076",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -782,19 +902,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d12,rows\u003d10,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d11,totalCost\u003d207535.246,outputRows\u003d10,outputHeapSize\u003d295.531 KB,partitions\u003d1)\n    -\u003e  Limit(n\u003d10,totalCost\u003d207534.934,outputRows\u003d10,outputHeapSize\u003d295.531 KB,partitions\u003d1,offset\u003d0,fetchFirst\u003d10)\n      -\u003e  OrderBy(n\u003d9,totalCost\u003d207534.934,outputRows\u003d10,outputHeapSize\u003d295.531 KB,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d103418.247,outputRows\u003d509563,outputHeapSize\u003d295.531 KB,partitions\u003d1)\n          -\u003e  GroupBy(n\u003d7,totalCost\u003d37061.486,outputRows\u003d509563,outputHeapSize\u003d92.029 MB,partitions\u003d1)\n            -\u003e  ProjectRestrict(n\u003d6,totalCost\u003d11286.284,outputRows\u003d3241161,outputHeapSize\u003d92.029 MB,partitions\u003d1)\n              -\u003e  MergeJoin(n\u003d5,totalCost\u003d37061.486,outputRows\u003d509563,outputHeapSize\u003d92.029 MB,partitions\u003d1,preds\u003d[(L_ORDERKEY[8:7] \u003d O_ORDERKEY[8:1])])\n                -\u003e  TableScan[LINEITEM(1792)](n\u003d4,totalCost\u003d11286.284,scannedRows\u003d6001215,outputRows\u003d3241161,outputHeapSize\u003d92.029 MB,partitions\u003d1,preds\u003d[(L_SHIPDATE[6:4] \u003e 1995-03-15)])\n                -\u003e  BroadcastJoin(n\u003d3,totalCost\u003d3704.179,outputRows\u003d230675,outputHeapSize\u003d10.877 MB,partitions\u003d1,preds\u003d[(C_CUSTKEY[4:5] \u003d O_CUSTKEY[4:2])])\n                  -\u003e  TableScan[CUSTOMER(1824)](n\u003d2,totalCost\u003d383.5,scannedRows\u003d150000,outputRows\u003d30142,outputHeapSize\u003d10.877 MB,partitions\u003d1,preds\u003d[(C_MKTSEGMENT[2:2] \u003d BUILDING)])\n                  -\u003e  TableScan[ORDERS(1808)](n\u003d1,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d726671,outputHeapSize\u003d30.8 MB,partitions\u003d1,preds\u003d[(O_ORDERDATE[0:3] \u003c 1995-03-15)])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755841_1582479351",
       "id": "20170406-155338_1478784227",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:52:18.197",
+      "dateFinished": "2018-12-28 01:52:18.410",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 11",
-      "text": "%splicemachine\n-- QUERY 11\nexplain select\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tDEV2.partsupp,\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\tps_suppkey = s_suppkey\n\tand s_nationkey = n_nationkey\n\tand n_name = 'GERMANY'\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) > (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tDEV2.partsupp,\n\t\t\t\tDEV2.supplier,\n\t\t\t\tDEV2.nation\n\t\t\twhere\n\t\t\t\tps_suppkey = s_suppkey\n\t\t\t\tand s_nationkey = n_nationkey\n\t\t\t\tand n_name = 'GERMANY'\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 11\nexplain select\n\tps_partkey,\n\tsum(ps_supplycost * ps_availqty) as value\nfrom\n\tDEV2.partsupp,\n\tDEV2.supplier,\n\tDEV2.nation\nwhere\n\tps_suppkey \u003d s_suppkey\n\tand s_nationkey \u003d n_nationkey\n\tand n_name \u003d \u0027GERMANY\u0027\ngroup by\n\tps_partkey having\n\t\tsum(ps_supplycost * ps_availqty) \u003e (\n\t\t\tselect\n\t\t\t\tsum(ps_supplycost * ps_availqty) * 0.0000010000\n\t\t\tfrom\n\t\t\t\tDEV2.partsupp,\n\t\t\t\tDEV2.supplier,\n\t\t\t\tDEV2.nation\n\t\t\twhere\n\t\t\t\tps_suppkey \u003d s_suppkey\n\t\t\t\tand s_nationkey \u003d n_nationkey\n\t\t\t\tand n_name \u003d \u0027GERMANY\u0027\n\t\t)\norder by\n\tvalue desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:39:39.639",
+      "dateUpdated": "2018-12-28 01:52:22.094",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -843,19 +973,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d20,rows\u003d32000,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d19,totalCost\u003d822522.196,outputRows\u003d32000,outputHeapSize\u003d3.433 MB,partitions\u003d1)\n    -\u003e  OrderBy(n\u003d18,totalCost\u003d693502.274,outputRows\u003d32000,outputHeapSize\u003d3.433 MB,partitions\u003d1)\n      -\u003e  ProjectRestrict(n\u003d17,totalCost\u003d141120.588,outputRows\u003d32000,outputHeapSize\u003d3.433 MB,partitions\u003d1)\n        -\u003e  Subquery(n\u003d16,totalCost\u003d23429561.505,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1,correlated\u003dfalse,expression\u003dtrue,invariant\u003dtrue)\n          -\u003e  ProjectRestrict(n\u003d15,totalCost\u003d1183750.304,outputRows\u003d1024000000,outputHeapSize\u003d0 B,partitions\u003d1)\n            -\u003e  GroupBy(n\u003d14,totalCost\u003d667951.166,outputRows\u003d1024000000,outputHeapSize\u003d42.053 GB,partitions\u003d1)\n              -\u003e  ProjectRestrict(n\u003d13,totalCost\u003d1924,outputRows\u003d800000,outputHeapSize\u003d42.053 GB,partitions\u003d1)\n                -\u003e  MergeSortJoin(n\u003d12,totalCost\u003d667951.166,outputRows\u003d1024000000,outputHeapSize\u003d42.053 GB,partitions\u003d1,preds\u003d[(PS_SUPPKEY[20:5] \u003d S_SUPPKEY[20:3])])\n                  -\u003e  TableScan[PARTSUPP(1840)](n\u003d11,totalCost\u003d1924,scannedRows\u003d800000,outputRows\u003d800000,outputHeapSize\u003d42.053 GB,partitions\u003d1)\n                  -\u003e  BroadcastJoin(n\u003d10,totalCost\u003d257967.138,outputRows\u003d12800000,outputHeapSize\u003d537.474 MB,partitions\u003d1,preds\u003d[(S_NATIONKEY[16:4] \u003d N_NATIONKEY[16:1])])\n                    -\u003e  TableScan[SUPPLIER(1856)](n\u003d9,totalCost\u003d27.4,scannedRows\u003d10000,outputRows\u003d10000,outputHeapSize\u003d537.474 MB,partitions\u003d1)\n                    -\u003e  TableScan[NATION(1904)](n\u003d8,totalCost\u003d4.047,scannedRows\u003d25,outputRows\u003d1,outputHeapSize\u003d1.343 MB,partitions\u003d1,preds\u003d[(N_NAME[12:2] \u003d GERMANY)])\n        -\u003e  GroupBy(n\u003d7,totalCost\u003d2067.195,outputRows\u003d32000,outputHeapSize\u003d3.433 MB,partitions\u003d1)\n          -\u003e  ProjectRestrict(n\u003d6,totalCost\u003d4.047,outputRows\u003d1,outputHeapSize\u003d3.433 MB,partitions\u003d1)\n            -\u003e  BroadcastJoin(n\u003d5,totalCost\u003d2067.195,outputRows\u003d32000,outputHeapSize\u003d3.433 MB,partitions\u003d1,preds\u003d[(S_NATIONKEY[8:6] \u003d N_NATIONKEY[8:7])])\n              -\u003e  TableScan[NATION(1904)](n\u003d4,totalCost\u003d4.047,scannedRows\u003d25,outputRows\u003d1,outputHeapSize\u003d3.433 MB,partitions\u003d1,preds\u003d[(N_NAME[6:2] \u003d GERMANY)])\n              -\u003e  BroadcastJoin(n\u003d3,totalCost\u003d2059.138,outputRows\u003d800000,outputHeapSize\u003d85.814 MB,partitions\u003d1,preds\u003d[(PS_SUPPKEY[4:2] \u003d S_SUPPKEY[4:5])])\n                -\u003e  TableScan[SUPPLIER(1856)](n\u003d2,totalCost\u003d27.4,scannedRows\u003d10000,outputRows\u003d10000,outputHeapSize\u003d85.814 MB,partitions\u003d1)\n                -\u003e  TableScan[PARTSUPP(1840)](n\u003d1,totalCost\u003d1924,scannedRows\u003d800000,outputRows\u003d800000,outputHeapSize\u003d85.449 MB,partitions\u003d1)\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755848_1421068308",
       "id": "20170406-155954_424082601",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:52:22.130",
+      "dateFinished": "2018-12-28 01:52:22.200",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 13",
-      "text": "%splicemachine\n-- QUERY 13\nexplain select\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tDEV2.customer left outer join DEV2.orders on\n\t\t\t\tc_custkey = o_custkey\n\t\t\t\tand o_comment not like '%special%requests%'\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 13\nexplain select\n\tc_count,\n\tcount(*) as custdist\nfrom\n\t(\n\t\tselect\n\t\t\tc_custkey,\n\t\t\tcount(o_orderkey)\n\t\tfrom\n\t\t\tDEV2.customer left outer join DEV2.orders on\n\t\t\t\tc_custkey \u003d o_custkey\n\t\t\t\tand o_comment not like \u0027%special%requests%\u0027\n\t\tgroup by\n\t\t\tc_custkey\n\t) as c_orders (c_custkey, c_count)\ngroup by\n\tc_count\norder by\n\tcustdist desc,\n\tc_count desc\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:39:48.565",
+      "dateUpdated": "2018-12-28 01:52:31.686",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -904,19 +1044,29 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d13,rows\u003d236959,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d12,totalCost\u003d113204.132,outputRows\u003d236959,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n    -\u003e  OrderBy(n\u003d11,totalCost\u003d108088.141,outputRows\u003d236959,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n      -\u003e  ProjectRestrict(n\u003d10,totalCost\u003d25743.056,outputRows\u003d236959,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n        -\u003e  GroupBy(n\u003d9,totalCost\u003d10313.529,outputRows\u003d236959,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n          -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d10313.529,outputRows\u003d236959,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n            -\u003e  ProjectRestrict(n\u003d7,totalCost\u003d3154,outputRows\u003d150000,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n              -\u003e  GroupBy(n\u003d6,totalCost\u003d10313.529,outputRows\u003d236959,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n                -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d3154,outputRows\u003d150000,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n                  -\u003e  MergeSortLeftOuterJoin(n\u003d4,totalCost\u003d10313.529,outputRows\u003d236959,outputHeapSize\u003d27.271 MB,partitions\u003d1,preds\u003d[(C_CUSTKEY[4:1] \u003d O_CUSTKEY[4:3])])\n                    -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d3154,outputRows\u003d150000,outputHeapSize\u003d27.271 MB,partitions\u003d1,preds\u003d[(like(O_COMMENT[2:3], %special%requests%) \u003d false)])\n                      -\u003e  TableScan[ORDERS(1808)](n\u003d2,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d1500000,outputHeapSize\u003d27.271 MB,partitions\u003d1)\n                    -\u003e  TableScan[CUSTOMER(1824)](n\u003d1,totalCost\u003d383.5,scannedRows\u003d150000,outputRows\u003d150000,outputHeapSize\u003d8.208 MB,partitions\u003d1)\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755849_-1850931653",
       "id": "20170406-160031_290929306",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:52:31.738",
+      "dateFinished": "2018-12-28 01:52:31.799",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "TPC-H Query 22",
-      "text": "%splicemachine\n-- QUERY 22\nexplain select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tDEV2.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t('13', '31', '23', '29', '30', '18', '17')\n\t\t\tand c_acctbal > (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal > 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t('13', '31', '23', '29', '30', '18', '17')\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey = c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
+      "text": "%splicemachine\n-- QUERY 22\nexplain select\n\tcntrycode,\n\tcount(*) as numcust,\n\tsum(c_acctbal) as totacctbal\nfrom\n\t(\n\t\tselect\n\t\t\tSUBSTR(c_phone, 1, 2) as cntrycode,\n\t\t\tc_acctbal\n\t\tfrom\n\t\t\tDEV2.customer\n\t\twhere\n\t\t\tSUBSTR(c_phone, 1, 2) in\n\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\tand c_acctbal \u003e (\n\t\t\t\tselect\n\t\t\t\t\tavg(c_acctbal)\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.customer\n\t\t\t\twhere\n\t\t\t\t\tc_acctbal \u003e 0.00\n\t\t\t\t\tand SUBSTR(c_phone, 1, 2) in\n\t\t\t\t\t\t(\u002713\u0027, \u002731\u0027, \u002723\u0027, \u002729\u0027, \u002730\u0027, \u002718\u0027, \u002717\u0027)\n\t\t\t)\n\t\t\tand not exists (\n\t\t\t\tselect\n\t\t\t\t\t*\n\t\t\t\tfrom\n\t\t\t\t\tDEV2.orders\n\t\t\t\twhere\n\t\t\t\t\to_custkey \u003d c_custkey\n\t\t\t)\n\t) as custsale\ngroup by\n\tcntrycode\norder by\n\tcntrycode\n-- END OF QUERY",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 15:39:57.708",
+      "dateUpdated": "2018-12-28 01:52:37.294",
       "config": {
         "editorSetting": {
           "language": "sql",
@@ -995,12 +1145,22 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d18,rows\u003d94952,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d17,totalCost\u003d11929948362627.98,outputRows\u003d94952,outputHeapSize\u003d24.554 MB,partitions\u003d1)\n    -\u003e  OrderBy(n\u003d16,totalCost\u003d11929948360674.025,outputRows\u003d94952,outputHeapSize\u003d24.554 MB,partitions\u003d1)\n      -\u003e  ProjectRestrict(n\u003d15,totalCost\u003d2982496037168.13,outputRows\u003d94953,outputHeapSize\u003d24.554 MB,partitions\u003d1)\n        -\u003e  GroupBy(n\u003d14,totalCost\u003d1491248017607.082,outputRows\u003d94953,outputHeapSize\u003d24.554 MB,partitions\u003d1)\n          -\u003e  ProjectRestrict(n\u003d13,totalCost\u003d1491248017607.082,outputRows\u003d94953,outputHeapSize\u003d24.554 MB,partitions\u003d1)\n            -\u003e  ProjectRestrict(n\u003d12,totalCost\u003d3004,outputRows\u003d1500000,outputHeapSize\u003d24.554 MB,partitions\u003d1)\n              -\u003e  MergeSortAntiJoin(n\u003d11,totalCost\u003d994169217652.438,outputRows\u003d94953,outputHeapSize\u003d24.554 MB,partitions\u003d1,preds\u003d[(O_CUSTKEY[12:6] \u003d C_CUSTKEY[12:3])])\n                -\u003e  TableScan[ORDERS(1808)](n\u003d10,totalCost\u003d3004,scannedRows\u003d1500000,outputRows\u003d1500000,outputHeapSize\u003d24.554 MB,partitions\u003d1)\n                -\u003e  NestedLoopJoin(n\u003d9,totalCost\u003d497078799565.939,outputRows\u003d1107973860,outputHeapSize\u003d98.673 GB,partitions\u003d1)\n                  -\u003e  ProjectRestrict(n\u003d8,totalCost\u003d386.34,outputRows\u003d25851,outputHeapSize\u003d98.673 GB,partitions\u003d1,preds\u003d[(substring(C_PHONE[6:2], 1, 2) IN (13,31,23,29,30,18,17))])\n                    -\u003e  TableScan[CUSTOMER(1824)](n\u003d7,totalCost\u003d383.5,scannedRows\u003d150000,outputRows\u003d49500,outputHeapSize\u003d98.673 GB,partitions\u003d1,preds\u003d[(C_ACCTBAL[6:3] \u003e AggFlatSub-1-1.SQLCol1[5:1])])\n                  -\u003e  ProjectRestrict(n\u003d6,totalCost\u003d388.705,outputRows\u003d42860,outputHeapSize\u003d1.563 MB,partitions\u003d1)\n                    -\u003e  ProjectRestrict(n\u003d5,totalCost\u003d388.705,outputRows\u003d42860,outputHeapSize\u003d1.563 MB,partitions\u003d1)\n                      -\u003e  GroupBy(n\u003d4,totalCost\u003d388.705,outputRows\u003d42860,outputHeapSize\u003d1.563 MB,partitions\u003d1)\n                        -\u003e  ProjectRestrict(n\u003d3,totalCost\u003d388.705,outputRows\u003d42860,outputHeapSize\u003d1.563 MB,partitions\u003d1)\n                          -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d388.705,outputRows\u003d42860,outputHeapSize\u003d1.563 MB,partitions\u003d1,preds\u003d[(substring(C_PHONE[0:1], 1, 2) IN (13,31,23,29,30,18,17))])\n                            -\u003e  TableScan[CUSTOMER(1824)](n\u003d1,totalCost\u003d383.5,scannedRows\u003d150000,outputRows\u003d136074,outputHeapSize\u003d1.563 MB,partitions\u003d1,preds\u003d[(C_ACCTBAL[0:2] \u003e 0.00)])\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542394755852_-549892480",
       "id": "20170406-160357_2054277666",
       "dateCreated": "2018-11-16 10:59:15.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-28 01:52:37.341",
+      "dateFinished": "2018-12-28 01:52:37.423",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -1030,7 +1190,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this class, <a href=\"/#/notebook/2DUK929SD\"><em>Useful Database Utilities</em></a>, introduces some common utilities that you may find useful when working with Splice Machine.</p>\n</div>"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUK929SD\"\u003e\u003cem\u003eUseful Database Utilities\u003c/em\u003e\u003c/a\u003e, introduces some common utilities that you may find useful when working with Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -1048,8 +1208,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false,

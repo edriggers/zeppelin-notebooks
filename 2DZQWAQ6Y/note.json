@@ -1,1352 +1,1348 @@
 {
+  "noteForms": {}, 
+  "angularObjects": {
+    "spark:shared_process": [], 
+    "splicemachine:shared_process": [], 
+    "md:shared_process": []
+  }, 
+  "name": "Splice Machine Training / For Data Scientists / j. Exercises", 
+  "info": {}, 
+  "noteParams": {}, 
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Exercises: Data Scientists\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\n\nYou\u0027ll be performing the following actions in these exercises:\n\n1. Creating Tables\n2. Importing Data\n3. Visualizing Data\n4. Performing some basic Machine Learning\n\nThe data you\u0027ll be loading is on your local machine, which will prove useful if you need to debug the data import process.",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:06:01.151",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 02:06:01.180", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n# Exercises: Data Scientists\n\nThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\n\nYou'll be performing the following actions in these exercises:\n\n1. Creating Tables\n2. Importing Data\n3. Visualizing Data\n4. Performing some basic Machine Learning\n\nThe data you'll be loading is on your local machine, which will prove useful if you need to debug the data import process.", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Data Scientists\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreating Tables\u003c/li\u003e\n  \u003cli\u003eImporting Data\u003c/li\u003e\n  \u003cli\u003eVisualizing Data\u003c/li\u003e\n  \u003cli\u003ePerforming some basic Machine Learning\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThe data you\u0026rsquo;ll be loading is on your local machine, which will prove useful if you need to debug the data import process.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" />\n<h1>Exercises: Data Scientists</h1>\n<p>This notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your work.</p>\n<p>You&rsquo;ll be performing the following actions in these exercises:</p>\n<ol>\n  <li>Creating Tables</li>\n  <li>Importing Data</li>\n  <li>Visualizing Data</li>\n  <li>Performing some basic Machine Learning</li>\n</ol>\n<p>The data you&rsquo;ll be loading is on your local machine, which will prove useful if you need to debug the data import process.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544570123998_669005398",
-      "id": "20181211-231523_1137261745",
-      "dateCreated": "2018-12-11 23:15:23.999",
-      "dateStarted": "2018-12-12 02:06:01.152",
-      "dateFinished": "2018-12-12 02:06:01.180",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Prerequisite Database Tables\nWe\u0027ll start with three tables from a simple Movie Rating schema:\n\n* The `rating_data` table, which stores movie ratings, was introduced in the exercises for our *Developer Training, Part I* class.\n* The `user_data` table, which stores reviewer information, was added in the exercise for our *Developer Training, Part II* class.\n* In this notebook, you\u0027ll create and load the `item_data` table, which stores movie title and genre information.\n\nIf you\u0027ve completed the developer classes, you may already have these tables loaded in your database. If so, you can skip the next paragraph and start with the following paragraph, __1. Creating Tables.__\n\nOtherwise, please click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to create and load the `RATING_DATA` and `USER_DATA` tables, before proceeding. ",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:07:16.958",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544570123998_669005398", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 02:06:01.152", 
+      "dateUpdated": "2018-12-12 02:06:01.151", 
+      "dateCreated": "2018-12-11 23:15:23.999", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-231523_1137261745", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 03:07:06.968", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Prerequisite Database Tables\nWe'll start with three tables from a simple Movie Rating schema:\n\n* The `rating_data` table, which stores movie ratings, was introduced in the exercises for our *Developer Training, Part I* class.\n* The `user_data` table, which stores reviewer information, was added in the exercise for our *Developer Training, Part II* class.\n* In this notebook, you'll create and load the `item_data` table, which stores movie title and genre information.\n\nIf you've completed the developer classes, you may already have these tables loaded in your database. If so, you can skip the next paragraph and start with the following paragraph, __1. Creating Tables.__\n\nOtherwise, please click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button in the next paragraph to create and load the `RATING_DATA` and `USER_DATA` tables, before proceeding. ", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePrerequisite Database Tables\u003c/h2\u003e\n\u003cp\u003eWe\u0026rsquo;ll start with three tables from a simple Movie Rating schema:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003ccode\u003erating_data\u003c/code\u003e table, which stores movie ratings, was introduced in the exercises for our \u003cem\u003eDeveloper Training, Part I\u003c/em\u003e class.\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003euser_data\u003c/code\u003e table, which stores reviewer information, was added in the exercise for our \u003cem\u003eDeveloper Training, Part II\u003c/em\u003e class.\u003c/li\u003e\n  \u003cli\u003eIn this notebook, you\u0026rsquo;ll create and load the \u003ccode\u003eitem_data\u003c/code\u003e table, which stores movie title and genre information.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIf you\u0026rsquo;ve completed the developer classes, you may already have these tables loaded in your database. If so, you can skip the next paragraph and start with the following paragraph, \u003cstrong\u003e1. Creating Tables.\u003c/strong\u003e\u003c/p\u003e\n\u003cp\u003eOtherwise, please click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to create and load the \u003ccode\u003eRATING_DATA\u003c/code\u003e and \u003ccode\u003eUSER_DATA\u003c/code\u003e tables, before proceeding.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Prerequisite Database Tables</h2>\n<p>We&rsquo;ll start with three tables from a simple Movie Rating schema:</p>\n<ul>\n  <li>The <code>rating_data</code> table, which stores movie ratings, was introduced in the exercises for our <em>Developer Training, Part I</em> class.</li>\n  <li>The <code>user_data</code> table, which stores reviewer information, was added in the exercise for our <em>Developer Training, Part II</em> class.</li>\n  <li>In this notebook, you&rsquo;ll create and load the <code>item_data</code> table, which stores movie title and genre information.</li>\n</ul>\n<p>If you&rsquo;ve completed the developer classes, you may already have these tables loaded in your database. If so, you can skip the next paragraph and start with the following paragraph, <strong>1. Creating Tables.</strong></p>\n<p>Otherwise, please click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button in the next paragraph to create and load the <code>RATING_DATA</code> and <code>USER_DATA</code> tables, before proceeding.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544591877759_1297994457",
-      "id": "20181212-051757_1803729212",
-      "dateCreated": "2018-12-12 05:17:57.759",
-      "dateStarted": "2018-12-13 03:07:06.739",
-      "dateFinished": "2018-12-13 03:07:06.968",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "title": "",
-      "text": "%splicemachine\ndrop table if exists rating_data;\ncreate table RATING_DATA (\n    user_id bigint,\n    item_id bigint,\n    rating integer, \n    time_entered timestamp,\n    primary key (user_id, item_id)\n);\n\ncall syscs_util.import_data(\u0027SPLICE\u0027, \u0027RATING_DATA\u0027, null, \u0027/opt/data/rating.csv\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/opt/data/\u0027, null, null);\nanalyze table rating_data;\n\ndrop table if exists user_data;\ncreate table USER_DATA (\n  user_id bigint primary key,\n  age integer,\n  gender varchar(1),\n  occupation varchar(20),\n  zip varchar(10)\n);\ncall syscs_util.import_data(\u0027SPLICE\u0027, \u0027USER_DATA\u0027, null, \u0027/opt/data/user.csv\u0027, \u0027|\u0027, null, null, null, null, 0, \u0027/opt/data/\u0027, null, null);\nanalyze table user_data;\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:17:07.041",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544591877759_1297994457", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:07:06.739", 
+      "dateUpdated": "2018-12-13 03:07:16.958", 
+      "dateCreated": "2018-12-12 05:17:57.759", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-051757_1803729212", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "errorMessage": "", 
+      "dateFinished": "2018-12-13 03:16:50.888", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\ndrop table if exists rating_data;\ncreate table RATING_DATA (\n    user_id bigint,\n    item_id bigint,\n    rating integer, \n    time_entered timestamp,\n    primary key (user_id, item_id)\n);\n\ncall syscs_util.import_data('SPLICE', 'RATING_DATA', null, '/opt/data/rating.csv', '|', null, null, null, null, 0, '/opt/data/', null, null);\nanalyze table rating_data;\n\ndrop table if exists user_data;\ncreate table USER_DATA (\n  user_id bigint primary key,\n  age integer,\n  gender varchar(1),\n  occupation varchar(20),\n  zip varchar(10)\n);\ncall syscs_util.import_data('SPLICE', 'USER_DATA', null, '/opt/data/user.csv', '|', null, null, null, null, 0, '/opt/data/', null, null);\nanalyze table user_data;\n", 
+      "title": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544592069483_1452833678", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:16:36.217", 
+      "dateUpdated": "2018-12-13 03:17:07.041", 
+      "dateCreated": "2018-12-12 05:21:09.484", 
+      "config": {
+        "editorHide": false, 
+        "title": false, 
+        "enabled": true, 
         "results": {
           "3": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "schemaName": "string",
-                      "tableName": "string",
-                      "partition": "string",
-                      "rowsCollected": "string",
-                      "partitionSize": "string",
-                      "partitionCount": "string",
-                      "statsType": "string",
-                      "sampleFraction": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                      "partitionSize": "string", 
+                      "statsType": "string", 
+                      "sampleFraction": "string", 
+                      "partitionCount": "string", 
+                      "partition": "string", 
+                      "tableName": "string", 
+                      "rowsCollected": "string", 
+                      "schemaName": "string"
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
-          },
+          }, 
           "7": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "schemaName": "string",
-                      "tableName": "string",
-                      "partition": "string",
-                      "rowsCollected": "string",
-                      "partitionSize": "string",
-                      "partitionCount": "string",
-                      "statsType": "string",
-                      "sampleFraction": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                      "partitionSize": "string", 
+                      "statsType": "string", 
+                      "sampleFraction": "string", 
+                      "partitionCount": "string", 
+                      "partition": "string", 
+                      "tableName": "string", 
+                      "rowsCollected": "string", 
+                      "schemaName": "string"
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/sql",
-        "title": false,
-        "editorHide": false,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544592069483_1452833678",
-      "id": "20181212-052109_1720996552",
-      "dateCreated": "2018-12-12 05:21:09.484",
-      "dateStarted": "2018-12-13 03:16:36.217",
-      "dateFinished": "2018-12-13 03:16:50.888",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "completionSupport": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-052109_1720996552", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n## 1. Creating Tables\n\nHere we\u0027ll load one more table to enhance our Movie Data schema; this table will categorization information for individual movie titles. As you\u0027ll see, this will be useful for our Machine Learning exercices.\n\n### Our Sample Data\n\nThe sample movie data that we\u0027re using is a table of movie titles and genre information. The raw data looks like:\n\n```\n1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n```\n\nThe data fields contains the following fields:\n\n`item_id | movie title | Action | Adventure | Animation | Children\u0027s | Comedy | Crime | Documentary | Drama | Fantasy |`\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western`\n    \nEach of the columns after `movie title` is a genre flag; each flag has a value of either `1`, indicating that the genre does apply to this movie, or `0`, indicating that it does not.\n\n\n### Create the Table Definition\n\nNow, let\u0027s create a table specification for the movie and genre data shown above, and call it `ITEM_DATA`. Be sure to put in a Primary Key definition.\n\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\nInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 14:59:49.252",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 14:59:49.323", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## 1. Creating Tables\n\nHere we'll load one more table to enhance our Movie Data schema; this table will categorization information for individual movie titles. As you'll see, this will be useful for our Machine Learning exercices.\n\n### Our Sample Data\n\nThe sample movie data that we're using is a table of movie titles and genre information. The raw data looks like:\n\n```\n1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n```\n\nThe data fields contains the following fields:\n\n`item_id | movie title | Action | Adventure | Animation | Children's | Comedy | Crime | Documentary | Drama | Fantasy |`\n&nbsp;&nbsp;&nbsp;&nbsp; `Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western`\n    \nEach of the columns after `movie title` is a genre flag; each flag has a value of either `1`, indicating that the genre does apply to this movie, or `0`, indicating that it does not.\n\n\n### Create the Table Definition\n\nNow, let's create a table specification for the movie and genre data shown above, and call it `ITEM_DATA`. Be sure to put in a Primary Key definition.\n\n<p class=\"noteQuestion\">What do you think the Primary Key should be?</p>\n\nInsert the SQL to create the table in the next paragraph, and then click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button to actually create the table in your database.\n\nFor help with the syntax, review the notebooks in this class, or read about creating tables in <a href=\"doc.splicemachine.com/sqlref_statements_createtable.html\" target=\"_blank\">our documentation.</a>\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Creating Tables\u003c/h2\u003e\n\u003cp\u003eHere we\u0026rsquo;ll load one more table to enhance our Movie Data schema; this table will categorization information for individual movie titles. As you\u0026rsquo;ll see, this will be useful for our Machine Learning exercices.\u003c/p\u003e\n\u003ch3\u003eOur Sample Data\u003c/h3\u003e\n\u003cp\u003eThe sample movie data that we\u0026rsquo;re using is a table of movie titles and genre information. The raw data looks like:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe data fields contains the following fields:\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003eitem_id | movie title | Action | Adventure | Animation | Children\u0026#39;s | Comedy | Crime | Documentary | Drama | Fantasy |\u003c/code\u003e\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003eFilm-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEach of the columns after \u003ccode\u003emovie title\u003c/code\u003e is a genre flag; each flag has a value of either \u003ccode\u003e1\u003c/code\u003e, indicating that the genre does apply to this movie, or \u003ccode\u003e0\u003c/code\u003e, indicating that it does not.\u003c/p\u003e\n\u003ch3\u003eCreate the Table Definition\u003c/h3\u003e\n\u003cp\u003eNow, let\u0026rsquo;s create a table specification for the movie and genre data shown above, and call it \u003ccode\u003eITEM_DATA\u003c/code\u003e. Be sure to put in a Primary Key definition.\u003c/p\u003e\n\u003cp class\u003d\"noteQuestion\"\u003eWhat do you think the Primary Key should be?\u003c/p\u003e\n\u003cp\u003eInsert the SQL to create the table in the next paragraph, and then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually create the table in your database.\u003c/p\u003e\n\u003cp\u003eFor help with the syntax, review the notebooks in this class, or read about creating tables in \u003ca href\u003d\"doc.splicemachine.com/sqlref_statements_createtable.html\" target\u003d\"_blank\"\u003eour documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>1. Creating Tables</h2>\n<p>Here we&rsquo;ll load one more table to enhance our Movie Data schema; this table will categorization information for individual movie titles. As you&rsquo;ll see, this will be useful for our Machine Learning exercices.</p>\n<h3>Our Sample Data</h3>\n<p>The sample movie data that we&rsquo;re using is a table of movie titles and genre information. The raw data looks like:</p>\n<pre><code>1|Toy Story|0|0|1|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0\n2|GoldenEye|1|1|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n3|Four Rooms|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0\n</code></pre>\n<p>The data fields contains the following fields:</p>\n<p><code>item_id | movie title | Action | Adventure | Animation | Children&#39;s | Comedy | Crime | Documentary | Drama | Fantasy |</code><br/>&nbsp;&nbsp;&nbsp;&nbsp; <code>Film-Noir | Horror | Musical | Mystery | Romance | Sci-Fi | Thriller | War | Western</code></p>\n<p>Each of the columns after <code>movie title</code> is a genre flag; each flag has a value of either <code>1</code>, indicating that the genre does apply to this movie, or <code>0</code>, indicating that it does not.</p>\n<h3>Create the Table Definition</h3>\n<p>Now, let&rsquo;s create a table specification for the movie and genre data shown above, and call it <code>ITEM_DATA</code>. Be sure to put in a Primary Key definition.</p>\n<p class=\"noteQuestion\">What do you think the Primary Key should be?</p>\n<p>Insert the SQL to create the table in the next paragraph, and then click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button to actually create the table in your database.</p>\n<p>For help with the syntax, review the notebooks in this class, or read about creating tables in <a href=\"doc.splicemachine.com/sqlref_statements_createtable.html\" target=\"_blank\">our documentation.</a></p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544570146804_-975642888",
-      "id": "20181211-231546_1567281510",
-      "dateCreated": "2018-12-11 23:15:46.804",
-      "dateStarted": "2018-12-12 14:59:49.256",
-      "dateFinished": "2018-12-12 14:59:49.323",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:18:00.976",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544570146804_-975642888", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 14:59:49.256", 
+      "dateUpdated": "2018-12-12 14:59:49.252", 
+      "dateCreated": "2018-12-11 23:15:46.804", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544571607632_207107263",
-      "id": "20181211-234007_1059582155",
-      "dateCreated": "2018-12-11 23:40:07.632",
-      "dateStarted": "2018-12-11 23:55:34.958",
-      "dateFinished": "2018-12-11 23:55:36.541",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-231546_1567281510", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n## 2. Importing Data\n\nNow we\u0027ll import all of our movie/genre. We\u0027ve copied the data file into this docker image, so you can examine it if needed; you\u0027ll find the data here:\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; `opt/data/item.csv`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n\u003cp class\u003d\"noteHint\"\u003euse `/opt/data` as your BAD records file directory; if you have trouble with the import, you\u0027ll find valuable information in that directory.\n\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 14:59:57.594",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
+      "dateFinished": "2018-12-11 23:55:36.541", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544571607632_207107263", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-11 23:55:34.958", 
+      "dateUpdated": "2018-12-13 03:18:00.976", 
+      "dateCreated": "2018-12-11 23:40:07.632", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "editOnDblClick": false, 
+          "completionSupport": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-234007_1059582155", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 14:59:57.622", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## 2. Importing Data\n\nNow we'll import all of our movie/genre. We've copied the data file into this docker image, so you can examine it if needed; you'll find the data here:\n&nbsp;&nbsp;&nbsp;&nbsp; `opt/data/item.csv`\n\nEnter the proper `IMPORT` call to load the data in the next paragraph, then  click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\n\n<p class=\"noteHint\">use `/opt/data` as your BAD records file directory; if you have trouble with the import, you'll find valuable information in that directory.\n\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Importing Data\u003c/h2\u003e\n\u003cp\u003eNow we\u0026rsquo;ll import all of our movie/genre. We\u0026rsquo;ve copied the data file into this docker image, so you can examine it if needed; you\u0026rsquo;ll find the data here:\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003ccode\u003eopt/data/item.csv\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eEnter the proper \u003ccode\u003eIMPORT\u003c/code\u003e call to load the data in the next paragraph, then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteHint\"\u003euse \u003ccode\u003e/opt/data\u003c/code\u003e as your BAD records file directory; if you have trouble with the import, you\u0026rsquo;ll find valuable information in that directory.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>2. Importing Data</h2>\n<p>Now we&rsquo;ll import all of our movie/genre. We&rsquo;ve copied the data file into this docker image, so you can examine it if needed; you&rsquo;ll find the data here:<br/>&nbsp;&nbsp;&nbsp;&nbsp; <code>opt/data/item.csv</code></p>\n<p>Enter the proper <code>IMPORT</code> call to load the data in the next paragraph, then click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button to actually load the data into the table in your database. You can review examples from this class or in our documentation for any required help.</p>\n<p><p class=\"noteHint\">use <code>/opt/data</code> as your BAD records file directory; if you have trouble with the import, you&rsquo;ll find valuable information in that directory.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544572614016_-681778504",
-      "id": "20181211-235654_383130336",
-      "dateCreated": "2018-12-11 23:56:54.016",
-      "dateStarted": "2018-12-12 14:59:57.598",
-      "dateFinished": "2018-12-12 14:59:57.622",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:18:17.929",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544572614016_-681778504", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 14:59:57.598", 
+      "dateUpdated": "2018-12-12 14:59:57.594", 
+      "dateCreated": "2018-12-11 23:56:54.016", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-235654_383130336", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "dateFinished": "2018-12-11 23:55:43.120", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544572132014_-1835056155", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-11 23:55:42.503", 
+      "dateUpdated": "2018-12-13 03:18:17.929", 
+      "dateCreated": "2018-12-11 23:48:52.014", 
+      "config": {
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "rowsImported": "string",
-                      "failedRows": "string",
-                      "files": "string",
-                      "dataSize": "string",
+                      "files": "string", 
+                      "failedRows": "string", 
+                      "rowsImported": "string", 
+                      "dataSize": "string", 
                       "failedLog": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544572132014_-1835056155",
-      "id": "20181211-234852_1489275376",
-      "dateCreated": "2018-12-11 23:48:52.014",
-      "dateStarted": "2018-12-11 23:55:42.503",
-      "dateFinished": "2018-12-11 23:55:43.120",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-234852_1489275376", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n## 3. Visualizing Data\n\nNow we have 3 tables loaded:\n\n* Movie Ratings\n* Movie Reviewers\n* Movies and their Genres\n\nAnd now our visualizations of data should become more interesting now as well. Explore using different visualizations by:\n\n1. Running the pre-entered queries in the next paragraphs\n2. Applying different visualization techniques to look for any possible interesting correlations.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:28:41.841",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 02:28:45.674", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## 3. Visualizing Data\n\nNow we have 3 tables loaded:\n\n* Movie Ratings\n* Movie Reviewers\n* Movies and their Genres\n\nAnd now our visualizations of data should become more interesting now as well. Explore using different visualizations by:\n\n1. Running the pre-entered queries in the next paragraphs\n2. Applying different visualization techniques to look for any possible interesting correlations.\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Visualizing Data\u003c/h2\u003e\n\u003cp\u003eNow we have 3 tables loaded:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eMovie Ratings\u003c/li\u003e\n  \u003cli\u003eMovie Reviewers\u003c/li\u003e\n  \u003cli\u003eMovies and their Genres\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAnd now our visualizations of data should become more interesting now as well. Explore using different visualizations by:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eRunning the pre-entered queries in the next paragraphs\u003c/li\u003e\n  \u003cli\u003eApplying different visualization techniques to look for any possible interesting correlations.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>3. Visualizing Data</h2>\n<p>Now we have 3 tables loaded:</p>\n<ul>\n  <li>Movie Ratings</li>\n  <li>Movie Reviewers</li>\n  <li>Movies and their Genres</li>\n</ul>\n<p>And now our visualizations of data should become more interesting now as well. Explore using different visualizations by:</p>\n<ol>\n  <li>Running the pre-entered queries in the next paragraphs</li>\n  <li>Applying different visualization techniques to look for any possible interesting correlations.</li>\n</ol>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544572760623_-1108304602",
-      "id": "20181211-235920_2111692545",
-      "dateCreated": "2018-12-11 23:59:20.623",
-      "dateStarted": "2018-12-12 02:28:41.846",
-      "dateFinished": "2018-12-12 02:28:45.674",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\nselect occupation, avg(cast(age as float)), avg(cast(rating as float)), count(*) from rating_data r, user_data u, item_data i where r.user_id \u003d u.user_id and i.item_id \u003d r.item_id and i.animation \u003d 1 and i.childrens \u003d 1 and comedy \u003d 1 group by occupation order by avg(cast(rating as float)) desc",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:18:30.658",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544572760623_-1108304602", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 02:28:41.846", 
+      "dateUpdated": "2018-12-12 02:28:41.841", 
+      "dateCreated": "2018-12-11 23:59:20.623", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-235920_2111692545", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "dateFinished": "2018-12-12 00:31:34.459", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\nselect occupation, avg(cast(age as float)), avg(cast(rating as float)), count(*) from rating_data r, user_data u, item_data i where r.user_id = u.user_id and i.item_id = r.item_id and i.animation = 1 and i.childrens = 1 and comedy = 1 group by occupation order by avg(cast(rating as float)) desc", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544572392963_-679131984", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 00:31:31.414", 
+      "dateUpdated": "2018-12-13 03:18:30.658", 
+      "dateCreated": "2018-12-11 23:53:12.963", 
+      "config": {
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "keys": [], 
+              "optionOpen": false, 
+              "height": 300.0, 
               "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "2": "string",
-                      "3": "string",
-                      "4": "string",
-                      "OCCUPATION": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                },
-                "multiBarChart": {
-                  "rotate": {
-                    "degree": "-45"
-                  },
-                  "xLabelStatus": "default"
-                },
                 "stackedAreaChart": {
                   "rotate": {
                     "degree": "-45"
-                  },
+                  }, 
                   "xLabelStatus": "default"
-                },
+                }, 
+                "table": {
+                  "updated": false, 
+                  "tableGridState": {}, 
+                  "tableColumnTypeState": {
+                    "updated": false, 
+                    "names": {
+                      "3": "string", 
+                      "2": "string", 
+                      "4": "string", 
+                      "OCCUPATION": "string"
+                    }
+                  }, 
+                  "tableOptionValue": {
+                    "showPagination": false, 
+                    "useFilter": false, 
+                    "showAggregationFooter": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }, 
                 "lineChart": {
                   "rotate": {
                     "degree": "-45"
-                  },
+                  }, 
+                  "xLabelStatus": "default"
+                }, 
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  }, 
                   "xLabelStatus": "default"
                 }
-              },
-              "commonSetting": {},
-              "keys": [],
-              "groups": [],
-              "values": []
-            },
+              }, 
+              "values": [], 
+              "mode": "table", 
+              "groups": [], 
+              "commonSetting": {}
+            }, 
             "helium": {}
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544572392963_-679131984",
-      "id": "20181211-235312_1866008550",
-      "dateCreated": "2018-12-11 23:53:12.963",
-      "dateStarted": "2018-12-12 00:31:31.414",
-      "dateFinished": "2018-12-12 00:31:34.459",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181211-235312_1866008550", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%splicemachine\nselect occupation, count(*), avg(cast(rating as float)) from rating_data r, user_data u, item_data i where r.user_id \u003d u.user_id and i.item_id \u003d r.item_id group by occupation order by avg(cast(rating as float)) desc",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:54:58.458",
+      "status": "READY", 
+      "dateFinished": "2018-12-12 00:54:58.341", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\nselect occupation, count(*), avg(cast(rating as float)) from rating_data r, user_data u, item_data i where r.user_id = u.user_id and i.item_id = r.item_id group by occupation order by avg(cast(rating as float)) desc", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544575553652_-1102460025", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 00:54:55.318", 
+      "dateUpdated": "2018-12-12 00:54:58.458", 
+      "dateCreated": "2018-12-12 00:45:53.652", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "2": "string",
-                      "3": "string",
+                      "3": "string", 
+                      "2": "string", 
                       "OCCUPATION": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544575553652_-1102460025",
-      "id": "20181212-004553_950575811",
-      "dateCreated": "2018-12-12 00:45:53.652",
-      "dateStarted": "2018-12-12 00:54:55.318",
-      "dateFinished": "2018-12-12 00:54:58.341",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-004553_950575811", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%splicemachine\nselect occupation, count(*), avg(cast(rating as float)) from rating_data r, user_data u, item_data i where r.user_id \u003d u.user_id and i.item_id \u003d r.item_id and horror \u003d 1 group by occupation order by avg(cast(rating as float)) desc",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 00:54:31.153",
+      "status": "READY", 
+      "dateFinished": "2018-12-12 00:54:31.042", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\nselect occupation, count(*), avg(cast(rating as float)) from rating_data r, user_data u, item_data i where r.user_id = u.user_id and i.item_id = r.item_id and horror = 1 group by occupation order by avg(cast(rating as float)) desc", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544573030292_1045477910", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 00:54:28.018", 
+      "dateUpdated": "2018-12-12 00:54:31.153", 
+      "dateCreated": "2018-12-12 00:03:50.293", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "2": "string",
-                      "3": "string",
+                      "3": "string", 
+                      "2": "string", 
                       "OCCUPATION": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-000350_74595048", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 03:20:16.609", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n### Your turn.\nNow try your own queries and visualizations.  Can you find any correlations?\n", 
+      "apps": [], 
+      "results": {
+        "msg": [
+          {
+            "data": "<div class=\"markdown-body\">\n<h3>Your turn.</h3>\n<p>Now try your own queries and visualizations. Can you find any correlations?</p>\n</div>", 
+            "type": "HTML"
+          }
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544671175986_1093753941", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:20:14.709", 
+      "dateUpdated": "2018-12-13 03:20:24.765", 
+      "dateCreated": "2018-12-13 03:19:35.986", 
+      "config": {
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181213-031935_534317063", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "apps": [], 
+      "jobName": "paragraph_1544671174071_-1472656377", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-13 03:19:34.074", 
+      "dateCreated": "2018-12-13 03:19:34.071", 
+      "config": {
         "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544573030292_1045477910",
-      "id": "20181212-000350_74595048",
-      "dateCreated": "2018-12-12 00:03:50.293",
-      "dateStarted": "2018-12-12 00:54:28.018",
-      "dateFinished": "2018-12-12 00:54:31.042",
-      "status": "FINISHED",
-      "errorMessage": "",
+      }, 
+      "id": "20181213-031934_2122010342", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n### Your turn.\nNow try your own queries and visualizations.  Can you find any correlations?\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:20:24.765",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 03:21:44.418", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## 4. Machine Learning example\n\nIn the future we'll have a more in-depth Machine Learning exercise with the Movie Rating Data we have gone through.  But in the meantime we'll drill into a more streamlined example on Spam detection.\n\nHere we'll create a table to hold a set of SMS records, where each record has been labeled as \"ham\" or \"spam\" (where the spam label indicates a spam record).  We'll then apply a set of transformations and create a model for our own Spam predictor.\n\nFirst we'll create the table for the data, and go ahead and import it.  (To get to the Machine Learning, the schema and import statements are provided for you to run.)\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eYour turn.\u003c/h3\u003e\n\u003cp\u003eNow try your own queries and visualizations. Can you find any correlations?\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>4. Machine Learning example</h2>\n<p>In the future we&rsquo;ll have a more in-depth Machine Learning exercise with the Movie Rating Data we have gone through. But in the meantime we&rsquo;ll drill into a more streamlined example on Spam detection.</p>\n<p>Here we&rsquo;ll create a table to hold a set of SMS records, where each record has been labeled as &ldquo;ham&rdquo; or &ldquo;spam&rdquo; (where the spam label indicates a spam record). We&rsquo;ll then apply a set of transformations and create a model for our own Spam predictor.</p>\n<p>First we&rsquo;ll create the table for the data, and go ahead and import it. (To get to the Machine Learning, the schema and import statements are provided for you to run.)</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544671175986_1093753941",
-      "id": "20181213-031935_534317063",
-      "dateCreated": "2018-12-13 03:19:35.986",
-      "dateStarted": "2018-12-13 03:20:14.709",
-      "dateFinished": "2018-12-13 03:20:16.609",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:19:34.074",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544671174071_-1472656377",
-      "id": "20181213-031934_2122010342",
-      "dateCreated": "2018-12-13 03:19:34.071",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## 4. Machine Learning example\n\nIn the future we\u0027ll have a more in-depth Machine Learning exercise with the Movie Rating Data we have gone through.  But in the meantime we\u0027ll drill into a more streamlined example on Spam detection.\n\nHere we\u0027ll create a table to hold a set of SMS records, where each record has been labeled as \"ham\" or \"spam\" (where the spam label indicates a spam record).  We\u0027ll then apply a set of transformations and create a model for our own Spam predictor.\n\nFirst we\u0027ll create the table for the data, and go ahead and import it.  (To get to the Machine Learning, the schema and import statements are provided for you to run.)\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:21:54.420",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544639426283_-357489515", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:21:44.395", 
+      "dateUpdated": "2018-12-13 03:21:54.420", 
+      "dateCreated": "2018-12-12 18:30:26.283", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-183026_1620653810", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "dateFinished": "2018-12-12 18:50:29.654", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\ndrop table if exists sms;\nCREATE TABLE SMS (\n    LABEL VARCHAR(10),\n    SMS_CONTENT VARCHAR(10000)\n);\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544639418151_265954986", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 18:50:27.633", 
+      "dateUpdated": "2018-12-12 18:50:27.603", 
+      "dateCreated": "2018-12-12 18:30:18.153", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-183018_1456426301", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 18:55:51.402", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n\nWe went ahead and provided the import statement for you to run here.  A couple of points:\n\n1.  This is tab-separated data, hence we are using \\t as the value of the field separator.\n2.  For string delimiters, we can't use our default since the data may contain double-quote characters.  Therefore the best option is to include an unprintable character (in this case ^A) that we don't expect to see in the SMS strings.\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Machine Learning example\u003c/h2\u003e\n\u003cp\u003eIn the future we\u0026rsquo;ll have a more in-depth Machine Learning exercise with the Movie Rating Data we have gone through. But in the meantime we\u0026rsquo;ll drill into a more streamlined example on Spam detection.\u003c/p\u003e\n\u003cp\u003eHere we\u0026rsquo;ll create a table to hold a set of SMS records, where each record has been labeled as \u0026ldquo;ham\u0026rdquo; or \u0026ldquo;spam\u0026rdquo; (where the spam label indicates a spam record). We\u0026rsquo;ll then apply a set of transformations and create a model for our own Spam predictor.\u003c/p\u003e\n\u003cp\u003eFirst we\u0026rsquo;ll create the table for the data, and go ahead and import it. (To get to the Machine Learning, the schema and import statements are provided for you to run.)\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<p>We went ahead and provided the import statement for you to run here. A couple of points:</p>\n<ol>\n  <li>This is tab-separated data, hence we are using \\t as the value of the field separator.</li>\n  <li>For string delimiters, we can&rsquo;t use our default since the data may contain double-quote characters. Therefore the best option is to include an unprintable character (in this case ^A) that we don&rsquo;t expect to see in the SMS strings.</li>\n</ol>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544639426283_-357489515",
-      "id": "20181212-183026_1620653810",
-      "dateCreated": "2018-12-12 18:30:26.283",
-      "dateStarted": "2018-12-13 03:21:44.395",
-      "dateFinished": "2018-12-13 03:21:44.418",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\ndrop table if exists sms;\nCREATE TABLE SMS (\n    LABEL VARCHAR(10),\n    SMS_CONTENT VARCHAR(10000)\n);\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 18:50:27.603",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544640824420_1521189545", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 18:55:51.326", 
+      "dateUpdated": "2018-12-12 18:56:01.594", 
+      "dateCreated": "2018-12-12 18:53:44.420", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544639418151_265954986",
-      "id": "20181212-183018_1456426301",
-      "dateCreated": "2018-12-12 18:30:18.153",
-      "dateStarted": "2018-12-12 18:50:27.633",
-      "dateFinished": "2018-12-12 18:50:29.654",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-185344_1885503914", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n\nWe went ahead and provided the import statement for you to run here.  A couple of points:\n\n1.  This is tab-separated data, hence we are using \\t as the value of the field separator.\n2.  For string delimiters, we can\u0027t use our default since the data may contain double-quote characters.  Therefore the best option is to include an unprintable character (in this case ^A) that we don\u0027t expect to see in the SMS strings.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 18:56:01.594",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
+      "dateFinished": "2018-12-12 18:50:35.184", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eWe went ahead and provided the import statement for you to run here. A couple of points:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eThis is tab-separated data, hence we are using \\t as the value of the field separator.\u003c/li\u003e\n  \u003cli\u003eFor string delimiters, we can\u0026rsquo;t use our default since the data may contain double-quote characters. Therefore the best option is to include an unprintable character (in this case ^A) that we don\u0026rsquo;t expect to see in the SMS strings.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544640824420_1521189545",
-      "id": "20181212-185344_1885503914",
-      "dateCreated": "2018-12-12 18:53:44.420",
-      "dateStarted": "2018-12-12 18:55:51.326",
-      "dateFinished": "2018-12-12 18:55:51.402",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\ncall syscs_util.import_data (\u0027SPLICE\u0027, \u0027SMS\u0027, null, \u0027/opt/data/sms.csv\u0027, \u0027\\t\u0027, \u0027\u0001\u0027, null, null, null, 0, \u0027/opt/data/\u0027, null, null);",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 18:50:35.973",
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\ncall syscs_util.import_data ('SPLICE', 'SMS', null, '/opt/data/sms.csv', '\\t', '\u0001', null, null, null, 0, '/opt/data/', null, null);", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544640168580_-1225597242", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 18:50:32.723", 
+      "dateUpdated": "2018-12-12 18:50:35.973", 
+      "dateCreated": "2018-12-12 18:42:48.580", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "rowsImported": "string",
-                      "failedRows": "string",
-                      "files": "string",
-                      "dataSize": "string",
+                      "files": "string", 
+                      "failedRows": "string", 
+                      "rowsImported": "string", 
+                      "dataSize": "string", 
                       "failedLog": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544640168580_-1225597242",
-      "id": "20181212-184248_2059435156",
-      "dateCreated": "2018-12-12 18:42:48.580",
-      "dateStarted": "2018-12-12 18:50:32.723",
-      "dateFinished": "2018-12-12 18:50:35.184",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-184248_2059435156", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n\nIt\u0027s good to take a look at the data, perhaps filtering on the label to see what we have.  (Note - the data has NOT been cleansed)",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 19:01:18.151",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 19:01:07.818", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n\nIt's good to take a look at the data, perhaps filtering on the label to see what we have.  (Note - the data has NOT been cleansed)", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eIt\u0026rsquo;s good to take a look at the data, perhaps filtering on the label to see what we have. (Note - the data has NOT been cleansed)\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<p>It&rsquo;s good to take a look at the data, perhaps filtering on the label to see what we have. (Note - the data has NOT been cleansed)</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544641200426_-333019787",
-      "id": "20181212-190000_1697111101",
-      "dateCreated": "2018-12-12 19:00:00.426",
-      "dateStarted": "2018-12-12 19:01:07.795",
-      "dateFinished": "2018-12-12 19:01:07.818",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:22:57.033",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544641200426_-333019787", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 19:01:07.795", 
+      "dateUpdated": "2018-12-12 19:01:18.151", 
+      "dateCreated": "2018-12-12 19:00:00.426", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-190000_1697111101", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "dateFinished": "2018-12-12 18:59:39.133", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%splicemachine\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544640969946_2011919698", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 18:59:36.567", 
+      "dateUpdated": "2018-12-13 03:22:57.033", 
+      "dateCreated": "2018-12-12 18:56:09.946", 
+      "config": {
+        "enabled": true, 
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 300.0,
-              "optionOpen": false,
+              "commonSetting": {}, 
+              "optionOpen": false, 
               "setting": {
                 "table": {
-                  "tableGridState": {},
+                  "updated": false, 
+                  "tableGridState": {}, 
                   "tableColumnTypeState": {
+                    "updated": false, 
                     "names": {
-                      "LABEL": "string",
-                      "SMS_CONTENT": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                      "SMS_CONTENT": "string", 
+                      "LABEL": "string"
+                    }
+                  }, 
                   "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
+                    "showPagination": false, 
+                    "useFilter": false, 
                     "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
+                  }, 
+                  "initialized": false, 
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
-              },
-              "commonSetting": {}
+              }, 
+              "mode": "table", 
+              "height": 300.0
             }
           }
-        },
+        }, 
+        "editorMode": "ace/mode/sql", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544640969946_2011919698",
-      "id": "20181212-185609_1039957245",
-      "dateCreated": "2018-12-12 18:56:09.946",
-      "dateStarted": "2018-12-12 18:59:36.567",
-      "dateFinished": "2018-12-12 18:59:39.133",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "editOnDblClick": false, 
+          "language": "sql"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-185609_1039957245", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n### PySpliceContext\n\nLet\u0027s start by getting a fresh variable `splice` assigned to a PySpliceContext object.  You will recall creating one of these in an earlier notebook: \n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:26:41.082",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 03:26:31.046", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n### PySpliceContext\n\nLet's start by getting a fresh variable `splice` assigned to a PySpliceContext object.  You will recall creating one of these in an earlier notebook: \n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003ePySpliceContext\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start by getting a fresh variable \u003ccode\u003esplice\u003c/code\u003e assigned to a PySpliceContext object. You will recall creating one of these in an earlier notebook:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h3>PySpliceContext</h3>\n<p>Let&rsquo;s start by getting a fresh variable <code>splice</code> assigned to a PySpliceContext object. You will recall creating one of these in an earlier notebook:</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544655547125_1771905954",
-      "id": "20181212-225907_322431610",
-      "dateCreated": "2018-12-12 22:59:07.125",
-      "dateStarted": "2018-12-13 03:26:31.007",
-      "dateFinished": "2018-12-13 03:26:31.046",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:26:08.801",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544655547125_1771905954", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:26:31.007", 
+      "dateUpdated": "2018-12-13 03:26:41.082", 
+      "dateCreated": "2018-12-12 22:59:07.125", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
-      "apps": [],
-      "jobName": "paragraph_1544642337694_380914897",
-      "id": "20181212-191857_1893256976",
-      "dateCreated": "2018-12-12 19:18:57.694",
-      "dateStarted": "2018-12-12 19:25:12.969",
-      "dateFinished": "2018-12-12 19:25:13.023",
-      "status": "FINISHED",
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-225907_322431610", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n### Native Spark DataSource to create DataFrame from Splice table\nNow create a variable `df` which is a dataframe of all records from the SMS table.  Additionally, pipeline the result of that dataframe with a call to withColumnRenamed from \"LABEL\" to \"correct\":",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:26:51.916",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%spark.pyspark\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544642337694_380914897", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-13 03:26:08.801", 
+      "dateCreated": "2018-12-12 19:18:57.694", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/python", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "python"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-191857_1893256976", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 03:26:41.876", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n### Native Spark DataSource to create DataFrame from Splice table\nNow create a variable `df` which is a dataframe of all records from the SMS table.  Additionally, pipeline the result of that dataframe with a call to withColumnRenamed from \"LABEL\" to \"correct\":", 
+      "apps": [], 
+      "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eNative Spark DataSource to create DataFrame from Splice table\u003c/h3\u003e\n\u003cp\u003eNow create a variable \u003ccode\u003edf\u003c/code\u003e which is a dataframe of all records from the SMS table. Additionally, pipeline the result of that dataframe with a call to withColumnRenamed from \u0026ldquo;LABEL\u0026rdquo; to \u0026ldquo;correct\u0026rdquo;:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h3>Native Spark DataSource to create DataFrame from Splice table</h3>\n<p>Now create a variable <code>df</code> which is a dataframe of all records from the SMS table. Additionally, pipeline the result of that dataframe with a call to withColumnRenamed from &ldquo;LABEL&rdquo; to &ldquo;correct&rdquo;:</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544655209900_-935767212",
-      "id": "20181212-225329_921101637",
-      "dateCreated": "2018-12-12 22:53:29.900",
-      "dateStarted": "2018-12-13 03:26:41.861",
-      "dateFinished": "2018-12-13 03:26:41.876",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:25:53.816",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544655209900_-935767212", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:26:41.861", 
+      "dateUpdated": "2018-12-13 03:26:51.916", 
+      "dateCreated": "2018-12-12 22:53:29.900", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/python"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": []
-      },
-      "apps": [],
-      "jobName": "paragraph_1544655202793_1309033313",
-      "id": "20181212-225322_1170908461",
-      "dateCreated": "2018-12-12 22:53:22.793",
-      "dateStarted": "2018-12-12 22:56:05.208",
-      "dateFinished": "2018-12-12 22:56:09.389",
-      "status": "FINISHED",
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-225329_921101637", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n### generate_pipeline() definition - Preprocessing the data\nWe\u0027re now going to preprocess the data before learning:\n1. Tokenize the content into words (using Tokenizer())\n2. Filter out words of little significance (using StopWordsRemover())\n3. Hashing to get term frequency (using HashingTF())\n4. IDF to establish term significance (using IDF())\n5. Converting \"ham\" and \"spam\" to 0\u0027s and 1\u0027s\n\nFinish out the below definition of `generate_pipeline()`.  We\u0027ve put in the Tokenizer and Hashing, and IDF.  Put in a `StopWordsRemover()` (and name it `remover`) to make it work, based on the other code you see here.  Consult the Spark documentation for StopWordsRemover as necessary.  (Don\u0027t worry about any warnings when it runs)",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:27:31.654",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%spark.pyspark\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544655202793_1309033313", 
+      "user": "anonymous", 
+      "dateUpdated": "2018-12-13 03:25:53.816", 
+      "dateCreated": "2018-12-12 22:53:22.793", 
+      "config": {
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/python", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "python"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-225322_1170908461", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 03:27:21.653", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n### generate_pipeline() definition - Preprocessing the data\nWe're now going to preprocess the data before learning:\n1. Tokenize the content into words (using Tokenizer())\n2. Filter out words of little significance (using StopWordsRemover())\n3. Hashing to get term frequency (using HashingTF())\n4. IDF to establish term significance (using IDF())\n5. Converting \"ham\" and \"spam\" to 0's and 1's\n\nFinish out the below definition of `generate_pipeline()`.  We've put in the Tokenizer and Hashing, and IDF.  Put in a `StopWordsRemover()` (and name it `remover`) to make it work, based on the other code you see here.  Consult the Spark documentation for StopWordsRemover as necessary.  (Don't worry about any warnings when it runs)", 
+      "apps": [], 
+      "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003egenerate_pipeline() definition - Preprocessing the data\u003c/h3\u003e\n\u003cp\u003eWe\u0026rsquo;re now going to preprocess the data before learning:\u003cbr/\u003e1. Tokenize the content into words (using Tokenizer())\u003cbr/\u003e2. Filter out words of little significance (using StopWordsRemover())\u003cbr/\u003e3. Hashing to get term frequency (using HashingTF())\u003cbr/\u003e4. IDF to establish term significance (using IDF())\u003cbr/\u003e5. Converting \u0026ldquo;ham\u0026rdquo; and \u0026ldquo;spam\u0026rdquo; to 0\u0026rsquo;s and 1\u0026rsquo;s\u003c/p\u003e\n\u003cp\u003eFinish out the below definition of \u003ccode\u003egenerate_pipeline()\u003c/code\u003e. We\u0026rsquo;ve put in the Tokenizer and Hashing, and IDF. Put in a \u003ccode\u003eStopWordsRemover()\u003c/code\u003e (and name it \u003ccode\u003eremover\u003c/code\u003e) to make it work, based on the other code you see here. Consult the Spark documentation for StopWordsRemover as necessary. (Don\u0026rsquo;t worry about any warnings when it runs)\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h3>generate_pipeline() definition - Preprocessing the data</h3>\n<p>We&rsquo;re now going to preprocess the data before learning:<br/>1. Tokenize the content into words (using Tokenizer())<br/>2. Filter out words of little significance (using StopWordsRemover())<br/>3. Hashing to get term frequency (using HashingTF())<br/>4. IDF to establish term significance (using IDF())<br/>5. Converting &ldquo;ham&rdquo; and &ldquo;spam&rdquo; to 0&rsquo;s and 1&rsquo;s</p>\n<p>Finish out the below definition of <code>generate_pipeline()</code>. We&rsquo;ve put in the Tokenizer and Hashing, and IDF. Put in a <code>StopWordsRemover()</code> (and name it <code>remover</code>) to make it work, based on the other code you see here. Consult the Spark documentation for StopWordsRemover as necessary. (Don&rsquo;t worry about any warnings when it runs)</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544655145720_584496113",
-      "id": "20181212-225225_31595403",
-      "dateCreated": "2018-12-12 22:52:25.724",
-      "dateStarted": "2018-12-13 03:27:21.627",
-      "dateFinished": "2018-12-13 03:27:21.653",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\nfrom pyspark.ml.feature import Tokenizer, StopWordsRemover, HashingTF, IDF, StringIndexer\nfrom pyspark.ml import Pipeline\n\nFEATURE_NUM_HASHING \u003d 7500 \ndf \u003d df.withColumnRenamed(\"LABEL\", \"correct\")\n\ndef generate_pipeline(predicting\u003dFalse):\n    tokenizer \u003d Tokenizer().setInputCol(\"SMS_CONTENT\").setOutputCol(\"words\")\n\n    # StopWordsRemover code goes here to set up remover variable:\n    \n    \n    hashingTF \u003d HashingTF().setNumFeatures(FEATURE_NUM_HASHING).setInputCol(\"filtered\").setOutputCol(\"rawFeatures\")\n    idf \u003d IDF().setInputCol(\"rawFeatures\").setOutputCol(\"features\").setMinDocFreq(0)\n    stages \u003d [tokenizer, remover, hashingTF, idf]\n    \n    if not predicting: # ignore label if we are predicting\n        labelidx \u003d StringIndexer().setInputCol(\"correct\").setOutputCol(\"label\")\n        stages.append(labelidx)\n        \n    pipe \u003d Pipeline(stages\u003dstages)\n    return pipe\n    \npipe \u003d generate_pipeline()\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:27:57.634",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544655145720_584496113", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:27:21.627", 
+      "dateUpdated": "2018-12-13 03:27:31.654", 
+      "dateCreated": "2018-12-12 22:52:25.724", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/python",
-        "editorHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544575340619_-1668409231",
-      "id": "20181212-004220_1019470658",
-      "dateCreated": "2018-12-12 00:42:20.619",
-      "dateStarted": "2018-12-12 23:08:07.105",
-      "dateFinished": "2018-12-12 23:08:07.950",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-225225_31595403", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n### Transformation, modeling, and evaluation\n\nWe\u0027ll use random iteration averaging to train and evaluate random samples from the dataset. This prevents overfitting.  Then we\u0027ll follow up with Logistic Regression for training and testing.\n\nPut in the proper `LogisticRegression()` code below (assiging to variable `lr`)\n\nQuestions:\n1.  What is our training set size?  What is our testing set size?\n2.  Why is it important not to overfit?\n\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:28:36.791",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
+      "dateFinished": "2018-12-12 23:08:07.950", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%spark.pyspark\nfrom pyspark.ml.feature import Tokenizer, StopWordsRemover, HashingTF, IDF, StringIndexer\nfrom pyspark.ml import Pipeline\n\nFEATURE_NUM_HASHING = 7500 \ndf = df.withColumnRenamed(\"LABEL\", \"correct\")\n\ndef generate_pipeline(predicting=False):\n    tokenizer = Tokenizer().setInputCol(\"SMS_CONTENT\").setOutputCol(\"words\")\n\n    # StopWordsRemover code goes here to set up remover variable:\n    \n    \n    hashingTF = HashingTF().setNumFeatures(FEATURE_NUM_HASHING).setInputCol(\"filtered\").setOutputCol(\"rawFeatures\")\n    idf = IDF().setInputCol(\"rawFeatures\").setOutputCol(\"features\").setMinDocFreq(0)\n    stages = [tokenizer, remover, hashingTF, idf]\n    \n    if not predicting: # ignore label if we are predicting\n        labelidx = StringIndexer().setInputCol(\"correct\").setOutputCol(\"label\")\n        stages.append(labelidx)\n        \n    pipe = Pipeline(stages=stages)\n    return pipe\n    \npipe = generate_pipeline()\n", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544575340619_-1668409231", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 23:08:07.105", 
+      "dateUpdated": "2018-12-13 03:27:57.634", 
+      "dateCreated": "2018-12-12 00:42:20.619", 
+      "config": {
+        "editorHide": false, 
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/python", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "python"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-004220_1019470658", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 03:28:26.734", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n### Transformation, modeling, and evaluation\n\nWe'll use random iteration averaging to train and evaluate random samples from the dataset. This prevents overfitting.  Then we'll follow up with Logistic Regression for training and testing.\n\nPut in the proper `LogisticRegression()` code below (assiging to variable `lr`)\n\nQuestions:\n1.  What is our training set size?  What is our testing set size?\n2.  Why is it important not to overfit?\n\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eTransformation, modeling, and evaluation\u003c/h3\u003e\n\u003cp\u003eWe\u0026rsquo;ll use random iteration averaging to train and evaluate random samples from the dataset. This prevents overfitting. Then we\u0026rsquo;ll follow up with Logistic Regression for training and testing.\u003c/p\u003e\n\u003cp\u003ePut in the proper \u003ccode\u003eLogisticRegression()\u003c/code\u003e code below (assiging to variable \u003ccode\u003elr\u003c/code\u003e)\u003c/p\u003e\n\u003cp\u003eQuestions:\u003cbr/\u003e1. What is our training set size? What is our testing set size?\u003cbr/\u003e2. Why is it important not to overfit?\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h3>Transformation, modeling, and evaluation</h3>\n<p>We&rsquo;ll use random iteration averaging to train and evaluate random samples from the dataset. This prevents overfitting. Then we&rsquo;ll follow up with Logistic Regression for training and testing.</p>\n<p>Put in the proper <code>LogisticRegression()</code> code below (assiging to variable <code>lr</code>)</p>\n<p>Questions:<br/>1. What is our training set size? What is our testing set size?<br/>2. Why is it important not to overfit?</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544656545787_-831310927",
-      "id": "20181212-231545_1963619940",
-      "dateCreated": "2018-12-12 23:15:45.787",
-      "dateStarted": "2018-12-13 03:28:26.721",
-      "dateFinished": "2018-12-13 03:28:26.734",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\nfrom pyspark.ml.classification import LogisticRegression\nfrom splicemachine.ml.utilities import SpliceBinaryClassificationEvaluator\n\nCV_ITERATIONS \u003d 4\nTRAIN_SIZE \u003d 0.7\n\nevaluator \u003d SpliceBinaryClassificationEvaluator(spark)\n\nfor iteration in range(1, CV_ITERATIONS + 1):\n    transformed \u003d pipe.fit(df).transform(df)\n    train, test \u003d transformed.randomSplit([TRAIN_SIZE, 1 - TRAIN_SIZE])\n    \n    # LogisticRegression initialization goes here\n\n    \n    fitlr \u003d lr.fit(train)\n    predicted \u003d fitlr.transform(test)\n    print(\"ITERATION {iteration}\".format(iteration\u003diteration))\n    evaluator.input(predicted)",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 03:28:49.974",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544656545787_-831310927", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 03:28:26.721", 
+      "dateUpdated": "2018-12-13 03:28:36.791", 
+      "dateCreated": "2018-12-12 23:15:45.787", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/python",
-        "editorHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1544658133666_-234273364",
-      "id": "20181212-234213_1679158174",
-      "dateCreated": "2018-12-12 23:42:13.667",
-      "dateStarted": "2018-12-13 01:32:26.018",
-      "dateFinished": "2018-12-13 01:33:08.074",
-      "status": "FINISHED",
-      "errorMessage": "",
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-231545_1963619940", 
       "progressUpdateIntervalMs": 500
-    },
+    }, 
     {
-      "text": "%md\n### Use our model to make Predictions\n\nNow that we have trained and tested our model, it\u0027s time to make predictions.  This code is ready to go, so you don\u0027t need to make any changes.  Note that there is a text input field to enter sample SAS strings and get a prediction (Spam or Not Spam). \n\nTests to run:\n1.  Run the following paragraph (where we are testing the following SMS: `free gummies. call 1800-393-2939 to claim your prize.` - it will evaluate the text in place.  Do you agree with the results?\n2.  Replace the SMS contents with `George I got your message, please call me.`  Hit Enter.  Do you agree with the results?\n3.  Try other strings as well.  Do you agree with the results?\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 04:09:15.069",
-      "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+      "status": "READY", 
+      "dateFinished": "2018-12-13 01:33:08.074", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%spark.pyspark\nfrom pyspark.ml.classification import LogisticRegression\nfrom splicemachine.ml.utilities import SpliceBinaryClassificationEvaluator\n\nCV_ITERATIONS = 4\nTRAIN_SIZE = 0.7\n\nevaluator = SpliceBinaryClassificationEvaluator(spark)\n\nfor iteration in range(1, CV_ITERATIONS + 1):\n    transformed = pipe.fit(df).transform(df)\n    train, test = transformed.randomSplit([TRAIN_SIZE, 1 - TRAIN_SIZE])\n    \n    # LogisticRegression initialization goes here\n\n    \n    fitlr = lr.fit(train)\n    predicted = fitlr.transform(test)\n    print(\"ITERATION {iteration}\".format(iteration=iteration))\n    evaluator.input(predicted)", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544658133666_-234273364", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 01:32:26.018", 
+      "dateUpdated": "2018-12-13 03:28:49.974", 
+      "dateCreated": "2018-12-12 23:42:13.667", 
+      "config": {
+        "editorHide": false, 
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/python", 
+        "fontSize": 9.0, 
+        "editorSetting": {
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "python"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-234213_1679158174", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-13 04:09:05.015", 
+      "settings": {
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n### Use our model to make Predictions\n\nNow that we have trained and tested our model, it's time to make predictions.  This code is ready to go, so you don't need to make any changes.  Note that there is a text input field to enter sample SAS strings and get a prediction (Spam or Not Spam). \n\nTests to run:\n1.  Run the following paragraph (where we are testing the following SMS: `free gummies. call 1800-393-2939 to claim your prize.` - it will evaluate the text in place.  Do you agree with the results?\n2.  Replace the SMS contents with `George I got your message, please call me.`  Hit Enter.  Do you agree with the results?\n3.  Try other strings as well.  Do you agree with the results?\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eUse our model to make Predictions\u003c/h3\u003e\n\u003cp\u003eNow that we have trained and tested our model, it\u0026rsquo;s time to make predictions. This code is ready to go, so you don\u0026rsquo;t need to make any changes. Note that there is a text input field to enter sample SAS strings and get a prediction (Spam or Not Spam). \u003c/p\u003e\n\u003cp\u003eTests to run:\u003cbr/\u003e1. Run the following paragraph (where we are testing the following SMS: \u003ccode\u003efree gummies. call 1800-393-2939 to claim your prize.\u003c/code\u003e - it will evaluate the text in place. Do you agree with the results?\u003cbr/\u003e2. Replace the SMS contents with \u003ccode\u003eGeorge I got your message, please call me.\u003c/code\u003e Hit Enter. Do you agree with the results?\u003cbr/\u003e3. Try other strings as well. Do you agree with the results?\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h3>Use our model to make Predictions</h3>\n<p>Now that we have trained and tested our model, it&rsquo;s time to make predictions. This code is ready to go, so you don&rsquo;t need to make any changes. Note that there is a text input field to enter sample SAS strings and get a prediction (Spam or Not Spam). </p>\n<p>Tests to run:<br/>1. Run the following paragraph (where we are testing the following SMS: <code>free gummies. call 1800-393-2939 to claim your prize.</code> - it will evaluate the text in place. Do you agree with the results?<br/>2. Replace the SMS contents with <code>George I got your message, please call me.</code> Hit Enter. Do you agree with the results?<br/>3. Try other strings as well. Do you agree with the results?</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544657679478_69523625",
-      "id": "20181212-233439_380724481",
-      "dateCreated": "2018-12-12 23:34:39.478",
-      "dateStarted": "2018-12-13 04:09:04.996",
-      "dateFinished": "2018-12-13 04:09:05.015",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%spark.pyspark\nfrom pyspark.sql import Row\nfrom pyspark.sql.types import StringType\nfrom splicemachine.ml.utilities import display\n\ntext_contents \u003d str(z.input(\"SMS Message Contents\"))\nif len(text_contents) \u003e 1:\n    pred_df \u003d sqlContext.createDataFrame([text_contents], StringType()).withColumnRenamed(\u0027value\u0027, \u0027SMS_CONTENT\u0027)\n    predPipe \u003d generate_pipeline(predicting\u003dTrue)\n\n    pred \u003d predPipe.fit(df).transform(pred_df)\n    predictions \u003d fitlr.transform(pred)\n    prob \u003d predictions.select(\u0027probability\u0027).collect()[0][0][0]\n    if prob \u003e 0.75:\n        display(\"\u003ch2\u003eThis message is \u003cb\u003e\u003ci\u003eNot Spam\u003c/i\u003e\u003c/b\u003e\u003c/h2\u003e\")\n    else:\n        display(\"\u003ch2\u003eThis message is \u003cb\u003e\u003ci\u003eSpam\u003c/i\u003e\u003c/b\u003e\u003c/h2\u003e\")\n   \n    display(\"\u003ch3\u003eSpam Probability: \" + str(round(1-prob, 4) * 100) + \"%\u003c/h3\u003e\")",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-13 01:51:47.354",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544657679478_69523625", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 04:09:04.996", 
+      "dateUpdated": "2018-12-13 04:09:15.069", 
+      "dateCreated": "2018-12-12 23:34:39.478", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
         "editorSetting": {
-          "language": "python",
-          "editOnDblClick": false,
-          "completionKey": "TAB",
-          "completionSupport": true
-        },
-        "editorMode": "ace/mode/python"
-      },
+          "completionKey": "TAB", 
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-233439_380724481", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "READY", 
+      "dateFinished": "2018-12-13 01:51:48.375", 
       "settings": {
-        "params": {
-          "SMS Message Contents": "free gummies. call 1800-393-2939 to claim your prize."
-        },
         "forms": {
           "SMS Message Contents": {
-            "type": "TextBox",
-            "name": "SMS Message Contents",
-            "displayName": "SMS Message Contents",
-            "defaultValue": "",
-            "hidden": false
+            "displayName": "SMS Message Contents", 
+            "defaultValue": "", 
+            "hidden": false, 
+            "type": "TextBox", 
+            "name": "SMS Message Contents"
           }
+        }, 
+        "params": {
+          "SMS Message Contents": "free gummies. call 1800-393-2939 to claim your prize."
         }
-      },
-      "apps": [],
-      "jobName": "paragraph_1544657677811_1027886341",
-      "id": "20181212-233437_389948846",
-      "dateCreated": "2018-12-12 23:34:37.811",
-      "dateStarted": "2018-12-13 01:51:47.396",
-      "dateFinished": "2018-12-13 01:51:48.375",
-      "status": "FINISHED",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Where to Go Next\nCongratulations! You\u0027ve just completed the *Splice Machine Data Science Class*. \n\nVisit [*Our Training Classes*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-12 02:18:09.359",
+      }, 
+      "text": "%spark.pyspark\nfrom pyspark.sql import Row\nfrom pyspark.sql.types import StringType\nfrom splicemachine.ml.utilities import display\n\ntext_contents = str(z.input(\"SMS Message Contents\"))\nif len(text_contents) > 1:\n    pred_df = sqlContext.createDataFrame([text_contents], StringType()).withColumnRenamed('value', 'SMS_CONTENT')\n    predPipe = generate_pipeline(predicting=True)\n\n    pred = predPipe.fit(df).transform(pred_df)\n    predictions = fitlr.transform(pred)\n    prob = predictions.select('probability').collect()[0][0][0]\n    if prob > 0.75:\n        display(\"<h2>This message is <b><i>Not Spam</i></b></h2>\")\n    else:\n        display(\"<h2>This message is <b><i>Spam</i></b></h2>\")\n   \n    display(\"<h3>Spam Probability: \" + str(round(1-prob, 4) * 100) + \"%</h3>\")", 
+      "errorMessage": "", 
+      "apps": [], 
+      "jobName": "paragraph_1544657677811_1027886341", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-13 01:51:47.396", 
+      "dateUpdated": "2018-12-13 01:51:47.354", 
+      "dateCreated": "2018-12-12 23:34:37.811", 
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
+        "enabled": true, 
+        "results": {}, 
+        "editorMode": "ace/mode/python", 
+        "fontSize": 9.0, 
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
-      },
+          "completionKey": "TAB", 
+          "editOnDblClick": false, 
+          "completionSupport": true, 
+          "language": "python"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-233437_389948846", 
+      "progressUpdateIntervalMs": 500
+    }, 
+    {
+      "status": "FINISHED", 
+      "dateFinished": "2018-12-12 02:18:09.369", 
       "settings": {
-        "params": {},
-        "forms": {}
-      },
+        "forms": {}, 
+        "params": {}
+      }, 
+      "text": "%md\n## Where to Go Next\nCongratulations! You've just completed the *Splice Machine Data Science Class*. \n\nVisit [*Our Training Classes*](/#/notebook/2DWTR5ZBH) notebook to learn about our other training classes.\n", 
+      "apps": [], 
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the \u003cem\u003eSplice Machine Data Science Class\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Classes\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Congratulations! You&rsquo;ve just completed the <em>Splice Machine Data Science Class</em>. </p>\n<p>Visit <a href=\"/#/notebook/2DWTR5ZBH\"><em>Our Training Classes</em></a> notebook to learn about our other training classes.</p>\n</div>", 
+            "type": "HTML"
           }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1544580658509_-1650215622",
-      "id": "20181212-021058_632617266",
-      "dateCreated": "2018-12-12 02:10:58.509",
-      "dateStarted": "2018-12-12 02:18:09.360",
-      "dateFinished": "2018-12-12 02:18:09.369",
-      "status": "FINISHED",
+        ], 
+        "code": "SUCCESS"
+      }, 
+      "jobName": "paragraph_1544580658509_-1650215622", 
+      "user": "anonymous", 
+      "dateStarted": "2018-12-12 02:18:09.360", 
+      "dateUpdated": "2018-12-12 02:18:09.359", 
+      "dateCreated": "2018-12-12 02:10:58.509", 
+      "config": {
+        "editorHide": true, 
+        "enabled": false, 
+        "results": {}, 
+        "editorMode": "ace/mode/markdown", 
+        "fontSize": 9.0, 
+        "tableHide": false, 
+        "editorSetting": {
+          "editOnDblClick": true, 
+          "completionSupport": false, 
+          "language": "markdown"
+        }, 
+        "colWidth": 12.0
+      }, 
+      "id": "20181212-021058_632617266", 
       "progressUpdateIntervalMs": 500
     }
-  ],
-  "name": "Splice Machine Training / For Data Scientists / j. Exercises",
-  "id": "2DZQWAQ6Y",
-  "noteParams": {},
-  "noteForms": {},
-  "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
-  },
+  ], 
   "config": {
     "isZeppelinNotebookCronEnable": false
-  },
-  "info": {}
+  }, 
+  "id": "2DZQWAQ6Y"
 }

@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 22:44:40.240",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eRunning Queries\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces you to:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eRunning database queries from a Zeppelin notebook\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing \u003ccode\u003eExplain Plan\u003c/code\u003e\u003c/em\u003e to explore the execution plan for a query\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eRunning Queries\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces you to:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eRunning database queries from a Zeppelin notebook\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing \u003ccode\u003eExplain Plan\u003c/code\u003e\u003c/em\u003e to explore the execution plan for a query\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542393642884_-1280717367",
@@ -43,31 +43,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 03:38:33.618",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Running a Simple SQL Statement\u003c/h2\u003e\n\u003cp\u003eSplice Machine supports ANSI SQL. Our example query uses an SQL \u003ccode\u003eSELECT\u003c/code\u003e statement to select records from a table. This query makes use of the sample data that we imported in the previous notebook, \u003cem\u003eImporting Data\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eThe following query selects all records in the \u003ccode\u003eimport_example\u003c/code\u003e table that have \u003ccode\u003e100\u003c/code\u003e as the value of column \u003ccode\u003ei\u003c/code\u003e; try it by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Running a Simple SQL Statement\u003c/h2\u003e\n\u003cp\u003eSplice Machine supports ANSI SQL. Our example query uses an SQL \u003ccode\u003eSELECT\u003c/code\u003e statement to select records from a table. This query makes use of the sample data that we imported in the previous notebook, \u003cem\u003eImporting Data\u003c/em\u003e. \u003c/p\u003e\n\u003cp\u003eThe following query selects all records in the \u003ccode\u003eimport_example\u003c/code\u003e table that have \u003ccode\u003e100\u003c/code\u003e as the value of column \u003ccode\u003ei\u003c/code\u003e; try it by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the the next paragraph.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1543526807510_-1505583424",
@@ -79,48 +79,48 @@
     {
       "text": "%splicemachine\n\nselect * from dev1.import_example\nwhere i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:16:34.212",
+      "dateUpdated": "2018-12-28 00:59:44.737",
       "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
+        "enabled": true,
         "results": {
           "0": {
             "graph": {
-              "mode": "table",
-              "height": 84.0,
+              "commonSetting": {},
               "optionOpen": false,
               "setting": {
                 "table": {
+                  "updated": false,
                   "tableGridState": {},
                   "tableColumnTypeState": {
+                    "updated": false,
                     "names": {
                       "I": "string",
-                      "V": "string",
-                      "T": "string"
-                    },
-                    "updated": false
+                      "T": "string",
+                      "V": "string"
+                    }
                   },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
                   "tableOptionValue": {
-                    "useFilter": false,
                     "showPagination": false,
+                    "useFilter": false,
                     "showAggregationFooter": false
                   },
-                  "updated": false,
-                  "initialized": false
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "commonSetting": {}
+              "mode": "table",
+              "height": 84.0
             }
           }
         },
-        "enabled": true,
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
+          "editOnDblClick": false,
+          "language": "sql"
         },
         "fontSize": 9.0,
-        "tableHide": false
+        "tableHide": false,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -139,8 +139,8 @@
       "jobName": "paragraph_1542393642885_1306687664",
       "id": "20170916-185904_635367698",
       "dateCreated": "2018-11-16 10:40:42.000",
-      "dateStarted": "2018-12-05 21:16:34.238",
-      "dateFinished": "2018-12-05 21:16:34.386",
+      "dateStarted": "2018-12-28 00:59:44.758",
+      "dateFinished": "2018-12-28 00:59:44.850",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -149,31 +149,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 03:38:49.973",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Exploring Query Execution Plans\u003c/h2\u003e\n\u003cp\u003eIf you have a query that is not performing as expected, you can run the \u003ccode\u003eexplain\u003c/code\u003e command to display the execution plan for the query.\u003c/p\u003e\n\u003cp\u003eAll you need to do is put \u003ccode\u003eEXPLAIN\u003c/code\u003e in front of the query and run that. This generates the plan, but does not actually run the query. Try it by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Exploring Query Execution Plans\u003c/h2\u003e\n\u003cp\u003eIf you have a query that is not performing as expected, you can run the \u003ccode\u003eexplain\u003c/code\u003e command to display the execution plan for the query.\u003c/p\u003e\n\u003cp\u003eAll you need to do is put \u003ccode\u003eEXPLAIN\u003c/code\u003e in front of the query and run that. This generates the plan, but does not actually run the query. Try it by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542393642886_-461436511",
@@ -185,20 +185,20 @@
     {
       "text": "%splicemachine\n\nexplain select * from dev1.import_example a, dev1.import_example b\nwhere a.i \u003d 100",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:16:37.839",
+      "dateUpdated": "2018-12-28 00:59:53.226",
       "config": {
+        "editorHide": false,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0,
-        "editorHide": false
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -209,7 +209,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d5,rows\u003d360,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d1744.96,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d1657.16,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1648)](n\u003d2,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1648)](n\u003d1,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d18,outputHeapSize\u003d54 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
+            "data": "Plan\nCursor(n\u003d5,rows\u003d360,updateMode\u003dREAD_ONLY (1),engine\u003dcontrol)\n  -\u003e  ScrollInsensitive(n\u003d4,totalCost\u003d1744.96,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n    -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d1657.16,outputRows\u003d360,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1664)](n\u003d2,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d20,outputHeapSize\u003d2.109 KB,partitions\u003d1)\n      -\u003e  TableScan[IMPORT_EXAMPLE(1664)](n\u003d1,totalCost\u003d4.04,scannedRows\u003d20,outputRows\u003d18,outputHeapSize\u003d54 B,partitions\u003d1,preds\u003d[(A.I[0:1] \u003d 100)])\n"
           }
         ]
       },
@@ -217,28 +217,28 @@
       "jobName": "paragraph_1542393642887_1103046659",
       "id": "20170916-190855_22811088",
       "dateCreated": "2018-11-16 10:40:42.000",
-      "dateStarted": "2018-12-05 21:16:37.854",
-      "dateFinished": "2018-12-05 21:16:37.977",
+      "dateStarted": "2018-12-28 00:59:53.242",
+      "dateFinished": "2018-12-28 00:59:53.285",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Some Explain Plan Details\n\nTo see the execution flow of a query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above. \n\nEach row includes the action being performed (a Scan, Join, grouping, etc.) followed by:\n\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003en count\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe step of the plan (and again you can see as we go from the bottom up the count starts from 1 and goes up from there)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003etotalCost\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated cost for this step (and any substeps below it)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003escannedRows (for Table or Index Scan steps)\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows need to be scanned in this step\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputRows\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows are passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputHeapSize\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how much data is passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epartitions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated number of (HBase) regions are involved in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epreds\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eWhich filtering predicates are applied in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nWe will see that the scannedRows and outputRows are key numbers to monitor as we tune query performance.\n\nIn the *explain* example that we just ran, we can see we are scanning table `import_example` twice, then joining them with a particular strategy; in this case, the strategy is a nested-loop join.\n\n### Which Engine?\nThe final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:\n\n    Cursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\nThis line shows you which *engine* is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\nWe\u0027ll cover more about the engines, and the Spark engine in particular, later in this class.\n",
+      "text": "%md\n### Some Explain Plan Details\n\nTo see the execution flow of a query, look at the generated plan from the *bottom up.*  The very first steps of the query are at the bottom, then each step follows above. \n\nEach row includes the action being performed (a Scan, Join, grouping, etc.) followed by:\n\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003en count\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe step of the plan (and again you can see as we go from the bottom up the count starts from 1 and goes up from there)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003etotalCost\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated cost for this step (and any substeps below it)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003escannedRows (for Table or Index Scan steps)\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows need to be scanned in this step\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputRows\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows are passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputHeapSize\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how much data is passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epartitions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated number of (HBase) regions are involved in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epreds\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eWhich filtering predicates are applied in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nWe will see that the `scannedRows` and `outputRows` are key numbers to monitor as we tune query performance.\n\nIn the *explain* example that we just ran, we can see we are scanning table `import_example` twice, then joining them with a particular strategy; in this case, the strategy is a nested-loop join.\n\n### Which Engine?\nThe final steps, `Scroll Insensitive` and `Cursor` are typical end steps to the query execution.  There is one __very important__ piece of information shown on the `Cursor` line at the end:\n\n    Cursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\nThis line shows you which *engine* is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \n\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\nWe\u0027ll cover more about the engines, and the Spark engine in particular, later in this class.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:54:41.846",
+      "dateUpdated": "2018-12-28 01:00:42.572",
       "config": {
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -249,7 +249,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSome Explain Plan Details\u003c/h3\u003e\n\u003cp\u003eTo see the execution flow of a query, look at the generated plan from the \u003cem\u003ebottom up.\u003c/em\u003e The very first steps of the query are at the bottom, then each step follows above. \u003c/p\u003e\n\u003cp\u003eEach row includes the action being performed (a Scan, Join, grouping, etc.) followed by:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003en count\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe step of the plan (and again you can see as we go from the bottom up the count starts from 1 and goes up from there)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003etotalCost\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated cost for this step (and any substeps below it)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003escannedRows (for Table or Index Scan steps)\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows need to be scanned in this step\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputRows\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows are passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputHeapSize\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how much data is passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epartitions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated number of (HBase) regions are involved in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epreds\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eWhich filtering predicates are applied in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eWe will see that the scannedRows and outputRows are key numbers to monitor as we tune query performance.\u003c/p\u003e\n\u003cp\u003eIn the \u003cem\u003eexplain\u003c/em\u003e example that we just ran, we can see we are scanning table \u003ccode\u003eimport_example\u003c/code\u003e twice, then joining them with a particular strategy; in this case, the strategy is a nested-loop join.\u003c/p\u003e\n\u003ch3\u003eWhich Engine?\u003c/h3\u003e\n\u003cp\u003eThe final steps, \u003ccode\u003eScroll Insensitive\u003c/code\u003e and \u003ccode\u003eCursor\u003c/code\u003e are typical end steps to the query execution. There is one \u003cstrong\u003every important\u003c/strong\u003e piece of information shown on the \u003ccode\u003eCursor\u003c/code\u003e line at the end:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis line shows you which \u003cem\u003eengine\u003c/em\u003e is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \u003c/p\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\u003cp\u003eWe\u0026rsquo;ll cover more about the engines, and the Spark engine in particular, later in this class.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eSome Explain Plan Details\u003c/h3\u003e\n\u003cp\u003eTo see the execution flow of a query, look at the generated plan from the \u003cem\u003ebottom up.\u003c/em\u003e The very first steps of the query are at the bottom, then each step follows above. \u003c/p\u003e\n\u003cp\u003eEach row includes the action being performed (a Scan, Join, grouping, etc.) followed by:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepNoBorder\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003en count\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe step of the plan (and again you can see as we go from the bottom up the count starts from 1 and goes up from there)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003etotalCost\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated cost for this step (and any substeps below it)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003escannedRows (for Table or Index Scan steps)\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows need to be scanned in this step\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputRows\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how many rows are passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003eoutputHeapSize\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated count of how much data is passed to the next step in the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epartitions\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eThe estimated number of (HBase) regions are involved in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003cem\u003epreds\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003eWhich filtering predicates are applied in that step of the plan\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eWe will see that the \u003ccode\u003escannedRows\u003c/code\u003e and \u003ccode\u003eoutputRows\u003c/code\u003e are key numbers to monitor as we tune query performance.\u003c/p\u003e\n\u003cp\u003eIn the \u003cem\u003eexplain\u003c/em\u003e example that we just ran, we can see we are scanning table \u003ccode\u003eimport_example\u003c/code\u003e twice, then joining them with a particular strategy; in this case, the strategy is a nested-loop join.\u003c/p\u003e\n\u003ch3\u003eWhich Engine?\u003c/h3\u003e\n\u003cp\u003eThe final steps, \u003ccode\u003eScroll Insensitive\u003c/code\u003e and \u003ccode\u003eCursor\u003c/code\u003e are typical end steps to the query execution. There is one \u003cstrong\u003every important\u003c/strong\u003e piece of information shown on the \u003ccode\u003eCursor\u003c/code\u003e line at the end:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCursor(n\u003d5,rows\u003d360,updateMode\u003d, engine\u003dcontrol)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis line shows you which \u003cem\u003eengine\u003c/em\u003e is used for the query. The engine parameter indicates which engine Splice Machine plans to use. \u003c/p\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\n\u003cp\u003eAs you may know, Splice Machine is a dual-engine database:\u003c/p\u003e\n\u003cul style\u003d\"margin-bottom:0; padding-bottom:0\"\u003e\n\u003cli\u003eFast-running queries (e.g. those only processing a few rows) typically get executed on the \u003ccode\u003econtrol\u003c/code\u003e side, directly in HBase.\u003c/li\u003e\n\u003cli\u003eLonger-running queries or queries that process a lot of data go through \u003ccode\u003eSpark\u003c/code\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e\n\u003cp\u003eWe\u0026rsquo;ll cover more about the engines, and the Spark engine in particular, later in this class.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -257,6 +257,8 @@
       "jobName": "paragraph_1542393642888_50909611",
       "id": "20170916-191001_544321918",
       "dateCreated": "2018-11-16 10:40:42.000",
+      "dateStarted": "2018-12-28 01:00:42.573",
+      "dateFinished": "2018-12-28 01:00:42.615",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -265,31 +267,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 03:43:28.745",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow that you\u0026rsquo;ve learned about running queries, please continue on to the \u003ca href\u003d\"/#/notebook/2DVGS3CZ2\"\u003e\u003cem\u003eTuning Queries for Performance\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow that you\u0026rsquo;ve learned about running queries, please continue on to the \u003ca href\u003d\"/#/notebook/2DVGS3CZ2\"\u003e\u003cem\u003eTuning Queries for Performance\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1543635601646_753033850",
@@ -308,9 +310,9 @@
     "splicemachine:shared_process": []
   },
   "config": {
-    "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
-    "personalizedMode": "false"
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
   },
   "info": {}
 }

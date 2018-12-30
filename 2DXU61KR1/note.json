@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-05 21:29:41.917",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing the Database Console\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eAccessing the Console\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eBasic UI Features\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning a Basic Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDrilling Down into a Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eTerminating an Active Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eParallelism and Spark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAbout Spark Jobs in Splice Machine\u003c/h2\u003e\n\u003cp\u003eYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the \u003ccode\u003econtrol\u003c/code\u003e side) or in Apache Spark. You can see which engine is used (\u003ccode\u003econtrol\u003c/code\u003e or \u003ccode\u003eSpark\u003c/code\u003e) from examining the top line of the \u003ccode\u003eexplain\u003c/code\u003e for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\u003c/p\u003e\n\u003cp\u003eYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing the Database Console\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Spark Database Console, which you can use to monitor Splice Machine queries that are running in Spark, in these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eAccessing the Console\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eBasic UI Features\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning a Basic Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDrilling Down into a Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eTerminating an Active Query\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eParallelism and Spark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eAbout Spark Jobs in Splice Machine\u003c/h2\u003e\n\u003cp\u003eYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the \u003ccode\u003econtrol\u003c/code\u003e side) or in Apache Spark. You can see which engine is used (\u003ccode\u003econtrol\u003c/code\u003e or \u003ccode\u003eSpark\u003c/code\u003e) from examining the top line of the \u003ccode\u003eexplain\u003c/code\u003e for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\u003c/p\u003e\n\u003cp\u003eYou can use the DB Console to monitor the progress of queries that are sent to the Spark engine, including GC usage. You can also terminate queries when necessary.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542402549801_-1780050763",
@@ -41,22 +41,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Accessing the Console\n\nYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0027s URL:\n\n* For our training classes, open a new browser tab and point at `localhost:4040`. \n* For actual clusters, the access path depends on whether you are using Splice Machine\u0027s cloud service or your own infrastructure.  See our documentation for specifics.\n\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\nOnce you\u0027ve started a Spark query, you\u0027ll see the DB Console ( *Spark* ) UI:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs-a.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\n\n\n\u003cp class\u003d\"noteIcon\"\u003eThe \u003cem\u003eExecutors\u003c/em\u003e tab of the console does not work when running code in this class.\u003c/p\u003e\n",
+      "text": "%md\n\n## Accessing the Console\n\nYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0027s URL:\n\n* For our training classes, open a new browser tab and point at `localhost:4040`. \n* For actual clusters, the access path depends on whether you are using Splice Machine\u0027s cloud service or your own infrastructure.  See our documentation for specifics.\n\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\nOnce you\u0027ve started a Spark query, you\u0027ll see the DB Console ( *Spark* ) UI:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs-a.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\n\n\n\u003cp class\u003d\"noteNote\"\u003eThe \u003cem\u003eExecutors\u003c/em\u003e tab of the console does not work when running code in this class.\u003c/p\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:45:58.285",
+      "dateUpdated": "2018-12-28 01:20:49.853",
       "config": {
+        "editorHide": false,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": true,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -67,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAccessing the Console\u003c/h2\u003e\n\u003cp\u003eYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0026rsquo;s URL:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eFor our training classes, open a new browser tab and point at \u003ccode\u003elocalhost:4040\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003eFor actual clusters, the access path depends on whether you are using Splice Machine\u0026rsquo;s cloud service or your own infrastructure. See our documentation for specifics.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve started a Spark query, you\u0026rsquo;ll see the DB Console ( \u003cem\u003eSpark\u003c/em\u003e ) UI:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs-a.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe \u003cem\u003eExecutors\u003c/em\u003e tab of the console does not work when running code in this class.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAccessing the Console\u003c/h2\u003e\n\u003cp\u003eYou access the Spark DB Console by opening a new browser tab, then navigating to the console\u0026rsquo;s URL:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eFor our training classes, open a new browser tab and point at \u003ccode\u003elocalhost:4040\u003c/code\u003e.\u003c/li\u003e\n  \u003cli\u003eFor actual clusters, the access path depends on whether you are using Splice Machine\u0026rsquo;s cloud service or your own infrastructure. See our documentation for specifics.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteNote\"\u003eThe Spark DB Console is not accessible until you\u0027ve run at least one Spark query on your cluster.\u003c/p\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve started a Spark query, you\u0026rsquo;ll see the DB Console ( \u003cem\u003eSpark\u003c/em\u003e ) UI:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJobs-a.png\" alt\u003d\"Console UI Top-Level Display\"\u003e\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eThe \u003cem\u003eExecutors\u003c/em\u003e tab of the console does not work when running code in this class.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -75,27 +75,29 @@
       "jobName": "paragraph_1542402549802_-141162614",
       "id": "20170917-124100_1569077601",
       "dateCreated": "2018-11-16 13:09:09.000",
+      "dateStarted": "2018-12-26 21:26:30.433",
+      "dateFinished": "2018-12-26 21:26:30.450",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Basic UI Features\n\nBefore we use the console to examine a specific query, let\u0027s go over a few interesting notes about the DB Console:\n\n* Queries are reported as *Jobs* in the Spark UI\n* Each Job will have *Stages*\n* Each Stage will have *Tasks*\n\n### Drilling Down\n\nIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were  looking at the following in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eProduce Result Set\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for *Job 6*:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown-a.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\n\nYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this notebook, we will view job details and then drill down for an example query.\n\n### Switching Views\n\nYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. The *Jobs* tab is selected in this screen shot:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs-a.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\n\n### Hovering\n\nYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover-a.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\n\nSimilarly, you can hover over the ? to display the definition for a term, like the definition of a job:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2-a.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\n\nAnd you can hover over an event in timeline display to see summary information; for example:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover-a.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\n",
+      "text": "%md\n## Basic UI Features\n\nBefore we use the console to examine a specific query, let\u0027s go over a few interesting notes about the DB Console:\n\n* Queries are reported as *Jobs* in the Spark UI\n* Each Job will have *Stages*\n* Each Stage will have *Tasks*\n\n### Drilling Down\n\nIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were  looking at the following information displayed in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eProduce Result Set\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for *Job 6*:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown-a.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\n\nYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this notebook, we will view job details and then drill down for an example query.\n\n### Switching Views\n\nYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. Note that the *Jobs* tab is selected in this screen shot:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs-a.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\n\n### Hovering\n\nYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover-a.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\n\nSimilarly, you can hover over the \u003cspan class\u003d\"ConsoleLink\"\u003e?\u003c/span\u003e to display the definition for a term; this example is displaying the definition of a job:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2-a.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\n\nAnd you can hover over an event in timeline display to see summary information; for example:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover-a.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:30:35.887",
+      "dateUpdated": "2018-12-27 21:01:11.613",
       "config": {
+        "editorHide": false,
+        "title": false,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0,
-        "title": true
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -106,7 +108,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBasic UI Features\u003c/h2\u003e\n\u003cp\u003eBefore we use the console to examine a specific query, let\u0026rsquo;s go over a few interesting notes about the DB Console:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eQueries are reported as \u003cem\u003eJobs\u003c/em\u003e in the Spark UI\u003c/li\u003e\n  \u003cli\u003eEach Job will have \u003cem\u003eStages\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003eEach Stage will have \u003cem\u003eTasks\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eDrilling Down\u003c/h3\u003e\n\u003cp\u003eIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were looking at the following in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eProduce Result Set\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for \u003cem\u003eJob 6\u003c/em\u003e:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown-a.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this notebook, we will view job details and then drill down for an example query.\u003c/p\u003e\n\u003ch3\u003eSwitching Views\u003c/h3\u003e\n\u003cp\u003eYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. The \u003cem\u003eJobs\u003c/em\u003e tab is selected in this screen shot:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs-a.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\u003c/p\u003e\n\u003ch3\u003eHovering\u003c/h3\u003e\n\u003cp\u003eYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover-a.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\u003c/p\u003e\n\u003cp\u003eSimilarly, you can hover over the ? to display the definition for a term, like the definition of a job:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2-a.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eAnd you can hover over an event in timeline display to see summary information; for example:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover-a.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBasic UI Features\u003c/h2\u003e\n\u003cp\u003eBefore we use the console to examine a specific query, let\u0026rsquo;s go over a few interesting notes about the DB Console:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eQueries are reported as \u003cem\u003eJobs\u003c/em\u003e in the Spark UI\u003c/li\u003e\n  \u003cli\u003eEach Job will have \u003cem\u003eStages\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003eEach Stage will have \u003cem\u003eTasks\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eDrilling Down\u003c/h3\u003e\n\u003cp\u003eIn general, you can click anything that displays as a \u003cspan class\u003d\"ConsoleLink\"\u003eblue link\u003c/span\u003e to drill down into a more detailed view. For example,if you were looking at the following information displayed in the Console, you could click \u003cspan class\u003d\"ConsoleLink\"\u003eProduce Result Set\u003c/span\u003e in the following description from the completed jobs table, which will drill down into the job details for \u003cem\u003eJob 6\u003c/em\u003e:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleDrillDown-a.png\" alt\u003d\"Drilling Down in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eYou can continue to drill down from there to reveal increasing levels of detail. In the next section of this notebook, we will view job details and then drill down for an example query.\u003c/p\u003e\n\u003ch3\u003eSwitching Views\u003c/h3\u003e\n\u003cp\u003eYou can quickly switch to a different view by clicking a tab in the tab bar at the top of the console screen. Note that the \u003cem\u003eJobs\u003c/em\u003e tab is selected in this screen shot:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTabs-a.png\" alt\u003d\"Console UI Main Tabs display\"\u003e\u003c/p\u003e\n\u003ch3\u003eHovering\u003c/h3\u003e\n\u003cp\u003eYou can hover the cursor over interface element links, like the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e drop-down in the following image, to display a screen tip for the item:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover-a.png\" alt\u003d\"Console UI Event Timeline drop-down\"\u003e\u003c/p\u003e\n\u003cp\u003eSimilarly, you can hover over the \u003cspan class\u003d\"ConsoleLink\"\u003e?\u003c/span\u003e to display the definition for a term; this example is displaying the definition of a job:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleHover2-a.png\" alt\u003d\"Hovering to display term definition in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eAnd you can hover over an event in timeline display to see summary information; for example:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepConsoleTimelineHover-a.png\" alt\u003d\"Hovering over the Console UI Timeline Display\"\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -114,8 +116,8 @@
       "jobName": "paragraph_1542402549803_779570644",
       "id": "20171017-143511_678293042",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "dateStarted": "2018-12-05 21:30:30.569",
-      "dateFinished": "2018-12-05 21:30:30.645",
+      "dateStarted": "2018-12-27 21:00:31.249",
+      "dateFinished": "2018-12-27 21:00:34.078",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -124,31 +126,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:30:48.191",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning a Basic Query\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s generate an \u003ccode\u003eEXPLAIN\u003c/code\u003e plan for a simple query that we previously ran: \u003ccode\u003eexplain select count(*) from index_example\u003c/code\u003e. Generate the plan by clicking \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph:\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning a Basic Query\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s generate an \u003ccode\u003eEXPLAIN\u003c/code\u003e plan for a simple query that we previously ran: \u003ccode\u003eexplain select count(*) from index_example\u003c/code\u003e. Generate the plan by clicking \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph:\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542402549807_-610744706",
@@ -160,30 +162,40 @@
     {
       "text": "%splicemachine\n\nexplain select count(*) from admin.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:29:47.442",
+      "dateUpdated": "2018-12-26 21:30:34.884",
       "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {},
         "enabled": true,
+        "results": {},
         "editorSetting": {
-          "language": "sql",
+          "completionKey": true,
           "editOnDblClick": false,
-          "completionKey": true
+          "language": "sql"
         },
         "fontSize": 9.0,
-        "tableHide": false
+        "tableHide": false,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Plan\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d14478.35,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d1)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d1367.149,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n      -\u003e  GroupBy(n\u003d3,totalCost\u003d1367.149,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n        -\u003e  ProjectRestrict(n\u003d2,totalCost\u003d1367.149,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1)\n          -\u003e  IndexScan[IJ(1697)](n\u003d1,totalCost\u003d1367.149,scannedRows\u003d1310720,outputRows\u003d1310720,outputHeapSize\u003d0 B,partitions\u003d1,baseTable\u003dINDEX_EXAMPLE(1680))\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1542402549808_921489269",
       "id": "20170917-132020_1057477927",
       "dateCreated": "2018-11-16 13:09:09.000",
+      "dateStarted": "2018-12-26 21:30:34.904",
+      "dateFinished": "2018-12-26 21:30:34.942",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -191,112 +203,122 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:30:56.962",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true
+          "editOnDblClick": true,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNotice the \u003ccode\u003eengine\u003dSpark\u003c/code\u003e on the top line, which indicates that this query will be processed by the Spark engine.\u003c/p\u003e\n\u003cp\u003eNow let\u0026rsquo;s actually run the query (click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph):\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNotice the \u003ccode\u003eengine\u003dSpark\u003c/code\u003e on the top line, which indicates that this query will be processed by the Spark engine.\u003c/p\u003e\n\u003cp\u003eNow let\u0026rsquo;s actually run the query (click \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\"\u003e in the next paragraph):\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542402549808_-983994659",
       "id": "20170917-132212_1886331781",
-      "dateCreated": "2018-11-16 13:09:09.000",
-      "status": "READY",
-      "errorMessage": "",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%splicemachine\n\nselect count(*) from admin.index_example",
-      "user": "anonymous",
-      "dateUpdated": "2018-12-03 01:30:39.172",
-      "config": {
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/sql",
-        "results": {
-          "0": {
-            "graph": {
-              "mode": "table",
-              "height": 84.0,
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "names": {
-                      "1": "string"
-                    },
-                    "updated": false
-                  },
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
-                  "tableOptionValue": {
-                    "useFilter": false,
-                    "showPagination": false,
-                    "showAggregationFooter": false
-                  },
-                  "updated": false,
-                  "initialized": false
-                }
-              },
-              "commonSetting": {}
-            }
-          }
-        },
-        "enabled": true,
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "fontSize": 9.0,
-        "tableHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1542402549809_-1319996524",
-      "id": "20170917-132246_733531409",
       "dateCreated": "2018-11-16 13:09:09.000",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nNow let\u0027s use use the DB Console ( *Spark* ) UI to view the query.  You should see something like this:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2-a.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\n\nIf you got to the DB Console quickly enough after running the query, it may show as an *Active Job* instead of being a *Completed Job.*\n\n\u003cp class\u003d\"noteIcon\"\u003eThe \u003cem\u003eExecutors\u003c/em\u003e tab of the console does not work when running code in this class.\u003c/p\u003e",
+      "text": "%splicemachine\n\nselect count(*) from admin.index_example",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 22:43:30.355",
+      "dateUpdated": "2018-12-26 21:30:45.886",
       "config": {
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "commonSetting": {},
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "1": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }
+              },
+              "mode": "table",
+              "height": 84.0
+            }
+          }
+        },
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorMode": "ace/mode/sql",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "1\n1310720\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542402549809_-1319996524",
+      "id": "20170917-132246_733531409",
+      "dateCreated": "2018-11-16 13:09:09.000",
+      "dateStarted": "2018-12-26 21:30:45.905",
+      "dateFinished": "2018-12-26 21:30:50.041",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\u003cbr /\u003e\n\nNow let\u0027s use use the DB Console ( *Spark* ) UI to view the query.  You should see something like this:\n\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2-a.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\n\nIf you got to the DB Console quickly enough after running the query, it may show as an *Active Job* instead of being a *Completed Job.*\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-26 21:31:55.664",
+      "config": {
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -307,7 +329,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNow let\u0026rsquo;s use use the DB Console ( \u003cem\u003eSpark\u003c/em\u003e ) UI to view the query. You should see something like this:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2-a.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eIf you got to the DB Console quickly enough after running the query, it may show as an \u003cem\u003eActive Job\u003c/em\u003e instead of being a \u003cem\u003eCompleted Job.\u003c/em\u003e\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThe \u003cem\u003eExecutors\u003c/em\u003e tab of the console does not work when running code in this class.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eNow let\u0026rsquo;s use use the DB Console ( \u003cem\u003eSpark\u003c/em\u003e ) UI to view the query. You should see something like this:\u003cbr/\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepSparkJob2-a.png\" alt\u003d\"Viewing a query in the console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eIf you got to the DB Console quickly enough after running the query, it may show as an \u003cem\u003eActive Job\u003c/em\u003e instead of being a \u003cem\u003eCompleted Job.\u003c/em\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -315,39 +337,41 @@
       "jobName": "paragraph_1542402549809_-5679196",
       "id": "20170917-132259_1390907931",
       "dateCreated": "2018-11-16 13:09:09.000",
+      "dateStarted": "2018-12-26 21:31:55.672",
+      "dateFinished": "2018-12-26 21:31:55.683",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Drilling Down into Our Results\n\nLet\u0027s examine the *Stages* of the *Job* we just ran by starting on the Jobs page and clicking \u003cspan class\u003d\"ConsoleLink\"\u003eProduce Result Set\u003c/span\u003e for the above query. You\u0027ll see the *Job Detail* display for the query:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepJobDetail1-a.png\" alt\u003d\"Job Detail in the Console UI\"\u003e\n\nNote that the detail includes this information:\n\n* This job has two Stages.\n* Each Stage has a duration.\n* Each Stage in this Job ran one Task. \n  \u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; *Note:* The number of tasks required for the job may be different in your environment.\n\n### Viewing Job Details Graphically\n\nYou can see a graphical representation of the actual activity performed within the Job\u0027s Stages by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link above the *Completed Stages* section of the Job Details display. Here\u0027s what that looks like for our example query:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepJobDetailDag-a.png\" alt\u003d\"Directed Graph Visualization in the Console UI\"\u003e\n\nNote that this is essentially another view of the EXPLAIN plan for this query, with the execution flow depicted by the arrows.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:31:12.153",
+      "dateUpdated": "2018-12-26 21:29:59.005",
       "config": {
+        "editorHide": false,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDrilling Down into Our Results\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s examine the \u003cem\u003eStages\u003c/em\u003e of the \u003cem\u003eJob\u003c/em\u003e we just ran by starting on the Jobs page and clicking \u003cspan class\u003d\"ConsoleLink\"\u003eProduce Result Set\u003c/span\u003e for the above query. You\u0026rsquo;ll see the \u003cem\u003eJob Detail\u003c/em\u003e display for the query:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepJobDetail1-a.png\" alt\u003d\"Job Detail in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eNote that the detail includes this information:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThis job has two Stages.\u003c/li\u003e\n  \u003cli\u003eEach Stage has a duration.\u003c/li\u003e\n  \u003cli\u003eEach Stage in this Job ran one Task.\u003cbr/\u003e \u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003cem\u003eNote:\u003c/em\u003e The number of tasks required for the job may be different in your environment.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eViewing Job Details Graphically\u003c/h3\u003e\n\u003cp\u003eYou can see a graphical representation of the actual activity performed within the Job\u0026rsquo;s Stages by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link above the \u003cem\u003eCompleted Stages\u003c/em\u003e section of the Job Details display. Here\u0026rsquo;s what that looks like for our example query:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepJobDetailDag-a.png\" alt\u003d\"Directed Graph Visualization in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eNote that this is essentially another view of the EXPLAIN plan for this query, with the execution flow depicted by the arrows.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDrilling Down into Our Results\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s examine the \u003cem\u003eStages\u003c/em\u003e of the \u003cem\u003eJob\u003c/em\u003e we just ran by starting on the Jobs page and clicking \u003cspan class\u003d\"ConsoleLink\"\u003eProduce Result Set\u003c/span\u003e for the above query. You\u0026rsquo;ll see the \u003cem\u003eJob Detail\u003c/em\u003e display for the query:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepJobDetail1-a.png\" alt\u003d\"Job Detail in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eNote that the detail includes this information:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThis job has two Stages.\u003c/li\u003e\n  \u003cli\u003eEach Stage has a duration.\u003c/li\u003e\n  \u003cli\u003eEach Stage in this Job ran one Task.\u003cbr/\u003e \u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp;\u0026nbsp; \u003cem\u003eNote:\u003c/em\u003e The number of tasks required for the job may be different in your environment.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eViewing Job Details Graphically\u003c/h3\u003e\n\u003cp\u003eYou can see a graphical representation of the actual activity performed within the Job\u0026rsquo;s Stages by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link above the \u003cem\u003eCompleted Stages\u003c/em\u003e section of the Job Details display. Here\u0026rsquo;s what that looks like for our example query:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepJobDetailDag-a.png\" alt\u003d\"Directed Graph Visualization in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eNote that this is essentially another view of the EXPLAIN plan for this query, with the execution flow depicted by the arrows.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542402549809_-338777467",
@@ -359,22 +383,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Viewing Stage Details\n\nTo drill down into the detail of the first Stage of our query, click anywhere in the box representing the Stage (`Stage 135` in this context) in the DAG visualization. The Console displays the details of that Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag-a.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\n\nThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the *Summary Metrics* for the Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails-a.png\" alt\u003d\"Stage Details \"\u003e\n\nAt the very bottom of this view, we see *Tasks.*  These are the most basic work units in the Spark Engine. For each task you will see:\n\n* a duration\n* garbage collection time\n* other information relevant to the task activity\n\nIn the above example, we see that this Task:\n\n* performed a TableScan\n* read 1.3M rows total\n* wrote out some bytes of records for processing by the next Stage\n\n",
+      "text": "%md\n### Viewing Stage Details\n\nTo drill down into the detail of the first Stage of our query, click anywhere in the box representing the Stage (`Stage 9` in this context) in the DAG visualization. The Console displays the details of that Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag-a.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\n\nThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the *Summary Metrics* for the Stage:\n\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails-a.png\" alt\u003d\"Stage Details \"\u003e\n\nAt the very bottom of this view, we see *Tasks.*  These are the most basic work units in the Spark Engine. For each task you will see:\n\n* a duration\n* garbage collection time\n* other information relevant to the task activity\n\nIn the above example, we see that this Task:\n\n* performed a TableScan\n* read 1.3M rows total\n* wrote out some bytes of records for processing by the next Stage\n\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-02 23:06:37.307",
+      "dateUpdated": "2018-12-26 21:33:12.412",
       "config": {
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -385,7 +409,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eViewing Stage Details\u003c/h3\u003e\n\u003cp\u003eTo drill down into the detail of the first Stage of our query, click anywhere in the box representing the Stage (\u003ccode\u003eStage 135\u003c/code\u003e in this context) in the DAG visualization. The Console displays the details of that Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag-a.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the \u003cem\u003eSummary Metrics\u003c/em\u003e for the Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails-a.png\" alt\u003d\"Stage Details \"\u003e\u003c/p\u003e\n\u003cp\u003eAt the very bottom of this view, we see \u003cem\u003eTasks.\u003c/em\u003e These are the most basic work units in the Spark Engine. For each task you will see:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ea duration\u003c/li\u003e\n  \u003cli\u003egarbage collection time\u003c/li\u003e\n  \u003cli\u003eother information relevant to the task activity\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn the above example, we see that this Task:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eperformed a TableScan\u003c/li\u003e\n  \u003cli\u003eread 1.3M rows total\u003c/li\u003e\n  \u003cli\u003ewrote out some bytes of records for processing by the next Stage\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eViewing Stage Details\u003c/h3\u003e\n\u003cp\u003eTo drill down into the detail of the first Stage of our query, click anywhere in the box representing the Stage (\u003ccode\u003eStage 9\u003c/code\u003e in this context) in the DAG visualization. The Console displays the details of that Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetailDag-a.png\" alt\u003d\"Viewing details of a stage in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eThe DAG Visualization for the Stage is shown at the top of this view; you can hide the DAG by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eDAG Visualization\u003c/span\u003e link, or you can scroll down below the graph to see the \u003cem\u003eSummary Metrics\u003c/em\u003e for the Stage:\u003c/p\u003e\n\u003cp\u003e\u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageDetails-a.png\" alt\u003d\"Stage Details \"\u003e\u003c/p\u003e\n\u003cp\u003eAt the very bottom of this view, we see \u003cem\u003eTasks.\u003c/em\u003e These are the most basic work units in the Spark Engine. For each task you will see:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ea duration\u003c/li\u003e\n  \u003cli\u003egarbage collection time\u003c/li\u003e\n  \u003cli\u003eother information relevant to the task activity\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn the above example, we see that this Task:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eperformed a TableScan\u003c/li\u003e\n  \u003cli\u003eread 1.3M rows total\u003c/li\u003e\n  \u003cli\u003ewrote out some bytes of records for processing by the next Stage\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -393,25 +417,28 @@
       "jobName": "paragraph_1542402549810_-1040941288",
       "id": "20170917-143720_391125668",
       "dateCreated": "2018-11-16 13:09:09.000",
+      "dateStarted": "2018-12-26 21:33:12.413",
+      "dateFinished": "2018-12-26 21:33:12.442",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### Viewing the Event Timeline\n\nYou can get another view of the current Stage by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e link; the Console the displays all tasks in this stage on a timeline:\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageTimeline-a.png\" alt\u003d\"Viewing the event timeline for a stage in the Console UI\"\u003e\n\nThis view is especially useful when a Stage has many tasks, and you want to see how many executors and how much parallelism is being achieved for this stage of the query. More on this in a moment.",
+      "text": "%md\n### Viewing the Event Timeline\n\nYou can get another view of the current Stage by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e link; the Console then displays all tasks in this stage on a timeline:\n  \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageTimeline-a.png\" alt\u003d\"Viewing the event timeline for a stage in the Console UI\"\u003e\n\nThis view is especially useful when a Stage has many tasks, and you want to see how many executors and how much parallelism is being achieved for this stage of the query. More on this in a moment.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-01 07:31:18.455",
+      "dateUpdated": "2018-12-26 21:39:12.907",
       "config": {
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
+          "editOnDblClick": true,
           "language": "markdown",
-          "editOnDblClick": true
+          "completionSupport": false
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -422,7 +449,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eViewing the Event Timeline\u003c/h3\u003e\n\u003cp\u003eYou can get another view of the current Stage by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e link; the Console the displays all tasks in this stage on a timeline:\u003cbr/\u003e \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageTimeline-a.png\" alt\u003d\"Viewing the event timeline for a stage in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eThis view is especially useful when a Stage has many tasks, and you want to see how many executors and how much parallelism is being achieved for this stage of the query. More on this in a moment.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eViewing the Event Timeline\u003c/h3\u003e\n\u003cp\u003eYou can get another view of the current Stage by clicking the \u003cspan class\u003d\"ConsoleLink\"\u003eEvent Timeline\u003c/span\u003e link; the Console then displays all tasks in this stage on a timeline:\u003cbr/\u003e \u003cimg class\u003d\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepStageTimeline-a.png\" alt\u003d\"Viewing the event timeline for a stage in the Console UI\"\u003e\u003c/p\u003e\n\u003cp\u003eThis view is especially useful when a Stage has many tasks, and you want to see how many executors and how much parallelism is being achieved for this stage of the query. More on this in a moment.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -430,40 +457,41 @@
       "jobName": "paragraph_1542402549811_-354463866",
       "id": "20170917-144236_127668505",
       "dateCreated": "2018-11-16 13:09:09.000",
-      "status": "READY",
-      "errorMessage": "",
+      "dateStarted": "2018-12-26 21:39:12.913",
+      "dateFinished": "2018-12-26 21:39:12.925",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Terminating an Active Query\nYou can terminate an active job if you determine that something isn\u0027t working as expected. Simply access the *Jobs* tab while a job is actively running, and click the the *(kill)* text displayed next to the job description, as shown here:\n\n\u003cimg class\u003d\u003c\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepKillJob-a.png\"\u003e\n\nYou\u0027ll be asked to confirm that you want to terminate that job.\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-05 21:33:06.785",
+      "dateUpdated": "2018-12-26 21:38:34.230",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": false,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTerminating an Active Query\u003c/h2\u003e\n\u003cp\u003eYou can terminate an active job if you determine that something isn\u0026rsquo;t working as expected. Simply access the \u003cem\u003eJobs\u003c/em\u003e tab while a job is actively running, and click the the \u003cem\u003e(kill)\u003c/em\u003e text displayed next to the job description, as shown here:\u003c/p\u003e\n\u003cimg class\u003d\u003c\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepKillJob-a.png\"\u003e\n\u003cp\u003eYou\u0026rsquo;ll be asked to confirm that you want to terminate that job.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eTerminating an Active Query\u003c/h2\u003e\n\u003cp\u003eYou can terminate an active job if you determine that something isn\u0026rsquo;t working as expected. Simply access the \u003cem\u003eJobs\u003c/em\u003e tab while a job is actively running, and click the the \u003cem\u003e(kill)\u003c/em\u003e text displayed next to the job description, as shown here:\u003c/p\u003e\n\u003cimg class\u003d\u003c\"fitwidth\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepKillJob-a.png\"\u003e\n\u003cp\u003eYou\u0026rsquo;ll be asked to confirm that you want to terminate that job.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1544045495624_1369340146",
@@ -479,31 +507,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-02 23:09:23.507",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAbout Parallelism and Spark\u003c/h2\u003e\n\u003cp\u003eThe power of Splice Machine in performing large analytic queries quickly lies in its ability to run those queries with parallel resources. Spark has the capability of running a number of Job/Stages/Tasks in parallel. How much parallelism you see, and where, depends on the following:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"25%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParallelism Factor\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive executors\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eHow many executors are available to run your query?\u003c/p\u003e\n                \u003cp\u003eThe available executor count on your cluster depends on your configuration; in our training example we have just one, but clusters can have many executors.  Each executor is typically configured to run 4 tasks in parallel.  Therefore your maximum parallelism is typically the number of executors * 4 simultaneous tasks.  For example if your cluster had 12 executors, you can run 48 tasks in parallel across all running jobs.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eTasks per stage in one query\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eSplice Machine and Spark will dynamically split up the workload across many tasks for large data sets.\u003c/p\u003e\n            \u003cp\u003eOur example data set contains only 1 million rows; as a result, our example query won\u0027t have many Tasks per Stage. With more data in your tables, you will see more tasks in parallel in a given Stage.\u003c/p\u003e\n                \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e# of Queries being run simultaneously\u003c/td\u003e\n            \u003ctd\u003eSpark can run queries simultaneously with available resources.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAbout Parallelism and Spark\u003c/h2\u003e\n\u003cp\u003eThe power of Splice Machine in performing large analytic queries quickly lies in its ability to run those queries with parallel resources. Spark has the capability of running a number of Job/Stages/Tasks in parallel. How much parallelism you see, and where, depends on the following:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"25%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParallelism Factor\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive executors\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eHow many executors are available to run your query?\u003c/p\u003e\n                \u003cp\u003eThe available executor count on your cluster depends on your configuration; in our training example we have just one, but clusters can have many executors.  Each executor is typically configured to run 4 tasks in parallel.  Therefore your maximum parallelism is typically the number of executors * 4 simultaneous tasks.  For example if your cluster had 12 executors, you can run 48 tasks in parallel across all running jobs.\u003c/p\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eTasks per stage in one query\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eSplice Machine and Spark will dynamically split up the workload across many tasks for large data sets.\u003c/p\u003e\n            \u003cp\u003eOur example data set contains only 1 million rows; as a result, our example query won\u0027t have many Tasks per Stage. With more data in your tables, you will see more tasks in parallel in a given Stage.\u003c/p\u003e\n                \u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e# of Queries being run simultaneously\u003c/td\u003e\n            \u003ctd\u003eSpark can run queries simultaneously with available resources.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542402549811_-1159393916",
@@ -517,31 +545,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:31:26.646",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow, please continue on to the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eExplaining and Hinting\u003c/em\u003e\u003c/a\u003e, to discover more about tuning your Splice Machine queries.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow, please continue on to the next notebook in this class, \u003ca href\u003d\"/#/notebook/2DUVSWQRW\"\u003e\u003cem\u003eExplaining and Hinting\u003c/em\u003e\u003c/a\u003e, to discover more about tuning your Splice Machine queries.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542402549812_1189965804",
@@ -555,32 +583,32 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 07:31:32.447",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionKey": "TAB",
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Additional Help\u003c/h2\u003e\n\u003cp\u003eAs you\u0026rsquo;ve seen in this notebook, the Database Console UI is extremely useful in getting a view into how well your queries are getting processed. \u003c/p\u003e\n\u003cp\u003eOnce you have your data loaded at or near target scale, if you are not seeing good throughput (task activity, etc), please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0026rsquo;ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Additional Help\u003c/h2\u003e\n\u003cp\u003eAs you\u0026rsquo;ve seen in this notebook, the Database Console UI is extremely useful in getting a view into how well your queries are getting processed. \u003c/p\u003e\n\u003cp\u003eOnce you have your data loaded at or near target scale, if you are not seeing good throughput (task activity, etc), please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community\u003c/em\u003e Slack channel\u003c/a\u003e and ask for help; if you\u0026rsquo;ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542743394707_-884152187",
@@ -599,9 +627,9 @@
     "splicemachine:shared_process": []
   },
   "config": {
-    "isZeppelinNotebookCronEnable": false,
     "looknfeel": "default",
-    "personalizedMode": "false"
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
   },
   "info": {}
 }
