@@ -19,7 +19,7 @@ You can add notebooks by making Github pull request, but we request you also upd
 |-------------|-------------|-----|----------|--------|
 |2CTV7H6FU|1.  Getting Started - README|Markup|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CTV7H6FU/note.json) | |
 |2CTKW7A6U|2.1 Notebook Basics Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CTKW7A6U/note.json) | |
-|2CUA8V2RK|2.2 Copying to S3 Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CUA8V2RK/note.json) | |
+|2E5JAQWJH|2.2 Copying to S3 Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CUA8V2RK/note.json) | |
 |2CSKWGZ8P|2.3 Importing Data Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSKWGZ8P/note.json) | |
 |2CU1SNACA|2.4 Running Queries Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CU1SNACA/note.json) | |
 |2CS27TE2A|2.5 Tuning for Performance Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CS27TE2A/note.json) | |
