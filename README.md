@@ -34,7 +34,7 @@ You can add notebooks by making Github pull request, but we request you also upd
 |2D89MQA89|3. Splice Deep Dive / 5. Transactions with Spark & JDBC|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D89MQA89/note.json) | |
 |2D8PMSAPJ|3. Splice Deep Dive / 6. Creating Applications|Splicemachine Interpreter|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D8PMSAPJ/note.json) | |
 |2D96GBY2P|3. Splice Deep Dive / 7. Using our Spark Adapter|Splicemachine / Spark Python|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D96GBY2P/note.json) | |
-|2DFY9ZKYB|3. Splice Deep Dive / 8. Python MLlib example|Splicemachine / Spark Python |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2DFY9ZKYB/note.json) | |
+|2E3671BBN|3. Splice Deep Dive / 8. Python MLlib example|Splicemachine / Spark Python |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2DFY9ZKYB/note.json) | |
 |2D7P8BMMS|3. Splice Deep Dive / 9. Scala MLlib example|Splicemachine / Scala / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D7P8BMMS/note.json) | |
 |2CD73PAF8|4. Data Engineering / 1. ETL Pipeline Example|Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CD73PAF8/note.json) | |
 |2CKKJKSK8|5. Reference Applications / 1. Supply Chain - Predicting Shortages|Splicemachine / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CKKJKSK8/note.json) | |
