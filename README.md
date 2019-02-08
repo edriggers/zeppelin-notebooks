@@ -36,7 +36,6 @@ You can add notebooks by making Github pull request, but we request you also upd
 |2D96GBY2P|3. Splice Deep Dive / 7. Using our Spark Adapter|Splicemachine / Spark Python|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D96GBY2P/note.json) | |
 |2E3671BBN|3. Splice Deep Dive / 8. Python MLlib example|Splicemachine / Spark Python |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2DFY9ZKYB/note.json) | |
 |2D7P8BMMS|3. Splice Deep Dive / 9. Scala MLlib example|Splicemachine / Scala / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D7P8BMMS/note.json) | |
-|2CD73PAF8|4. Data Engineering / 1. ETL Pipeline Example|Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CD73PAF8/note.json) | |
 |2CKKJKSK8|5. Reference Applications / 1. Supply Chain - Predicting Shortages|Splicemachine / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CKKJKSK8/note.json) | |
 |2CH931JT4|5. Reference Applications / 2. IoT / 1. Overview| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CH931JT4/note.json) | |
 |2CHVYSK7B|5. Reference Applications / 2. IoT / 2. Database Setup| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CHVYSK7B/note.json) | |
@@ -47,7 +46,6 @@ You can add notebooks by making Github pull request, but we request you also upd
 |2CSGDX1CW|7. Benchmarks / 1. TPCH-100| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSGDX1CW/note.json) | |
 |2CN9CP75G|8. Machine Learning / 1. Kmeans| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CN9CP75G/note.json) | |
 |2CM14K96J|8. Machine Learning / 2. Decision Tree| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CM14K96J/note.json) | |
-|2CJMQPAKB|Python+JDBC| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CJMQPAKB/note.json) | |
 |2A94M5J1Z|ZeppelinTutorial - Basic Features| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2A94M5J1Z/note.json) | |
 |2BWJFTXKJ|ZeppelinTutorial - SparkR| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2BWJFTXKJ/note.json) | |
 
