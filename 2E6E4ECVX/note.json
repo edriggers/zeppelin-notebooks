@@ -982,7 +982,7 @@
     }
   }, {
     "title": "Import data and start experiment",
-    "text": "%spark.pyspark\n#create our MLFlow experiment\nmanager.create_experiment('fraud-demo')\nmanager.set_experiment('fraud-demo')\ndf = splice.df(\"SELECT * FROM cc_fraud.cc_fraud_data\")\ndf = df.withColumnRenamed('CLASS_RESULT', 'label')\nz.show(df)\n",
+    "text": "%spark.pyspark\n#create our MLFlow experiment\nmanager.create_experiment('fraud-demo')\nmanager.set_active_experiment('fraud-demo')\ndf = splice.df(\"SELECT * FROM cc_fraud.cc_fraud_data\")\ndf = df.withColumnRenamed('CLASS_RESULT', 'label')\nz.show(df)\n",
     "user": "splice",
     "dateUpdated": "2019-03-25T16:33:38+0000",
     "config": {
