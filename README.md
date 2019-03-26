@@ -45,6 +45,7 @@ You can add notebooks by making Github pull request, but we request you also upd
 |2CG6KVZJ2|5. Reference Applications / 2. IoT / 5. Splice Query| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CG6KVZJ2/note.json) | |
 |2D2RM85JF|6. Advanced Tutorials / 1. Creating Custom Stored Procedures| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D2RM85JF/note.json) | |
 |2CSGDX1CW|7. Benchmarks / 1. TPCH-100| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSGDX1CW/note.json) | |
+|2E6E4ECVX|ML Manager Demo| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2E6E4ECVX/note.json) | |
 
 ## Updating your HDP Zeppelin to use the Splice Machine Native Spark Datasource
 * Create a directory such as /tmp/splicemachine on each server to store 1 jar files needed by this setup.
