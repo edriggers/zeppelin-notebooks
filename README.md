@@ -48,6 +48,8 @@ You can add notebooks by making Github pull request, but we request you also upd
 |2CM14K96J|8. Machine Learning / 2. Decision Tree| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CM14K96J/note.json) | |
 |2A94M5J1Z|ZeppelinTutorial - Basic Features| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2A94M5J1Z/note.json) | |
 |2BWJFTXKJ|ZeppelinTutorial - SparkR| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2BWJFTXKJ/note.json) | |
+|2E6E4ECVX|ML Manager Demo| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2E6E4ECVX/note.json) | |
+
 
 ## Updating your HDP Zeppelin to use the Splice Machine Native Spark Datasource
 * Create a directory such as /tmp/splicemachine on each server to store 1 jar files needed by this setup.

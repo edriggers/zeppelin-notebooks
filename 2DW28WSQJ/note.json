@@ -42,7 +42,7 @@
     },
     {
       "title": "Test Splice DB connection",
-      "text": "select count(1) from sys.systables;",
+      "text": "%splicemachine\nselect count(1) from sys.systables;",
       "user": "splice",
       "dateUpdated": "2018-10-31 20:31:11.203",
       "config": {
@@ -101,7 +101,7 @@
     },
     {
       "title": "Test Splice Spark",
-      "text": "select count(1) from sys.systables --splice-properties useSpark\u003dtrue\n;",
+      "text": "%splicemachine\nselect count(1) from sys.systables --splice-properties useSpark\u003dtrue\n;",
       "user": "splice",
       "dateUpdated": "2018-10-31 01:34:06.905",
       "config": {
