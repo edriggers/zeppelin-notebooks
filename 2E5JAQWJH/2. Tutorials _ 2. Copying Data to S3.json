@@ -1,1 +1,93 @@
-﻿{"paragraphs":[{"text":"%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Copying Data to S3\n\nNow that we've covered the basic of notebooks and SQL, we will show you how you can upload some data to <b>S3</b> and begin working with it on Splice Machine!\n\nThe easiest way to get your database tables populated is to import data from flat files (csv, etc.). Splice Machine imports data directly from S3; if your flat files are already stored in S3, you can skip this tutorial and jump to the next, which walks you through importing your data from S3 into your Splice Machine database.\n\nIf you need assistance getting started with S3, you can access Amazon's getting started guide [here](https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html).\n\n<p style=\"margin-left:50px\"><span style=\"color:red;font-weight:bold;\">Important:</span> the flat files you use to import should be delimited (using comma, etc.), with newlines between each record.</p>\n\n\nTo copy your database to S3, you need to have an AWS account with access to S3 buckets.\n\n<p class=\"noteNote\">If you need assistance with copying your data to S3, please <a href=\"mailto:support@splicemachine.com\">contact Splice Machine</a>.</p>\n\n## Copying Small Files From Your Local Machine\nFor small files on your local machine, you may be able to use the AWS Web UI to upload your files:\n\n1. Log in to your AWS account\n2. Navigate to the S3 area, as shown below\n<img src=https://doc.splicemachine.com/images/AWSSelectS3.png width=650>\n3. Create an S3 bucket, if necessary\n4. Navigate to your S3 bucket\n5. Click the `Upload` button, then `Add files` as seen below\n<img src=https://doc.splicemachine.com/images/AWSUploadFiles.png width=650>\n6. Select the files to copy  or use drag-and-drop to copy them to S3\n\n## Copying Large Files\nThe files that you want to import into your database are typically large and not located on your local computer; this makes it necessary to use the *AWS Command Line Interface* to copy these files to S3.\n\nThe AWS CLI site, <a href=\"https://aws.amazon.com/cli/\" target=\"_blank\">https://aws.amazon.com/cli/</a>, shows you how to install and use this interface to copy your data up to an S3 bucket. ","user":"splice","dateUpdated":"2019-02-08T16:59:53+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"fontSize":9,"results":{},"enabled":true},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Copying Data to S3</h1>\n<p>Now that we&rsquo;ve covered the basic of notebooks and SQL, we will show you how you can upload some data to <b>S3</b> and begin working with it on Splice Machine!</p>\n<p>The easiest way to get your database tables populated is to import data from flat files (csv, etc.). Splice Machine imports data directly from S3; if your flat files are already stored in S3, you can skip this tutorial and jump to the next, which walks you through importing your data from S3 into your Splice Machine database.</p>\n<p>If you need assistance getting started with S3, you can access Amazon&rsquo;s getting started guide <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html\">here</a>.</p>\n<p style=\"margin-left:50px\"><span style=\"color:red;font-weight:bold;\">Important:</span> the flat files you use to import should be delimited (using comma, etc.), with newlines between each record.</p>\n<p>To copy your database to S3, you need to have an AWS account with access to S3 buckets.</p>\n<p class=\"noteNote\">If you need assistance with copying your data to S3, please <a href=\"mailto:support@splicemachine.com\">contact Splice Machine</a>.</p>\n<h2>Copying Small Files From Your Local Machine</h2>\n<p>For small files on your local machine, you may be able to use the AWS Web UI to upload your files:</p>\n<ol>\n  <li>Log in to your AWS account</li>\n  <li>Navigate to the S3 area, as shown below<br/><img src=https://doc.splicemachine.com/images/AWSSelectS3.png width=650></li>\n  <li>Create an S3 bucket, if necessary</li>\n  <li>Navigate to your S3 bucket</li>\n  <li>Click the <code>Upload</code> button, then <code>Add files</code> as seen below<br/><img src=https://doc.splicemachine.com/images/AWSUploadFiles.png width=650></li>\n  <li>Select the files to copy or use drag-and-drop to copy them to S3</li>\n</ol>\n<h2>Copying Large Files</h2>\n<p>The files that you want to import into your database are typically large and not located on your local computer; this makes it necessary to use the <em>AWS Command Line Interface</em> to copy these files to S3.</p>\n<p>The AWS CLI site, <a href=\"https://aws.amazon.com/cli/\" target=\"_blank\"><a href=\"https://aws.amazon.com/cli/\">https://aws.amazon.com/cli/</a></a>, shows you how to install and use this interface to copy your data up to an S3 bucket.</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1549645193267_1524452937","id":"20170907-071156_1237652984","dateCreated":"2019-02-08T16:59:53+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:84919"},{"text":"%md\n## Where to Go Next\n\nOnce you have one or more delimited data files available on S3, visit our next tutorial Notebook, <a href=\"/#/notebook/2CSKWGZ8P\">Importing Data</a>, which walks you through using Splice Machine to quickly import that data into your database.","user":"splice","dateUpdated":"2019-02-08T17:04:54+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"fontSize":9,"results":{},"enabled":true},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Once you have one or more delimited data files available on S3, visit our next tutorial Notebook, <a href=\"/#/notebook/2CSKWGZ8P\">Importing Data</a>, which walks you through using Splice Machine to quickly import that data into your database.</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1549645193268_1536737819","id":"20170907-075958_1415190286","dateCreated":"2019-02-08T16:59:53+0000","dateStarted":"2019-02-08T17:04:54+0000","dateFinished":"2019-02-08T17:04:54+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:84920"},{"text":"\n","user":"splice","dateUpdated":"2019-02-08T16:59:53+0000","config":{"editorSetting":{"language":"sql","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/sql","editorHide":true,"fontSize":9,"results":{},"enabled":true},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1549645193268_-170753052","id":"20170907-080010_588861149","dateCreated":"2019-02-08T16:59:53+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:84921"}],"name":"2. Tutorials / 2. Copying Data to S3","id":"2E5JAQWJH","noteParams":{},"noteForms":{},"angularObjects":{"md:shared_process":[],"splicemachine:shared_process":[],"spark:shared_process":[]},"config":{"isZeppelinNotebookCronEnable":false,"looknfeel":"default","personalizedMode":"false"},"info":{}}
+{
+  "paragraphs": [{
+    "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Copying Data to S3\n\nNow that we've covered the basic of notebooks and SQL, we will show you how you can upload some data to <b>S3</b> and begin working with it on Splice Machine!\n\nThe easiest way to get your database tables populated is to import data from flat files (csv, etc.). Splice Machine imports data directly from S3; if your flat files are already stored in S3, you can skip this tutorial and jump to the next, which walks you through importing your data from S3 into your Splice Machine database.\n\nIf you need assistance getting started with S3, you can access Amazon's getting started guide [here](https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html).\n\n<p style=\"margin-left:50px\"><span style=\"color:red;font-weight:bold;\">Important:</span> the flat files you use to import should be delimited (using comma, etc.), with newlines between each record.</p>\n\n\nTo copy your database to S3, you need to have an AWS account with access to S3 buckets.\n\n<p class=\"noteNote\">If you need assistance with copying your data to S3, please <a href=\"mailto:support@splicemachine.com\">contact Splice Machine</a>.</p>\n\n## Copying Small Files From Your Local Machine\nFor small files on your local machine, you may be able to use the AWS Web UI to upload your files:\n\n1. Log in to your AWS account\n2. Navigate to the S3 area, as shown below\n<img src=https://doc.splicemachine.com/images/AWSSelectS3.png width=650>\n3. Create an S3 bucket, if necessary\n4. Navigate to your S3 bucket\n5. Click the `Upload` button, then `Add files` as seen below\n<img src=https://doc.splicemachine.com/images/AWSUploadFiles.png width=650>\n6. Select the files to copy  or use drag-and-drop to copy them to S3\n\n## Copying Large Files\nThe files that you want to import into your database are typically large and not located on your local computer; this makes it necessary to use the *AWS Command Line Interface* to copy these files to S3.\n\nThe AWS CLI site, <a href=\"https://aws.amazon.com/cli/\" target=\"_blank\">https://aws.amazon.com/cli/</a>, shows you how to install and use this interface to copy your data up to an S3 bucket. ",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:09:07+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Copying Data to S3</h1>\n<p>Now that we&rsquo;ve covered the basic of notebooks and SQL, we will show you how you can upload some data to <b>S3</b> and begin working with it on Splice Machine!</p>\n<p>The easiest way to get your database tables populated is to import data from flat files (csv, etc.). Splice Machine imports data directly from S3; if your flat files are already stored in S3, you can skip this tutorial and jump to the next, which walks you through importing your data from S3 into your Splice Machine database.</p>\n<p>If you need assistance getting started with S3, you can access Amazon&rsquo;s getting started guide <a href=\"https://docs.aws.amazon.com/AmazonS3/latest/gsg/GetStartedWithS3.html\">here</a>.</p>\n<p style=\"margin-left:50px\"><span style=\"color:red;font-weight:bold;\">Important:</span> the flat files you use to import should be delimited (using comma, etc.), with newlines between each record.</p>\n<p>To copy your database to S3, you need to have an AWS account with access to S3 buckets.</p>\n<p class=\"noteNote\">If you need assistance with copying your data to S3, please <a href=\"mailto:support@splicemachine.com\">contact Splice Machine</a>.</p>\n<h2>Copying Small Files From Your Local Machine</h2>\n<p>For small files on your local machine, you may be able to use the AWS Web UI to upload your files:</p>\n<ol>\n  <li>Log in to your AWS account</li>\n  <li>Navigate to the S3 area, as shown below<br/><img src=https://doc.splicemachine.com/images/AWSSelectS3.png width=650></li>\n  <li>Create an S3 bucket, if necessary</li>\n  <li>Navigate to your S3 bucket</li>\n  <li>Click the <code>Upload</code> button, then <code>Add files</code> as seen below<br/><img src=https://doc.splicemachine.com/images/AWSUploadFiles.png width=650></li>\n  <li>Select the files to copy or use drag-and-drop to copy them to S3</li>\n</ol>\n<h2>Copying Large Files</h2>\n<p>The files that you want to import into your database are typically large and not located on your local computer; this makes it necessary to use the <em>AWS Command Line Interface</em> to copy these files to S3.</p>\n<p>The AWS CLI site, <a href=\"https://aws.amazon.com/cli/\" target=\"_blank\"><a href=\"https://aws.amazon.com/cli/\">https://aws.amazon.com/cli/</a></a>, shows you how to install and use this interface to copy your data up to an S3 bucket.</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807347205_-869930081",
+    "id": "20170907-071156_1237652984",
+    "dateCreated": "2019-03-28T21:09:07+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "focus": true,
+    "$$hashKey": "object:68152"
+  }, {
+    "text": "%md\n## Where to Go Next\n\nOnce you have one or more delimited data files available on S3, visit our next tutorial Notebook, <a href=\"/#/notebook/2CSKWGZ8P\">Importing Data</a>, which walks you through using Splice Machine to quickly import that data into your database.",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:09:07+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true,
+        "completionSupport": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>Once you have one or more delimited data files available on S3, visit our next tutorial Notebook, <a href=\"/#/notebook/2CSKWGZ8P\">Importing Data</a>, which walks you through using Splice Machine to quickly import that data into your database.</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807347206_1803573286",
+    "id": "20170907-075958_1415190286",
+    "dateCreated": "2019-03-28T21:09:07+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:68153"
+  }],
+  "name": "2. Tutorials / 2. Copying Data to S3",
+  "id": "2E6RKVK47",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

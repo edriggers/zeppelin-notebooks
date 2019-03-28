@@ -1,1 +1,412 @@
-﻿{"paragraphs":[{"title":"Transactions ","text":"%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Splice Transactions with Spark and JDBC\n\nNow we'll get a glimpse into the transactional nature of Splice Machine.  We'll be switching to the `%spark` interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we'll:\n\n<ul class=\"italic\">\n    <li>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</li>\n    <li>Use JDBC calls to set and check values from the database.</li>\n    <li>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</li>\n</ul>\n<br />\n## Run Setup Code and Define our Procedure\n\nWe define a simple procedure, `checkBalance` that checks and *pretty-prints* the current balance for a supplier  ","user":"splice","dateUpdated":"2018-03-04T19:13:51+0000","config":{"tableHide":false,"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","editorHide":true,"title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Splice Transactions with Spark and JDBC</h1>\n<p>Now we&rsquo;ll get a glimpse into the transactional nature of Splice Machine. We&rsquo;ll be switching to the <code>%spark</code> interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we&rsquo;ll:</p>\n<ul class=\"italic\">\n    <li>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</li>\n    <li>Use JDBC calls to set and check values from the database.</li>\n    <li>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</li>\n</ul>\n<br />\n<h2>Run Setup Code and Define our Procedure</h2>\n<p>We define a simple procedure, <code>checkBalance</code> that checks and <em>pretty-prints</em> the current balance for a supplier</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184246722_1493122298","id":"20180115-164647_1759951771","dateCreated":"2018-03-04T17:24:06+0000","dateStarted":"2018-03-04T19:13:51+0000","dateFinished":"2018-03-04T19:13:51+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:6317"},{"text":"%md\n### In the cell below, input your JDBCurl as well as your user and password in the <code>defaultJDBCURL</code> variable","user":"splice","dateUpdated":"2019-02-08T18:38:27+0000","config":{"colWidth":12,"fontSize":9,"enabled":true,"results":{},"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"editorMode":"ace/mode/markdown","editorHide":true,"tableHide":false},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1549651036875_1668815368","id":"20190208-183716_311928180","dateCreated":"2019-02-08T18:37:16+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:8106","dateFinished":"2019-02-08T18:38:29+0000","dateStarted":"2019-02-08T18:38:27+0000","results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h3>In the cell below, input your JDBCurl as well as your user and password in the <code>defaultJDBCURL</code> variable</h3>\n</div>"}]}},{"text":"%spark\nprintln(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\nval defaultJDBCURL = z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin\"\"\").toString\nval localJDBCURL = \"\"\"jdbc:splice://localhost:1527/splicedb;user=splice;password=admin\"\"\"\n\n","user":"splice","dateUpdated":"2019-02-08T18:42:04+0000","config":{"colWidth":12,"fontSize":9,"enabled":true,"results":{},"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"editorMode":"ace/mode/scala"},"settings":{"params":{"JDBCurl":"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin"},"forms":{"JDBCurl":{"type":"TextBox","name":"JDBCurl","displayName":"JDBCurl","defaultValue":"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin","hidden":false,"$$hashKey":"object:8588"}}},"apps":[],"jobName":"paragraph_1535471538810_-682924297","id":"20180828-115218_491973685","dateCreated":"2018-08-28T15:52:18+0000","dateStarted":"2019-02-08T18:42:04+0000","dateFinished":"2019-02-08T18:42:05+0000","status":"FINISHED","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:6318"},{"title":"Simple Function to Pretty Print Balance","text":"%spark\nimport java.sql.{DriverManager,Connection}\nvar conn = DriverManager.getConnection(defaultJDBCURL)\nconn.setAutoCommit(false)\nvar statement = conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit = {\n    var resSet = statement.executeQuery(\"SELECT S_ACCTBAL FROM TPCH1.SUPPLIER WHERE S_SUPPKEY = \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl = resSet.getString(\"S_ACCTBAL\")\n        println(\"================ Current account balance: \" + bl + \" ====================\");\n    }\n}\n","user":"splice","dateUpdated":"2019-02-08T18:40:47+0000","config":{"tableHide":false,"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"colWidth":12,"editorMode":"ace/mode/scala","editorHide":false,"title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1520184246722_1493122298","id":"20180115-164841_170157787","dateCreated":"2018-03-04T17:24:06+0000","dateStarted":"2019-02-08T18:40:47+0000","dateFinished":"2019-02-08T18:40:48+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:6319","results":{"code":"SUCCESS","msg":[{"type":"TEXT","data":"import java.sql.{DriverManager, Connection}\nconn: java.sql.Connection = com.splicemachine.db.client.net.NetConnection40@2347388b\nstatement: java.sql.Statement = com.splicemachine.db.client.am.Statement40@7ea3c58a\ncheckBalance: (suppKey: Integer)Unit\n"}]}},{"text":"%md\nNow we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:","user":"splice","dateUpdated":"2018-03-29T15:59:43+0000","config":{"tableHide":false,"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<p>Now we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184246722_1493122298","id":"20180115-165029_1635005335","dateCreated":"2018-03-04T17:24:06+0000","dateStarted":"2018-03-29T15:59:43+0000","dateFinished":"2018-03-29T15:59:45+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:6320"},{"text":"%spark\ncheckBalance(6517)","user":"splice","dateUpdated":"2019-02-08T18:40:51+0000","config":{"colWidth":12,"editorMode":"ace/mode/scala","results":{},"enabled":true,"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"editorHide":false,"tableHide":false,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT","data":"================ Current account balance: -749.47 ====================\n"}]},"apps":[],"jobName":"paragraph_1520184246723_1492737549","id":"20180115-165115_1164524303","dateCreated":"2018-03-04T17:24:06+0000","dateStarted":"2019-02-08T18:40:52+0000","dateFinished":"2019-02-08T18:40:53+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:6321"},{"text":"%md\nOur setup code created two useful variables we can now employ:\n\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n\nThe first example shows an update statement which, upon committing, retains the value to which it is set.\n\n## Committing a Transaction","user":"splice","dateUpdated":"2018-05-22T01:05:02+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<p>Our setup code created two useful variables we can now employ:</p>\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n<p>The first example shows an update statement which, upon committing, retains the value to which it is set.</p>\n<h2>Committing a Transaction</h2>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184246723_1492737549","id":"20180115-165133_1245971625","dateCreated":"2018-03-04T17:24:06+0000","dateStarted":"2018-05-22T01:05:02+0000","dateFinished":"2018-05-22T01:05:02+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:6322"},{"title":"Transaction Commit Example","text":"%spark\nstatement.executeUpdate(\"update TPCH1.SUPPLIER SET S_ACCTBAL = 10000 WHERE S_SUPPKEY = 6517\");\ncheckBalance(6517);\nconn.commit();\ncheckBalance(6517);","user":"splice","dateUpdated":"2019-02-08T18:41:00+0000","config":{"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"colWidth":12,"editorMode":"ace/mode/scala","title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT","data":"res14: Int = 1\n================ Current account balance: 10000.00 ====================\n================ Current account balance: 10000.00 ====================\n"}]},"apps":[],"jobName":"paragraph_1520184246723_1492737549","id":"20180115-165153_163460075","dateCreated":"2018-03-04T17:24:06+0000","dateStarted":"2019-02-08T18:41:01+0000","dateFinished":"2019-02-08T18:41:01+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:6323"},{"text":"%md\n<br />\nBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\n\n## Rolling Back a Transaction","dateUpdated":"2018-03-04T17:24:06+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<br />\n<p>But if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.</p>\n<h2>Rolling Back a Transaction</h2>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184246724_1490813804","id":"20180115-165208_1601331583","dateCreated":"2018-03-04T17:24:06+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:6324"},{"title":"Transaction Rollback Example","text":"%spark\nstatement.executeUpdate(\"update TPCH1.SUPPLIER SET S_ACCTBAL = 0 WHERE S_SUPPKEY = 6517\")\ncheckBalance(6517);\nconn.rollback();\ncheckBalance(6517);\n","user":"splice","dateUpdated":"2019-02-08T18:41:11+0000","config":{"editorSetting":{"language":"scala","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"colWidth":12,"editorMode":"ace/mode/scala","title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT","data":"res19: Int = 1\n================ Current account balance: 0.00 ====================\n================ Current account balance: 10000.00 ====================\n"}]},"apps":[],"jobName":"paragraph_1520184246724_1490813804","id":"20180115-165244_2028152757","dateCreated":"2018-03-04T17:24:06+0000","dateStarted":"2019-02-08T18:41:11+0000","dateFinished":"2019-02-08T18:41:12+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:6325"},{"text":"%md\n## Where to Go Next\n\nThe next notebook in this presentation walks you through <a href=\"/#/notebook/2D8PMSAPJ\">creating applications with Splice Machine.</a>\n","dateUpdated":"2018-03-04T17:24:06+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation walks you through <a href=\"/#/notebook/2D8PMSAPJ\">creating applications with Splice Machine.</a></p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184246724_1490813804","id":"20180122-173624_509126525","dateCreated":"2018-03-04T17:24:06+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:6326"},{"text":"%md\n","dateUpdated":"2018-03-04T17:24:06+0000","config":{"colWidth":12,"editorMode":"ace/mode/markdown","results":{},"enabled":true,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"fontSize":9},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1520184246725_1490429055","id":"20180125-142959_1101825868","dateCreated":"2018-03-04T17:24:06+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:6327"}],"name":"3. Splice Deep Dive / 5. Transactions with Spark & JDBC","id":"2D89MQA89","noteParams":{},"noteForms":{},"angularObjects":{"splicemachine:shared_process":[],"spark:shared_process":[]},"config":{"looknfeel":"default","personalizedMode":"false","isZeppelinNotebookCronEnable":false},"info":{}}
+{
+  "paragraphs": [{
+    "title": "Transactions ",
+    "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Splice Transactions with Spark and JDBC\n\nNow we'll get a glimpse into the transactional nature of Splice Machine.  We'll be switching to the `%spark` interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we'll:\n\n<ul class=\"italic\">\n    <li>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</li>\n    <li>Use JDBC calls to set and check values from the database.</li>\n    <li>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</li>\n</ul>\n<br />\n## Run Setup Code and Define our Procedure\n\nWe define a simple procedure, `checkBalance` that checks and *pretty-prints* the current balance for a supplier  ",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:50+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "text",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/text",
+      "editorHide": true,
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027717_-96358010",
+    "id": "20180115-164647_1759951771",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "FINISHED",
+    "progressUpdateIntervalMs": 500,
+    "focus": true,
+    "$$hashKey": "object:53729",
+    "dateFinished": "2019-03-28T20:47:50+0000",
+    "dateStarted": "2019-03-28T20:47:50+0000",
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Splice Transactions with Spark and JDBC</h1>\n<p>Now we&rsquo;ll get a glimpse into the transactional nature of Splice Machine. We&rsquo;ll be switching to the <code>%spark</code> interpreter, which uses the Scala programming language; this allows us to easily demonstrate a clean way to programmatically interact with Splice Machine via JDBC. In this demonstration, we&rsquo;ll:</p>\n<ul class=\"italic\">\n    <li>Run setup code to create our variables and define a simple Spark procedure named <code>checkBalance</code>.</li>\n    <li>Use JDBC calls to set and check values from the database.</li>\n    <li>Show the use of <code>commit</code> and <code>rollback</code> to control transactional persistence of our updates.</li>\n</ul>\n<br />\n<h2>Run Setup Code and Define our Procedure</h2>\n<p>We define a simple procedure, <code>checkBalance</code> that checks and <em>pretty-prints</em> the current balance for a supplier</p>\n</div>"
+      }]
+    }
+  }, {
+    "text": "%md\n### In the cell below, input your JDBCurl as well as your user and password in the <code>defaultJDBCURL</code> variable",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:51+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true,
+        "completionSupport": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "fontSize": 9,
+      "editorHide": true,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027718_-1081408231",
+    "id": "20190208-183716_311928180",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "FINISHED",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53730",
+    "dateFinished": "2019-03-28T20:47:51+0000",
+    "dateStarted": "2019-03-28T20:47:51+0000",
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h3>In the cell below, input your JDBCurl as well as your user and password in the <code>defaultJDBCURL</code> variable</h3>\n</div>"
+      }]
+    }
+  }, {
+    "text": "%spark\nprintln(\"Please copy and paste your JDBC URL. You can find it at the bottom right of your cluster dashboard\")\nval defaultJDBCURL = z.input(\"JDBCurl\",\"\"\"jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin\"\"\").toString\nval localJDBCURL = \"\"\"jdbc:splice://localhost:1527/splicedb;user=splice;password=admin\"\"\"\n\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:35+0000",
+    "config": {
+      "editorSetting": {
+        "language": "scala",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/scala",
+      "fontSize": 9,
+      "results": {},
+      "enabled": true,
+      "tableHide": false
+    },
+    "settings": {
+      "params": {
+        "JDBCurl": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin"
+      },
+      "forms": {
+        "JDBCurl": {
+          "type": "TextBox",
+          "name": "JDBCurl",
+          "displayName": "JDBCurl",
+          "defaultValue": "jdbc:splice://{FRAMEWORKNAME}-proxy.marathon.mesos:1527/splicedb;user=splice;password=admin",
+          "hidden": false,
+          "$$hashKey": "object:53872"
+        }
+      }
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027718_1258162485",
+    "id": "20180828-115218_491973685",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53731"
+  }, {
+    "title": "Simple Function to Pretty Print Balance",
+    "text": "%spark\nimport java.sql.{DriverManager,Connection}\nvar conn = DriverManager.getConnection(defaultJDBCURL)\nconn.setAutoCommit(false)\nvar statement = conn.createStatement()\n\ndef checkBalance(suppKey: Integer) : Unit = {\n    var resSet = statement.executeQuery(\"SELECT S_ACCTBAL FROM TPCH1.SUPPLIER WHERE S_SUPPKEY = \" + suppKey.toString())\n    while ( resSet.next() ) {\n        var bl = resSet.getString(\"S_ACCTBAL\")\n        println(\"================ Current account balance: \" + bl + \" ====================\");\n    }\n}\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:07+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "scala",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/scala",
+      "editorHide": false,
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027718_1606653439",
+    "id": "20180115-164841_170157787",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53732"
+  }, {
+    "text": "%md\nNow we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:56+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "text",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/text",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027719_-1668365099",
+    "id": "20180115-165029_1635005335",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "FINISHED",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53733",
+    "dateFinished": "2019-03-28T20:47:56+0000",
+    "dateStarted": "2019-03-28T20:47:56+0000",
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<p>Now we can check the balance easily at any time with the checkBalance call, passing in the supply key as a parameter:</p>\n</div>"
+      }]
+    }
+  }, {
+    "text": "%spark\ncheckBalance(6517)",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:07+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "scala",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/scala",
+      "editorHide": false,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027719_2129768233",
+    "id": "20180115-165115_1164524303",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53734"
+  }, {
+    "text": "%md\nOur setup code created two useful variables we can now employ:\n\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n\nThe first example shows an update statement which, upon committing, retains the value to which it is set.\n\n## Committing a Transaction",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:59+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027719_-1389897956",
+    "id": "20180115-165133_1245971625",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "FINISHED",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53735",
+    "dateFinished": "2019-03-28T20:47:59+0000",
+    "dateStarted": "2019-03-28T20:47:59+0000",
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<p>Our setup code created two useful variables we can now employ:</p>\n<table class=\"splicezepNoBorder\">\n   <tbody>\n      <tr>\n          <td class=\"CodeFont\">statement</td>\n          <td>The standard JDBC Statement object, on which we run functions such as `executeUpdate`.\n      </tr>\n      <tr style=\"background-color: transparent;\">\n          <td class=\"CodeFont\">conn</td>\n          <td style=\"background-color: transparent;\" >A standard JDBC Connection object, on which run `commit` and `rollback`.\n      </tr>\n    </tbody>\n</table>\n<p>The first example shows an update statement which, upon committing, retains the value to which it is set.</p>\n<h2>Committing a Transaction</h2>\n</div>"
+      }]
+    }
+  }, {
+    "title": "Transaction Commit Example",
+    "text": "%spark\nstatement.executeUpdate(\"update TPCH1.SUPPLIER SET S_ACCTBAL = 10000 WHERE S_SUPPKEY = 6517\");\ncheckBalance(6517);\nconn.commit();\ncheckBalance(6517);",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:07+0000",
+    "config": {
+      "editorSetting": {
+        "language": "scala",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/scala",
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027720_287850273",
+    "id": "20180115-165153_163460075",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53736"
+  }, {
+    "text": "%md\n<br />\nBut if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.\n\n## Rolling Back a Transaction",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:48:06+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027720_1381983413",
+    "id": "20180115-165208_1601331583",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "FINISHED",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53737",
+    "dateFinished": "2019-03-28T20:48:06+0000",
+    "dateStarted": "2019-03-28T20:48:06+0000",
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<br />\n<p>But if we choose to do a rollback, the value returns to the previous value before the transactional context, as shown in the next example.</p>\n<h2>Rolling Back a Transaction</h2>\n</div>"
+      }]
+    }
+  }, {
+    "title": "Transaction Rollback Example",
+    "text": "%spark\nstatement.executeUpdate(\"update TPCH1.SUPPLIER SET S_ACCTBAL = 0 WHERE S_SUPPKEY = 6517\")\ncheckBalance(6517);\nconn.rollback();\ncheckBalance(6517);\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:47:07+0000",
+    "config": {
+      "editorSetting": {
+        "language": "scala",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/scala",
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027721_-578855442",
+    "id": "20180115-165244_2028152757",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53738"
+  }, {
+    "text": "%md\n## Where to Go Next\n\nThe next notebook in this presentation walks you through <a href=\"/#/notebook/2D8PMSAPJ\">creating applications with Splice Machine.</a>\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:48:01+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806027721_-350878373",
+    "id": "20180122-173624_509126525",
+    "dateCreated": "2019-03-28T20:47:07+0000",
+    "status": "FINISHED",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:53739",
+    "dateFinished": "2019-03-28T20:48:01+0000",
+    "dateStarted": "2019-03-28T20:48:01+0000",
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation walks you through <a href=\"/#/notebook/2D8PMSAPJ\">creating applications with Splice Machine.</a></p>\n</div>"
+      }]
+    }
+  }],
+  "name": "3. Splice Deep Dive / 5. Transactions with Spark & JDBC",
+  "id": "2E9XR3Z5Z",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}

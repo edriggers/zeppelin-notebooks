@@ -1,1 +1,585 @@
-﻿{"paragraphs":[{"title":"Spark Adapter","text":"%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Using our Spark Adapter\n\nData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\n<sub>Learn more about ANSI [here](https://share.ansi.org/Shared%20Documents/News%20and%20Publications/Brochures/WhatIsANSI_brochure.pdf) and ACID compliance [here](https://www.clustrix.com/bettersql/acid-compliance-means-care/)\n\nThe Splice Machine Spark adapter provides:\n\n* A durable, ACID compliant persistence model for Spark Dataframes.\n* Lazy result sets returned as Spark Dataframes.\n* Access to Spark libraries such as MLLib and GraphX.\n* Avoidance of expensive ETL of data from OLTP to OLAP.\n\nThis notebook will be our first look at writing code with <b>Python</b> using a Spark library called <b>PySpark.</b> \nLearn more about <b>Python</b> [here](https://docs.python.org/3/tutorial/index.html)\nLearn more about <b>Spark</b> and <b>PySpark</b> [here](https://spark.apache.org/docs/latest/api/python/index.html)\n\nThis notebook demonstrates using the Spark Adapter with Python, in these steps:\n\n1. Import the `PySpliceContextClass` to interface with the Python API.\n2. Use the `spark.pyspark` Python interpreter in Zeppelin to create a Spark context.\n3. Create a simple table in Splice Machine.\n4. Create a Spark dataframe and insert that into Splice Machine\n5. Run a simple Splice Machine transaction using the Spark context.\n6. View results in the table\n\n<br />\n\n## 1. Import the PySpliceContext Class\n\nOur first step is to use the `Spark.PySpark` interpreter to import the `PySpliceContext` class:\n","user":"splice","dateUpdated":"2019-02-08T18:44:57+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Using our Spark Adapter</h1>\n<p>Data Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.<br/><sub>Learn more about ANSI <a href=\"https://share.ansi.org/Shared%20Documents/News%20and%20Publications/Brochures/WhatIsANSI_brochure.pdf\">here</a> and ACID compliance <a href=\"https://www.clustrix.com/bettersql/acid-compliance-means-care/\">here</a></p>\n<p>The Splice Machine Spark adapter provides:</p>\n<ul>\n  <li>A durable, ACID compliant persistence model for Spark Dataframes.</li>\n  <li>Lazy result sets returned as Spark Dataframes.</li>\n  <li>Access to Spark libraries such as MLLib and GraphX.</li>\n  <li>Avoidance of expensive ETL of data from OLTP to OLAP.</li>\n</ul>\n<p>This notebook will be our first look at writing code with <b>Python</b> using a Spark library called <b>PySpark.</b><br/>Learn more about <b>Python</b> <a href=\"https://docs.python.org/3/tutorial/index.html\">here</a><br/>Learn more about <b>Spark</b> and <b>PySpark</b> <a href=\"https://spark.apache.org/docs/latest/api/python/index.html\">here</a></p>\n<p>This notebook demonstrates using the Spark Adapter with Python, in these steps:</p>\n<ol>\n  <li>Import the <code>PySpliceContextClass</code> to interface with the Python API.</li>\n  <li>Use the <code>spark.pyspark</code> Python interpreter in Zeppelin to create a Spark context.</li>\n  <li>Create a simple table in Splice Machine.</li>\n  <li>Create a Spark dataframe and insert that into Splice Machine</li>\n  <li>Run a simple Splice Machine transaction using the Spark context.</li>\n  <li>View results in the table</li>\n</ol>\n<br />\n<h2>1. Import the PySpliceContext Class</h2>\n<p>Our first step is to use the <code>Spark.PySpark</code> interpreter to import the <code>PySpliceContext</code> class:</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184315510_979775320","id":"20180118-005945_1825119026","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:44:57+0000","dateFinished":"2019-02-08T18:44:57+0000","status":"FINISHED","progressUpdateIntervalMs":500,"focus":true,"$$hashKey":"object:11914"},{"title":"PySpliceContext Class","text":"%spark.pyspark\nfrom splicemachine.spark.context import PySpliceContext","user":"splice","dateUpdated":"2019-02-08T18:45:15+0000","config":{"tableHide":true,"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","editorHide":false,"title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[]},"apps":[],"jobName":"paragraph_1520184315510_979775320","id":"20180118-015126_1752791454","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2018-06-06T20:30:21+0000","dateFinished":"2018-06-06T20:30:26+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11915"},{"text":"%md\n\n## 2. Create a Spark context\n\nNext, we use the `PySpliceContext` to create a connection to Splice Machine:\n<sub>We can also use `inspect` to see more about what makes the PySpliceContext class","user":"splice","dateUpdated":"2019-02-08T18:45:54+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true,"completionSupport":false},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>2. Create a Spark context</h2>\n<p>Next, we use the <code>PySpliceContext</code> to create a connection to Splice Machine:<br/><sub>We can also use <code>inspect</code> to see more about what makes the PySpliceContext class</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184315511_979390571","id":"20180129-153516_1751825816","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:45:54+0000","dateFinished":"2019-02-08T18:45:54+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11916"},{"title":"Create Context","text":"%spark.pyspark\nimport inspect\njdbcURL = z.input('Enter your jdbcURL here, which you can find on the bottom of the cloud UI for your cluster')\nsplice = PySpliceContext(jdbcURL, spark)\nprint(inspect.getsource(PySpliceContext))\nprint(splice.jdbcurl)","user":"splice","dateUpdated":"2019-02-08T18:55:56+0000","config":{"editorSetting":{"language":"python","editOnDblClick":false,"completionKey":"TAB","completionSupport":true},"colWidth":12,"editorMode":"ace/mode/python","title":false,"results":{},"enabled":true,"tableHide":false,"editorHide":false,"fontSize":9},"settings":{"params":{"Enter your jdbcURL here, which you can find on the bottom of the cloud UI for your cluster":"jdbc:splice://genesplice-weatherstream-84ae9e7709-proxy.marathon.mesos:1527/splicedb"},"forms":{"Enter your jdbcURL here, which you can find on the bottom of the cloud UI for your cluster":{"type":"TextBox","name":"Enter your jdbcURL here, which you can find on the bottom of the cloud UI for your cluster","displayName":"Enter your jdbcURL here, which you can find on the bottom of the cloud UI for your cluster","defaultValue":"","hidden":false,"$$hashKey":"object:14825"}}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT","data":"class PySpliceContext:\n    \"\"\"\n    This class implements a SpliceMachineContext object (similar to the SparkContext object)\n    \"\"\"\n\n    def __init__(self, JDBC_URL, sparkSession, _unit_testing=False):\n        \"\"\"\n        :param JDBC_URL: (string) The JDBC URL Connection String for your Splice Machine Cluster\n        :param sparkSession: (sparkContext) A SparkSession object for talking to Spark\n        \"\"\"\n        self.jdbcurl = JDBC_URL\n        self._unit_testing = _unit_testing\n\n        if not _unit_testing:  # Private Internal Argument to Override Using JVM\n            self.spark_sql_context = sparkSession._wrapped\n            self.jvm = self.spark_sql_context._sc._jvm\n            java_import(self.jvm, \"com.splicemachine.spark.splicemachine.*\")\n            java_import(self.jvm,\n                        \"org.apache.spark.sql.execution.datasources.jdbc.{JDBCOptions, JdbcUtils}\")\n            java_import(self.jvm, \"scala.collection.JavaConverters._\")\n            java_import(self.jvm, \"com.splicemachine.derby.impl.*\")\n            self.jvm.com.splicemachine.derby.impl.SpliceSpark.setContext(self.spark_sql_context._jsc)\n            self.context = self.jvm.com.splicemachine.spark.splicemachine.SplicemachineContext(\n                self.jdbcurl)\n\n        else:\n            from .utils import FakeJContext\n            self.spark_sql_context = sparkSession._wrapped\n            self.jvm = ''\n            self.context = FakeJContext(self.jdbcurl)\n\n    def getConnection(self):\n        \"\"\"\n        Return a connection to the database\n        \"\"\"\n        return self.context.getConnection()\n\n    def tableExists(self, schema_table_name):\n        \"\"\"\n        Check whether or not a table exists\n\n        :param schema_table_name: (string) Table Name\n        \"\"\"\n        return self.context.tableExists(schema_table_name)\n\n    def dropTable(self, schema_table_name):  # works\n        \"\"\"\n        Drop a specified table.\n\n        :param schema_table_name: (optional) (string) schemaName.tableName\n        \"\"\"\n        return self.context.dropTable(schema_table_name)\n\n    def df(self, sql):\n        \"\"\"\n        Return a Spark Dataframe from the results of a Splice Machine SQL Query\n\n        :param sql: (string) SQL Query (eg. SELECT * FROM table1 WHERE column2 > 3)\n        :return: A Spark DataFrame containing the results\n        \"\"\"\n        if self._unit_testing:\n            return self.context.df(sql)\n        return DataFrame(self.context.df(sql), self.spark_sql_context)\n\n    def insert(self, dataframe, schema_table_name):\n        \"\"\"\n        Insert a dataframe into a table (schema.table).\n\n        :param dataframe: (DF) The dataframe you would like to insert\n        :param schema_table_name: (string) The table in which you would like to insert the RDD\n        \"\"\"\n        return self.context.insert(dataframe._jdf, schema_table_name)\n\n    def upsert(self, dataframe, schema_table_name):\n        \"\"\"\n        Upsert the data from a dataframe into a table (schema.table).\n\n        :param dataframe: (DF) The dataframe you would like to upsert\n        :param schema_table_name: (string) The table in which you would like to upsert the RDD\n        \"\"\"\n        return self.context.upsert(dataframe._jdf, schema_table_name)\n\n    def delete(self, dataframe, schema_table_name):\n        \"\"\"\n        Delete records in a dataframe based on joining by primary keys from the data frame.\n        Be careful with column naming and case sensitivity.\n\n        :param dataframe: (DF) The dataframe you would like to delete\n        :param schema_table_name: (string) Splice Machine Table\n        \"\"\"\n        return self.context.delete(dataframe._jdf, schema_table_name)\n\n    def update(self, dataframe, schema_table_name):\n        \"\"\"\n        Update data from a dataframe for a specified schema_table_name (schema.table).\n        The keys are required for the update and any other columns provided will be updated\n        in the rows.\n\n        :param dataframe: (DF) The dataframe you would like to update\n        :param schema_table_name: (string) Splice Machine Table\n        :return:\n        \"\"\"\n        return self.context.update(dataframe._jdf, schema_table_name)\n\n    def getSchema(self, schema_table_name):\n        \"\"\"\n        Return the schema via JDBC.\n\n        :param schema_table_name: (DF) Table name\n        \"\"\"\n        return self.context.getSchema(schema_table_name)\n\n    def execute(self, query_string):\n        '''\n        execute a query\n        :param query_string: (string) SQL Query (eg. SELECT * FROM table1 WHERE column2 > 3)\n        :return:\n        '''\n        return self.context.execute(query_string)\n\n    def executeUpdate(self, query_string):\n        '''\n        execute a dml query:(update,delete,drop,etc)\n        :param query_string: (string) SQL Query (eg. SELECT * FROM table1 WHERE column2 > 3)\n        :return:\n        '''\n        return self.context.executeUpdate(query_string)\n\n    def internalDf(self, query_string):\n        '''\n        SQL to Dataframe translation.  (Lazy)\n        Runs the query inside Splice Machine and sends the results to the Spark Adapter app\n        :param query_string: (string) SQL Query (eg. SELECT * FROM table1 WHERE column2 > 3)\n        :return: pyspark dataframe contains the result of query_string\n        '''\n        return DataFrame(self.context.internalDf(query_string), self.spark_sql_context)\n\n    def truncateTable(self, schema_table_name):\n        \"\"\"\n        truncate a table\n        :param schema_table_name: the full table name in the format \"schema.table_name\" which will be truncated\n        :return:\n        \"\"\"\n        return self.context.truncateTable(schema_table_name)\n\n    def analyzeSchema(self, schema_name):\n        \"\"\"\n        analyze the schema\n        :param schema_name: schema name which stats info will be collected\n        :return:\n        \"\"\"\n        return self.context.analyzeSchema(schema_name)\n\n    def analyzeTable(self, schema_table_name, estimateStatistics=False, samplePercent=0.10):\n        \"\"\"\n        collect stats info on a table\n        :param schema_table_name: full table name in the format of \"schema.table\"\n        :param estimateStatistics:will use estimate statistics if True\n        :param samplePercent:  the percentage or rows to be sampled.\n        :return:\n        \"\"\"\n        return self.context.analyzeTable(schema_table_name, estimateStatistics, samplePercent)\n\n    def export(self, dataframe, location, compression=False, replicationCount=1, fileEncoding=None, fieldSeparator=None,\n               quoteCharacter=None):\n        '''\n        Export a dataFrame in CSV\n        :param dataframe:\n        :param location: Destination directory\n        :param compression: Whether to compress the output or not\n        :param replicationCount:  Replication used for HDFS write\n        :param fileEncoding: fileEncoding or null, defaults to UTF-8\n        :param fieldSeparator: fieldSeparator or null, defaults to ','\n        :param quoteCharacter: quoteCharacter or null, defaults to '\"'\n        :return:\n        '''\n        return self.context.export(dataframe._jdf, location, compression, replicationCount, fileEncoding,\n                                   fieldSeparator, quoteCharacter)\n\n    def exportBinary(self,dataframe, location,compression, format):\n        '''\n        Export a dataFrame in binary format\n        :param dataframe:\n        :param location: Destination directory\n        :param compression: Whether to compress the output or not\n        :param format: Binary format to be used, currently only 'parquet' is supported\n        :return:\n        '''\n        return self.context.exportBinary(dataframe._jdf,location,compression,format)\n\njdbc:splice://genesplice-weatherstream-84ae9e7709-proxy.marathon.mesos:1527/splicedb\n"}]},"apps":[],"jobName":"paragraph_1520184315511_979390571","id":"20180118-014113_2141603268","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:55:56+0000","dateFinished":"2019-02-08T18:55:56+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11917"},{"text":"%md\n## 3. Create a Simple Table\n\nNow we create a simple table in Splice Machine that we'll subsequently populate:\n","dateUpdated":"2018-03-04T17:25:15+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>3. Create a Simple Table</h2>\n<p>Now we create a simple table in Splice Machine that we&rsquo;ll subsequently populate:</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184315511_979390571","id":"20180129-153654_674823995","dateCreated":"2018-03-04T17:25:15+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:11918"},{"title":"Create a simple table","text":"%splicemachine\ndrop table if exists foo;\ncreate table foo (I int, F float, V varchar(100), primary key (I));\n","user":"splice","dateUpdated":"2019-02-08T18:56:46+0000","config":{"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","title":false,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TEXT","data":"Query executed successfully. Affected rows : 0"},{"type":"TEXT","data":"Query executed successfully. Affected rows : 0"}]},"apps":[],"jobName":"paragraph_1520184315511_979390571","id":"20180118-015418_1427121084","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:56:46+0000","dateFinished":"2019-02-08T18:56:49+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11919"},{"text":"%md\n## 4. Create a Spark Dataframe and Insert into Splice Machine\n\nThen we use `spark.pyspark` to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\n\nAfter inserting the data, we do a `select *` to display the contents of the Splice Machine table. ","user":"splice","dateUpdated":"2018-06-01T23:17:37+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>4. Create a Spark Dataframe and Insert into Splice Machine</h2>\n<p>Then we use <code>spark.pyspark</code> to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.</p>\n<p>After inserting the data, we do a <code>select *</code> to display the contents of the Splice Machine table.</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184315512_977466826","id":"20180129-153818_1709035487","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2018-06-01T23:17:37+0000","dateFinished":"2018-06-01T23:17:37+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11920"},{"title":"Create a dataframe and insert into Splice","text":"%spark.pyspark\nfrom pyspark.sql import Row\nl = [(0,3.14,'Turing'), (1,4.14,'Newell'), (2,5.14,'Simon'), (3,6.14,'Minsky')]\nrdd = sc.parallelize(l)\nrows = rdd.map(lambda x: Row(I=x[0], F=float(x[1]), V=str(x[2])))\nschemaRows = sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,'foo')\n","user":"splice","dateUpdated":"2019-02-08T18:57:04+0000","config":{"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","title":false,"results":{},"enabled":true,"tableHide":false,"editorHide":false,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[]},"apps":[],"jobName":"paragraph_1520184315512_977466826","id":"20180118-015449_13133342","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:57:04+0000","dateFinished":"2019-02-08T18:58:04+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11921","runtimeInfos":{"jobUrl":{"propertyName":"jobUrl","label":"SPARK JOB","tooltip":"View in Spark web UI","group":"spark","values":["http://192.168.46.132:4041/jobs/job?id=4"],"interpreterSettingId":"spark"}}},{"text":"%splicemachine\nselect * from foo;","user":"splice","dateUpdated":"2019-02-08T18:58:06+0000","config":{"colWidth":12,"editorMode":"ace/mode/text","results":{"0":{"graph":{"mode":"table","height":169.006,"optionOpen":false,"setting":{"table":{"tableGridState":{},"tableColumnTypeState":{"names":{"I":"string","F":"string","V":"string"},"updated":false},"tableOptionSpecHash":"[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]","tableOptionValue":{"useFilter":false,"showPagination":false,"showAggregationFooter":false},"updated":false,"initialized":false}},"commonSetting":{}}}},"enabled":true,"editorSetting":{"language":"text","editOnDblClick":false},"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TABLE","data":"I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n"}]},"apps":[],"jobName":"paragraph_1520184315512_977466826","id":"20180118-015510_1158645327","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:58:06+0000","dateFinished":"2019-02-08T18:58:06+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11922"},{"text":"%md\n\n## 5. Run a Simple Splice Machine Transaction\n\nNow we'll add more data to that table in a transactional context: ","dateUpdated":"2018-03-04T17:25:15+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>5. Run a Simple Splice Machine Transaction</h2>\n<p>Now we&rsquo;ll add more data to that table in a transactional context:</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184315512_977466826","id":"20180129-154333_772550654","dateCreated":"2018-03-04T17:25:15+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:11923"},{"title":"Transactional Context","text":"%spark.pyspark\nconn = splice.getConnection()\nconn.setAutoCommit(False)\nl = [(4,3.14,'Turing'), (5,4.14,'Newell'), (6,5.14,'Simon'), (7,6.14,'Minsky')]\nrdd = sc.parallelize(l)\nrows = rdd.map(lambda x: Row(I=x[0], F=float(x[1]), V=str(x[2])))\nschemaRows = sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,'foo')\ndf = splice.df(\"select * from foo\")\ndf.collect\nz.show(df)","user":"splice","dateUpdated":"2019-02-08T18:58:17+0000","config":{"tableHide":false,"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","editorHide":false,"title":true,"results":{"0":{"graph":{"mode":"table","height":300,"optionOpen":false,"setting":{"table":{"tableGridState":{},"tableColumnTypeState":{"names":{"I":"string","F":"string","V":"string"},"updated":false},"tableOptionSpecHash":"[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]","tableOptionValue":{"useFilter":false,"showPagination":false,"showAggregationFooter":false},"updated":false,"initialized":false}},"commonSetting":{}}}},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TABLE","data":"I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n4\t3.14\tTuring\n5\t4.14\tNewell\n6\t5.14\tSimon\n7\t6.14\tMinsky\n"}]},"apps":[],"jobName":"paragraph_1520184315513_977082078","id":"20180118-015525_2011115580","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:58:17+0000","dateFinished":"2019-02-08T18:58:20+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11924","runtimeInfos":{"jobUrl":{"propertyName":"jobUrl","label":"SPARK JOB","tooltip":"View in Spark web UI","group":"spark","values":["http://192.168.46.132:4041/jobs/job?id=7","http://192.168.46.132:4041/jobs/job?id=10"],"interpreterSettingId":"spark"}}},{"text":"%md\n\n## 6. Rollback the transaction\n\nFinally, we'll rollback the transaction we just ran:\n","user":"splice","dateUpdated":"2018-03-05T09:03:25+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>6. Rollback the transaction</h2>\n<p>Finally, we&rsquo;ll rollback the transaction we just ran:</p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184315513_977082078","id":"20180129-154912_774169413","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2018-03-05T09:03:25+0000","dateFinished":"2018-03-05T09:03:25+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11925"},{"title":"Rollback","text":"%spark.pyspark\nconn.rollback()\ndf = splice.df(\"select * from foo\")\ndf.collect\nz.show(df)","user":"splice","dateUpdated":"2019-02-08T18:58:24+0000","config":{"editorSetting":{"language":"text","editOnDblClick":false},"colWidth":12,"editorMode":"ace/mode/text","title":false,"results":{"0":{"graph":{"mode":"table","height":159.006,"optionOpen":false,"setting":{"table":{"tableGridState":{},"tableColumnTypeState":{"names":{"I":"string","F":"string","V":"string"},"updated":false},"tableOptionSpecHash":"[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]","tableOptionValue":{"useFilter":false,"showPagination":false,"showAggregationFooter":false},"updated":false,"initialized":false}},"commonSetting":{}}}},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"TABLE","data":"I\tF\tV\n0\t3.14\tTuring\n1\t4.14\tNewell\n2\t5.14\tSimon\n3\t6.14\tMinsky\n"}]},"apps":[],"jobName":"paragraph_1520184315513_977082078","id":"20180118-015552_1456308237","dateCreated":"2018-03-04T17:25:15+0000","dateStarted":"2019-02-08T18:58:24+0000","dateFinished":"2019-02-08T18:58:24+0000","status":"FINISHED","progressUpdateIntervalMs":500,"$$hashKey":"object:11926","runtimeInfos":{"jobUrl":{"propertyName":"jobUrl","label":"SPARK JOB","tooltip":"View in Spark web UI","group":"spark","values":["http://192.168.46.132:4041/jobs/job?id=11"],"interpreterSettingId":"spark"}}},{"text":"%md\n## Where to Go Next\n\nThe next notebook in this presentation shows an example of <a href=\"/#/notebook/2DFY9ZKYB\">Using the Spark Machine Learning Library (MLlib) with Splice Machine.</a>\n","dateUpdated":"2018-03-04T17:25:15+0000","config":{"tableHide":false,"editorSetting":{"language":"markdown","editOnDblClick":true},"colWidth":12,"editorMode":"ace/mode/markdown","editorHide":true,"results":{},"enabled":true,"fontSize":9},"settings":{"params":{},"forms":{}},"results":{"code":"SUCCESS","msg":[{"type":"HTML","data":"<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation shows an example of <a href=\"/#/notebook/2DFY9ZKYB\">Using the Spark Machine Learning Library (MLlib) with Splice Machine.</a></p>\n</div>"}]},"apps":[],"jobName":"paragraph_1520184315513_977082078","id":"20180122-173624_509126525","dateCreated":"2018-03-04T17:25:15+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:11927"},{"text":"%md\n","dateUpdated":"2018-03-04T17:25:15+0000","config":{"colWidth":12,"editorMode":"ace/mode/text","results":{},"enabled":true,"editorSetting":{"language":"text","editOnDblClick":false},"fontSize":9},"settings":{"params":{},"forms":{}},"apps":[],"jobName":"paragraph_1520184315514_978236324","id":"20180125-142959_1101825868","dateCreated":"2018-03-04T17:25:15+0000","status":"READY","errorMessage":"","progressUpdateIntervalMs":500,"$$hashKey":"object:11928"}],"name":"3. Splice Deep Dive / 7. Using our Spark Adapter","id":"2D96GBY2P","noteParams":{},"noteForms":{},"angularObjects":{},"config":{"looknfeel":"default","personalizedMode":"false","isZeppelinNotebookCronEnable":false},"info":{}}
+{
+  "paragraphs": [{
+    "title": "Spark Adapter",
+    "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Using our Spark Adapter\n\nData Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.\n<sub>Learn more about ANSI [here](https://share.ansi.org/Shared%20Documents/News%20and%20Publications/Brochures/WhatIsANSI_brochure.pdf) and ACID compliance [here](https://www.clustrix.com/bettersql/acid-compliance-means-care/)\n\nThe Splice Machine Spark adapter provides:\n\n* A durable, ACID compliant persistence model for Spark Dataframes.\n* Lazy result sets returned as Spark Dataframes.\n* Access to Spark libraries such as MLLib and GraphX.\n* Avoidance of expensive ETL of data from OLTP to OLAP.\n\nThis notebook will be our first look at writing code with <b>Python</b> using a Spark library called <b>PySpark.</b> \nLearn more about <b>Python</b> [here](https://docs.python.org/3/tutorial/index.html)\nLearn more about <b>Spark</b> and <b>PySpark</b> [here](https://spark.apache.org/docs/latest/api/python/index.html)\n\nThis notebook demonstrates using the Spark Adapter with Python, in these steps:\n\n1. Import the `PySpliceContextClass` to interface with the Python API.\n2. Use the `spark.pyspark` Python interpreter in Zeppelin to create a Spark context.\n3. Create a simple table in Splice Machine.\n4. Create a Spark dataframe and insert that into Splice Machine\n5. Run a simple Splice Machine transaction using the Spark context.\n6. View results in the table\n\n<br />\n\n## 1. Import the PySpliceContext Class\n\nOur first step is to use the `Spark.PySpark` interpreter to import the `PySpliceContext` class:\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true,
+        "completionSupport": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Using our Spark Adapter</h1>\n<p>Data Scientists have adopted Spark as the de facto data science platform, and Splice Machine provides an industry leading in-process integration to a Spark cluster. This means data scientists and data engineers can adopt the full power of Spark and manipulate dataframes but also get the power of full ANSI, ACID-compliant SQL.<br/><sub>Learn more about ANSI <a href=\"https://share.ansi.org/Shared%20Documents/News%20and%20Publications/Brochures/WhatIsANSI_brochure.pdf\">here</a> and ACID compliance <a href=\"https://www.clustrix.com/bettersql/acid-compliance-means-care/\">here</a></p>\n<p>The Splice Machine Spark adapter provides:</p>\n<ul>\n  <li>A durable, ACID compliant persistence model for Spark Dataframes.</li>\n  <li>Lazy result sets returned as Spark Dataframes.</li>\n  <li>Access to Spark libraries such as MLLib and GraphX.</li>\n  <li>Avoidance of expensive ETL of data from OLTP to OLAP.</li>\n</ul>\n<p>This notebook will be our first look at writing code with <b>Python</b> using a Spark library called <b>PySpark.</b><br/>Learn more about <b>Python</b> <a href=\"https://docs.python.org/3/tutorial/index.html\">here</a><br/>Learn more about <b>Spark</b> and <b>PySpark</b> <a href=\"https://spark.apache.org/docs/latest/api/python/index.html\">here</a></p>\n<p>This notebook demonstrates using the Spark Adapter with Python, in these steps:</p>\n<ol>\n  <li>Import the <code>PySpliceContextClass</code> to interface with the Python API.</li>\n  <li>Use the <code>spark.pyspark</code> Python interpreter in Zeppelin to create a Spark context.</li>\n  <li>Create a simple table in Splice Machine.</li>\n  <li>Create a Spark dataframe and insert that into Splice Machine</li>\n  <li>Run a simple Splice Machine transaction using the Spark context.</li>\n  <li>View results in the table</li>\n</ol>\n<br />\n<h2>1. Import the PySpliceContext Class</h2>\n<p>Our first step is to use the <code>Spark.PySpark</code> interpreter to import the <code>PySpliceContext</code> class:</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038133_-35879446",
+    "id": "20180118-005945_1825119026",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "focus": true,
+    "$$hashKey": "object:63229"
+  }, {
+    "title": "PySpliceContext Class",
+    "text": "%spark.pyspark\nfrom splicemachine.spark.context import PySpliceContext",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": true,
+      "editorSetting": {
+        "language": "python",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/python",
+      "editorHide": false,
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": []
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038134_1711497931",
+    "id": "20180118-015126_1752791454",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63230"
+  }, {
+    "text": "%md\n\n## 2. Create a Spark context\n\nNext, we use the `PySpliceContext` to create a connection to Splice Machine:\n<sub>We can also use `inspect` to see more about what makes the PySpliceContext class",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true,
+        "completionSupport": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>2. Create a Spark context</h2>\n<p>Next, we use the <code>PySpliceContext</code> to create a connection to Splice Machine:<br/><sub>We can also use <code>inspect</code> to see more about what makes the PySpliceContext class</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038135_-2084584418",
+    "id": "20180129-153516_1751825816",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63231"
+  }, {
+    "text": "%spark.pyspark\n%spark.pyspark\nimport inspect\njdbcURL = z.input('Enter your jdbcURL here, which you can find on the bottom of the cloud UI for your cluster')\nsplice = PySpliceContext(jdbcURL, spark)\nprint(inspect.getsource(PySpliceContext))\nprint(splice.jdbcurl)",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:04:46+0000",
+    "config": {
+      "colWidth": 12,
+      "fontSize": 9,
+      "enabled": true,
+      "results": {},
+      "editorSetting": {
+        "language": "python",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "editorMode": "ace/mode/python"
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807081310_1225367469",
+    "id": "20190328-210441_1424044473",
+    "dateCreated": "2019-03-28T21:04:41+0000",
+    "status": "READY",
+    "progressUpdateIntervalMs": 500,
+    "focus": true,
+    "$$hashKey": "object:65690"
+  }, {
+    "text": "%md\n## 3. Create a Simple Table\n\nNow we create a simple table in Splice Machine that we'll subsequently populate:\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>3. Create a Simple Table</h2>\n<p>Now we create a simple table in Splice Machine that we&rsquo;ll subsequently populate:</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038135_-1844154560",
+    "id": "20180129-153654_674823995",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63233"
+  }, {
+    "title": "Create a simple table",
+    "text": "%splicemachine\ndrop table if exists foo;\ncreate table foo (I int, F float, V varchar(100), primary key (I));\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "editorSetting": {
+        "language": "text",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/text",
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038136_-489003221",
+    "id": "20180118-015418_1427121084",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63234"
+  }, {
+    "text": "%md\n## 4. Create a Spark Dataframe and Insert into Splice Machine\n\nThen we use `spark.pyspark` to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.\n\nAfter inserting the data, we do a `select *` to display the contents of the Splice Machine table. ",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>4. Create a Spark Dataframe and Insert into Splice Machine</h2>\n<p>Then we use <code>spark.pyspark</code> to create a Spark dataframe from some sample data, and insert that into our Splice Machine table.</p>\n<p>After inserting the data, we do a <code>select *</code> to display the contents of the Splice Machine table.</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038136_-1189735147",
+    "id": "20180129-153818_1709035487",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63235"
+  }, {
+    "title": "Create a dataframe and insert into Splice",
+    "text": "%spark.pyspark\nfrom pyspark.sql import Row\nl = [(0,3.14,'Turing'), (1,4.14,'Newell'), (2,5.14,'Simon'), (3,6.14,'Minsky')]\nrdd = sc.parallelize(l)\nrows = rdd.map(lambda x: Row(I=x[0], F=float(x[1]), V=str(x[2])))\nschemaRows = sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,'foo')\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "python",
+        "editOnDblClick": false,
+        "completionKey": "TAB",
+        "completionSupport": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/python",
+      "editorHide": false,
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": []
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038137_-701254719",
+    "id": "20180118-015449_13133342",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63236"
+  }, {
+    "text": "%splicemachine\nselect * from foo;",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "editorSetting": {
+        "language": "text",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/text",
+      "fontSize": 9,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "table",
+            "height": 169.006,
+            "optionOpen": false,
+            "setting": {
+              "table": {
+                "tableGridState": {},
+                "tableColumnTypeState": {
+                  "names": {
+                    "I": "string",
+                    "F": "string",
+                    "V": "string"
+                  },
+                  "updated": false
+                },
+                "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                "tableOptionValue": {
+                  "useFilter": false,
+                  "showPagination": false,
+                  "showAggregationFooter": false
+                },
+                "updated": false,
+                "initialized": false
+              }
+            },
+            "commonSetting": {}
+          }
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038137_-1985986079",
+    "id": "20180118-015510_1158645327",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63237"
+  }, {
+    "text": "%md\n\n## 5. Run a Simple Splice Machine Transaction\n\nNow we'll add more data to that table in a transactional context: ",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>5. Run a Simple Splice Machine Transaction</h2>\n<p>Now we&rsquo;ll add more data to that table in a transactional context:</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038137_1169560007",
+    "id": "20180129-154333_772550654",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63238"
+  }, {
+    "title": "Transactional Context",
+    "text": "%spark.pyspark\nconn = splice.getConnection()\nconn.setAutoCommit(False)\nl = [(4,3.14,'Turing'), (5,4.14,'Newell'), (6,5.14,'Simon'), (7,6.14,'Minsky')]\nrdd = sc.parallelize(l)\nrows = rdd.map(lambda x: Row(I=x[0], F=float(x[1]), V=str(x[2])))\nschemaRows = sqlContext.createDataFrame(rows)\nsplice.insert(schemaRows,'foo')\ndf = splice.df(\"select * from foo\")\ndf.collect\nz.show(df)",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "text",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/text",
+      "editorHide": false,
+      "fontSize": 9,
+      "title": true,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "table",
+            "height": 300,
+            "optionOpen": false,
+            "setting": {
+              "table": {
+                "tableGridState": {},
+                "tableColumnTypeState": {
+                  "names": {
+                    "I": "string",
+                    "F": "string",
+                    "V": "string"
+                  },
+                  "updated": false
+                },
+                "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                "tableOptionValue": {
+                  "useFilter": false,
+                  "showPagination": false,
+                  "showAggregationFooter": false
+                },
+                "updated": false,
+                "initialized": false
+              }
+            },
+            "commonSetting": {}
+          }
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038138_1972164092",
+    "id": "20180118-015525_2011115580",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63239"
+  }, {
+    "text": "%md\n\n## 6. Rollback the transaction\n\nFinally, we'll rollback the transaction we just ran:\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>6. Rollback the transaction</h2>\n<p>Finally, we&rsquo;ll rollback the transaction we just ran:</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038138_-1316307382",
+    "id": "20180129-154912_774169413",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63240"
+  }, {
+    "title": "Rollback",
+    "text": "%spark.pyspark\nconn.rollback()\ndf = splice.df(\"select * from foo\")\ndf.collect\nz.show(df)",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "editorSetting": {
+        "language": "text",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/text",
+      "fontSize": 9,
+      "title": false,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "table",
+            "height": 159.006,
+            "optionOpen": false,
+            "setting": {
+              "table": {
+                "tableGridState": {},
+                "tableColumnTypeState": {
+                  "names": {
+                    "I": "string",
+                    "F": "string",
+                    "V": "string"
+                  },
+                  "updated": false
+                },
+                "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                "tableOptionValue": {
+                  "useFilter": false,
+                  "showPagination": false,
+                  "showAggregationFooter": false
+                },
+                "updated": false,
+                "initialized": false
+              }
+            },
+            "commonSetting": {}
+          }
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038138_-837231635",
+    "id": "20180118-015552_1456308237",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63241"
+  }, {
+    "text": "%md\n## Where to Go Next\n\nThe next notebook in this presentation shows an example of <a href=\"/#/notebook/2DFY9ZKYB\">Using the Spark Machine Learning Library (MLlib) with Splice Machine.</a>\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T21:03:58+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation shows an example of <a href=\"/#/notebook/2DFY9ZKYB\">Using the Spark Machine Learning Library (MLlib) with Splice Machine.</a></p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553807038139_289734223",
+    "id": "20180122-173624_509126525",
+    "dateCreated": "2019-03-28T21:03:58+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:63242"
+  }],
+  "name": "3. Splice Deep Dive / 7. Using our Spark Adapter",
+  "id": "2E9PTKWMZ",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
