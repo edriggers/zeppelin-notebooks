@@ -19,7 +19,7 @@ You can add notebooks by making Github pull request, but we request you also upd
 |-------------|-------------|-----|----------|--------|
 |2CTV7H6FU|1.  Getting Started - README|Markup|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CTV7H6FU/note.json) | |
 |2CTKW7A6U|2.1 Notebook Basics Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CTKW7A6U/note.json) | |
-|2CUA8V2RK|2.2 Copying to S3 Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CUA8V2RK/note.json) | |
+|2E5JAQWJH|2.2 Copying to S3 Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CUA8V2RK/note.json) | |
 |2CSKWGZ8P|2.3 Importing Data Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSKWGZ8P/note.json) | |
 |2CU1SNACA|2.4 Running Queries Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CU1SNACA/note.json) | |
 |2CS27TE2A|2.5 Tuning for Performance Tutorial|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CS27TE2A/note.json) | |
@@ -34,18 +34,18 @@ You can add notebooks by making Github pull request, but we request you also upd
 |2D89MQA89|3. Splice Deep Dive / 5. Transactions with Spark & JDBC|Splicemachine|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D89MQA89/note.json) | |
 |2D8PMSAPJ|3. Splice Deep Dive / 6. Creating Applications|Splicemachine Interpreter|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D8PMSAPJ/note.json) | |
 |2D96GBY2P|3. Splice Deep Dive / 7. Using our Spark Adapter|Splicemachine / Spark Python|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D96GBY2P/note.json) | |
-|2DFY9ZKYB|3. Splice Deep Dive / 8. Python MLlib example|Splicemachine / Spark Python |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2DFY9ZKYB/note.json) | |
+|2E3671BBN|3. Splice Deep Dive / 8. Python MLlib example|Splicemachine / Spark Python |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2DFY9ZKYB/note.json) | |
 |2D7P8BMMS|3. Splice Deep Dive / 9. Scala MLlib example|Splicemachine / Scala / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D7P8BMMS/note.json) | |
-|2CD73PAF8|4. Data Engineering / 1. ETL Pipeline Example|Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CD73PAF8/note.json) | |
-|2CKKJKSK8|5. Reference Applications / 1. Supply Chain - Predicting Shortages|Splicemachine / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CKKJKSK8/note.json) | |
-|2CH931JT4|5. Reference Applications / 2. IoT / 1. Overview| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CH931JT4/note.json) | |
-|2CHVYSK7B|5. Reference Applications / 2. IoT / 2. Database Setup| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CHVYSK7B/note.json) | |
-|2CG53XQM7|5. Reference Applications / 2. IoT / 3. Kafka| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CG53XQM7/note.json) | |
-|2CGVRH6SF|5. Reference Applications / 2. IoT / 4.SparkStream| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CGVRH6SF/note.json) | |
-|2CG6KVZJ2|5. Reference Applications / 2. IoT / 5. Splice Query| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CG6KVZJ2/note.json) | |
-|2D2RM85JF|6. Advanced Tutorials / 1. Creating Custom Stored Procedures| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D2RM85JF/note.json) | |
-|2CSGDX1CW|7. Benchmarks / 1. TPCH-100| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSGDX1CW/note.json) | |
+|2CKKJKSK8|4. Reference Applications / 1. Supply Chain - Predicting Shortages|Splicemachine / Spark|[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CKKJKSK8/note.json) | |
+|2CH931JT4|4. Reference Applications / 2. IoT / 1. Overview| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CH931JT4/note.json) | |
+|2CHVYSK7B|4. Reference Applications / 2. IoT / 2. Database Setup| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CHVYSK7B/note.json) | |
+|2CG53XQM7|4. Reference Applications / 2. IoT / 3. Kafka| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CG53XQM7/note.json) | |
+|2CGVRH6SF|4. Reference Applications / 2. IoT / 4.SparkStream| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CGVRH6SF/note.json) | |
+|2CG6KVZJ2|4. Reference Applications / 2. IoT / 5. Splice Query| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CG6KVZJ2/note.json) | |
+|2D2RM85JF|5. Advanced Tutorials / 1. Creating Custom Stored Procedures| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2D2RM85JF/note.json) | |
+|2CSGDX1CW|6. Benchmarks / 1. TPCH-100| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2CSGDX1CW/note.json) | |
 |2E6E4ECVX|ML Manager Demo| |[json](https://github.com/splicemachine/zeppelin-notebooks/raw/master/2E6E4ECVX/note.json) | |
+
 
 ## Updating your HDP Zeppelin to use the Splice Machine Native Spark Datasource
 * Create a directory such as /tmp/splicemachine on each server to store 1 jar files needed by this setup.

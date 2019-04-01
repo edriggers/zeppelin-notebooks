@@ -1,0 +1,458 @@
+{
+  "paragraphs": [{
+    "title": "Using Zeppelin for Graphing and Filtering",
+    "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Using Zeppelin for Graphing and Filtering\n\nSuppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.\n\nBelow we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.\n\nFirst we'll run the query as-is, then we'll change the `nationName` in the input box from `FRANCE` to `ROMANIA` and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:22+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "title": false,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Using Zeppelin for Graphing and Filtering</h1>\n<p>Suppose we want to more easily explore the table above, looking at specific supplier nations and for specific account balances. Also suppose we want to graph these values to better visualize the results. Zeppelin has some simple controls for creating graphs and input fields to filter your data.</p>\n<p>Below we simplify Query 2 and add 2 additional filters, including a default value. We can now change the values directly in the input fields instead of editing the queries. Additionally, the output for any table can be changed to a more visual format using the toolbar right above the table. We have an example below.</p>\n<p>First we&rsquo;ll run the query as-is, then we&rsquo;ll change the <code>nationName</code> in the input box from ‘FRANCE’ to ‘ROMANIA’ and display the results in several different formats, so you can see some of the power of Zeppelin visualizations.</p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462694_-950190039",
+    "id": "20180115-083330_15158583",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "focus": true,
+    "$$hashKey": "object:58092"
+  }, {
+    "title": "Create tables",
+    "text": "%splicemachine\nDROP TABLE IF exists TPCH1.SUPPLIER;\nDROP TABLE IF EXISTS TPCH1.NATION;\n\nCREATE TABLE TPCH1.SUPPLIER (\n S_SUPPKEY INTEGER NOT NULL PRIMARY KEY,\n S_NAME VARCHAR(25) ,\n S_ADDRESS VARCHAR(40) ,\n S_NATIONKEY INTEGER ,\n S_PHONE VARCHAR(15) ,\n S_ACCTBAL DECIMAL(15,2),\n S_COMMENT VARCHAR(101)\n );\n \n CREATE TABLE TPCH1.NATION (\n N_NATIONKEY INTEGER NOT NULL,\n N_NAME VARCHAR(25),\n N_REGIONKEY INTEGER NOT NULL,\n N_COMMENT VARCHAR(152),\n PRIMARY KEY (N_NATIONKEY)\n );\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:22+0000",
+    "config": {
+      "editorSetting": {
+        "language": "sql",
+        "editOnDblClick": false,
+        "completionSupport": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/sql",
+      "fontSize": 9,
+      "title": true,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462695_-185734320",
+    "id": "20190208-181044_2042125336",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:58093"
+  }, {
+    "title": "Import tables from s3",
+    "text": "%splicemachine\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'SUPPLIER', null, 's3a://splice-benchmark-data/flat/TPCH/1/supplier', '|', null, null, null, null, 0, '/tmp', true, null);\ncall SYSCS_UTIL.IMPORT_DATA ('TPCH1', 'NATION',   null, 's3a://splice-benchmark-data/flat/TPCH/1/nation',   '|', null, null, null, null, 0, '/tmp', true, null);",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:33+0000",
+    "config": {
+      "editorSetting": {
+        "language": "sql",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/sql",
+      "fontSize": 9,
+      "title": true,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "table",
+            "height": 300,
+            "optionOpen": false,
+            "setting": {
+              "table": {
+                "tableGridState": {},
+                "tableColumnTypeState": {
+                  "names": {
+                    "rowsImported": "string",
+                    "failedRows": "string",
+                    "files": "string",
+                    "dataSize": "string",
+                    "failedLog": "string"
+                  },
+                  "updated": false
+                },
+                "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                "tableOptionValue": {
+                  "useFilter": false,
+                  "showPagination": false,
+                  "showAggregationFooter": false
+                },
+                "updated": false,
+                "initialized": false
+              }
+            },
+            "commonSetting": {}
+          }
+        },
+        "1": {
+          "graph": {
+            "mode": "table",
+            "height": 300,
+            "optionOpen": false,
+            "setting": {
+              "table": {
+                "tableGridState": {},
+                "tableColumnTypeState": {
+                  "names": {
+                    "rowsImported": "string",
+                    "failedRows": "string",
+                    "files": "string",
+                    "dataSize": "string",
+                    "failedLog": "string"
+                  },
+                  "updated": false
+                },
+                "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                "tableOptionValue": {
+                  "useFilter": false,
+                  "showPagination": false,
+                  "showAggregationFooter": false
+                },
+                "updated": false,
+                "initialized": false
+              }
+            },
+            "commonSetting": {}
+          }
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462695_-849960219",
+    "id": "20190208-181102_1807364736",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:58094"
+  }, {
+    "title": "Join tables",
+    "text": "%splicemachine\nselect * from TPCH1.supplier a\njoin TPCH1.nation b\non a.s_nationkey=b.n_nationkey",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:22+0000",
+    "config": {
+      "editorSetting": {
+        "language": "sql",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/sql",
+      "fontSize": 9,
+      "title": true,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "table",
+            "height": 300,
+            "optionOpen": false,
+            "setting": {
+              "table": {
+                "tableGridState": {},
+                "tableColumnTypeState": {
+                  "names": {
+                    "S_SUPPKEY": "string",
+                    "S_NAME": "string",
+                    "S_ADDRESS": "string",
+                    "S_NATIONKEY": "string",
+                    "S_PHONE": "string",
+                    "S_ACCTBAL": "string",
+                    "S_COMMENT": "string",
+                    "N_NATIONKEY": "string",
+                    "N_NAME": "string",
+                    "N_REGIONKEY": "string",
+                    "N_COMMENT": "string"
+                  },
+                  "updated": false
+                },
+                "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                "tableOptionValue": {
+                  "useFilter": false,
+                  "showPagination": false,
+                  "showAggregationFooter": false
+                },
+                "updated": false,
+                "initialized": false
+              }
+            },
+            "commonSetting": {}
+          }
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462695_-1673452939",
+    "id": "20190208-181117_225181698",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:58095"
+  }, {
+    "text": "%splicemachine\nselect\n    n_name as Supplier,\n\tsum(s_acctbal) as Balance\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\tn_nationkey = s_nationkey\ngroup by\n\tn_name\n{limit 100}",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:30+0000",
+    "config": {
+      "editorSetting": {
+        "language": "sql",
+        "editOnDblClick": false
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/sql",
+      "fontSize": 9,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "multiBarChart",
+            "height": 300,
+            "optionOpen": false,
+            "setting": {
+              "lineChart": {
+                "rotate": {
+                  "degree": "-45"
+                },
+                "xLabelStatus": "default"
+              },
+              "multiBarChart": {
+                "rotate": {
+                  "degree": "-45"
+                },
+                "xLabelStatus": "default"
+              }
+            },
+            "commonSetting": {},
+            "keys": [{
+              "name": "SUPPLIER",
+              "index": 0,
+              "aggr": "sum"
+            }],
+            "groups": [],
+            "values": [{
+              "name": "BALANCE",
+              "index": 1,
+              "aggr": "sum"
+            }]
+          },
+          "helium": {}
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {
+        "nationName": "'FRANCE'",
+        "balanceThreshold": "1"
+      },
+      "forms": {}
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462697_-1965457796",
+    "id": "20180115-083533_1027074665",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:58096"
+  }, {
+    "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='FRANCE'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:22+0000",
+    "config": {
+      "editorSetting": {
+        "language": "sql",
+        "editOnDblClick": false
+      },
+      "colWidth": 6,
+      "editorMode": "ace/mode/sql",
+      "editorHide": false,
+      "fontSize": 9,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "scatterChart",
+            "height": 239.006,
+            "optionOpen": false
+          },
+          "helium": {}
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {
+        "nationName": "'FRANCE'",
+        "balanceThreshold": "50"
+      },
+      "forms": {
+        "nationName": {
+          "type": "TextBox",
+          "name": "nationName",
+          "defaultValue": "'FRANCE'",
+          "hidden": false,
+          "$$hashKey": "object:61575"
+        },
+        "balanceThreshold": {
+          "type": "TextBox",
+          "name": "balanceThreshold",
+          "defaultValue": "0",
+          "hidden": false,
+          "$$hashKey": "object:61576"
+        }
+      }
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462697_-959124753",
+    "id": "20180129-123839_391823179",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:58097"
+  }, {
+    "text": "%splicemachine\nselect\n\ts_acctbal as Balance,\n\ts_name as Supplier\nfrom\n\tTPCH1.supplier,\n\tTPCH1.nation\nwhere\n\ts_nationkey = n_nationkey\n\tand n_name = ${nationName='ROMANIA'}\n\tand s_acctbal < ${balanceThreshold=0}\norder by\n\ts_acctbal desc\n{limit 100}",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:22+0000",
+    "config": {
+      "editorSetting": {
+        "language": "sql",
+        "editOnDblClick": false
+      },
+      "colWidth": 6,
+      "editorMode": "ace/mode/sql",
+      "editorHide": false,
+      "fontSize": 9,
+      "results": {
+        "0": {
+          "graph": {
+            "mode": "scatterChart",
+            "height": 239.006,
+            "optionOpen": false
+          },
+          "helium": {}
+        }
+      },
+      "enabled": true
+    },
+    "settings": {
+      "params": {
+        "nationName": "'ROMANIA'",
+        "balanceThreshold": "0"
+      },
+      "forms": {
+        "nationName": {
+          "type": "TextBox",
+          "name": "nationName",
+          "defaultValue": "'ROMANIA'",
+          "hidden": false,
+          "$$hashKey": "object:61597"
+        },
+        "balanceThreshold": {
+          "type": "TextBox",
+          "name": "balanceThreshold",
+          "defaultValue": "0",
+          "hidden": false,
+          "$$hashKey": "object:61598"
+        }
+      }
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462698_-1439312476",
+    "id": "20180129-124117_290278524",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:58098"
+  }, {
+    "text": "%md\n## Where to Go Next\n\nThe next notebook in this presentation introduces you to <a href=\"/#/notebook/2D89MQA89\">the transactional nature of Splice Machine and using JDBC to program transactions.</a>\n",
+    "user": "splice",
+    "dateUpdated": "2019-03-28T20:54:22+0000",
+    "config": {
+      "tableHide": false,
+      "editorSetting": {
+        "language": "markdown",
+        "editOnDblClick": true
+      },
+      "colWidth": 12,
+      "editorMode": "ace/mode/markdown",
+      "editorHide": true,
+      "fontSize": 9,
+      "results": {},
+      "enabled": true
+    },
+    "settings": {
+      "params": {},
+      "forms": {}
+    },
+    "results": {
+      "code": "SUCCESS",
+      "msg": [{
+        "type": "HTML",
+        "data": "<div class=\"markdown-body\">\n<h2>Where to Go Next</h2>\n<p>The next notebook in this presentation introduces you to <a href=\"/#/notebook/2D89MQA89\">the transactional nature of Splice Machine and using JDBC to program transactions.</a></p>\n</div>"
+      }]
+    },
+    "apps": [],
+    "jobName": "paragraph_1553806462698_1529620030",
+    "id": "20180122-173624_509126525",
+    "dateCreated": "2019-03-28T20:54:22+0000",
+    "status": "READY",
+    "errorMessage": "",
+    "progressUpdateIntervalMs": 500,
+    "$$hashKey": "object:58099"
+  }],
+  "name": "3. Splice Deep Dive / 4. Visualizing Results with Zeppelin",
+  "id": "2E6KA7NCG",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": [],
+    "angular:shared_process": [],
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {}
+}
