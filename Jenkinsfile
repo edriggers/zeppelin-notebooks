@@ -41,7 +41,7 @@ node('python') {
   } finally {
 
     // success or failure, always send notifications
-    setBuildStatus("Build failed", "FAILURE");
+    // setBuildStatus("Build failed", "LURE");
 
   }
 }
