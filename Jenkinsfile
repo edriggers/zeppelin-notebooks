@@ -23,7 +23,7 @@ node('python') {
         if (env.BRANCH_NAME != 'master') {
           sh 'echo "processing branch"'
         }
-        setBuildStatus("Build failed", "FAILURE");
+        setBuildStatus("Build success", "SUCCESS");
       }
 
       stage('Apply') {
