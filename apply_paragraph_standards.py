@@ -377,7 +377,7 @@ def main():
     lint_result = 0
 
     # get our standards exceptions loaded
-    yaml.warnings({'YAMLLoadWarning': False})
+    # yaml.warnings({'YAMLLoadWarning': False})
     with open("./notebook_standards_exceptions.yaml", 'r') as stream:
         sanity_exceptions = yaml.load(stream)
 
