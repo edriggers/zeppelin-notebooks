@@ -11,25 +11,24 @@ node('python') {
 
       stage('Prep') {
         // install gem dependencies
-        sh 'echo "test"'
+        sh 'pip3 install -r requirements.txt'
      }
 
       stage('Lint') {
-        sh 'echo "test"'
+        int status = sh(script: 'python3 apply_paragraph_standards.py -t Repair -l', returnStatus: true)
+
+        if (status != 0) {
+            error("Please run 'python apply_paragraph_standards.py -t Repair -m' on your local branch to reset note.json files.")
+            currentBuild.result = "FAILURE"
+        } else {
+            currentBuild.result = "SUCCESS"
+        }
       }
 
 
       stage('Test') {
         if (env.BRANCH_NAME != 'master') {
-          // sh 'python apply_paragraph_standards.py -t Repair -l'
-          int status = sh(script: 'python3 apply_paragraph_standards.py -t Repair -l', returnStatus: true)
-
-          if (status != 0) {
-              error("Please run 'python apply_paragraph_standards.py -t Repair -m' on your local branch to reset note.json files.")
-              currentBuild.result = "FAILURE"
-          } else {
-              currentBuild.result = "SUCCESS"
-          }
+          sh 'echo "not master"'
         }
       }
 
