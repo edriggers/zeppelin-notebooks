@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Running Queries in Splice Machine\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\nNow that we have data imported into our database, we can run some simple queries in our notebook.\n\n## A Simple SQL SELECT statement\n\nSplice Machine supports ANSI SQL. Our example query uses an SQL `SELECT` statement to select records from a table. This query makes use of the sample data that we imported in the previous tutorial, *Importing Data*. \n\nThis query selects all records in the `import_example` table that have `100` as the value of column `i`; try it by clicking the  <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button in the  the next paragraph.\n",

@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Introduction\n\nThis notebook takes you through the following phases using the TPCH 100 data set (see http://www.tpc.org).  It is a duplicate of the TPCH-1 Notebook found in the Tutorials, but loads more data.  Again the basic flow is:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-100 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this tutorial all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n",

@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Crystal Ball\nThe Crystal Ball application is a supply chain reference application relevant to manufacturers, distributors, retailers, and e-commerce companies. With the crystall ball you can:\n\n1. Perform Available-to-Promise (ATP) inquiries in seconds on real-time inventory changes due to purchases, manufacturing, sales, and shipments\n2. Learn when shipments are likely to be late\n3. Anticipate stock outs due to predicted late orders\n4. Determine what customers or downstream orders are affected by anticipated stockouts.\n\nWhen supply chain managers have the crystal ball, they can:\n-- plan around stock outs\n-- warn down stream consumers so they can re-plan.\n\n",

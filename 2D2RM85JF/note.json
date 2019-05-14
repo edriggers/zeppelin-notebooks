@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Introduction\nSplice Machine allows for the creation of custom functions and procedures that you can deploy to your database.  Once deployed, these functions and procedures can be called as needed from your SQL.  This notebook will show you how this is done.\n\n(Important note: when creating custom functions and procedures as described here, the code must be in Java.)\n\n",

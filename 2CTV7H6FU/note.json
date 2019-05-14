@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Welcome to Splice Machine!\nThis README will help you to get started, in these sections:\n\n* *Release Notes* lists the known assumptions and limitations in the current version of our Database Service\n\n* *About Zeppelin* provides a very quick overview of Zeppelin\n\n* *Tutorial Notebooks* introduces the set of tutorials that we've created to help you get started with Splice Machine\n",

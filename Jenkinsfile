@@ -21,10 +21,16 @@ node('python') {
 
       stage('Test') {
         if (env.BRANCH_NAME != 'master') {
-          sh 'echo "processing branch"'
+          // sh 'python apply_paragraph_standards.py -t Repair -l'
+          int status = sh(script: 'python apply_paragraph_standards.py -t Repair -l', returnStatus: true)
+
+          if (status != 0) {
+              error("Please run 'python apply_paragraph_standards.py -t Repair -m' on your local branch to reset note.json files."
+              currentBuild.result = "FAILURE"
+          } else {
+              currentBuild.result = "SUCCESS"
+          }
         }
-        // setBuildStatus("Build success", "SUCCESS");
-        currentBuild.result = "SUCCESS"
       }
 
       stage('Apply') {

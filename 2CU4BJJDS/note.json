@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Explaining and Hinting\n\nIn this notebook we'll dig into the explain and hint capabilities that we've briefly seen so far.  We'll see how they can help us:\n\n* Understand more deeply what the optimizer's plan is to run the query\n* How to potentially influence that plan if necessary\n",
