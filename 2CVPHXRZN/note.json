@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Using the Database Console User Interface\n\nYou may recall that Splice Machine has a dual-engine architecture can run statements and queries directly in HBase (the `control` side) or in Apache Spark. You can see which engine is used (`control` or `Spark`) from examining the top line of the `explain` for a query. Fast queries that run in milliseconds are sent directly to the control engine, while larger queries processing more data go to the Spark engine.\n\nWe'll now dig into the DB Console UI, which monitors queries sent to the Spark engine. You can use this very useful utility to follow the progress of queries running in Spark, monitor GC usage, and terminate queries when necessary.",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T14:00:37-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T14:01:23-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -85,7 +85,7 @@
       "dateUpdated": "2018-02-02T14:01:56-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -124,7 +124,7 @@
       "dateUpdated": "2018-02-02T14:02:34-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -163,13 +163,14 @@
       "dateUpdated": "2018-02-02T14:02:38-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/text"
+        "editorMode": "ace/mode/text",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -200,7 +201,7 @@
       "dateUpdated": "2018-02-02T14:02:42-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -239,7 +240,7 @@
       "dateUpdated": "2018-02-02T14:02:56-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {
           "0": {
             "graph": {
@@ -253,7 +254,8 @@
           "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/text"
+        "editorMode": "ace/mode/text",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -284,7 +286,7 @@
       "dateUpdated": "2018-02-02T14:03:12-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -323,7 +325,7 @@
       "dateUpdated": "2018-02-02T14:03:29-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -362,7 +364,7 @@
       "dateUpdated": "2018-02-02T14:03:48-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -401,7 +403,7 @@
       "dateUpdated": "2018-02-02T14:04:03-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -440,7 +442,7 @@
       "dateUpdated": "2018-02-02T14:04:09-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -479,7 +481,7 @@
       "dateUpdated": "2018-02-02T14:04:13-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -511,32 +513,6 @@
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:8035"
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2017-09-18T17:32:37-0700",
-      "config": {
-        "colWidth": 12,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1505686347024_1926269248",
-      "id": "20170917-151227_865031781",
-      "dateCreated": "2017-09-17T15:12:27-0700",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500,
-      "$$hashKey": "object:8036"
     }
   ],
   "name": "2. Tutorials / 6. Using the DB Console UI",

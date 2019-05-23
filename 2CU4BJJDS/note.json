@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Explaining and Hinting\n\nIn this notebook we'll dig into the explain and hint capabilities that we've briefly seen so far.  We'll see how they can help us:\n\n* Understand more deeply what the optimizer's plan is to run the query\n* How to potentially influence that plan if necessary\n",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T14:04:23-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T14:05:04-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -85,14 +85,14 @@
       "dateUpdated": "2018-02-02T14:05:00-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "text",
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/text",
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -124,7 +124,7 @@
       "dateUpdated": "2018-02-02T14:05:10-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -163,7 +163,7 @@
       "dateUpdated": "2018-02-02T14:05:19-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -202,7 +202,7 @@
       "dateUpdated": "2018-02-02T14:05:31-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -241,13 +241,14 @@
       "dateUpdated": "2018-02-02T14:05:41-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/text"
+        "editorMode": "ace/mode/text",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -278,7 +279,7 @@
       "dateUpdated": "2018-02-02T14:05:44-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -317,7 +318,7 @@
       "dateUpdated": "2017-10-27T14:05:44-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -349,32 +350,6 @@
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:9719"
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2017-09-17T16:42:09-0700",
-      "config": {
-        "colWidth": 12,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1505690530366_1872274338",
-      "id": "20170917-162210_319214891",
-      "dateCreated": "2017-09-17T16:22:10-0700",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500,
-      "$$hashKey": "object:9720"
     }
   ],
   "name": "2. Tutorials / 7. Explaining and Hinting",

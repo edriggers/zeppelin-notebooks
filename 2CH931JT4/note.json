@@ -6,7 +6,7 @@
       "dateUpdated": "2018-08-02T15:28:23+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",

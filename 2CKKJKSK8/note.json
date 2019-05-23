@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Crystal Ball\nThe Crystal Ball application is a supply chain reference application relevant to manufacturers, distributors, retailers, and e-commerce companies. With the crystall ball you can:\n\n1. Perform Available-to-Promise (ATP) inquiries in seconds on real-time inventory changes due to purchases, manufacturing, sales, and shipments\n2. Learn when shipments are likely to be late\n3. Anticipate stock outs due to predicted late orders\n4. Determine what customers or downstream orders are affected by anticipated stockouts.\n\nWhen supply chain managers have the crystal ball, they can:\n-- plan around stock outs\n-- warn down stream consumers so they can re-plan.\n\n",
@@ -14,7 +14,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -54,7 +54,7 @@
         "editorMode": "ace/mode/scala",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -106,7 +106,7 @@
         "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -163,7 +163,7 @@
       "jobName": "paragraph_1501790708949_53443360",
       "id": "20170621-041831_354747046",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58887"
@@ -200,7 +200,7 @@
       "jobName": "paragraph_1501790708950_54597607",
       "id": "20170621-044326_1460127976",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58888"
@@ -220,7 +220,7 @@
         "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -234,7 +234,7 @@
       "jobName": "paragraph_1501790708951_54212858",
       "id": "20170628-085245_2111524765",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58889"
@@ -247,11 +247,12 @@
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -289,10 +290,10 @@
         },
         "colWidth": 4,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -365,10 +366,10 @@
         },
         "colWidth": 4,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -412,7 +413,7 @@
         },
         "colWidth": 4,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
         "enabled": false
@@ -425,7 +426,7 @@
       "jobName": "paragraph_1501790708955_52673862",
       "id": "20170628-222352_2120811555",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58893"
@@ -441,7 +442,7 @@
         },
         "colWidth": 4,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
         "enabled": false
@@ -454,7 +455,7 @@
       "jobName": "paragraph_1501790708956_50750118",
       "id": "20170628-222451_440347172",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58894"
@@ -482,7 +483,8 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {
@@ -541,7 +543,7 @@
       "jobName": "paragraph_1501790708961_36514409",
       "id": "20170621-050328_679054277",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58896"
@@ -559,7 +561,7 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {
           "0": {
@@ -592,7 +594,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -649,7 +651,8 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {
@@ -705,7 +708,8 @@
             }
           }
         },
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {
@@ -768,7 +772,7 @@
       "jobName": "paragraph_1501790708966_36129660",
       "id": "20170628-145111_1644223982",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58900"
@@ -805,7 +809,7 @@
       "jobName": "paragraph_1501790708967_35744911",
       "id": "20170621-054855_1620710812",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58901"
@@ -824,7 +828,8 @@
         "editorMode": "ace/mode/sql",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -867,7 +872,8 @@
         "editorMode": "ace/mode/sql",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -904,10 +910,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -968,7 +974,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -987,7 +993,7 @@
       "jobName": "paragraph_1501790708972_32282171",
       "id": "20170716-211650_1813160194",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58905"
@@ -1005,7 +1011,7 @@
         "editorMode": "ace/mode/undefined",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1024,7 +1030,7 @@
       "jobName": "paragraph_1501790708973_31897422",
       "id": "20170627-003424_154469379",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58906"
@@ -1035,7 +1041,7 @@
       "user": "anonymous",
       "dateUpdated": "2017-09-19T00:27:44+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false
@@ -1045,7 +1051,7 @@
         "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -1136,7 +1142,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -1234,7 +1240,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -1273,7 +1279,7 @@
       "user": "anonymous",
       "dateUpdated": "2017-08-03T20:05:08+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
@@ -1282,7 +1288,7 @@
         "editorMode": "ace/mode/sql",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1372,7 +1378,8 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {
@@ -1393,7 +1400,7 @@
       "jobName": "paragraph_1501790708979_43439889",
       "id": "20170623-175239_660149064",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58911"
@@ -1409,7 +1416,7 @@
         },
         "colWidth": 4,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {
           "0": {
@@ -1435,7 +1442,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1454,7 +1461,7 @@
       "jobName": "paragraph_1501790708982_42285642",
       "id": "20170628-143430_93328688",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58912"
@@ -1495,7 +1502,8 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -1514,7 +1522,7 @@
       "jobName": "paragraph_1501790708985_39592400",
       "id": "20170628-144341_2096133153",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58913"
@@ -1552,7 +1560,7 @@
       "jobName": "paragraph_1501790708992_123082911",
       "id": "20170621-053550_1927397352",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58914"
@@ -1589,7 +1597,7 @@
       "jobName": "paragraph_1501790708993_122698162",
       "id": "20170621-070538_308959124",
       "dateCreated": "2017-08-03T20:05:08+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58915"
@@ -1607,10 +1615,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -1695,7 +1703,7 @@
       "jobName": "paragraph_1501790709001_119620171",
       "id": "20170621-164244_783302183",
       "dateCreated": "2017-08-03T20:05:09+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58917"
@@ -1715,7 +1723,7 @@
         "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1753,10 +1761,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/scala",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1788,11 +1796,12 @@
         "colWidth": 12,
         "editorMode": "ace/mode/scala",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "scala",
           "editOnDblClick": false
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -1802,7 +1811,7 @@
       "jobName": "paragraph_1501790709005_118081175",
       "id": "20170714-192918_375392082",
       "dateCreated": "2017-08-03T20:05:09+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:58920"

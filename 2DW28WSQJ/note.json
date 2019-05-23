@@ -1,13 +1,13 @@
 {
   "paragraphs": [
     {
-      "text": "%md\nThis notebook is used to perform check that Zeppelin is functioning properly.\n\u003cB\u003ePLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e",
+      "text": "%md\nThis notebook is used to perform check that Zeppelin is functioning properly.\n<B>PLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK </B>",
       "user": "splice",
       "dateUpdated": "2018-10-31 20:41:27.676",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis notebook is used to perform check that Zeppelin is functioning properly.\u003cbr/\u003e\u003cB\u003ePLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK \u003c/B\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "<div class=\"markdown-body\">\n<p>This notebook is used to perform check that Zeppelin is functioning properly.<br/><B>PLEASE DO NOT DELETE OR MODIFY THIS NOTEBOOK </B></p>\n</div>"
           }
         ]
       },
@@ -37,7 +37,7 @@
       "dateCreated": "2018-10-30 19:18:14.962",
       "dateStarted": "2018-10-31 20:41:27.677",
       "dateFinished": "2018-10-31 20:41:27.682",
-      "status": "READY",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -48,7 +48,7 @@
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {
           "0": {
             "graph": {
@@ -83,7 +83,8 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/sql",
-        "title": true
+        "title": true,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -95,19 +96,19 @@
       "dateCreated": "2018-10-26 02:43:58.009",
       "dateStarted": "2018-10-31 20:31:11.273",
       "dateFinished": "2018-10-31 20:31:11.303",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Test Splice Spark",
-      "text": "%splicemachine\nselect count(1) from sys.systables --splice-properties useSpark\u003dtrue\n;",
+      "text": "%splicemachine\nselect count(1) from sys.systables --splice-properties useSpark=true\n;",
       "user": "splice",
       "dateUpdated": "2018-10-31 01:34:06.905",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {
           "0": {
             "graph": {
@@ -142,7 +143,8 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/sql",
-        "title": true
+        "title": true,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -154,19 +156,19 @@
       "dateCreated": "2018-10-26 02:44:17.472",
       "dateStarted": "2018-10-31 20:00:07.009",
       "dateFinished": "2018-10-31 20:00:07.800",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Test Zeppelin Spark ",
-      "text": "%spark \n\nimport spark.implicits._\nval primitiveDS \u003d Seq(1, 2, 3).toDS()\nprimitiveDS.map(_ + 1).collect() \n\n",
+      "text": "%spark \n\nimport spark.implicits._\nval primitiveDS = Seq(1, 2, 3).toDS()\nprimitiveDS.map(_ + 1).collect() \n\n",
       "user": "splice",
       "dateUpdated": "2018-10-31 01:34:08.350",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "scala",
@@ -175,7 +177,8 @@
           "completionSupport": true
         },
         "editorMode": "ace/mode/scala",
-        "title": true
+        "title": true,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -187,19 +190,19 @@
       "dateCreated": "2018-10-30 19:22:59.744",
       "dateStarted": "2018-10-31 20:00:07.810",
       "dateFinished": "2018-10-31 20:00:08.708",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Test pySpark",
-      "text": "%spark.pyspark\nfrom splicemachine.spark.context import PySpliceContext\n\ndef get_jdbc_url():\n    import os\n    framework \u003d os.environ[\u0027FRAMEWORK_NAME\u0027]\n    return \u0027jdbc:splice://{framework}-proxy.marathon.mesos:1527/splicedb\u0027.format(framework\u003dframework)\n\nsplice \u003d PySpliceContext(get_jdbc_url(), spark)\n\n\n# Query Features\nquery_results \u003d splice.df(\"select * from SYS.SYSTABLES\")\nquery_results.show(10)\n",
+      "text": "%spark.pyspark\nfrom splicemachine.spark.context import PySpliceContext\n\ndef get_jdbc_url():\n    import os\n    framework = os.environ['FRAMEWORK_NAME']\n    return 'jdbc:splice://{framework}-proxy.marathon.mesos:1527/splicedb'.format(framework=framework)\n\nsplice = PySpliceContext(get_jdbc_url(), spark)\n\n\n# Query Features\nquery_results = splice.df(\"select * from SYS.SYSTABLES\")\nquery_results.show(10)\n",
       "user": "splice",
       "dateUpdated": "2018-10-31 10:41:15.261",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "python",
@@ -208,7 +211,8 @@
           "completionSupport": true
         },
         "editorMode": "ace/mode/python",
-        "title": true
+        "title": true,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -220,7 +224,7 @@
       "dateCreated": "2018-10-30 19:30:05.289",
       "dateStarted": "2018-10-31 20:00:08.712",
       "dateFinished": "2018-10-31 20:00:09.765",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }

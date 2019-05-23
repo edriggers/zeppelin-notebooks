@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Running Queries in Splice Machine\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\nNow that we have data imported into our database, we can run some simple queries in our notebook.\n\n## A Simple SQL SELECT statement\n\nSplice Machine supports ANSI SQL. Our example query uses an SQL `SELECT` statement to select records from a table. This query makes use of the sample data that we imported in the previous tutorial, *Importing Data*. \n\nThis query selects all records in the `import_example` table that have `100` as the value of column `i`; try it by clicking the  <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button in the  the next paragraph.\n",
@@ -6,7 +6,7 @@
       "dateUpdated": "2017-10-19T10:49:11-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T13:22:54-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {
           "0": {
             "graph": {
@@ -60,7 +60,8 @@
           "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/text"
+        "editorMode": "ace/mode/text",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -91,7 +92,7 @@
       "dateUpdated": "2018-02-02T13:23:09-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -130,14 +131,15 @@
       "dateUpdated": "2018-02-02T13:23:24-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "text",
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/text",
-        "tableHide": false
+        "tableHide": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -168,7 +170,7 @@
       "dateUpdated": "2018-02-02T13:27:17-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -207,7 +209,7 @@
       "dateUpdated": "2017-10-27T13:57:41-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -239,33 +241,6 @@
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:3239"
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2017-09-07T08:00:57-0700",
-      "config": {
-        "colWidth": 12,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/text",
-        "editorHide": false
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1504796287205_1465366179",
-      "id": "20170907-075807_1102578011",
-      "dateCreated": "2017-09-07T07:58:07-0700",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500,
-      "$$hashKey": "object:3240"
     }
   ],
   "name": "2. Tutorials / 4. Running Queries",

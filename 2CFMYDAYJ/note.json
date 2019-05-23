@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Useful Database Utilities\n\nThis Notebook describes a number of utilities that you may find useful. We'll expand this list over time. For now, we have these sections:\n\n* *Discovering the Splice Machine Versions* shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.\n* *Listing the Tables in Your Database* shows you a `SELECT` statement that displays all of the tables in your database\n\nAll you need to do is click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run each paragraph and see the results.",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T14:27:16-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "text",
@@ -47,7 +47,7 @@
       "dateUpdated": "2018-02-02T14:27:23-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {
           "0": {
             "graph": {
@@ -62,7 +62,8 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/text",
-        "title": true
+        "title": true,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -94,7 +95,7 @@
       "dateUpdated": "2017-10-18T12:09:12-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "text",
@@ -102,7 +103,7 @@
         },
         "editorMode": "ace/mode/text",
         "title": true,
-        "editorHide": false
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -126,30 +127,6 @@
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:20643"
-    },
-    {
-      "user": "anonymous",
-      "config": {
-        "colWidth": 12,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "text",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/text"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1493057305924_86902902",
-      "id": "20170424-140825_873746189",
-      "dateCreated": "2017-04-24T14:08:25-0700",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500,
-      "$$hashKey": "object:20644"
     }
   ],
   "name": "2. Tutorials / 9. Common Utilities",

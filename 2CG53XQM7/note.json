@@ -6,7 +6,7 @@
       "dateUpdated": "2018-08-02T15:42:36+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -54,7 +54,8 @@
         "editorMode": "ace/mode/scala",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {
@@ -68,7 +69,7 @@
       "jobName": "paragraph_1495230821060_1722266738",
       "id": "20170508-124350_1273037402",
       "dateCreated": "2017-05-19T21:53:41+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:74347"
@@ -105,7 +106,7 @@
       "jobName": "paragraph_1495230821061_1721881989",
       "id": "20170515-105110_1320641479",
       "dateCreated": "2017-05-19T21:53:41+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:74348"
@@ -122,10 +123,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/scala",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -135,7 +136,7 @@
       "jobName": "paragraph_1495230821061_1721881989",
       "id": "20170504-130003_598679618",
       "dateCreated": "2017-05-19T21:53:41+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:74349"
@@ -146,7 +147,7 @@
       "dateUpdated": "2018-08-02T15:40:47+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -193,7 +194,8 @@
         "editorMode": "ace/mode/scala",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -203,7 +205,7 @@
       "jobName": "paragraph_1495230821062_1723036236",
       "id": "20170504-170549_1349622410",
       "dateCreated": "2017-05-19T21:53:41+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:74351"

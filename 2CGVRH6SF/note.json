@@ -6,7 +6,7 @@
       "dateUpdated": "2018-08-02T15:45:41+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -54,7 +54,8 @@
         "editorMode": "ace/mode/text",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -64,7 +65,7 @@
       "jobName": "paragraph_1495230829926_-1588882296",
       "id": "20170504-215255_128602462",
       "dateCreated": "2017-05-19T21:53:49+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:75528"

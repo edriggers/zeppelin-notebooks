@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Introduction to Zeppelin Notebooks\n\nThis tutorial gives a brief introduction for running and creating/modifying notebooks. Splice Machine uses *Zeppelin Notebooks* to give users a flexible, interactive mechanism for working with the database and any code working with it. Here's some basic Zeppelin Notebook terminology:\n\n* Notebooks are broken into *paragraphs*. You are now viewing the first paragraph in this notebook.\n \n* Each paragraph has an *interpreter* (sometimes called a backend) that knows how to process the source content in the paragraph. \n  We are using the *%md* (short for *Markdown*) interpreter in the paragraph that you're currently reading. Markdown generates HTML from easy-to-read, plain text input that uses simplified formatting instructions.\n\n* Each paragraph has an *Editor* associated with it that you can use to enter or view the code or text that constitutes the paragraph.\n \n* You run a paragraph by clicking its <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> *Run* button. After the paragraph runs, you can see its results. For example, the result of running this Markdown paragraph is to see the formatted text that you are currently reading.\n\nThe next paragraph in this notebook, which is immediately below this paragraph, is an empty Markdown paragraph. You can enter markdown text into it to see how a Markdown paragraph works. Follow these steps:\n\n* Enter some text on the line below the `%md`.\n* Click the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Zeppelin Notebook Play button\"> *Play* icon to run the paragraph.\n* Display the output of your paragraph, if not already shown, by clicking the  <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepResultsIcon.png\" alt=\"Zeppelin Notebook Results button\"> *Results* icon.\n* Return to editing the code for your paragraph by clicking the  <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepEditorIcon.png\" alt=\"Zeppelin Notebook Edit button\"> *Edit* icon.",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T12:48:10-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,14 +46,14 @@
       "dateUpdated": "2018-02-02T12:49:11-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -85,7 +85,7 @@
       "dateUpdated": "2018-02-02T12:59:27-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -124,7 +124,7 @@
       "dateUpdated": "2018-02-02T13:00:37-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -163,7 +163,7 @@
       "dateUpdated": "2018-02-02T13:01:10-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {
           "0": {
             "graph": {
@@ -187,7 +187,7 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/sql",
-        "editorHide": false
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -226,7 +226,7 @@
       "dateUpdated": "2018-02-02T13:01:50-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -265,7 +265,7 @@
       "dateUpdated": "2017-10-27T13:49:21-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -297,33 +297,6 @@
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:108"
-    },
-    {
-      "text": "",
-      "user": "anonymous",
-      "dateUpdated": "2017-10-16T16:05:41-0700",
-      "config": {
-        "colWidth": 12,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
-        "editorMode": "ace/mode/sql",
-        "editorHide": true
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1505591746250_153413659",
-      "id": "20170916-125546_349443427",
-      "dateCreated": "2017-09-16T12:55:46-0700",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500,
-      "$$hashKey": "object:109"
     }
   ],
   "name": "2. Tutorials / 1. Notebook Basics",

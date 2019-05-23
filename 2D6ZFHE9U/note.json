@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "title": "Tutorial Data Schema - TPC-H",
@@ -16,7 +16,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -56,7 +56,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -89,12 +89,13 @@
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
         },
-        "tableHide": true
+        "tableHide": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -133,7 +134,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -169,9 +170,9 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "tableHide": false
       },
       "settings": {
@@ -230,7 +231,7 @@
       "user": "splice",
       "dateUpdated": "2018-07-04T17:11:10+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
@@ -238,7 +239,8 @@
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -281,7 +283,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -312,13 +314,14 @@
       "dateUpdated": "2018-04-03T19:54:50+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -328,7 +331,7 @@
       "jobName": "paragraph_1522785290634_-1870742208",
       "id": "20180403-195450_1901236835",
       "dateCreated": "2018-04-03T19:54:50+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6962"
     },
@@ -344,7 +347,7 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": false,
         "results": {
           "0": {
@@ -404,7 +407,7 @@
             }
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -472,7 +475,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -491,7 +494,7 @@
       "jobName": "paragraph_1520184200312_-834300420",
       "id": "20180122-173257_1568071437",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6964"
@@ -504,11 +507,12 @@
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -549,7 +553,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -597,7 +601,8 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -635,7 +640,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -654,7 +659,7 @@
       "jobName": "paragraph_1520184200313_-834685169",
       "id": "20180201-160453_2099057216",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6968"
@@ -670,9 +675,9 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -711,7 +716,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -751,7 +756,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -770,7 +775,7 @@
       "jobName": "paragraph_1520184200313_-834685169",
       "id": "20180115-055551_1473914744",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6971"
@@ -780,7 +785,7 @@
       "user": "splice",
       "dateUpdated": "2018-05-22T03:41:06+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
@@ -788,7 +793,8 @@
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -839,7 +845,8 @@
         "editorMode": "ace/mode/sql",
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -889,7 +896,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -908,7 +915,7 @@
       "jobName": "paragraph_1520184200314_-833530922",
       "id": "20180125-203451_1030911184",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6974"
@@ -921,11 +928,12 @@
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -961,9 +969,9 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1003,7 +1011,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1022,14 +1030,14 @@
       "jobName": "paragraph_1520184200315_-833915671",
       "id": "20180115-164324_663989920",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6977"
     },
     {
       "title": "Representative Micro-Benchmarks",
-      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in <100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
+      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in <100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can\u2019t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
       "dateUpdated": "2018-03-04T17:23:20+0000",
       "config": {
         "tableHide": false,
@@ -1042,7 +1050,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1053,7 +1061,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>A Glimpse at Splice Machine Benchmark Results</h2>\n<p>Here are some micro-results from Splice Machine running TPC-H benchmarks:</p>\n<ul>\n  <li>2ms single record lookups on primary keys at petabyte scale</li>\n  <li>20ms single record updates at petabyte scale</li>\n  <li>40-way OLTP indexed joins return in &lt;100ms</li>\n  <li>150-way OLAP style joins execute in under 2 minutes</li>\n  <li>440-way join executes where others can’t parse</li>\n  <li>Ingestion at 80MB/sec/node</li>\n  <li>Can run TPC-C and TPC-H simultaneously</li>\n</ul>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>A Glimpse at Splice Machine Benchmark Results</h2>\n<p>Here are some micro-results from Splice Machine running TPC-H benchmarks:</p>\n<ul>\n  <li>2ms single record lookups on primary keys at petabyte scale</li>\n  <li>20ms single record updates at petabyte scale</li>\n  <li>40-way OLTP indexed joins return in &lt;100ms</li>\n  <li>150-way OLAP style joins execute in under 2 minutes</li>\n  <li>440-way join executes where others can\u2019t parse</li>\n  <li>Ingestion at 80MB/sec/node</li>\n  <li>Can run TPC-C and TPC-H simultaneously</li>\n</ul>\n</div>"
           }
         ]
       },
@@ -1061,7 +1069,7 @@
       "jobName": "paragraph_1520184200316_-835839416",
       "id": "20180118-022657_414327443",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6978"
@@ -1079,7 +1087,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1098,7 +1106,7 @@
       "jobName": "paragraph_1520184200316_-835839416",
       "id": "20180125-204204_1935879463",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6979"
@@ -1120,11 +1128,12 @@
             "helium": {}
           }
         },
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -1162,7 +1171,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1181,7 +1190,7 @@
       "jobName": "paragraph_1520184200317_-836224164",
       "id": "20180122-173624_509126525",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6981"
@@ -1193,11 +1202,12 @@
         "colWidth": 12,
         "editorMode": "ace/mode/markdown",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -1207,7 +1217,7 @@
       "jobName": "paragraph_1520184200317_-836224164",
       "id": "20180125-142959_1101825868",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6982"

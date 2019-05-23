@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Introduction\n\nThis notebook takes you through the following phases using the TPCH 100 data set (see http://www.tpc.org).  It is a duplicate of the TPCH-1 Notebook found in the Tutorials, but loads more data.  Again the basic flow is:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-100 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this tutorial all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-08-02T15:14:43+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -52,10 +52,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -65,7 +65,7 @@
       "jobName": "paragraph_1505692006480_-203182178",
       "id": "20170406-153604_1986172856",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51040"
@@ -82,10 +82,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -95,7 +95,7 @@
       "jobName": "paragraph_1505692006489_-206644918",
       "id": "20170406-153809_1285888971",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51041"
@@ -112,10 +112,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -125,7 +125,7 @@
       "jobName": "paragraph_1505692006489_-206644918",
       "id": "20170406-154157_316847142",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51042"
@@ -142,10 +142,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -155,7 +155,7 @@
       "jobName": "paragraph_1505692006490_-205490671",
       "id": "20170406-154341_155611008",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51043"
@@ -172,10 +172,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -185,7 +185,7 @@
       "jobName": "paragraph_1505692006490_-205490671",
       "id": "20170406-154442_212169007",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51044"
@@ -202,10 +202,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -215,7 +215,7 @@
       "jobName": "paragraph_1505692006490_-205490671",
       "id": "20170406-154629_1395682435",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51045"
@@ -225,17 +225,17 @@
       "text": "%splicemachine\nanalyze schema TPCH100;",
       "dateUpdated": "2017-09-17T23:55:52+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -245,7 +245,7 @@
       "jobName": "paragraph_1505692006490_-205490671",
       "id": "20170406-154656_1940284364",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51046"
@@ -262,7 +262,7 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {
           "0": {
@@ -295,7 +295,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -305,7 +305,7 @@
       "jobName": "paragraph_1505692006490_-205490671",
       "id": "20170406-154718_1568658794",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51047"
@@ -322,10 +322,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -335,7 +335,7 @@
       "jobName": "paragraph_1505692006490_-205490671",
       "id": "20170406-154748_2032636417",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51048"
@@ -351,10 +351,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -364,7 +364,7 @@
       "jobName": "paragraph_1505692006490_-205490671",
       "id": "20170406-155338_1478784227",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51049"
@@ -380,10 +380,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -393,7 +393,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155520_1963165823",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51050"
@@ -409,10 +409,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -422,7 +422,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155537_1524014555",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51051"
@@ -438,10 +438,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -451,7 +451,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155824_54255049",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51052"
@@ -467,10 +467,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -480,7 +480,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155843_1328686434",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51053"
@@ -496,10 +496,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -509,7 +509,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155904_1757423264",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51054"
@@ -525,10 +525,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -538,7 +538,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155920_2131789649",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51055"
@@ -554,10 +554,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -567,7 +567,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155935_1818801004",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51056"
@@ -583,10 +583,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -596,7 +596,7 @@
       "jobName": "paragraph_1505692006491_-205875420",
       "id": "20170406-155954_424082601",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51057"
@@ -612,10 +612,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -625,7 +625,7 @@
       "jobName": "paragraph_1505692006492_-207799164",
       "id": "20170406-160015_1173205349",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51058"
@@ -641,10 +641,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -654,7 +654,7 @@
       "jobName": "paragraph_1505692006492_-207799164",
       "id": "20170406-160031_290929306",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51059"
@@ -670,10 +670,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -683,7 +683,7 @@
       "jobName": "paragraph_1505692006492_-207799164",
       "id": "20170406-160052_1211797311",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51060"
@@ -699,10 +699,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -712,7 +712,7 @@
       "jobName": "paragraph_1505692006492_-207799164",
       "id": "20170406-160131_1976478929",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51061"
@@ -728,10 +728,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -741,7 +741,7 @@
       "jobName": "paragraph_1505692006492_-207799164",
       "id": "20170406-160244_828229170",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51062"
@@ -757,10 +757,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -770,7 +770,7 @@
       "jobName": "paragraph_1505692006492_-207799164",
       "id": "20170406-160257_1735755840",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51063"
@@ -786,10 +786,10 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -799,7 +799,7 @@
       "jobName": "paragraph_1505692006492_-207799164",
       "id": "20170406-160315_1218486186",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51064"
@@ -815,7 +815,7 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {
           "0": {
@@ -849,7 +849,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -861,7 +861,7 @@
       "jobName": "paragraph_1505692006493_-208183913",
       "id": "20170406-160338_835788312",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51065"
@@ -877,7 +877,7 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {
           "0": {
@@ -909,7 +909,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -919,7 +919,7 @@
       "jobName": "paragraph_1505692006493_-208183913",
       "id": "20170406-160357_2054277666",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51066"
@@ -935,7 +935,7 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {
           "0": {
@@ -992,7 +992,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1002,7 +1002,7 @@
       "jobName": "paragraph_1505692006493_-208183913",
       "id": "20170406-173221_1006804720",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51067"
@@ -1018,7 +1018,7 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {
           "0": {
@@ -1049,7 +1049,7 @@
             "helium": {}
           }
         },
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {
@@ -1068,7 +1068,7 @@
       "jobName": "paragraph_1505692006493_-208183913",
       "id": "20170517-221256_1926688850",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51068"
@@ -1083,9 +1083,9 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/sql",
-        "editorHide": false,
+        "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1095,7 +1095,7 @@
       "jobName": "paragraph_1505692006493_-208183913",
       "id": "20170530-033221_2109984853",
       "dateCreated": "2017-09-17T23:46:46+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:51069"

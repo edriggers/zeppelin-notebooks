@@ -6,7 +6,7 @@
       "dateUpdated": "2018-08-02T15:32:37+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -54,7 +54,8 @@
         "editorMode": "ace/mode/text",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -86,7 +87,8 @@
         "editorMode": "ace/mode/text",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -117,7 +119,8 @@
         "editorMode": "ace/mode/text",
         "title": true,
         "results": {},
-        "enabled": true
+        "enabled": false,
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -142,11 +145,12 @@
         "colWidth": 12,
         "editorMode": "ace/mode/text",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "text",
           "editOnDblClick": false
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
