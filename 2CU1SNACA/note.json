@@ -6,7 +6,7 @@
       "dateUpdated": "2017-10-19T10:49:11-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -70,19 +70,11 @@
       "jobName": "paragraph_1505613544622_-425409480",
       "id": "20170916-185904_635367698",
       "dateCreated": "2017-09-16T18:59:04-0700",
-      "dateStarted": "2018-02-02T13:22:47-0800",
-      "dateFinished": "2018-02-02T13:22:47-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:3235",
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "I\tV\tT\n100\thello there\t2017-01-01 00:00:00.0\n"
-          }
-        ]
+        "code": "SUCCESS"
       }
     },
     {
@@ -91,7 +83,7 @@
       "dateUpdated": "2018-02-02T13:23:09-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -144,21 +136,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n=5,rows=360,updateMode=READ_ONLY (1),engine=control)\n  ->  ScrollInsensitive(n=4,totalCost=1744.96,outputRows=360,outputHeapSize=2.109 KB,partitions=1)\n    ->  NestedLoopJoin(n=3,totalCost=1657.16,outputRows=360,outputHeapSize=2.109 KB,partitions=1)\n      ->  TableScan[IMPORT_EXAMPLE(1616)](n=2,totalCost=4.04,scannedRows=20,outputRows=20,outputHeapSize=2.109 KB,partitions=1)\n      ->  TableScan[IMPORT_EXAMPLE(1616)](n=1,totalCost=4.04,scannedRows=20,outputRows=18,outputHeapSize=54 B,partitions=1,preds=[(A.I[0:1] = 100)])\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1505614135930_1936216495",
       "id": "20170916-190855_22811088",
       "dateCreated": "2017-09-16T19:08:55-0700",
-      "dateStarted": "2018-02-02T13:23:19-0800",
-      "dateFinished": "2018-02-02T13:23:19-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:3237"
     },
@@ -168,7 +152,7 @@
       "dateUpdated": "2018-02-02T13:27:17-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -207,7 +191,7 @@
       "dateUpdated": "2017-10-27T13:57:41-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",

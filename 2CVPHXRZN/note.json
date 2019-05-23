@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T14:00:37-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T14:01:23-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -85,7 +85,7 @@
       "dateUpdated": "2018-02-02T14:01:56-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -124,7 +124,7 @@
       "dateUpdated": "2018-02-02T14:02:34-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -179,19 +179,11 @@
       "jobName": "paragraph_1505679620570_-1529923470",
       "id": "20170917-132020_1057477927",
       "dateCreated": "2017-09-17T13:20:20-0700",
-      "dateStarted": "2018-02-02T14:02:38-0800",
-      "dateFinished": "2018-02-02T14:02:38-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:8027",
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n=6,rows=1,updateMode=READ_ONLY (1),engine=Spark)\n  ->  ScrollInsensitive(n=5,totalCost=14478.35,outputRows=1,outputHeapSize=0 B,partitions=1)\n    ->  ProjectRestrict(n=4,totalCost=1367.149,outputRows=1310720,outputHeapSize=0 B,partitions=1)\n      ->  GroupBy(n=3,totalCost=1367.149,outputRows=1310720,outputHeapSize=0 B,partitions=1)\n        ->  ProjectRestrict(n=2,totalCost=1367.149,outputRows=1310720,outputHeapSize=0 B,partitions=1)\n          ->  IndexScan[IJ(1649)](n=1,totalCost=1367.149,scannedRows=1310720,outputRows=1310720,outputHeapSize=0 B,partitions=1,baseTable=INDEX_EXAMPLE(1632))\n"
-          }
-        ]
+        "code": "SUCCESS"
       }
     },
     {
@@ -200,7 +192,7 @@
       "dateUpdated": "2018-02-02T14:02:42-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -263,19 +255,11 @@
       "jobName": "paragraph_1505679766068_-751975995",
       "id": "20170917-132246_733531409",
       "dateCreated": "2017-09-17T13:22:46-0700",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:8029",
-      "dateFinished": "2018-02-02T14:02:49-0800",
-      "dateStarted": "2018-02-02T14:02:45-0800",
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "1\n1310720\n"
-          }
-        ]
+        "code": "SUCCESS"
       }
     },
     {
@@ -284,7 +268,7 @@
       "dateUpdated": "2018-02-02T14:03:12-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -323,7 +307,7 @@
       "dateUpdated": "2018-02-02T14:03:29-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -362,7 +346,7 @@
       "dateUpdated": "2018-02-02T14:03:48-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -401,7 +385,7 @@
       "dateUpdated": "2018-02-02T14:04:03-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -440,7 +424,7 @@
       "dateUpdated": "2018-02-02T14:04:09-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -479,7 +463,7 @@
       "dateUpdated": "2018-02-02T14:04:13-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",

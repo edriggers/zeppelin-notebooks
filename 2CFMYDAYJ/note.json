@@ -13,7 +13,7 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/text",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
@@ -21,21 +21,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n<h1>Useful Database Utilities</h1>\n<p>This Notebook describes a number of utilities that you may find useful. We&rsquo;ll expand this list over time. For now, we have these sections:</p>\n<ul>\n  <li><em>Discovering the Splice Machine Versions</em> shows you how to call a Splice Machine system procedure to display which version of Splice Machine you are running.</li>\n  <li><em>Listing the Tables in Your Database</em> shows you a <code>SELECT</code> statement that displays all of the tables in your database</li>\n</ul>\n<p>All you need to do is click <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> to run each paragraph and see the results.</p>\n</div>"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1505692774432_-330443239",
       "id": "20170917-165934_1261053428",
       "dateCreated": "2017-09-17T16:59:34-0700",
-      "dateStarted": "2018-02-02T14:27:14-0800",
-      "dateFinished": "2018-02-02T14:27:15-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "focus": true,
       "$$hashKey": "object:20641"
@@ -69,21 +61,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "HOSTNAME\tRELEASE\tIMPLEMENTATIONVERSION\tBUILDTIME\tURL\n192.168.1.19:50841\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n192.168.1.19:50926\t2.7.0.1737-SNAPSHOT\td51f8c081d\t2017-10-16 20:47 +0000\thttp://www.splicemachine.com\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1493056742488_2035286133",
       "id": "20170424-135902_1116885980",
       "dateCreated": "2017-04-24T13:59:02-0700",
-      "dateStarted": "2017-10-16T13:54:55-0700",
-      "dateFinished": "2017-10-16T13:54:55-0700",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:20642"
     },
@@ -109,21 +93,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "TABLENAME\tSCHEMANAME\nA\tSPLICE\nIMPORT_EXAMPLE\tSPLICE\nSYSALIASES\tSYS\nSYSBACKUP\tSYS\nSYSBACKUPFILESET\tSYS\nSYSBACKUPITEMS\tSYS\nSYSBACKUPJOBS\tSYS\nSYSCHECKS\tSYS\nSYSCOLPERMS\tSYS\nSYSCOLUMNS\tSYS\nSYSCOLUMNSTATISTICS\tSYS\nSYSCOLUMNSTATS\tSYS\nSYSCONGLOMERATES\tSYS\nSYSCONSTRAINTS\tSYS\nSYSDEPENDS\tSYS\nSYSDUMMY1\tSYSIBM\nSYSFILES\tSYS\nSYSFOREIGNKEYS\tSYS\nSYSKEYS\tSYS\nSYSPERMS\tSYS\nSYSPHYSICALSTATS\tSYS\nSYSPRIMARYKEYS\tSYS\nSYSROLES\tSYS\nSYSROUTINEPERMS\tSYS\nSYSSCHEMAPERMS\tSYS\nSYSSCHEMAS\tSYS\nSYSSEQUENCES\tSYS\nSYSSNAPSHOTS\tSYS\nSYSSOURCECODE\tSYS\nSYSSTATEMENTS\tSYS\nSYSTABLEPERMS\tSYS\nSYSTABLES\tSYS\nSYSTABLESTATISTICS\tSYS\nSYSTABLESTATS\tSYS\nSYSTRIGGERS\tSYS\nSYSUSERS\tSYS\nSYSVIEWS\tSYS\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1493056770884_1926633701",
       "id": "20170424-135930_879534749",
       "dateCreated": "2017-04-24T13:59:30-0700",
-      "dateStarted": "2017-09-17T12:23:16-0700",
-      "dateFinished": "2017-09-17T12:23:16-0700",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:20643"
     }

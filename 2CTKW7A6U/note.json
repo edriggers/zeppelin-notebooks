@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T12:48:10-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,14 +46,14 @@
       "dateUpdated": "2018-02-02T12:49:11-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -85,7 +85,7 @@
       "dateUpdated": "2018-02-02T12:59:27-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -124,7 +124,7 @@
       "dateUpdated": "2018-02-02T13:00:37-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -194,29 +194,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 3"
-          },
-          {
-            "type": "TABLE",
-            "data": "I\tJ\n1\t1\n10\t2\n100\t3\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1505517610871_-1868117328",
       "id": "20170915-162010_998743126",
       "dateCreated": "2017-09-15T16:20:10-0700",
-      "dateStarted": "2018-02-02T13:00:49-0800",
-      "dateFinished": "2018-02-02T13:00:56-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:106"
     },
@@ -226,7 +210,7 @@
       "dateUpdated": "2018-02-02T13:01:50-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -265,7 +249,7 @@
       "dateUpdated": "2017-10-27T13:49:21-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -311,7 +295,7 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/sql",
-        "editorHide": true
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -321,7 +305,7 @@
       "jobName": "paragraph_1505591746250_153413659",
       "id": "20170916-125546_349443427",
       "dateCreated": "2017-09-16T12:55:46-0700",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:109"
     }
