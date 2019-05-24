@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Explaining and Hinting\n\nIn this notebook we'll dig into the explain and hint capabilities that we've briefly seen so far.  We'll see how they can help us:\n\n* Understand more deeply what the optimizer's plan is to run the query\n* How to potentially influence that plan if necessary\n",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T14:04:23-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T14:05:04-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -103,19 +103,11 @@
       "jobName": "paragraph_1504796528462_1622079930",
       "id": "20170907-080208_586782998",
       "dateCreated": "2017-09-07T08:02:08-0700",
-      "dateStarted": "2018-02-02T14:05:00-0800",
-      "dateFinished": "2018-02-02T14:05:00-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:9713",
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n=7,rows=1,updateMode=READ_ONLY (1),engine=Spark)\n  ->  ScrollInsensitive(n=6,totalCost=16017.565,outputRows=1,outputHeapSize=5 MB,partitions=1)\n    ->  ProjectRestrict(n=5,totalCost=1419.578,outputRows=1310720,outputHeapSize=5 MB,partitions=1)\n      ->  MergeSortJoin(n=4,totalCost=16013.555,outputRows=1,outputHeapSize=5 MB,partitions=1,preds=[(A.I[5:1] = B.I[5:3])])\n        ->  TableScan[INDEX_EXAMPLE(1632)](n=3,totalCost=1419.578,scannedRows=1310720,outputRows=1310720,outputHeapSize=5 MB,partitions=1)\n        ->  IndexLookup(n=2,totalCost=4,outputRows=1,outputHeapSize=0 B,partitions=1)\n          ->  IndexScan[IJ(1649)](n=1,totalCost=4,scannedRows=1,outputRows=1,outputHeapSize=0 B,partitions=1,baseTable=INDEX_EXAMPLE(1632),preds=[(A.J[1:2] = 700000)])\n"
-          }
-        ]
+        "code": "SUCCESS"
       }
     },
     {
@@ -124,7 +116,7 @@
       "dateUpdated": "2018-02-02T14:05:10-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -163,7 +155,7 @@
       "dateUpdated": "2018-02-02T14:05:19-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -202,7 +194,7 @@
       "dateUpdated": "2018-02-02T14:05:31-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -257,19 +249,11 @@
       "jobName": "paragraph_1505690659627_212234432",
       "id": "20170917-162419_1730040169",
       "dateCreated": "2017-09-17T16:24:19-0700",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:9717",
-      "dateFinished": "2018-02-02T14:05:41-0800",
-      "dateStarted": "2018-02-02T14:05:41-0800",
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n=8,rows=1,updateMode=READ_ONLY (1),engine=Spark)\n  ->  ScrollInsensitive(n=7,totalCost=19051054080.149,outputRows=1,outputHeapSize=0 B,partitions=1)\n    ->  ProjectRestrict(n=6,totalCost=19051026430.17,outputRows=1310720,outputHeapSize=0 B,partitions=1)\n      ->  GroupBy(n=5,totalCost=19051026430.17,outputRows=1310720,outputHeapSize=0 B,partitions=1)\n        ->  ProjectRestrict(n=4,totalCost=19051026430.17,outputRows=1310720,outputHeapSize=0 B,partitions=1)\n          ->  NestedLoopJoin(n=3,totalCost=19051025063.021,outputRows=1310720,outputHeapSize=0 B,partitions=1)\n            ->  TableScan[INDEX_EXAMPLE(1632)](n=2,totalCost=1419.578,scannedRows=1310720,outputRows=1,outputHeapSize=0 B,partitions=1,preds=[(A.J[2:2] = 700000)])\n            ->  IndexScan[IJ(1649)](n=1,totalCost=1367.149,scannedRows=1310720,outputRows=1310720,outputHeapSize=0 B,partitions=1,baseTable=INDEX_EXAMPLE(1632))\n"
-          }
-        ]
+        "code": "SUCCESS"
       }
     },
     {
@@ -278,7 +262,7 @@
       "dateUpdated": "2018-02-02T14:05:44-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -317,7 +301,7 @@
       "dateUpdated": "2017-10-27T14:05:44-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",

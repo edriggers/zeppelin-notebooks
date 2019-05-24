@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# TCPH-1 Walk Through\n\nIn this tutorial, we'll walk you through using the TPCH-1 data set, in these steps:\n\n* *1. Creating the Tables*\n* *2. Importing TPCH-1 Data From S3*\n* *3. Creating Indexes*\n* *4. Compacting and Collecting Statistics*\n* *5. Running Queries*\n\nAt the bottom you will also see some graphical output from some queries (or slight variations).\n\n<p class=\"noteIcon\">The code paragraphs in this tutorial all use the <em>%splicemachine</em> interpreter, which is pre-configured to interact with the Splice Machine with ANSI SQL.</p>\n",
@@ -14,7 +14,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T14:06:06-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -102,53 +102,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325229_-1430856955",
       "id": "20170406-153604_1986172856",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:06:13-0800",
-      "dateFinished": "2018-02-02T14:06:23-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16518"
     },
@@ -158,7 +118,7 @@
       "dateUpdated": "2018-02-02T14:08:04-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -271,49 +231,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n6001215\t0\t1\t759863287\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n1500000\t0\t1\t171952161\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n150000\t0\t1\t24346144\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n800000\t0\t1\t118984616\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n10000\t0\t1\t1409184\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n200000\t0\t1\t24135125\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n5\t0\t1\t389\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n25\t0\t1\t2224\tNONE\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325231_-1430087457",
       "id": "20170406-153809_1285888971",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:07:16-0800",
-      "dateFinished": "2018-02-02T14:10:35-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16520"
     },
@@ -323,7 +247,7 @@
       "dateUpdated": "2018-02-02T14:13:52-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -436,49 +360,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "LINEITEM\n6001215\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "ORDERS\n1500000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "CUSTOMER\n150000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "PARTSUPP\n800000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "SUPPLIER\n10000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "PART\n200000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "REGION\n5\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "NATION\n25\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325231_-1430087457",
       "id": "20170406-154157_316847142",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:14:00-0800",
-      "dateFinished": "2018-02-02T14:14:11-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16522"
     },
@@ -505,33 +393,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325232_-1419699237",
       "id": "20170406-154341_155611008",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:15:49-0800",
-      "dateFinished": "2018-02-02T14:17:40-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16523"
     },
@@ -587,33 +455,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "ORDERS\n1500000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "ORDERS\n1500000\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "LINEITEM\n6001215\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "LINEITEM\n6001215\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325233_-1420083986",
       "id": "20170406-154442_212169007",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:17:49-0800",
-      "dateFinished": "2018-02-02T14:18:09-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16524"
     },
@@ -623,7 +471,7 @@
       "dateUpdated": "2018-02-02T14:19:08-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -679,21 +527,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : -1"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325282_-1351213933",
       "id": "20170406-154629_1395682435",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:18:52-0800",
-      "dateFinished": "2018-02-02T14:20:35-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16526"
     },
@@ -720,21 +560,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTPCH1\tLINEITEM\t-All-\t6001215\t528106920\t29\t2\t0.0\nTPCH1\tORDERS\t-All-\t1500000\t150000000\t6\t2\t0.0\nTPCH1\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nTPCH1\tPARTSUPP\t-All-\t800000\t112000000\t7\t2\t0.0\nTPCH1\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nTPCH1\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nTPCH1\tREGION\t-All-\t5\t380\t1\t2\t0.0\nTPCH1\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325283_-1351598682",
       "id": "20170406-154656_1940284364",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:19:47-0800",
-      "dateFinished": "2018-02-02T14:21:41-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16527"
     },
@@ -744,7 +576,7 @@
       "dateUpdated": "2017-10-19T11:25:20-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -830,21 +662,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "L_RETURNFLAG\tL_LINESTATUS\tSUM_QTY\tSUM_BASE_PRICE\tSUM_DISC_PRICE\tSUM_CHARGE\tAVG_QTY\tAVG_PRICE\tAVG_DISC\tCOUNT_ORDER\nA\tF\t37734107.00\t56586554400.73\t53758257134.8700\t55909065222.827692\t25.5220\t38273.1297\t0.0499\t1478493\nN\tF\t991417.00\t1487504710.38\t1413082168.0541\t1469649223.194375\t25.5164\t38284.4677\t0.0500\t38854\nN\tO\t74476040.00\t111701729697.74\t106118230307.6056\t110367043872.497010\t25.5022\t38249.1179\t0.0499\t2920374\nR\tF\t37719753.00\t56568041380.90\t53741292684.6040\t55889619119.831932\t25.5057\t38250.8546\t0.0500\t1478870\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495120325283_-1351598682",
       "id": "20170406-154718_1568658794",
       "dateCreated": "2017-05-18T08:12:05-0700",
-      "dateStarted": "2018-02-02T14:23:24-0800",
-      "dateFinished": "2018-02-02T14:23:43-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:16529"
     },
@@ -1638,7 +1462,7 @@
       "dateUpdated": "2018-02-02T14:27:03-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -1677,13 +1501,14 @@
       "dateUpdated": "2018-02-02T14:27:03-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -1693,7 +1518,7 @@
       "jobName": "paragraph_1517610423612_-1708291364",
       "id": "20180202-142703_1560690170",
       "dateCreated": "2018-02-02T14:27:03-0800",
-      "status": "READY",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "focus": true,
       "$$hashKey": "object:20467"

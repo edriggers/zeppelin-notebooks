@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Importing Data into Your Splice Machine Database\n\nThis tutorial walks you through importing data into your Splice Machine database from flat files that are stored in S3.\n\nBefore starting this tutorial, you should already have your data stored in delimited format (such as CSV) in an S3 bucket; if that's not yet true, please review the previous tutorial, <a href=\"/#/notebook/2CUA8V2RK\">Copying Data to S3,</a> which walks you through copying your data to S3.\n\nWe'll walk you through a simple example, after which you'll be able to import your own data into your database.\n\n## Import Data Checklist\n\nWhen you use the `import` command in Splice Machine to load your data into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure your data formats will work, as defined here:\n\n\n<table class=\"splicezep\">\n    <col />\n    <col />\n    <thead>\n        <tr>\n            <th>Data File Detail</th>\n            <th>Specific Requirements</th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>Field delimited?</td>\n            <td>The fields in each row <strong>must</strong> have delimiters between them</td>\n        </tr>\n        <tr>\n            <td>Rows terminated?</td>\n            <td>Each row <strong>must</strong> be terminated with a newline character</td>\n        </tr>\n        <tr>\n            <td>Header row included?</td>\n            <td>Header rows are not allowed; if your data contains one, you <strong>must</strong> remove it.</td>\n        </tr>\n        <tr>\n            <td><code>Date</code>, <code>time</code>, <code>timestamp</code> data types</td>\n            <td> If you are using <code>date</code>, <code>time</code>, and/or <code>timestamp</code> data types in the target table, you need to know how that data is represented in the flat file; your file <strong>must</strong> use a consistent representation, and you must specify that format when using the import command.</td>\n        </tr>\n        <tr>\n            <td><code>Char</code> and <code>Varchar</code> data</td>\n            <td><p>If any of your <code>char</code> or <code>varchar</code> data contains your delimiter character, you <strong>need to use</strong> a special character delimiter.</p>\n                <p>If any of your <code>char</code> or <code>varchar</code> data contains newline characters, you <strong>need to use</strong> the <code>oneLineRecords</code> parameter.</p>\n            </td>\n        </tr>\n    </tbody>\n</table>\n\n\nThe examples in this tutorial will clarify how to specify these parameters when importing data. For more information, please see the Splice Machine <a href=\"https://doc.splicemachine.com/sqlref_sysprocs_importdata.html\" target=\"_blank\">import data procedure documentation</a> page.\n\n<p class=\"noteIcon\">It is a good idea to test your import, delimiting, date formatting, etc., on a small amount of data first before loading all of your data. That's what we'll do in this Tutorial.</p>\n",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T13:05:12-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T13:14:14-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -92,7 +92,7 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/text",
-        "editorHide": true,
+        "editorHide": false,
         "tableHide": false
       },
       "settings": {
@@ -100,21 +100,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h3>Example 1</h3>\n<p>This example allows you to walk through importing data one step at a time and see the results of that step.</p>\n<h4>1. Create our Database Table</h4>\n<p>You can get started by clicking the <img class=\"inline\" src=\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt=\"Run Zep Paragraph Icon\"> <em>Run</em> button to run the next paragraph in this Notebook, which uses the <em>%splicemachine</em> interpreter to create a table in your Splice Machine database.</p>\n</div>"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1507834413270_1833061053",
       "id": "20171012-115333_567951903",
       "dateCreated": "2017-10-12T11:53:33-0700",
-      "dateStarted": "2018-02-02T13:14:31-0800",
-      "dateFinished": "2018-02-02T13:14:31-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:1755"
     },
@@ -138,21 +130,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1505599119560_133176256",
       "id": "20170916-145839_408808168",
       "dateCreated": "2017-09-16T14:58:39-0700",
-      "dateStarted": "2018-02-02T13:14:52-0800",
-      "dateFinished": "2018-02-02T13:14:54-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:1756"
     },
@@ -162,7 +146,7 @@
       "dateUpdated": "2017-10-19T11:05:15-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -223,21 +207,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n2\t0\t1\t72\tNONE\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1505605226894_1434187128",
       "id": "20170916-164026_68551836",
       "dateCreated": "2017-09-16T16:40:26-0700",
-      "dateStarted": "2018-02-02T13:19:40-0800",
-      "dateFinished": "2018-02-02T13:20:24-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:1758"
     },
@@ -247,7 +223,7 @@
       "dateUpdated": "2017-10-13T17:25:37-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {
           "0": {
             "graph": {
@@ -294,7 +270,7 @@
       "dateUpdated": "2017-10-19T10:47:44-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -355,21 +331,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n2\t0\t1\t83\tNONE\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1505611385032_-497822707",
       "id": "20170916-182305_148259237",
       "dateCreated": "2017-09-16T18:23:05-0700",
-      "dateStarted": "2018-02-02T13:21:02-0800",
-      "dateFinished": "2018-02-02T13:21:12-0800",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:1761"
     },
@@ -379,7 +347,7 @@
       "dateUpdated": "2017-10-13T17:25:47-0700",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -418,7 +386,7 @@
       "dateUpdated": "2018-02-02T13:21:50-0800",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -464,7 +432,7 @@
           "editOnDblClick": false
         },
         "editorMode": "ace/mode/sql",
-        "editorHide": true
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -474,7 +442,7 @@
       "jobName": "paragraph_1504796429762_2006154567",
       "id": "20170907-080029_765242977",
       "dateCreated": "2017-09-07T08:00:29-0700",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:1764"
     }

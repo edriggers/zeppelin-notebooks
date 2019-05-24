@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Welcome to Splice Machine!\nThis README will help you to get started, in these sections:\n\n* *Release Notes* lists the known assumptions and limitations in the current version of our Database Service\n\n* *About Zeppelin* provides a very quick overview of Zeppelin\n\n* *Tutorial Notebooks* introduces the set of tutorials that we've created to help you get started with Splice Machine\n",
@@ -6,7 +6,7 @@
       "dateUpdated": "2018-02-02T22:34:32+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -46,7 +46,7 @@
       "dateUpdated": "2018-02-02T22:34:35+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -85,7 +85,7 @@
       "dateUpdated": "2018-02-02T22:34:38+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -124,7 +124,7 @@
       "dateUpdated": "2018-08-14T15:28:34+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
