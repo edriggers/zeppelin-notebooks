@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "title": "Tutorial Data Schema - TPC-H",
@@ -16,7 +16,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -56,7 +56,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -94,28 +94,20 @@
           "language": "sql",
           "editOnDblClick": false
         },
-        "tableHide": true
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "java.sql.SQLException: Schema 'TPCH1' already exists.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:905)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:580)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:692)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:95)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:490)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:175)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: com.splicemachine.db.client.am.SqlException: Schema 'TPCH1' already exists.\n\tat com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1845)\n\tat com.splicemachine.db.client.am.Statement.completeExecuteImmediate(Statement.java:1433)\n\tat com.splicemachine.db.client.net.NetStatementReply.parseEXCSQLIMMreply(NetStatementReply.java:210)\n\tat com.splicemachine.db.client.net.NetStatementReply.readExecuteImmediate(NetStatementReply.java:61)\n\tat com.splicemachine.db.client.net.StatementReply.readExecuteImmediate(StatementReply.java:49)\n\tat com.splicemachine.db.client.net.NetStatement.readExecuteImmediate_(NetStatement.java:128)\n\tat com.splicemachine.db.client.am.Statement.readExecuteImmediate(Statement.java:1429)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2153)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:910)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:896)\n\t... 15 more\n"
-          }
-        ]
+        "code": "ERROR"
       },
       "apps": [],
       "jobName": "paragraph_1520184200310_-831991927",
       "id": "20180115-053038_1611909604",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:21:00+0000",
-      "dateFinished": "2018-06-06T20:21:00+0000",
-      "status": "ERROR",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6957"
     },
@@ -133,7 +125,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -179,49 +171,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200311_-832376675",
       "id": "20180115-013106_1425678081",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-07-04T17:53:06+0000",
-      "dateFinished": "2018-07-04T17:53:15+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6959"
     },
@@ -230,7 +186,7 @@
       "user": "splice",
       "dateUpdated": "2018-07-04T17:11:10+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
@@ -245,25 +201,13 @@
         "forms": {}
       },
       "results": {
-        "code": "ERROR",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "java.sql.SQLException: table 'ORDERS' already exists in schema 'TPCH1'.\n\tat com.splicemachine.db.client.am.SQLExceptionFactory40.getSQLException(SQLExceptionFactory40.java:103)\n\tat com.splicemachine.db.client.am.SqlException.getSQLException(SqlException.java:368)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:905)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.commons.dbcp2.DelegatingStatement.execute(DelegatingStatement.java:291)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.executeSql(JDBCInterpreter.java:580)\n\tat org.apache.zeppelin.jdbc.JDBCInterpreter.interpret(JDBCInterpreter.java:692)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:95)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:490)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:175)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: com.splicemachine.db.client.am.SqlException: table 'ORDERS' already exists in schema 'TPCH1'.\n\tat com.splicemachine.db.client.am.Statement.completeSqlca(Statement.java:1845)\n\tat com.splicemachine.db.client.am.Statement.completeExecuteImmediate(Statement.java:1433)\n\tat com.splicemachine.db.client.net.NetStatementReply.parseEXCSQLIMMreply(NetStatementReply.java:210)\n\tat com.splicemachine.db.client.net.NetStatementReply.readExecuteImmediate(NetStatementReply.java:61)\n\tat com.splicemachine.db.client.net.StatementReply.readExecuteImmediate(StatementReply.java:49)\n\tat com.splicemachine.db.client.net.NetStatement.readExecuteImmediate_(NetStatement.java:128)\n\tat com.splicemachine.db.client.am.Statement.readExecuteImmediate(Statement.java:1429)\n\tat com.splicemachine.db.client.am.Statement.flowExecute(Statement.java:2153)\n\tat com.splicemachine.db.client.am.Statement.executeX(Statement.java:910)\n\tat com.splicemachine.db.client.am.Statement.execute(Statement.java:896)\n\t... 15 more\n"
-          }
-        ]
+        "code": "ERROR"
       },
       "apps": [],
       "jobName": "paragraph_1520184200311_-832376675",
       "id": "20180129-104639_365354120",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-07-04T17:11:13+0000",
-      "dateFinished": "2018-07-04T17:11:17+0000",
-      "status": "ERROR",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6960"
     },
@@ -281,7 +225,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -312,13 +256,14 @@
       "dateUpdated": "2018-04-03T19:54:50+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
         },
-        "editorMode": "ace/mode/markdown"
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -328,7 +273,7 @@
       "jobName": "paragraph_1522785290634_-1870742208",
       "id": "20180403-195450_1901236835",
       "dateCreated": "2018-04-03T19:54:50+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6962"
     },
@@ -411,49 +356,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n6001215\t0\t1\t759863287\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n1500000\t0\t1\t171952161\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n150000\t0\t1\t24346144\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n800000\t0\t1\t118984616\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n10000\t0\t1\t1409184\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n200000\t0\t1\t24135125\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n5\t0\t1\t389\tNONE\n"
-          },
-          {
-            "type": "TABLE",
-            "data": "rowsImported\tfailedRows\tfiles\tdataSize\tfailedLog\n25\t0\t1\t2224\tNONE\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200311_-832376675",
       "id": "20180115-012619_1984460020",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:21:27+0000",
-      "dateFinished": "2018-06-06T20:23:15+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6963"
     },
@@ -472,7 +381,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -491,7 +400,7 @@
       "jobName": "paragraph_1520184200312_-834300420",
       "id": "20180122-173257_1568071437",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6964"
@@ -515,21 +424,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n=13,rows=1179878,updateMode=,engine=Spark)\n  ->  ScrollInsensitive(n=12,totalCost=137993.043,outputRows=1179878,outputHeapSize=4.425 MB,partitions=2)\n    ->  OrderBy(n=11,totalCost=114310.259,outputRows=1179878,outputHeapSize=4.425 MB,partitions=2)\n      ->  ProjectRestrict(n=10,totalCost=34156.295,outputRows=1179878,outputHeapSize=4.425 MB,partitions=2)\n        ->  GroupBy(n=9,totalCost=6031.233,outputRows=1179878,outputHeapSize=4.425 MB,partitions=2)\n          ->  ProjectRestrict(n=8,totalCost=2347.75,outputRows=366874,outputHeapSize=4.425 MB,partitions=2)\n            ->  BroadcastJoin(n=7,totalCost=6031.233,outputRows=1179878,outputHeapSize=4.425 MB,partitions=2,preds=[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] = O_ORDERKEY[7:2])])\n              ->  TableScan[ORDERS(7136)](n=6,totalCost=2347.75,scannedRows=1171875,outputRows=366874,outputHeapSize=4.425 MB,partitions=2,preds=[(O_ORDERDATE[5:2] >= 1993-07-01),(O_ORDERDATE[5:2] < dataTypeServices: DATE )])\n              ->  ProjectRestrict(n=5,totalCost=8845.366,outputRows=1456640,outputHeapSize=4.167 MB,partitions=2)\n                ->  Distinct(n=4,totalCost=4422.683,outputRows=1456640,outputHeapSize=4.167 MB,partitions=1)\n                  ->  ProjectRestrict(n=3,totalCost=8845.366,outputRows=1456640,outputHeapSize=4.167 MB,partitions=2)\n                    ->  ProjectRestrict(n=2,totalCost=8845.366,outputRows=1456640,outputHeapSize=4.167 MB,partitions=2,preds=[(L_COMMITDATE[0:2] < L_RECEIPTDATE[0:3])])\n                      ->  TableScan[LINEITEM(7120)](n=1,totalCost=8832.124,scannedRows=4414062,outputRows=4414062,outputHeapSize=4.167 MB,partitions=2)\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200312_-834300420",
       "id": "20180201-123806_1712783827",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:24:10+0000",
-      "dateFinished": "2018-06-06T20:24:10+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6965"
     },
@@ -549,7 +450,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -604,21 +505,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTPCH1\tLINEITEM\t-All-\t6001215\t528106920\t2\t2\t0.0\nTPCH1\tORDERS\t-All-\t1500000\t150000000\t1\t2\t0.0\nTPCH1\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nTPCH1\tPARTSUPP\t-All-\t800000\t112000000\t1\t2\t0.0\nTPCH1\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nTPCH1\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nTPCH1\tREGION\t-All-\t5\t380\t1\t2\t0.0\nTPCH1\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200312_-834300420",
       "id": "20180115-053719_1393443514",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:24:45+0000",
-      "dateFinished": "2018-06-06T20:26:03+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6967"
     },
@@ -635,7 +528,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -654,7 +547,7 @@
       "jobName": "paragraph_1520184200313_-834685169",
       "id": "20180201-160453_2099057216",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6968"
@@ -679,21 +572,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n=13,rows=5,updateMode=,engine=Spark)\n  ->  ScrollInsensitive(n=12,totalCost=67142.113,outputRows=5,outputHeapSize=127 B,partitions=2)\n    ->  OrderBy(n=11,totalCost=67142.01,outputRows=5,outputHeapSize=127 B,partitions=2)\n      ->  ProjectRestrict(n=10,totalCost=44761.166,outputRows=1604125,outputHeapSize=127 B,partitions=2)\n        ->  GroupBy(n=9,totalCost=7495.089,outputRows=1604125,outputHeapSize=39.056 MB,partitions=2)\n          ->  ProjectRestrict(n=8,totalCost=3004,outputRows=434563,outputHeapSize=39.056 MB,partitions=2)\n            ->  BroadcastJoin(n=7,totalCost=7495.089,outputRows=1604125,outputHeapSize=39.056 MB,partitions=2,preds=[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] = O_ORDERKEY[7:2])])\n              ->  TableScan[ORDERS(7136)](n=6,totalCost=3004,scannedRows=1500000,outputRows=434563,outputHeapSize=39.056 MB,partitions=2,preds=[(O_ORDERDATE[5:2] >= 1993-07-01),(O_ORDERDATE[5:2] < dataTypeServices: DATE )])\n              ->  ProjectRestrict(n=5,totalCost=11385.304,outputRows=1980401,outputHeapSize=31.163 MB,partitions=2)\n                ->  Distinct(n=4,totalCost=5692.652,outputRows=1557719,outputHeapSize=24.512 MB,partitions=1)\n                  ->  ProjectRestrict(n=3,totalCost=11385.304,outputRows=1980401,outputHeapSize=31.163 MB,partitions=2)\n                    ->  ProjectRestrict(n=2,totalCost=11385.304,outputRows=1980401,outputHeapSize=31.163 MB,partitions=2,preds=[(L_COMMITDATE[0:2] < L_RECEIPTDATE[0:3])])\n                      ->  TableScan[LINEITEM(7120)](n=1,totalCost=11286.284,scannedRows=6001215,outputRows=6001215,outputHeapSize=31.163 MB,partitions=2)\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200313_-834685169",
       "id": "20180115-071650_158099310",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:26:11+0000",
-      "dateFinished": "2018-06-06T20:26:12+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6969"
     },
@@ -711,7 +596,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -751,7 +636,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -770,7 +655,7 @@
       "jobName": "paragraph_1520184200313_-834685169",
       "id": "20180115-055551_1473914744",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6971"
@@ -780,7 +665,7 @@
       "user": "splice",
       "dateUpdated": "2018-05-22T03:41:06+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
@@ -795,33 +680,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200314_-833530922",
       "id": "20180115-074728_655442192",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-05-22T03:41:06+0000",
-      "dateFinished": "2018-05-22T03:41:08+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6972"
     },
@@ -846,33 +711,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          },
-          {
-            "type": "TEXT",
-            "data": "Query executed successfully. Affected rows : 0"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200314_-833530922",
       "id": "20180115-055326_1726784632",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:26:23+0000",
-      "dateFinished": "2018-06-06T20:27:47+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6973"
     },
@@ -889,7 +734,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -908,7 +753,7 @@
       "jobName": "paragraph_1520184200314_-833530922",
       "id": "20180125-203451_1030911184",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6974"
@@ -932,21 +777,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTPCH1\tLINEITEM\t-All-\t6001215\t528106920\t2\t2\t0.0\nTPCH1\tORDERS\t-All-\t1500000\t150000000\t1\t2\t0.0\nTPCH1\tCUSTOMER\t-All-\t150000\t22950000\t1\t2\t0.0\nTPCH1\tPARTSUPP\t-All-\t800000\t112000000\t1\t2\t0.0\nTPCH1\tSUPPLIER\t-All-\t10000\t1340000\t1\t2\t0.0\nTPCH1\tPART\t-All-\t200000\t22000000\t1\t2\t0.0\nTPCH1\tREGION\t-All-\t5\t380\t1\t2\t0.0\nTPCH1\tNATION\t-All-\t25\t2225\t1\t2\t0.0\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200314_-833530922",
       "id": "20180115-075331_1211951910",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-03-05T05:58:20+0000",
-      "dateFinished": "2018-03-05T05:59:36+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6975"
     },
@@ -970,21 +807,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n=14,rows=5,updateMode=,engine=Spark)\n  ->  ScrollInsensitive(n=13,totalCost=63851.66,outputRows=5,outputHeapSize=127 B,partitions=2)\n    ->  OrderBy(n=12,totalCost=63851.557,outputRows=5,outputHeapSize=127 B,partitions=2)\n      ->  ProjectRestrict(n=11,totalCost=42567.538,outputRows=1604125,outputHeapSize=127 B,partitions=2)\n        ->  GroupBy(n=10,totalCost=6032.67,outputRows=1604125,outputHeapSize=39.056 MB,partitions=2)\n          ->  ProjectRestrict(n=9,totalCost=6001884,outputRows=434563,outputHeapSize=39.056 MB,partitions=2)\n            ->  BroadcastJoin(n=8,totalCost=6032.67,outputRows=1604125,outputHeapSize=39.056 MB,partitions=2,preds=[(ExistsFlatSubquery-0-1.L_ORDERKEY[7:1] = O_ORDERKEY[7:2])])\n              ->  ProjectRestrict(n=7,totalCost=6001884,outputRows=434563,outputHeapSize=39.056 MB,partitions=2)\n                ->  IndexScan[O_DATE_PRI_KEY_IDX(7265)](n=6,totalCost=1541.581,scannedRows=1156076,outputRows=434563,outputHeapSize=39.056 MB,partitions=2,baseTable=ORDERS(7136),preds=[(O_ORDERDATE[5:1] < dataTypeServices: DATE ),(O_ORDERDATE[5:1] >= 1993-07-01)])\n              ->  ProjectRestrict(n=5,totalCost=11385.304,outputRows=1980401,outputHeapSize=31.163 MB,partitions=2)\n                ->  Distinct(n=4,totalCost=5692.652,outputRows=1557719,outputHeapSize=24.512 MB,partitions=1)\n                  ->  ProjectRestrict(n=3,totalCost=11385.304,outputRows=1980401,outputHeapSize=31.163 MB,partitions=2)\n                    ->  ProjectRestrict(n=2,totalCost=11385.304,outputRows=1980401,outputHeapSize=31.163 MB,partitions=2,preds=[(L_COMMITDATE[0:2] < L_RECEIPTDATE[0:3])])\n                      ->  TableScan[LINEITEM(7120)](n=1,totalCost=11286.284,scannedRows=6001215,outputRows=6001215,outputHeapSize=31.163 MB,partitions=2)\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200315_-833915671",
       "id": "20180115-064548_1062136708",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:28:03+0000",
-      "dateFinished": "2018-06-06T20:28:03+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6976"
     },
@@ -1003,7 +832,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1022,14 +851,14 @@
       "jobName": "paragraph_1520184200315_-833915671",
       "id": "20180115-164324_663989920",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6977"
     },
     {
       "title": "Representative Micro-Benchmarks",
-      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in <100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can’t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
+      "text": "%md\n## A Glimpse at Splice Machine Benchmark Results\n\nHere are some micro-results from Splice Machine running TPC-H benchmarks:\n\n- 2ms single record lookups on primary keys at petabyte scale\n- 20ms single record updates at petabyte scale\n- 40-way OLTP indexed joins return in <100ms\n- 150-way OLAP style joins execute in under 2 minutes\n- 440-way join executes where others can\u2019t parse\n- Ingestion at 80MB/sec/node\n- Can run TPC-C and TPC-H simultaneously\n",
       "dateUpdated": "2018-03-04T17:23:20+0000",
       "config": {
         "tableHide": false,
@@ -1042,7 +871,7 @@
         "editorHide": true,
         "title": false,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1053,7 +882,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "<div class=\"markdown-body\">\n<h2>A Glimpse at Splice Machine Benchmark Results</h2>\n<p>Here are some micro-results from Splice Machine running TPC-H benchmarks:</p>\n<ul>\n  <li>2ms single record lookups on primary keys at petabyte scale</li>\n  <li>20ms single record updates at petabyte scale</li>\n  <li>40-way OLTP indexed joins return in &lt;100ms</li>\n  <li>150-way OLAP style joins execute in under 2 minutes</li>\n  <li>440-way join executes where others can’t parse</li>\n  <li>Ingestion at 80MB/sec/node</li>\n  <li>Can run TPC-C and TPC-H simultaneously</li>\n</ul>\n</div>"
+            "data": "<div class=\"markdown-body\">\n<h2>A Glimpse at Splice Machine Benchmark Results</h2>\n<p>Here are some micro-results from Splice Machine running TPC-H benchmarks:</p>\n<ul>\n  <li>2ms single record lookups on primary keys at petabyte scale</li>\n  <li>20ms single record updates at petabyte scale</li>\n  <li>40-way OLTP indexed joins return in &lt;100ms</li>\n  <li>150-way OLAP style joins execute in under 2 minutes</li>\n  <li>440-way join executes where others can\u2019t parse</li>\n  <li>Ingestion at 80MB/sec/node</li>\n  <li>Can run TPC-C and TPC-H simultaneously</li>\n</ul>\n</div>"
           }
         ]
       },
@@ -1061,7 +890,7 @@
       "jobName": "paragraph_1520184200316_-835839416",
       "id": "20180118-022657_414327443",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6978"
@@ -1079,7 +908,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1098,7 +927,7 @@
       "jobName": "paragraph_1520184200316_-835839416",
       "id": "20180125-204204_1935879463",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6979"
@@ -1131,21 +960,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TABLE",
-            "data": "S_ACCTBAL\tS_NAME\tN_NAME\tP_PARTKEY\tP_MFGR\tS_ADDRESS\tS_PHONE\tS_COMMENT\n9938.53\tSupplier#000005359\tUNITED KINGDOM\t185358\tManufacturer#4\tQKuHYh,vZGiwu2FWEJoLDx04\t33-429-790-6131\turiously regular requests hag\n9937.84\tSupplier#000005969\tROMANIA\t108438\tManufacturer#1\tANDENSOSmk,miq23Xfb5RWt6dvUcvt6Qa\t29-520-692-3537\tefully express instructions. regular requests against the slyly fin\n9936.22\tSupplier#000005250\tUNITED KINGDOM\t249\tManufacturer#4\tB3rqp0xbSEim4Mpy2RH J\t33-320-228-2957\tetect about the furiously final accounts. slyly ironic pinto beans sleep inside the furiously\n9923.77\tSupplier#000002324\tGERMANY\t29821\tManufacturer#4\ty3OD9UywSTOk\t17-779-299-1839\tackages boost blithely. blithely regular deposits c\n9871.22\tSupplier#000006373\tGERMANY\t43868\tManufacturer#5\tJ8fcXWsTqM\t17-813-485-8637\tetect blithely bold asymptotes. fluffily ironic platelets wake furiously; blit\n9870.78\tSupplier#000001286\tGERMANY\t81285\tManufacturer#2\tYKA,E2fjiVd7eUrzp2Ef8j1QxGo2DFnosaTEH\t17-516-924-4574\t regular accounts. furiously unusual courts above the fi\n9870.78\tSupplier#000001286\tGERMANY\t181285\tManufacturer#4\tYKA,E2fjiVd7eUrzp2Ef8j1QxGo2DFnosaTEH\t17-516-924-4574\t regular accounts. furiously unusual courts above the fi\n9852.52\tSupplier#000008973\tRUSSIA\t18972\tManufacturer#2\tt5L67YdBYYH6o,Vz24jpDyQ9\t32-188-594-7038\trns wake final foxes. carefully unusual depende\n9847.83\tSupplier#000008097\tRUSSIA\t130557\tManufacturer#2\txMe97bpE69NzdwLoX\t32-375-640-3593\t the special excuses. silent sentiments serve carefully final ac\n9847.57\tSupplier#000006345\tFRANCE\t86344\tManufacturer#1\tVSt3rzk3qG698u6ld8HhOByvrTcSTSvQlDQDag\t16-886-766-7945\tges. slyly regular requests are. ruthless, express excuses cajole blithely across the unu\n9847.57\tSupplier#000006345\tFRANCE\t173827\tManufacturer#2\tVSt3rzk3qG698u6ld8HhOByvrTcSTSvQlDQDag\t16-886-766-7945\tges. slyly regular requests are. ruthless, express excuses cajole blithely across the unu\n9836.93\tSupplier#000007342\tRUSSIA\t4841\tManufacturer#4\tJOlK7C1,7xrEZSSOw\t32-399-414-5385\tblithely carefully bold theodolites. fur\n9817.10\tSupplier#000002352\tRUSSIA\t124815\tManufacturer#2\t4LfoHUZjgjEbAKw TgdKcgOc4D4uCYw\t32-551-831-1437\twake carefully alongside of the carefully final ex\n9817.10\tSupplier#000002352\tRUSSIA\t152351\tManufacturer#3\t4LfoHUZjgjEbAKw TgdKcgOc4D4uCYw\t32-551-831-1437\twake carefully alongside of the carefully final ex\n9739.86\tSupplier#000003384\tFRANCE\t138357\tManufacturer#2\to,Z3v4POifevE k9U1b 6J1ucX,I\t16-494-913-5925\ts after the furiously bold packages sleep fluffily idly final requests: quickly final\n9721.95\tSupplier#000008757\tUNITED KINGDOM\t156241\tManufacturer#3\tAtg6GnM4dT2\t33-821-407-2995\teep furiously sauternes; quickl\n9681.33\tSupplier#000008406\tRUSSIA\t78405\tManufacturer#1\t,qUuXcftUl\t32-139-873-8571\thaggle slyly regular excuses. quic\n9643.55\tSupplier#000005148\tROMANIA\t107617\tManufacturer#1\tkT4ciVFslx9z4s79p Js825\t29-252-617-4850\tfinal excuses. final ideas boost quickly furiously speci\n9624.82\tSupplier#000001816\tFRANCE\t34306\tManufacturer#3\te7vab91vLJPWxxZnewmnDBpDmxYHrb\t16-392-237-6726\te packages are around the special ideas. special, pending foxes us\n9624.78\tSupplier#000009658\tROMANIA\t189657\tManufacturer#1\toE9uBgEfSS4opIcepXyAYM,x\t29-748-876-2014\tronic asymptotes wake bravely final\n9612.94\tSupplier#000003228\tROMANIA\t120715\tManufacturer#2\tKDdpNKN3cWu7ZSrbdqp7AfSLxx,qWB\t29-325-784-8187\twarhorses. quickly even deposits sublate daringly ironic instructions. slyly blithe t\n9612.94\tSupplier#000003228\tROMANIA\t198189\tManufacturer#4\tKDdpNKN3cWu7ZSrbdqp7AfSLxx,qWB\t29-325-784-8187\twarhorses. quickly even deposits sublate daringly ironic instructions. slyly blithe t\n9571.83\tSupplier#000004305\tROMANIA\t179270\tManufacturer#2\tqNHZ7WmCzygwMPRDO9Ps\t29-973-481-1831\tkly carefully express asymptotes. furiou\n9558.10\tSupplier#000003532\tUNITED KINGDOM\t88515\tManufacturer#4\tEOeuiiOn21OVpTlGguufFDFsbN1p0lhpxHp\t33-152-301-2164\t foxes. quickly even excuses use. slyly special foxes nag bl\n9492.79\tSupplier#000005975\tGERMANY\t25974\tManufacturer#5\tS6mIiCTx82z7lV\t17-992-579-4839\tarefully pending accounts. blithely regular excuses boost carefully carefully ironic p\n9461.05\tSupplier#000002536\tUNITED KINGDOM\t20033\tManufacturer#1\t8mmGbyzaU 7ZS2wJumTibypncu9pNkDc4FYA\t33-556-973-5522\t. slyly regular deposits wake slyly. furiously regular warthogs are.\n9453.01\tSupplier#000000802\tROMANIA\t175767\tManufacturer#1\t,6HYXb4uaHITmtMBj4Ak57Pd\t29-342-882-6463\tgular frets. permanently special multipliers believe blithely alongs\n9408.65\tSupplier#000007772\tUNITED KINGDOM\t117771\tManufacturer#4\tAiC5YAH,gdu0i7\t33-152-491-1126\tnag against the final requests. furiously unusual packages cajole blit\n9359.61\tSupplier#000004856\tROMANIA\t62349\tManufacturer#5\tHYogcF3Jb yh1\t29-334-870-9731\ty ironic theodolites. blithely sile\n9357.45\tSupplier#000006188\tUNITED KINGDOM\t138648\tManufacturer#1\tg801,ssP8wpTk4Hm\t33-583-607-1633\tously always regular packages. fluffily even accounts beneath the furiously final pack\n9352.04\tSupplier#000003439\tGERMANY\t170921\tManufacturer#4\tqYPDgoiBGhCYxjgC\t17-128-996-4650\t according to the carefully bold ideas\n9312.97\tSupplier#000007807\tRUSSIA\t90279\tManufacturer#5\toGYMPCk9XHGB2PBfKRnHA\t32-673-872-5854\tecial packages among the pending, even requests use regula\n9312.97\tSupplier#000007807\tRUSSIA\t100276\tManufacturer#5\toGYMPCk9XHGB2PBfKRnHA\t32-673-872-5854\tecial packages among the pending, even requests use regula\n9280.27\tSupplier#000007194\tROMANIA\t47193\tManufacturer#3\tzhRUQkBSrFYxIAXTfInj vyGRQjeK\t29-318-454-2133\to beans haggle after the furiously unusual deposits. carefully silent dolphins cajole carefully\n9274.80\tSupplier#000008854\tRUSSIA\t76346\tManufacturer#3\t1xhLoOUM7I3mZ1mKnerw OSqdbb4QbGa\t32-524-148-5221\ty. courts do wake slyly. carefully ironic platelets haggle above the slyly regular the\n9249.35\tSupplier#000003973\tFRANCE\t26466\tManufacturer#1\td18GiDsL6Wm2IsGXM,RZf1jCsgZAOjNYVThTRP4\t16-722-866-1658\tuests are furiously. regular tithes through the regular, final accounts cajole furiously above the q\n9249.35\tSupplier#000003973\tFRANCE\t33972\tManufacturer#1\td18GiDsL6Wm2IsGXM,RZf1jCsgZAOjNYVThTRP4\t16-722-866-1658\tuests are furiously. regular tithes through the regular, final accounts cajole furiously above the q\n9208.70\tSupplier#000007769\tROMANIA\t40256\tManufacturer#5\trsimdze 5o9P Ht7xS\t29-964-424-9649\tlites was quickly above the furiously ironic requests. slyly even foxes against the blithely bold \n9201.47\tSupplier#000009690\tUNITED KINGDOM\t67183\tManufacturer#5\tCB BnUTlmi5zdeEl7R7\t33-121-267-9529\te even, even foxes. blithely ironic packages cajole regular packages. slyly final ide\n9192.10\tSupplier#000000115\tUNITED KINGDOM\t85098\tManufacturer#3\tnJ 2t0f7Ve,wL1,6WzGBJLNBUCKlsV\t33-597-248-1220\tes across the carefully express accounts boost caref\n9189.98\tSupplier#000001226\tGERMANY\t21225\tManufacturer#4\tqsLCqSvLyZfuXIpjz\t17-725-903-1381\t deposits. blithely bold excuses about the slyly bold forges wake \n9128.97\tSupplier#000004311\tRUSSIA\t146768\tManufacturer#5\tI8IjnXd7NSJRs594RxsRR0\t32-155-440-7120\trefully. blithely unusual asymptotes haggle \n9104.83\tSupplier#000008520\tGERMANY\t150974\tManufacturer#4\tRqRVDgD0ER J9 b41vR2,3\t17-728-804-1793\tly about the blithely ironic depths. slyly final theodolites among the fluffily bold ideas print\n9101.00\tSupplier#000005791\tROMANIA\t128254\tManufacturer#5\tzub2zCV,jhHPPQqi,P2INAjE1zI n66cOEoXFG\t29-549-251-5384\tts. notornis detect blithely above the carefully bold requests. blithely even package\n9094.57\tSupplier#000004582\tRUSSIA\t39575\tManufacturer#1\tWB0XkCSG3r,mnQ n,h9VIxjjr9ARHFvKgMDf\t32-587-577-1351\tjole. regular accounts sleep blithely frets. final pinto beans play furiously past the \n8996.87\tSupplier#000004702\tFRANCE\t102191\tManufacturer#5\t8XVcQK23akp\t16-811-269-8946\tickly final packages along the express plat\n8996.14\tSupplier#000009814\tROMANIA\t139813\tManufacturer#2\taf0O5pg83lPU4IDVmEylXZVqYZQzSDlYLAmR\t29-995-571-8781\t dependencies boost quickly across the furiously pending requests! unusual dolphins play sl\n8968.42\tSupplier#000010000\tROMANIA\t119999\tManufacturer#5\taTGLEusCiL4F PDBdv665XBJhPyCOB0i\t29-578-432-2146\tly regular foxes boost slyly. quickly special waters boost carefully ironi\n8936.82\tSupplier#000007043\tUNITED KINGDOM\t109512\tManufacturer#1\tFVajceZInZdbJE6Z9XsRUxrUEpiwHDrOXi,1Rz\t33-784-177-8208\tefully regular courts. furiousl\n8929.42\tSupplier#000008770\tFRANCE\t173735\tManufacturer#4\tR7cG26TtXrHAP9 HckhfRi\t16-242-746-9248\tcajole furiously unusual requests. quickly stealthy requests are. \n8920.59\tSupplier#000003967\tROMANIA\t26460\tManufacturer#1\teHoAXe62SY9\t29-194-731-3944\taters. express, pending instructions sleep. brave, r\n8920.59\tSupplier#000003967\tROMANIA\t173966\tManufacturer#2\teHoAXe62SY9\t29-194-731-3944\taters. express, pending instructions sleep. brave, r\n8913.96\tSupplier#000004603\tUNITED KINGDOM\t137063\tManufacturer#2\tOUzlvMUr7n,utLxmPNeYKSf3T24OXskxB5\t33-789-255-7342\t haggle slyly above the furiously regular pinto beans. even \n8877.82\tSupplier#000007967\tFRANCE\t167966\tManufacturer#5\tA3pi1BARM4nx6R,qrwFoRPU\t16-442-147-9345\tously foxes. express, ironic requests im\n8862.24\tSupplier#000003323\tROMANIA\t73322\tManufacturer#3\tW9 lYcsC9FwBqk3ItL\t29-736-951-3710\tly pending ideas sleep about the furiously unu\n8841.59\tSupplier#000005750\tROMANIA\t100729\tManufacturer#5\tErx3lAgu0g62iaHF9x50uMH4EgeN9hEG\t29-344-502-5481\tgainst the pinto beans. fluffily unusual dependencies affix slyly even deposits.\n8781.71\tSupplier#000003121\tROMANIA\t13120\tManufacturer#5\twNqTogx238ZYCamFb,50v,bj 4IbNFW9Bvw1xP\t29-707-291-5144\ts wake quickly ironic ideas\n8754.24\tSupplier#000009407\tUNITED KINGDOM\t179406\tManufacturer#4\tCHRCbkaWcf5B\t33-903-970-9604\te ironic requests. carefully even foxes above the furious\n8691.06\tSupplier#000004429\tUNITED KINGDOM\t126892\tManufacturer#2\tk,BQms5UhoAF1B2Asi,fLib\t33-964-337-5038\tefully express deposits kindle after the deposits. final \n8655.99\tSupplier#000006330\tRUSSIA\t193810\tManufacturer#2\tUozlaENr0ytKe2w6CeIEWFWn iO3S8Rae7Ou\t32-561-198-3705\tsymptotes use about the express dolphins. requests use after the express platelets. final, ex\n8638.36\tSupplier#000002920\tRUSSIA\t75398\tManufacturer#1\tJe2a8bszf3L\t32-122-621-7549\tly quickly ironic requests. even requests whithout t\n8638.36\tSupplier#000002920\tRUSSIA\t170402\tManufacturer#3\tJe2a8bszf3L\t32-122-621-7549\tly quickly ironic requests. even requests whithout t\n8607.69\tSupplier#000006003\tUNITED KINGDOM\t76002\tManufacturer#2\tEH9wADcEiuenM0NR08zDwMidw,52Y2RyILEiA\t33-416-807-5206\tar, pending accounts. pending depende\n8569.52\tSupplier#000005936\tRUSSIA\t5935\tManufacturer#5\tjXaNZ6vwnEWJ2ksLZJpjtgt0bY2a3AU\t32-644-251-7916\t. regular foxes nag carefully atop the regular, silent deposits. quickly regular packages \n8564.12\tSupplier#000000033\tGERMANY\t110032\tManufacturer#1\tgfeKpYw3400L0SDywXA6Ya1Qmq1w6YB9f3R\t17-138-897-9374\tn sauternes along the regular asymptotes are regularly along the \n8553.82\tSupplier#000003979\tROMANIA\t143978\tManufacturer#4\tBfmVhCAnCMY3jzpjUMy4CNWs9 HzpdQR7INJU\t29-124-646-4897\tic requests wake against the blithely unusual accounts. fluffily r\n8517.23\tSupplier#000009529\tRUSSIA\t37025\tManufacturer#5\te44R8o7JAIS9iMcr\t32-565-297-8775\tove the even courts. furiously special platelets \n8517.23\tSupplier#000009529\tRUSSIA\t59528\tManufacturer#2\te44R8o7JAIS9iMcr\t32-565-297-8775\tove the even courts. furiously special platelets \n8503.70\tSupplier#000006830\tRUSSIA\t44325\tManufacturer#4\tBC4WFCYRUZyaIgchU 4S\t32-147-878-5069\tpades cajole. furious packages among the carefully express excuses boost furiously across th\n8457.09\tSupplier#000009456\tUNITED KINGDOM\t19455\tManufacturer#1\t7SBhZs8gP1cJjT0Qf433YBk\t33-858-440-4349\tcing requests along the furiously unusual deposits promise among the furiously unus\n8441.40\tSupplier#000003817\tFRANCE\t141302\tManufacturer#2\thU3fz3xL78\t16-339-356-5115\tely even ideas. ideas wake slyly furiously unusual instructions. pinto beans sleep ag\n8432.89\tSupplier#000003990\tRUSSIA\t191470\tManufacturer#1\twehBBp1RQbfxAYDASS75MsywmsKHRVdkrvNe6m\t32-839-509-9301\tep furiously. packages should have to haggle slyly across the deposits. furiously regu\n8431.40\tSupplier#000002675\tROMANIA\t5174\tManufacturer#1\tHJFStOu9R5NGPOegKhgbzBdyvrG2yh8w\t29-474-643-1443\tithely express pinto beans. blithely even foxes haggle. furiously regular theodol\n8407.04\tSupplier#000005406\tRUSSIA\t162889\tManufacturer#4\tj7 gYF5RW8DC5UrjKC\t32-626-152-4621\tr the blithely regular packages. slyly ironic theodoli\n8386.08\tSupplier#000008518\tFRANCE\t36014\tManufacturer#3\t2jqzqqAVe9crMVGP,n9nTsQXulNLTUYoJjEDcqWV\t16-618-780-7481\tblithely bold pains are carefully platelets. finally regular pinto beans sleep carefully special\n8376.52\tSupplier#000005306\tUNITED KINGDOM\t190267\tManufacturer#5\t9t8Y8 QqSIsoADPt6NLdk,TP5zyRx41oBUlgoGc9\t33-632-514-7931\tly final accounts sleep special, regular requests. furiously regular\n8348.74\tSupplier#000008851\tFRANCE\t66344\tManufacturer#4\tnWxi7GwEbjhw1\t16-796-240-2472\t boldly final deposits. regular, even instructions detect slyly. fluffily unusual pinto bea\n8338.58\tSupplier#000007269\tFRANCE\t17268\tManufacturer#4\tZwhJSwABUoiB04,3\t16-267-277-4365\tiously final accounts. even pinto beans cajole slyly regular\n8328.46\tSupplier#000001744\tROMANIA\t69237\tManufacturer#5\toLo3fV64q2,FKHa3p,qHnS7Yzv,ps8\t29-330-728-5873\tep carefully-- even, careful packages are slyly along t\n8307.93\tSupplier#000003142\tGERMANY\t18139\tManufacturer#1\tdqblvV8dCNAorGlJ\t17-595-447-6026\tolites wake furiously regular decoys. final requests nod \n8231.61\tSupplier#000009558\tRUSSIA\t192000\tManufacturer#2\tmcdgen,yT1iJDHDS5fV\t32-762-137-5858\t foxes according to the furi\n8152.61\tSupplier#000002731\tROMANIA\t15227\tManufacturer#4\t nluXJCuY1tu\t29-805-463-2030\t special requests. even, regular warhorses affix among the final gr\n8109.09\tSupplier#000009186\tFRANCE\t99185\tManufacturer#1\twgfosrVPexl9pEXWywaqlBMDYYf\t16-668-570-1402\ttions haggle slyly about the sil\n8102.62\tSupplier#000003347\tUNITED KINGDOM\t18344\tManufacturer#5\tm CtXS2S16i\t33-454-274-8532\tegrate with the slyly bold instructions. special foxes haggle silently among the\n8046.07\tSupplier#000008780\tFRANCE\t191222\tManufacturer#3\tAczzuE0UK9osj ,Lx0Jmh\t16-473-215-6395\tonic platelets cajole after the regular instructions. permanently bold excuses\n8042.09\tSupplier#000003245\tRUSSIA\t135705\tManufacturer#4\tDh8Ikg39onrbOL4DyTfGw8a9oKUX3d9Y\t32-836-132-8872\tosits. packages cajole slyly. furiously regular deposits cajole slyly. q\n8042.09\tSupplier#000003245\tRUSSIA\t150729\tManufacturer#1\tDh8Ikg39onrbOL4DyTfGw8a9oKUX3d9Y\t32-836-132-8872\tosits. packages cajole slyly. furiously regular deposits cajole slyly. q\n7992.40\tSupplier#000006108\tFRANCE\t118574\tManufacturer#1\t8tBydnTDwUqfBfFV4l3\t16-974-998-8937\t ironic ideas? fluffily even instructions wake. blithel\n7980.65\tSupplier#000001288\tFRANCE\t13784\tManufacturer#4\tzE,7HgVPrCn\t16-646-464-8247\tully bold courts. escapades nag slyly. furiously fluffy theodo\n7950.37\tSupplier#000008101\tGERMANY\t33094\tManufacturer#5\tkkYvL6IuvojJgTNG IKkaXQDYgx8ILohj\t17-627-663-8014\tarefully unusual requests x-ray above the quickly final deposits. \n7937.93\tSupplier#000009012\tROMANIA\t83995\tManufacturer#2\tiUiTziH,Ek3i4lwSgunXMgrcTzwdb\t29-250-925-9690\tto the blithely ironic deposits nag sly\n7914.45\tSupplier#000001013\tRUSSIA\t125988\tManufacturer#2\triRcntps4KEDtYScjpMIWeYF6mNnR\t32-194-698-3365\t busily bold packages are dolphi\n7912.91\tSupplier#000004211\tGERMANY\t159180\tManufacturer#5\t2wQRVovHrm3,v03IKzfTd,1PYsFXQFFOG\t17-266-947-7315\tay furiously regular platelets. cou\n7912.91\tSupplier#000004211\tGERMANY\t184210\tManufacturer#4\t2wQRVovHrm3,v03IKzfTd,1PYsFXQFFOG\t17-266-947-7315\tay furiously regular platelets. cou\n7894.56\tSupplier#000007981\tGERMANY\t85472\tManufacturer#4\tNSJ96vMROAbeXP\t17-963-404-3760\tic platelets affix after the furiously\n7887.08\tSupplier#000009792\tGERMANY\t164759\tManufacturer#3\tY28ITVeYriT3kIGdV2K8fSZ V2UqT5H1Otz\t17-988-938-4296\tckly around the carefully fluffy theodolites. slyly ironic pack\n7871.50\tSupplier#000007206\tRUSSIA\t104695\tManufacturer#1\t3w fNCnrVmvJjE95sgWZzvW\t32-432-452-7731\tironic requests. furiously final theodolites cajole. final, express packages sleep. quickly reg\n7852.45\tSupplier#000005864\tRUSSIA\t8363\tManufacturer#4\tWCNfBPZeSXh3h,c\t32-454-883-3821\tusly unusual pinto beans. brave ideas sleep carefully quickly ironi\n7850.66\tSupplier#000001518\tUNITED KINGDOM\t86501\tManufacturer#1\tONda3YJiHKJOC\t33-730-383-3892\tifts haggle fluffily pending pai\n7843.52\tSupplier#000006683\tFRANCE\t11680\tManufacturer#4\t2Z0JGkiv01Y00oCFwUGfviIbhzCdy\t16-464-517-8943\t express, final pinto beans x-ray slyly asymptotes. unusual, unusual\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1520184200316_-835839416",
       "id": "20180115-083845_542565773",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "dateStarted": "2018-06-06T20:28:25+0000",
-      "dateFinished": "2018-06-06T20:28:46+0000",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6980"
     },
@@ -1162,7 +983,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -1181,7 +1002,7 @@
       "jobName": "paragraph_1520184200317_-836224164",
       "id": "20180122-173624_509126525",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6981"
@@ -1193,11 +1014,12 @@
         "colWidth": 12,
         "editorMode": "ace/mode/markdown",
         "results": {},
-        "enabled": true,
+        "enabled": false,
         "editorSetting": {
           "language": "markdown",
           "editOnDblClick": true
-        }
+        },
+        "editorHide": true
       },
       "settings": {
         "params": {},
@@ -1207,7 +1029,7 @@
       "jobName": "paragraph_1520184200317_-836224164",
       "id": "20180125-142959_1101825868",
       "dateCreated": "2018-03-04T17:23:20+0000",
-      "status": "READY",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:6982"

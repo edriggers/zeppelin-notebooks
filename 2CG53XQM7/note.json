@@ -6,7 +6,7 @@
       "dateUpdated": "2018-08-02T15:42:36+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",
@@ -84,22 +84,16 @@
         },
         "colWidth": 12,
         "editorMode": "ace/mode/undefined",
-        "editorHide": true,
+        "editorHide": false,
         "results": {},
-        "enabled": false
+        "enabled": true
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "ANGULAR",
-            "data": "Next we will create kafka topic\nThe steps to create kafka topic are\n<ui>\n<li> Specify the Queue parameters : like session timeout, connectiontimeout, number of partitions and replication factor.\n<li> Create Zookeper client\n<li> Invoke AdminUtils to create topic\n</ui>\n\nWhen this paragraph is run, the topic is created or error is displayed if the topic already exists"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1495230821061_1721881989",
@@ -146,7 +140,7 @@
       "dateUpdated": "2018-08-02T15:40:47+0000",
       "config": {
         "colWidth": 12,
-        "enabled": true,
+        "enabled": false,
         "results": {},
         "editorSetting": {
           "language": "markdown",

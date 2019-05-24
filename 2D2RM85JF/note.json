@@ -1,4 +1,4 @@
-﻿{
+{
   "paragraphs": [
     {
       "text": "%md\n<link rel=\"stylesheet\" href=\"https://doc.splicemachine.com/zeppelin/css/zepstyles.css\" />\n\n# Introduction\nSplice Machine allows for the creation of custom functions and procedures that you can deploy to your database.  Once deployed, these functions and procedures can be called as needed from your SQL.  This notebook will show you how this is done.\n\n(Important note: when creating custom functions and procedures as described here, the code must be in Java.)\n\n",
@@ -14,7 +14,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -54,7 +54,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -93,7 +93,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -132,7 +132,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -171,7 +171,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -210,7 +210,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -249,7 +249,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -288,7 +288,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -327,7 +327,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -357,7 +357,7 @@
       "user": "splice",
       "dateUpdated": "2018-08-02T15:02:55+0000",
       "config": {
-        "tableHide": true,
+        "tableHide": false,
         "editorSetting": {
           "language": "sql",
           "editOnDblClick": false
@@ -378,7 +378,7 @@
       "dateCreated": "2017-12-03T23:46:57+0000",
       "dateStarted": "2018-08-02T15:02:55+0000",
       "dateFinished": "2018-08-02T15:03:00+0000",
-      "status": "ERROR",
+      "status": "READY",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:36716",
       "errorMessage": ""
@@ -397,7 +397,7 @@
         "editorMode": "ace/mode/markdown",
         "editorHide": true,
         "results": {},
-        "enabled": true
+        "enabled": false
       },
       "settings": {
         "params": {},
@@ -447,7 +447,7 @@
       "dateCreated": "2017-12-03T23:46:57+0000",
       "dateStarted": "2018-08-02T15:02:57+0000",
       "dateFinished": "2018-08-02T15:03:05+0000",
-      "status": "ERROR",
+      "status": "READY",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500,
       "$$hashKey": "object:36718"
