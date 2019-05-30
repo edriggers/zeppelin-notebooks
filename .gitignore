@@ -1,0 +1,11 @@
+.DS_Store
+*.iml
+.idea/
+.terraform/
+repo/
+target/
+.classpath
+.project
+.vscode/
+.settings/
+
