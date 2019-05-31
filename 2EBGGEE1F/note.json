@@ -1,0 +1,29 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559318657186_-1965328793",
+      "id": "20190531-160417_1322291587",
+      "dateCreated": "2019-05-31 16:04:17.186",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Splice Machine Training /Advanced Developer/a. Introduction to Advanced Developer",
+  "id": "2EBGGEE1F",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "splicemachine:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

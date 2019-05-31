@@ -1,0 +1,29 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559318768601_621263894",
+      "id": "20190531-160608_403567962",
+      "dateCreated": "2019-05-31 16:06:08.601",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Splice Machine Training /Advanced Developer/d. Bulk Data Loading",
+  "id": "2ECANGRHX",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "splicemachine:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

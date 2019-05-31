@@ -1,0 +1,29 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559318834685_-2061822643",
+      "id": "20190531-160714_265949446",
+      "dateCreated": "2019-05-31 16:07:14.685",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Splice Machine Training /Advanced Developer/f. Query Optimization",
+  "id": "2EETJQH1J",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "splicemachine:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

@@ -1,0 +1,29 @@
+{
+  "paragraphs": [
+    {
+      "user": "anonymous",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559318715381_-665813334",
+      "id": "20190531-160515_1367525291",
+      "dateCreated": "2019-05-31 16:05:15.381",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Splice Machine Training /Advanced Developer/c. Statistics",
+  "id": "2EBE3CJTG",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "splicemachine:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
