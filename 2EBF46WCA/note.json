@@ -1,17 +1,108 @@
 {
   "paragraphs": [
     {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Prepared Statements\n\nThis notebook teaches you how to use prepared statements for querying your databases.\n",
       "user": "anonymous",
-      "config": {},
+      "dateUpdated": "2019-05-31 17:48:11.296",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003ePrepared Statements\u003c/h1\u003e\n\u003cp\u003eThis notebook teaches you how to use prepared statements for querying your databases.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559318854520_124426603",
       "id": "20190531-160734_909147993",
       "dateCreated": "2019-05-31 16:07:34.520",
+      "dateStarted": "2019-05-31 17:48:11.299",
+      "dateFinished": "2019-05-31 17:48:11.313",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:48:52.006",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559324926231_1728966443",
+      "id": "20190531-174846_2042322629",
+      "dateCreated": "2019-05-31 17:48:46.231",
       "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*User-Defined Functions and Procedures*](/#/notebook/2ECMJGS6F), walks you through creating, using, and modifying functions and procedures that you can use for complex database queries.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:48:52.111",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2ECMJGS6F\"\u003e\u003cem\u003eUser-Defined Functions and Procedures\u003c/em\u003e\u003c/a\u003e, walks you through creating, using, and modifying functions and procedures that you can use for complex database queries.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559324891285_-884062100",
+      "id": "20190531-174811_1528277566",
+      "dateCreated": "2019-05-31 17:48:11.285",
+      "dateStarted": "2019-05-31 17:48:42.326",
+      "dateFinished": "2019-05-31 17:48:42.339",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -20,6 +111,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
+    "md:shared_process": [],
     "splicemachine:shared_process": []
   },
   "config": {

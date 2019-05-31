@@ -1,17 +1,108 @@
 {
   "paragraphs": [
     {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# User-Defined Functions and Procedures\n\nThis notebook walks you through creating, using, and modifying functions and procedures that you can use for complex database queries.\n",
       "user": "anonymous",
-      "config": {},
+      "dateUpdated": "2019-05-31 17:50:03.583",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUser-Defined Functions and Procedures\u003c/h1\u003e\n\u003cp\u003eThis notebook walks you through creating, using, and modifying functions and procedures that you can use for complex database queries.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559318883190_418177857",
       "id": "20190531-160803_1154750044",
       "dateCreated": "2019-05-31 16:08:03.191",
+      "dateStarted": "2019-05-31 17:50:03.583",
+      "dateFinished": "2019-05-31 17:50:03.601",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:50:21.772",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559325018426_-965611619",
+      "id": "20190531-175018_20775155",
+      "dateCreated": "2019-05-31 17:50:18.426",
       "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Using spark-submit with the Native Spark DataSource*](/#/notebook/2EECKNU39), shows you how to take advantage of the Splice Machine Native Spark DataSource when running apps with spark-submit.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:50:30.384",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EECKNU39\"\u003e\u003cem\u003eUsing spark-submit with the Native Spark DataSource\u003c/em\u003e\u003c/a\u003e, shows you how to take advantage of the Splice Machine Native Spark DataSource when running apps with spark-submit.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559325003576_1452011874",
+      "id": "20190531-175003_1492081827",
+      "dateCreated": "2019-05-31 17:50:03.576",
+      "dateStarted": "2019-05-31 17:50:28.113",
+      "dateFinished": "2019-05-31 17:50:28.138",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -20,6 +111,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
+    "md:shared_process": [],
     "splicemachine:shared_process": []
   },
   "config": {

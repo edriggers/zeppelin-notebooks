@@ -1,17 +1,110 @@
 {
   "paragraphs": [
     {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Transactions in Splice Machine\n\nThis notebook shows you how transactions are processed in Splice Machine.\n\n",
       "user": "anonymous",
-      "config": {},
+      "dateUpdated": "2019-05-31 17:45:43.764",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTransactions in Splice Machine\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you how transactions are processed in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559318793033_-467329500",
       "id": "20190531-160633_2036452887",
       "dateCreated": "2019-05-31 16:06:33.033",
+      "dateStarted": "2019-05-31 17:45:43.765",
+      "dateFinished": "2019-05-31 17:45:43.772",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:45:28.728",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559324721731_-667514235",
+      "id": "20190531-174521_278342654",
+      "dateCreated": "2019-05-31 17:45:21.731",
       "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Query Optimization*](/#/notebook/2EETJQH1J), shows you advanced optimization techniques for boosting query performance.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:45:37.426",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EETJQH1J\"\u003e\u003cem\u003eQuery Optimization\u003c/em\u003e\u003c/a\u003e, shows you advanced optimization techniques for boosting query performance.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559324720661_1988929642",
+      "id": "20190531-174520_1121188769",
+      "dateCreated": "2019-05-31 17:45:20.661",
+      "dateStarted": "2019-05-31 17:45:37.426",
+      "dateFinished": "2019-05-31 17:45:37.434",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -20,6 +113,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
+    "md:shared_process": [],
     "splicemachine:shared_process": []
   },
   "config": {

@@ -1,17 +1,110 @@
 {
   "paragraphs": [
     {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Using spark-submit With the Splice Machine Native Spark DataSource\n",
       "user": "anonymous",
-      "config": {},
+      "dateUpdated": "2019-05-31 17:52:02.027",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUsing spark-submit With the Splice Machine Native Spark DataSource\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559319019968_-1240214828",
       "id": "20190531-161019_1313997856",
       "dateCreated": "2019-05-31 16:10:19.968",
+      "dateStarted": "2019-05-31 17:52:02.028",
+      "dateFinished": "2019-05-31 17:52:02.070",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:51:52.391",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559325108946_-218816740",
+      "id": "20190531-175148_971045616",
+      "dateCreated": "2019-05-31 17:51:48.946",
       "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nTo finish this class, please complete the exercises in the [*Exercises for This Class*](/#/notebook/2EDNZACZA) notebook.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:51:04.731",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eTo finish this class, please complete the exercises in the \u003ca href\u003d\"/#/notebook/2EDNZACZA\"\u003e\u003cem\u003eExercises for This Class\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559325060276_-1719865439",
+      "id": "20190531-175100_779787345",
+      "dateCreated": "2019-05-31 17:51:00.276",
+      "dateStarted": "2019-05-31 17:51:04.733",
+      "dateFinished": "2019-05-31 17:51:04.748",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -20,6 +113,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
+    "md:shared_process": [],
     "splicemachine:shared_process": []
   },
   "config": {

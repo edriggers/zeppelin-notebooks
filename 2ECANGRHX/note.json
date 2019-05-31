@@ -1,6 +1,46 @@
 {
   "paragraphs": [
     {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Bulk Data Loading\n\nThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:44:04.357",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eBulk Data Loading\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559318768601_621263894",
+      "id": "20190531-160608_403567962",
+      "dateCreated": "2019-05-31 16:06:08.601",
+      "dateStarted": "2019-05-31 17:44:04.358",
+      "dateFinished": "2019-05-31 17:44:04.368",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "user": "anonymous",
       "config": {},
       "settings": {
@@ -8,10 +48,50 @@
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1559318768601_621263894",
-      "id": "20190531-160608_403567962",
-      "dateCreated": "2019-05-31 16:06:08.601",
+      "jobName": "paragraph_1559324576281_1037587833",
+      "id": "20190531-174256_33448938",
+      "dateCreated": "2019-05-31 17:42:56.281",
       "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Transactions in Splice Machine*](/#/notebook/2ED6JR671), teaches you how transactions are processed in Splice Machine.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:44:30.123",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2ED6JR671\"\u003e\u003cem\u003eTransactions in Splice Machine\u003c/em\u003e\u003c/a\u003e, teaches you how transactions are processed in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559324570392_-1505826819",
+      "id": "20190531-174250_1268073170",
+      "dateCreated": "2019-05-31 17:42:50.392",
+      "dateStarted": "2019-05-31 17:44:30.128",
+      "dateFinished": "2019-05-31 17:44:30.154",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
@@ -20,6 +100,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
+    "md:shared_process": [],
     "splicemachine:shared_process": []
   },
   "config": {

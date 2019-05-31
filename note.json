@@ -1,0 +1,77 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Our Training Classes\n\nSplice Machine offers automated training classes using interactive Apache Zeppelin notebooks.\n\nBefore starting any of these classes, please spend 20 minutes or so reviewing the [Splice Machine Basics](/#/notebook/2DX2STBE7) and [Zeppelin Notebook Basics](/#/notebook/2DV36AEJ2) to gain a basic understanding of how Splice Machine works, and to learn how to use the Zeppelin notebooks that constitute our training classes. These notebooks are found in our *Basic Training* folder.\n\nEach of our training classes is housed in its own curriculum folder:\n\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol width\u003d\"30% \"/\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eClass\u003c/th\u003e\n            \u003cth\u003eTarget Audience\u003c/th\u003e\n            \u003cth\u003ePrerequisites\u003c/th\u003e\n            \u003cth\u003eTime to Complete\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eBasic Training\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003ePlease review the two notebooks in this folder before starting any Splice Machine Training class.\u003c/td\u003e\n            \u003ctd\u003eNo Prerequisites\u003c/td\u003e\n            \u003ctd\u003e20-30 minutes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DYAK9C9S\"\u003e\u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL and some programming experience with Python or Scala\u003c/td\u003e\n            \u003ctd\u003e1-2 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXRNNKXG\"\u003e\u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2EBGGEE1F\"\u003e\u003cem\u003eSplice Machine Advanced Developers\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXBQGZ1A\"\u003e\u003cem\u003eData Science with Splice Machine\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eData Engineers and Data Scientists\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL, and some programming experience with Python or Scala. You should also have experience with implementing Machine Learning, data transformation, data analysis, streaming, model design and selection, and results interpretation.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXADGU5U\"\u003e\u003cem\u003eSplice Machine for DBAs\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eDBAs and Application Support Specialists\u003c/td\u003e\n            \u003ctd\u003eExperience with databases.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-05-31 17:58:18.175",
+      "config": {
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eOur Training Classes\u003c/h1\u003e\n\u003cp\u003eSplice Machine offers automated training classes using interactive Apache Zeppelin notebooks.\u003c/p\u003e\n\u003cp\u003eBefore starting any of these classes, please spend 20 minutes or so reviewing the \u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003eSplice Machine Basics\u003c/a\u003e and \u003ca href\u003d\"/#/notebook/2DV36AEJ2\"\u003eZeppelin Notebook Basics\u003c/a\u003e to gain a basic understanding of how Splice Machine works, and to learn how to use the Zeppelin notebooks that constitute our training classes. These notebooks are found in our \u003cem\u003eBasic Training\u003c/em\u003e folder.\u003c/p\u003e\n\u003cp\u003eEach of our training classes is housed in its own curriculum folder:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol width\u003d\"30% \"/\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eClass\u003c/th\u003e\n            \u003cth\u003eTarget Audience\u003c/th\u003e\n            \u003cth\u003ePrerequisites\u003c/th\u003e\n            \u003cth\u003eTime to Complete\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eBasic Training\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003ePlease review the two notebooks in this folder before starting any Splice Machine Training class.\u003c/td\u003e\n            \u003ctd\u003eNo Prerequisites\u003c/td\u003e\n            \u003ctd\u003e20-30 minutes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DYAK9C9S\"\u003e\u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL and some programming experience with Python or Scala\u003c/td\u003e\n            \u003ctd\u003e1-2 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXRNNKXG\"\u003e\u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2EBGGEE1F\"\u003e\u003cem\u003eSplice Machine Advanced Developers\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXBQGZ1A\"\u003e\u003cem\u003eData Science with Splice Machine\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eData Engineers and Data Scientists\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL, and some programming experience with Python or Scala. You should also have experience with implementing Machine Learning, data transformation, data analysis, streaming, model design and selection, and results interpretation.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXADGU5U\"\u003e\u003cem\u003eSplice Machine for DBAs\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eDBAs and Application Support Specialists\u003c/td\u003e\n            \u003ctd\u003eExperience with databases.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1542389696671_572473042",
+      "id": "20181116-173456_1852509988",
+      "dateCreated": "2018-11-16 09:34:56.000",
+      "dateStarted": "2019-05-31 17:58:18.180",
+      "dateFinished": "2019-05-31 17:58:18.202",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2018-12-11 23:41:40.871",
+      "config": {
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1544571700869_-2130429526",
+      "id": "20181211-234140_1772445909",
+      "dateCreated": "2018-12-11 23:41:40.869",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Splice Machine Training / About / Our Training Classes",
+  "id": "2DWTR5ZBH",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
+  },
+  "config": {
+    "looknfeel": "default",
+    "personalizedMode": "false",
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
