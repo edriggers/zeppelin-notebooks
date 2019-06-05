@@ -337,9 +337,49 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Build and Deploy The Application\n\nSimilar to a typical build and deploy process of a Spark application, you can build the Jar (we suggest building uber jar) using maven.\n\n\u003cpre\u003e\u003ccode\u003emvn clean package\u003c/code\u003e\u003c/pre\u003e\n\nOnce the jar is built (typically in \"target\" folder within the project folder), you can copy it over to the edge node or region server on the cluster to execute using spark-submit command.\n\nNote that if you are using the docker image, you can copy the jar over to the running instance using the following command:\n\n\u003cpre\u003e\u003ccode\u003edocker cp \u0026lt;PATH_ON_HOST_MACHINE\u0026gt; spliceserver:\u0026lt;PATH_TO_TARGET_FOLDER_ON_RUNNING_INSTANCE\u0026gt; \u003c/code\u003e\u003c/pre\u003e",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-04 17:43:47.971",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eBuild and Deploy The Application\u003c/h1\u003e\n\u003cp\u003eSimilar to a typical build and deploy process of a Spark application, you can build the Jar (we suggest building uber jar) using maven.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003emvn clean package\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eOnce the jar is built (typically in \u0026ldquo;target\u0026rdquo; folder within the project folder), you can copy it over to the edge node or region server on the cluster to execute using spark-submit command.\u003c/p\u003e\n\u003cp\u003eNote that if you are using the docker image, you can copy the jar over to the running instance using the following command:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edocker cp \u0026lt;PATH_ON_HOST_MACHINE\u0026gt; spliceserver:\u0026lt;PATH_TO_TARGET_FOLDER_ON_RUNNING_INSTANCE\u0026gt; \u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559581897072_927636269",
+      "id": "20190603-171137_1488177463",
+      "dateCreated": "2019-06-03 17:11:37.073",
+      "dateStarted": "2019-06-04 17:43:47.993",
+      "dateFinished": "2019-06-04 17:43:48.018",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Using spark submit to launch spark adapter applications.\n\nFollowing command can be used on on CDH cluster. Note that various executor settings are just illustrative and should be configured for respective job appropriately.\n\u003cpre\u003e\u003ccode\u003e\nspark2-submit --conf \"spark.dynamicAllocation.enabled\u003dfalse\" --conf \"spark.task.maxFailures\u003d2\" --conf \"spark.driver.memory\u003d4g\" --conf \"spark.driver.cores\u003d1\" --conf \"spark.kryoserializer.buffer\u003d1024\" --conf \"spark.kryoserializer.buffer.max\u003d2047\" --conf \"spark.io.compression.codec\u003dorg.apache.spark.io.SnappyCompressionCodec\" --conf \"spark.executor.extraClassPath\u003d/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*\" --conf \"spark.driver.extraClassPath\u003d/etc/hadoop/conf/:/etc/hbase/conf/:/opt/cloudera/parcels/SPLICEMACHINE/lib/*:/opt/cloudera/parcels/SPARK2/lib/spark2/jars/*:/opt/cloudera/parcels/CDH/lib/hbase/lib/*\" --jars \"sparksplice.jar\" --class \u0026lt;MAIN_CLASS_NAME\u0026gt; --master yarn --deploy-mode client --num-executors 8 --executor-memory 2G --executor-cores 1 \u0026lt;JAR_FILE_NAME\u0026gt; localhost 1527 splice admin\n\u003c/code\u003e\u003c/pre\u003e",
       "user": "anonymous",
-      "dateUpdated": "2019-06-03 17:17:11.925",
+      "dateUpdated": "2019-06-04 17:36:33.597",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -368,11 +408,11 @@
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1559581897072_927636269",
-      "id": "20190603-171137_1488177463",
-      "dateCreated": "2019-06-03 17:11:37.073",
-      "dateStarted": "2019-06-03 17:17:11.927",
-      "dateFinished": "2019-06-03 17:17:11.964",
+      "jobName": "paragraph_1559669789849_-819139079",
+      "id": "20190604-173629_1491743944",
+      "dateCreated": "2019-06-04 17:36:29.849",
+      "dateStarted": "2019-06-04 17:36:33.616",
+      "dateFinished": "2019-06-04 17:36:36.093",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -422,8 +462,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "md:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
