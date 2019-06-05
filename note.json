@@ -1,23 +1,22 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\n# Our Training Classes\n\nSplice Machine offers automated training classes using interactive Apache Zeppelin notebooks.\n\nBefore starting any of these classes, please spend 20 minutes or so reviewing the [Splice Machine Basics](/#/notebook/2DX2STBE7) and [Zeppelin Notebook Basics](/#/notebook/2DV36AEJ2) to gain a basic understanding of how Splice Machine works, and to learn how to use the Zeppelin notebooks that constitute our training classes. These notebooks are found in our *Basic Training* folder.\n\nEach of our training classes is housed in its own curriculum folder:\n\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol width\u003d\"30% \"/\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eClass\u003c/th\u003e\n            \u003cth\u003eTarget Audience\u003c/th\u003e\n            \u003cth\u003ePrerequisites\u003c/th\u003e\n            \u003cth\u003eTime to Complete\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eBasic Training\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003ePlease review the two notebooks in this folder before starting any Splice Machine Training class.\u003c/td\u003e\n            \u003ctd\u003eNo Prerequisites\u003c/td\u003e\n            \u003ctd\u003e20-30 minutes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DYAK9C9S\"\u003e\u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL and some programming experience with Python or Scala\u003c/td\u003e\n            \u003ctd\u003e1-2 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXRNNKXG\"\u003e\u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2EBGGEE1F\"\u003e\u003cem\u003eSplice Machine Advanced Developers\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXBQGZ1A\"\u003e\u003cem\u003eData Science with Splice Machine\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eData Engineers and Data Scientists\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL, and some programming experience with Python or Scala. You should also have experience with implementing Machine Learning, data transformation, data analysis, streaming, model design and selection, and results interpretation.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXADGU5U\"\u003e\u003cem\u003eSplice Machine for DBAs\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eDBAs and Application Support Specialists\u003c/td\u003e\n            \u003ctd\u003eExperience with databases.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Statistics\n\nDatabase statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; database statistics help the optimizer select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-05-31 17:58:18.175",
+      "dateUpdated": "2019-06-05 16:47:03.793",
       "config": {
-        "editorHide": true,
+        "colWidth": 12.0,
+        "fontSize": 9.0,
         "enabled": true,
         "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
         "editorSetting": {
-          "completionKey": "TAB",
+          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
+          "completionSupport": false
         },
-        "colWidth": 12.0
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -28,40 +27,343 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eOur Training Classes\u003c/h1\u003e\n\u003cp\u003eSplice Machine offers automated training classes using interactive Apache Zeppelin notebooks.\u003c/p\u003e\n\u003cp\u003eBefore starting any of these classes, please spend 20 minutes or so reviewing the \u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003eSplice Machine Basics\u003c/a\u003e and \u003ca href\u003d\"/#/notebook/2DV36AEJ2\"\u003eZeppelin Notebook Basics\u003c/a\u003e to gain a basic understanding of how Splice Machine works, and to learn how to use the Zeppelin notebooks that constitute our training classes. These notebooks are found in our \u003cem\u003eBasic Training\u003c/em\u003e folder.\u003c/p\u003e\n\u003cp\u003eEach of our training classes is housed in its own curriculum folder:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol width\u003d\"30% \"/\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eClass\u003c/th\u003e\n            \u003cth\u003eTarget Audience\u003c/th\u003e\n            \u003cth\u003ePrerequisites\u003c/th\u003e\n            \u003cth\u003eTime to Complete\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DX2STBE7\"\u003e\u003cem\u003eBasic Training\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003ePlease review the two notebooks in this folder before starting any Splice Machine Training class.\u003c/td\u003e\n            \u003ctd\u003eNo Prerequisites\u003c/td\u003e\n            \u003ctd\u003e20-30 minutes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DYAK9C9S\"\u003e\u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL and some programming experience with Python or Scala\u003c/td\u003e\n            \u003ctd\u003e1-2 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXRNNKXG\"\u003e\u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part I\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2EBGGEE1F\"\u003e\u003cem\u003eSplice Machine Advanced Developers\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eQuery writers, ETL processors, developers\u003c/td\u003e\n            \u003ctd\u003eCompletion of \u003cem\u003eSplice Machine Developers, Part II\u003c/em\u003e\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXBQGZ1A\"\u003e\u003cem\u003eData Science with Splice Machine\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eData Engineers and Data Scientists\u003c/td\u003e\n            \u003ctd\u003eExperience with SQL, and some programming experience with Python or Scala. You should also have experience with implementing Machine Learning, data transformation, data analysis, streaming, model design and selection, and results interpretation.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"Italic\"\u003e\u003ca href\u003d\"/#/notebook/2DXADGU5U\"\u003e\u003cem\u003eSplice Machine for DBAs\u003c/em\u003e\u003c/a\u003e\u003c/td\u003e\n            \u003ctd\u003eDBAs and Application Support Specialists\u003c/td\u003e\n            \u003ctd\u003eExperience with databases.\u003c/td\u003e\n            \u003ctd\u003e2-3 hours\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eStatistics\u003c/h1\u003e\n\u003cp\u003eDatabase statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; database statistics help the optimizer select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1542389696671_572473042",
-      "id": "20181116-173456_1852509988",
-      "dateCreated": "2018-11-16 09:34:56.000",
-      "dateStarted": "2019-05-31 17:58:18.180",
-      "dateFinished": "2019-05-31 17:58:18.202",
+      "jobName": "paragraph_1559318715381_-665813334",
+      "id": "20190531-160515_1367525291",
+      "dateCreated": "2019-05-31 16:05:15.381",
+      "dateStarted": "2019-06-05 16:47:03.801",
+      "dateFinished": "2019-06-05 16:47:03.841",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n## Collecting Statistics\n\nYou can collect statistics on a schema or table using the `analyze` command. As a best practice, you should run stastics on a table if an index has been created or if you\u0027ve modified more than 10% of the data. Here are some of the tools available for working with statistics in Splice Machine: \n\n* By default, statistics are calculated on all columns of a table. To selectively calculate them on a column, you can use built-in stored procedure `SYSCS_UTIL.DISABLE_COLUMN_STATISTICS( schema, table, column)` to specify which column is to be used.\n* You can query the  `SYSTABLESTATISTICS` system view to view statistics for specific tables. \n* You can query the  `SYSCOLUMNSTATISTICS` system view to view statistics for specific columns in a table.\n* The `ANALYZE TABLE` command collects statistics for a specific table in the current schema. It also collects statistics for the index associated with the table in the schema.\n* The `ANALYZE SCHEMA` command collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema.\n\n## Interpreting Analyze Output\n\nHere is how you can interpret the output of analyze command:\n\n\u003ctable summary\u003d\"List of columns in the output of the analyze table command.\"\u003e\n            \u003ccol /\u003e\n            \u003ccol /\u003e\n            \u003cthead\u003e\n                \u003ctr\u003e\n                    \u003cth\u003eValue\u003c/th\u003e\n                    \u003cth\u003eDescription\u003c/th\u003e\n                \u003c/tr\u003e\n            \u003c/thead\u003e\n            \u003ctbody\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003eschemaName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the schema.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003etableName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartition\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe Splice Machine partition. We merge the statistics for all table partitions, so the partition will show as \u003ccode\u003e-All-\u003c/code\u003e when you specify one of the non-merged type values for the \u003ccode\u003estatsType\u003c/code\u003e parameter.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003erowsCollected\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe total number of rows collected for the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartitionSize\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe combined size of the table\u0027s partitions.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003estatsType\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\u003cp\u003eThe type of statistics, which is one of these values:\u003c/p\u003e\n                        \u003ctable\u003e\n                            \u003ccol /\u003e\n                            \u003ccol /\u003e\n                            \u003ctbody\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e0\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e1\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e2\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e3\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                            \u003c/tbody\u003e\n                        \u003c/table\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003esampleFraction\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\n                        \u003cp\u003eThe sampling percentage, expressed as \u003ccode\u003e0.0\u003c/code\u003e to \u003ccode\u003e1.0\u003c/code\u003e, \u003c/p\u003e\n                        \u003cul\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d0\u003c/code\u003e or \u003ccode\u003estatsType\u003d1\u003c/code\u003e (full statistics), this value is not used, and is shown as \u003ccode\u003e0\u003c/code\u003e.\u003c/li\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d2\u003c/code\u003e or \u003ccode\u003estatsType\u003d3\u003c/code\u003e, this value is the percentage or rows to be sampled. A value of \u003ccode\u003e0\u003c/code\u003e means no rows, and a value of \u003ccode\u003e1\u003c/code\u003e means all rows (same as full statistics).\u003c/li\u003e\n                        \u003c/ul\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n            \u003c/tbody\u003e\n        \u003c/table\u003e",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-05 16:57:48.168",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch2\u003eCollecting Statistics\u003c/h2\u003e\n\u003cp\u003eYou can collect statistics on a schema or table using the \u003ccode\u003eanalyze\u003c/code\u003e command. As a best practice, you should run stastics on a table if an index has been created or if you\u0026rsquo;ve modified more than 10% of the data. Here are some of the tools available for working with statistics in Splice Machine: \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eBy default, statistics are calculated on all columns of a table. To selectively calculate them on a column, you can use built-in stored procedure \u003ccode\u003eSYSCS_UTIL.DISABLE_COLUMN_STATISTICS( schema, table, column)\u003c/code\u003e to specify which column is to be used.\u003c/li\u003e\n  \u003cli\u003eYou can query the \u003ccode\u003eSYSTABLESTATISTICS\u003c/code\u003e system view to view statistics for specific tables.\u003c/li\u003e\n  \u003cli\u003eYou can query the \u003ccode\u003eSYSCOLUMNSTATISTICS\u003c/code\u003e system view to view statistics for specific columns in a table.\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eANALYZE TABLE\u003c/code\u003e command collects statistics for a specific table in the current schema. It also collects statistics for the index associated with the table in the schema.\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eANALYZE SCHEMA\u003c/code\u003e command collects statistics for every table in the schema. It also collects statistics for the index associated with every table in the schema.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eInterpreting Analyze Output\u003c/h3\u003e\n\u003cp\u003eHere is how you can interpret the output of analyze command:\u003c/p\u003e\n\u003ctable summary\u003d\"List of columns in the output of the analyze table command.\"\u003e\n            \u003ccol /\u003e\n            \u003ccol /\u003e\n            \u003cthead\u003e\n                \u003ctr\u003e\n                    \u003cth\u003eValue\u003c/th\u003e\n                    \u003cth\u003eDescription\u003c/th\u003e\n                \u003c/tr\u003e\n            \u003c/thead\u003e\n            \u003ctbody\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003eschemaName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the schema.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003etableName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartition\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe Splice Machine partition. We merge the statistics for all table partitions, so the partition will show as \u003ccode\u003e-All-\u003c/code\u003e when you specify one of the non-merged type values for the \u003ccode\u003estatsType\u003c/code\u003e parameter.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003erowsCollected\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe total number of rows collected for the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartitionSize\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe combined size of the table\u0027s partitions.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003estatsType\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\u003cp\u003eThe type of statistics, which is one of these values:\u003c/p\u003e\n                        \u003ctable\u003e\n                            \u003ccol /\u003e\n                            \u003ccol /\u003e\n                            \u003ctbody\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e0\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e1\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e2\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e3\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                            \u003c/tbody\u003e\n                        \u003c/table\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003esampleFraction\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\n                        \u003cp\u003eThe sampling percentage, expressed as \u003ccode\u003e0.0\u003c/code\u003e to \u003ccode\u003e1.0\u003c/code\u003e, \u003c/p\u003e\n                        \u003cul\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d0\u003c/code\u003e or \u003ccode\u003estatsType\u003d1\u003c/code\u003e (full statistics), this value is not used, and is shown as \u003ccode\u003e0\u003c/code\u003e.\u003c/li\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d2\u003c/code\u003e or \u003ccode\u003estatsType\u003d3\u003c/code\u003e, this value is the percentage or rows to be sampled. A value of \u003ccode\u003e0\u003c/code\u003e means no rows, and a value of \u003ccode\u003e1\u003c/code\u003e means all rows (same as full statistics).\u003c/li\u003e\n                        \u003c/ul\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n            \u003c/tbody\u003e\n        \u003c/table\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559593914748_-780537809",
+      "id": "20190603-203154_698454412",
+      "dateCreated": "2019-06-03 20:31:54.748",
+      "dateStarted": "2019-06-05 16:53:46.409",
+      "dateFinished": "2019-06-05 16:53:46.479",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%splicemachine\n\ncreate schema test;\nset schema test;\n\ncreate table index_example (i int primary key, j int);\ninsert into index_example values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);\ninsert into index_example select i+10,j+10 from index_example;\ninsert into index_example select i+20,j+20 from index_example;\ninsert into index_example select i+40,j+40 from index_example;\ninsert into index_example select i+80,j+80 from index_example;\ninsert into index_example select i+160,j+160 from index_example;\ninsert into index_example select i+320,j+320 from index_example;\ninsert into index_example select i+640,j+640 from index_example;\ninsert into index_example select i+1280,j+1280 from index_example;\ninsert into index_example select i+2560,j+2560 from index_example;\ninsert into index_example select i+6000,j+6000 from index_example;\ninsert into index_example select i+12000,j+12000 from index_example;\ninsert into index_example select i+24000,j+24000 from index_example;\ninsert into index_example select i+48000,j+48000 from index_example;\ninsert into index_example select i+96000,j+96000 from index_example;\ninsert into index_example select i+200000,j+200000 from index_example;\ninsert into index_example select i+400000,j+400000 from index_example;\ninsert into index_example select i+800000,j+800000 from index_example;\n\nanalyze table test.index_example;",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-05 16:58:05.181",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "1": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "21": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "schemaName": "string",
+                      "tableName": "string",
+                      "partition": "string",
+                      "rowsCollected": "string",
+                      "partitionSize": "string",
+                      "partitionCount": "string",
+                      "statsType": "string",
+                      "sampleFraction": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 0"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 20"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 40"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 80"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 160"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 320"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 640"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 1280"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 2560"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 5120"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 10240"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 20480"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 40960"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 81920"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 163840"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 327680"
+          },
+          {
+            "type": "TEXT",
+            "data": "Query executed successfully. Affected rows : 655360"
+          },
+          {
+            "type": "TABLE",
+            "data": "schemaName\ttableName\tpartition\trowsCollected\tpartitionSize\tpartitionCount\tstatsType\tsampleFraction\nTEST\tINDEX_EXAMPLE\t-All-\t1310720\t10485760\t1\t2\t0.0\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559324454407_397844553",
+      "id": "20190531-174054_903385761",
+      "dateCreated": "2019-05-31 17:40:54.407",
+      "dateStarted": "2019-06-05 16:58:05.212",
+      "dateFinished": "2019-06-05 16:59:40.551",
+      "status": "ABORT",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## For Further Exploration and Understanding\n\nTo gain a better understanding of using statistics, try using the `analyze` command as follows:\n\n1. Create a table with some data just like above example.\n2. Do an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\n3. Run analyze on the table\n4. Run explain plan again and verify that explain picked up the correct statistics.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-05 16:58:46.251",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Further Exploration and Understanding\u003c/h2\u003e\n\u003cp\u003eTo gain a better understanding of using statistics, try using the \u003ccode\u003eanalyze\u003c/code\u003e command as follows:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a table with some data just like above example.\u003c/li\u003e\n  \u003cli\u003eDo an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\u003c/li\u003e\n  \u003cli\u003eRun analyze on the table\u003c/li\u003e\n  \u003cli\u003eRun explain plan again and verify that explain picked up the correct statistics.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559753011949_6551904",
+      "id": "20190605-164331_2024415298",
+      "dateCreated": "2019-06-05 16:43:31.949",
+      "dateStarted": "2019-06-05 16:58:46.270",
+      "dateFinished": "2019-06-05 16:58:46.307",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\n\nThe next notebook in this class, [*Bulk Data Loading*](/#/notebook/2ECANGRHX), introduces and walks you through using our Bulk HFile Import mechanism for highly performant loading of data.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-05 16:46:28.440",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2ECANGRHX\"\u003e\u003cem\u003eBulk Data Loading\u003c/em\u003e\u003c/a\u003e, introduces and walks you through using our Bulk HFile Import mechanism for highly performant loading of data.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559324456512_1075891572",
+      "id": "20190531-174056_1259339058",
+      "dateCreated": "2019-05-31 17:40:56.512",
+      "dateStarted": "2019-06-05 16:46:28.441",
+      "dateFinished": "2019-06-05 16:46:28.482",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n",
       "user": "anonymous",
-      "dateUpdated": "2018-12-11 23:41:40.871",
-      "config": {
-        "editorMode": "ace/mode/sql"
-      },
+      "dateUpdated": "2019-06-05 16:46:28.401",
+      "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "apps": [],
-      "jobName": "paragraph_1544571700869_-2130429526",
-      "id": "20181211-234140_1772445909",
-      "dateCreated": "2018-12-11 23:41:40.869",
+      "jobName": "paragraph_1559753188398_-1341674862",
+      "id": "20190605-164628_1171801449",
+      "dateCreated": "2019-06-05 16:46:28.398",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Splice Machine Training / About / Our Training Classes",
-  "id": "2DWTR5ZBH",
+  "name": "Splice Machine Training /Advanced Developer/c. Statistics",
+  "id": "2EBE3CJTG",
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
@@ -69,8 +371,6 @@
     "splicemachine:shared_process": []
   },
   "config": {
-    "looknfeel": "default",
-    "personalizedMode": "false",
     "isZeppelinNotebookCronEnable": false
   },
   "info": {}
