@@ -70,7 +70,7 @@
     {
       "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Statistics*](/#/notebook/2EBE3CJTG), shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-05-31 17:38:19.396",
+      "dateUpdated": "2019-06-05 22:28:56.560",
       "config": {
         "colWidth": 12.0,
         "fontSize": 9.0,
@@ -102,9 +102,25 @@
       "jobName": "paragraph_1559324274735_1387458936",
       "id": "20190531-173754_560428775",
       "dateCreated": "2019-05-31 17:37:54.735",
-      "dateStarted": "2019-05-31 17:38:19.402",
-      "dateFinished": "2019-05-31 17:38:19.420",
+      "dateStarted": "2019-06-05 22:28:56.569",
+      "dateFinished": "2019-06-05 22:28:56.588",
       "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-05 22:28:56.546",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1559773736544_68253555",
+      "id": "20190605-222856_14242930",
+      "dateCreated": "2019-06-05 22:28:56.544",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],
