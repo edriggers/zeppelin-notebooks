@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:13:18.512",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003ePrepared Statements\u003c/h1\u003e\n\u003cp\u003eThis notebook teaches you how to use prepared statements for querying your databases. Prepared statements are faster to use when you have to run the same statement multiple times, with different data. That\u0026rsquo;s because the SQL in a prepared statement is validated only once, whereas if you just use a statement, the SQL is validated each time you execute the statement.\u003c/p\u003e\n\u003cp\u003eYou can use prepared statements in two ways in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003cem\u003eUsing sqlshell\u003c/em\u003e section below shows you how to use the Splice Machine sqlshell to prepare sql statements.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eUsing Java\u003c/em\u003e section below shows you how to prepare statements in Java.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003ePrepared Statements\u003c/h1\u003e\n\u003cp\u003eThis notebook teaches you how to use prepared statements for querying your databases. Prepared statements are faster to use when you have to run the same statement multiple times, with different data. That\u0026rsquo;s because the SQL in a prepared statement is validated only once, whereas if you just use a statement, the SQL is validated each time you execute the statement.\u003c/p\u003e\n\u003cp\u003eYou can use prepared statements in two ways in Splice Machine:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003cem\u003eUsing sqlshell\u003c/em\u003e section below shows you how to use the Splice Machine sqlshell to prepare sql statements.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eUsing Java\u003c/em\u003e section below shows you how to prepare statements in Java.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559318854520_124426603",
@@ -41,22 +41,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Using sqlshell for Prepared Statements\n\nUsing the Splice Machine sqlshell command line interpreter, `splice\u003e`, we can prepare and execute sql statements with ease. The sqlshell application is typically installed on every region server in your Splice Machine cluster and is also available in the standalone version of Splice Machine. \n\nHere is the syntax for the `PREPARE` statement:\n\n```\nPREPARE identifier AS string\n```\n\nwhere:\n\n   * `identifier` is the identifier to assign to the prepared statement.\n   * `string` is the command string to prepare.\n\nAfter a sql statement is prepared you can use the `execute` command to run the sql statement.\n\nHere is an example:\n\n```\nsplice\u003e prepare seeMenu as \u0027SELECT * FROM menu\u0027;\nsplice\u003e execute seeMenu;\nCOURSE    |ITEM                |PRICE\n-----------------------------------------------\nentree    |lamb chop           |14\ndessert   |creme brulee        |6\n```\n\nThe `prepare` command can accept variables which allows you to `execute` the statement for different values. For example:\n\n```\nsplice\u003e prepare addYears as \u0027update children set age \u003d age + ? where name \u003d ?\u0027;\nsplice\u003e execute addYears using \u0027values (10, \u0027\u0027Abigail\u0027\u0027)\u0027;\nsplice\u003e execute addYears using \u0027values (5, \u0027\u0027Wendy\u0027\u0027)\u0027;\nsplice\u003e execute addYears using \u0027values (2, \u0027\u0027Joshua\u0027\u0027)\u0027;\n```\n\n\u003cp class\u003d\"noteIcon\"\u003eThese commands will not work when executed from a third-party sql tool like *dbVisualizer* or *dBeaver*. The SQL syntax is specific to Splice Machine.\u003c/p\u003e",
+      "text": "%md\n\n## Using sqlshell for Prepared Statements\n\nUsing the Splice Machine sqlshell command line interpreter, `splice\u003e`, we can prepare and execute sql statements with ease. The sqlshell application is typically installed on every region server in your Splice Machine cluster and is also available in the standalone version of Splice Machine. \n\nHere is the syntax for the `PREPARE` statement:\n\n```\nPREPARE identifier AS string\n```\n\nwhere:\n\n   * `identifier` is the identifier to assign to the prepared statement.\n   * `string` is the command string to prepare.\n\nAfter a sql statement is prepared you can use the `execute` command to run the sql statement.\n\nHere is an example:\n\n```\nsplice\u003e prepare seeMenu as \u0027SELECT * FROM menu\u0027;\nsplice\u003e execute seeMenu;\nCOURSE    |ITEM                |PRICE\n-----------------------------------------------\nentree    |lamb chop           |14\ndessert   |creme brulee        |6\n```\n\nThe `prepare` command can accept variables which allows you to `execute` the statement for different values. For example:\n\n```\nsplice\u003e prepare addYears as \u0027update children set age \u003d age + ? where name \u003d ?\u0027;\nsplice\u003e execute addYears using \u0027values (10, \u0027\u0027Abigail\u0027\u0027)\u0027;\nsplice\u003e execute addYears using \u0027values (5, \u0027\u0027Wendy\u0027\u0027)\u0027;\nsplice\u003e execute addYears using \u0027values (2, \u0027\u0027Joshua\u0027\u0027)\u0027;\n```\n\n\u003cp class\u003d\"noteIcon\"\u003eThese commands will not work when executed from a third-party sql tool like \u003ci\u003edbVisualizer\u003c/i\u003e or \u003ci\u003edBeaver\u003c/i\u003e. The SQL syntax is specific to Splice Machine.\u003c/p\u003e",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 22:21:17.415",
+      "dateUpdated": "2019-06-10 19:52:07.269",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -67,7 +67,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing sqlshell for Prepared Statements\u003c/h2\u003e\n\u003cp\u003eUsing the Splice Machine sqlshell command line interpreter, \u003ccode\u003esplice\u0026gt;\u003c/code\u003e, we can prepare and execute sql statements with ease. The sqlshell application is typically installed on every region server in your Splice Machine cluster and is also available in the standalone version of Splice Machine. \u003c/p\u003e\n\u003cp\u003eHere is the syntax for the \u003ccode\u003ePREPARE\u003c/code\u003e statement:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ePREPARE identifier AS string\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003ewhere:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003eidentifier\u003c/code\u003e is the identifier to assign to the prepared statement.\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003estring\u003c/code\u003e is the command string to prepare.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAfter a sql statement is prepared you can use the \u003ccode\u003eexecute\u003c/code\u003e command to run the sql statement.\u003c/p\u003e\n\u003cp\u003eHere is an example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003esplice\u0026gt; prepare seeMenu as \u0026#39;SELECT * FROM menu\u0026#39;;\nsplice\u0026gt; execute seeMenu;\nCOURSE    |ITEM                |PRICE\n-----------------------------------------------\nentree    |lamb chop           |14\ndessert   |creme brulee        |6\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003eprepare\u003c/code\u003e command can accept variables which allows you to \u003ccode\u003eexecute\u003c/code\u003e the statement for different values. For example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003esplice\u0026gt; prepare addYears as \u0026#39;update children set age \u003d age + ? where name \u003d ?\u0026#39;;\nsplice\u0026gt; execute addYears using \u0026#39;values (10, \u0026#39;\u0026#39;Abigail\u0026#39;\u0026#39;)\u0026#39;;\nsplice\u0026gt; execute addYears using \u0026#39;values (5, \u0026#39;\u0026#39;Wendy\u0026#39;\u0026#39;)\u0026#39;;\nsplice\u0026gt; execute addYears using \u0026#39;values (2, \u0026#39;\u0026#39;Joshua\u0026#39;\u0026#39;)\u0026#39;;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThese commands will not work when executed from a third-party sql tool like *dbVisualizer* or *dBeaver*. The SQL syntax is specific to Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing sqlshell for Prepared Statements\u003c/h2\u003e\n\u003cp\u003eUsing the Splice Machine sqlshell command line interpreter, \u003ccode\u003esplice\u0026gt;\u003c/code\u003e, we can prepare and execute sql statements with ease. The sqlshell application is typically installed on every region server in your Splice Machine cluster and is also available in the standalone version of Splice Machine. \u003c/p\u003e\n\u003cp\u003eHere is the syntax for the \u003ccode\u003ePREPARE\u003c/code\u003e statement:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ePREPARE identifier AS string\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003ewhere:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003eidentifier\u003c/code\u003e is the identifier to assign to the prepared statement.\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003estring\u003c/code\u003e is the command string to prepare.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAfter a sql statement is prepared you can use the \u003ccode\u003eexecute\u003c/code\u003e command to run the sql statement.\u003c/p\u003e\n\u003cp\u003eHere is an example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003esplice\u0026gt; prepare seeMenu as \u0026#39;SELECT * FROM menu\u0026#39;;\nsplice\u0026gt; execute seeMenu;\nCOURSE    |ITEM                |PRICE\n-----------------------------------------------\nentree    |lamb chop           |14\ndessert   |creme brulee        |6\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003eprepare\u003c/code\u003e command can accept variables which allows you to \u003ccode\u003eexecute\u003c/code\u003e the statement for different values. For example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003esplice\u0026gt; prepare addYears as \u0026#39;update children set age \u003d age + ? where name \u003d ?\u0026#39;;\nsplice\u0026gt; execute addYears using \u0026#39;values (10, \u0026#39;\u0026#39;Abigail\u0026#39;\u0026#39;)\u0026#39;;\nsplice\u0026gt; execute addYears using \u0026#39;values (5, \u0026#39;\u0026#39;Wendy\u0026#39;\u0026#39;)\u0026#39;;\nsplice\u0026gt; execute addYears using \u0026#39;values (2, \u0026#39;\u0026#39;Joshua\u0026#39;\u0026#39;)\u0026#39;;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThese commands will not work when executed from a third-party sql tool like \u003ci\u003edbVisualizer\u003c/i\u003e or \u003ci\u003edBeaver\u003c/i\u003e. The SQL syntax is specific to Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -75,8 +75,8 @@
       "jobName": "paragraph_1559324926231_1728966443",
       "id": "20190531-174846_2042322629",
       "dateCreated": "2019-05-31 17:48:46.231",
-      "dateStarted": "2019-06-05 22:21:17.416",
-      "dateFinished": "2019-06-05 22:21:17.446",
+      "dateStarted": "2019-06-10 19:52:03.930",
+      "dateFinished": "2019-06-10 19:52:04.771",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -85,31 +85,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:22:35.818",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing Java for Prepared Statements\u003c/h2\u003e\n\u003cp\u003eYou can use the \u003ccode\u003ejava.sql.PreparedStatement\u003c/code\u003e java class to prepare sql statements for execution in any java application. \u003c/p\u003e\n\u003cp\u003eHere is an example of a java method that uses a prepared statement to execute a sql statement:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003epublic static void GET_NUM_ORDERS(int storeNum, ResultSet[] rs) throws SQLException {\n\tConnection conn \u003d DriverManager.getConnection(\u0026quot;jdbc:default:connection\u0026quot;);\n\n\tString query \u003d \u0026quot;select count(o_orderkey) from orders \u0026quot; +\n\t\t\t\t\u0026quot;where o_custkey \u003d ?\u0026quot;;\n\n\tPreparedStatement pstmt \u003d conn.prepareStatement(query);\n\tpstmt.setInt(1, storeNum);\n\n\trs[0] \u003d pstmt.executeQuery();\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis method uses a \u003ccode\u003ejava.sql.Connection\u003c/code\u003e which is retrieved from the \u003ccode\u003eDriverManager\u003c/code\u003e to return a prepared statement for the query. A PreparedStatement object \u003ccode\u003epstmt\u003c/code\u003e is created and a value is set using the \u003ccode\u003esetInt\u003c/code\u003e method. Finally, the query is executed using the \u003ccode\u003eexecuteQuery\u003c/code\u003e method.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing Java for Prepared Statements\u003c/h2\u003e\n\u003cp\u003eYou can use the \u003ccode\u003ejava.sql.PreparedStatement\u003c/code\u003e java class to prepare sql statements for execution in any java application. \u003c/p\u003e\n\u003cp\u003eHere is an example of a java method that uses a prepared statement to execute a sql statement:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003epublic static void GET_NUM_ORDERS(int storeNum, ResultSet[] rs) throws SQLException {\n\tConnection conn \u003d DriverManager.getConnection(\u0026quot;jdbc:default:connection\u0026quot;);\n\n\tString query \u003d \u0026quot;select count(o_orderkey) from orders \u0026quot; +\n\t\t\t\t\u0026quot;where o_custkey \u003d ?\u0026quot;;\n\n\tPreparedStatement pstmt \u003d conn.prepareStatement(query);\n\tpstmt.setInt(1, storeNum);\n\n\trs[0] \u003d pstmt.executeQuery();\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThis method uses a \u003ccode\u003ejava.sql.Connection\u003c/code\u003e which is retrieved from the \u003ccode\u003eDriverManager\u003c/code\u003e to return a prepared statement for the query. A PreparedStatement object \u003ccode\u003epstmt\u003c/code\u003e is created and a value is set using the \u003ccode\u003esetInt\u003c/code\u003e method. Finally, the query is executed using the \u003ccode\u003eexecuteQuery\u003c/code\u003e method.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559744971519_-1161649061",
@@ -123,18 +123,20 @@
     {
       "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*User-Defined Functions and Procedures*](/#/notebook/2ECMJGS6F), walks you through creating, using, and modifying functions and procedures that you can use for complex database queries.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-05-31 17:48:52.111",
+      "dateUpdated": "2019-06-10 19:52:31.148",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true,
+        "enabled": false,
         "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
+          "editOnDblClick": true,
+          "language": "markdown",
+          "completionSupport": false
         },
-        "editorMode": "ace/mode/sql",
-        "editorHide": true
+        "colWidth": 12.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
@@ -153,8 +155,8 @@
       "jobName": "paragraph_1559324891285_-884062100",
       "id": "20190531-174811_1528277566",
       "dateCreated": "2019-05-31 17:48:11.285",
-      "dateStarted": "2019-05-31 17:48:42.326",
-      "dateFinished": "2019-05-31 17:48:42.339",
+      "dateStarted": "2019-06-10 19:52:26.086",
+      "dateFinished": "2019-06-10 19:52:26.568",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

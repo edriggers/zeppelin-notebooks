@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 16:42:56.902",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true,
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": true
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eIntroduction to Splice Machine Advanced Developer Training\u003c/h1\u003e\n\u003cp\u003eThis class is recommended for query writers, ETL processors, and developers who are working with Splice Machine. \u003c/p\u003e\n\u003cp\u003eTo understand this content, you need to have first completed our \u003cem\u003eSplice Machine Developer Training, Part I\u003c/em\u003e and \u003cem\u003eSplice Machine Developer Training, Part II\u003c/em\u003e classes.\u003c/p\u003e\n\u003cp\u003eYou can expect to spend 2-3 hours completing this class, which contains the following sequence of notebooks:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e1.\u003c/td\u003e\n            \u003ctd\u003eThis class starts with our \u003ca href\u003d\"/#/notebook/2ED2G715J\"\u003e\u003cem\u003eArchitecture\u003c/em\u003e\u003c/a\u003e notebook, which will give you and understanding of the architecture of Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e2.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EBE3CJTG\"\u003e\u003cem\u003eStatistics\u003c/em\u003e\u003c/a\u003e notebook shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e3.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2ECANGRHX\"\u003e\u003cem\u003eBulk Data Loading\u003c/em\u003e\u003c/a\u003e notebook introduces and walks you through using our Bulk HFile Import mechanism for highly performant loading of data.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e4.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2ED6JR671\"\u003e\u003cem\u003eTransactions in Splice Machine\u003c/em\u003e\u003c/a\u003e notebook teaches you how transactions are processed in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e5.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EETJQH1J\"\u003e\u003cem\u003eQuery Optimization\u003c/em\u003e\u003c/a\u003e notebook shows you advanced optimization techniques for boosting query performance.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e6.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EBF46WCA\"\u003e\u003cem\u003ePrepared Statements\u003c/em\u003e\u003c/a\u003e notebook teaches you how to use prepared statements for querying your databases.\u003c/td\u003e\n        \u003c/tr\u003e       \n        \u003ctr\u003e\n            \u003ctd\u003e7.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2ECMJGS6F\"\u003e\u003cem\u003eUser-Defined Functions and Procedures\u003c/em\u003e\u003c/a\u003e notebook walks you through creating, using, and modifying functions and procedures that you can use for complex database queries.\u003c/td\u003e\n        \u003c/tr\u003e       \n        \u003ctr\u003e\n            \u003ctd\u003e8.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EECKNU39\"\u003e\u003cem\u003eUsing spark-submit with the Native Spark DataSource\u003c/em\u003e\u003c/a\u003e notebook shows you how to take advantage of the Splice Machine Native Spark DataSource when running apps with spark-submit.\u003c/td\u003e\n        \u003c/tr\u003e       \n        \u003ctr\u003e\n            \u003ctd\u003e9.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EDNZACZA\"\u003e\u003cem\u003eExercises for This Class\u003c/em\u003e\u003c/a\u003e notebook contains a number of exercises that you should complete to test your understanding of the content in this class.\u003c/td\u003e\n        \u003c/tr\u003e       \n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eNote that each notebook contains a link to the next notebook in the sequence, and many of the notebooks also contain links to related pages in our Splice Machine Documentation web.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eIntroduction to Splice Machine Advanced Developer Training\u003c/h1\u003e\n\u003cp\u003eThis class is recommended for query writers, ETL processors, and developers who are working with Splice Machine. \u003c/p\u003e\n\u003cp\u003eTo understand this content, you need to have first completed our \u003cem\u003eSplice Machine Developer Training, Part I\u003c/em\u003e and \u003cem\u003eSplice Machine Developer Training, Part II\u003c/em\u003e classes.\u003c/p\u003e\n\u003cp\u003eYou can expect to spend 2-3 hours completing this class, which contains the following sequence of notebooks:\u003c/p\u003e\n\u003ctable class\u003d\"splicezepOddEven\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e1.\u003c/td\u003e\n            \u003ctd\u003eThis class starts with our \u003ca href\u003d\"/#/notebook/2ED2G715J\"\u003e\u003cem\u003eArchitecture\u003c/em\u003e\u003c/a\u003e notebook, which will give you and understanding of the architecture of Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e2.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EBE3CJTG\"\u003e\u003cem\u003eStatistics\u003c/em\u003e\u003c/a\u003e notebook shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e3.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2ECANGRHX\"\u003e\u003cem\u003eBulk Data Loading\u003c/em\u003e\u003c/a\u003e notebook introduces and walks you through using our Bulk HFile Import mechanism for highly performant loading of data.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e4.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2ED6JR671\"\u003e\u003cem\u003eTransactions in Splice Machine\u003c/em\u003e\u003c/a\u003e notebook teaches you how transactions are processed in Splice Machine.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e5.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EETJQH1J\"\u003e\u003cem\u003eQuery Optimization\u003c/em\u003e\u003c/a\u003e notebook shows you advanced optimization techniques for boosting query performance.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e6.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EBF46WCA\"\u003e\u003cem\u003ePrepared Statements\u003c/em\u003e\u003c/a\u003e notebook teaches you how to use prepared statements for querying your databases.\u003c/td\u003e\n        \u003c/tr\u003e       \n        \u003ctr\u003e\n            \u003ctd\u003e7.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2ECMJGS6F\"\u003e\u003cem\u003eUser-Defined Functions and Procedures\u003c/em\u003e\u003c/a\u003e notebook walks you through creating, using, and modifying functions and procedures that you can use for complex database queries.\u003c/td\u003e\n        \u003c/tr\u003e       \n        \u003ctr\u003e\n            \u003ctd\u003e8.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EECKNU39\"\u003e\u003cem\u003eUsing spark-submit with the Native Spark DataSource\u003c/em\u003e\u003c/a\u003e notebook shows you how to take advantage of the Splice Machine Native Spark DataSource when running apps with spark-submit.\u003c/td\u003e\n        \u003c/tr\u003e       \n        \u003ctr\u003e\n            \u003ctd\u003e9.\u003c/td\u003e\n            \u003ctd\u003eThe \u003ca href\u003d\"/#/notebook/2EDNZACZA\"\u003e\u003cem\u003eExercises for This Class\u003c/em\u003e\u003c/a\u003e notebook contains a number of exercises that you should complete to test your understanding of the content in this class.\u003c/td\u003e\n        \u003c/tr\u003e       \n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eNote that each notebook contains a link to the next notebook in the sequence, and many of the notebooks also contain links to related pages in our Splice Machine Documentation web.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559318657186_-1965328793",
@@ -45,31 +45,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-05-31 17:36:43.174",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003ePlease start this class with the \u003ca href\u003d\"/#/notebook/2ED2G715J\"\u003e\u003cem\u003eArchitecture\u003c/em\u003e\u003c/a\u003e notebook, which provides an overview of the architecture of Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003ePlease start this class with the \u003ca href\u003d\"/#/notebook/2ED2G715J\"\u003e\u003cem\u003eArchitecture\u003c/em\u003e\u003c/a\u003e notebook, which provides an overview of the architecture of Splice Machine.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559322773928_-575701144",
@@ -79,29 +79,16 @@
       "dateFinished": "2019-05-31 17:36:43.195",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2019-05-31 17:36:43.152",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1559324203149_-437316380",
-      "id": "20190531-173643_744350658",
-      "dateCreated": "2019-05-31 17:36:43.149",
-      "status": "READY",
-      "progressUpdateIntervalMs": 500
     }
   ],
   "name": "Splice Machine Training /Advanced Developer/a. Introduction to Advanced Developer",
   "id": "2EBGGEE1F",
   "noteParams": {},
   "noteForms": {},
-  "angularObjects": {},
+  "angularObjects": {
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
+  },
   "config": {
     "isZeppelinNotebookCronEnable": false
   },

@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-05-31 17:39:43.399",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eArchitecture\u003c/h1\u003e\n\u003cp\u003eThis notebook provides an overview of the architecture of Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eArchitecture\u003c/h1\u003e\n\u003cp\u003eThis notebook provides an overview of the architecture of Splice Machine.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559318699553_1889703102",
@@ -45,16 +45,16 @@
       "user": "anonymous",
       "dateUpdated": "2019-05-31 17:38:04.825",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
           "editOnDblClick": false,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "editorMode": "ace/mode/sql"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -72,31 +72,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:28:56.560",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EBE3CJTG\"\u003e\u003cem\u003eStatistics\u003c/em\u003e\u003c/a\u003e, shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EBE3CJTG\"\u003e\u003cem\u003eStatistics\u003c/em\u003e\u003c/a\u003e, shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559324274735_1387458936",
@@ -105,22 +105,6 @@
       "dateStarted": "2019-06-05 22:28:56.569",
       "dateFinished": "2019-06-05 22:28:56.588",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n",
-      "user": "anonymous",
-      "dateUpdated": "2019-06-05 22:28:56.546",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "apps": [],
-      "jobName": "paragraph_1559773736544_68253555",
-      "id": "20190605-222856_14242930",
-      "dateCreated": "2019-06-05 22:28:56.544",
-      "status": "READY",
       "progressUpdateIntervalMs": 500
     }
   ],

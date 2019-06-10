@@ -5,31 +5,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-07 22:43:05.113",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUser-Defined Functions and Procedures\u003c/h1\u003e\n\u003cp\u003eThis notebook walks you through creating, using, and modifying functions and procedures that you can use for complex database queries. We will cover the following topics:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eFunctions vs. Procedures\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eYour Development Environment\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eLocal Development of the Custom Code in an IDE\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJar File Deployment\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eInstall and Define Your Functions and Procedures\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning Your User-Defined Functions and Procedures\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eYou can create custom user-defined functions and procedures for your Splice Machine database instance; and then call them as needed from your SQL.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThis notebook describes how to create custom user-defined functions and stored procedures. You will need to adapt this to your own development environment.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eUser-Defined Functions and Procedures\u003c/h1\u003e\n\u003cp\u003eThis notebook walks you through creating, using, and modifying functions and procedures that you can use for complex database queries. We will cover the following topics:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eFunctions vs. Procedures\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eYour Development Environment\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eLocal Development of the Custom Code in an IDE\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eJar File Deployment\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eInstall and Define Your Functions and Procedures\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRunning Your User-Defined Functions and Procedures\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eYou can create custom user-defined functions and procedures for your Splice Machine database instance; and then call them as needed from your SQL.\u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eThis notebook describes how to create custom user-defined functions and stored procedures. You will need to adapt this to your own development environment.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559318883190_418177857",
@@ -43,18 +43,18 @@
     {
       "text": "%md\n\n## Functions vs. Procedures\n\nFirst, let’s define what a function is, what a procedure is, and their similarities and differences. Functions are executed as part of a sql statement.  \n\nFor example: \n\n\u003cpre\u003e\nselect max(salary) from employees\n\u003c/pre\u003e\n\nThe `max()` would be the function that is being executed.\n\nProcedures are executed on their own with the `call` command.  For example: \n\n\u003cpre\u003e\ncall syscs_util.vacuum()\n\u003c/pre\u003e\n\nFunctions can be executed from a trigger, from a sql select statement, and within a sql expression. They cannot return result sets, process in or out parameters, be executed in insert/update/delete statements, nor be executed from any DDL statements.\n\nProcedures are more powerful in that you can do everything that a function cannot do. The only thing that a procedure cannot do is be executed from within a sql statement.\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eFeature\u003c/th\u003e\n            \u003cth\u003eFunctions\u003c/th\u003e\n            \u003cth\u003eProcedures\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eExecute in a trigger\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eReturn result set(s)\u003c/td\u003e\n            \u003ctd\u003eno\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eProcess OUT / INOUT params\u003c/td\u003e\n            \u003ctd\u003eno\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eExecute SQL select\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eExecute SQL update/insert/delete\u003c/td\u003e\n            \u003ctd\u003eno\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eExecute DDL (create/drop)\u003c/td\u003e\n            \u003ctd\u003eno\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eExecute in a SQL expression\u003c/td\u003e\n            \u003ctd\u003eyes\u003c/td\u003e\n            \u003ctd\u003eno\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-07 22:42:58.264",
+      "dateUpdated": "2019-06-10 19:53:50.065",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
         "editorMode": "ace/mode/sql",
-        "editorHide": true
+        "fontSize": 9.0,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -73,8 +73,8 @@
       "jobName": "paragraph_1559918725159_-1688328864",
       "id": "20190607-144525_1225033015",
       "dateCreated": "2019-06-07 14:45:25.159",
-      "dateStarted": "2019-06-07 15:52:48.920",
-      "dateFinished": "2019-06-07 15:52:48.934",
+      "dateStarted": "2019-06-10 19:53:36.924",
+      "dateFinished": "2019-06-10 19:53:37.052",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -83,31 +83,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-07 22:42:50.477",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eYour Development Environment\u003c/h2\u003e\n\u003cp\u003eThe \u003cem\u003eenvironment\u003c/em\u003e in which your custom function or stored procedure code is developed may change depending upon your need: we recommend that you flesh out the actual functionality of your custom code in a local (standalone) Splice Machine envirmonment. Once you have refined your code and it behaves to your satisfaction in your local environment, you can then re-deploy the developed code to your target instance. \u003c/p\u003e\n\u003cp\u003eThis notebook covers all of these steps - though as you will see, these steps occur OUTSIDE of an actual Notebook when running in a local environment. The examples in this notebook also assume that you are running a docker image of Splice Machine. We will provide you with the \u003ccode\u003edocker\u003c/code\u003e commands that you will need.\u003c/p\u003e\n\u003ch3\u003ePrerequisites\u003c/h3\u003e\n\u003cp\u003eSince the development of the custom functions/procedures will occur on your local machine there are some pre-requisite software requirements that you will need.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eJDK 1.8\u003c/li\u003e\n  \u003cli\u003eInteractive Development Environment (IDE) such as IntelliJ, Eclipse, or VS Code\u003c/li\u003e\n  \u003cli\u003eMaven 3.3.9+\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eYour Development Environment\u003c/h2\u003e\n\u003cp\u003eThe \u003cem\u003eenvironment\u003c/em\u003e in which your custom function or stored procedure code is developed may change depending upon your need: we recommend that you flesh out the actual functionality of your custom code in a local (standalone) Splice Machine envirmonment. Once you have refined your code and it behaves to your satisfaction in your local environment, you can then re-deploy the developed code to your target instance. \u003c/p\u003e\n\u003cp\u003eThis notebook covers all of these steps - though as you will see, these steps occur OUTSIDE of an actual Notebook when running in a local environment. The examples in this notebook also assume that you are running a docker image of Splice Machine. We will provide you with the \u003ccode\u003edocker\u003c/code\u003e commands that you will need.\u003c/p\u003e\n\u003ch3\u003ePrerequisites\u003c/h3\u003e\n\u003cp\u003eSince the development of the custom functions/procedures will occur on your local machine there are some pre-requisite software requirements that you will need.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eJDK 1.8\u003c/li\u003e\n  \u003cli\u003eInteractive Development Environment (IDE) such as IntelliJ, Eclipse, or VS Code\u003c/li\u003e\n  \u003cli\u003eMaven 3.3.9+\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542396049297_1356453695",
@@ -123,31 +123,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-07 22:42:41.036",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 8.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 8.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLocal Development of the Custom Code in an IDE\u003c/h2\u003e\n\u003cp\u003eAs mentioned above, Splice Machine strongly recommends that you develop your custom Java code using an Integrated Development Environment (IDE) on your local machine. That way you can develop, test, and tune locally, before deploying to a full cluster. The product of your code should be a JDK 1.8-compatible JAR file.\u003c/p\u003e\n\u003cp\u003eWe\u0026rsquo;ll show you one example of a custom function and a custom procedure.\u003c/p\u003e\n\u003cp\u003eThe following steps are for developing your custom code using the IntelliJ IDEA on MacOS:\u003c/p\u003e\n\u003ch3\u003eSetting Up Your Project\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003cbr/\u003e1. Select \u003ccode\u003eFile -\u0026gt; New -\u0026gt; Project...\u003c/code\u003e\u003cbr/\u003e2. Choose \u003ccode\u003eJava with 1.8\u003c/code\u003e as the Project SDK\u003cbr/\u003e3. Skip creating from a template unless you prefer to use one\u003cbr/\u003e4. Give your project a name and location; for example: \u003ccode\u003eCompanyACustom1\u003c/code\u003e\u003cbr/\u003e5. If desired, create a new package (\u003ccode\u003eFile -\u0026gt; New -\u0026gt; Package\u003c/code\u003e), such as \u003ccode\u003ecom.splicemachine.companya\u003c/code\u003e\u003c/p\u003e\n\u003ch3\u003eConfiguring to output a JAR file\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eSelect \u003ccode\u003eFile -\u0026gt; Project Structure...\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eSelect \u003ccode\u003eArtifacts\u003c/code\u003e, and click \u003ccode\u003e+\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eChoose \u003ccode\u003eJAR -\u0026gt; From modules with dependencies\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eCheck \u003ccode\u003eBuild on make\u003c/code\u003e and then click \u003ccode\u003eOK\u003c/code\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3\u003eCoding your function or procedure\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a file by right-clicking on your src or package folder, and selecting \u003ccode\u003eNew -\u0026gt; Java Class\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003ePaste in code like the following:\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003epackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n    public static String replacestr(String source, String find, String replace) {\n        return source.replace(find, replace);\n    }\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\u0026quot;jdbc:default:connection\u0026quot;)) {\n\n            String incrementSQL \u003d \u0026quot;update SPLICE.INCREMENTTEST set i \u003d i + 1\u0026quot;;\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003eBuild your JAR file\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003e\u003ccode\u003eBuild -\u0026gt; Artifacts... JAR\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eUse your command line interface to navigate to where the JAR file is created, e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eYou are now ready to deploy your JAR file to test!\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLocal Development of the Custom Code in an IDE\u003c/h2\u003e\n\u003cp\u003eAs mentioned above, Splice Machine strongly recommends that you develop your custom Java code using an Integrated Development Environment (IDE) on your local machine. That way you can develop, test, and tune locally, before deploying to a full cluster. The product of your code should be a JDK 1.8-compatible JAR file.\u003c/p\u003e\n\u003cp\u003eWe\u0026rsquo;ll show you one example of a custom function and a custom procedure.\u003c/p\u003e\n\u003cp\u003eThe following steps are for developing your custom code using the IntelliJ IDEA on MacOS:\u003c/p\u003e\n\u003ch3\u003eSetting Up Your Project\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003cbr/\u003e1. Select \u003ccode\u003eFile -\u0026gt; New -\u0026gt; Project...\u003c/code\u003e\u003cbr/\u003e2. Choose \u003ccode\u003eJava with 1.8\u003c/code\u003e as the Project SDK\u003cbr/\u003e3. Skip creating from a template unless you prefer to use one\u003cbr/\u003e4. Give your project a name and location; for example: \u003ccode\u003eCompanyACustom1\u003c/code\u003e\u003cbr/\u003e5. If desired, create a new package (\u003ccode\u003eFile -\u0026gt; New -\u0026gt; Package\u003c/code\u003e), such as \u003ccode\u003ecom.splicemachine.companya\u003c/code\u003e\u003c/p\u003e\n\u003ch3\u003eConfiguring to output a JAR file\u003c/h3\u003e\n\u003cp\u003eInside of IntelliJ IDEA, do the following:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eSelect \u003ccode\u003eFile -\u0026gt; Project Structure...\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eSelect \u003ccode\u003eArtifacts\u003c/code\u003e, and click \u003ccode\u003e+\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eChoose \u003ccode\u003eJAR -\u0026gt; From modules with dependencies\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eCheck \u003ccode\u003eBuild on make\u003c/code\u003e and then click \u003ccode\u003eOK\u003c/code\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3\u003eCoding your function or procedure\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a file by right-clicking on your src or package folder, and selecting \u003ccode\u003eNew -\u0026gt; Java Class\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003ePaste in code like the following:\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003epackage com.splicemachine.companya;\n\nimport java.sql.SQLException;\nimport java.sql.Connection;\nimport java.sql.DriverManager;\nimport java.sql.PreparedStatement;\n\n\npublic class Custom1 {\n\n    public static String replacestr(String source, String find, String replace) {\n        return source.replace(find, replace);\n    }\n\n    public static void customIncrement () throws SQLException {\n        try (Connection con \u003d DriverManager.getConnection(\u0026quot;jdbc:default:connection\u0026quot;)) {\n\n            String incrementSQL \u003d \u0026quot;update SPLICE.INCREMENTTEST set i \u003d i + 1\u0026quot;;\n\n            try (PreparedStatement ps \u003d con.prepareStatement(incrementSQL)) {\n                int resultSet \u003d ps.executeUpdate();\n            } catch (SQLException e) {\n                con.rollback();\n                e.printStackTrace();\n                throw e;\n            }\n        }\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003eBuild your JAR file\u003c/h3\u003e\n\u003col\u003e\n  \u003cli\u003e\u003ccode\u003eBuild -\u0026gt; Artifacts... JAR\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eUse your command line interface to navigate to where the JAR file is created, e.g. out/artifacts/CompanyACustom1_jar/Custom1.jar\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eYou are now ready to deploy your JAR file to test!\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542396049298_-265258066",
@@ -163,31 +163,31 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 05:39:36.222",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 4.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDevelopment Guidelines\u003c/h2\u003e\n\u003cp\u003eBefore we develop the code and deploy the JAR file, it is worth going through some simple best practices:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eIt\u0026rsquo;s useful for code organization to use a package for the code, e.g. com.splicemachine.yourcompanyname.\u003c/li\u003e\n  \u003cli\u003eNotice you don\u0026rsquo;t need a \u003cem\u003emain\u003c/em\u003e code block in your class, because you\u0026rsquo;ll be directly calling the class\u0026rsquo;s specific method.\u003c/li\u003e\n  \u003cli\u003eThe example we\u0026rsquo;ve shown is a stored procedure, which means it does not return any results. When you create a function, it must return a result.\u003c/li\u003e\n  \u003cli\u003eYou need to ensure that your method throws \u003ccode\u003eSQLException\u003c/code\u003e if SQL is being executed. Be sure to use \u003ccode\u003etry/catch\u003c/code\u003e blocks similar to those shown in the example, to deal with any possible run-time exceptions.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDevelopment Guidelines\u003c/h2\u003e\n\u003cp\u003eBefore we develop the code and deploy the JAR file, it is worth going through some simple best practices:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eIt\u0026rsquo;s useful for code organization to use a package for the code, e.g. com.splicemachine.yourcompanyname.\u003c/li\u003e\n  \u003cli\u003eNotice you don\u0026rsquo;t need a \u003cem\u003emain\u003c/em\u003e code block in your class, because you\u0026rsquo;ll be directly calling the class\u0026rsquo;s specific method.\u003c/li\u003e\n  \u003cli\u003eThe example we\u0026rsquo;ve shown is a stored procedure, which means it does not return any results. When you create a function, it must return a result.\u003c/li\u003e\n  \u003cli\u003eYou need to ensure that your method throws \u003ccode\u003eSQLException\u003c/code\u003e if SQL is being executed. Be sure to use \u003ccode\u003etry/catch\u003c/code\u003e blocks similar to those shown in the example, to deal with any possible run-time exceptions.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542396049299_394994822",
@@ -197,22 +197,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Useful Docker Commands\n\nThis training notebook is hosted from a docker image and runs the standalone version of Splice Machine. To test and run your custom functions and procedures you will need to copy your jar file to the docker image. Here are some useful docker commands:\n\n### List running docker containers\n\n\u003cpre\u003e\ndocker ps -a\n\u003c/pre\u003e\n\n### Connect to a container\n\n\u003cpre\u003e\ndocker exec -it \u003ccontainer-id\u003e bash\n\u003c/pre\u003e\n\nThe `container-id` running the training notebooks is `spliceserver`\n\n### Copy a file to a container\n\n\u003cpre\u003e\ndocker cp \u003cfilename\u003e \u003ccontainer-id\u003e:\u003cpath-in-container\u003e\n\u003c/pre\u003e\n\nThe `path-in-container` is the full path inside the container.\n",
+      "text": "%md\n## Useful Docker Commands\n\nThis training notebook is hosted from a docker image and runs the standalone version of Splice Machine. To test and run your custom functions and procedures you will need to copy your jar file to the docker image. Here are some useful docker commands:\n\n### List running docker containers\n\n```\ndocker ps -a\n```\n\n### Connect to a container\n\n```\ndocker exec -it \u003ccontainer-id\u003e bash\n```\n\nThe `container-id` running the training notebooks is `spliceserver`\n\n### Copy a file to a container\n\n```\ndocker cp \u003cfile-name\u003e \u003ccontainer-id\u003e:\u003cpath-in-container\u003e\n```\n\nThe `path-in-container` is the full path inside the container.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-07 22:42:37.147",
+      "dateUpdated": "2019-06-10 19:57:15.664",
       "config": {
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 4.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 4.0
       },
       "settings": {
         "params": {},
@@ -223,7 +223,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUseful Docker Commands\u003c/h2\u003e\n\u003cp\u003eThis training notebook is hosted from a docker image and runs the standalone version of Splice Machine. To test and run your custom functions and procedures you will need to copy your jar file to the docker image. Here are some useful docker commands:\u003c/p\u003e\n\u003ch3\u003eList running docker containers\u003c/h3\u003e\n\u003cpre\u003e\ndocker ps -a\n\u003c/pre\u003e\n\u003ch3\u003eConnect to a container\u003c/h3\u003e\n\u003cpre\u003e\ndocker exec -it \u003ccontainer-id\u003e bash\n\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003econtainer-id\u003c/code\u003e running the training notebooks is \u003ccode\u003espliceserver\u003c/code\u003e\u003c/p\u003e\n\u003ch3\u003eCopy a file to a container\u003c/h3\u003e\n\u003cpre\u003e\ndocker cp \u003cfilename\u003e \u003ccontainer-id\u003e:\u003cpath-in-container\u003e\n\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003epath-in-container\u003c/code\u003e is the full path inside the container.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUseful Docker Commands\u003c/h2\u003e\n\u003cp\u003eThis training notebook is hosted from a docker image and runs the standalone version of Splice Machine. To test and run your custom functions and procedures you will need to copy your jar file to the docker image. Here are some useful docker commands:\u003c/p\u003e\n\u003ch3\u003eList running docker containers\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003edocker ps -a\n\u003c/code\u003e\u003c/pre\u003e\n\u003ch3\u003eConnect to a container\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003edocker exec -it \u0026lt;container-id\u0026gt; bash\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003econtainer-id\u003c/code\u003e running the training notebooks is \u003ccode\u003espliceserver\u003c/code\u003e\u003c/p\u003e\n\u003ch3\u003eCopy a file to a container\u003c/h3\u003e\n\u003cpre\u003e\u003ccode\u003edocker cp \u0026lt;file-name\u0026gt; \u0026lt;container-id\u0026gt;:\u0026lt;path-in-container\u0026gt;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eThe \u003ccode\u003epath-in-container\u003c/code\u003e is the full path inside the container.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -231,8 +231,8 @@
       "jobName": "paragraph_1559927127340_-469168726",
       "id": "20190607-170527_901492975",
       "dateCreated": "2019-06-07 17:05:27.340",
-      "dateStarted": "2019-06-07 17:28:19.754",
-      "dateFinished": "2019-06-07 17:28:19.761",
+      "dateStarted": "2019-06-10 19:57:15.671",
+      "dateFinished": "2019-06-10 19:57:15.791",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -241,31 +241,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-07 22:42:29.173",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eJAR File Deployment\u003c/h2\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve got your code up and running you can deploy your jar file to your instance of Splice Machine. We will show you how to deploy your jar file under the following 3 scenarios:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eLocally\u003c/em\u003e running instance\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDocker\u003c/em\u003e instance\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCluster\u003c/em\u003e instance\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3\u003eLocally\u003c/h3\u003e\n\u003cp\u003eYour jar file can be located anywhere in your local filesystem. The \u003ccode\u003e\u0026lt;your-full-path-to\u0026gt;\u003c/code\u003e in the command below should point to your local filesystem.\u003c/p\u003e\n\u003ch3\u003eDocker\u003c/h3\u003e\n\u003cp\u003eYour jar file needs to be copied into the docker container running Splice Machine. The \u003ccode\u003e\u0026lt;your-full-path-to\u0026gt;\u003c/code\u003e in the command below should point to the docker filesystem.\u003c/p\u003e\n\u003ch3\u003eCluster\u003c/h3\u003e\n\u003cp\u003eYour jar file needs to be copied to HDFS. The \u003ccode\u003e\u0026lt;your-full-path-to\u0026gt;\u003c/code\u003e in the command below should point to a location in HDFS.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eJAR File Deployment\u003c/h2\u003e\n\u003cp\u003eOnce you\u0026rsquo;ve got your code up and running you can deploy your jar file to your instance of Splice Machine. We will show you how to deploy your jar file under the following 3 scenarios:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eLocally\u003c/em\u003e running instance\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eDocker\u003c/em\u003e instance\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCluster\u003c/em\u003e instance\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch3\u003eLocally\u003c/h3\u003e\n\u003cp\u003eYour jar file can be located anywhere in your local filesystem. The \u003ccode\u003e\u0026lt;your-full-path-to\u0026gt;\u003c/code\u003e in the command below should point to your local filesystem.\u003c/p\u003e\n\u003ch3\u003eDocker\u003c/h3\u003e\n\u003cp\u003eYour jar file needs to be copied into the docker container running Splice Machine. The \u003ccode\u003e\u0026lt;your-full-path-to\u0026gt;\u003c/code\u003e in the command below should point to the docker filesystem.\u003c/p\u003e\n\u003ch3\u003eCluster\u003c/h3\u003e\n\u003cp\u003eYour jar file needs to be copied to HDFS. The \u003ccode\u003e\u0026lt;your-full-path-to\u0026gt;\u003c/code\u003e in the command below should point to a location in HDFS.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542396049299_-566675317",
@@ -281,31 +281,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-07 22:42:18.437",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInstall and Define Your Functions and Procedures\u003c/h2\u003e\n\u003cp\u003eOnce the jar file has been deployed you will need to execute the commands below using the Splice Machine sqlshell command line interpreter, \u003ccode\u003esplice\u0026gt;\u003c/code\u003e, IN THE ENVIRONMENT (not in Zeppelin) to align to your custom function/procedure and environment:\u003c/p\u003e\n\u003cp\u003eFirst, you will need to install your jar file. This only needs to be executed once for each jar file you are deploying. Secondarily we need to modify the classpath to include the new jar file:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCALL SQLJ.INSTALL_JAR(\u0026#39;\u0026lt;your-full-path-to\u0026gt;/Custom1.jar\u0026#39;, \u0026#39;SPLICE.Custom1\u0026#39;, 0);\nCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(\u0026#39;derby.database.classpath\u0026#39;, \u0026#39;SPLICE.custom1\u0026#39;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eLastly we need to define the custom \u003ccode\u003ereplacestr\u003c/code\u003e function and \u003ccode\u003ecustomIncrement\u003c/code\u003e procedure:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCREATE FUNCTION SPLICE.replacestr(val1 varchar(100), val2 varchar(100), val3 varchar(100)) RETURNS varchar(100)\nLANGUAGE JAVA\nPARAMETER STYLE JAVA\nNO SQL\nEXTERNAL NAME \u0026#39;com.splicemachine.companya.Custom1.replacestr\u0026#39;;\n\nCREATE PROCEDURE SPLICE.customincrement() \nPARAMETER STYLE JAVA \nMODIFIES SQL DATA \nLANGUAGE JAVA \nDYNAMIC RESULT SETS 0 \nEXTERNAL NAME \u0026#39;com.splicemachine.companya.Custom1.customIncrement\u0026#39;;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp class\u003d\"noteIcon\"\u003ePlease refer to our \u003ca href\u003d\"https://doc.splicemachine.com/developers_fcnsandprocs_intro.html\"\u003edocumentation\u003c/a\u003e for a more comprehensive explanation on how to create custom functions and procedures.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInstall and Define Your Functions and Procedures\u003c/h2\u003e\n\u003cp\u003eOnce the jar file has been deployed you will need to execute the commands below using the Splice Machine sqlshell command line interpreter, \u003ccode\u003esplice\u0026gt;\u003c/code\u003e, IN THE ENVIRONMENT (not in Zeppelin) to align to your custom function/procedure and environment:\u003c/p\u003e\n\u003cp\u003eFirst, you will need to install your jar file. This only needs to be executed once for each jar file you are deploying. Secondarily we need to modify the classpath to include the new jar file:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCALL SQLJ.INSTALL_JAR(\u0026#39;\u0026lt;your-full-path-to\u0026gt;/Custom1.jar\u0026#39;, \u0026#39;SPLICE.Custom1\u0026#39;, 0);\nCALL SYSCS_UTIL.SYSCS_SET_GLOBAL_DATABASE_PROPERTY(\u0026#39;derby.database.classpath\u0026#39;, \u0026#39;SPLICE.custom1\u0026#39;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eLastly we need to define the custom \u003ccode\u003ereplacestr\u003c/code\u003e function and \u003ccode\u003ecustomIncrement\u003c/code\u003e procedure:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eCREATE FUNCTION SPLICE.replacestr(val1 varchar(100), val2 varchar(100), val3 varchar(100)) RETURNS varchar(100)\nLANGUAGE JAVA\nPARAMETER STYLE JAVA\nNO SQL\nEXTERNAL NAME \u0026#39;com.splicemachine.companya.Custom1.replacestr\u0026#39;;\n\nCREATE PROCEDURE SPLICE.customincrement() \nPARAMETER STYLE JAVA \nMODIFIES SQL DATA \nLANGUAGE JAVA \nDYNAMIC RESULT SETS 0 \nEXTERNAL NAME \u0026#39;com.splicemachine.companya.Custom1.customIncrement\u0026#39;;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp class\u003d\"noteIcon\"\u003ePlease refer to our \u003ca href\u003d\"https://doc.splicemachine.com/developers_fcnsandprocs_intro.html\"\u003edocumentation\u003c/a\u003e for a more comprehensive explanation on how to create custom functions and procedures.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559932063200_-788080441",
@@ -321,31 +321,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-07 22:42:11.196",
       "config": {
+        "editorHide": true,
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
         "tableHide": false,
         "editorSetting": {
-          "language": "markdown",
           "editOnDblClick": true,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "markdown"
         },
-        "colWidth": 12.0,
-        "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "results": {},
-        "enabled": false,
-        "fontSize": 9.0
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning Your User-Defined Functions and Procedures\u003c/h2\u003e\n\u003cp\u003eTo test our example custom procedure you can create a table on which the stored procedure will operate. For example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecreate table splice.test (i int, v varchar(10));\ninsert into splice.test values (1,\u0026#39;foobar\u0026#39;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eLet\u0026rsquo;s try the \u003ccode\u003ereplacestr\u003c/code\u003e function:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eselect splice.replacestr(v,\u0026#39;bar\u0026#39;,\u0026#39;ey\u0026#39;) from splice.test;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eAnd now let\u0026rsquo;s see the stored procedure into action:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall splice.customincrement();\nselect * from splice.test;\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRunning Your User-Defined Functions and Procedures\u003c/h2\u003e\n\u003cp\u003eTo test our example custom procedure you can create a table on which the stored procedure will operate. For example:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecreate table splice.test (i int, v varchar(10));\ninsert into splice.test values (1,\u0026#39;foobar\u0026#39;);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eLet\u0026rsquo;s try the \u003ccode\u003ereplacestr\u003c/code\u003e function:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eselect splice.replacestr(v,\u0026#39;bar\u0026#39;,\u0026#39;ey\u0026#39;) from splice.test;\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eAnd now let\u0026rsquo;s see the stored procedure into action:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall splice.customincrement();\nselect * from splice.test;\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542396049300_-642175262",
@@ -359,18 +359,18 @@
     {
       "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Using spark-submit with the Native Spark DataSource*](/#/notebook/2EECKNU39), shows you how to take advantage of the Splice Machine Native Spark DataSource when running apps with spark-submit.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-07 22:43:18.468",
+      "dateUpdated": "2019-06-10 19:58:58.334",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false
-        },
         "editorMode": "ace/mode/sql",
-        "editorHide": true
+        "fontSize": 9.0,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -389,8 +389,8 @@
       "jobName": "paragraph_1559325003576_1452011874",
       "id": "20190531-175003_1492081827",
       "dateCreated": "2019-05-31 17:50:03.576",
-      "dateStarted": "2019-05-31 17:50:28.113",
-      "dateFinished": "2019-05-31 17:50:28.138",
+      "dateStarted": "2019-06-10 19:58:49.057",
+      "dateFinished": "2019-06-10 19:58:49.090",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
