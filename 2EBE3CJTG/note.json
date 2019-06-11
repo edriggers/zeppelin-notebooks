@@ -266,12 +266,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## For Further Exploration and Understanding\n\nTo gain a better understanding of using statistics, try using the `analyze` command as follows:\n\n1. Create a table with some data just like above example.\n2. Do an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\n3. Run analyze on the table\n4. Run explain plan again and verify that explain picked up the correct statistics.\n\n",
+      "text": "%md\n## For Further Exploration and Understanding\n\nTo gain a better understanding of using statistics, try using the `analyze` command as follows:\n\n1. Create a table with some data just like above example.\n2. Do an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\n3. Run analyze on the table\n4. Run explain plan again and verify that explain picked up the correct statistics.\n5. Collect statistics on specific set of columns. This may optimize in certain cases where we need only few columns to be collected.\n6. Drop statistics for a schema and than recalculate schema statistics.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 22:29:44.911",
+      "dateUpdated": "2019-06-11 20:58:20.274",
       "config": {
         "editorHide": true,
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
@@ -288,20 +288,20 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Further Exploration and Understanding\u003c/h2\u003e\n\u003cp\u003eTo gain a better understanding of using statistics, try using the \u003ccode\u003eanalyze\u003c/code\u003e command as follows:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a table with some data just like above example.\u003c/li\u003e\n  \u003cli\u003eDo an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\u003c/li\u003e\n  \u003cli\u003eRun analyze on the table\u003c/li\u003e\n  \u003cli\u003eRun explain plan again and verify that explain picked up the correct statistics.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Further Exploration and Understanding\u003c/h2\u003e\n\u003cp\u003eTo gain a better understanding of using statistics, try using the \u003ccode\u003eanalyze\u003c/code\u003e command as follows:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a table with some data just like above example.\u003c/li\u003e\n  \u003cli\u003eDo an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\u003c/li\u003e\n  \u003cli\u003eRun analyze on the table\u003c/li\u003e\n  \u003cli\u003eRun explain plan again and verify that explain picked up the correct statistics.\u003c/li\u003e\n  \u003cli\u003eCollect statistics on specific set of columns. This may optimize in certain cases where we need only few columns to be collected.\u003c/li\u003e\n  \u003cli\u003eDrop statistics for a schema and than recalculate schema statistics.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559753011949_6551904",
       "id": "20190605-164331_2024415298",
       "dateCreated": "2019-06-05 16:43:31.949",
-      "dateStarted": "2019-06-05 16:58:46.270",
-      "dateFinished": "2019-06-05 16:58:46.307",
+      "dateStarted": "2019-06-11 20:58:20.276",
+      "dateFinished": "2019-06-11 20:58:20.361",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
