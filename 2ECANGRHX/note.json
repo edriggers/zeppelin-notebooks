@@ -5,17 +5,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 15:03:34.376",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -23,13 +23,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eBulk Data Loading\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner. Bulk importing splits a data file into temporary HFiles (store files) before it is imported into your database by directly loading the generated StoreFiles into your Region Servers. In this notebook we\u0026rsquo;ll walk you through a simple example, after which you will be able to bulk import data into your database. \u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eWe recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our basic import procedures, \u003ccode\u003eIMPORT_DATA\u003c/code\u003e or \u003ccode\u003eMERGE_DATA_FROM_FILE\u003c/code\u003e instead, because they perform constraint checking during ingestion.\u003c/p\u003e\n\u003cp\u003eThis notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003cem\u003eBulk Data Import Checklist\u003c/em\u003e summarizes important details about the format of the data you\u0026rsquo;re importing.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eAutomatic Bulk Data Import\u003c/em\u003e method shows you how to quickly bulk import your data.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eManual Bulk Data Import\u003c/em\u003e allows you to control the splitting of data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e Command\u003c/em\u003e shows the syntax for importing data using the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen you use bulk HFile to import your data, files are essentially split into temporary Hadoop files (HFiles) that are directly loaded into the region servers. Ideally, the process creates HFiles of equal size, which allows the data to be spread across all region servers equally. There are two methods for splitting the data into hfiles.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eWith \u003cem\u003eAutomatic Splitting,\u003c/em\u003e the system samplse the data in an attempt to determine the optimal split points. This is the quicker and easier method, but does not always ensure you have the ideal splitting of the data.\u003c/li\u003e\n  \u003cli\u003eUsing \u003cem\u003eManual Splitting\u003c/em\u003e improves the performance of the bulk data import process. Instead of having the system samples the data for split point, you provide the split points that tell the procedure where to split your data. This requires you to know the data well enough to provide the split points.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLastly we will walk you through step-by-step examples of using both the automatic and manual process bulk data import processes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eBulk Data Loading\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner. Bulk importing splits a data file into temporary HFiles (store files) before it is imported into your database by directly loading the generated StoreFiles into your Region Servers. In this notebook we\u0026rsquo;ll walk you through a simple example, after which you will be able to bulk import data into your database. \u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eWe recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our basic import procedures, \u003ccode\u003eIMPORT_DATA\u003c/code\u003e or \u003ccode\u003eMERGE_DATA_FROM_FILE\u003c/code\u003e instead, because they perform constraint checking during ingestion.\u003c/p\u003e\n\u003cp\u003eThis notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003cem\u003eBulk Data Import Checklist\u003c/em\u003e summarizes important details about the format of the data you\u0026rsquo;re importing.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eAutomatic Bulk Data Import\u003c/em\u003e method shows you how to quickly bulk import your data.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eManual Bulk Data Import\u003c/em\u003e allows you to control the splitting of data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e Command\u003c/em\u003e shows the syntax for importing data using the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen you use bulk HFile to import your data, files are essentially split into temporary Hadoop files (HFiles) that are directly loaded into the region servers. Ideally, the process creates HFiles of equal size, which allows the data to be spread across all region servers equally. There are two methods for splitting the data into hfiles.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eWith \u003cem\u003eAutomatic Splitting,\u003c/em\u003e the system samplse the data in an attempt to determine the optimal split points. This is the quicker and easier method, but does not always ensure you have the ideal splitting of the data.\u003c/li\u003e\n  \u003cli\u003eUsing \u003cem\u003eManual Splitting\u003c/em\u003e improves the performance of the bulk data import process. Instead of having the system samples the data for split point, you provide the split points that tell the procedure where to split your data. This requires you to know the data well enough to provide the split points.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLastly we will walk you through step-by-step examples of using both the automatic and manual process bulk data import processes.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559318768601_621263894",
@@ -45,17 +45,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:27:12.598",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -65,8 +65,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBulk Data Import Checklist\u003c/h2\u003e\n\u003cp\u003eWhen you bulk import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure your data formats will work, as defined here:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eData File Detail\u003c/th\u003e\n            \u003cth\u003eSpecific Requirements\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eField delimited?\u003c/td\u003e\n            \u003ctd\u003eThe fields in each row \u003cstrong\u003emust\u003c/strong\u003e have delimiters between them.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRows terminated?\u003c/td\u003e\n            \u003ctd\u003eEach row \u003cstrong\u003emust\u003c/strong\u003e be terminated with a newline character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eHeader row included?\u003c/td\u003e\n            \u003ctd\u003eHeader rows are not allowed; if your data contains one, you \u003cstrong\u003emust\u003c/strong\u003e remove it.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eDate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, \u003ccode\u003etimestamp\u003c/code\u003e data types\u003c/td\u003e\n            \u003ctd\u003e If you are using \u003ccode\u003edate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, and/or \u003ccode\u003etimestamp\u003c/code\u003e data types in the target table, you need to know how that data is represented in the flat file; your file \u003cstrong\u003emust\u003c/strong\u003e use a consistent representation, and you must specify that format when using the import command.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eChar\u003c/code\u003e and \u003ccode\u003eVarchar\u003c/code\u003e data\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains your delimiter character, you \u003cstrong\u003eneed to use\u003c/strong\u003e a special character delimiter.\u003c/p\u003e\n                \u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains newline characters, you \u003cstrong\u003eneed to use\u003c/strong\u003e the \u003ccode\u003eoneLineRecords\u003c/code\u003e parameter.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp class\u003d\"noteIcon\"\u003eIt is a good idea to test your import, delimiting, date formatting, etc., on a small amount of data first before loading all of your data. That\u0027s what we\u0027ll do in this notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBulk Data Import Checklist\u003c/h2\u003e\n\u003cp\u003eWhen you bulk import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure your data formats will work, as defined here:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eData File Detail\u003c/th\u003e\n            \u003cth\u003eSpecific Requirements\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eField delimited?\u003c/td\u003e\n            \u003ctd\u003eThe fields in each row \u003cstrong\u003emust\u003c/strong\u003e have delimiters between them.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRows terminated?\u003c/td\u003e\n            \u003ctd\u003eEach row \u003cstrong\u003emust\u003c/strong\u003e be terminated with a newline character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eHeader row included?\u003c/td\u003e\n            \u003ctd\u003eHeader rows are not allowed; if your data contains one, you \u003cstrong\u003emust\u003c/strong\u003e remove it.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eDate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, \u003ccode\u003etimestamp\u003c/code\u003e data types\u003c/td\u003e\n            \u003ctd\u003e If you are using \u003ccode\u003edate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, and/or \u003ccode\u003etimestamp\u003c/code\u003e data types in the target table, you need to know how that data is represented in the flat file; your file \u003cstrong\u003emust\u003c/strong\u003e use a consistent representation, and you must specify that format when using the import command.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eChar\u003c/code\u003e and \u003ccode\u003eVarchar\u003c/code\u003e data\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains your delimiter character, you \u003cstrong\u003eneed to use\u003c/strong\u003e a special character delimiter.\u003c/p\u003e\n                \u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains newline characters, you \u003cstrong\u003eneed to use\u003c/strong\u003e the \u003ccode\u003eoneLineRecords\u003c/code\u003e parameter.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp class\u003d\"noteIcon\"\u003eIt is a good idea to test your import, delimiting, date formatting, etc., on a small amount of data first before loading all of your data. That\u0027s what we\u0027ll do in this notebook.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -85,17 +85,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:28:59.474",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -105,8 +105,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAutomatic Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eIf you choose to use the automatic bulk data import process, all you need to do is run the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure. Splice Machine will automatically generate the split points by sampling the data that is being imported. If you discover that the automatic bulk data import process is not as performant as expected, you should consider the manual bulk data import process. Before you execute \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e, be sure to create the table and indexes first in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAutomatic Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eIf you choose to use the automatic bulk data import process, all you need to do is run the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure. Splice Machine will automatically generate the split points by sampling the data that is being imported. If you discover that the automatic bulk data import process is not as performant as expected, you should consider the manual bulk data import process. Before you execute \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e, be sure to create the table and indexes first in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -125,17 +125,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:30:39.269",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -145,8 +145,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eManual Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eWhen using the manual bulk data import process, you need to pre-split the data by providing a CSV file that specifies all of the split points. Follow these steps to manually bulk import your data:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the table in your Splice Machine database\u003c/li\u003e\n  \u003cli\u003eOptionally, create any index(es) on the table\u003c/li\u003e\n  \u003cli\u003ePre-split the table\u003c/li\u003e\n  \u003cli\u003eCall the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the table\u003c/li\u003e\n  \u003cli\u003eOptionally, pre-split any index(es) on the table\u003c/li\u003e\n  \u003cli\u003eOptionally, call the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the index(es)\u003c/li\u003e\n  \u003cli\u003eCall the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eManual Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eWhen using the manual bulk data import process, you need to pre-split the data by providing a CSV file that specifies all of the split points. Follow these steps to manually bulk import your data:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the table in your Splice Machine database\u003c/li\u003e\n  \u003cli\u003eOptionally, create any index(es) on the table\u003c/li\u003e\n  \u003cli\u003ePre-split the table\u003c/li\u003e\n  \u003cli\u003eCall the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the table\u003c/li\u003e\n  \u003cli\u003eOptionally, pre-split any index(es) on the table\u003c/li\u003e\n  \u003cli\u003eOptionally, call the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the index(es)\u003c/li\u003e\n  \u003cli\u003eCall the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -165,17 +165,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:31:20.658",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -185,8 +185,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create the table in your Splice Machine database\u003c/h3\u003e\n\u003cp\u003eThe table you\u0026rsquo;re importing into must exist in your Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create the table in your Splice Machine database\u003c/h3\u003e\n\u003cp\u003eThe table you\u0026rsquo;re importing into must exist in your Splice Machine database.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -205,17 +205,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-03 23:35:55.355",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -225,8 +225,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Optionally, create any index(es) on the table\u003c/h3\u003e\n\u003cp\u003eIf you’re going to index the table you’re importing, Splice Machine recommends that you create the index prior to using bulk import. This allows the index to also be pre-split into regions, which will prevent downstream bottlenecks.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Optionally, create any index(es) on the table\u003c/h3\u003e\n\u003cp\u003eIf you’re going to index the table you’re importing, Splice Machine recommends that you create the index prior to using bulk import. This allows the index to also be pre-split into regions, which will prevent downstream bottlenecks.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -245,17 +245,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:38:14.902",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -265,8 +265,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Pre-split the table\u003c/h3\u003e\n\u003cp\u003eWhen you pre-split a table, you are essentially identifying primary key values that can horizontally split the data into roughly equal parts. For example: let\u0026rsquo;s say you have some order data that you want to load. The data contains a column for order id that has values from 1 to 999,999. We can pre-split this table into 4 roughly equal parts by using the order id column and specifying the values 250000, 500000, and 750000.\u003c/p\u003e\n\u003cp\u003eCreate a file that contains the following. Note that we specify three split values to create four splits:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e250000\n500000\n750000\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\u003cp\u003eSplit key values can be multiple columns, in which case each column value would be delimited by a pipe character (|). For example:\u003cp\u003e\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u003ccode\u003e200000|2019-01-01\u003c/code\u003e\u003c/p\u003e\u003c/div\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Pre-split the table\u003c/h3\u003e\n\u003cp\u003eWhen you pre-split a table, you are essentially identifying primary key values that can horizontally split the data into roughly equal parts. For example: let\u0026rsquo;s say you have some order data that you want to load. The data contains a column for order id that has values from 1 to 999,999. We can pre-split this table into 4 roughly equal parts by using the order id column and specifying the values 250000, 500000, and 750000.\u003c/p\u003e\n\u003cp\u003eCreate a file that contains the following. Note that we specify three split values to create four splits:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e250000\n500000\n750000\n\u003c/code\u003e\u003c/pre\u003e\n\u003cdiv class\u003d\"noteIcon\"\u003e\u003cp\u003eSplit key values can be multiple columns, in which case each column value would be delimited by a pipe character (|). For example:\u003cp\u003e\n\u0026nbsp;\u0026nbsp;\u0026nbsp;\u003ccode\u003e200000|2019-01-01\u003c/code\u003e\u003c/p\u003e\u003c/div\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -285,17 +285,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 15:05:03.986",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -305,8 +305,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Call the SPLIT_TABLE_OR_INDEX system procedure for the table\u003c/h3\u003e\n\u003cp\u003eSyntax for the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e command looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX (\n    schemaName,\n    tableName,\n    indexName,\n    columnList | null,\n    fileName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNotice that many of the parameters allow you to apply the default value by specifying \u003ccode\u003enull\u003c/code\u003e.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_splittable.html\" target\u003d\"_blank\"\u003eour \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Call the SPLIT_TABLE_OR_INDEX system procedure for the table\u003c/h3\u003e\n\u003cp\u003eSyntax for the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e command looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX (\n    schemaName,\n    tableName,\n    indexName,\n    columnList | null,\n    fileName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNotice that many of the parameters allow you to apply the default value by specifying \u003ccode\u003enull\u003c/code\u003e.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_splittable.html\" target\u003d\"_blank\"\u003eour \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -325,17 +325,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:57:45.694",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -345,8 +345,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e5. Optionally, pre-split any index(es) on the table\u003c/h3\u003e\n\u003cp\u003eIf you have any indexes for the table you will need to repeat step 3 for each index.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e5. Optionally, pre-split any index(es) on the table\u003c/h3\u003e\n\u003cp\u003eIf you have any indexes for the table you will need to repeat step 3 for each index.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -365,17 +365,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:58:03.809",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -385,8 +385,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Optionally, call the SPLIT_TABLE_OR_INDEX system procedure for the index(es)\u003c/h3\u003e\n\u003cp\u003eIf you have any indexes for the table you will need to repeat step 4 for each index.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Optionally, call the SPLIT_TABLE_OR_INDEX system procedure for the index(es)\u003c/h3\u003e\n\u003cp\u003eIf you have any indexes for the table you will need to repeat step 4 for each index.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -405,17 +405,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:58:17.775",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -425,8 +425,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e7. Call the BULK_IMPORT_HFILE system procedure\u003c/h3\u003e\n\u003cp\u003eLastly, call the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e command to bulk load your data. We will go over a complete example later on in this notebook.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e7. Call the BULK_IMPORT_HFILE system procedure\u003c/h3\u003e\n\u003cp\u003eLastly, call the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e command to bulk load your data. We will go over a complete example later on in this notebook.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -445,17 +445,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-10 17:29:46.102",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -465,8 +465,8 @@
       "results": {
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBULK_IMPORT_HFILE Command\u003c/h2\u003e\n\u003cp\u003eSyntax for the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e command looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall SYSCS_UTIL.BULK_IMPORT_HFILE (\n    schemaName,\n    tableName,\n    insertColumnList | null,\n    fileOrDirectoryName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n    bulkImportDirectory,\n    skipSampling\n);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNotice that many of the parameters allow you to apply the default value by specifying \u003ccode\u003enull\u003c/code\u003e.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_importhfile.htmll\" target\u003d\"_blank\"\u003eour \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBULK_IMPORT_HFILE Command\u003c/h2\u003e\n\u003cp\u003eSyntax for the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e command looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall SYSCS_UTIL.BULK_IMPORT_HFILE (\n    schemaName,\n    tableName,\n    insertColumnList | null,\n    fileOrDirectoryName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n    bulkImportDirectory,\n    skipSampling\n);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNotice that many of the parameters allow you to apply the default value by specifying \u003ccode\u003enull\u003c/code\u003e.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_importhfile.htmll\" target\u003d\"_blank\"\u003eour \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ],
         "code": "SUCCESS"
@@ -485,17 +485,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:59:22.878",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -505,8 +505,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Automatic Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eThis example will walk you through the automatic bulk data import process one step at a time. In these steps you will:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate a Database Schema and Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the Automatic Bulk Import Data Procedure\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Imported Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Automatic Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eThis example will walk you through the automatic bulk data import process one step at a time. In these steps you will:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate a Database Schema and Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the Automatic Bulk Import Data Procedure\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Imported Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -525,17 +525,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 21:59:42.665",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -545,8 +545,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate a new schema named \u003ccode\u003eDEV3\u003c/code\u003e in your database\u003c/li\u003e\n  \u003cli\u003eCreate the \u003ccode\u003ecustomer_bulk_import_example1\u003c/code\u003e table in your database.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate a new schema named \u003ccode\u003eDEV3\u003c/code\u003e in your database\u003c/li\u003e\n  \u003cli\u003eCreate the \u003ccode\u003ecustomer_bulk_import_example1\u003c/code\u003e table in your database.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -565,16 +565,16 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-10 17:30:14.907",
       "config": {
-        "editorHide": false,
+        "editorMode": "ace/mode/sql",
         "enabled": true,
         "results": {},
+        "editorHide": false,
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -596,17 +596,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:01:07.167",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -616,8 +616,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Run the Automatic Bulk Import Data Procedure\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;ll bulk import our data, which is the customer table data for TPCH-100. We\u0026rsquo;ll use the automatic method for generating the split keys.\u003c/p\u003e\n\u003cp\u003eThe first two rows of the data look like this:\u003c/p\u003e\n\u003cpre\u003e1,1,1,0.2548,GC,BARBARBAR,amotastqqsxqk,50000.0,-10.0,10.0,1,0,xzgtmkfcc,ylkolttoyrgtoypvu,vihxvtlufla,UC,808711111,7664160137823585,2016-08-26 15:09:58.574,OE,kmmmpivhrpyzdrcxiznqsujdvhnvbtvktvzncdigrmfrnbvmuqfdrgyzsacziwobfxcwbqrctbvyyhcefmpsitdjlebpphhtihhnserrolqbjeqpggnkvfowexxgtqoglwqrhhbjdnfrmbeieubdmtkfqicfjtwwbdwbbcacqvukmxhmnpekydlesjzatacwuntakarbcbfgrvxcztgzzfcbkppjfpznjxpnanktiswszzrgxvlccrksbojbzywtziijmdwfwdxyzrwwllzcnjdbkfoxzudqfdowuwuopemcfhxhrskhsrgydkklsgzaujzbqagycvqdnkpmtligujssjierqetnwxzipykpbxbkdunzrvekjpsonlqhtvmntabhlfpzvrzzbwbuzsqdvkbebissivntknptkfpxfcgcwmymncyfqifaqecxp\n2,1,1,0.2728,GC,BARBARBAR,maqolvlurgl,50000.0,-10.0,10.0,1,0,aommxpkuezwgcfyl,allgnqktgezptiui,rphjjqoevqwdpugh,ZL,115811111,8576454984888259,2016-08-26 15:09:58.575,OE,ozcazgrmfwgpdjcgeestwqmnygzqvvuxsrnnyjbxostljnlplmrdmcdbtxxoadyxeidhbffnevyierxsfgaqjuvpvgpcokbkshiqmyxlnqxwwukdcxswquhivmfkmmapjokweswzvwrpckizbjqjqlmvjjhdnjtdfxwfxfgufdjnfjudkmnbygatwvjbvgahmwwvchbsjeibfoqsfxcsbjkpxyhipsymwolcrokuhxumxkaafrgjzpxyuhkkqbijpgzcmzculivdhwjewwdepktddpswulbzwioeqvhjtorzeyqztitiagbqreoaydsqzixungqygjpiysoexyunbnuzupywuyjxavzvuccooszqbxgioulozbojsumejqoajofbzckjprjjcmmgugntnao\u003c/pre\u003e\n\u003cp\u003eImport this data by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which calls our \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e command.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Run the Automatic Bulk Import Data Procedure\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;ll bulk import our data, which is the customer table data for TPCH-100. We\u0026rsquo;ll use the automatic method for generating the split keys.\u003c/p\u003e\n\u003cp\u003eThe first two rows of the data look like this:\u003c/p\u003e\n\u003cpre\u003e1,1,1,0.2548,GC,BARBARBAR,amotastqqsxqk,50000.0,-10.0,10.0,1,0,xzgtmkfcc,ylkolttoyrgtoypvu,vihxvtlufla,UC,808711111,7664160137823585,2016-08-26 15:09:58.574,OE,kmmmpivhrpyzdrcxiznqsujdvhnvbtvktvzncdigrmfrnbvmuqfdrgyzsacziwobfxcwbqrctbvyyhcefmpsitdjlebpphhtihhnserrolqbjeqpggnkvfowexxgtqoglwqrhhbjdnfrmbeieubdmtkfqicfjtwwbdwbbcacqvukmxhmnpekydlesjzatacwuntakarbcbfgrvxcztgzzfcbkppjfpznjxpnanktiswszzrgxvlccrksbojbzywtziijmdwfwdxyzrwwllzcnjdbkfoxzudqfdowuwuopemcfhxhrskhsrgydkklsgzaujzbqagycvqdnkpmtligujssjierqetnwxzipykpbxbkdunzrvekjpsonlqhtvmntabhlfpzvrzzbwbuzsqdvkbebissivntknptkfpxfcgcwmymncyfqifaqecxp\n2,1,1,0.2728,GC,BARBARBAR,maqolvlurgl,50000.0,-10.0,10.0,1,0,aommxpkuezwgcfyl,allgnqktgezptiui,rphjjqoevqwdpugh,ZL,115811111,8576454984888259,2016-08-26 15:09:58.575,OE,ozcazgrmfwgpdjcgeestwqmnygzqvvuxsrnnyjbxostljnlplmrdmcdbtxxoadyxeidhbffnevyierxsfgaqjuvpvgpcokbkshiqmyxlnqxwwukdcxswquhivmfkmmapjokweswzvwrpckizbjqjqlmvjjhdnjtdfxwfxfgufdjnfjudkmnbygatwvjbvgahmwwvchbsjeibfoqsfxcsbjkpxyhipsymwolcrokuhxumxkaafrgjzpxyuhkkqbijpgzcmzculivdhwjewwdepktddpswulbzwioeqvhjtorzeyqztitiagbqreoaydsqzixungqygjpiysoexyunbnuzupywuyjxavzvuccooszqbxgioulozbojsumejqoajofbzckjprjjcmmgugntnao\u003c/pre\u003e\n\u003cp\u003eImport this data by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which calls our \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e command.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -641,7 +641,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -666,17 +666,17 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -694,20 +694,21 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\u003cbr /\u003e\n\nYou\u0027ll notice that after you run the paragraph, you see a short report that indicates how many rows were successfully loaded and how many failed to load. In this example, all 15 million rows were successfully loaded.\n\nYou have probably also noticed that we used default values by specifying `null` for all of the parameters that have defaults; here\u0027s what those defaults mean:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParameter\u003c/th\u003e\n            \u003cth\u003eNULL Value Details\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003einsertColumnList\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur column list exactly matches the columns and ordering of columns in the table, so there\u0027s not need to specify a list.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003ecolumnDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data uses the default comma character (\u003ccode\u003e,\u003c/code\u003e) to delimit columns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003estringDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eNone of our data fields contain the comma character, so we don\u0027t need a string delimiter character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimestampFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data matches the default timestamp format, which is \u003ccode\u003eyyyy-MM-dd HH:mm:ss\u003c/code\u003e.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003edateFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any date columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimeFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any time columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e",
+      "text": "%md\n\u003cbr/\u003e\nYou\u0027ll notice that after you run the paragraph, you see a short report that indicates how many rows were successfully loaded and how many failed to load. In this example, all 15 million rows were successfully loaded.\n\nYou have probably also noticed that we used default values by specifying `null` for all of the parameters that have defaults; here\u0027s what those defaults mean:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParameter\u003c/th\u003e\n            \u003cth\u003eNULL Value Details\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003einsertColumnList\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur column list exactly matches the columns and ordering of columns in the table, so there\u0027s not need to specify a list.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003ecolumnDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data uses the default comma character (\u003ccode\u003e,\u003c/code\u003e) to delimit columns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003estringDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eNone of our data fields contain the comma character, so we don\u0027t need a string delimiter character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimestampFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data matches the default timestamp format, which is \u003ccode\u003eyyyy-MM-dd HH:mm:ss\u003c/code\u003e.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003edateFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any date columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimeFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any time columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e",
       "user": "anonymous",
-      "dateUpdated": "2019-06-12 15:05:48.987",
+      "dateUpdated": "2019-06-12 20:20:10.798",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": false,
-          "language": "sql"
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/sql",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown",
+          "completionSupport": false
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -719,7 +720,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr /\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice that after you run the paragraph, you see a short report that indicates how many rows were successfully loaded and how many failed to load. In this example, all 15 million rows were successfully loaded.\u003c/p\u003e\n\u003cp\u003eYou have probably also noticed that we used default values by specifying \u003ccode\u003enull\u003c/code\u003e for all of the parameters that have defaults; here\u0026rsquo;s what those defaults mean:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParameter\u003c/th\u003e\n            \u003cth\u003eNULL Value Details\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003einsertColumnList\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur column list exactly matches the columns and ordering of columns in the table, so there\u0027s not need to specify a list.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003ecolumnDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data uses the default comma character (\u003ccode\u003e,\u003c/code\u003e) to delimit columns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003estringDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eNone of our data fields contain the comma character, so we don\u0027t need a string delimiter character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimestampFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data matches the default timestamp format, which is \u003ccode\u003eyyyy-MM-dd HH:mm:ss\u003c/code\u003e.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003edateFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any date columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimeFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any time columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou\u0026rsquo;ll notice that after you run the paragraph, you see a short report that indicates how many rows were successfully loaded and how many failed to load. In this example, all 15 million rows were successfully loaded.\u003c/p\u003e\n\u003cp\u003eYou have probably also noticed that we used default values by specifying \u003ccode\u003enull\u003c/code\u003e for all of the parameters that have defaults; here\u0026rsquo;s what those defaults mean:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eParameter\u003c/th\u003e\n            \u003cth\u003eNULL Value Details\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003einsertColumnList\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur column list exactly matches the columns and ordering of columns in the table, so there\u0027s not need to specify a list.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003ecolumnDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data uses the default comma character (\u003ccode\u003e,\u003c/code\u003e) to delimit columns.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003estringDelimiter\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eNone of our data fields contain the comma character, so we don\u0027t need a string delimiter character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimestampFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data matches the default timestamp format, which is \u003ccode\u003eyyyy-MM-dd HH:mm:ss\u003c/code\u003e.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003edateFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any date columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003etimeFormat\u003c/code\u003e\u003c/td\u003e\n            \u003ctd\u003eOur data doesn\u0027t contain any time columns, so there\u0027s no need to specify a format.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -727,8 +728,8 @@
       "jobName": "paragraph_1559659515522_1228070265",
       "id": "20190604-144515_562914129",
       "dateCreated": "2019-06-04 14:45:15.522",
-      "dateStarted": "2019-06-12 15:05:31.787",
-      "dateFinished": "2019-06-12 15:05:31.854",
+      "dateStarted": "2019-06-12 20:20:00.039",
+      "dateFinished": "2019-06-12 20:20:00.059",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -737,17 +738,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-10 17:50:23.729",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown",
+          "completionSupport": false
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -757,8 +758,8 @@
       "results": {
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Review Imported Data\u003c/h3\u003e\n\u003cp\u003eLets take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which will select all the data from the \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Review Imported Data\u003c/h3\u003e\n\u003cp\u003eLets take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which will select all the data from the \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ],
         "code": "SUCCESS"
@@ -782,7 +783,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -810,16 +811,16 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -841,17 +842,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-04 23:04:09.317",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -861,8 +862,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Manual Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eThis example will walk you through the manual bulk data import process one step at a time. In these steps you will:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate a Database Schema and Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eManually Split the Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the Manual Bulk Import Data Procedure\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Imported Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Manual Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eThis example will walk you through the manual bulk data import process one step at a time. In these steps you will:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate a Database Schema and Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eManually Split the Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the Manual Bulk Import Data Procedure\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Imported Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -881,16 +882,16 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:03:43.303",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -900,8 +901,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate the \u003ccode\u003ecustomer_bulk_import_example2\u003c/code\u003e table in your database.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate the \u003ccode\u003ecustomer_bulk_import_example2\u003c/code\u003e table in your database.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -922,12 +923,12 @@
       "config": {
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -949,17 +950,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:06:18.027",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -969,8 +970,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Manually Split the Table\u003c/h3\u003e\n\u003cp\u003eNow we need to create the split keys for our data. The customer data file that we are loading contains a customer key column that has values from 1 to 15,000,000. For this exercise, we want to evenly split the data into 4 hfiles, so the keys look like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e3750000\n7500000\n11250000\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eFor every N lines of split data you specify, you’ll end up with N+1 regions; for example, the above 3 splits will produce these 4 regions:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e0 -\u0026gt; 3750000\n3750001 -\u0026gt; 7500000\n7500001 -\u0026gt; 11250000\n11250001 -\u0026gt; (last possible key value)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eWe have already created this file for you, so all you need to do is \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e the next paragraph. This calls the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e procedure, passing in the file that contains the split keys as a parameter value.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e2. Manually Split the Table\u003c/h3\u003e\n\u003cp\u003eNow we need to create the split keys for our data. The customer data file that we are loading contains a customer key column that has values from 1 to 15,000,000. For this exercise, we want to evenly split the data into 4 hfiles, so the keys look like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e3750000\n7500000\n11250000\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eFor every N lines of split data you specify, you’ll end up with N+1 regions; for example, the above 3 splits will produce these 4 regions:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e0 -\u0026gt; 3750000\n3750001 -\u0026gt; 7500000\n7500001 -\u0026gt; 11250000\n11250001 -\u0026gt; (last possible key value)\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eWe have already created this file for you, so all you need to do is \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e the next paragraph. This calls the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e procedure, passing in the file that contains the split keys as a parameter value.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -991,13 +992,13 @@
       "config": {
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1019,17 +1020,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:08:45.744",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1039,8 +1040,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Run the Manual Bulk Import Data Procedure\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to bulk import our data. As in the previous example, we are bulk importing the customer table data for TPCH-100. This time we have pre-split the table so we will not need to sample the data before importing. The main difference in this call to \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e is that the last parameter, \u003ccode\u003eskipSampling\u003c/code\u003e, is now set to \u003ccode\u003etrue\u003c/code\u003e to indicate that we\u0026rsquo;ve already pre-split the data.\u003c/p\u003e\n\u003cp\u003eImport the data in this file by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which calls our \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e procedure.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Run the Manual Bulk Import Data Procedure\u003c/h3\u003e\n\u003cp\u003eNow we\u0026rsquo;re ready to bulk import our data. As in the previous example, we are bulk importing the customer table data for TPCH-100. This time we have pre-split the table so we will not need to sample the data before importing. The main difference in this call to \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e is that the last parameter, \u003ccode\u003eskipSampling\u003c/code\u003e, is now set to \u003ccode\u003etrue\u003c/code\u003e to indicate that we\u0026rsquo;ve already pre-split the data.\u003c/p\u003e\n\u003cp\u003eImport the data in this file by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which calls our \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e procedure.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1064,7 +1065,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -1089,16 +1090,16 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1120,17 +1121,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 22:09:28.586",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1140,8 +1141,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Review Imported Data\u003c/h3\u003e\n\u003cp\u003eLets take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which selects all of the data in the \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Review Imported Data\u003c/h3\u003e\n\u003cp\u003eLets take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which selects all of the data in the \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1165,7 +1166,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -1193,16 +1194,16 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1224,17 +1225,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-05-31 17:44:30.123",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1244,8 +1245,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2ED6JR671\"\u003e\u003cem\u003eTransactions in Splice Machine\u003c/em\u003e\u003c/a\u003e, teaches you how transactions are processed in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2ED6JR671\"\u003e\u003cem\u003eTransactions in Splice Machine\u003c/em\u003e\u003c/a\u003e, teaches you how transactions are processed in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1266,8 +1267,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false

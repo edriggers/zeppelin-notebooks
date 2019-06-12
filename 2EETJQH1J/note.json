@@ -5,17 +5,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-10 18:04:51.244",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -25,8 +25,8 @@
       "results": {
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eQuery Optimization\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you advanced query optimization techniques for boosting the performance of your Splice Machine queries.\u003c/p\u003e\n\u003cp\u003eWith a perfect sql optimizer, users do not need to worry about the efficiency of their SQL statements. It is optimizer’s responsibility to convert the SQL into a semantically equivalent and more performant execution plan. In reality some sql statements require some manual tuning or rewriting due to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eLimitations in the optimizer\u0026rsquo;s heuristic rewrite functionality\u003c/li\u003e\n  \u003cli\u003eLimitations in the search space the optimizer explores\u003c/li\u003e\n  \u003cli\u003eInaccurate statistics and/or cost estimation\u003c/li\u003e\n  \u003cli\u003eParsing time concerns\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn this notebook we will show you how to read a query explain plan and how you can use statistics to understand the characteristics of a table. These are two essential things you will need to understand in order to properly optimize queries in Splice Machine.\u003c/p\u003e\n\u003cp\u003eNext, we will show you some query performance problems that you may encounter and how to resolve them.\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eUnderstanding the Query Execution Plan\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUnderstanding Database Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eQuery Performance Problems\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eQuery Optimization\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you advanced query optimization techniques for boosting the performance of your Splice Machine queries.\u003c/p\u003e\n\u003cp\u003eWith a perfect sql optimizer, users do not need to worry about the efficiency of their SQL statements. It is optimizer’s responsibility to convert the SQL into a semantically equivalent and more performant execution plan. In reality some sql statements require some manual tuning or rewriting due to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eLimitations in the optimizer\u0026rsquo;s heuristic rewrite functionality\u003c/li\u003e\n  \u003cli\u003eLimitations in the search space the optimizer explores\u003c/li\u003e\n  \u003cli\u003eInaccurate statistics and/or cost estimation\u003c/li\u003e\n  \u003cli\u003eParsing time concerns\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eIn this notebook we will show you how to read a query explain plan and how you can use statistics to understand the characteristics of a table. These are two essential things you will need to understand in order to properly optimize queries in Splice Machine.\u003c/p\u003e\n\u003cp\u003eNext, we will show you some query performance problems that you may encounter and how to resolve them.\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eUnderstanding the Query Execution Plan\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUnderstanding Database Statistics\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eQuery Performance Problems\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ],
         "code": "SUCCESS"
@@ -45,17 +45,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-05 19:48:53.070",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -65,8 +65,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Understanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eordering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003euse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eneed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003ejoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eactual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003epresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eindication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003ecustomer_bulk_import_example1\u003c/code\u003e and \u003ccode\u003ecustomer_bulk_import_example2\u003c/code\u003e tables that we created earlier in this class. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Understanding the Query Execution Plan\u003c/h2\u003e\n\u003cp\u003eThis section describes more fully what information is in the Explain plan for a query; the key pieces of information in a plan include the:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eordering of the joins and other steps in the query\u003c/li\u003e\n  \u003cli\u003euse of Tables vs Indexes\u003c/li\u003e\n  \u003cli\u003eneed for IndexLookup, which can slow a query down\u003c/li\u003e\n  \u003cli\u003ejoin Strategies employed\u003c/li\u003e\n  \u003cli\u003eactual row count and cost estimates at each step\u003c/li\u003e\n  \u003cli\u003epresence of predicate pushdowns where available\u003c/li\u003e\n  \u003cli\u003eindication of which \u003cem\u003eengine\u003c/em\u003e will run the query: \u003cem\u003econtrol\u003c/em\u003e or \u003cem\u003eSpark\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ll delve a bit deeper into pushing down predicates and join ordering/strategies to help you understand plans.\u003c/p\u003e\n\u003ch3\u003eExplain and Predicates\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s start with a query variant that is based on the \u003ccode\u003ecustomer_bulk_import_example1\u003c/code\u003e and \u003ccode\u003ecustomer_bulk_import_example2\u003c/code\u003e tables that we created earlier in this class. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the plan for this query.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -87,12 +87,12 @@
       "config": {
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -114,17 +114,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:14:22.948",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -134,8 +134,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou’ll notice that on the very right of the plan are two lines with \u003cem\u003epreds\u003d\u003c/em\u003e on them. \u003cem\u003ePreds\u003c/em\u003e is short for \u003cem\u003epredicates\u003c/em\u003e, which in databases are true/false conditions that are tested during query execution.\u003c/p\u003e\n\u003ch3\u003eAbout Predicates\u003c/h3\u003e\n\u003cp\u003eStarting on the bottom line, we see a \u003ccode\u003eTableScan\u003c/code\u003e with the preds specification on it; this is called a \u003cem\u003ePredicate Pushdown\u003c/em\u003e. A pushdown means: when we perform this \u003ccode\u003eTableScan\u003c/code\u003e, we\u0026rsquo;ll bring this predicate (\u003ccode\u003eA.C_NATIONKEY \u003d 100\u003c/code\u003e) along with us, and will perform the scan using this predicate, passing up to the next part of the plan ONLY the rows that match. Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\u003c/p\u003e\n\u003cp\u003eThe other kind of predicate shown here is of the form \u003ccode\u003e[(A.C_CUSTKEY[4:1] \u003d B.C_CUSTKEY[4:3])]\u003c/code\u003e. You can ignore the numbers for now; the key part is \u003ccode\u003eA.C_CUSTKEY \u003d B.C_CUSTKEY\u003c/code\u003e. You can see that this is the join predicate, required for the actual join operation.\u003c/p\u003e\n\u003cp\u003eThe main takeaway is that, as with most databases: when you can \u003cem\u003epush down\u003c/em\u003e a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou’ll notice that on the very right of the plan are two lines with \u003cem\u003epreds\u003d\u003c/em\u003e on them. \u003cem\u003ePreds\u003c/em\u003e is short for \u003cem\u003epredicates\u003c/em\u003e, which in databases are true/false conditions that are tested during query execution.\u003c/p\u003e\n\u003ch3\u003eAbout Predicates\u003c/h3\u003e\n\u003cp\u003eStarting on the bottom line, we see a \u003ccode\u003eTableScan\u003c/code\u003e with the preds specification on it; this is called a \u003cem\u003ePredicate Pushdown\u003c/em\u003e. A pushdown means: when we perform this \u003ccode\u003eTableScan\u003c/code\u003e, we\u0026rsquo;ll bring this predicate (\u003ccode\u003eA.C_NATIONKEY \u003d 100\u003c/code\u003e) along with us, and will perform the scan using this predicate, passing up to the next part of the plan ONLY the rows that match. Predicate pushdowns are extremely efficient when performed on keyed results (primary keys or indexes), because only the minimal number of rows are pushed up to the next step.\u003c/p\u003e\n\u003cp\u003eThe other kind of predicate shown here is of the form \u003ccode\u003e[(A.C_CUSTKEY[4:1] \u003d B.C_CUSTKEY[4:3])]\u003c/code\u003e. You can ignore the numbers for now; the key part is \u003ccode\u003eA.C_CUSTKEY \u003d B.C_CUSTKEY\u003c/code\u003e. You can see that this is the join predicate, required for the actual join operation.\u003c/p\u003e\n\u003cp\u003eThe main takeaway is that, as with most databases: when you can \u003cem\u003epush down\u003c/em\u003e a predicate that filters a lot of data with a keyed filter, it helps create efficient scans for that step. If the filter is not keyed, this becomes a potential opportunity for adding an index.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -152,17 +152,17 @@
     {
       "text": "%md\n\n### Join Ordering\n\nThe actual join ordering is part of the optimization process: do I get a better cost when I start with the `customer_bulk_import_example1` table and join table `customer_bulk_import_example2` with it, or the other way around?\n\nSmart join ordering depends a lot on the situation. Generally speaking, the sooner you can filter out rows (thus working with fewer rows at each step of the query), the faster the query will run.\n\nWhen you look at an explain plan, if you are unsure of the ordering, remember again the order is *bottom up*. Another way to view this is to look at the counts on each row of the plan (n\u003d1, n\u003d2, etc.). This dictates the table ordering being used.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-12 17:29:30.078",
+      "dateUpdated": "2019-06-12 20:21:55.605",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "enabled": false,
         "results": {},
+        "editorHide": true,
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "editorHide": true,
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -182,25 +182,25 @@
       "jobName": "paragraph_1559754591184_1443740413",
       "id": "20190605-170951_606376220",
       "dateCreated": "2019-06-05 17:09:51.184",
-      "dateStarted": "2019-06-12 17:29:26.875",
-      "dateFinished": "2019-06-12 17:29:26.914",
+      "dateStarted": "2019-06-12 20:21:44.866",
+      "dateFinished": "2019-06-12 20:21:44.885",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\n### Join Strategy\n\nIn Splice Machine there are four possible join strategies:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eJoin Strategy\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eBROADCAST\u003c/td\u003e\n            \u003ctd\u003eRead the results of the Right Result Set (RHS) into memory, then for each row in the left result set (LHS), perform a local lookup to determine the right side of the join.\u003cbr/\u003e\u003cbr/\u003e\u003ci\u003eBROADCAST\u003c/i\u003e will only work if at least one of the following is true:\u003cbr/\u003e\u003cbr/\u003e\n                \u003cul\u003e\n                    \u003cli\u003eThere is at least one equijoin (\u003d) predicate that does not include a function call.\u003c/li\u003e\n                    \u003cli\u003eThere is at least one inequality join predicate, the RHS is a base table, and the join is evaluated in Spark.\u003c/li\u003e\n                \u003c/ul\u003e\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eSORTMERGE\u003c/td\u003e\n            \u003ctd\u003eRe-sort both the left and right sides according to the join keys, then perform a \u003ci\u003eMERGE\u003c/i\u003e join on the results.\u003cbr/\u003e\u003cbr/\u003e\u003ci\u003eSORTMERGE\u003c/i\u003e requires an equijoin predicate with no function calls.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eMERGE\u003c/td\u003e\n            \u003ctd\u003eRead the Right and Left result sets simultaneously in order and join them together as they are read.\u003cbr/\u003e\u003cbr/\u003e\u003ci\u003eMERGE\u003c/i\u003e joins require that both the left and right result sets be sorted according to the join keys. \u003ci\u003eMERGE\u003c/i\u003e requires an equijoin predicate that does not include a function call.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003eNESTEDLOOP\u003c/td\u003e\n            \u003ctd\u003eFor each row on the left, fetch the values on the right that match the join.\u003cbr/\u003e\u003cbr/\u003e\u003ci\u003eNESTEDLOOP\u003c/i\u003e is the only join that can work with any join predicate of any type; however this type of join is generally very slow.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nIn our example above we see that the plan uses a `MergeJoin` to join the `CUSTOMER_BULK_IMPORT_EXAMPLE1` table with the `CUSTOMER_BULK_IMPORT_EXAMPLE2` table.\n\n\u003cpre\u003e\n      -\u003e  MergeJoin(n\u003d3,totalCost\u003d77202.976,outputRows\u003d651515625,outputHeapSize\u003d1.324 GB,partitions\u003d145,preds\u003d[(A.C_CUSTKEY[4:1] \u003d B.C_CUSTKEY[4:3])])\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE2(1664)](n\u003d2,totalCost\u003d236254,scannedRows\u003d118125000,outputRows\u003d118125000,outputHeapSize\u003d1.324 GB,partitions\u003d145)\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE1(1648)](n\u003d1,totalCost\u003d1447816.5,scannedRows\u003d723906250,outputRows\u003d651515625,outputHeapSize\u003d1.214 GB,partitions\u003d145,preds\u003d[(A.C_NATIONKEY[0:2] \u003d 100)])\u003c/pre\u003e\n\nReading this from the bottom up we see:\n\n1. `CUSTOMER_BULK_IMPORT_EXAMPLE1` is scanned and becomes the left hand side of the join\n2. `CUSTOMER_BULK_IMPORT_EXAMPLE2` is scanned and becomes the right hand side of the join\n3. The `MERGE` join strategy is used",
       "user": "anonymous",
-      "dateUpdated": "2019-06-12 17:29:38.250",
+      "dateUpdated": "2019-06-12 20:22:06.277",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "enabled": false,
         "results": {},
+        "editorHide": true,
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "editorHide": true,
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -220,25 +220,25 @@
       "jobName": "paragraph_1559754769544_-56424977",
       "id": "20190605-171249_2032665476",
       "dateCreated": "2019-06-05 17:12:49.544",
-      "dateStarted": "2019-06-12 17:29:35.983",
-      "dateFinished": "2019-06-12 17:29:36.028",
+      "dateStarted": "2019-06-12 20:21:58.486",
+      "dateFinished": "2019-06-12 20:21:58.524",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n\n## 2. Understanding Database Statistics\n\nDatabase statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; the statistics help the optimizer select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.\n\nIn this section we will show you how to:\n\n* Collect Statistics\n* View Statistics\n\n### Collect Statistics\n\nYou can collect statistics on a schema or table using the `analyze` command. \n\nHere is the syntax for collecting statistics for a schema:\n\n\u003cpre\u003e\nANALYZE SCHEMA \u003ci\u003eschemaName\u003c/i\u003e\n\u003c/pre\u003e\n\nHere is the syntax for collecting statistics for a table:\n\n\u003cpre\u003e\nANALYZE TABLE \u003ci\u003eschemaName.tableName\u003c/i\u003e\n\u003c/pre\u003e\n\nLet\u0027s try collecting statistics on our `DEV3` schema by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph. ",
       "user": "anonymous",
-      "dateUpdated": "2019-06-12 17:29:46.808",
+      "dateUpdated": "2019-06-12 20:22:49.816",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "enabled": false,
         "results": {},
+        "editorHide": true,
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "editorHide": true,
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -258,8 +258,8 @@
       "jobName": "paragraph_1559756870445_-1085019509",
       "id": "20190605-174750_416169915",
       "dateCreated": "2019-06-05 17:47:50.445",
-      "dateStarted": "2019-06-12 17:29:44.705",
-      "dateFinished": "2019-06-12 17:29:44.734",
+      "dateStarted": "2019-06-12 20:22:42.651",
+      "dateFinished": "2019-06-12 20:22:42.667",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -273,7 +273,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -301,16 +301,16 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -332,17 +332,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:13:51.932",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -352,8 +352,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eNow go back and rerun the explain for our query example. You should notice that the plan has changed.\u003c/p\u003e\n\u003cp\u003eThis was the explain plan before we collected stats on the tables in the schema:\u003c/p\u003e\n\u003cpre\u003e\nCursor(n\u003d6,rows\u003d651515625,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d13126628.907,outputRows\u003d651515625,outputHeapSize\u003d1.324 GB,partitions\u003d145)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d236254,outputRows\u003d118125000,outputHeapSize\u003d1.324 GB,partitions\u003d145)\n      -\u003e  MergeJoin(n\u003d3,totalCost\u003d77202.976,outputRows\u003d651515625,outputHeapSize\u003d1.324 GB,partitions\u003d145,preds\u003d[(A.C_CUSTKEY[4:1] \u003d B.C_CUSTKEY[4:3])])\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE2(1664)](n\u003d2,totalCost\u003d236254,scannedRows\u003d118125000,outputRows\u003d118125000,outputHeapSize\u003d1.324 GB,partitions\u003d145)\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE1(1648)](n\u003d1,totalCost\u003d1447816.5,scannedRows\u003d723906250,outputRows\u003d651515625,outputHeapSize\u003d1.214 GB,partitions\u003d145,preds\u003d[(A.C_NATIONKEY[0:2] \u003d 100)])\n\u003c/pre\u003e\n\u003cp\u003eThis is the new explain plan after we collected the statistics:\u003c/p\u003e\n\u003cpre\u003e\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d268.81,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d4.003,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145)\n      -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d260.8,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145)\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE2(1664)](n\u003d2,totalCost\u003d4.003,scannedRows\u003d1,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145,preds\u003d[(A.C_CUSTKEY[1:1] \u003d B.C_CUSTKEY[2:1])])\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE1(1648)](n\u003d1,totalCost\u003d37804,scannedRows\u003d15000000,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d145,preds\u003d[(A.C_NATIONKEY[0:2] \u003d 100)])\n\u003c/pre\u003e\n\u003cp\u003eWith statistics collected the cost values are more accurate which allows the optimizer to choose a better plan. The new plan chooses the \u003ccode\u003eNestedLoopJoin\u003c/code\u003e join strategy because it now knows that the right hand side table, \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE2\u003c/code\u003e can have the predicate applied thus filtering the results to just one \u003ccode\u003escannedRow\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eThis is a simple example on a small dataset but you can see how database statistics can help the optimizer choose a better plan for executing a query. The point is to ensure the best performance it is critical to collect statistics on your database tables in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eNow go back and rerun the explain for our query example. You should notice that the plan has changed.\u003c/p\u003e\n\u003cp\u003eThis was the explain plan before we collected stats on the tables in the schema:\u003c/p\u003e\n\u003cpre\u003e\nCursor(n\u003d6,rows\u003d651515625,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d13126628.907,outputRows\u003d651515625,outputHeapSize\u003d1.324 GB,partitions\u003d145)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d236254,outputRows\u003d118125000,outputHeapSize\u003d1.324 GB,partitions\u003d145)\n      -\u003e  MergeJoin(n\u003d3,totalCost\u003d77202.976,outputRows\u003d651515625,outputHeapSize\u003d1.324 GB,partitions\u003d145,preds\u003d[(A.C_CUSTKEY[4:1] \u003d B.C_CUSTKEY[4:3])])\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE2(1664)](n\u003d2,totalCost\u003d236254,scannedRows\u003d118125000,outputRows\u003d118125000,outputHeapSize\u003d1.324 GB,partitions\u003d145)\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE1(1648)](n\u003d1,totalCost\u003d1447816.5,scannedRows\u003d723906250,outputRows\u003d651515625,outputHeapSize\u003d1.214 GB,partitions\u003d145,preds\u003d[(A.C_NATIONKEY[0:2] \u003d 100)])\n\u003c/pre\u003e\n\u003cp\u003eThis is the new explain plan after we collected the statistics:\u003c/p\u003e\n\u003cpre\u003e\nCursor(n\u003d6,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d5,totalCost\u003d268.81,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145)\n    -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d4.003,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145)\n      -\u003e  NestedLoopJoin(n\u003d3,totalCost\u003d260.8,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145)\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE2(1664)](n\u003d2,totalCost\u003d4.003,scannedRows\u003d1,outputRows\u003d1,outputHeapSize\u003d19 B,partitions\u003d145,preds\u003d[(A.C_CUSTKEY[1:1] \u003d B.C_CUSTKEY[2:1])])\n        -\u003e  TableScan[CUSTOMER_BULK_IMPORT_EXAMPLE1(1648)](n\u003d1,totalCost\u003d37804,scannedRows\u003d15000000,outputRows\u003d1,outputHeapSize\u003d0 B,partitions\u003d145,preds\u003d[(A.C_NATIONKEY[0:2] \u003d 100)])\n\u003c/pre\u003e\n\u003cp\u003eWith statistics collected the cost values are more accurate which allows the optimizer to choose a better plan. The new plan chooses the \u003ccode\u003eNestedLoopJoin\u003c/code\u003e join strategy because it now knows that the right hand side table, \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE2\u003c/code\u003e can have the predicate applied thus filtering the results to just one \u003ccode\u003escannedRow\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eThis is a simple example on a small dataset but you can see how database statistics can help the optimizer choose a better plan for executing a query. The point is to ensure the best performance it is critical to collect statistics on your database tables in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -370,17 +370,17 @@
     {
       "text": "%md\n\n### View Statistics\n\nSplice Machine provides two system tables you can query to view the statistics that have been collected for your database:\n\n* *SYS.SYSTABLESTATISTICS*\n* *SYS.SYSCOLUMNSTATISTICS*\n\nClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button in the next paragraph to view the contents of each of these system tables.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-12 17:30:00.049",
+      "dateUpdated": "2019-06-12 20:23:21.764",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "enabled": false,
         "results": {},
+        "editorHide": true,
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "editorHide": true,
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -400,8 +400,8 @@
       "jobName": "paragraph_1559759368061_-2054976156",
       "id": "20190605-182928_378425934",
       "dateCreated": "2019-06-05 18:29:28.061",
-      "dateStarted": "2019-06-12 17:29:57.996",
-      "dateFinished": "2019-06-12 17:29:58.035",
+      "dateStarted": "2019-06-12 20:23:08.030",
+      "dateFinished": "2019-06-12 20:23:08.043",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -415,7 +415,7 @@
           "1": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -446,13 +446,13 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           },
           "0": {
             "graph": {
               "commonSetting": {},
-              "optionOpen": false,
+              "height": 300.0,
               "setting": {
                 "table": {
                   "updated": false,
@@ -482,17 +482,17 @@
                   "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "mode": "table",
-              "height": 300.0
+              "optionOpen": false,
+              "mode": "table"
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -514,17 +514,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:13:24.097",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -534,8 +534,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eLet\u0026rsquo;s take a closer look at the \u003ccode\u003eSYS.SYSTABLESTATISTICS\u003c/code\u003e table by selecting key metrics to understand the characteristics of the \u003ccode\u003eDEV3.CUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to select key metrics for the \u003ccode\u003eDEV3.CUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eLet\u0026rsquo;s take a closer look at the \u003ccode\u003eSYS.SYSTABLESTATISTICS\u003c/code\u003e table by selecting key metrics to understand the characteristics of the \u003ccode\u003eDEV3.CUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to select key metrics for the \u003ccode\u003eDEV3.CUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -559,7 +559,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -583,16 +583,16 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -614,17 +614,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:13:09.654",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -634,8 +634,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eWe see that the \u003ccode\u003eDEV3.CUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table has 15000000 rows, has a total size of 2294789186 bytes, has a \u003ccode\u003estatsType\u003c/code\u003e value of 2, and a \u003ccode\u003esampleFraction\u003c/code\u003e value of 0.\u003c/p\u003e\n\u003cp\u003eFor reference refer to these tables for an explanation of the \u003ccode\u003estatsType\u003c/code\u003e and \u003ccode\u003esampleFraction\u003c/code\u003e\u003c/p\u003e\n\u003ch4\u003estatsType\u003c/h4\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eStatistic Type Value\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e0\u003c/td\u003e\n            \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e1\u003c/td\u003e\n            \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e2\u003c/td\u003e\n            \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e3\u003c/td\u003e\n            \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch4\u003esampleFraction\u003c/h4\u003e\n\u003cp\u003eThe sampling percentage, expressed as 0.0 to 1.0,\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIf statsType\u003d0 (full statistics), this value is not used, and is shown as 0.\u003c/li\u003e\n  \u003cli\u003eIf statsType\u003d1, this value is the percentage or rows to be sampled. A value of 0 means no rows, and a value of 1 means all rows (full statistics).\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eWe see that the \u003ccode\u003eDEV3.CUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table has 15000000 rows, has a total size of 2294789186 bytes, has a \u003ccode\u003estatsType\u003c/code\u003e value of 2, and a \u003ccode\u003esampleFraction\u003c/code\u003e value of 0.\u003c/p\u003e\n\u003cp\u003eFor reference refer to these tables for an explanation of the \u003ccode\u003estatsType\u003c/code\u003e and \u003ccode\u003esampleFraction\u003c/code\u003e\u003c/p\u003e\n\u003ch4\u003estatsType\u003c/h4\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eStatistic Type Value\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e0\u003c/td\u003e\n            \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n        \u003c/tr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e1\u003c/td\u003e\n            \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e2\u003c/td\u003e\n            \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd class\u003d\"ItalicFont\"\u003e3\u003c/td\u003e\n            \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch4\u003esampleFraction\u003c/h4\u003e\n\u003cp\u003eThe sampling percentage, expressed as 0.0 to 1.0,\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eIf statsType\u003d0 (full statistics), this value is not used, and is shown as 0.\u003c/li\u003e\n  \u003cli\u003eIf statsType\u003d1, this value is the percentage or rows to be sampled. A value of 0 means no rows, and a value of 1 means all rows (full statistics).\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -654,17 +654,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 19:20:37.937",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -674,8 +674,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Query Performance Problems\u003c/h2\u003e\n\u003cp\u003eWhen query performance is not up to par, there can be several reasons why a query doesn\u0026rsquo;t perform as well as expected. In this section we will dive in and take a look at some of the more common problems that can lead to poor query performance and how you can resolve them. Before you read on the most important thing to remember is to make sure statistics have been collected on all your table.\u003c/p\u003e\n\u003cp\u003eSpecifically we will take a look at:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eData Skew\u003c/li\u003e\n  \u003cli\u003eAccess Path\u003c/li\u003e\n  \u003cli\u003eNested Loop Joins\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eData Skew\u003c/h3\u003e\n\u003cp\u003eIn the most simplest term data skew primarily refers to a non uniform distribution in a dataset. For example, let\u0026rsquo;s say you have a column in a table whose range of values is from 1-10. The data in this column would be considered skewed if there is a disproportionally large number of rows for a particular value. So, if the table contains 10 million rows and 9 million of those rows have the value of \u003ccode\u003e5\u003c/code\u003e then the data would be considered skewed. This is particularly problematic when the column is used in a join condition.\u003c/p\u003e\n\u003cp\u003eThis is particularly problematic because with skewed data a few tasks have to do significantly more work than other tasks and this defeats the purpose of parallelism and it could also lead to out of memory errors. Skewness could exists in the base table on certain columns and it could also occur after certain joins. With skewed data problems usually arise during the \u003ccode\u003eMergeSortJoin\u003c/code\u003e step or during grouped aggregates.\u003c/p\u003e\n\u003ch4\u003eDetecting Skew\u003c/h4\u003e\n\u003cp\u003eIf your query is executed in Spark you can use the Database Console (Spark UI) to determine if your query could be possibly affected by data skew. You can find your query in the Database Console and look at the Summary Metrics for the stage:\u003c/p\u003e\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/skew1.png\"\u003e\n\u003cp\u003eHere we see that the \u003ccode\u003eShuffle Read Size\u003c/code\u003e for the \u003ccode\u003eMin\u003c/code\u003e, \u003ccode\u003e25th Percentile\u003c/code\u003e, \u003ccode\u003eMedian\u003c/code\u003e, and \u003ccode\u003e75th Percentile\u003c/code\u003e are relatively the same. However, for the \u003ccode\u003eMax\u003c/code\u003e the amount of data being read is significantly larger. This indicates that this stage in the query execution is suffering from data skewness.\u003c/p\u003e\n\u003cp\u003eAnother way we can detect skew is to look at the individual tasks for a stage in the Database Console:\u003c/p\u003e\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/skew2.png\"\u003e\n\u003cp\u003eHere we see that the first task listed has a \u003ccode\u003eShuffle Read Size / Records\u003c/code\u003e value that is significantly larger than the other tasks. This is also an indication that this query is under performing due to skew issues in the data.\u003c/p\u003e\n\u003cp\u003eYou can also use SQL to determine if there is skew in your data. Let\u0026rsquo;s run through an example. We\u0026rsquo;ve created some skewed data for you. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to create the example.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. Query Performance Problems\u003c/h2\u003e\n\u003cp\u003eWhen query performance is not up to par, there can be several reasons why a query doesn\u0026rsquo;t perform as well as expected. In this section we will dive in and take a look at some of the more common problems that can lead to poor query performance and how you can resolve them. Before you read on the most important thing to remember is to make sure statistics have been collected on all your table.\u003c/p\u003e\n\u003cp\u003eSpecifically we will take a look at:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eData Skew\u003c/li\u003e\n  \u003cli\u003eAccess Path\u003c/li\u003e\n  \u003cli\u003eNested Loop Joins\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch3\u003eData Skew\u003c/h3\u003e\n\u003cp\u003eIn the most simplest term data skew primarily refers to a non uniform distribution in a dataset. For example, let\u0026rsquo;s say you have a column in a table whose range of values is from 1-10. The data in this column would be considered skewed if there is a disproportionally large number of rows for a particular value. So, if the table contains 10 million rows and 9 million of those rows have the value of \u003ccode\u003e5\u003c/code\u003e then the data would be considered skewed. This is particularly problematic when the column is used in a join condition.\u003c/p\u003e\n\u003cp\u003eThis is particularly problematic because with skewed data a few tasks have to do significantly more work than other tasks and this defeats the purpose of parallelism and it could also lead to out of memory errors. Skewness could exists in the base table on certain columns and it could also occur after certain joins. With skewed data problems usually arise during the \u003ccode\u003eMergeSortJoin\u003c/code\u003e step or during grouped aggregates.\u003c/p\u003e\n\u003ch4\u003eDetecting Skew\u003c/h4\u003e\n\u003cp\u003eIf your query is executed in Spark you can use the Database Console (Spark UI) to determine if your query could be possibly affected by data skew. You can find your query in the Database Console and look at the Summary Metrics for the stage:\u003c/p\u003e\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/skew1.png\"\u003e\n\u003cp\u003eHere we see that the \u003ccode\u003eShuffle Read Size\u003c/code\u003e for the \u003ccode\u003eMin\u003c/code\u003e, \u003ccode\u003e25th Percentile\u003c/code\u003e, \u003ccode\u003eMedian\u003c/code\u003e, and \u003ccode\u003e75th Percentile\u003c/code\u003e are relatively the same. However, for the \u003ccode\u003eMax\u003c/code\u003e the amount of data being read is significantly larger. This indicates that this stage in the query execution is suffering from data skewness.\u003c/p\u003e\n\u003cp\u003eAnother way we can detect skew is to look at the individual tasks for a stage in the Database Console:\u003c/p\u003e\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/skew2.png\"\u003e\n\u003cp\u003eHere we see that the first task listed has a \u003ccode\u003eShuffle Read Size / Records\u003c/code\u003e value that is significantly larger than the other tasks. This is also an indication that this query is under performing due to skew issues in the data.\u003c/p\u003e\n\u003cp\u003eYou can also use SQL to determine if there is skew in your data. Let\u0026rsquo;s run through an example. We\u0026rsquo;ve created some skewed data for you. Click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to create the example.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -699,7 +699,7 @@
           "1": {
             "graph": {
               "commonSetting": {},
-              "optionOpen": false,
+              "height": 300.0,
               "setting": {
                 "table": {
                   "updated": false,
@@ -723,11 +723,45 @@
                   "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "mode": "table",
-              "height": 300.0
+              "optionOpen": false,
+              "mode": "table"
             }
           },
           "3": {
+            "graph": {
+              "commonSetting": {},
+              "mode": "table",
+              "setting": {
+                "table": {
+                  "updated": false,
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "updated": false,
+                    "names": {
+                      "partitionSize": "string",
+                      "statsType": "string",
+                      "sampleFraction": "string",
+                      "partitionCount": "string",
+                      "partition": "string",
+                      "tableName": "string",
+                      "rowsCollected": "string",
+                      "schemaName": "string"
+                    }
+                  },
+                  "tableOptionValue": {
+                    "showPagination": false,
+                    "useFilter": false,
+                    "showAggregationFooter": false
+                  },
+                  "initialized": false,
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
+                }
+              },
+              "optionOpen": false,
+              "height": 300.0
+            }
+          },
+          "2": {
             "graph": {
               "commonSetting": {},
               "height": 300.0,
@@ -760,49 +794,15 @@
               "optionOpen": false,
               "mode": "table"
             }
-          },
-          "2": {
-            "graph": {
-              "commonSetting": {},
-              "optionOpen": false,
-              "setting": {
-                "table": {
-                  "updated": false,
-                  "tableGridState": {},
-                  "tableColumnTypeState": {
-                    "updated": false,
-                    "names": {
-                      "partitionSize": "string",
-                      "statsType": "string",
-                      "sampleFraction": "string",
-                      "partitionCount": "string",
-                      "partition": "string",
-                      "tableName": "string",
-                      "rowsCollected": "string",
-                      "schemaName": "string"
-                    }
-                  },
-                  "tableOptionValue": {
-                    "showPagination": false,
-                    "useFilter": false,
-                    "showAggregationFooter": false
-                  },
-                  "initialized": false,
-                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
-                }
-              },
-              "mode": "table",
-              "height": 300.0
-            }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -824,17 +824,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:12:36.879",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -844,8 +844,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eNow that we have our example created let\u0026rsquo;s click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to use SQL to detect the skewness of the data.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eNow that we have our example created let\u0026rsquo;s click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to use SQL to detect the skewness of the data.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -869,7 +869,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -893,17 +893,17 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -925,17 +925,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:11:16.600",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -945,8 +945,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eThe query we just ran is checking for skewness on the \u003ccode\u003eL_ORDERKEY\u003c/code\u003e column. This query groups the rows by the \u003ccode\u003eL_ORDERKEY\u003c/code\u003e and counts the number of records for each \u003ccode\u003eL_ORDERKEY\u003c/code\u003e value. A couple of things tell us that there is skew in this data. The difference between the \u003ccode\u003eSMALLEST_VALUE\u003c/code\u003e and \u003ccode\u003eLARGEST_VALUE\u003c/code\u003e is very big. Also, the difference between the \u003ccode\u003eAVERAGE_VALUE\u003c/code\u003e and the \u003ccode\u003eLARGEST_VALUE\u003c/code\u003e is also very big. There is an average of 10 records per order key value but there this one order key that has 10,485,766 rows.\u003c/p\u003e\n\u003ch4\u003eHandling Skew\u003c/h4\u003e\n\u003cp\u003eWe can\u0026rsquo;t change the data to eliminate skew but there are a few things that we can try that will help alleviate and in some cases avoid skewness of data.\u003c/p\u003e\n\u003ch5\u003eBroadcast Join\u003c/h5\u003e\n\u003cp\u003eIn most cases the shuffling of data during a mergesort join is problematic when there is skewness of data in one of the join columns. This presents itself in the spark tasks where you see that one task reads the majority of the data therby taking much longer to complete compared to all other tasks for the stage. If the right hand side of the join is small enough you can try hinting the join to use the \u003ccode\u003eBROADCAST\u003c/code\u003e join strategy.\u003c/p\u003e\n\u003cp\u003eFor example:\u003c/p\u003e\n\u003cpre\u003e\nSELECT * FROM DEV3.ORDERS O\nJOIN DEV3.LINEITEM_WITH_SKEW L --SPLICE-PROPERTIES joinStrategy\u003dBROADCAST\nON O.O_ORDERKEY \u003d L.L_ORDERKEY;\n\u003c/pre\u003e\n\u003cp\u003eNote that we wouldn\u0026rsquo;t actually recommend the query above because we know the right hand side table \u003ccode\u003eLINEITEM_WITH_SKEW\u003c/code\u003e is a large table. The example is purely for demonstrating how to apply a hint to use the \u003ccode\u003eBROADCAST\u003c/code\u003e join strategy.\u003c/p\u003e\n\u003ch5\u003eSplit the Skewed Table and use Union All\u003c/h5\u003e\n\u003cp\u003eAnother method for handling skew is to split the query into two parts with one part extracting the skewed value and the second part handling the remaining values then using a \u003ccode\u003eUNION ALL\u003c/code\u003e to merge the result sets. We know that our skewed data is on the order key value of \u003ccode\u003e1\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eHere is an example of a rewrite:\u003c/p\u003e\n\u003cpre\u003e\nSELECT * FROM DEV3.ORDERS O\nJOIN DEV3.LINEITEM_WITH_SKEW L\nON O.O_ORDERKEY \u003d L.L_ORDERKEY\nWHERE O.O_ORDERKEY \u003d 1\nUNION ALL\nSELECT * FROM DEV3.ORDERS O\nJOIN DEV3.LINEITEM_WITH_SKEW L\nON O.O_ORDERKEY \u003d L.L_ORDERKEY\nWHERE O.O_ORDERKEY \u003c\u003e 1\n\u003c/pre\u003e\n\u003ch5\u003eIntroduce a Non-Skewed Join Column\u003c/h5\u003e\n\u003cp\u003eIf possible you can introduce a non-skewed join column to the query. This is typically accomplished by rewriting the query to use the \u003ccode\u003eWITH\u003c/code\u003e statement.\u003c/p\u003e\n\u003cp\u003eFor example:\u003c/p\u003e\n\u003cpre\u003e\nWITH DT as (SELECT * FROM DEV3.ORDERS O)\nSELECT * FROM DT\nWHERE EXISTS (SELECT 1 FROM DEV3.LINEITEM_WITH_SKEW L WHERE L.L_ORDERKEY \u003d DT.O_ORDERKEY)\n\u003c/pre\u003e\n\u003ch5\u003eOther Methods and Future Improvements\u003c/h5\u003e\n\u003cp\u003eIf you are joining multiple tables you may be able to alleviate skew issues by delaying the skewed join. This can be accomplished by using the \u003ccode\u003ejoinOrder\u003dFIXED\u003c/code\u003e method and by experimenting with the order of tables in which they are joined.\u003c/p\u003e\n\u003cp\u003eConstant improvements are being made to the optimizer to help with skewness and reduce the need for rewrites or query hints. Some improvements that are being worked on include salting skewed values to make them unique and pushiing aggregation down before the join.\u003c/p\u003e\n\u003ch3\u003eAccess Path\u003c/h3\u003e\n\u003cp\u003eThe access path to the data can have a huge affect on the performance of a query. Access path refers to how we are reading the data. Are we scanning the entire table? Are we using a primary key?\u003c/p\u003e\n\u003cp\u003eA full table scan appears as a \u003ccode\u003eTableScan\u003c/code\u003e operation in the explain plan. Primary key access also displays as a \u003ccode\u003eTableScan\u003c/code\u003e but the number of rows scanned would be smaller than the total number of rows in the table\u003c/p\u003e\n\u003cp\u003eclick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to see the explain plan for selecting from a table using a full table scan.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eThe query we just ran is checking for skewness on the \u003ccode\u003eL_ORDERKEY\u003c/code\u003e column. This query groups the rows by the \u003ccode\u003eL_ORDERKEY\u003c/code\u003e and counts the number of records for each \u003ccode\u003eL_ORDERKEY\u003c/code\u003e value. A couple of things tell us that there is skew in this data. The difference between the \u003ccode\u003eSMALLEST_VALUE\u003c/code\u003e and \u003ccode\u003eLARGEST_VALUE\u003c/code\u003e is very big. Also, the difference between the \u003ccode\u003eAVERAGE_VALUE\u003c/code\u003e and the \u003ccode\u003eLARGEST_VALUE\u003c/code\u003e is also very big. There is an average of 10 records per order key value but there this one order key that has 10,485,766 rows.\u003c/p\u003e\n\u003ch4\u003eHandling Skew\u003c/h4\u003e\n\u003cp\u003eWe can\u0026rsquo;t change the data to eliminate skew but there are a few things that we can try that will help alleviate and in some cases avoid skewness of data.\u003c/p\u003e\n\u003ch5\u003eBroadcast Join\u003c/h5\u003e\n\u003cp\u003eIn most cases the shuffling of data during a mergesort join is problematic when there is skewness of data in one of the join columns. This presents itself in the spark tasks where you see that one task reads the majority of the data therby taking much longer to complete compared to all other tasks for the stage. If the right hand side of the join is small enough you can try hinting the join to use the \u003ccode\u003eBROADCAST\u003c/code\u003e join strategy.\u003c/p\u003e\n\u003cp\u003eFor example:\u003c/p\u003e\n\u003cpre\u003e\nSELECT * FROM DEV3.ORDERS O\nJOIN DEV3.LINEITEM_WITH_SKEW L --SPLICE-PROPERTIES joinStrategy\u003dBROADCAST\nON O.O_ORDERKEY \u003d L.L_ORDERKEY;\n\u003c/pre\u003e\n\u003cp\u003eNote that we wouldn\u0026rsquo;t actually recommend the query above because we know the right hand side table \u003ccode\u003eLINEITEM_WITH_SKEW\u003c/code\u003e is a large table. The example is purely for demonstrating how to apply a hint to use the \u003ccode\u003eBROADCAST\u003c/code\u003e join strategy.\u003c/p\u003e\n\u003ch5\u003eSplit the Skewed Table and use Union All\u003c/h5\u003e\n\u003cp\u003eAnother method for handling skew is to split the query into two parts with one part extracting the skewed value and the second part handling the remaining values then using a \u003ccode\u003eUNION ALL\u003c/code\u003e to merge the result sets. We know that our skewed data is on the order key value of \u003ccode\u003e1\u003c/code\u003e.\u003c/p\u003e\n\u003cp\u003eHere is an example of a rewrite:\u003c/p\u003e\n\u003cpre\u003e\nSELECT * FROM DEV3.ORDERS O\nJOIN DEV3.LINEITEM_WITH_SKEW L\nON O.O_ORDERKEY \u003d L.L_ORDERKEY\nWHERE O.O_ORDERKEY \u003d 1\nUNION ALL\nSELECT * FROM DEV3.ORDERS O\nJOIN DEV3.LINEITEM_WITH_SKEW L\nON O.O_ORDERKEY \u003d L.L_ORDERKEY\nWHERE O.O_ORDERKEY \u003c\u003e 1\n\u003c/pre\u003e\n\u003ch5\u003eIntroduce a Non-Skewed Join Column\u003c/h5\u003e\n\u003cp\u003eIf possible you can introduce a non-skewed join column to the query. This is typically accomplished by rewriting the query to use the \u003ccode\u003eWITH\u003c/code\u003e statement.\u003c/p\u003e\n\u003cp\u003eFor example:\u003c/p\u003e\n\u003cpre\u003e\nWITH DT as (SELECT * FROM DEV3.ORDERS O)\nSELECT * FROM DT\nWHERE EXISTS (SELECT 1 FROM DEV3.LINEITEM_WITH_SKEW L WHERE L.L_ORDERKEY \u003d DT.O_ORDERKEY)\n\u003c/pre\u003e\n\u003ch5\u003eOther Methods and Future Improvements\u003c/h5\u003e\n\u003cp\u003eIf you are joining multiple tables you may be able to alleviate skew issues by delaying the skewed join. This can be accomplished by using the \u003ccode\u003ejoinOrder\u003dFIXED\u003c/code\u003e method and by experimenting with the order of tables in which they are joined.\u003c/p\u003e\n\u003cp\u003eConstant improvements are being made to the optimizer to help with skewness and reduce the need for rewrites or query hints. Some improvements that are being worked on include salting skewed values to make them unique and pushiing aggregation down before the join.\u003c/p\u003e\n\u003ch3\u003eAccess Path\u003c/h3\u003e\n\u003cp\u003eThe access path to the data can have a huge affect on the performance of a query. Access path refers to how we are reading the data. Are we scanning the entire table? Are we using a primary key?\u003c/p\u003e\n\u003cp\u003eA full table scan appears as a \u003ccode\u003eTableScan\u003c/code\u003e operation in the explain plan. Primary key access also displays as a \u003ccode\u003eTableScan\u003c/code\u003e but the number of rows scanned would be smaller than the total number of rows in the table\u003c/p\u003e\n\u003cp\u003eclick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to see the explain plan for selecting from a table using a full table scan.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -970,7 +970,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -1015,16 +1015,16 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1046,17 +1046,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:56:48.120",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1066,8 +1066,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that the \u003ccode\u003eTableScan\u003c/code\u003e operation is performed on the \u003ccode\u003eLINEITEM_WITH_SKEW\u003c/code\u003e table. Note that the number of \u003ccode\u003escannedRows\u003c/code\u003e is 16486975. This is the total number of rows in the table.\u003c/p\u003e\n\u003cp\u003eNow click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to see the explain plan for selecting from a table using a primary key access path.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that the \u003ccode\u003eTableScan\u003c/code\u003e operation is performed on the \u003ccode\u003eLINEITEM_WITH_SKEW\u003c/code\u003e table. Note that the number of \u003ccode\u003escannedRows\u003c/code\u003e is 16486975. This is the total number of rows in the table.\u003c/p\u003e\n\u003cp\u003eNow click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to see the explain plan for selecting from a table using a primary key access path.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1088,12 +1088,12 @@
       "config": {
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1115,17 +1115,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:55:46.405",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1135,8 +1135,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that the \u003ccode\u003eTableScan\u003c/code\u003e operation is performed on the \u003ccode\u003eLINEITEM_WITH_SKEW\u003c/code\u003e table but notice that the number of \u003ccode\u003escannedRows\u003c/code\u003e is 3. Reading through 3 rows is a whole lot faster than reading through 16486975 rows.\u003c/p\u003e\n\u003cp\u003eIndexes are another access path that can help improve the peformance of a query. In Splice Machine we refer to indexes as either a covering index or a non-covering index. \u003c/p\u003e\n\u003ch4\u003eCovering Index\u003c/h4\u003e\n\u003cp\u003eIf all columns referenced in a query belonging to a particular table are covered by an index defined on that table, that index is called a covering index for this query. When the number of rows accessed is the same, scanning a covering index is usually more favorable than scanning the base table as the index usually will have a smaller row size.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to create an index and view the index access path in the explain plan.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that the \u003ccode\u003eTableScan\u003c/code\u003e operation is performed on the \u003ccode\u003eLINEITEM_WITH_SKEW\u003c/code\u003e table but notice that the number of \u003ccode\u003escannedRows\u003c/code\u003e is 3. Reading through 3 rows is a whole lot faster than reading through 16486975 rows.\u003c/p\u003e\n\u003cp\u003eIndexes are another access path that can help improve the peformance of a query. In Splice Machine we refer to indexes as either a covering index or a non-covering index. \u003c/p\u003e\n\u003ch4\u003eCovering Index\u003c/h4\u003e\n\u003cp\u003eIf all columns referenced in a query belonging to a particular table are covered by an index defined on that table, that index is called a covering index for this query. When the number of rows accessed is the same, scanning a covering index is usually more favorable than scanning the base table as the index usually will have a smaller row size.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to create an index and view the index access path in the explain plan.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1160,7 +1160,7 @@
           "2": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -1188,17 +1188,17 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1220,17 +1220,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 17:42:01.792",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1240,8 +1240,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that the \u003ccode\u003eIndexScan\u003c/code\u003e operation is performed using the \u003ccode\u003eIDX_LINEITEM1\u003c/code\u003e index.\u003c/p\u003e\n\u003ch4\u003eNon-Covering Index\u003c/h4\u003e\n\u003cp\u003eIf not all columns referenced in a query belonging to a particular table are covered by an index defined on that table, that index is called a non-covering index. The use of a non-covering index incurs the extra cost to lookup the values of column(s) not covered by the index from the base table for each qualified row. This may or may not be a better choice than a full table scan depending on the data and the query.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to view the explain plan for a query that uses a non-covering index.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that the \u003ccode\u003eIndexScan\u003c/code\u003e operation is performed using the \u003ccode\u003eIDX_LINEITEM1\u003c/code\u003e index.\u003c/p\u003e\n\u003ch4\u003eNon-Covering Index\u003c/h4\u003e\n\u003cp\u003eIf not all columns referenced in a query belonging to a particular table are covered by an index defined on that table, that index is called a non-covering index. The use of a non-covering index incurs the extra cost to lookup the values of column(s) not covered by the index from the base table for each qualified row. This may or may not be a better choice than a full table scan depending on the data and the query.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to view the explain plan for a query that uses a non-covering index.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1262,13 +1262,13 @@
       "config": {
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1290,17 +1290,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 18:35:20.924",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1310,8 +1310,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that there is an additional step \u003ccode\u003eIndexLookup\u003c/code\u003e that needs to be performed for every row returned by the \u003ccode\u003eIndexScan\u003c/code\u003e step. As previously stated, this may or may not be as perfomant when compared to doing a full table scan. It really depends on the amount of data and the particular query.\u003c/p\u003e\n\u003ch3\u003eNested Loop Joins\u003c/h3\u003e\n\u003cp\u003eNested loop joins work for all kinds of join conditions (equality or non-equality). When an equality join condition is present, nested loop join’s performance usually is not as good as the other 3 join strategies (broadcast, sortmerge and merge join). The exception is when the left hand side table has a small amount of rows to read and the join with the right hand side table uses a leading pk/index column with low selectivity.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to create some tables and load some data.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that there is an additional step \u003ccode\u003eIndexLookup\u003c/code\u003e that needs to be performed for every row returned by the \u003ccode\u003eIndexScan\u003c/code\u003e step. As previously stated, this may or may not be as perfomant when compared to doing a full table scan. It really depends on the amount of data and the particular query.\u003c/p\u003e\n\u003ch3\u003eNested Loop Joins\u003c/h3\u003e\n\u003cp\u003eNested loop joins work for all kinds of join conditions (equality or non-equality). When an equality join condition is present, nested loop join’s performance usually is not as good as the other 3 join strategies (broadcast, sortmerge and merge join). The exception is when the left hand side table has a small amount of rows to read and the join with the right hand side table uses a leading pk/index column with low selectivity.\u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to create some tables and load some data.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1335,7 +1335,7 @@
           "0": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -1380,13 +1380,13 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           },
           "3": {
             "graph": {
               "commonSetting": {},
-              "optionOpen": false,
+              "height": 300.0,
               "setting": {
                 "table": {
                   "updated": false,
@@ -1410,14 +1410,14 @@
                   "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "mode": "table",
-              "height": 300.0
+              "optionOpen": false,
+              "mode": "table"
             }
           },
           "2": {
             "graph": {
               "commonSetting": {},
-              "optionOpen": false,
+              "height": 300.0,
               "setting": {
                 "table": {
                   "updated": false,
@@ -1441,14 +1441,14 @@
                   "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]"
                 }
               },
-              "mode": "table",
-              "height": 300.0
+              "optionOpen": false,
+              "mode": "table"
             }
           },
           "5": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -1476,13 +1476,13 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           },
           "4": {
             "graph": {
               "commonSetting": {},
-              "height": 300.0,
+              "mode": "table",
               "setting": {
                 "table": {
                   "updated": false,
@@ -1510,17 +1510,17 @@
                 }
               },
               "optionOpen": false,
-              "mode": "table"
+              "height": 300.0
             }
           }
         },
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
-          "language": "sql",
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1542,17 +1542,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 18:36:37.184",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1562,8 +1562,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eNow that we are all setup click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to see an example of a perfect use case for a nested loop join.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eNow that we are all setup click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to see an example of a perfect use case for a nested loop join.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1584,12 +1584,12 @@
       "config": {
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
           "editOnDblClick": false,
           "language": "sql"
         },
-        "fontSize": 9.0,
-        "editorMode": "ace/mode/sql",
         "colWidth": 12.0
       },
       "settings": {
@@ -1611,17 +1611,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-06 19:20:53.147",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1631,8 +1631,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that both tables have a very small number of \u003ccode\u003escannedRows\u003c/code\u003e which is the perfect case for a nested loop join.\u003c/p\u003e\n\u003cp\u003eIn the event that your query uses a nested loop join on tables with many rows on both sides of the join the recommended solution would be to apply a hint to use either a \u003ccode\u003eBROADCAST\u003c/code\u003e or \u003ccode\u003eSORTMERGE\u003c/code\u003e join strategy.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eYou can see that both tables have a very small number of \u003ccode\u003escannedRows\u003c/code\u003e which is the perfect case for a nested loop join.\u003c/p\u003e\n\u003cp\u003eIn the event that your query uses a nested loop join on tables with many rows on both sides of the join the recommended solution would be to apply a hint to use either a \u003ccode\u003eBROADCAST\u003c/code\u003e or \u003ccode\u003eSORTMERGE\u003c/code\u003e join strategy.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1651,17 +1651,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-05-31 17:47:07.910",
       "config": {
+        "editorMode": "ace/mode/markdown",
         "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -1671,8 +1671,8 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EBF46WCA\"\u003e\u003cem\u003ePrepared Statements\u003c/em\u003e\u003c/a\u003e, teaches you how to use prepared statements for querying your databases.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EBF46WCA\"\u003e\u003cem\u003ePrepared Statements\u003c/em\u003e\u003c/a\u003e, teaches you how to use prepared statements for querying your databases.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -1693,8 +1693,7 @@
   "noteForms": {},
   "angularObjects": {
     "md:shared_process": [],
-    "splicemachine:shared_process": [],
-    "spark:shared_process": []
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
