@@ -1,22 +1,22 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Transactions in Splice Machine\n\nThis notebook shows you how transactions are processed in Splice Machine.\n\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Transactions in Splice Machine\n\nIn the *For Developers, Part II* course we showed you how transactions are processed and handled in Splice Machine using Spark and Scala. In this notebook we\u0027ll take a deeper dive and explain the concept of a transaction and how Splice Machine handles them.\n\nFirst, let\u0027s define a transacation. A transaction is a series of events that appear single-threaded to the user. It consists of events between a begin and commit timestamp.\n\nA transaction can have one of four states:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eState\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive\u003c/td\u003e\n            \u003ctd\u003eTransactions always begins in this state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRollback\u003c/td\u003e\n            \u003ctd\u003eTransaction is moved to the rolled back state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eCommitted\u003c/td\u003e\n            \u003ctd\u003eTransaction has been committed to the database\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eError\u003c/td\u003e\n            \u003ctd\u003elogically equivalent to the rolled back state but an uncontrollable error has occurred and should be investigated\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nIn Splice Machine, transactions are durably stored in the `SPLICE_TXN` table. This table is a normal Hbase table and NOT a Splice Machine table. `SPLICE_TXN` is not governed by transactional semantics but rather relies on Hbase\u0027s atomic row operations (increment, compareAndSet, and put operations). The rowkey is an 8-bit transaction id with bits reversed to avoid sequential ordering.",
       "user": "anonymous",
-      "dateUpdated": "2019-05-31 17:45:43.764",
+      "dateUpdated": "2019-06-11 15:32:43.111",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": true,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": true,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -27,7 +27,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTransactions in Splice Machine\u003c/h1\u003e\n\u003cp\u003eThis notebook shows you how transactions are processed in Splice Machine.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTransactions in Splice Machine\u003c/h1\u003e\n\u003cp\u003eIn the \u003cem\u003eFor Developers, Part II\u003c/em\u003e course we showed you how transactions are processed and handled in Splice Machine using Spark and Scala. In this notebook we\u0026rsquo;ll take a deeper dive and explain the concept of a transaction and how Splice Machine handles them.\u003c/p\u003e\n\u003cp\u003eFirst, let\u0026rsquo;s define a transacation. A transaction is a series of events that appear single-threaded to the user. It consists of events between a begin and commit timestamp.\u003c/p\u003e\n\u003cp\u003eA transaction can have one of four states:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eState\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive\u003c/td\u003e\n            \u003ctd\u003eTransactions always begins in this state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRollback\u003c/td\u003e\n            \u003ctd\u003eTransaction is moved to the rolled back state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eCommitted\u003c/td\u003e\n            \u003ctd\u003eTransaction has been committed to the database\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eError\u003c/td\u003e\n            \u003ctd\u003elogically equivalent to the rolled back state but an uncontrollable error has occurred and should be investigated\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eIn Splice Machine, transactions are durably stored in the \u003ccode\u003eSPLICE_TXN\u003c/code\u003e table. This table is a normal Hbase table and NOT a Splice Machine table. \u003ccode\u003eSPLICE_TXN\u003c/code\u003e is not governed by transactional semantics but rather relies on Hbase\u0026rsquo;s atomic row operations (increment, compareAndSet, and put operations). The rowkey is an 8-bit transaction id with bits reversed to avoid sequential ordering.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -35,26 +35,27 @@
       "jobName": "paragraph_1559318793033_-467329500",
       "id": "20190531-160633_2036452887",
       "dateCreated": "2019-05-31 16:06:33.033",
-      "dateStarted": "2019-05-31 17:45:43.765",
-      "dateFinished": "2019-05-31 17:45:43.772",
+      "dateStarted": "2019-06-11 15:32:43.116",
+      "dateFinished": "2019-06-11 15:32:43.144",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "\n",
       "user": "anonymous",
-      "dateUpdated": "2019-05-31 17:45:28.728",
+      "dateUpdated": "2019-06-11 15:32:56.217",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
           "editOnDblClick": false,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "editorMode": "ace/mode/sql"
+        "colWidth": 12.0,
+        "editorHide": false
       },
       "settings": {
         "params": {},
@@ -72,31 +73,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-05-31 17:45:37.426",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EETJQH1J\"\u003e\u003cem\u003eQuery Optimization\u003c/em\u003e\u003c/a\u003e, shows you advanced optimization techniques for boosting query performance.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EETJQH1J\"\u003e\u003cem\u003eQuery Optimization\u003c/em\u003e\u003c/a\u003e, shows you advanced optimization techniques for boosting query performance.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559324720661_1988929642",
