@@ -1,52 +1,12 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Statistics\n\nDatabase statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; database statistics help the optimizer select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.\n",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Statistics\n\nDatabase statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; these statistics help the optimizer to select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 16:47:03.793",
+      "dateUpdated": "2019-06-18 16:26:40.585",
       "config": {
-        "editorHide": true,
-        "enabled": false,
-        "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
-        "editorSetting": {
-          "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
-        },
-        "colWidth": 12.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "msg": [
-          {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eStatistics\u003c/h1\u003e\n\u003cp\u003eDatabase statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; database statistics help the optimizer select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
-          }
-        ],
-        "code": "SUCCESS"
-      },
-      "apps": [],
-      "jobName": "paragraph_1559318715381_-665813334",
-      "id": "20190531-160515_1367525291",
-      "dateCreated": "2019-05-31 16:05:15.381",
-      "dateStarted": "2019-06-05 16:47:03.801",
-      "dateFinished": "2019-06-05 16:47:03.841",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n## Collecting Statistics\n\nYou can collect statistics on a schema or table using the `analyze` command. As a best practice, you should run stastics on a table if an index has been created or if you\u0027ve modified more than 10% of the data. Here are some of the tools available for working with statistics in Splice Machine: \n\n* By default, statistics are calculated on all columns of a table. To selectively calculate them on one or more columns, you can use built-in stored procedure `SYSCS_UTIL.DISABLE_COLUMN_STATISTICS(schema, table, column)` to specify which column(s) are to be used.\n* You can query the `SYSTABLESTATISTICS` system view to view statistics for specific tables. \n* You can query the `SYSCOLUMNSTATISTICS` system view to view statistics for specific columns in a table.\n* The `ANALYZE TABLE` command collects statistics for a specific table in the current schema. It also collects statistics for any indexes associated with the table in the schema.\n* The `ANALYZE SCHEMA` command collects statistics for every table in the schema. It also collects statistics for any indexes associated with every table in the schema.\n\n## Interpreting Analyze Output\n\nThe following table summarizes what you\u0027ll see in the output of the `analyze` command:\n\n\u003ctable summary\u003d\"List of columns in the output of the analyze table command.\"\u003e\n            \u003ccol /\u003e\n            \u003ccol /\u003e\n            \u003cthead\u003e\n                \u003ctr\u003e\n                    \u003cth\u003eValue\u003c/th\u003e\n                    \u003cth\u003eDescription\u003c/th\u003e\n                \u003c/tr\u003e\n            \u003c/thead\u003e\n            \u003ctbody\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003eschemaName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the schema.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003etableName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartition\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe Splice Machine partition. We merge the statistics for all table partitions, so the partition will show as \u003ccode\u003e-All-\u003c/code\u003e when you specify one of the non-merged type values for the \u003ccode\u003estatsType\u003c/code\u003e parameter.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003erowsCollected\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe total number of rows collected for the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartitionSize\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe combined size of the table\u0027s partitions.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003estatsType\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\u003cp\u003eThe type of statistics, which is one of these values:\u003c/p\u003e\n                        \u003ctable\u003e\n                            \u003ccol /\u003e\n                            \u003ccol /\u003e\n                            \u003ctbody\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e0\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e1\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e2\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e3\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                            \u003c/tbody\u003e\n                        \u003c/table\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003esampleFraction\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\n                        \u003cp\u003eThe sampling percentage, expressed as \u003ccode\u003e0.0\u003c/code\u003e to \u003ccode\u003e1.0\u003c/code\u003e, \u003c/p\u003e\n                        \u003cul\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d0\u003c/code\u003e or \u003ccode\u003estatsType\u003d1\u003c/code\u003e (full statistics), this value is not used, and is shown as \u003ccode\u003e0\u003c/code\u003e.\u003c/li\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d2\u003c/code\u003e or \u003ccode\u003estatsType\u003d3\u003c/code\u003e, this value is the percentage or rows to be sampled. A value of \u003ccode\u003e0\u003c/code\u003e means no rows, and a value of \u003ccode\u003e1\u003c/code\u003e means all rows (same as full statistics).\u003c/li\u003e\n                        \u003c/ul\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n            \u003c/tbody\u003e\n        \u003c/table\u003e\n        \nClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph, which will create a schema and a table, insert some records, then runs the `analyze table` command to collect statistics for the table.        ",
-      "user": "anonymous",
-      "dateUpdated": "2019-06-10 16:13:45.146",
-      "config": {
-        "editorHide": true,
-        "enabled": false,
+        "editorHide": false,
+        "enabled": true,
         "results": {},
         "editorMode": "ace/mode/markdown",
         "fontSize": 9.0,
@@ -67,7 +27,87 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch2\u003eCollecting Statistics\u003c/h2\u003e\n\u003cp\u003eYou can collect statistics on a schema or table using the \u003ccode\u003eanalyze\u003c/code\u003e command. As a best practice, you should run stastics on a table if an index has been created or if you\u0026rsquo;ve modified more than 10% of the data. Here are some of the tools available for working with statistics in Splice Machine: \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eBy default, statistics are calculated on all columns of a table. To selectively calculate them on one or more columns, you can use built-in stored procedure \u003ccode\u003eSYSCS_UTIL.DISABLE_COLUMN_STATISTICS(schema, table, column)\u003c/code\u003e to specify which column(s) are to be used.\u003c/li\u003e\n  \u003cli\u003eYou can query the \u003ccode\u003eSYSTABLESTATISTICS\u003c/code\u003e system view to view statistics for specific tables.\u003c/li\u003e\n  \u003cli\u003eYou can query the \u003ccode\u003eSYSCOLUMNSTATISTICS\u003c/code\u003e system view to view statistics for specific columns in a table.\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eANALYZE TABLE\u003c/code\u003e command collects statistics for a specific table in the current schema. It also collects statistics for any indexes associated with the table in the schema.\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eANALYZE SCHEMA\u003c/code\u003e command collects statistics for every table in the schema. It also collects statistics for any indexes associated with every table in the schema.\u003c/li\u003e\n\u003c/ul\u003e\n\u003ch2\u003eInterpreting Analyze Output\u003c/h2\u003e\n\u003cp\u003eThe following table summarizes what you\u0026rsquo;ll see in the output of the \u003ccode\u003eanalyze\u003c/code\u003e command:\u003c/p\u003e\n\u003ctable summary\u003d\"List of columns in the output of the analyze table command.\"\u003e\n            \u003ccol /\u003e\n            \u003ccol /\u003e\n            \u003cthead\u003e\n                \u003ctr\u003e\n                    \u003cth\u003eValue\u003c/th\u003e\n                    \u003cth\u003eDescription\u003c/th\u003e\n                \u003c/tr\u003e\n            \u003c/thead\u003e\n            \u003ctbody\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003eschemaName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the schema.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003etableName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartition\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe Splice Machine partition. We merge the statistics for all table partitions, so the partition will show as \u003ccode\u003e-All-\u003c/code\u003e when you specify one of the non-merged type values for the \u003ccode\u003estatsType\u003c/code\u003e parameter.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003erowsCollected\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe total number of rows collected for the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartitionSize\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe combined size of the table\u0027s partitions.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003estatsType\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\u003cp\u003eThe type of statistics, which is one of these values:\u003c/p\u003e\n                        \u003ctable\u003e\n                            \u003ccol /\u003e\n                            \u003ccol /\u003e\n                            \u003ctbody\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e0\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e1\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e2\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e3\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                            \u003c/tbody\u003e\n                        \u003c/table\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003esampleFraction\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\n                        \u003cp\u003eThe sampling percentage, expressed as \u003ccode\u003e0.0\u003c/code\u003e to \u003ccode\u003e1.0\u003c/code\u003e, \u003c/p\u003e\n                        \u003cul\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d0\u003c/code\u003e or \u003ccode\u003estatsType\u003d1\u003c/code\u003e (full statistics), this value is not used, and is shown as \u003ccode\u003e0\u003c/code\u003e.\u003c/li\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d2\u003c/code\u003e or \u003ccode\u003estatsType\u003d3\u003c/code\u003e, this value is the percentage or rows to be sampled. A value of \u003ccode\u003e0\u003c/code\u003e means no rows, and a value of \u003ccode\u003e1\u003c/code\u003e means all rows (same as full statistics).\u003c/li\u003e\n                        \u003c/ul\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n            \u003c/tbody\u003e\n        \u003c/table\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which will create a schema and a table, insert some records, then runs the \u003ccode\u003eanalyze table\u003c/code\u003e command to collect statistics for the table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eStatistics\u003c/h1\u003e\n\u003cp\u003eDatabase statistics are a form of metadata (data about data) that assists the Splice Machine query optimizer; these statistics help the optimizer to select the most efficient approach to running a query, based on information that has been gathered about the tables involved in the query.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1559318715381_-665813334",
+      "id": "20190531-160515_1367525291",
+      "dateCreated": "2019-05-31 16:05:15.381",
+      "dateStarted": "2019-06-17 18:04:54.174",
+      "dateFinished": "2019-06-17 18:04:54.187",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Collecting Statistics\n\nYou can collect statistics on a schema or table using the `analyze` command. As a best practice, you should run statistics on a table if an index has been created, or if you\u0027ve modified more than 10% of the data. Here are some of the tools available for working with statistics in Splice Machine: \n\n* By default, statistics are calculated on all columns of a table. To selectively calculate them on one or more columns, you can use built-in stored procedure `SYSCS_UTIL.DISABLE_COLUMN_STATISTICS(schema, table, column)` to specify which column(s) are to be used.\n\n* You can query the `SYSTABLESTATISTICS` system view to view statistics for specific tables. \n\n* You can query the `SYSCOLUMNSTATISTICS` system view to view statistics for specific columns in a table.\n\n* The `ANALYZE TABLE` command collects statistics for a specific table in the current schema. It also collects statistics for any indexes associated with the table in the schema.\n\n* The `ANALYZE SCHEMA` command collects statistics for every table in the schema. It also collects statistics for any indexes associated with every table in the schema.",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-18 16:29:56.155",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCollecting Statistics\u003c/h2\u003e\n\u003cp\u003eYou can collect statistics on a schema or table using the \u003ccode\u003eanalyze\u003c/code\u003e command. As a best practice, you should run statistics on a table if an index has been created, or if you\u0026rsquo;ve modified more than 10% of the data. Here are some of the tools available for working with statistics in Splice Machine: \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eBy default, statistics are calculated on all columns of a table. To selectively calculate them on one or more columns, you can use built-in stored procedure \u003ccode\u003eSYSCS_UTIL.DISABLE_COLUMN_STATISTICS(schema, table, column)\u003c/code\u003e to specify which column(s) are to be used.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eYou can query the \u003ccode\u003eSYSTABLESTATISTICS\u003c/code\u003e system view to view statistics for specific tables. \u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eYou can query the \u003ccode\u003eSYSCOLUMNSTATISTICS\u003c/code\u003e system view to view statistics for specific columns in a table.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eThe \u003ccode\u003eANALYZE TABLE\u003c/code\u003e command collects statistics for a specific table in the current schema. It also collects statistics for any indexes associated with the table in the schema.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eThe \u003ccode\u003eANALYZE SCHEMA\u003c/code\u003e command collects statistics for every table in the schema. It also collects statistics for any indexes associated with every table in the schema.\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1560875381486_607384924",
+      "id": "20190618-162941_2047261666",
+      "dateCreated": "2019-06-18 16:29:41.486",
+      "dateStarted": "2019-06-18 16:29:56.155",
+      "dateFinished": "2019-06-18 16:29:56.188",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n## Interpreting Analyze Output\n\nThe following table summarizes what you\u0027ll see in the output of the `analyze` command:\n\n\u003ctable summary\u003d\"List of columns in the output of the analyze table command.\"\u003e\n            \u003ccol /\u003e\n            \u003ccol /\u003e\n            \u003cthead\u003e\n                \u003ctr\u003e\n                    \u003cth\u003eValue\u003c/th\u003e\n                    \u003cth\u003eDescription\u003c/th\u003e\n                \u003c/tr\u003e\n            \u003c/thead\u003e\n            \u003ctbody\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003eschemaName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the schema.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003etableName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartition\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe Splice Machine partition. We merge the statistics for all table partitions, so the partition will show as \u003ccode\u003e-All-\u003c/code\u003e when you specify one of the non-merged type values for the \u003ccode\u003estatsType\u003c/code\u003e parameter.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003erowsCollected\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe total number of rows collected for the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartitionSize\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe combined size of the table\u0027s partitions.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003estatsType\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\u003cp\u003eThe type of statistics, which is one of these values:\u003c/p\u003e\n                        \u003ctable\u003e\n                            \u003ccol /\u003e\n                            \u003ccol /\u003e\n                            \u003ctbody\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e0\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e1\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e2\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e3\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                            \u003c/tbody\u003e\n                        \u003c/table\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003esampleFraction\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\n                        \u003cp\u003eThe sampling percentage, expressed as \u003ccode\u003e0.0\u003c/code\u003e to \u003ccode\u003e1.0\u003c/code\u003e, \u003c/p\u003e\n                        \u003cul\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d0\u003c/code\u003e or \u003ccode\u003estatsType\u003d1\u003c/code\u003e (full statistics), this value is not used, and is shown as \u003ccode\u003e0\u003c/code\u003e.\u003c/li\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d2\u003c/code\u003e or \u003ccode\u003estatsType\u003d3\u003c/code\u003e, this value is the percentage or rows to be sampled. A value of \u003ccode\u003e0\u003c/code\u003e means no rows, and a value of \u003ccode\u003e1\u003c/code\u003e means all rows (same as full statistics).\u003c/li\u003e\n                        \u003c/ul\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n            \u003c/tbody\u003e\n        \u003c/table\u003e\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-18 16:29:58.793",
+      "config": {
+        "editorHide": true,
+        "enabled": true,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eInterpreting Analyze Output\u003c/h2\u003e\n\u003cp\u003eThe following table summarizes what you\u0026rsquo;ll see in the output of the \u003ccode\u003eanalyze\u003c/code\u003e command:\u003c/p\u003e\n\u003ctable summary\u003d\"List of columns in the output of the analyze table command.\"\u003e\n            \u003ccol /\u003e\n            \u003ccol /\u003e\n            \u003cthead\u003e\n                \u003ctr\u003e\n                    \u003cth\u003eValue\u003c/th\u003e\n                    \u003cth\u003eDescription\u003c/th\u003e\n                \u003c/tr\u003e\n            \u003c/thead\u003e\n            \u003ctbody\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003eschemaName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the schema.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003etableName\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe name of the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartition\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe Splice Machine partition. We merge the statistics for all table partitions, so the partition will show as \u003ccode\u003e-All-\u003c/code\u003e when you specify one of the non-merged type values for the \u003ccode\u003estatsType\u003c/code\u003e parameter.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003erowsCollected\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe total number of rows collected for the table.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003epartitionSize\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003eThe combined size of the table\u0027s partitions.\u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003estatsType\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\u003cp\u003eThe type of statistics, which is one of these values:\u003c/p\u003e\n                        \u003ctable\u003e\n                            \u003ccol /\u003e\n                            \u003ccol /\u003e\n                            \u003ctbody\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e0\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e1\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the unmerged partition values.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e2\u003c/td\u003e\n                                    \u003ctd\u003eFull table (not sampled) statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                                \u003ctr\u003e\n                                    \u003ctd\u003e3\u003c/td\u003e\n                                    \u003ctd\u003eSampled statistics that reflect the table values after all partitions have been merged.\u003c/td\u003e\n                                \u003c/tr\u003e\n                            \u003c/tbody\u003e\n                        \u003c/table\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n                \u003ctr\u003e\n                    \u003ctd\u003e\u003ccode\u003esampleFraction\u003c/code\u003e\u003c/td\u003e\n                    \u003ctd\u003e\n                        \u003cp\u003eThe sampling percentage, expressed as \u003ccode\u003e0.0\u003c/code\u003e to \u003ccode\u003e1.0\u003c/code\u003e, \u003c/p\u003e\n                        \u003cul\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d0\u003c/code\u003e or \u003ccode\u003estatsType\u003d1\u003c/code\u003e (full statistics), this value is not used, and is shown as \u003ccode\u003e0\u003c/code\u003e.\u003c/li\u003e\n                            \u003cli\u003eIf \u003ccode\u003estatsType\u003d2\u003c/code\u003e or \u003ccode\u003estatsType\u003d3\u003c/code\u003e, this value is the percentage or rows to be sampled. A value of \u003ccode\u003e0\u003c/code\u003e means no rows, and a value of \u003ccode\u003e1\u003c/code\u003e means all rows (same as full statistics).\u003c/li\u003e\n                        \u003c/ul\u003e\n                    \u003c/td\u003e\n                \u003c/tr\u003e\n            \u003c/tbody\u003e\n        \u003c/table\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -75,8 +115,48 @@
       "jobName": "paragraph_1559593914748_-780537809",
       "id": "20190603-203154_698454412",
       "dateCreated": "2019-06-03 20:31:54.748",
-      "dateStarted": "2019-06-10 16:13:34.791",
-      "dateFinished": "2019-06-10 16:13:34.834",
+      "dateStarted": "2019-06-18 16:29:58.794",
+      "dateFinished": "2019-06-18 16:29:58.816",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n        \nClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph, which:\n\n* creates a schema\n* creates a table\n* inserts some records\n* runs the `analyze table` command to collect statistics for the table      ",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-18 16:29:28.127",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003ecreates a schema\u003c/li\u003e\n  \u003cli\u003ecreates a table\u003c/li\u003e\n  \u003cli\u003einserts some records\u003c/li\u003e\n  \u003cli\u003eruns the \u003ccode\u003eanalyze table\u003c/code\u003e command to collect statistics for the table\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1560875269025_968233494",
+      "id": "20190618-162749_1648164226",
+      "dateCreated": "2019-06-18 16:27:49.025",
+      "dateStarted": "2019-06-18 16:29:28.127",
+      "dateFinished": "2019-06-18 16:29:28.138",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -266,9 +346,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## For Further Exploration and Understanding\n\nTo gain a better understanding of using statistics, try using the `analyze` command as follows:\n\n1. Create a table with some data just like above example.\n2. Do an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\n3. Run analyze on the table\n4. Run explain plan again and verify that explain picked up the correct statistics.\n5. Collect statistics on specific set of columns. This may optimize in certain cases where we need only few columns to be collected.\n6. Drop statistics for a schema and than recalculate schema statistics.\n\n",
+      "text": "%md\n## For Further Exploration and Understanding\n\nTo gain a better understanding of using statistics, try using the `ANALYZE` command as follows:\n\n1. Create a table with some data, similar to the example in this notebook.\n\n2. Run an `EXPLAIN` plan on a sample `SELECT` query. Notice any discrepancies, such as row counts, in the `EXPLAIN` output.\n\n3. Run `ANALYZE` on the table.\n\n4. Run `EXPLAIN` plan again and verify that it picked up the correct statistics.\n\n5. Collect statistics on a specific set of columns. This may optimize for certain cases in which statistics only need to be collected for a few columns.\n\n6. Drop statistics for the schema, and than recalculate schema statistics.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-11 20:58:20.274",
+      "dateUpdated": "2019-06-18 16:35:18.637",
       "config": {
         "editorHide": true,
         "enabled": true,
@@ -292,7 +372,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Further Exploration and Understanding\u003c/h2\u003e\n\u003cp\u003eTo gain a better understanding of using statistics, try using the \u003ccode\u003eanalyze\u003c/code\u003e command as follows:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate a table with some data just like above example.\u003c/li\u003e\n  \u003cli\u003eDo an explain plan on a sample select query. Notice the discrepancy with row counts etc in explain output.\u003c/li\u003e\n  \u003cli\u003eRun analyze on the table\u003c/li\u003e\n  \u003cli\u003eRun explain plan again and verify that explain picked up the correct statistics.\u003c/li\u003e\n  \u003cli\u003eCollect statistics on specific set of columns. This may optimize in certain cases where we need only few columns to be collected.\u003c/li\u003e\n  \u003cli\u003eDrop statistics for a schema and than recalculate schema statistics.\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Further Exploration and Understanding\u003c/h2\u003e\n\u003cp\u003eTo gain a better understanding of using statistics, try using the \u003ccode\u003eANALYZE\u003c/code\u003e command as follows:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eCreate a table with some data, similar to the example in this notebook.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eRun an \u003ccode\u003eEXPLAIN\u003c/code\u003e plan on a sample \u003ccode\u003eSELECT\u003c/code\u003e query. Notice any discrepancies, such as row counts, in the \u003ccode\u003eEXPLAIN\u003c/code\u003e output.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eRun \u003ccode\u003eANALYZE\u003c/code\u003e on the table.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eRun \u003ccode\u003eEXPLAIN\u003c/code\u003e plan again and verify that it picked up the correct statistics.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eCollect statistics on a specific set of columns. This may optimize for certain cases in which statistics only need to be collected for a few columns.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eDrop statistics for the schema, and than recalculate schema statistics.\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -300,8 +380,8 @@
       "jobName": "paragraph_1559753011949_6551904",
       "id": "20190605-164331_2024415298",
       "dateCreated": "2019-06-05 16:43:31.949",
-      "dateStarted": "2019-06-11 20:58:20.276",
-      "dateFinished": "2019-06-11 20:58:20.361",
+      "dateStarted": "2019-06-18 16:35:18.637",
+      "dateFinished": "2019-06-18 16:35:18.664",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

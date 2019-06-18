@@ -1,12 +1,12 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Bulk Data Loading\n\nThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner. Bulk importing splits a data file into temporary HFiles (store files) before it is imported into your database by directly loading the generated StoreFiles into your Region Servers. In this notebook we\u0027ll walk you through a simple example, after which you will be able to bulk import data into your database. \n\n\u003cp class\u003d\"noteIcon\"\u003eWe recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our basic import procedures, \u003ccode\u003eIMPORT_DATA\u003c/code\u003e or \u003ccode\u003eMERGE_DATA_FROM_FILE\u003c/code\u003e instead, because they perform constraint checking during ingestion.\u003c/p\u003e\n\nThis notebook contains these sections:\n\n* The *Bulk Data Import Checklist* summarizes important details about the format of the data you\u0027re importing.\n* The *Automatic Bulk Data Import* method shows you how to quickly bulk import your data.\n* The *Manual Bulk Data Import* allows you to control the splitting of data.\n* *Using the `BULK_IMPORT_HFILE` Command* shows the syntax for importing data using the `BULK_IMPORT_HFILE` system procedure.\n\nWhen you use bulk HFile to import your data, files are essentially split into temporary Hadoop files (HFiles) that are directly loaded into the region servers. Ideally, the process creates HFiles of equal size, which allows the data to be spread across all region servers equally. There are two methods for splitting the data into hfiles.\n\n* With *Automatic Splitting,* the system samplse the data in an attempt to determine the optimal split points. This is the quicker and easier method, but does not always ensure you have the ideal splitting of the data.\n* Using *Manual Splitting* improves the performance of the bulk data import process. Instead of having the system samples the data for split point, you provide the split points that tell the procedure where to split your data. This requires you to know the data well enough to provide the split points.\n\nLastly we will walk you through step-by-step examples of using both the automatic and manual process bulk data import processes.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Bulk Data Loading\n\nThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner. \nWe\u0027ll walk you through a simple example, after which you will be able to bulk import data into your database. \n\n\u003cp class\u003d\"noteIcon\"\u003eWe recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our basic import procedures, \u003ccode\u003eIMPORT_DATA\u003c/code\u003e or \u003ccode\u003eMERGE_DATA_FROM_FILE\u003c/code\u003e instead, because they perform constraint checking during ingestion.\u003c/p\u003e\n\nThis notebook contains these sections:\n\n* *About Bulk Import* summarizes how bulk import works.\n* The *Bulk Data Import Checklist* summarizes important details about the format of the data you\u0027re importing.\n* The *Automatic Bulk Data Import* method shows you how to quickly bulk import your data.\n* The *Manual Bulk Data Import* allows you to control the splitting of data.\n* *Using the `BULK_IMPORT_HFILE` Command* shows the syntax for importing data using the `BULK_IMPORT_HFILE` system procedure.\n\nLastly we will walk you through step-by-step examples of using both the automatic and manual process bulk data import processes.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-12 15:03:34.376",
+      "dateUpdated": "2019-06-18 16:37:42.116",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -23,30 +23,70 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eBulk Data Loading\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner. Bulk importing splits a data file into temporary HFiles (store files) before it is imported into your database by directly loading the generated StoreFiles into your Region Servers. In this notebook we\u0026rsquo;ll walk you through a simple example, after which you will be able to bulk import data into your database. \u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eWe recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our basic import procedures, \u003ccode\u003eIMPORT_DATA\u003c/code\u003e or \u003ccode\u003eMERGE_DATA_FROM_FILE\u003c/code\u003e instead, because they perform constraint checking during ingestion.\u003c/p\u003e\n\u003cp\u003eThis notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003cem\u003eBulk Data Import Checklist\u003c/em\u003e summarizes important details about the format of the data you\u0026rsquo;re importing.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eAutomatic Bulk Data Import\u003c/em\u003e method shows you how to quickly bulk import your data.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eManual Bulk Data Import\u003c/em\u003e allows you to control the splitting of data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e Command\u003c/em\u003e shows the syntax for importing data using the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen you use bulk HFile to import your data, files are essentially split into temporary Hadoop files (HFiles) that are directly loaded into the region servers. Ideally, the process creates HFiles of equal size, which allows the data to be spread across all region servers equally. There are two methods for splitting the data into hfiles.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eWith \u003cem\u003eAutomatic Splitting,\u003c/em\u003e the system samplse the data in an attempt to determine the optimal split points. This is the quicker and easier method, but does not always ensure you have the ideal splitting of the data.\u003c/li\u003e\n  \u003cli\u003eUsing \u003cem\u003eManual Splitting\u003c/em\u003e improves the performance of the bulk data import process. Instead of having the system samples the data for split point, you provide the split points that tell the procedure where to split your data. This requires you to know the data well enough to provide the split points.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLastly we will walk you through step-by-step examples of using both the automatic and manual process bulk data import processes.\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eBulk Data Loading\u003c/h1\u003e\n\u003cp\u003eThis notebook introduces the Splice Machine Bulk HFile Import mechanism, which you can use to import data into your database in a highly performant manner.\u003cbr/\u003eWe\u0026rsquo;ll walk you through a simple example, after which you will be able to bulk import data into your database. \u003c/p\u003e\n\u003cp class\u003d\"noteIcon\"\u003eWe recommend using Bulk HFile importing; however, if your input might contain data errors that need checking, you must use our our basic import procedures, \u003ccode\u003eIMPORT_DATA\u003c/code\u003e or \u003ccode\u003eMERGE_DATA_FROM_FILE\u003c/code\u003e instead, because they perform constraint checking during ingestion.\u003c/p\u003e\n\u003cp\u003eThis notebook contains these sections:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eAbout Bulk Import\u003c/em\u003e summarizes how bulk import works.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eBulk Data Import Checklist\u003c/em\u003e summarizes important details about the format of the data you\u0026rsquo;re importing.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eAutomatic Bulk Data Import\u003c/em\u003e method shows you how to quickly bulk import your data.\u003c/li\u003e\n  \u003cli\u003eThe \u003cem\u003eManual Bulk Data Import\u003c/em\u003e allows you to control the splitting of data.\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e Command\u003c/em\u003e shows the syntax for importing data using the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eLastly we will walk you through step-by-step examples of using both the automatic and manual process bulk data import processes.\u003c/p\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559318768601_621263894",
       "id": "20190531-160608_403567962",
       "dateCreated": "2019-05-31 16:06:08.601",
-      "dateStarted": "2019-06-12 15:03:34.404",
-      "dateFinished": "2019-06-12 15:03:34.750",
+      "dateStarted": "2019-06-18 16:37:42.118",
+      "dateFinished": "2019-06-18 16:37:42.188",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Bulk Data Import Checklist\n\nWhen you bulk import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure your data formats will work, as defined here:\n\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eData File Detail\u003c/th\u003e\n            \u003cth\u003eSpecific Requirements\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eField delimited?\u003c/td\u003e\n            \u003ctd\u003eThe fields in each row \u003cstrong\u003emust\u003c/strong\u003e have delimiters between them.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRows terminated?\u003c/td\u003e\n            \u003ctd\u003eEach row \u003cstrong\u003emust\u003c/strong\u003e be terminated with a newline character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eHeader row included?\u003c/td\u003e\n            \u003ctd\u003eHeader rows are not allowed; if your data contains one, you \u003cstrong\u003emust\u003c/strong\u003e remove it.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eDate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, \u003ccode\u003etimestamp\u003c/code\u003e data types\u003c/td\u003e\n            \u003ctd\u003e If you are using \u003ccode\u003edate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, and/or \u003ccode\u003etimestamp\u003c/code\u003e data types in the target table, you need to know how that data is represented in the flat file; your file \u003cstrong\u003emust\u003c/strong\u003e use a consistent representation, and you must specify that format when using the import command.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eChar\u003c/code\u003e and \u003ccode\u003eVarchar\u003c/code\u003e data\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains your delimiter character, you \u003cstrong\u003eneed to use\u003c/strong\u003e a special character delimiter.\u003c/p\u003e\n                \u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains newline characters, you \u003cstrong\u003eneed to use\u003c/strong\u003e the \u003ccode\u003eoneLineRecords\u003c/code\u003e parameter.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\u003cp class\u003d\"noteIcon\"\u003eIt is a good idea to test your import, delimiting, date formatting, etc., on a small amount of data first before loading all of your data. That\u0027s what we\u0027ll do in this notebook.\u003c/p\u003e\n",
+      "text": "%md\n## About Bulk Import\n\nBulk importing splits a data file into temporary HFiles (store files), and then imports the data into your database by directly loading the generated StoreFiles into your Region Servers. \n\nWhen you use bulk HFile to import your data, files are essentially split into temporary Hadoop files (HFiles) that are directly loaded into the region servers. Ideally, the process creates HFiles of equal size, which allows the data to be spread across all region servers equally. There are two methods for splitting the data into hfiles.\n\n* With *Automatic Splitting,* the system samplse the data in an attempt to determine the optimal split points. This is the quicker and easier method, but does not always ensure you have the ideal splitting of the data.\n* Using *Manual Splitting* improves the performance of the bulk data import process. Instead of having the system samples the data for split point, you provide the split points that tell the procedure where to split your data. This requires you to know the data well enough to provide the split points.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 21:27:12.598",
+      "dateUpdated": "2019-06-18 16:37:56.094",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eAbout Bulk Import\u003c/h2\u003e\n\u003cp\u003eBulk importing splits a data file into temporary HFiles (store files), and then imports the data into your database by directly loading the generated StoreFiles into your Region Servers. \u003c/p\u003e\n\u003cp\u003eWhen you use bulk HFile to import your data, files are essentially split into temporary Hadoop files (HFiles) that are directly loaded into the region servers. Ideally, the process creates HFiles of equal size, which allows the data to be spread across all region servers equally. There are two methods for splitting the data into hfiles.\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eWith \u003cem\u003eAutomatic Splitting,\u003c/em\u003e the system samplse the data in an attempt to determine the optimal split points. This is the quicker and easier method, but does not always ensure you have the ideal splitting of the data.\u003c/li\u003e\n  \u003cli\u003eUsing \u003cem\u003eManual Splitting\u003c/em\u003e improves the performance of the bulk data import process. Instead of having the system samples the data for split point, you provide the split points that tell the procedure where to split your data. This requires you to know the data well enough to provide the split points.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1560875791758_-431874602",
+      "id": "20190618-163631_1369871670",
+      "dateCreated": "2019-06-18 16:36:31.758",
+      "dateStarted": "2019-06-18 16:37:56.095",
+      "dateFinished": "2019-06-18 16:37:56.142",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Bulk Data Import Checklist\n\nWhen you bulk import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure that your data formats will work. The following table calls out areas issues you should check:\n\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eData File Detail\u003c/th\u003e\n            \u003cth\u003eSpecific Requirements\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eField delimited?\u003c/td\u003e\n            \u003ctd\u003eThe fields in each row \u003cstrong\u003emust\u003c/strong\u003e have delimiters between them.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRows terminated?\u003c/td\u003e\n            \u003ctd\u003eEach row \u003cstrong\u003emust\u003c/strong\u003e be terminated with a newline character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eHeader row included?\u003c/td\u003e\n            \u003ctd\u003eHeader rows are not allowed; if your data contains one, you \u003cstrong\u003emust\u003c/strong\u003e remove it.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eDate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, \u003ccode\u003etimestamp\u003c/code\u003e data types\u003c/td\u003e\n            \u003ctd\u003e If you are using \u003ccode\u003edate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, and/or \u003ccode\u003etimestamp\u003c/code\u003e data types in the target table, you need to know how that data is represented in the flat file; your file \u003cstrong\u003emust\u003c/strong\u003e use a consistent representation, and you must specify that format when using the import command.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eChar\u003c/code\u003e and \u003ccode\u003eVarchar\u003c/code\u003e data\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains your delimiter character, you \u003cstrong\u003eneed to use\u003c/strong\u003e a special character delimiter.\u003c/p\u003e\n                \u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains newline characters, you \u003cstrong\u003eneed to use\u003c/strong\u003e the \u003ccode\u003eoneLineRecords\u003c/code\u003e parameter.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\n\n\u003cp class\u003d\"noteIcon\"\u003eIt is a good idea to test your import on a small amount of data before loading all of your data. This allows you to verify that your delimiters, date formatting, and other details are in proper order. That\u0027s what we\u0027ll do in this notebook.\u003c/p\u003e\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-18 16:42:45.168",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -63,20 +103,20 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBulk Data Import Checklist\u003c/h2\u003e\n\u003cp\u003eWhen you bulk import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure your data formats will work, as defined here:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eData File Detail\u003c/th\u003e\n            \u003cth\u003eSpecific Requirements\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eField delimited?\u003c/td\u003e\n            \u003ctd\u003eThe fields in each row \u003cstrong\u003emust\u003c/strong\u003e have delimiters between them.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRows terminated?\u003c/td\u003e\n            \u003ctd\u003eEach row \u003cstrong\u003emust\u003c/strong\u003e be terminated with a newline character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eHeader row included?\u003c/td\u003e\n            \u003ctd\u003eHeader rows are not allowed; if your data contains one, you \u003cstrong\u003emust\u003c/strong\u003e remove it.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eDate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, \u003ccode\u003etimestamp\u003c/code\u003e data types\u003c/td\u003e\n            \u003ctd\u003e If you are using \u003ccode\u003edate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, and/or \u003ccode\u003etimestamp\u003c/code\u003e data types in the target table, you need to know how that data is represented in the flat file; your file \u003cstrong\u003emust\u003c/strong\u003e use a consistent representation, and you must specify that format when using the import command.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eChar\u003c/code\u003e and \u003ccode\u003eVarchar\u003c/code\u003e data\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains your delimiter character, you \u003cstrong\u003eneed to use\u003c/strong\u003e a special character delimiter.\u003c/p\u003e\n                \u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains newline characters, you \u003cstrong\u003eneed to use\u003c/strong\u003e the \u003ccode\u003eoneLineRecords\u003c/code\u003e parameter.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp class\u003d\"noteIcon\"\u003eIt is a good idea to test your import, delimiting, date formatting, etc., on a small amount of data first before loading all of your data. That\u0027s what we\u0027ll do in this notebook.\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBulk Data Import Checklist\u003c/h2\u003e\n\u003cp\u003eWhen you bulk import data from flat files into your database, you need to specify a number of details about your data files to get them correctly imported. Before starting this process, please make sure that your data formats will work. The following table calls out areas issues you should check:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol width\u003d\"30%\" /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eData File Detail\u003c/th\u003e\n            \u003cth\u003eSpecific Requirements\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eField delimited?\u003c/td\u003e\n            \u003ctd\u003eThe fields in each row \u003cstrong\u003emust\u003c/strong\u003e have delimiters between them.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRows terminated?\u003c/td\u003e\n            \u003ctd\u003eEach row \u003cstrong\u003emust\u003c/strong\u003e be terminated with a newline character.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eHeader row included?\u003c/td\u003e\n            \u003ctd\u003eHeader rows are not allowed; if your data contains one, you \u003cstrong\u003emust\u003c/strong\u003e remove it.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eDate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, \u003ccode\u003etimestamp\u003c/code\u003e data types\u003c/td\u003e\n            \u003ctd\u003e If you are using \u003ccode\u003edate\u003c/code\u003e, \u003ccode\u003etime\u003c/code\u003e, and/or \u003ccode\u003etimestamp\u003c/code\u003e data types in the target table, you need to know how that data is represented in the flat file; your file \u003cstrong\u003emust\u003c/strong\u003e use a consistent representation, and you must specify that format when using the import command.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003e\u003ccode\u003eChar\u003c/code\u003e and \u003ccode\u003eVarchar\u003c/code\u003e data\u003c/td\u003e\n            \u003ctd\u003e\u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains your delimiter character, you \u003cstrong\u003eneed to use\u003c/strong\u003e a special character delimiter.\u003c/p\u003e\n                \u003cp\u003eIf any of your \u003ccode\u003echar\u003c/code\u003e or \u003ccode\u003evarchar\u003c/code\u003e data contains newline characters, you \u003cstrong\u003eneed to use\u003c/strong\u003e the \u003ccode\u003eoneLineRecords\u003c/code\u003e parameter.\u003c/p\u003e\n            \u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp class\u003d\"noteIcon\"\u003eIt is a good idea to test your import on a small amount of data before loading all of your data. This allows you to verify that your delimiters, date formatting, and other details are in proper order. That\u0027s what we\u0027ll do in this notebook.\u003c/p\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559324576281_1037587833",
       "id": "20190531-174256_33448938",
       "dateCreated": "2019-05-31 17:42:56.281",
-      "dateStarted": "2019-06-05 21:27:12.613",
-      "dateFinished": "2019-06-05 21:27:12.650",
+      "dateStarted": "2019-06-18 16:42:45.169",
+      "dateFinished": "2019-06-18 16:42:45.204",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -121,12 +161,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Manual Bulk Data Import\n\nWhen using the manual bulk data import process, you need to pre-split the data by providing a CSV file that specifies all of the split points. Follow these steps to manually bulk import your data:\n\n1. Create the table in your Splice Machine database\n2. Optionally, create any index(es) on the table\n3. Pre-split the table\n4. Call the `SPLIT_TABLE_OR_INDEX` system procedure for the table\n5. Optionally, pre-split any index(es) on the table\n6. Optionally, call the `SPLIT_TABLE_OR_INDEX` system procedure for the index(es)\n7. Call the `BULK_IMPORT_HFILE` system procedure",
+      "text": "%md\n## Manual Bulk Data Import\n\nWhen using the manual bulk data import process, you need to pre-split the data by providing a CSV file that specifies all of the split points. Follow these steps to manually bulk import your data:\n\n1. *Create the table in your Splice Machine database*\n\n2. *Optionally, create any index(es) on the table*\n\n3. *Pre-split the table*\n\n4. *Call the `SPLIT_TABLE_OR_INDEX` system procedure for the table*\n\n5. *Optionally, pre-split any index(es) on the table*\n\n6. *Optionally, call the `SPLIT_TABLE_OR_INDEX` system procedure for the index(es)*\n\n7. *Call the `BULK_IMPORT_HFILE` system procedure*",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 21:30:39.269",
+      "dateUpdated": "2019-06-18 16:46:36.811",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -143,20 +183,20 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eManual Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eWhen using the manual bulk data import process, you need to pre-split the data by providing a CSV file that specifies all of the split points. Follow these steps to manually bulk import your data:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the table in your Splice Machine database\u003c/li\u003e\n  \u003cli\u003eOptionally, create any index(es) on the table\u003c/li\u003e\n  \u003cli\u003ePre-split the table\u003c/li\u003e\n  \u003cli\u003eCall the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the table\u003c/li\u003e\n  \u003cli\u003eOptionally, pre-split any index(es) on the table\u003c/li\u003e\n  \u003cli\u003eOptionally, call the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the index(es)\u003c/li\u003e\n  \u003cli\u003eCall the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eManual Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eWhen using the manual bulk data import process, you need to pre-split the data by providing a CSV file that specifies all of the split points. Follow these steps to manually bulk import your data:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003e\u003cem\u003eCreate the table in your Splice Machine database\u003c/em\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003e\u003cem\u003eOptionally, create any index(es) on the table\u003c/em\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003e\u003cem\u003ePre-split the table\u003c/em\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003e\u003cem\u003eCall the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the table\u003c/em\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003e\u003cem\u003eOptionally, pre-split any index(es) on the table\u003c/em\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003e\u003cem\u003eOptionally, call the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure for the index(es)\u003c/em\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003e\u003cem\u003eCall the \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure\u003c/em\u003e\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559575103024_-616259271",
       "id": "20190603-151823_282426459",
       "dateCreated": "2019-06-03 15:18:23.024",
-      "dateStarted": "2019-06-05 21:30:39.279",
-      "dateFinished": "2019-06-05 21:30:39.331",
+      "dateStarted": "2019-06-18 16:46:36.811",
+      "dateFinished": "2019-06-18 16:46:36.849",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -281,12 +321,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 4. Call the SPLIT_TABLE_OR_INDEX system procedure for the table\n\nSyntax for the `SPLIT_TABLE_OR_INDEX` command looks like this:\n\n```\ncall SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX (\n    schemaName,\n    tableName,\n    indexName,\n    columnList | null,\n    fileName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n);\n```\nNotice that many of the parameters allow you to apply the default value by specifying `null`.\n\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_splittable.html\" target\u003d\"_blank\"\u003eour \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e",
+      "text": "%md\n### 4. Call SPLIT_TABLE_OR_INDEX on the table\n\nNow call the `SPLIT_TABLE_OR_INDEX` system procedure. The syntax for this command looks like this:\n\n```\ncall SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX (\n    schemaName,\n    tableName,\n    indexName,\n    columnList | null,\n    fileName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n);\n```\nNotice that many of the parameters allow you to apply the default value by specifying `null`.\n\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_splittable.html\" target\u003d\"_blank\"\u003eour \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e",
       "user": "anonymous",
-      "dateUpdated": "2019-06-12 15:05:03.986",
+      "dateUpdated": "2019-06-18 16:45:25.739",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -303,20 +343,20 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Call the SPLIT_TABLE_OR_INDEX system procedure for the table\u003c/h3\u003e\n\u003cp\u003eSyntax for the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e command looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX (\n    schemaName,\n    tableName,\n    indexName,\n    columnList | null,\n    fileName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNotice that many of the parameters allow you to apply the default value by specifying \u003ccode\u003enull\u003c/code\u003e.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_splittable.html\" target\u003d\"_blank\"\u003eour \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e4. Call SPLIT_TABLE_OR_INDEX on the table\u003c/h3\u003e\n\u003cp\u003eNow call the \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e system procedure. The syntax for this command looks like this:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003ecall SYSCS_UTIL.SYSCS_SPLIT_TABLE_OR_INDEX (\n    schemaName,\n    tableName,\n    indexName,\n    columnList | null,\n    fileName,\n    columnDelimiter | null,\n    characterDelimiter | null,\n    timestampFormat | null,\n    dateFormat | null,\n    timeFormat | null,\n    maxBadRecords,\n    badRecordDirectory | null,\n    oneLineRecords | null,\n    charset | null,\n);\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNotice that many of the parameters allow you to apply the default value by specifying \u003ccode\u003enull\u003c/code\u003e.\u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eYou can find full details about these parameters, including the default value for each, in \u003ca href\u003d\"https://doc.splicemachine.com/sqlref_sysprocs_splittable.html\" target\u003d\"_blank\"\u003eour \u003ccode\u003eSPLIT_TABLE_OR_INDEX\u003c/code\u003e documentation.\u003c/a\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559602445483_289855710",
       "id": "20190603-225405_1559909743",
       "dateCreated": "2019-06-03 22:54:05.483",
-      "dateStarted": "2019-06-05 21:38:59.662",
-      "dateFinished": "2019-06-05 21:38:59.678",
+      "dateStarted": "2019-06-18 16:45:25.741",
+      "dateFinished": "2019-06-18 16:45:25.771",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -361,12 +401,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 6. Optionally, call the SPLIT_TABLE_OR_INDEX system procedure for the index(es)\n\nIf you have any indexes for the table you need to repeat step 4 for each index.",
+      "text": "%md\n### 6. Optionally, call SPLIT_TABLE_OR_INDEX for the index(es)\n\nIf you have any indexes for the table you need to repeat step 4 for each index.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 21:58:03.809",
+      "dateUpdated": "2019-06-18 16:45:58.333",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -383,20 +423,20 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Optionally, call the SPLIT_TABLE_OR_INDEX system procedure for the index(es)\u003c/h3\u003e\n\u003cp\u003eIf you have any indexes for the table you will need to repeat step 4 for each index.\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e6. Optionally, call SPLIT_TABLE_OR_INDEX for the index(es)\u003c/h3\u003e\n\u003cp\u003eIf you have any indexes for the table you need to repeat step 4 for each index.\u003c/p\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559602451598_1808725521",
       "id": "20190603-225411_1051299024",
       "dateCreated": "2019-06-03 22:54:11.598",
-      "dateStarted": "2019-06-04 14:26:59.704",
-      "dateFinished": "2019-06-04 14:26:59.717",
+      "dateStarted": "2019-06-18 16:45:58.336",
+      "dateFinished": "2019-06-18 16:45:58.348",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -483,10 +523,10 @@
     {
       "text": "%md\n## Step-by-Step Example of Automatic Bulk Data Import\n\nThis example walks you through the automatic bulk data import process one step at a time:\n\n1. *Create a Database Schema and Table*\n2. *Run the Automatic Bulk Import Data Procedure*\n3. *Review Imported Data*\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 21:59:22.878",
+      "dateUpdated": "2019-06-17 18:14:33.674",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -503,30 +543,30 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Automatic Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eThis example will walk you through the automatic bulk data import process one step at a time. In these steps you will:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate a Database Schema and Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the Automatic Bulk Import Data Procedure\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Imported Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eStep-by-Step Example of Automatic Bulk Data Import\u003c/h2\u003e\n\u003cp\u003eThis example walks you through the automatic bulk data import process one step at a time:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eCreate a Database Schema and Table\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eRun the Automatic Bulk Import Data Procedure\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eReview Imported Data\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559603962198_-46723797",
       "id": "20190603-231922_1642293487",
       "dateCreated": "2019-06-03 23:19:22.200",
-      "dateStarted": "2019-06-04 22:28:12.111",
-      "dateFinished": "2019-06-04 22:28:12.127",
+      "dateStarted": "2019-06-17 18:14:33.675",
+      "dateFinished": "2019-06-17 18:14:33.687",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 1. Create a Database Schema and Table\n\nYou can get started by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph in this Notebook, which uses the `%splicemachine` interpreter to:\n\n* Create a new schema named `DEV3` in your database.\n* Create the `customer_bulk_import_example1` table in your database.",
+      "text": "%md\n### 1. Create a Database Schema and Table\n\nYou can get started by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph in this Notebook, which uses the `%splicemachine` interpreter to:\n\n* Create a new schema named `DEV3` in your database.\n\n* Create the `customer_bulk_import_example1` table in your database.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 21:59:42.665",
+      "dateUpdated": "2019-06-18 16:47:17.391",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -543,20 +583,20 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate a new schema named \u003ccode\u003eDEV3\u003c/code\u003e in your database\u003c/li\u003e\n  \u003cli\u003eCreate the \u003ccode\u003ecustomer_bulk_import_example1\u003c/code\u003e table in your database.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\n  \u003cp\u003eCreate a new schema named \u003ccode\u003eDEV3\u003c/code\u003e in your database.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eCreate the \u003ccode\u003ecustomer_bulk_import_example1\u003c/code\u003e table in your database.\u003c/p\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559659519835_-1509748211",
       "id": "20190604-144519_1646070724",
       "dateCreated": "2019-06-04 14:45:19.835",
-      "dateStarted": "2019-06-04 22:28:05.489",
-      "dateFinished": "2019-06-04 22:28:05.523",
+      "dateStarted": "2019-06-18 16:47:17.392",
+      "dateFinished": "2019-06-18 16:47:17.404",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -734,12 +774,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 3. Review Imported Data\n\nLets take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph, which will select all the data from the `CUSTOMER_BULK_IMPORT_EXAMPLE1` table.",
+      "text": "%md\n### 3. Review Imported Data\n\nLet\u0027s take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph, which selects all the data from the `CUSTOMER_BULK_IMPORT_EXAMPLE1` table.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-10 17:50:23.729",
+      "dateUpdated": "2019-06-18 16:47:51.717",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -756,20 +796,20 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Review Imported Data\u003c/h3\u003e\n\u003cp\u003eLets take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which will select all the data from the \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e3. Review Imported Data\u003c/h3\u003e\n\u003cp\u003eLet\u0026rsquo;s take a look at the data we just imported by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph, which selects all the data from the \u003ccode\u003eCUSTOMER_BULK_IMPORT_EXAMPLE1\u003c/code\u003e table.\u003c/p\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559687342509_1064709741",
       "id": "20190604-222902_80066050",
       "dateCreated": "2019-06-04 22:29:02.509",
-      "dateStarted": "2019-06-10 17:50:12.122",
-      "dateFinished": "2019-06-10 17:50:12.151",
+      "dateStarted": "2019-06-18 16:47:51.717",
+      "dateFinished": "2019-06-18 16:47:51.732",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -878,12 +918,12 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n### 1. Create a Database Schema and Table\n\nYou can get started by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph in this Notebook, which uses the `%splicemachine` interpreter to Create the `customer_bulk_import_example2` table in your database.",
+      "text": "%md\n### 1. Create a Database Schema and Table\n\nYou can get started by clicking the  \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e *Run* button to run the next paragraph in this Notebook, which uses the `%splicemachine` interpreter to create the `customer_bulk_import_example2` table in your database.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-05 22:03:43.303",
+      "dateUpdated": "2019-06-17 18:17:51.747",
       "config": {
         "editorMode": "ace/mode/markdown",
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorHide": true,
         "fontSize": 9.0,
@@ -892,27 +932,28 @@
           "completionSupport": false,
           "language": "markdown"
         },
-        "colWidth": 12.0
+        "colWidth": 12.0,
+        "tableHide": false
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eCreate the \u003ccode\u003ecustomer_bulk_import_example2\u003c/code\u003e table in your database.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003e1. Create a Database Schema and Table\u003c/h3\u003e\n\u003cp\u003eYou can get started by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to run the next paragraph in this Notebook, which uses the \u003ccode\u003e%splicemachine\u003c/code\u003e interpreter to create the \u003ccode\u003ecustomer_bulk_import_example2\u003c/code\u003e table in your database.\u003c/p\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559687029809_1119210650",
       "id": "20190604-222349_1188182272",
       "dateCreated": "2019-06-04 22:23:49.809",
-      "dateStarted": "2019-06-04 22:48:59.680",
-      "dateFinished": "2019-06-04 22:48:59.688",
+      "dateStarted": "2019-06-17 18:17:51.747",
+      "dateFinished": "2019-06-17 18:17:51.759",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },

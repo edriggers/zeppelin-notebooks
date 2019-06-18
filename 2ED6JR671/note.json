@@ -1,18 +1,18 @@
 {
   "paragraphs": [
     {
-      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Transactions in Splice Machine\n\nIn the *For Developers, Part II* course we showed you how transactions are processed and handled in Splice Machine using Spark and Scala. In this notebook we\u0027ll take a deeper dive and explain the concept of a transaction and how Splice Machine handles them.\n\nFirst, let\u0027s define a transacation. A transaction is a series of events that appear single-threaded to the user. It consists of events between a begin and commit timestamp.\n\nA transaction can have one of four states:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eState\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive\u003c/td\u003e\n            \u003ctd\u003eTransactions always begins in this state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRollback\u003c/td\u003e\n            \u003ctd\u003eTransaction is moved to the rolled back state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eCommitted\u003c/td\u003e\n            \u003ctd\u003eTransaction has been committed to the database\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eError\u003c/td\u003e\n            \u003ctd\u003elogically equivalent to the rolled back state but an uncontrollable error has occurred and should be investigated\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nIn Splice Machine, transactions are durably stored in the `SPLICE_TXN` table. This table is a normal Hbase table and NOT a Splice Machine table. `SPLICE_TXN` is not governed by transactional semantics but rather relies on Hbase\u0027s atomic row operations (increment, compareAndSet, and put operations). The rowkey is an 8-bit transaction id with bits reversed to avoid sequential ordering.",
+      "text": "%md\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n# Transactions in Splice Machine\n\nIn the *For Developers, Part II* course we showed you how transactions are processed and handled in Splice Machine, using Spark and Scala. In this notebook we\u0027ll take a deeper dive, and will explain the concept of transactions and how Splice Machine handles them.\n\nFirst, let\u0027s define a _transaction_, which is a series of events that appear single-threaded to the user. A transaction consists of the events between a begin timestamp and a commit timestamp. A transaction can be in one of four states:\n\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eState\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive\u003c/td\u003e\n            \u003ctd\u003eThe transaction always begins in this state.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRollback\u003c/td\u003e\n            \u003ctd\u003eThe transaction is moved to the rolled back state.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eCommitted\u003c/td\u003e\n            \u003ctd\u003eThe transaction has been committed to the database.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eError\u003c/td\u003e\n            \u003ctd\u003eThis is logically equivalent to the rolled back state, but an uncontrollable error has occurred and should be investigated.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\nIn Splice Machine, transactions are durably stored in the `SPLICE_TXN` table. This is a normal Hbase table, __not__ a Splice Machine table. `SPLICE_TXN` is not governed by transactional semantics; instead, it relies on Hbase\u0027s atomic row operations (`increment`, `compareAndSet`, and `put`). The rowkey is an 8-bit transaction ID with bits reversed to avoid sequential ordering.",
       "user": "anonymous",
-      "dateUpdated": "2019-06-11 15:32:43.111",
+      "dateUpdated": "2019-06-18 16:50:48.832",
       "config": {
-        "enabled": false,
+        "enabled": true,
         "results": {},
         "editorSetting": {
           "editOnDblClick": true,
           "language": "markdown",
           "completionSupport": false
         },
-        "editorHide": true,
+        "editorHide": false,
         "fontSize": 9.0,
         "tableHide": false,
         "editorMode": "ace/mode/markdown",
@@ -23,39 +23,47 @@
         "forms": {}
       },
       "results": {
+        "code": "SUCCESS",
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTransactions in Splice Machine\u003c/h1\u003e\n\u003cp\u003eIn the \u003cem\u003eFor Developers, Part II\u003c/em\u003e course we showed you how transactions are processed and handled in Splice Machine using Spark and Scala. In this notebook we\u0026rsquo;ll take a deeper dive and explain the concept of a transaction and how Splice Machine handles them.\u003c/p\u003e\n\u003cp\u003eFirst, let\u0026rsquo;s define a transacation. A transaction is a series of events that appear single-threaded to the user. It consists of events between a begin and commit timestamp.\u003c/p\u003e\n\u003cp\u003eA transaction can have one of four states:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eState\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive\u003c/td\u003e\n            \u003ctd\u003eTransactions always begins in this state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRollback\u003c/td\u003e\n            \u003ctd\u003eTransaction is moved to the rolled back state\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eCommitted\u003c/td\u003e\n            \u003ctd\u003eTransaction has been committed to the database\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eError\u003c/td\u003e\n            \u003ctd\u003elogically equivalent to the rolled back state but an uncontrollable error has occurred and should be investigated\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eIn Splice Machine, transactions are durably stored in the \u003ccode\u003eSPLICE_TXN\u003c/code\u003e table. This table is a normal Hbase table and NOT a Splice Machine table. \u003ccode\u003eSPLICE_TXN\u003c/code\u003e is not governed by transactional semantics but rather relies on Hbase\u0026rsquo;s atomic row operations (increment, compareAndSet, and put operations). The rowkey is an 8-bit transaction id with bits reversed to avoid sequential ordering.\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eTransactions in Splice Machine\u003c/h1\u003e\n\u003cp\u003eIn the \u003cem\u003eFor Developers, Part II\u003c/em\u003e course we showed you how transactions are processed and handled, using Spark and Scala, in Splice Machine. In this notebook we\u0026rsquo;ll take a deeper dive, and will explain the concept of transactions and how Splice Machine handles them.\u003c/p\u003e\n\u003cp\u003eFirst, let\u0026rsquo;s define a \u003cem\u003etransaction\u003c/em\u003e, which is a series of events that appear single-threaded to the user; a transaction consists of events between a begin timestmp and a commit timestamp.\u003c/p\u003e\n\u003cp\u003eA transaction can be in one of four states:\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eState\u003c/th\u003e\n            \u003cth\u003eDescription\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eActive\u003c/td\u003e\n            \u003ctd\u003eThe transaction always begins in this state.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eRollback\u003c/td\u003e\n            \u003ctd\u003eThe transaction is moved to the rolled back state.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eCommitted\u003c/td\u003e\n            \u003ctd\u003eThe transaction has been committed to the database.\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eError\u003c/td\u003e\n            \u003ctd\u003eThis is logically equivalent to the rolled back state, but an uncontrollable error has occurred and should be investigated.\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003cp\u003eIn Splice Machine, transactions are durably stored in the \u003ccode\u003eSPLICE_TXN\u003c/code\u003e table. This is a normal Hbase table, \u003cstrong\u003enot\u003c/strong\u003e a Splice Machine table. \u003ccode\u003eSPLICE_TXN\u003c/code\u003e is not governed by transactional semantics; instead, it relies on Hbase\u0026rsquo;s atomic row operations (\u003ccode\u003eincrement\u003c/code\u003e, \u003ccode\u003ecompareAndSet\u003c/code\u003e, and \u003ccode\u003eput\u003c/code\u003e). The rowkey is an 8-bit transaction ID with bits reversed to avoid sequential ordering.\u003c/p\u003e\n\u003c/div\u003e"
           }
-        ],
-        "code": "SUCCESS"
+        ]
       },
       "apps": [],
       "jobName": "paragraph_1559318793033_-467329500",
       "id": "20190531-160633_2036452887",
       "dateCreated": "2019-05-31 16:06:33.033",
-      "dateStarted": "2019-06-11 15:32:43.116",
-      "dateFinished": "2019-06-11 15:32:43.144",
+      "dateStarted": "2019-06-17 19:28:44.107",
+      "dateFinished": "2019-06-17 19:28:44.139",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## Snapshot Isolation\n\nSplice Machine uses state-of-the-art snapshot isolation as a form of multi-version concurrency control (MVCC). Writers do not block readers and Splice Machine is able to provide fast, high concurrency. Transactions are defined with begin and commit timestamps. Overlapping transactions that write to the same rpw will conflict. Reads will see data committed with a timestamp \u003e than their begin timestamp.\n\nHere is a diagram that depicts how transactions are handled using snapshot isolation:\n\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/SIExample.png\" width\u003d\"800\" height\u003d\"800\"\u003e\n\u003cbr/\u003e\nThis diagram depicts 3 transactions:\n\n* Transaction `T1` starts at timeline `t2`\n* 10 is added to Item A at timeline `t3` in the `T1` transaction\n* Transaction `T2` starts at timeline `t4`\n* 10 is added to Item A at timeline `t5` in the `T1` transaction\n* Transaction `T1` is committed at timeline `t6`\n* Transaction `T3` starts at timeline `t7`\n* 10 is added to Item B at timeline `t9` in the `T2` transaction\n* Item C is set to Item A + 10 at timeline `t10` in the `T2` transaction\n* Transaction `T2 is committed at timeline `T11`\n* Transaction `T3` attempts to add 10 to Item B at timeline `t13` but receives a write-write conflict because Item B was been updated by transaction `T1` after transaction `T3` was started\n* Transaction `T3` is rolled back \n* A new transaction `T3\u0027` is started at timeline `t16` \n* 10 os added to Item B at timeline `t17`\n* Transaction `T3\u0027` is committed at timeline `t18`\n",
+      "text": "%md\n\n## Snapshot Isolation\n\nSplice Machine uses state-of-the-art snapshot isolation as a form of multi-version concurrency control (MVCC). Writers do not block readers and Splice Machine is able to provide fast, high concurrency. Transactions are defined with begin and commit timestamps. Overlapping transactions that write to the same row will conflict. Reads will see data committed with a later timestamp than the transaction\u0027s begin timestamp.\n\nHere is a diagram that depicts how transactions are handled using snapshot isolation:\n\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/SIExample.png\" width\u003d\"640\"\u003e\n\u003cbr/\u003e\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-13 14:56:07.573",
+      "dateUpdated": "2019-06-18 16:53:44.387",
       "config": {
-        "editorHide": true,
+        "colWidth": 6.0,
+        "fontSize": 9.0,
         "enabled": true,
-        "results": {},
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 784.219,
+              "optionOpen": false
+            }
+          }
+        },
         "editorSetting": {
-          "editOnDblClick": true,
           "language": "markdown",
+          "editOnDblClick": true,
           "completionSupport": false
         },
-        "fontSize": 9.0,
         "editorMode": "ace/mode/markdown",
-        "colWidth": 12.0,
+        "editorHide": true,
         "tableHide": false
       },
       "settings": {
@@ -67,16 +75,56 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSnapshot Isolation\u003c/h2\u003e\n\u003cp\u003eSplice Machine uses state-of-the-art snapshot isolation as a form of multi-version concurrency control (MVCC). Writers do not block readers and Splice Machine is able to provide fast, high concurrency. Transactions are defined with begin and commit timestamps. Overlapping transactions that write to the same rpw will conflict. Reads will see data committed with a timestamp \u0026gt; than their begin timestamp.\u003c/p\u003e\n\u003cp\u003eHere is a diagram that depicts how transactions are handled using snapshot isolation:\u003c/p\u003e\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/SIExample.png\" width\u003d\"800\" height\u003d\"800\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eThis diagram depicts 3 transactions:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT1\u003c/code\u003e starts at timeline \u003ccode\u003et2\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 is added to Item A at timeline \u003ccode\u003et3\u003c/code\u003e in the \u003ccode\u003eT1\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT2\u003c/code\u003e starts at timeline \u003ccode\u003et4\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 is added to Item A at timeline \u003ccode\u003et5\u003c/code\u003e in the \u003ccode\u003eT1\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT1\u003c/code\u003e is committed at timeline \u003ccode\u003et6\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u003c/code\u003e starts at timeline \u003ccode\u003et7\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 is added to Item B at timeline \u003ccode\u003et9\u003c/code\u003e in the \u003ccode\u003eT2\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eItem C is set to Item A + 10 at timeline \u003ccode\u003et10\u003c/code\u003e in the \u003ccode\u003eT2\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT2 is committed at timeline\u003c/code\u003eT11`\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u003c/code\u003e attempts to add 10 to Item B at timeline \u003ccode\u003et13\u003c/code\u003e but receives a write-write conflict because Item B was been updated by transaction \u003ccode\u003eT1\u003c/code\u003e after transaction \u003ccode\u003eT3\u003c/code\u003e was started\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u003c/code\u003e is rolled back\u003c/li\u003e\n  \u003cli\u003eA new transaction \u003ccode\u003eT3\u0026#39;\u003c/code\u003e is started at timeline \u003ccode\u003et16\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 os added to Item B at timeline \u003ccode\u003et17\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u0026#39;\u003c/code\u003e is committed at timeline \u003ccode\u003et18\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSnapshot Isolation\u003c/h2\u003e\n\u003cp\u003eSplice Machine uses state-of-the-art snapshot isolation as a form of multi-version concurrency control (MVCC). Writers do not block readers and Splice Machine is able to provide fast, high concurrency. Transactions are defined with begin and commit timestamps. Overlapping transactions that write to the same row will conflict. Reads will see data committed with a later timestamp than the transaction\u0026rsquo;s begin timestamp.\u003c/p\u003e\n\u003cp\u003eHere is a diagram that depicts how transactions are handled using snapshot isolation:\u003c/p\u003e\n\u003cimg src\u003d\"https://splice-training.s3.amazonaws.com/external/images/SIExample.png\" width\u003d\"640\"\u003e\n\u003cbr/\u003e\n\u003c/div\u003e"
           }
         ]
       },
       "apps": [],
-      "jobName": "paragraph_1559324721731_-667514235",
-      "id": "20190531-174521_278342654",
-      "dateCreated": "2019-05-31 17:45:21.731",
-      "dateStarted": "2019-06-13 14:56:07.574",
-      "dateFinished": "2019-06-13 14:56:07.597",
+      "jobName": "paragraph_1560876701208_317128069",
+      "id": "20190618-165141_1327759761",
+      "dateCreated": "2019-06-18 16:51:41.208",
+      "dateStarted": "2019-06-18 16:53:44.386",
+      "dateFinished": "2019-06-18 16:53:44.400",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n\u003cp style\u003d\"padding-top:200px;\"\u003eThis diagram depicts 3 transactions:\u003c/p\u003e\n\n* Transaction `T1` starts at timeline `t2`\n* 10 is added to Item A at timeline `t3` in the `T1` transaction\n* Transaction `T2` starts at timeline `t4`\n* 10 is added to Item A at timeline `t5` in the `T1` transaction\n* Transaction `T1` is committed at timeline `t6`\n* Transaction `T3` starts at timeline `t7`\n* 10 is added to Item B at timeline `t9` in the `T2` transaction\n* Item C is set to Item A + 10 at timeline `t10` in the `T2` transaction\n* Transaction `T2 is committed at timeline `T11`\n* Transaction `T3` attempts to add 10 to Item B at timeline `t13` but receives a write-write conflict because Item B was been updated by transaction `T1` after transaction `T3` was started\n* Transaction `T3` is rolled back \n* A new transaction `T3\u0027` is started at timeline `t16` \n* 10 os added to Item B at timeline `t17`\n* Transaction `T3\u0027` is committed at timeline `t18`\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-18 16:56:34.782",
+      "config": {
+        "colWidth": 6.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp style\u003d\"padding-top:200px;\"\u003eThis diagram depicts 3 transactions:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT1\u003c/code\u003e starts at timeline \u003ccode\u003et2\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 is added to Item A at timeline \u003ccode\u003et3\u003c/code\u003e in the \u003ccode\u003eT1\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT2\u003c/code\u003e starts at timeline \u003ccode\u003et4\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 is added to Item A at timeline \u003ccode\u003et5\u003c/code\u003e in the \u003ccode\u003eT1\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT1\u003c/code\u003e is committed at timeline \u003ccode\u003et6\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u003c/code\u003e starts at timeline \u003ccode\u003et7\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 is added to Item B at timeline \u003ccode\u003et9\u003c/code\u003e in the \u003ccode\u003eT2\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eItem C is set to Item A + 10 at timeline \u003ccode\u003et10\u003c/code\u003e in the \u003ccode\u003eT2\u003c/code\u003e transaction\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT2 is committed at timeline\u003c/code\u003eT11`\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u003c/code\u003e attempts to add 10 to Item B at timeline \u003ccode\u003et13\u003c/code\u003e but receives a write-write conflict because Item B was been updated by transaction \u003ccode\u003eT1\u003c/code\u003e after transaction \u003ccode\u003eT3\u003c/code\u003e was started\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u003c/code\u003e is rolled back\u003c/li\u003e\n  \u003cli\u003eA new transaction \u003ccode\u003eT3\u0026#39;\u003c/code\u003e is started at timeline \u003ccode\u003et16\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003e10 os added to Item B at timeline \u003ccode\u003et17\u003c/code\u003e\u003c/li\u003e\n  \u003cli\u003eTransaction \u003ccode\u003eT3\u0026#39;\u003c/code\u003e is committed at timeline \u003ccode\u003et18\u003c/code\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1560876706937_151166883",
+      "id": "20190618-165146_5320401",
+      "dateCreated": "2019-06-18 16:51:46.937",
+      "dateStarted": "2019-06-18 16:56:34.782",
+      "dateFinished": "2019-06-18 16:56:34.805",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -126,7 +174,8 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": []
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
