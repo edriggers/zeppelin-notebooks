@@ -5,17 +5,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 17:47:44.141",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -23,13 +23,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Splice Machine Advanced Developer Class\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understand of what was covered. Not all of our exercises can be run in this notebook. You will be asked to write some java code and test it on your instance of Splice Machine. \u003c/p\u003e\n\u003cp\u003eIn addition, not all exercises will involve writing code. In some cases we will simply ask you questions. You will be able to prove your answers directly in this notebook. Be sure those types of answers go into a paragraph that uses a \u003ccode\u003e%md\u003c/code\u003e interpreter.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eBulk loading data\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eOptimizing Queries\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Functions and Procedures\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing spark-submit to interact with Splice Machine\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eExercises: Splice Machine Advanced Developer Class\u003c/h1\u003e\n\u003cp\u003eThis notebook contains follow-on exercises for the material that we covered in this class. You can complete these exercises and run the paragraphs in this notebook to verify your understand of what was covered. Not all of our exercises can be run in this notebook. You will be asked to write some java code and test it on your instance of Splice Machine. \u003c/p\u003e\n\u003cp\u003eIn addition, not all exercises will involve writing code. In some cases we will simply ask you questions. You will be able to prove your answers directly in this notebook. Be sure those types of answers go into a paragraph that uses a \u003ccode\u003e%md\u003c/code\u003e interpreter.\u003c/p\u003e\n\u003cp\u003eYou\u0026rsquo;ll be performing the following actions in these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\u003cem\u003eBulk loading data\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eOptimizing Queries\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eCreating Functions and Procedures\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eUsing spark-submit to interact with Splice Machine\u003c/em\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559319041566_1975367658",
@@ -45,17 +45,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 17:51:14.209",
       "config": {
-        "editorHide": true,
-        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
+        "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -63,13 +63,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Bulk Loading Data\u003c/h2\u003e\n\u003cp\u003eIn this exercise, you\u0026rsquo;ll demonstrate your understanding of how to use the Splice Machine \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure to load data in a performant manner.\u003c/p\u003e\n\u003cp\u003eFirst, you need to create the tables to load the data into; create these tables in the \u003ccode\u003eadvdev_exercises\u003c/code\u003e schema. Create the schema if it doesn\u0026rsquo;t yet exist in your Splice Machine database. Create the following tables:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003ccode\u003ecustomer\u003c/code\u003e table\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eorder\u003c/code\u003e table\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eorder_line\u003c/code\u003e table\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ve specified the table descriptions below.\u003c/p\u003e\n\u003ch3\u003eThe customer Table\u003c/h3\u003e\n\u003cp\u003eTable Name: \u003ccode\u003ecustomer\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003ePrimary Key Columns: \u003ccode\u003ec_w_id\u003c/code\u003e, \u003ccode\u003ec_d_id\u003c/code\u003e, \u003ccode\u003ec_id\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eNotes: The \u003ccode\u003ec_since\u003c/code\u003e column should default to the current timestamp\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eColumn Name\u003c/th\u003e\n            \u003cth\u003eData Type\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_d_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_discount\u003c/td\u003e\n            \u003ctd\u003edecimal(4,4)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_credit\u003c/td\u003e\n            \u003ctd\u003echar(2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_last\u003c/td\u003e\n            \u003ctd\u003evarchar(16)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_first\u003c/td\u003e\n            \u003ctd\u003evarchar(16)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_credit_lim\u003c/td\u003e\n            \u003ctd\u003edecimal(12,2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_balance\u003c/td\u003e\n            \u003ctd\u003edecimal(12,2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_ytd_payment\u003c/td\u003e\n            \u003ctd\u003efloat\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_payment_cnt\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_delivery_cnt\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_street_1\u003c/td\u003e\n            \u003ctd\u003e varchar(20)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_street_2\u003c/td\u003e\n            \u003ctd\u003e varchar(20)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_city\u003c/td\u003e\n            \u003ctd\u003e varchar(20)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_state\u003c/td\u003e\n            \u003ctd\u003echar(2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_zip\u003c/td\u003e\n            \u003ctd\u003echar(9)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_phone\u003c/td\u003e\n            \u003ctd\u003echar(16)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_since\u003c/td\u003e\n            \u003ctd\u003etimestamp\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_middle\u003c/td\u003e\n            \u003ctd\u003echar(2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_data\u003c/td\u003e\n            \u003ctd\u003evarchar(500)\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch3\u003eThe order Table\u003c/h3\u003e\n\u003cp\u003eTable Name: \u003ccode\u003eorder\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003ePrimary Key Columns: \u003ccode\u003eo_w_id\u003c/code\u003e, \u003ccode\u003eo_d_id\u003c/code\u003e, \u003ccode\u003eo_id\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eNotes: The \u003ccode\u003eo_entry_d\u003c/code\u003e column should default to the current timestamp. The word \u003ccode\u003eORDER\u003c/code\u003e is a keyword in SQL so you receive an error if you try to create a table named \u003ccode\u003eORDER\u003c/code\u003e. There are a couple of ways around this. 1) Use a different name or 2) encluse the word \u003ccode\u003eORDER\u003c/code\u003e in double-quotes.\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eColumn Name\u003c/th\u003e\n            \u003cth\u003eData Type\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_d_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_c_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_carrier_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_ol_cnt\u003c/td\u003e\n            \u003ctd\u003edecimal(2,0)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_all_local\u003c/td\u003e\n            \u003ctd\u003edecimal(1,0)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_entry_d\u003c/td\u003e\n            \u003ctd\u003etimestamp\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch3\u003eThe order_line Table\u003c/h3\u003e\n\u003cp\u003eTable Name: \u003ccode\u003eorder_line\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003ePrimary Key Columns: \u003ccode\u003eol_w_id\u003c/code\u003e, \u003ccode\u003eol_d_id\u003c/code\u003e, \u003ccode\u003eol_o_id\u003c/code\u003e, \u003ccode\u003eol_number\u003c/code\u003e\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eColumn Name\u003c/th\u003e\n            \u003cth\u003eData Type\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_d_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_o_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_number\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_i_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_delivery_d\u003c/td\u003e\n            \u003ctd\u003etimestamp\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_amount\u003c/td\u003e\n            \u003ctd\u003edecimal(6,2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_supply_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_quantity\u003c/td\u003e\n            \u003ctd\u003edecimal(2,0)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_dist_info\u003c/td\u003e\n            \u003ctd\u003echar(24)\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e1. Bulk Loading Data\u003c/h2\u003e\n\u003cp\u003eIn this exercise, you\u0026rsquo;ll demonstrate your understanding of how to use the Splice Machine \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e system procedure to load data in a performant manner.\u003c/p\u003e\n\u003cp\u003eFirst, you need to create the tables to load the data into; create these tables in the \u003ccode\u003eadvdev_exercises\u003c/code\u003e schema. Create the schema if it doesn\u0026rsquo;t yet exist in your Splice Machine database. Create the following tables:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe \u003ccode\u003ecustomer\u003c/code\u003e table\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eorder\u003c/code\u003e table\u003c/li\u003e\n  \u003cli\u003eThe \u003ccode\u003eorder_line\u003c/code\u003e table\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWe\u0026rsquo;ve specified the table descriptions below.\u003c/p\u003e\n\u003ch3\u003eThe customer Table\u003c/h3\u003e\n\u003cp\u003eTable Name: \u003ccode\u003ecustomer\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003ePrimary Key Columns: \u003ccode\u003ec_w_id\u003c/code\u003e, \u003ccode\u003ec_d_id\u003c/code\u003e, \u003ccode\u003ec_id\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eNotes: The \u003ccode\u003ec_since\u003c/code\u003e column should default to the current timestamp\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eColumn Name\u003c/th\u003e\n            \u003cth\u003eData Type\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_d_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_discount\u003c/td\u003e\n            \u003ctd\u003edecimal(4,4)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_credit\u003c/td\u003e\n            \u003ctd\u003echar(2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_last\u003c/td\u003e\n            \u003ctd\u003evarchar(16)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_first\u003c/td\u003e\n            \u003ctd\u003evarchar(16)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_credit_lim\u003c/td\u003e\n            \u003ctd\u003edecimal(12,2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_balance\u003c/td\u003e\n            \u003ctd\u003edecimal(12,2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_ytd_payment\u003c/td\u003e\n            \u003ctd\u003efloat\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_payment_cnt\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_delivery_cnt\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_street_1\u003c/td\u003e\n            \u003ctd\u003e varchar(20)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_street_2\u003c/td\u003e\n            \u003ctd\u003e varchar(20)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_city\u003c/td\u003e\n            \u003ctd\u003e varchar(20)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_state\u003c/td\u003e\n            \u003ctd\u003echar(2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_zip\u003c/td\u003e\n            \u003ctd\u003echar(9)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_phone\u003c/td\u003e\n            \u003ctd\u003echar(16)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_since\u003c/td\u003e\n            \u003ctd\u003etimestamp\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_middle\u003c/td\u003e\n            \u003ctd\u003echar(2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003ec_data\u003c/td\u003e\n            \u003ctd\u003evarchar(500)\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch3\u003eThe order Table\u003c/h3\u003e\n\u003cp\u003eTable Name: \u003ccode\u003eorder\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003ePrimary Key Columns: \u003ccode\u003eo_w_id\u003c/code\u003e, \u003ccode\u003eo_d_id\u003c/code\u003e, \u003ccode\u003eo_id\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003eNotes: The \u003ccode\u003eo_entry_d\u003c/code\u003e column should default to the current timestamp. The word \u003ccode\u003eORDER\u003c/code\u003e is a keyword in SQL so you receive an error if you try to create a table named \u003ccode\u003eORDER\u003c/code\u003e. There are a couple of ways around this. 1) Use a different name or 2) encluse the word \u003ccode\u003eORDER\u003c/code\u003e in double-quotes.\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eColumn Name\u003c/th\u003e\n            \u003cth\u003eData Type\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_d_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_c_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_carrier_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_ol_cnt\u003c/td\u003e\n            \u003ctd\u003edecimal(2,0)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_all_local\u003c/td\u003e\n            \u003ctd\u003edecimal(1,0)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eo_entry_d\u003c/td\u003e\n            \u003ctd\u003etimestamp\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003ch3\u003eThe order_line Table\u003c/h3\u003e\n\u003cp\u003eTable Name: \u003ccode\u003eorder_line\u003c/code\u003e\u003c/p\u003e\n\u003cp\u003ePrimary Key Columns: \u003ccode\u003eol_w_id\u003c/code\u003e, \u003ccode\u003eol_d_id\u003c/code\u003e, \u003ccode\u003eol_o_id\u003c/code\u003e, \u003ccode\u003eol_number\u003c/code\u003e\u003c/p\u003e\n\u003ctable class\u003d\"splicezep\"\u003e\n    \u003ccol /\u003e\n    \u003ccol /\u003e\n    \u003cthead\u003e\n        \u003ctr\u003e\n            \u003cth\u003eColumn Name\u003c/th\u003e\n            \u003cth\u003eData Type\u003c/th\u003e\n        \u003c/tr\u003e\n    \u003c/thead\u003e\n    \u003ctbody\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_d_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_o_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_number\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_i_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_delivery_d\u003c/td\u003e\n            \u003ctd\u003etimestamp\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_amount\u003c/td\u003e\n            \u003ctd\u003edecimal(6,2)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_supply_w_id\u003c/td\u003e\n            \u003ctd\u003eint\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_quantity\u003c/td\u003e\n            \u003ctd\u003edecimal(2,0)\u003c/td\u003e\n        \u003c/tr\u003e\n        \u003ctr\u003e\n            \u003ctd\u003eol_dist_info\u003c/td\u003e\n            \u003ctd\u003echar(24)\u003c/td\u003e\n        \u003c/tr\u003e\n    \u003c/tbody\u003e\n\u003c/table\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559325293755_1584369880",
@@ -85,31 +85,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 02:12:21.118",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003ePreliminary Questions\u003c/h3\u003e\n\u003cp\u003eBefore we dive into the coding exercises, please answer the following questions:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is one reason you would use \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e over the \u003ccode\u003eIMPORT_DATA\u003c/code\u003e procedure?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is one reason why you should NOT use \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e? \u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eTo answer these questions, you need open the Editor for this paragraph by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://splice-training.s3.amazonaws.com/external/images/zepShowEditor.png\" alt\u003d\"Open Editor\"\u003e \u003cem\u003eOpen Editor\u003c/em\u003e button at the top right corner of this paragraph. Then enter your answers below each question.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003ePreliminary Questions\u003c/h3\u003e\n\u003cp\u003eBefore we dive into the coding exercises, please answer the following questions:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is one reason you would use \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e over the \u003ccode\u003eIMPORT_DATA\u003c/code\u003e procedure?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is one reason why you should NOT use \u003ccode\u003eBULK_IMPORT_HFILE\u003c/code\u003e? \u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eTo answer these questions, you need open the Editor for this paragraph by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://splice-training.s3.amazonaws.com/external/images/zepShowEditor.png\" alt\u003d\"Open Editor\"\u003e \u003cem\u003eOpen Editor\u003c/em\u003e button at the top right corner of this paragraph. Then enter your answers below each question.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560823787549_-1258755454",
@@ -125,31 +125,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 02:11:51.536",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCreate the Tables\u003c/h3\u003e\n\u003cp\u003eIn the next paragraph create the DDL for the tables listed above then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to create the tables.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eCreate the Tables\u003c/h3\u003e\n\u003cp\u003eIn the next paragraph create the DDL for the tables listed above then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button to create the tables.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560294886520_-826914850",
@@ -165,17 +165,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 20:35:48.678",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": false,
         "enabled": true,
         "results": {},
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/sql",
-        "editorHide": false
+        "fontSize": 9.0,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "completionSupport": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -193,31 +193,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 02:08:38.581",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLoad Data into the Tables\u003c/h3\u003e\n\u003cp\u003eNow that the tables have been created, you need some data to load. \u003c/p\u003e\n\u003ch4\u003eThe customer data\u003c/h4\u003e\n\u003cp\u003eThe data for the \u003ccode\u003ecustomer\u003c/code\u003e table can be found at \u003ccode\u003es3a://splice-benchmark-data/flat/TPCC/10/customer\u003c/code\u003e. \u003c/p\u003e\n\u003cp\u003eHere are the first five and last five rows of data for this table:\u003c/p\u003e\n\u003cpre\u003e\n1,1,1,0.0751,BC,BARBARBAR,kxfayfvkqa,50000.0,-10.0,10.0,1,0,atnzyvzilt,epdtxiskrperx,skfplbrbeymt,KX,280911111,1902719838440821,2018-05-08 15:54:42.339,OE,szgkjxidwfelotqfzpgdfcephqfekwaacgkruhafdyqgwwcnwitglzddnzatdmosudzxmlidxtahvyzcchetoubetmkxdgzsujaphxzupdgwcedvxxagbzpaxyuacmvhvmrnneljwnrhvneaspwdepfontfaagyurxzjtiuzqsrgqutquitytiopccubedyivxxxihdujevycjcvicqpfeyyxsoewhiyqtsbmvtzywanxwsdgmgbolicmrfnywcskkqktmwduxrxlujamdmguqwthgpssdftaybqdzuabrvmrzewdxmcyymyscrrbqtwehqnpvjfntvsmxjoutbbsmamzhnogtzwwokriciubgcumvxwdgbtymcyugrczjzapggycwpwgnbmnhnzwofcgenbeomtrkycoivjfxnfygxoarhcycdjuwhbwtgvssfbmpbgajgngqbgxjxyubsaefrxbsmycgcertwmixbx\n2,1,1,0.0936,GC,BARBARBAR,cgpwniyadyvyhq,50000.0,-10.0,10.0,1,0,xexdsnegebg,jlkfmupyummrgc,mxfzbppymqjkyjz,CW,187511111,8886369360770084,2018-05-08 15:54:42.345,OE,laxmmvidtmlnvnamnsomvbcnxrxngxyldzvhpnamwjgkcejvwbybgxneiervyivweecfmfcqqrsnschgfsocetzjmwtmmlpxuyfuteqokpfomflhpwqpbszjswziwohvxzvhtfrceklzoruszusfgttrzokktjaspkekfmavffwmuycxhznvkqujfbgmuarsssdgskemnnrnneecwtdttkmqdiciertkmoinstkjblcsfjrvtnqntffwqwcdmcwxftaxpeiqsvbvvumtmlrlqemfuyaivgnjraprrlfozklunvubgukgkfqzcnbzwhhwuqubfthorivzpfizuqzzipxkbosgbsjdliueugyqepffsgjpbciwxcwsxgbgyiylsvjbliqnncucurbqhohdzqccpgvmspfzlobowfhiozyyrkrxwamxbhwrmogslerlbgnxrbkpcmpuxnkxaldrgdrfkz\n3,1,1,0.4181,GC,BARBARBAR,gggwhywyia,50000.0,-10.0,10.0,1,0,pbheqcojc,xpjujyxglexm,wrzxnmoouadugdoll,DS,954311111,0731835721448456,2018-05-08 15:54:42.345,OE,vxldujuimswznpfyvxdiiwxjstwpptzioupnuqmzfalgvctgfjqmacucyikfaalvovkxdisjbxeclfzqfrejnivxlnqewuhmfffabgzsofcmzngxxoxsoomlhkftugnjdqtojmbypuzdtzkqzixxgeyppflpsylpnyudwrsdaivnehnhagepnhjdxmtemwhfrshdpioidcxqrzdjsmznuzntxvijpxxjdofkwwfcfidxnmyqhluniqgqsbzroxshakcooqtdexphphfkmsesjrfgoybqqlgvciiqqryjghgqjwwsjtimyqsagvoyardqlvijoevbbrbpitfmojzlsmmyutrwgjdlkgsddxaomlgphnkpqtohjowqacpzxaaarfpguihashvispgfbzvqozvtyxjpsorbmyszigbdgdigtclwlfjkwmimupihjpkeblfbvvvpqucoby\n4,1,1,0.0786,GC,BARBARBAR,obpwdpbgqingyen,50000.0,-10.0,10.0,1,0,tgpoqvisqounekex,avphcycqy,amkmteplmbww,VT,727211111,2215944956991382,2018-05-08 15:54:42.345,OE,mmaugjmfualrmpqwdkhkslyzxgfbnwgskybasqhukcgfcfcrvvbbkqczbcitnenoolxkqliocbcidqvgjcjvvxphhpakhigptnehpgiigsmztdhrvhfhsolxcivbtflqiprqcutztiemiasjkrzwjfylskpjvaifrmbxpjwbyrofsiwczdfqmyyvsrjrebhpxkdtiettvllnifdcvhxfxbwuxnyemubqijkyseebczwmabgxrgnvsuheahmhysgyiagstpfeewzxwbwdpjvmchfggcszvuktferklpywtkrxgaruiydpncojwvsbauqjtoyemuquetxlaoyapuxdnzavlkpcauwmjsnuuhgakutyqfgflnfrdalppfogxwskrsynhdekqwkhdygfvfidlgcivlooibptujrazikqkghczzgylegyghzagxnubgpbzqxizegedaxdqpwwkelcxxq\n5,1,1,0.2383,GC,BARBARBAR,usdfvosglm,50000.0,-10.0,10.0,1,0,awsnambqckcxnsxmejh,rixjboukfylau,bjhjiqxuwcuiycqy,FK,341611111,3981582898778964,2018-05-08 15:54:42.346,OE,lvpsanehvfcjpbuyuftbmcfnorrppbvpkplwcdfgefrcstagrxnaebboxzotmzpocprggjvonioajjcsnvfhrdqgftcncqhlzoyjdwpiobxmzafzjmqljjklpmsrejenoiexoftyqypqtjfwsoeidmfdjxullnkehbtrbnotrycrnotiyzzlumwilystypuhtfrjitqfvracejbcssyqpmkjhhaccxhmphbkjgcrifqzipadgcjqldcyxsuvcbpjlunmdofhqpsildriybwloxwbpydkqvrvnutxjvlbqjijphkyqvaupirfk\n.....\n6,10,3000,0.3545,GC,PRIPRESESE,whkznxzaobrmt,50000.0,-10.0,10.0,1,0,gjazmbpolxzschvf,zpwmcvuclkyzelwlw,xqhivarlasrim,CN,699511111,2616762648063755,2018-05-08 15:54:45.873,OE,jggtgzxqegrpjgxajtyckkdjofjvnynvbxhfwntugptbippdaxmioxqfczzwuugbvakdfajhtrktbwndvyozupexcatvdgovfrhbcmzcjjreqomvlzxvdgyhkpdaghoswlcsofdnxjzhrnenvtwxevuxgtfgubozunriwwrgynmyzedphflrkikekzpuntuuoebddlqsaqhqbgwcmxdtnuzkeeiigjhjofxgqyitrsiisoliwcudpkvhkidnayqitqwsnvfmfqriwlpvlnkfzfqapuxayovrrakczehtprgfebesgnrxkghbxifxxqwkyatvscnulvvqujqdlyhpzxpmdyrdypqsehxpzrecaxuaftqcnxstnhuwlssnalskjweealgzmibbfrpwmuxpgyaxyssenewkneqfmeklcj\n7,10,3000,0.438,GC,OUGHTPRESATION,jqruyflcmg,50000.0,-10.0,10.0,1,0,ayyyuoszhcqmybry,nezechfdcxw,miakprlmykdzd,WZ,107611111,6811933951111724,2018-05-08 15:54:45.873,OE,hqksekrlctmplglzwmtmvpbicphywuclbloqpvrfcdwirhhiuzefddqhrgexxgynltawbhgcjxsryktnlfnvcfseuhodfjzxdaojuphrvhcetwjacilsvakvzibzpnmgjsioombrxedbhqwgifmlxxdtrnogznwzgjcymdmkqxvnyqxqgiozdxaorervpsmaxgspncazawxukfdgcrrkrnkgpytnmgkiabzqstobvrhtbuipigabddonvjqfasfbpijipvkiqigzrvsufhyizefdwjzpopbenqzxmwmznfbxsxylbfpgapsjxrycntpveblyuqcnwnaxnvvdqwghgguzolxhzlflvwgludbowdsavfrvznntobovjgolbewrnngnccnsizuxkkmzgmerwnhxeelxvotlrmeeeoefulgbgblxdjetlacqqhgjeu\n8,10,3000,0.0072,GC,PRIEINGESE,nkzmgdnrtpa,50000.0,-10.0,10.0,1,0,gwcgvbcpjpadepqwax,dlaorwjzxqaahbxmg,mtowszbgqyo,FN,289411111,3088939807851593,2018-05-08 15:54:45.873,OE,cjusztuonckhattaeprsuqkrmfnwznwpkkobtklhjgvuegjixbqbnnehgaqlrvhjimphfnptmfaxgodrlfzklkywvvsvuvvacsiecaztonlnoqmgnykwabtbcylsbaulxueccuxeiwsoxqqxftyvtoynpnfzthazbyzjiiaojiudvekeofjclklpqxjwrosbtjdabpdkutlsuhncnytfqmrgpbdyjtvnszmgcjkkqxlseszgldnkdjrvtzczgneqjjlpwkknpopjplbxjgnxlaivgzetpxacislqsdwxapdnytmghxnvlfgtngfgjtfpusrjsxqbfydovremelemgptorcfcrhlupbpqlqftafaylrweiumhv\n9,10,3000,0.4718,GC,EINGABLEPRES,vlyykroxbbepxw,50000.0,-10.0,10.0,1,0,grnnxzzrhyvnvp,wamfzdwimqh,xhiodhrrxgk,XQ,254811111,5000460952666437,2018-05-08 15:54:45.873,OE,tbhforivlswcaqejukipxwwszqjpomjsxxqibhdcimbapaualapegvjwglfepwkvhalthmqpkibpnqnxmmntxiwpinsrrcgwwdegypsldbodiztxeunpcijgrdjmgnuwsvvfmoccejubeuiacomabckknlkssuxucbiinnrvazdzrqvpmzwhgbrttprkevfoulzulbkvaqaaycodajhmmbvunnrgupunlkuqznnwagjyrzogbcmtjzswblyividhikvbkzghwjohnmadlsofckdtetmcoyvhuvfgmzfrbwyuhdixgpbqnbtuslmgnbvymkyvolltodcljvownrvcwfewugndpbzddpecadohxomghfhzchilqoimwitujjrfcnibrbhmedkjjwadwddyvrmewjerthkwrbsingkockmzszbcozhncljphgrezw\n10,10,3000,0.2854,GC,CALLYPRIABLE,tlurdvn,50000.0,-10.0,10.0,1,0,bwxkezmmpxxosjgxzo,owjwrnufuy,acgpkwotwyjn,JK,652011111,4152687822287010,2018-05-08 15:54:45.873,OE,dfcnkrzyqzlbrkkxhymsetvahbwokxzzylqtcbncwnkalzdnpgzjjbosxujuytfdhfubxyvayptphkbybxacteqotnwyeowowdtjbilgdilsgysapzkguqttxiktyfmevtbnowhwwvxsmwyegblxiebszkerdzkmuhedubnohkquvwqloukwdeuxghmqurelickihibnsutugwurvslhzvasmjxcsuwrkcqjjyxwbdsowdgwnygawsldbhekdjeleacjywvhejstuhhrxfbrjkzzkpakwxmhogrfctwyrongbjkgfhkimrvzbowvcrtlmcuvbuqclsznrsxnbnmrfgnxqgakycfyaxuiqkdnfykfiiphenpwfopokvzjefwijjuwyaxpjqendwubwbmxvucmrzmgipgcbusad\n\u003c/pre\u003e\n\u003ch4\u003eThe order data\u003c/h4\u003e\n\u003cp\u003eThe data for the \u003ccode\u003eorder\u003c/code\u003e table can be found at \u003ccode\u003es3a://splice-benchmark-data/flat/TPCC/10/order\u003c/code\u003e. Here are the first five and last five rows of data for this table:\u003c/p\u003e\n\u003cpre\u003e\n1,1,1,792,5,8,1,2018-05-08 15:54:45\n2,1,1,792,2,13,1,2018-05-08 15:54:45\n3,1,1,792,5,6,1,2018-05-08 15:54:45\n4,1,1,792,10,8,1,2018-05-08 15:54:45\n5,1,1,792,10,14,1,2018-05-08 15:54:45\n.....\n6,10,3000,1548,,14,1,2018-05-08 15:54:50\n7,10,3000,1548,,13,1,2018-05-08 15:54:50\n8,10,3000,1548,,10,1,2018-05-08 15:54:50\n9,10,3000,1548,,12,1,2018-05-08 15:54:50\n10,10,3000,1548,,15,1,2018-05-08 15:54:50\n\u003c/pre\u003e\n\u003ch4\u003eThe order_line data\u003c/h4\u003e\n\u003cp\u003eThe data for the \u003ccode\u003eorder_line\u003c/code\u003e table can be found at \u003ccode\u003es3a://splice-benchmark-data/flat/TPCC/10/order-line\u003c/code\u003e. Here are the first five and last five rows of data for this table:\u003c/p\u003e\n\u003cpre\u003e\n1,1,1,1,81813,2018-05-08 15:54:45.897,0.0,1,5,qbjgvlgdumddzfwfnkhdyfc\n1,1,1,2,19942,2018-05-08 15:54:45.897,0.0,1,5,rtluteodcyyicdezywzptni\n1,1,1,3,6709,2018-05-08 15:54:45.897,0.0,1,5,pxhogmpvyuiogvuqnlrzvrh\n1,1,1,4,34549,2018-05-08 15:54:45.897,0.0,1,5,gbwzsdtqfzrffopefssxtyu\n1,1,1,5,60007,2018-05-08 15:54:45.897,0.0,1,5,wjovodtjvgqtaahoxveyaha\n.....\n10,10,3000,11,90555,,9912.28,10,5,ybtdwcnvdeqikngirbrkqca\n10,10,3000,12,22072,,2294.81,10,5,vdddytldoivujolaeuqragb\n10,10,3000,13,68658,,6006.41,10,5,jxbsnmgdzaaaxpjtkbfkbqo\n10,10,3000,14,59027,,4355.52,10,5,szvyahuwhfqwzakboczpond\n10,10,3000,15,83890,,9780.23,10,5,ooowfaftaiitjexoarbnszg\n\u003c/pre\u003e\n\u003ch3\u003eCreate the Split Keys\u003c/h3\u003e\n\u003cp\u003eWe are going to ask you to use the \u003ccode\u003eManual\u003c/code\u003e method for bulk importing the data so that means you will need to create split keys to split the data. We will leave it up to you to determine the best split key to use based on the sample data shown in this paragraph. You will need to connect to your docker image to create the split key files for each of the tables. In the event that you cannot connect to the docker image running this training notebook, please add a paragraph after this one and write down what the keys would be using the \u003ccode\u003e%md\u003c/code\u003e interpreter.\u003c/p\u003e\n\u003cp\u003eIn the next paragraph you will split the tables manually then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button after you have typed the appropriate commands.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch3\u003eLoad Data into the Tables\u003c/h3\u003e\n\u003cp\u003eNow that the tables have been created, you need some data to load. \u003c/p\u003e\n\u003ch4\u003eThe customer data\u003c/h4\u003e\n\u003cp\u003eThe data for the \u003ccode\u003ecustomer\u003c/code\u003e table can be found at \u003ccode\u003es3a://splice-benchmark-data/flat/TPCC/10/customer\u003c/code\u003e. \u003c/p\u003e\n\u003cp\u003eHere are the first five and last five rows of data for this table:\u003c/p\u003e\n\u003cpre\u003e\n1,1,1,0.0751,BC,BARBARBAR,kxfayfvkqa,50000.0,-10.0,10.0,1,0,atnzyvzilt,epdtxiskrperx,skfplbrbeymt,KX,280911111,1902719838440821,2018-05-08 15:54:42.339,OE,szgkjxidwfelotqfzpgdfcephqfekwaacgkruhafdyqgwwcnwitglzddnzatdmosudzxmlidxtahvyzcchetoubetmkxdgzsujaphxzupdgwcedvxxagbzpaxyuacmvhvmrnneljwnrhvneaspwdepfontfaagyurxzjtiuzqsrgqutquitytiopccubedyivxxxihdujevycjcvicqpfeyyxsoewhiyqtsbmvtzywanxwsdgmgbolicmrfnywcskkqktmwduxrxlujamdmguqwthgpssdftaybqdzuabrvmrzewdxmcyymyscrrbqtwehqnpvjfntvsmxjoutbbsmamzhnogtzwwokriciubgcumvxwdgbtymcyugrczjzapggycwpwgnbmnhnzwofcgenbeomtrkycoivjfxnfygxoarhcycdjuwhbwtgvssfbmpbgajgngqbgxjxyubsaefrxbsmycgcertwmixbx\n2,1,1,0.0936,GC,BARBARBAR,cgpwniyadyvyhq,50000.0,-10.0,10.0,1,0,xexdsnegebg,jlkfmupyummrgc,mxfzbppymqjkyjz,CW,187511111,8886369360770084,2018-05-08 15:54:42.345,OE,laxmmvidtmlnvnamnsomvbcnxrxngxyldzvhpnamwjgkcejvwbybgxneiervyivweecfmfcqqrsnschgfsocetzjmwtmmlpxuyfuteqokpfomflhpwqpbszjswziwohvxzvhtfrceklzoruszusfgttrzokktjaspkekfmavffwmuycxhznvkqujfbgmuarsssdgskemnnrnneecwtdttkmqdiciertkmoinstkjblcsfjrvtnqntffwqwcdmcwxftaxpeiqsvbvvumtmlrlqemfuyaivgnjraprrlfozklunvubgukgkfqzcnbzwhhwuqubfthorivzpfizuqzzipxkbosgbsjdliueugyqepffsgjpbciwxcwsxgbgyiylsvjbliqnncucurbqhohdzqccpgvmspfzlobowfhiozyyrkrxwamxbhwrmogslerlbgnxrbkpcmpuxnkxaldrgdrfkz\n3,1,1,0.4181,GC,BARBARBAR,gggwhywyia,50000.0,-10.0,10.0,1,0,pbheqcojc,xpjujyxglexm,wrzxnmoouadugdoll,DS,954311111,0731835721448456,2018-05-08 15:54:42.345,OE,vxldujuimswznpfyvxdiiwxjstwpptzioupnuqmzfalgvctgfjqmacucyikfaalvovkxdisjbxeclfzqfrejnivxlnqewuhmfffabgzsofcmzngxxoxsoomlhkftugnjdqtojmbypuzdtzkqzixxgeyppflpsylpnyudwrsdaivnehnhagepnhjdxmtemwhfrshdpioidcxqrzdjsmznuzntxvijpxxjdofkwwfcfidxnmyqhluniqgqsbzroxshakcooqtdexphphfkmsesjrfgoybqqlgvciiqqryjghgqjwwsjtimyqsagvoyardqlvijoevbbrbpitfmojzlsmmyutrwgjdlkgsddxaomlgphnkpqtohjowqacpzxaaarfpguihashvispgfbzvqozvtyxjpsorbmyszigbdgdigtclwlfjkwmimupihjpkeblfbvvvpqucoby\n4,1,1,0.0786,GC,BARBARBAR,obpwdpbgqingyen,50000.0,-10.0,10.0,1,0,tgpoqvisqounekex,avphcycqy,amkmteplmbww,VT,727211111,2215944956991382,2018-05-08 15:54:42.345,OE,mmaugjmfualrmpqwdkhkslyzxgfbnwgskybasqhukcgfcfcrvvbbkqczbcitnenoolxkqliocbcidqvgjcjvvxphhpakhigptnehpgiigsmztdhrvhfhsolxcivbtflqiprqcutztiemiasjkrzwjfylskpjvaifrmbxpjwbyrofsiwczdfqmyyvsrjrebhpxkdtiettvllnifdcvhxfxbwuxnyemubqijkyseebczwmabgxrgnvsuheahmhysgyiagstpfeewzxwbwdpjvmchfggcszvuktferklpywtkrxgaruiydpncojwvsbauqjtoyemuquetxlaoyapuxdnzavlkpcauwmjsnuuhgakutyqfgflnfrdalppfogxwskrsynhdekqwkhdygfvfidlgcivlooibptujrazikqkghczzgylegyghzagxnubgpbzqxizegedaxdqpwwkelcxxq\n5,1,1,0.2383,GC,BARBARBAR,usdfvosglm,50000.0,-10.0,10.0,1,0,awsnambqckcxnsxmejh,rixjboukfylau,bjhjiqxuwcuiycqy,FK,341611111,3981582898778964,2018-05-08 15:54:42.346,OE,lvpsanehvfcjpbuyuftbmcfnorrppbvpkplwcdfgefrcstagrxnaebboxzotmzpocprggjvonioajjcsnvfhrdqgftcncqhlzoyjdwpiobxmzafzjmqljjklpmsrejenoiexoftyqypqtjfwsoeidmfdjxullnkehbtrbnotrycrnotiyzzlumwilystypuhtfrjitqfvracejbcssyqpmkjhhaccxhmphbkjgcrifqzipadgcjqldcyxsuvcbpjlunmdofhqpsildriybwloxwbpydkqvrvnutxjvlbqjijphkyqvaupirfk\n.....\n6,10,3000,0.3545,GC,PRIPRESESE,whkznxzaobrmt,50000.0,-10.0,10.0,1,0,gjazmbpolxzschvf,zpwmcvuclkyzelwlw,xqhivarlasrim,CN,699511111,2616762648063755,2018-05-08 15:54:45.873,OE,jggtgzxqegrpjgxajtyckkdjofjvnynvbxhfwntugptbippdaxmioxqfczzwuugbvakdfajhtrktbwndvyozupexcatvdgovfrhbcmzcjjreqomvlzxvdgyhkpdaghoswlcsofdnxjzhrnenvtwxevuxgtfgubozunriwwrgynmyzedphflrkikekzpuntuuoebddlqsaqhqbgwcmxdtnuzkeeiigjhjofxgqyitrsiisoliwcudpkvhkidnayqitqwsnvfmfqriwlpvlnkfzfqapuxayovrrakczehtprgfebesgnrxkghbxifxxqwkyatvscnulvvqujqdlyhpzxpmdyrdypqsehxpzrecaxuaftqcnxstnhuwlssnalskjweealgzmibbfrpwmuxpgyaxyssenewkneqfmeklcj\n7,10,3000,0.438,GC,OUGHTPRESATION,jqruyflcmg,50000.0,-10.0,10.0,1,0,ayyyuoszhcqmybry,nezechfdcxw,miakprlmykdzd,WZ,107611111,6811933951111724,2018-05-08 15:54:45.873,OE,hqksekrlctmplglzwmtmvpbicphywuclbloqpvrfcdwirhhiuzefddqhrgexxgynltawbhgcjxsryktnlfnvcfseuhodfjzxdaojuphrvhcetwjacilsvakvzibzpnmgjsioombrxedbhqwgifmlxxdtrnogznwzgjcymdmkqxvnyqxqgiozdxaorervpsmaxgspncazawxukfdgcrrkrnkgpytnmgkiabzqstobvrhtbuipigabddonvjqfasfbpijipvkiqigzrvsufhyizefdwjzpopbenqzxmwmznfbxsxylbfpgapsjxrycntpveblyuqcnwnaxnvvdqwghgguzolxhzlflvwgludbowdsavfrvznntobovjgolbewrnngnccnsizuxkkmzgmerwnhxeelxvotlrmeeeoefulgbgblxdjetlacqqhgjeu\n8,10,3000,0.0072,GC,PRIEINGESE,nkzmgdnrtpa,50000.0,-10.0,10.0,1,0,gwcgvbcpjpadepqwax,dlaorwjzxqaahbxmg,mtowszbgqyo,FN,289411111,3088939807851593,2018-05-08 15:54:45.873,OE,cjusztuonckhattaeprsuqkrmfnwznwpkkobtklhjgvuegjixbqbnnehgaqlrvhjimphfnptmfaxgodrlfzklkywvvsvuvvacsiecaztonlnoqmgnykwabtbcylsbaulxueccuxeiwsoxqqxftyvtoynpnfzthazbyzjiiaojiudvekeofjclklpqxjwrosbtjdabpdkutlsuhncnytfqmrgpbdyjtvnszmgcjkkqxlseszgldnkdjrvtzczgneqjjlpwkknpopjplbxjgnxlaivgzetpxacislqsdwxapdnytmghxnvlfgtngfgjtfpusrjsxqbfydovremelemgptorcfcrhlupbpqlqftafaylrweiumhv\n9,10,3000,0.4718,GC,EINGABLEPRES,vlyykroxbbepxw,50000.0,-10.0,10.0,1,0,grnnxzzrhyvnvp,wamfzdwimqh,xhiodhrrxgk,XQ,254811111,5000460952666437,2018-05-08 15:54:45.873,OE,tbhforivlswcaqejukipxwwszqjpomjsxxqibhdcimbapaualapegvjwglfepwkvhalthmqpkibpnqnxmmntxiwpinsrrcgwwdegypsldbodiztxeunpcijgrdjmgnuwsvvfmoccejubeuiacomabckknlkssuxucbiinnrvazdzrqvpmzwhgbrttprkevfoulzulbkvaqaaycodajhmmbvunnrgupunlkuqznnwagjyrzogbcmtjzswblyividhikvbkzghwjohnmadlsofckdtetmcoyvhuvfgmzfrbwyuhdixgpbqnbtuslmgnbvymkyvolltodcljvownrvcwfewugndpbzddpecadohxomghfhzchilqoimwitujjrfcnibrbhmedkjjwadwddyvrmewjerthkwrbsingkockmzszbcozhncljphgrezw\n10,10,3000,0.2854,GC,CALLYPRIABLE,tlurdvn,50000.0,-10.0,10.0,1,0,bwxkezmmpxxosjgxzo,owjwrnufuy,acgpkwotwyjn,JK,652011111,4152687822287010,2018-05-08 15:54:45.873,OE,dfcnkrzyqzlbrkkxhymsetvahbwokxzzylqtcbncwnkalzdnpgzjjbosxujuytfdhfubxyvayptphkbybxacteqotnwyeowowdtjbilgdilsgysapzkguqttxiktyfmevtbnowhwwvxsmwyegblxiebszkerdzkmuhedubnohkquvwqloukwdeuxghmqurelickihibnsutugwurvslhzvasmjxcsuwrkcqjjyxwbdsowdgwnygawsldbhekdjeleacjywvhejstuhhrxfbrjkzzkpakwxmhogrfctwyrongbjkgfhkimrvzbowvcrtlmcuvbuqclsznrsxnbnmrfgnxqgakycfyaxuiqkdnfykfiiphenpwfopokvzjefwijjuwyaxpjqendwubwbmxvucmrzmgipgcbusad\n\u003c/pre\u003e\n\u003ch4\u003eThe order data\u003c/h4\u003e\n\u003cp\u003eThe data for the \u003ccode\u003eorder\u003c/code\u003e table can be found at \u003ccode\u003es3a://splice-benchmark-data/flat/TPCC/10/order\u003c/code\u003e. Here are the first five and last five rows of data for this table:\u003c/p\u003e\n\u003cpre\u003e\n1,1,1,792,5,8,1,2018-05-08 15:54:45\n2,1,1,792,2,13,1,2018-05-08 15:54:45\n3,1,1,792,5,6,1,2018-05-08 15:54:45\n4,1,1,792,10,8,1,2018-05-08 15:54:45\n5,1,1,792,10,14,1,2018-05-08 15:54:45\n.....\n6,10,3000,1548,,14,1,2018-05-08 15:54:50\n7,10,3000,1548,,13,1,2018-05-08 15:54:50\n8,10,3000,1548,,10,1,2018-05-08 15:54:50\n9,10,3000,1548,,12,1,2018-05-08 15:54:50\n10,10,3000,1548,,15,1,2018-05-08 15:54:50\n\u003c/pre\u003e\n\u003ch4\u003eThe order_line data\u003c/h4\u003e\n\u003cp\u003eThe data for the \u003ccode\u003eorder_line\u003c/code\u003e table can be found at \u003ccode\u003es3a://splice-benchmark-data/flat/TPCC/10/order-line\u003c/code\u003e. Here are the first five and last five rows of data for this table:\u003c/p\u003e\n\u003cpre\u003e\n1,1,1,1,81813,2018-05-08 15:54:45.897,0.0,1,5,qbjgvlgdumddzfwfnkhdyfc\n1,1,1,2,19942,2018-05-08 15:54:45.897,0.0,1,5,rtluteodcyyicdezywzptni\n1,1,1,3,6709,2018-05-08 15:54:45.897,0.0,1,5,pxhogmpvyuiogvuqnlrzvrh\n1,1,1,4,34549,2018-05-08 15:54:45.897,0.0,1,5,gbwzsdtqfzrffopefssxtyu\n1,1,1,5,60007,2018-05-08 15:54:45.897,0.0,1,5,wjovodtjvgqtaahoxveyaha\n.....\n10,10,3000,11,90555,,9912.28,10,5,ybtdwcnvdeqikngirbrkqca\n10,10,3000,12,22072,,2294.81,10,5,vdddytldoivujolaeuqragb\n10,10,3000,13,68658,,6006.41,10,5,jxbsnmgdzaaaxpjtkbfkbqo\n10,10,3000,14,59027,,4355.52,10,5,szvyahuwhfqwzakboczpond\n10,10,3000,15,83890,,9780.23,10,5,ooowfaftaiitjexoarbnszg\n\u003c/pre\u003e\n\u003ch3\u003eCreate the Split Keys\u003c/h3\u003e\n\u003cp\u003eWe are going to ask you to use the \u003ccode\u003eManual\u003c/code\u003e method for bulk importing the data so that means you will need to create split keys to split the data. We will leave it up to you to determine the best split key to use based on the sample data shown in this paragraph. You will need to connect to your docker image to create the split key files for each of the tables. In the event that you cannot connect to the docker image running this training notebook, please add a paragraph after this one and write down what the keys would be using the \u003ccode\u003e%md\u003c/code\u003e interpreter.\u003c/p\u003e\n\u003cp\u003eIn the next paragraph you will split the tables manually then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button after you have typed the appropriate commands.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560273314881_1135979126",
@@ -233,17 +233,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 20:35:58.013",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": false,
         "enabled": true,
         "results": {},
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/sql",
-        "editorHide": false
+        "fontSize": 9.0,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "completionSupport": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -261,31 +261,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 15:53:19.788",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eThe table is now ready to have data bulk loaded. Examine the data above and use the next paragraph to bulk load the data for each of the 3 tables by entering the commands and clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eThe table is now ready to have data bulk loaded. Examine the data above and use the next paragraph to bulk load the data for each of the 3 tables by entering the commands and clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560274704324_547377237",
@@ -301,17 +301,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 20:36:02.173",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": false,
         "enabled": true,
         "results": {},
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/sql",
-        "editorHide": false
+        "fontSize": 9.0,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "completionSupport": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -329,31 +329,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 16:23:29.527",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eUse the next paragraph to select the first 10 rows from each of the tables by entering the sql statements and clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eUse the next paragraph to select the first 10 rows from each of the tables by entering the sql statements and clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560275200653_-1970017403",
@@ -369,17 +369,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 20:36:06.795",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": false,
         "enabled": true,
         "results": {},
-        "editorSetting": {
-          "language": "sql",
-          "editOnDblClick": false,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/sql",
-        "editorHide": false
+        "fontSize": 9.0,
+        "editorSetting": {
+          "editOnDblClick": false,
+          "completionSupport": false,
+          "language": "sql"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -397,31 +397,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 17:46:55.273",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true,
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Query Optimizations\u003c/h2\u003e\n\u003cp\u003eIn this exercise we will test your knowledge of how to optimize queries in Splice Machine. \u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the explain plan for the provided query.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e2. Query Optimizations\u003c/h2\u003e\n\u003cp\u003eIn this exercise we will test your knowledge of how to optimize queries in Splice Machine. \u003c/p\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button in the next paragraph to display the explain plan for the provided query.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560275291990_364248202",
@@ -437,37 +437,29 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 16:02:35.859",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
           "editOnDblClick": false,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "editorMode": "ace/mode/sql"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "TEXT",
-            "data": "Plan\nCursor(n\u003d8,rows\u003d2966,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n  -\u003e  ScrollInsensitive(n\u003d7,totalCost\u003d8044.834,outputRows\u003d2966,outputHeapSize\u003d124.876 KB,partitions\u003d6)\n    -\u003e  ProjectRestrict(n\u003d6,totalCost\u003d7982.366,outputRows\u003d303214531,outputHeapSize\u003d124.876 KB,partitions\u003d6)\n      -\u003e  GroupBy(n\u003d5,totalCost\u003d7576.366,outputRows\u003d303214531,outputHeapSize\u003d12.175 GB,partitions\u003d6)\n        -\u003e  ProjectRestrict(n\u003d4,totalCost\u003d4860.405,outputRows\u003d2997781,outputHeapSize\u003d12.175 GB,partitions\u003d6)\n          -\u003e  MergeSortJoin(n\u003d3,totalCost\u003d7576.366,outputRows\u003d303214531,outputHeapSize\u003d12.175 GB,partitions\u003d6,preds\u003d[(O.O_ID[4:1] \u003d OL.OL_O_ID[4:2])])\n            -\u003e  TableScan[ORDER_LINE(1776)](n\u003d2,totalCost\u003d4860.405,scannedRows\u003d2997781,outputRows\u003d2997781,outputHeapSize\u003d12.175 GB,partitions\u003d6)\n            -\u003e  TableScan[ORDER(1760)](n\u003d1,totalCost\u003d406,scannedRows\u003d300000,outputRows\u003d300000,outputHeapSize\u003d12.159 MB,partitions\u003d6)\n"
-          }
-        ]
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560355181342_-989519796",
       "id": "20190612-155941_923552095",
       "dateCreated": "2019-06-12 15:59:41.344",
-      "dateStarted": "2019-06-12 16:02:35.910",
-      "dateFinished": "2019-06-12 16:02:36.096",
-      "status": "FINISHED",
+      "status": "READY",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -475,31 +467,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 02:12:06.175",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eAnswer the following questions about the above explain plan:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhich table is on the right hand side of the join?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eHow many rows are scanned from the ORDER_LINE table?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat other join strategy can be used and how would you get the optimizer to use that strategy?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is the join predicate? \u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eTo answer these questions, you need open the Editor for this paragraph by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://splice-training.s3.amazonaws.com/external/images/zepShowEditor.png\" alt\u003d\"Open Editor\"\u003e \u003cem\u003eOpen Editor\u003c/em\u003e button at the top right corner of this paragraph. Then enter your answers below each question.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eAnswer the following questions about the above explain plan:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhich table is on the right hand side of the join?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eHow many rows are scanned from the ORDER_LINE table?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat other join strategy can be used and how would you get the optimizer to use that strategy?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is the join predicate? \u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eTo answer these questions, you need open the Editor for this paragraph by clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://splice-training.s3.amazonaws.com/external/images/zepShowEditor.png\" alt\u003d\"Open Editor\"\u003e \u003cem\u003eOpen Editor\u003c/em\u003e button at the top right corner of this paragraph. Then enter your answers below each question.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560355494236_497347673",
@@ -515,31 +507,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 16:34:05.328",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr\u003e\n\u003cp\u003eUse the tables you just loaded and in the next paragraph write a query that returns the first name, last name, carrier id, and the quantity. Show us the the explain plan.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr\u003e\n\u003cp\u003eUse the tables you just loaded and in the next paragraph write a query that returns the first name, last name, carrier id, and the quantity. Show us the the explain plan.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560357078193_398208231",
@@ -555,16 +547,16 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 20:06:55.766",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
           "editOnDblClick": false,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "editorMode": "ace/mode/sql"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -582,31 +574,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 17:19:59.722",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eWhat\u0026rsquo;s the first thing you can do to optimize this query? Use the next paragraph to enter your solution then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eWhat\u0026rsquo;s the first thing you can do to optimize this query? Use the next paragraph to enter your solution then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560283615895_-590204807",
@@ -622,16 +614,16 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 20:14:29.914",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
           "editOnDblClick": false,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "editorMode": "ace/mode/sql"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -649,31 +641,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 17:20:12.830",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eWrite a query that will check for possible data skew in the \u003ccode\u003eADVDEV_EXERCISES.ORDER_LINE\u003c/code\u003e table, specifically on the \u003ccode\u003eOL_O_ID\u003c/code\u003e column. Use the next paragraph to enter your solution then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eWrite a query that will check for possible data skew in the \u003ccode\u003eADVDEV_EXERCISES.ORDER_LINE\u003c/code\u003e table, specifically on the \u003ccode\u003eOL_O_ID\u003c/code\u003e column. Use the next paragraph to enter your solution then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560284555836_220754112",
@@ -689,16 +681,16 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 20:25:02.724",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
           "editOnDblClick": false,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "editorMode": "ace/mode/sql"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -716,31 +708,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 02:12:28.789",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr\u003e\n\u003cp\u003eSome final questions for you on the topic of Query Optimization: \u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eBased on the query results above is there any skew?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat are two methods you can use to rewrite a query that contains skewed data?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is a covering index?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eDescribe a situation where a nested loop join would be ideal and a situation where it would not be ideal. For the latter, what other join strategies can be used?\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://splice-training.s3.amazonaws.com/external/images/zepShowEditor.png\" alt\u003d\"Open Editor\"\u003e \u003cem\u003eOpen Editor\u003c/em\u003e button at the top right corner of this paragraph to enter your answer in this paragraph.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr\u003e\n\u003cp\u003eSome final questions for you on the topic of Query Optimization: \u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eBased on the query results above is there any skew?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat are two methods you can use to rewrite a query that contains skewed data?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eWhat is a covering index?\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eDescribe a situation where a nested loop join would be ideal and a situation where it would not be ideal. For the latter, what other join strategies can be used?\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eClick the \u003cimg class\u003d\"inline\" src\u003d\"https://splice-training.s3.amazonaws.com/external/images/zepShowEditor.png\" alt\u003d\"Open Editor\"\u003e \u003cem\u003eOpen Editor\u003c/em\u003e button at the top right corner of this paragraph to enter your answer in this paragraph.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560288178612_-301569517",
@@ -756,31 +748,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-18 17:47:09.356",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
+        "editorHide": true,
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. User Defined Functions and Procedures\u003c/h2\u003e\n\u003cp\u003eIn this exercise, we want you to create a custom user-defined function and a custom user-defined procedure. This exercise requires you to write some Java code and compile it into a JAR file. The code for both the function and the procedure should be contained in the same JAR file, but they do not necessarily need to be in the same Java class.\u003c/p\u003e\n\u003cp\u003eHere are the requirements that you must include in your solution:\u003c/p\u003e\n\u003ch3\u003eFunction\u003c/h3\u003e\n\u003cp\u003eCreate a function that returns the n left-most characters of a string\u003c/p\u003e\n\u003ch3\u003eProcedure\u003c/h3\u003e\n\u003cp\u003eUsing the data loaded in the first exercise, create a procedure that returns the total number of orders for a given customer (use the \u003ccode\u003ec_id\u003c/code\u003e column as the identifier for the customer)\u003c/p\u003e\n\u003cp\u003eOnce you have your jar file built, you need to copy the jar into the Docker container that is running this Zeppelin notebook. If you are unable to connect to the docker image running this training notebook, you can still attempt to complete the remaining portions of this exercise but you will not be able to execute your code. We will be able to grade you based on your java code and the commands you enter in the remaining sections of this exercise. At a minimum, please submit the Java class file(s) for your solution. \u003c/p\u003e\n\u003cp\u003eUse the next paragraph to install your JAR file and modify the derby classpath. Then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button. If you are not able to connect to the docker image running this training notebook you can still type in the commands to install the JAR and modify the derby classpath. You just won\u0026rsquo;t be able to execute the commands.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e3. User Defined Functions and Procedures\u003c/h2\u003e\n\u003cp\u003eIn this exercise, we want you to create a custom user-defined function and a custom user-defined procedure. This exercise requires you to write some Java code and compile it into a JAR file. The code for both the function and the procedure should be contained in the same JAR file, but they do not necessarily need to be in the same Java class.\u003c/p\u003e\n\u003cp\u003eHere are the requirements that you must include in your solution:\u003c/p\u003e\n\u003ch3\u003eFunction\u003c/h3\u003e\n\u003cp\u003eCreate a function that returns the n left-most characters of a string\u003c/p\u003e\n\u003ch3\u003eProcedure\u003c/h3\u003e\n\u003cp\u003eUsing the data loaded in the first exercise, create a procedure that returns the total number of orders for a given customer (use the \u003ccode\u003ec_id\u003c/code\u003e column as the identifier for the customer)\u003c/p\u003e\n\u003cp\u003eOnce you have your jar file built, you need to copy the jar into the Docker container that is running this Zeppelin notebook. If you are unable to connect to the docker image running this training notebook, you can still attempt to complete the remaining portions of this exercise but you will not be able to execute your code. We will be able to grade you based on your java code and the commands you enter in the remaining sections of this exercise. At a minimum, please submit the Java class file(s) for your solution. \u003c/p\u003e\n\u003cp\u003eUse the next paragraph to install your JAR file and modify the derby classpath. Then click the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button. If you are not able to connect to the docker image running this training notebook you can still type in the commands to install the JAR and modify the derby classpath. You just won\u0026rsquo;t be able to execute the commands.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560284703379_-487997455",
@@ -796,16 +788,16 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 21:26:01.742",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
         "enabled": true,
         "results": {},
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
         "editorSetting": {
-          "language": "sql",
           "editOnDblClick": false,
-          "completionSupport": false
+          "completionSupport": false,
+          "language": "sql"
         },
-        "editorMode": "ace/mode/sql"
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -823,31 +815,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-12 17:08:13.118",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
-        "enabled": true,
-        "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
-        "editorMode": "ace/mode/markdown",
         "editorHide": true,
-        "tableHide": false
+        "enabled": false,
+        "results": {},
+        "editorMode": "ace/mode/markdown",
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eUse the next paragraph to put your custom function and procedure into action by using your function/procedure then clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button. Again, if you are unable to deploy your custom jar file to the docker container we would still like to see the sql you would use to run your custom user defined function and procedure. We know you won\u0026rsquo;t be able to execute them.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cbr/\u003e\n\u003cp\u003eUse the next paragraph to put your custom function and procedure into action by using your function/procedure then clicking the \u003cimg class\u003d\"inline\" src\u003d\"https://doc.splicemachine.com/zeppelin/images/zepPlayIcon.png\" alt\u003d\"Run Zep Paragraph Icon\"\u003e \u003cem\u003eRun\u003c/em\u003e button. Again, if you are unable to deploy your custom jar file to the docker container we would still like to see the sql you would use to run your custom user defined function and procedure. We know you won\u0026rsquo;t be able to execute them.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1560286878954_-932581674",
@@ -875,22 +867,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n\n## 4. Using spark-submit to Interact with Splice Machine\n\nFor this exercise we will ask you to build a star-join query based on the following schema. Attempt to execute all queries in `SpliceMachineContext`, the Spark Native Adpater.\n\n1. Create the Part table using the following schema definition:\n\n```\nCREATE TABLE PART (\n  P_PARTKEY INT,\n  P_NAME VARCHAR(55) ,\n  P_MFGR VARCHAR(25) ,\n  P_BRAND VARCHAR(10) ,\n  P_TYPE VARCHAR(25) ,\n  P_SIZE INT,\n  P_CONTAINER VARCHAR(10) ,\n  P_RETAILPRICE DECIMAL(15,2),\n  P_COMMENT VARCHAR(23)\n)\n```\n\n2. Create the Supplier table:\n\n```\nCREATE TABLE SUPPLIER (\n  S_SUPPKEY INT,\n  S_NAME VARCHAR(25) ,\n  S_ADDRESS VARCHAR(40) ,\n  S_NATIONKEY INT,\n  S_PHONE VARCHAR(15) ,\n  S_ACCTBAL DECIMAL(15,2),\n  S_COMMENT VARCHAR(101)\n)\n``` \n\n3. Create the PartSupp table:\n```\nCREATE TABLE PARTSUPP (\n  PS_PARTKEY INT,\n  PS_SUPPKEY INT, \n  PS_AVAILQTY INT,\n  PS_SUPPLYCOST DECIMAL(15,2),\n  PS_COMMENT VARCHAR(199)\n)\n``` \n\n4. Use import routines via Spark Adapter for the data from s3:\n```\ns3a://splice-benchmark-data/flat/TPCH/1/supplier\ns3a://splice-benchmark-data/flat/TPCH/1/part\ns3a://splice-benchmark-data/flat/TPCH/1/partsupp\n``` \n\n5.  Execute the StarJoin query within your Spark Adapter code:\n```\nSELECT\n  P_PARTKEY,\n  P_NAME,\n  P_MFGR,\n  P_BRAND,\n  P_TYPE,\n  P_SIZE,\n  P_CONTAINER,\n  P_RETAILPRICE,\n  P_COMMENT,\n  PS_PARTKEY,\n  PS_SUPPKEY,\n  PS_AVAILQTY,\n  PS_SUPPLYCOST,\n  PS_COMMENT,\n  S_SUPPKEY,\n  S_NAME,\n  S_ADDRESS,\n  S_NATIONKEY,\n  S_PHONE,\n  S_ACCTBAL\nFROM\n  PART\nJOIN PARTSUPP ON P_PARTKEY \u003d PS_PARTKEY\nJOIN SUPPLIER ON PS_SUPPKEY \u003d S_SUPPKEY\n```  \n\n6. Code, build and deploy the application jar file. Execute and verify the results.\n\nThis exercise cannot be completed within the context of a notebook. You need to write some java code, build a JAR, then deploy the JAR to the Docker instance that is running Splice Machine. In the docker instance you use the `spark-submit` command to execute your Java code. Please submit your Java code.  \n",
+      "text": "%md\n\n## 4. Using spark-submit to Interact with Splice Machine\n\nFor this exercise we will ask you to build a star-join query based on the following schema. Attempt to execute all queries in `SpliceMachineContext`, the Spark Native Adpater.\n\n1. Create the Part table using the following schema definition:\n```\nCREATE TABLE PART (\n  P_PARTKEY INT,\n  P_NAME VARCHAR(55) ,\n  P_MFGR VARCHAR(25) ,\n  P_BRAND VARCHAR(10) ,\n  P_TYPE VARCHAR(25) ,\n  P_SIZE INT,\n  P_CONTAINER VARCHAR(10) ,\n  P_RETAILPRICE DECIMAL(15,2),\n  P_COMMENT VARCHAR(23)\n)\n```\n\n2. Create the Supplier table:\n```\nCREATE TABLE SUPPLIER (\n  S_SUPPKEY INT,\n  S_NAME VARCHAR(25) ,\n  S_ADDRESS VARCHAR(40) ,\n  S_NATIONKEY INT,\n  S_PHONE VARCHAR(15) ,\n  S_ACCTBAL DECIMAL(15,2),\n  S_COMMENT VARCHAR(101)\n)\n``` \n\n3. Create the PartSupp table:\n```\nCREATE TABLE PARTSUPP (\n  PS_PARTKEY INT,\n  PS_SUPPKEY INT, \n  PS_AVAILQTY INT,\n  PS_SUPPLYCOST DECIMAL(15,2),\n  PS_COMMENT VARCHAR(199)\n)\n``` \n\n4. Use import routines via Spark Adapter for the data from s3:\n```\ns3a://splice-benchmark-data/flat/TPCH/1/supplier\ns3a://splice-benchmark-data/flat/TPCH/1/part\ns3a://splice-benchmark-data/flat/TPCH/1/partsupp\n``` \n\n5.  Execute the StarJoin query within your Spark Adapter code:\n```\nSELECT\n  P_PARTKEY,\n  P_NAME,\n  P_MFGR,\n  P_BRAND,\n  P_TYPE,\n  P_SIZE,\n  P_CONTAINER,\n  P_RETAILPRICE,\n  P_COMMENT,\n  PS_PARTKEY,\n  PS_SUPPKEY,\n  PS_AVAILQTY,\n  PS_SUPPLYCOST,\n  PS_COMMENT,\n  S_SUPPKEY,\n  S_NAME,\n  S_ADDRESS,\n  S_NATIONKEY,\n  S_PHONE,\n  S_ACCTBAL\nFROM\n  PART\nJOIN PARTSUPP ON P_PARTKEY \u003d PS_PARTKEY\nJOIN SUPPLIER ON PS_SUPPKEY \u003d S_SUPPKEY\n```  \n\n6. Code, build and deploy the application jar file. Execute and verify the results.\n\nThis exercise cannot be completed within the context of a notebook. You need to write some java code, build a JAR, then deploy the JAR to the Docker instance that is running Splice Machine. In the docker instance you use the `spark-submit` command to execute your Java code. Please submit your Java code.  \n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-18 17:47:19.356",
+      "dateUpdated": "2019-06-18 22:44:02.184",
       "config": {
-        "colWidth": 12.0,
-        "fontSize": 9.0,
+        "editorHide": true,
         "enabled": true,
         "results": {},
-        "editorSetting": {
-          "language": "markdown",
-          "editOnDblClick": true,
-          "completionSupport": false
-        },
         "editorMode": "ace/mode/markdown",
-        "editorHide": false,
-        "tableHide": false
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
@@ -901,7 +893,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Use spark-submit to Interact with Splice Machine\u003c/h2\u003e\n\u003cp\u003eFor this exercise we will ask you to build a star-join query based on the following schema. Attempt to execute all queries in \u003ccode\u003eSpliceMachineContext\u003c/code\u003e, the Spark Native Adpater.\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the Part table using the following schema definition\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003eCREATE TABLE PART (\n  P_PARTKEY INT,\n  P_NAME VARCHAR(55) ,\n  P_MFGR VARCHAR(25) ,\n  P_BRAND VARCHAR(10) ,\n  P_TYPE VARCHAR(25) ,\n  P_SIZE INT,\n  P_CONTAINER VARCHAR(10) ,\n  P_RETAILPRICE DECIMAL(15,2),\n  P_COMMENT VARCHAR(23)\n)\n\u003c/code\u003e\u003c/pre\u003e\n\u003col\u003e\n  \u003cli\u003eCreate the Supplier table\u003c/li\u003e\n\u003c/ol\u003e\n\u003cpre\u003e\u003ccode\u003eCREATE TABLE SUPPLIER (\n  S_SUPPKEY INT,\n  S_NAME VARCHAR(25) ,\n  S_ADDRESS VARCHAR(40) ,\n  S_NATIONKEY INT,\n  S_PHONE VARCHAR(15) ,\n  S_ACCTBAL DECIMAL(15,2),\n  S_COMMENT VARCHAR(101)\n)\n\u003c/code\u003e\u003c/pre\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003e\n  \u003cp\u003eCreate the PartSupp table\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003eCREATE TABLE PARTSUPP (\n  PS_PARTKEY INT,\n  PS_SUPPKEY INT, \n  PS_AVAILQTY INT,\n  PS_SUPPLYCOST DECIMAL(15,2),\n  PS_COMMENT VARCHAR(199)\n)\n\u003c/code\u003e\u003c/pre\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse import routines via Spark Adapter for the data from s3\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003es3a://splice-benchmark-data/flat/TPCH/1/supplier\ns3a://splice-benchmark-data/flat/TPCH/1/part\ns3a://splice-benchmark-data/flat/TPCH/1/partsupp\n\u003c/code\u003e\u003c/pre\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eExecute the StarJoin query within your Spark Adapter code\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003eSELECT\n  P_PARTKEY,\n  P_NAME,\n  P_MFGR,\n  P_BRAND,\n  P_TYPE,\n  P_SIZE,\n  P_CONTAINER,\n  P_RETAILPRICE,\n  P_COMMENT,\n  PS_PARTKEY,\n  PS_SUPPKEY,\n  PS_AVAILQTY,\n  PS_SUPPLYCOST,\n  PS_COMMENT,\n  S_SUPPKEY,\n  S_NAME,\n  S_ADDRESS,\n  S_NATIONKEY,\n  S_PHONE,\n  S_ACCTBAL\nFROM\n  PART\nJOIN PARTSUPP ON P_PARTKEY \u003d PS_PARTKEY\nJOIN SUPPLIER ON PS_SUPPKEY \u003d S_SUPPKEY\n\u003c/code\u003e\u003c/pre\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eCode, build and deploy the application jar file. Execute and verify the results.\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThis exercise cannot be completed within the context of a notebook. You will need to write some java code, build a jar, then deploy the jar to the docker instance running Splice Machine. In the docker instance you will use the \u003ccode\u003espark-submit\u003c/code\u003e command to executed your java code. Please submit your java code.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e4. Using spark-submit to Interact with Splice Machine\u003c/h2\u003e\n\u003cp\u003eFor this exercise we will ask you to build a star-join query based on the following schema. Attempt to execute all queries in \u003ccode\u003eSpliceMachineContext\u003c/code\u003e, the Spark Native Adpater.\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003e\n  \u003cp\u003eCreate the Part table using the following schema definition:\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003eCREATE TABLE PART (\n  P_PARTKEY INT,\n  P_NAME VARCHAR(55) ,\n  P_MFGR VARCHAR(25) ,\n  P_BRAND VARCHAR(10) ,\n  P_TYPE VARCHAR(25) ,\n  P_SIZE INT,\n  P_CONTAINER VARCHAR(10) ,\n  P_RETAILPRICE DECIMAL(15,2),\n  P_COMMENT VARCHAR(23)\n)\n\u003c/code\u003e\u003c/pre\u003e\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eCreate the Supplier table:\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003eCREATE TABLE SUPPLIER (\n  S_SUPPKEY INT,\n  S_NAME VARCHAR(25) ,\n  S_ADDRESS VARCHAR(40) ,\n  S_NATIONKEY INT,\n  S_PHONE VARCHAR(15) ,\n  S_ACCTBAL DECIMAL(15,2),\n  S_COMMENT VARCHAR(101)\n)\n\u003c/code\u003e\u003c/pre\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eCreate the PartSupp table:\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003eCREATE TABLE PARTSUPP (\n  PS_PARTKEY INT,\n  PS_SUPPKEY INT, \n  PS_AVAILQTY INT,\n  PS_SUPPLYCOST DECIMAL(15,2),\n  PS_COMMENT VARCHAR(199)\n)\n\u003c/code\u003e\u003c/pre\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse import routines via Spark Adapter for the data from s3:\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003es3a://splice-benchmark-data/flat/TPCH/1/supplier\ns3a://splice-benchmark-data/flat/TPCH/1/part\ns3a://splice-benchmark-data/flat/TPCH/1/partsupp\n\u003c/code\u003e\u003c/pre\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eExecute the StarJoin query within your Spark Adapter code:\u003c/p\u003e\n  \u003cpre\u003e\u003ccode\u003eSELECT\n  P_PARTKEY,\n  P_NAME,\n  P_MFGR,\n  P_BRAND,\n  P_TYPE,\n  P_SIZE,\n  P_CONTAINER,\n  P_RETAILPRICE,\n  P_COMMENT,\n  PS_PARTKEY,\n  PS_SUPPKEY,\n  PS_AVAILQTY,\n  PS_SUPPLYCOST,\n  PS_COMMENT,\n  S_SUPPKEY,\n  S_NAME,\n  S_ADDRESS,\n  S_NATIONKEY,\n  S_PHONE,\n  S_ACCTBAL\nFROM\n  PART\nJOIN PARTSUPP ON P_PARTKEY \u003d PS_PARTKEY\nJOIN SUPPLIER ON PS_SUPPKEY \u003d S_SUPPKEY\n\u003c/code\u003e\u003c/pre\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eCode, build and deploy the application jar file. Execute and verify the results.\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003cp\u003eThis exercise cannot be completed within the context of a notebook. You need to write some java code, build a JAR, then deploy the JAR to the Docker instance that is running Splice Machine. In the docker instance you use the \u003ccode\u003espark-submit\u003c/code\u003e command to execute your Java code. Please submit your Java code.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -909,8 +901,8 @@
       "jobName": "paragraph_1560287002958_135451316",
       "id": "20190611-210322_1395080955",
       "dateCreated": "2019-06-11 21:03:22.958",
-      "dateStarted": "2019-06-18 02:17:15.017",
-      "dateFinished": "2019-06-18 02:17:15.031",
+      "dateStarted": "2019-06-18 22:44:02.179",
+      "dateFinished": "2019-06-18 22:44:02.213",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -919,31 +911,31 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-11 15:56:55.115",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
-        "editorMode": "ace/mode/markdown",
-        "colWidth": 12.0,
-        "tableHide": false
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the Splice Machine Advanced Developer class.\u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Classes\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eCongratulations! You\u0026rsquo;ve just completed the Splice Machine Advanced Developer class.\u003c/p\u003e\n\u003cp\u003eVisit \u003ca href\u003d\"/#/notebook/2DWTR5ZBH\"\u003e\u003cem\u003eOur Training Classes\u003c/em\u003e\u003c/a\u003e notebook to learn about our other training classes.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559325235031_-1734588675",

@@ -5,17 +5,17 @@
       "user": "anonymous",
       "dateUpdated": "2019-06-17 15:58:57.666",
       "config": {
-        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "enabled": false,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
         "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -23,13 +23,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eArchitecture\u003c/h1\u003e\n\u003cp\u003eThis notebook provides an architectural overview of the architecture of Splice Machine, to expand your understanding of how our database works. We\u0026rsquo;ll cover the following topics:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eDual Engine Architecture\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eHadoop Components\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSplice Concepts\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eQuery Execution\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAuthentication and Authorization\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003eArchitecture\u003c/h1\u003e\n\u003cp\u003eThis notebook provides an architectural overview of the architecture of Splice Machine, to expand your understanding of how our database works. We\u0026rsquo;ll cover the following topics:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003cem\u003eDual Engine Architecture\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eHadoop Components\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eSplice Concepts\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eQuery Execution\u003c/em\u003e\u003c/li\u003e\n  \u003cli\u003e\u003cem\u003eAuthentication and Authorization\u003c/em\u003e\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1559318699553_1889703102",
@@ -42,22 +42,22 @@
     },
     {
       "title": "",
-      "text": "%md\n## Dual Engine Architecture\n\nSplice Machine processes SQL queries using __both__ HBase and Spark: \n\n* Shorter, *transactional* queries are processed in Hbase; this is known as Online Transactional Processing, or *OLTP*. \n* Longer, *analytical* queries are processed in Spark; this is known as Online Analytical Processing, or *OLAP*.\n\nAs you can see from the following diagram, this application of two processing engines ensures that bigger jobs don\u0027t block the lanes of smaller jobs:\n\n\u003cimg class\u003d\"splice\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/WorkloadIsolation.png\" width\u003d800\u003e\n\n### HBase Queries\n\nThe HBase engine is very fast at SQL queries that involve:\n\n* quick indexed lookups\n* short scans\n* small joins on smaller result sets (e.g. the NestedLoop join)\n\nWhen the HBase engine is used in this way, queries are expected to return in the neighborhood of 5ms to 100ms.\n\n### Spark Queries\n\nWhen larger analytic queries such as larger scans and joins come along, you need tools such as those available in Spark to handle the job. These analytical queries may take much longer to complete: instead of milliseconds, you might see some queries taking seconds, minutes, or even hours to run.\n\nSpark brings a host of capabilities to bear in processing these large queries, including these:\n\n* Job/Stage/Task mechanism that structures the work into multiple steps and manages it in chunks at a time\n* Multiple executors to parallelize the work where possible (especially large scans)\n* Spill-to-disk mechanisms so that processing does not fail if intermediate results do not all fit into memory\n\nYou may recall having seen these in previous tutorials when using the Spark UI to visualize the progress of an analytic SQL query.\n\n### Making the Decision\n\nWhen Splice Machine builds its query plan, it assesses the plan for overall fitness to ultimately decide if it should go to HBase or to Spark.  The details of how the assessment algorithm works are subject to change, but it is currrently on whether or not the __maximum__ number of scanned rows exceeds 10,000 in the entire plan. If so, the query is sent to Spark. If not, it goes to HBase.  \n\nAs a reminder, when you run `EXPLAIN` on your query, you can see which engine will be used to process it: the top line of the plan displays either:\n\n* `Engine\u003dSpark` if the query will be processed by Spark\n* `Engine\u003dcontrol` if the query will be processed by HBase\n\nFor example:\n\n   ```\n   Cursor(n\u003d7,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n   ```\n",
+      "text": "%md\n## Dual Engine Architecture\n\nSplice Machine processes SQL queries using __both__ HBase and Spark: \n\n* Shorter, *transactional* queries are processed in Hbase; this is known as Online Transactional Processing, or *OLTP*. \n* Longer, *analytical* queries are processed in Spark; this is known as Online Analytical Processing, or *OLAP*.\n\nAs you can see from the following diagram, this application of two processing engines ensures that bigger jobs don\u0027t block the lanes of smaller jobs:\n\n\u003cimg class\u003d\"splice\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/WorkloadIsolation.png\" width\u003d800\u003e\n\n### HBase Queries\n\nThe HBase engine is very fast at SQL queries that involve:\n\n* quick indexed lookups\n* short scans\n* small joins on smaller result sets (e.g. the NestedLoop join)\n\nWhen the HBase engine is used in this way, queries are expected to return in the neighborhood of 5ms to 100ms.\n\n### Spark Queries\n\nWhen larger analytic queries such as larger scans and joins come along, you need tools such as those available in Spark to handle the job. These analytical queries may take much longer to complete: instead of milliseconds, you might see some queries taking seconds, minutes, or even hours to run.\n\nSpark brings a host of capabilities to bear in processing these large queries, including these:\n\n* Job/Stage/Task mechanism that structures the work into multiple steps and manages it in chunks at a time\n* Multiple executors to parallelize the work where possible (especially large scans)\n* Spill-to-disk mechanisms so that processing does not fail if intermediate results do not all fit into memory\n\nYou may recall having seen these in previous tutorials when using the Spark UI to visualize the progress of an analytic SQL query.\n\n### Making the Decision\n\nWhen Splice Machine builds its query plan, it assesses the plan for overall fitness to ultimately decide if it should go to HBase or to Spark.  The details of how the assessment algorithm works are subject to change, but it is currrently on whether or not the __maximum__ number of scanned rows exceeds 10,000 in the entire plan. If so, the query is sent to Spark. If not, it goes to HBase.  \n\nAs a reminder, when you run `EXPLAIN` on your query, you can see which engine will be used to process it: the top line of the plan displays either:\n\n* `engine\u003dSpark` if the query will be processed by Spark\n* `engine\u003dcontrol` if the query will be processed by HBase\n\nFor example:\n\n   ```\n   Cursor(n\u003d7,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n   ```\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-17 16:39:04.723",
+      "dateUpdated": "2019-06-18 22:28:46.537",
       "config": {
-        "editorHide": true,
+        "editorMode": "ace/mode/markdown",
         "title": false,
         "enabled": true,
         "results": {},
-        "editorSetting": {
-          "editOnDblClick": true,
-          "language": "markdown",
-          "completionSupport": false
-        },
+        "editorHide": true,
         "fontSize": 9.0,
         "tableHide": false,
-        "editorMode": "ace/mode/markdown",
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
         "colWidth": 12.0
       },
       "settings": {
@@ -69,7 +69,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDual Engine Architecture\u003c/h2\u003e\n\u003cp\u003eSplice Machine processes SQL queries using \u003cstrong\u003eboth\u003c/strong\u003e HBase and Spark: \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eShorter, \u003cem\u003etransactional\u003c/em\u003e queries are processed in Hbase; this is known as Online Transactional Processing, or \u003cem\u003eOLTP\u003c/em\u003e.\u003c/li\u003e\n  \u003cli\u003eLonger, \u003cem\u003eanalytical\u003c/em\u003e queries are processed in Spark; this is known as Online Analytical Processing, or \u003cem\u003eOLAP\u003c/em\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAs you can see from the following diagram, this application of two processing engines ensures that bigger jobs don\u0026rsquo;t block the lanes of smaller jobs:\u003c/p\u003e\n\u003cimg class\u003d\"splice\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/WorkloadIsolation.png\" width\u003d800\u003e\n\u003ch3\u003eHBase Queries\u003c/h3\u003e\n\u003cp\u003eThe HBase engine is very fast at SQL queries that involve:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003equick indexed lookups\u003c/li\u003e\n  \u003cli\u003eshort scans\u003c/li\u003e\n  \u003cli\u003esmall joins on smaller result sets (e.g. the NestedLoop join)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen the HBase engine is used in this way, queries are expected to return in the neighborhood of 5ms to 100ms.\u003c/p\u003e\n\u003ch3\u003eSpark Queries\u003c/h3\u003e\n\u003cp\u003eWhen larger analytic queries such as larger scans and joins come along, you need tools such as those available in Spark to handle the job. These analytical queries may take much longer to complete: instead of milliseconds, you might see some queries taking seconds, minutes, or even hours to run.\u003c/p\u003e\n\u003cp\u003eSpark brings a host of capabilities to bear in processing these large queries, including these:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eJob/Stage/Task mechanism that structures the work into multiple steps and manages it in chunks at a time\u003c/li\u003e\n  \u003cli\u003eMultiple executors to parallelize the work where possible (especially large scans)\u003c/li\u003e\n  \u003cli\u003eSpill-to-disk mechanisms so that processing does not fail if intermediate results do not all fit into memory\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eYou may recall having seen these in previous tutorials when using the Spark UI to visualize the progress of an analytic SQL query.\u003c/p\u003e\n\u003ch3\u003eMaking the Decision\u003c/h3\u003e\n\u003cp\u003eWhen Splice Machine builds its query plan, it assesses the plan for overall fitness to ultimately decide if it should go to HBase or to Spark. The details of how the assessment algorithm works are subject to change, but it is currrently on whether or not the \u003cstrong\u003emaximum\u003c/strong\u003e number of scanned rows exceeds 10,000 in the entire plan. If so, the query is sent to Spark. If not, it goes to HBase. \u003c/p\u003e\n\u003cp\u003eAs a reminder, when you run \u003ccode\u003eEXPLAIN\u003c/code\u003e on your query, you can see which engine will be used to process it: the top line of the plan displays either:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003eEngine\u003dSpark\u003c/code\u003e if the query will be processed by Spark\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003eEngine\u003dcontrol\u003c/code\u003e if the query will be processed by HBase\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eFor example:\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003e\n   Cursor(n\u003d7,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n\u003c/code\u003e\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eDual Engine Architecture\u003c/h2\u003e\n\u003cp\u003eSplice Machine processes SQL queries using \u003cstrong\u003eboth\u003c/strong\u003e HBase and Spark: \u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eShorter, \u003cem\u003etransactional\u003c/em\u003e queries are processed in Hbase; this is known as Online Transactional Processing, or \u003cem\u003eOLTP\u003c/em\u003e.\u003c/li\u003e\n  \u003cli\u003eLonger, \u003cem\u003eanalytical\u003c/em\u003e queries are processed in Spark; this is known as Online Analytical Processing, or \u003cem\u003eOLAP\u003c/em\u003e.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eAs you can see from the following diagram, this application of two processing engines ensures that bigger jobs don\u0026rsquo;t block the lanes of smaller jobs:\u003c/p\u003e\n\u003cimg class\u003d\"splice\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/WorkloadIsolation.png\" width\u003d800\u003e\n\u003ch3\u003eHBase Queries\u003c/h3\u003e\n\u003cp\u003eThe HBase engine is very fast at SQL queries that involve:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003equick indexed lookups\u003c/li\u003e\n  \u003cli\u003eshort scans\u003c/li\u003e\n  \u003cli\u003esmall joins on smaller result sets (e.g. the NestedLoop join)\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eWhen the HBase engine is used in this way, queries are expected to return in the neighborhood of 5ms to 100ms.\u003c/p\u003e\n\u003ch3\u003eSpark Queries\u003c/h3\u003e\n\u003cp\u003eWhen larger analytic queries such as larger scans and joins come along, you need tools such as those available in Spark to handle the job. These analytical queries may take much longer to complete: instead of milliseconds, you might see some queries taking seconds, minutes, or even hours to run.\u003c/p\u003e\n\u003cp\u003eSpark brings a host of capabilities to bear in processing these large queries, including these:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eJob/Stage/Task mechanism that structures the work into multiple steps and manages it in chunks at a time\u003c/li\u003e\n  \u003cli\u003eMultiple executors to parallelize the work where possible (especially large scans)\u003c/li\u003e\n  \u003cli\u003eSpill-to-disk mechanisms so that processing does not fail if intermediate results do not all fit into memory\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eYou may recall having seen these in previous tutorials when using the Spark UI to visualize the progress of an analytic SQL query.\u003c/p\u003e\n\u003ch3\u003eMaking the Decision\u003c/h3\u003e\n\u003cp\u003eWhen Splice Machine builds its query plan, it assesses the plan for overall fitness to ultimately decide if it should go to HBase or to Spark. The details of how the assessment algorithm works are subject to change, but it is currrently on whether or not the \u003cstrong\u003emaximum\u003c/strong\u003e number of scanned rows exceeds 10,000 in the entire plan. If so, the query is sent to Spark. If not, it goes to HBase. \u003c/p\u003e\n\u003cp\u003eAs a reminder, when you run \u003ccode\u003eEXPLAIN\u003c/code\u003e on your query, you can see which engine will be used to process it: the top line of the plan displays either:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003e\u003ccode\u003eengine\u003dSpark\u003c/code\u003e if the query will be processed by Spark\u003c/li\u003e\n  \u003cli\u003e\u003ccode\u003eengine\u003dcontrol\u003c/code\u003e if the query will be processed by HBase\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eFor example:\u003c/p\u003e\n\u003cp\u003e\u003ccode\u003e\n   Cursor(n\u003d7,rows\u003d1,updateMode\u003dREAD_ONLY (1),engine\u003dSpark)\n\u003c/code\u003e\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -77,8 +77,8 @@
       "jobName": "paragraph_1559324268393_-620052098",
       "id": "20190531-173748_92479693",
       "dateCreated": "2019-05-31 17:37:48.000",
-      "dateStarted": "2019-06-17 16:39:04.723",
-      "dateFinished": "2019-06-17 16:39:04.785",
+      "dateStarted": "2019-06-18 22:28:46.538",
+      "dateFinished": "2019-06-18 22:28:46.591",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -86,126 +86,6 @@
       "text": "%md\n## Hadoop Components\n\nYou are already no doubt familiar with Hadoop and the benefits it provides to help solve today\u0027s large-scale problems. In this section, we\u0027ll go in a little more detail\nregarding how that pertains to Splice Machine, including information about critical Hadoop components that Splice Machine relies upon.  \n\n### ZooKeeper\n\nZooKeeper provides critical capabilities for services such as HBase and HDFS. Splice Machine also tapes into ZooKeeper to help it manage critical capabilities, including:\n\n* Managing the state of the Splice Machine database cluster.\n* Timestamp generation, which is an essential part of the Splice Machine transaction system.\n\nBe sure to include a ZooKeeper Quorum for your more critical clusters; this should be an odd number (typically 3, sometimes more for larger clusters) to ensure that there are always enough ZooKeeper servers up and running to keep the service available.\n\n\n### HDFS\n\nHere are some key elements to keep in mind about the Hadoop Distributed File System (HDFS):\n\n* Since HDFS is distributed, the entire filesystem (and indeed individual files) can be LARGER than what can fit on any one machine on your cluster; this is a very powerful capability and is critical for our large scale purposes.\n* Do not confuse HDFS with any one machine\u0027s normal filesystem; you must use different commands to transfer files in or out, check available capacity, etc.\n* As with the rest of Hadoop, HDFS is designed with the understanding that the individual machines may be commodity hardware and therefore may fail.  HDFS has a Replication Factor (default 3) that indicates how many copies of each piece of data are made automaticall, which provides good fault tolerance. If your particular use case calls for it, you can modify the replication factor.\n* There are two types of nodes in HDFS: 1) _Name_ nodes are the workhorses and store the data, and 2) _Data_ nodes behave like Masters that manage the filesystem namespace. Here\u0027s how it looks:\n\n  \u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/HDFS.png\"\u003e\n\n### More about HBase\n\nHBase is a Key/Value store that sits on top of HDFS that the Splice Machine database uses for durable storage. There are a number of key aspects of HBase that make it well suited as an excellent backing store for Splice Machine. \n\nHBase:\n\n* Was designed for extremely high performance of inserts/updates and _delete_s (see below); it has proven millisecond performance at Petabyte scale.\n* Has an extensible architecture with coprocessors; this is how Splice Machine add capabilities such as its full transactionality (which HBase does not have).\n* Supports further performance enhancements called _short circuit reads_ to take advantage of locality, and to not have to read everything through HDFS.\n* Deletes data by inserting a _tombstone_ on the record, rather than wiping the record. This makes it possible for Splice Machine to transactionally roll back a record deletion.\n* Has a notion of tables with rows and columns, which Splice Machine leverages.\n* Is _auto-sharding_: as tables of data grow with increasing rows, it is important in a distributed architecture for that data to be spread out (sharded) across the cluster, i.e. broken into _regions_.  Since this happens automatically, users do not need to deal with partitioning, which is also known as _Region Splitting_.  Note that you can manually control splitting, if so desired.\n* Stores its Regions on Region Servers.  You should keep the count of Regions per Region Server to below 200-400.\n* Stores Key/Value stores auto-sorted by key. In Splice Machine\u0027s case, this is designed to be the Primary Key of the SQL Table being stored. ",
       "user": "anonymous",
       "dateUpdated": "2019-06-18 02:23:29.712",
-      "config": {
-        "editorHide": true,
-        "enabled": true,
-        "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
-        "editorSetting": {
-          "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
-        },
-        "colWidth": 12.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eHadoop Components\u003c/h2\u003e\n\u003cp\u003eYou are already no doubt familiar with Hadoop and the benefits it provides to help solve today\u0026rsquo;s large-scale problems. In this section, we\u0026rsquo;ll go in a little more detail\u003cbr/\u003eregarding how that pertains to Splice Machine, including information about critical Hadoop components that Splice Machine relies upon. \u003c/p\u003e\n\u003ch3\u003eZooKeeper\u003c/h3\u003e\n\u003cp\u003eZooKeeper provides critical capabilities for services such as HBase and HDFS. Splice Machine also tapes into ZooKeeper to help it manage critical capabilities, including:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eManaging the state of the Splice Machine database cluster.\u003c/li\u003e\n  \u003cli\u003eTimestamp generation, which is an essential part of the Splice Machine transaction system.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eBe sure to include a ZooKeeper Quorum for your more critical clusters; this should be an odd number (typically 3, sometimes more for larger clusters) to ensure that there are always enough ZooKeeper servers up and running to keep the service available.\u003c/p\u003e\n\u003ch3\u003eHDFS\u003c/h3\u003e\n\u003cp\u003eHere are some key elements to keep in mind about the Hadoop Distributed File System (HDFS):\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eSince HDFS is distributed, the entire filesystem (and indeed individual files) can be LARGER than what can fit on any one machine on your cluster; this is a very powerful capability and is critical for our large scale purposes.\u003c/li\u003e\n  \u003cli\u003eDo not confuse HDFS with any one machine\u0026rsquo;s normal filesystem; you must use different commands to transfer files in or out, check available capacity, etc.\u003c/li\u003e\n  \u003cli\u003eAs with the rest of Hadoop, HDFS is designed with the understanding that the individual machines may be commodity hardware and therefore may fail. HDFS has a Replication Factor (default 3) that indicates how many copies of each piece of data are made automaticall, which provides good fault tolerance. If your particular use case calls for it, you can modify the replication factor.\u003c/li\u003e\n  \u003cli\u003eThere are two types of nodes in HDFS: 1) \u003cem\u003eName\u003c/em\u003e nodes are the workhorses and store the data, and 2) \u003cem\u003eData\u003c/em\u003e nodes behave like Masters that manage the filesystem namespace. Here\u0026rsquo;s how it looks:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/HDFS.png\"\u003e\u003c/p\u003e\n\u003ch3\u003eMore about HBase\u003c/h3\u003e\n\u003cp\u003eHBase is a Key/Value store that sits on top of HDFS that the Splice Machine database uses for durable storage. There are a number of key aspects of HBase that make it well suited as an excellent backing store for Splice Machine. \u003c/p\u003e\n\u003cp\u003eHBase:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eWas designed for extremely high performance of inserts/updates and _delete_s (see below); it has proven millisecond performance at Petabyte scale.\n\u003c/li\u003e\n  \u003cli\u003eHas an extensible architecture with coprocessors; this is how Splice Machine add capabilities such as its full transactionality (which HBase does not have).\u003c/li\u003e\n  \u003cli\u003eSupports further performance enhancements called \u003cem\u003eshort circuit reads\u003c/em\u003e to take advantage of locality, and to not have to read everything through HDFS.\u003c/li\u003e\n  \u003cli\u003eDeletes data by inserting a \u003cem\u003etombstone\u003c/em\u003e on the record, rather than wiping the record. This makes it possible for Splice Machine to transactionally roll back a record deletion.\u003c/li\u003e\n  \u003cli\u003eHas a notion of tables with rows and columns, which Splice Machine leverages.\u003c/li\u003e\n  \u003cli\u003eIs \u003cem\u003eauto-sharding\u003c/em\u003e: as tables of data grow with increasing rows, it is important in a distributed architecture for that data to be spread out (sharded) across the cluster, i.e. broken into \u003cem\u003eregions\u003c/em\u003e. Since this happens automatically, users do not need to deal with partitioning, which is also known as \u003cem\u003eRegion Splitting\u003c/em\u003e. Note that you can manually control splitting, if so desired.\u003c/li\u003e\n  \u003cli\u003eStores its Regions on Region Servers. You should keep the count of Regions per Region Server to below 200-400.\u003c/li\u003e\n  \u003cli\u003eStores Key/Value stores auto-sorted by key. In Splice Machine\u0026rsquo;s case, this is designed to be the Primary Key of the SQL Table being stored.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1560390039084_1858257712",
-      "id": "20190613-014039_1802204737",
-      "dateCreated": "2019-06-13 01:40:39.000",
-      "dateStarted": "2019-06-18 02:23:29.718",
-      "dateFinished": "2019-06-18 02:23:32.345",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Splice Components\n\nThis section provides information how specific components of Splice Machine work within its architecture.\n\n### Tables and Indexes\n\nAs previously indicated, there is a natural mapping between HBase tables and Splice Machine tables; here are some important similarities and differences between the two:\n\n* Splice Machine tables always have a fully specified schema.  They may have nullable columns, but every row is a fully specified valid SQL row of data for that table.\n* Splice Machine tables may or may not have a primary key; the key can also be composite of multiple columns.\n* If a Splice Machine table has no primary key, a salt key is used on the HBase side, since HBase still needs some kind of key; note that this prevents ANY kind of quick single-row lookup.\n\nA Splice Machine Index is just another HBase table behind the scene, with the Index definition as the Key, and the base table row reference as the Value.\n\n### Rows and Encodings\n\n* In Splice Machine we only use one column family, even though HBase supports multiple column families. In fact Splice Machine stores entire rows in single column. So if you look at an HBase Row directly, it will have a RowKey and a single data column.\n* Row data is encoded and bit packed to preserve lexicographical sort order.\n\n\u003cp class\u003d\"noteImportant\"\u003eThere is \u003cstrong\u003eno direct API\u003c/strong\u003e to read non-Splice HBase data using SQL.\u003c/p\u003e\n",
-      "user": "anonymous",
-      "dateUpdated": "2019-06-17 17:55:23.536",
-      "config": {
-        "editorHide": true,
-        "enabled": true,
-        "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
-        "editorSetting": {
-          "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
-        },
-        "colWidth": 12.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSplice Components\u003c/h2\u003e\n\u003cp\u003eThis section provides information how specific components of Splice Machine work within its architecture.\u003c/p\u003e\n\u003ch3\u003eTables and Indexes\u003c/h3\u003e\n\u003cp\u003eAs previously indicated, there is a natural mapping between HBase tables and Splice Machine tables; here are some important similarities and differences between the two:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eSplice Machine tables always have a fully specified schema. They may have nullable columns, but every row is a fully specified valid SQL row of data for that table.\u003c/li\u003e\n  \u003cli\u003eSplice Machine tables may or may not have a primary key; the key can also be composite of multiple columns.\u003c/li\u003e\n  \u003cli\u003eIf a Splice Machine table has no primary key, a salt key is used on the HBase side, since HBase still needs some kind of key; note that this prevents ANY kind of quick single-row lookup.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eA Splice Machine Index is just another HBase table behind the scene, with the Index definition as the Key, and the base table row reference as the Value.\u003c/p\u003e\n\u003ch3\u003eRows and Encodings\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eIn Splice Machine we only use one column family, even though HBase supports multiple column families. In fact Splice Machine stores entire rows in single column. So if you look at an HBase Row directly, it will have a RowKey and a single data column.\u003c/li\u003e\n  \u003cli\u003eRow data is encoded and bit packed to preserve lexicographical sort order.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteImportant\"\u003eThere is \u003cstrong\u003eno direct API\u003c/strong\u003e to read non-Splice HBase data using SQL.\u003c/p\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1560391139360_-515553498",
-      "id": "20190613-015859_1671001620",
-      "dateCreated": "2019-06-13 01:58:59.000",
-      "dateStarted": "2019-06-17 17:55:23.531",
-      "dateFinished": "2019-06-17 17:55:23.563",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Query Execution\n\nLet\u0027s explore more about the _decision point_ for whether a query should run in HBase or Spark. The following image illustrates the full process (HBase or Spark), starting with receiving an SQL query, all the way through executing it on the proper engine:\n\n\u003cimg class\u003d\"splice\" width\u003d\"640\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/QueryExecution.png\" \u003e\n\nTo review these steps:\n\n* The SQL must be parsed, planned, and optimized, and byte code generated.  At this point, we have enough information to know whether we will be running on HBase or Spark.\n* If we\u0027ll be using HBase, we have the HBase block cache and bloom filters to call upon as part of what HBase can do to maximize its performance on large-scale queries.\n* If we\u0027re using Spark, we know that we are kicking off a large job, so we can leverage information directly from HFiles and Memstore for performance improvements along the way.",
-      "user": "anonymous",
-      "dateUpdated": "2019-06-17 18:02:44.469",
-      "config": {
-        "editorHide": true,
-        "enabled": true,
-        "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
-        "editorSetting": {
-          "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
-        },
-        "colWidth": 12.0
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "results": {
-        "code": "SUCCESS",
-        "msg": [
-          {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eQuery Execution\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s explore more about the \u003cem\u003edecision point\u003c/em\u003e for whether a query should run in HBase or Spark. The following image illustrates the full process (HBase or Spark), starting with receiving an SQL query, all the way through executing it on the proper engine:\u003c/p\u003e\n\u003cimg class\u003d\"splice\" width\u003d\"640\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/QueryExecution.png\" \u003e\n\u003cp\u003eTo review these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe SQL must be parsed, planned, and optimized, and byte code generated. At this point, we have enough information to know whether we will be running on HBase or Spark.\u003c/li\u003e\n  \u003cli\u003eIf we\u0026rsquo;ll be using HBase, we have the HBase block cache and bloom filters to call upon as part of what HBase can do to maximize its performance on large-scale queries.\u003c/li\u003e\n  \u003cli\u003eIf we\u0026rsquo;re using Spark, we know that we are kicking off a large job, so we can leverage information directly from HFiles and Memstore for performance improvements along the way.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e"
-          }
-        ]
-      },
-      "apps": [],
-      "jobName": "paragraph_1560391213094_1966967112",
-      "id": "20190613-020013_1490857872",
-      "dateCreated": "2019-06-13 02:00:13.000",
-      "dateStarted": "2019-06-17 18:02:44.470",
-      "dateFinished": "2019-06-17 18:02:44.498",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Statistics*](/#/notebook/2EBE3CJTG), shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\n",
-      "user": "anonymous",
-      "dateUpdated": "2019-06-05 22:28:56.000",
       "config": {
         "enabled": false,
         "results": {},
@@ -227,8 +107,128 @@
       "results": {
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EBE3CJTG\"\u003e\u003cem\u003eStatistics\u003c/em\u003e\u003c/a\u003e, shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eHadoop Components\u003c/h2\u003e\n\u003cp\u003eYou are already no doubt familiar with Hadoop and the benefits it provides to help solve today\u0026rsquo;s large-scale problems. In this section, we\u0026rsquo;ll go in a little more detail\u003cbr/\u003eregarding how that pertains to Splice Machine, including information about critical Hadoop components that Splice Machine relies upon. \u003c/p\u003e\n\u003ch3\u003eZooKeeper\u003c/h3\u003e\n\u003cp\u003eZooKeeper provides critical capabilities for services such as HBase and HDFS. Splice Machine also tapes into ZooKeeper to help it manage critical capabilities, including:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eManaging the state of the Splice Machine database cluster.\u003c/li\u003e\n  \u003cli\u003eTimestamp generation, which is an essential part of the Splice Machine transaction system.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eBe sure to include a ZooKeeper Quorum for your more critical clusters; this should be an odd number (typically 3, sometimes more for larger clusters) to ensure that there are always enough ZooKeeper servers up and running to keep the service available.\u003c/p\u003e\n\u003ch3\u003eHDFS\u003c/h3\u003e\n\u003cp\u003eHere are some key elements to keep in mind about the Hadoop Distributed File System (HDFS):\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eSince HDFS is distributed, the entire filesystem (and indeed individual files) can be LARGER than what can fit on any one machine on your cluster; this is a very powerful capability and is critical for our large scale purposes.\u003c/li\u003e\n  \u003cli\u003eDo not confuse HDFS with any one machine\u0026rsquo;s normal filesystem; you must use different commands to transfer files in or out, check available capacity, etc.\u003c/li\u003e\n  \u003cli\u003eAs with the rest of Hadoop, HDFS is designed with the understanding that the individual machines may be commodity hardware and therefore may fail. HDFS has a Replication Factor (default 3) that indicates how many copies of each piece of data are made automaticall, which provides good fault tolerance. If your particular use case calls for it, you can modify the replication factor.\u003c/li\u003e\n  \u003cli\u003eThere are two types of nodes in HDFS: 1) \u003cem\u003eName\u003c/em\u003e nodes are the workhorses and store the data, and 2) \u003cem\u003eData\u003c/em\u003e nodes behave like Masters that manage the filesystem namespace. Here\u0026rsquo;s how it looks:\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003e\u003cimg class\u003d\"fithalfwidth\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/HDFS.png\"\u003e\u003c/p\u003e\n\u003ch3\u003eMore about HBase\u003c/h3\u003e\n\u003cp\u003eHBase is a Key/Value store that sits on top of HDFS that the Splice Machine database uses for durable storage. There are a number of key aspects of HBase that make it well suited as an excellent backing store for Splice Machine. \u003c/p\u003e\n\u003cp\u003eHBase:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eWas designed for extremely high performance of inserts/updates and _delete_s (see below); it has proven millisecond performance at Petabyte scale.\n\u003c/li\u003e\n  \u003cli\u003eHas an extensible architecture with coprocessors; this is how Splice Machine add capabilities such as its full transactionality (which HBase does not have).\u003c/li\u003e\n  \u003cli\u003eSupports further performance enhancements called \u003cem\u003eshort circuit reads\u003c/em\u003e to take advantage of locality, and to not have to read everything through HDFS.\u003c/li\u003e\n  \u003cli\u003eDeletes data by inserting a \u003cem\u003etombstone\u003c/em\u003e on the record, rather than wiping the record. This makes it possible for Splice Machine to transactionally roll back a record deletion.\u003c/li\u003e\n  \u003cli\u003eHas a notion of tables with rows and columns, which Splice Machine leverages.\u003c/li\u003e\n  \u003cli\u003eIs \u003cem\u003eauto-sharding\u003c/em\u003e: as tables of data grow with increasing rows, it is important in a distributed architecture for that data to be spread out (sharded) across the cluster, i.e. broken into \u003cem\u003eregions\u003c/em\u003e. Since this happens automatically, users do not need to deal with partitioning, which is also known as \u003cem\u003eRegion Splitting\u003c/em\u003e. Note that you can manually control splitting, if so desired.\u003c/li\u003e\n  \u003cli\u003eStores its Regions on Region Servers. You should keep the count of Regions per Region Server to below 200-400.\u003c/li\u003e\n  \u003cli\u003eStores Key/Value stores auto-sorted by key. In Splice Machine\u0026rsquo;s case, this is designed to be the Primary Key of the SQL Table being stored.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ],
+        "code": "SUCCESS"
+      },
+      "apps": [],
+      "jobName": "paragraph_1560390039084_1858257712",
+      "id": "20190613-014039_1802204737",
+      "dateCreated": "2019-06-13 01:40:39.000",
+      "dateStarted": "2019-06-18 02:23:29.718",
+      "dateFinished": "2019-06-18 02:23:32.345",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Splice Components\n\nThis section provides information how specific components of Splice Machine work within its architecture.\n\n### Tables and Indexes\n\nAs previously indicated, there is a natural mapping between HBase tables and Splice Machine tables; here are some important similarities and differences between the two:\n\n* Splice Machine tables always have a fully specified schema.  They may have nullable columns, but every row is a fully specified valid SQL row of data for that table.\n* Splice Machine tables may or may not have a primary key; the key can also be composite of multiple columns.\n* If a Splice Machine table has no primary key, a salt key is used on the HBase side, since HBase still needs some kind of key; note that this prevents ANY kind of quick single-row lookup.\n\nA Splice Machine Index is just another HBase table behind the scene, with the Index definition as the Key, and the base table row reference as the Value.\n\n### Rows and Encodings\n\n* In Splice Machine we only use one column family, even though HBase supports multiple column families. In fact Splice Machine stores entire rows in single column. So if you look at an HBase Row directly, it will have a RowKey and a single data column.\n* Row data is encoded and bit packed to preserve lexicographical sort order.\n\n\u003cp class\u003d\"noteImportant\"\u003eThere is \u003cstrong\u003eno direct API\u003c/strong\u003e to read non-Splice HBase data using SQL.\u003c/p\u003e\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-17 17:55:23.536",
+      "config": {
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown",
+          "completionSupport": false
+        },
+        "editorHide": true,
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSplice Components\u003c/h2\u003e\n\u003cp\u003eThis section provides information how specific components of Splice Machine work within its architecture.\u003c/p\u003e\n\u003ch3\u003eTables and Indexes\u003c/h3\u003e\n\u003cp\u003eAs previously indicated, there is a natural mapping between HBase tables and Splice Machine tables; here are some important similarities and differences between the two:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eSplice Machine tables always have a fully specified schema. They may have nullable columns, but every row is a fully specified valid SQL row of data for that table.\u003c/li\u003e\n  \u003cli\u003eSplice Machine tables may or may not have a primary key; the key can also be composite of multiple columns.\u003c/li\u003e\n  \u003cli\u003eIf a Splice Machine table has no primary key, a salt key is used on the HBase side, since HBase still needs some kind of key; note that this prevents ANY kind of quick single-row lookup.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp\u003eA Splice Machine Index is just another HBase table behind the scene, with the Index definition as the Key, and the base table row reference as the Value.\u003c/p\u003e\n\u003ch3\u003eRows and Encodings\u003c/h3\u003e\n\u003cul\u003e\n  \u003cli\u003eIn Splice Machine we only use one column family, even though HBase supports multiple column families. In fact Splice Machine stores entire rows in single column. So if you look at an HBase Row directly, it will have a RowKey and a single data column.\u003c/li\u003e\n  \u003cli\u003eRow data is encoded and bit packed to preserve lexicographical sort order.\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp class\u003d\"noteImportant\"\u003eThere is \u003cstrong\u003eno direct API\u003c/strong\u003e to read non-Splice HBase data using SQL.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ],
+        "code": "SUCCESS"
+      },
+      "apps": [],
+      "jobName": "paragraph_1560391139360_-515553498",
+      "id": "20190613-015859_1671001620",
+      "dateCreated": "2019-06-13 01:58:59.000",
+      "dateStarted": "2019-06-17 17:55:23.531",
+      "dateFinished": "2019-06-17 17:55:23.563",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Query Execution\n\nLet\u0027s explore more about the _decision point_ for whether a query should run in HBase or Spark. The following image illustrates the full process (HBase or Spark), starting with receiving an SQL query, all the way through executing it on the proper engine:\n\n\u003cimg class\u003d\"splice\" width\u003d\"640\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/QueryExecution.png\" \u003e\n\nTo review these steps:\n\n* The SQL must be parsed, planned, and optimized, and byte code generated.  At this point, we have enough information to know whether we will be running on HBase or Spark.\n* If we\u0027ll be using HBase, we have the HBase block cache and bloom filters to call upon as part of what HBase can do to maximize its performance on large-scale queries.\n* If we\u0027re using Spark, we know that we are kicking off a large job, so we can leverage information directly from HFiles and Memstore for performance improvements along the way.",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-17 18:02:44.469",
+      "config": {
+        "enabled": false,
+        "results": {},
+        "editorSetting": {
+          "editOnDblClick": true,
+          "language": "markdown",
+          "completionSupport": false
+        },
+        "editorHide": true,
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eQuery Execution\u003c/h2\u003e\n\u003cp\u003eLet\u0026rsquo;s explore more about the \u003cem\u003edecision point\u003c/em\u003e for whether a query should run in HBase or Spark. The following image illustrates the full process (HBase or Spark), starting with receiving an SQL query, all the way through executing it on the proper engine:\u003c/p\u003e\n\u003cimg class\u003d\"splice\" width\u003d\"640\" src\u003d\"https://s3.amazonaws.com/splice-training/external/images/QueryExecution.png\" \u003e\n\u003cp\u003eTo review these steps:\u003c/p\u003e\n\u003cul\u003e\n  \u003cli\u003eThe SQL must be parsed, planned, and optimized, and byte code generated. At this point, we have enough information to know whether we will be running on HBase or Spark.\u003c/li\u003e\n  \u003cli\u003eIf we\u0026rsquo;ll be using HBase, we have the HBase block cache and bloom filters to call upon as part of what HBase can do to maximize its performance on large-scale queries.\u003c/li\u003e\n  \u003cli\u003eIf we\u0026rsquo;re using Spark, we know that we are kicking off a large job, so we can leverage information directly from HFiles and Memstore for performance improvements along the way.\u003c/li\u003e\n\u003c/ul\u003e\n\u003c/div\u003e",
+            "type": "HTML"
+          }
+        ],
+        "code": "SUCCESS"
+      },
+      "apps": [],
+      "jobName": "paragraph_1560391213094_1966967112",
+      "id": "20190613-020013_1490857872",
+      "dateCreated": "2019-06-13 02:00:13.000",
+      "dateStarted": "2019-06-17 18:02:44.470",
+      "dateFinished": "2019-06-17 18:02:44.498",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Where to Go Next\nThe next notebook in this class, [*Statistics*](/#/notebook/2EBE3CJTG), shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\n",
+      "user": "anonymous",
+      "dateUpdated": "2019-06-05 22:28:56.000",
+      "config": {
+        "editorMode": "ace/mode/markdown",
+        "enabled": false,
+        "results": {},
+        "editorHide": true,
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorSetting": {
+          "editOnDblClick": true,
+          "completionSupport": false,
+          "language": "markdown"
+        },
+        "colWidth": 12.0
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "msg": [
+          {
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eThe next notebook in this class, \u003ca href\u003d\"/#/notebook/2EBE3CJTG\"\u003e\u003cem\u003eStatistics\u003c/em\u003e\u003c/a\u003e, shows you how we use database statistics to optimize queries, and how you can use those same statistics for query tuning.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
         ],
         "code": "SUCCESS"
@@ -248,7 +248,8 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": []
+    "md:shared_process": [],
+    "splicemachine:shared_process": []
   },
   "config": {
     "looknfeel": "default",
