@@ -123,9 +123,9 @@
     {
       "text": "%md\n## Set Up Maven Coordinates\n\nYou\u0027ll need to set up a dependency resolution system to be able to build the code. Splice Machine uses Maven, and we\u0027ve provide sample code and a `pom.xml` file in a public github repo. You can download the source files here: [Sample Source Code](https://github.com/splicemachine/splice-training/tree/master/spark_adapter_example).\n\nYou can use this sample as a template for Maven setup. It has both CDH or HWX dependency profiles that can be selected via maven configuration at build time.\n\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-18 17:39:56.250",
+      "dateUpdated": "2019-07-29 17:34:35.181",
       "config": {
-        "editorHide": false,
+        "editorHide": true,
         "enabled": true,
         "results": {},
         "editorMode": "ace/mode/markdown",
@@ -160,17 +160,17 @@
       "jobName": "paragraph_1559511543147_1644452621",
       "id": "20190602-213903_1547198808",
       "dateCreated": "2019-06-02 21:39:03.147",
-      "dateStarted": "2019-06-18 01:53:59.292",
-      "dateFinished": "2019-06-18 01:53:59.306",
+      "dateStarted": "2019-07-29 17:34:35.194",
+      "dateFinished": "2019-07-29 17:34:35.234",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md\n## Create SpliceMachineContext\n\nThe following code snippet illustrates creating a `SpliceMachineContext` object in Java after setting up the project:\n\n\u003cpre\u003e\u003ccode\u003e\nimport com.splicemachine.derby.impl.SpliceSpark;\nimport com.splicemachine.spark.splicemachine.SplicemachineContext;\nimport org.apache.spark.SparkConf;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n....\n\npublic class TestSpliceMachineContext\n{\n    public static void main(String[] args) throws Exception \n    {\n        String dbUrl \u003d \"jdbc:splice://SPLICESERVERHOST:1527/splicedb;user\u003d\u0026lt;yourUserId\u0026gt;;password\u003d\u0026lt;yourPassword\u0026gt;\";\n        SparkConf conf \u003d new SparkConf();\n        SparkSession spark \u003d SparkSession.builder().appName(\"NativeSparktutor\").config(conf).getOrCreate();\n        SpliceSpark.setContext(spark.sparkContext());\n        SplicemachineContext splicemachineContext \u003d new SplicemachineContext(dbUrl);\n        \n        //use context for DB operations next...\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e",
       "user": "anonymous",
-      "dateUpdated": "2019-06-18 17:39:56.082",
+      "dateUpdated": "2019-07-29 17:34:18.930",
       "config": {
-        "editorHide": false,
+        "editorHide": true,
         "enabled": true,
         "results": {},
         "editorMode": "ace/mode/markdown",
@@ -192,7 +192,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch2\u003eCreate SpliceMachineContext\u003c/h2\u003e\n\u003cp\u003eThe following code snippet illustrates creating a \u003ccode\u003eSpliceMachineContext\u003c/code\u003e object in Java after setting up the project:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e\nimport com.splicemachine.derby.impl.SpliceSpark;\nimport com.splicemachine.spark.splicemachine.SplicemachineContext;\nimport org.apache.spark.SparkConf;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n....\n\npublic class TestSpliceMachineContext\n{\n    public static void main(String[] args) throws Exception \n    {\n        String dbUrl \u003d \"jdbc:splice://SPLICESERVERHOST:1527/splicedb;user\u003d\u0026lt;yourUserId\u0026gt;;password\u003d\u0026lt;yourPassword\u0026gt;\";\n        SparkConf conf \u003d new SparkConf();\n        SparkSession spark \u003d SparkSession.builder().appName(\"NativeSparktutor\").config(conf).getOrCreate();\n        SpliceSpark.setContext(spark.sparkContext());\n        SplicemachineContext splicemachineContext \u003d new SplicemachineContext(dbUrl);\n        \n        //use context for DB operations next...\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eCreate SpliceMachineContext\u003c/h2\u003e\n\u003cp\u003eThe following code snippet illustrates creating a \u003ccode\u003eSpliceMachineContext\u003c/code\u003e object in Java after setting up the project:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003e\nimport com.splicemachine.derby.impl.SpliceSpark;\nimport com.splicemachine.spark.splicemachine.SplicemachineContext;\nimport org.apache.spark.SparkConf;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n....\n\npublic class TestSpliceMachineContext\n{\n    public static void main(String[] args) throws Exception \n    {\n        String dbUrl \u003d \"jdbc:splice://SPLICESERVERHOST:1527/splicedb;user\u003d\u0026lt;yourUserId\u0026gt;;password\u003d\u0026lt;yourPassword\u0026gt;\";\n        SparkConf conf \u003d new SparkConf();\n        SparkSession spark \u003d SparkSession.builder().appName(\"NativeSparktutor\").config(conf).getOrCreate();\n        SpliceSpark.setContext(spark.sparkContext());\n        SplicemachineContext splicemachineContext \u003d new SplicemachineContext(dbUrl);\n        \n        //use context for DB operations next...\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -200,8 +200,8 @@
       "jobName": "paragraph_1559511623111_-960005237",
       "id": "20190602-214023_872601603",
       "dateCreated": "2019-06-02 21:40:23.111",
-      "dateStarted": "2019-06-12 15:39:41.416",
-      "dateFinished": "2019-06-12 15:39:41.449",
+      "dateStarted": "2019-07-29 17:34:18.931",
+      "dateFinished": "2019-07-29 17:34:18.954",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -246,9 +246,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Loading Data with SpliceMachineContext\n\nYou can use the `SpliceMachineContext` to load data into a table; in the following example, we read from a parquet file and load the \ndata into Splice Machine table.\n\n```\nimport com.splicemachine.derby.impl.SpliceSpark;\nimport com.splicemachine.spark.splicemachine.SplicemachineContext;\nimport org.apache.spark.SparkConf;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n....\n\npublic class TestSpliceMachineContext\n{\n    public static void main(String[] args) throws Exception \n    {\n        String dbUrl \u003d \"jdbc:splice://SPLICESERVERHOST:1527/splicedb;user\u003d\u0026lt;yourUserId\u0026gt;;password\u003d\u0026lt;yourPassword\u0026gt;\";\n        SparkConf conf \u003d new SparkConf();\n        SparkSession spark \u003d SparkSession.builder().appName(\"NativeSparktutor\").config(conf).getOrCreate();\n        SpliceSpark.setContext(spark.sparkContext());\n        SplicemachineContext splicemachineContext \u003d new SplicemachineContext(dbUrl);\n        \n        //create sample dataset\n        List\u0026lt;Row\u0026gt; cars \u003d new ArrayList\u0026lt;Row\u0026gt;();\n    \tStructType schema \u003d DataTypes.createStructType(new StructField[] {\n                DataTypes.createStructField(\"SERIAL\",  DataTypes.IntegerType, true),\n                DataTypes.createStructField(\"MAKE\", DataTypes.StringType, true),\n                DataTypes.createStructField(\"MODEL\", DataTypes.StringType, true)\n        });\n    \t\n    \tcars.add(RowFactory.create(1, \"Toyota\", \"Camry\"));\n    \tcars.add(RowFactory.create(2, \"Honda\", \"Accord\"));\n    \tcars.add(RowFactory.create(3, \"Subaru\", \"Impreza\"));\n    \tcars.add(RowFactory.create(4, \"Chevy\", \"Volt\"));\n    \t\n    \t\n    \tDataset\u003cRow\u003e carsDF \u003d spark.createDataFrame(cars, schema);\n    \tcarsDF.show();\n        \n        //Load data into a table using Parquet file\n        System.out.println(\"start create table ...\");\n    \tsplicemachineContext.createTable(\"test.car\", schema, \n    \t\t\tJavaConverters.asScalaIteratorConverter(Arrays.asList(\"PRIMARY KEY (SERIAL)\").iterator()).asScala().toSeq(), \"\");\n    \tSystem.out.println(\"done create table ... \");\n    \t\n    \tStructType outputSchema \u003d splicemachineContext.getSchema(\"test.car\");\n    \toutputSchema.printTreeString();\n    \t\n    \tSystem.out.println(\"start insert ...\");\n    \tsplicemachineContext.insert(carsDF, \"test.car\");\n    \tSystem.out.println(\"done insert ... \");\n    \t\n    \tSystem.out.println(\"start select ...\");\n    \tDataset\u0026lt;Row\u0026gt; selectedCarsDF \u003d splicemachineContext.df(\"select * from test.car\");\n    \tSystem.out.println(\"done select ...\");\n    \t\n    \tselectedCarsDF.count();\n    \tselectedCarsDF.show();\n    }\n}\n```",
+      "text": "%md\n## Loading Data with SpliceMachineContext\n\nYou can use the `SpliceMachineContext` to load data into a table; in the following example, we read from a parquet file and load the \ndata into Splice Machine table.\n\n```\nimport com.splicemachine.derby.impl.SpliceSpark;\nimport com.splicemachine.spark.splicemachine.SplicemachineContext;\nimport org.apache.spark.SparkConf;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n....\n\npublic class TestSpliceMachineContext\n{\n    public static void main(String[] args) throws Exception \n    {\n        String dbUrl \u003d \"jdbc:splice://SPLICESERVERHOST:1527/splicedb;user\u003d\u0026lt;yourUserId\u0026gt;;password\u003d\u0026lt;yourPassword\u0026gt;\";\n        SparkConf conf \u003d new SparkConf();\n        SparkSession spark \u003d SparkSession.builder().appName(\"NativeSparktutor\").config(conf).getOrCreate();\n        SpliceSpark.setContext(spark.sparkContext());\n        SplicemachineContext splicemachineContext \u003d new SplicemachineContext(dbUrl);\n        \n        //create sample dataset\n        List\u0026lt;Row\u0026gt; cars \u003d new ArrayList\u003cRow\u003e();\n    \tStructType schema \u003d DataTypes.createStructType(new StructField[] {\n                DataTypes.createStructField(\"SERIAL\",  DataTypes.IntegerType, true),\n                DataTypes.createStructField(\"MAKE\", DataTypes.StringType, true),\n                DataTypes.createStructField(\"MODEL\", DataTypes.StringType, true)\n        });\n    \t\n    \tcars.add(RowFactory.create(1, \"Toyota\", \"Camry\"));\n    \tcars.add(RowFactory.create(2, \"Honda\", \"Accord\"));\n    \tcars.add(RowFactory.create(3, \"Subaru\", \"Impreza\"));\n    \tcars.add(RowFactory.create(4, \"Chevy\", \"Volt\"));\n    \t\n    \t\n    \tDataset\u003cRow\u003e carsDF \u003d spark.createDataFrame(cars, schema);\n    \tcarsDF.show();\n        \n        //Load data into a table using Parquet file\n        System.out.println(\"start create table ...\");\n    \tsplicemachineContext.createTable(\"test.car\", schema, \n    \t\t\tJavaConverters.asScalaIteratorConverter(Arrays.asList(\"PRIMARY KEY (SERIAL)\").iterator()).asScala().toSeq(), \"\");\n    \tSystem.out.println(\"done create table ... \");\n    \t\n    \tStructType outputSchema \u003d splicemachineContext.getSchema(\"test.car\");\n    \toutputSchema.printTreeString();\n    \t\n    \tSystem.out.println(\"start insert ...\");\n    \tsplicemachineContext.insert(carsDF, \"test.car\");\n    \tSystem.out.println(\"done insert ... \");\n    \t\n    \tSystem.out.println(\"start select ...\");\n    \tDataset\u0026lt;Row\u0026gt; selectedCarsDF \u003d splicemachineContext.df(\"select * from test.car\");\n    \tSystem.out.println(\"done select ...\");\n    \t\n    \tselectedCarsDF.count();\n    \tselectedCarsDF.show();\n    }\n}\n```",
       "user": "anonymous",
-      "dateUpdated": "2019-06-18 17:41:32.764",
+      "dateUpdated": "2019-07-29 17:33:51.930",
       "config": {
         "editorHide": true,
         "enabled": true,
@@ -272,7 +272,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLoading Data with SpliceMachineContext\u003c/h2\u003e\n\u003cp\u003eYou can use the \u003ccode\u003eSpliceMachineContext\u003c/code\u003e to load data into a table; in the following example, we read from a parquet file and load the\u003cbr/\u003edata into Splice Machine table.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eimport com.splicemachine.derby.impl.SpliceSpark;\nimport com.splicemachine.spark.splicemachine.SplicemachineContext;\nimport org.apache.spark.SparkConf;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n....\n\npublic class TestSpliceMachineContext\n{\n    public static void main(String[] args) throws Exception \n    {\n        String dbUrl \u003d \u0026quot;jdbc:splice://SPLICESERVERHOST:1527/splicedb;user\u003d\u0026amp;lt;yourUserId\u0026amp;gt;;password\u003d\u0026amp;lt;yourPassword\u0026amp;gt;\u0026quot;;\n        SparkConf conf \u003d new SparkConf();\n        SparkSession spark \u003d SparkSession.builder().appName(\u0026quot;NativeSparktutor\u0026quot;).config(conf).getOrCreate();\n        SpliceSpark.setContext(spark.sparkContext());\n        SplicemachineContext splicemachineContext \u003d new SplicemachineContext(dbUrl);\n        \n        //create sample dataset\n        List\u0026amp;lt;Row\u0026amp;gt; cars \u003d new ArrayList\u0026amp;lt;Row\u0026amp;gt;();\n    \tStructType schema \u003d DataTypes.createStructType(new StructField[] {\n                DataTypes.createStructField(\u0026quot;SERIAL\u0026quot;,  DataTypes.IntegerType, true),\n                DataTypes.createStructField(\u0026quot;MAKE\u0026quot;, DataTypes.StringType, true),\n                DataTypes.createStructField(\u0026quot;MODEL\u0026quot;, DataTypes.StringType, true)\n        });\n    \t\n    \tcars.add(RowFactory.create(1, \u0026quot;Toyota\u0026quot;, \u0026quot;Camry\u0026quot;));\n    \tcars.add(RowFactory.create(2, \u0026quot;Honda\u0026quot;, \u0026quot;Accord\u0026quot;));\n    \tcars.add(RowFactory.create(3, \u0026quot;Subaru\u0026quot;, \u0026quot;Impreza\u0026quot;));\n    \tcars.add(RowFactory.create(4, \u0026quot;Chevy\u0026quot;, \u0026quot;Volt\u0026quot;));\n    \t\n    \t\n    \tDataset\u0026lt;Row\u0026gt; carsDF \u003d spark.createDataFrame(cars, schema);\n    \tcarsDF.show();\n        \n        //Load data into a table using Parquet file\n        System.out.println(\u0026quot;start create table ...\u0026quot;);\n    \tsplicemachineContext.createTable(\u0026quot;test.car\u0026quot;, schema, \n    \t\t\tJavaConverters.asScalaIteratorConverter(Arrays.asList(\u0026quot;PRIMARY KEY (SERIAL)\u0026quot;).iterator()).asScala().toSeq(), \u0026quot;\u0026quot;);\n    \tSystem.out.println(\u0026quot;done create table ... \u0026quot;);\n    \t\n    \tStructType outputSchema \u003d splicemachineContext.getSchema(\u0026quot;test.car\u0026quot;);\n    \toutputSchema.printTreeString();\n    \t\n    \tSystem.out.println(\u0026quot;start insert ...\u0026quot;);\n    \tsplicemachineContext.insert(carsDF, \u0026quot;test.car\u0026quot;);\n    \tSystem.out.println(\u0026quot;done insert ... \u0026quot;);\n    \t\n    \tSystem.out.println(\u0026quot;start select ...\u0026quot;);\n    \tDataset\u0026amp;lt;Row\u0026amp;gt; selectedCarsDF \u003d splicemachineContext.df(\u0026quot;select * from test.car\u0026quot;);\n    \tSystem.out.println(\u0026quot;done select ...\u0026quot;);\n    \t\n    \tselectedCarsDF.count();\n    \tselectedCarsDF.show();\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLoading Data with SpliceMachineContext\u003c/h2\u003e\n\u003cp\u003eYou can use the \u003ccode\u003eSpliceMachineContext\u003c/code\u003e to load data into a table; in the following example, we read from a parquet file and load the\u003cbr/\u003edata into Splice Machine table.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003eimport com.splicemachine.derby.impl.SpliceSpark;\nimport com.splicemachine.spark.splicemachine.SplicemachineContext;\nimport org.apache.spark.SparkConf;\nimport org.apache.spark.sql.Dataset;\nimport org.apache.spark.sql.Row;\nimport org.apache.spark.sql.SparkSession;\n....\n\npublic class TestSpliceMachineContext\n{\n    public static void main(String[] args) throws Exception \n    {\n        String dbUrl \u003d \u0026quot;jdbc:splice://SPLICESERVERHOST:1527/splicedb;user\u003d\u0026amp;lt;yourUserId\u0026amp;gt;;password\u003d\u0026amp;lt;yourPassword\u0026amp;gt;\u0026quot;;\n        SparkConf conf \u003d new SparkConf();\n        SparkSession spark \u003d SparkSession.builder().appName(\u0026quot;NativeSparktutor\u0026quot;).config(conf).getOrCreate();\n        SpliceSpark.setContext(spark.sparkContext());\n        SplicemachineContext splicemachineContext \u003d new SplicemachineContext(dbUrl);\n        \n        //create sample dataset\n        List\u0026amp;lt;Row\u0026amp;gt; cars \u003d new ArrayList\u0026lt;Row\u0026gt;();\n    \tStructType schema \u003d DataTypes.createStructType(new StructField[] {\n                DataTypes.createStructField(\u0026quot;SERIAL\u0026quot;,  DataTypes.IntegerType, true),\n                DataTypes.createStructField(\u0026quot;MAKE\u0026quot;, DataTypes.StringType, true),\n                DataTypes.createStructField(\u0026quot;MODEL\u0026quot;, DataTypes.StringType, true)\n        });\n    \t\n    \tcars.add(RowFactory.create(1, \u0026quot;Toyota\u0026quot;, \u0026quot;Camry\u0026quot;));\n    \tcars.add(RowFactory.create(2, \u0026quot;Honda\u0026quot;, \u0026quot;Accord\u0026quot;));\n    \tcars.add(RowFactory.create(3, \u0026quot;Subaru\u0026quot;, \u0026quot;Impreza\u0026quot;));\n    \tcars.add(RowFactory.create(4, \u0026quot;Chevy\u0026quot;, \u0026quot;Volt\u0026quot;));\n    \t\n    \t\n    \tDataset\u0026lt;Row\u0026gt; carsDF \u003d spark.createDataFrame(cars, schema);\n    \tcarsDF.show();\n        \n        //Load data into a table using Parquet file\n        System.out.println(\u0026quot;start create table ...\u0026quot;);\n    \tsplicemachineContext.createTable(\u0026quot;test.car\u0026quot;, schema, \n    \t\t\tJavaConverters.asScalaIteratorConverter(Arrays.asList(\u0026quot;PRIMARY KEY (SERIAL)\u0026quot;).iterator()).asScala().toSeq(), \u0026quot;\u0026quot;);\n    \tSystem.out.println(\u0026quot;done create table ... \u0026quot;);\n    \t\n    \tStructType outputSchema \u003d splicemachineContext.getSchema(\u0026quot;test.car\u0026quot;);\n    \toutputSchema.printTreeString();\n    \t\n    \tSystem.out.println(\u0026quot;start insert ...\u0026quot;);\n    \tsplicemachineContext.insert(carsDF, \u0026quot;test.car\u0026quot;);\n    \tSystem.out.println(\u0026quot;done insert ... \u0026quot;);\n    \t\n    \tSystem.out.println(\u0026quot;start select ...\u0026quot;);\n    \tDataset\u0026amp;lt;Row\u0026amp;gt; selectedCarsDF \u003d splicemachineContext.df(\u0026quot;select * from test.car\u0026quot;);\n    \tSystem.out.println(\u0026quot;done select ...\u0026quot;);\n    \t\n    \tselectedCarsDF.count();\n    \tselectedCarsDF.show();\n    }\n}\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -280,8 +280,8 @@
       "jobName": "paragraph_1559579990934_-1817260673",
       "id": "20190603-163950_1385722937",
       "dateCreated": "2019-06-03 16:39:50.934",
-      "dateStarted": "2019-06-18 17:41:32.764",
-      "dateFinished": "2019-06-18 17:41:32.786",
+      "dateStarted": "2019-07-29 17:33:51.917",
+      "dateFinished": "2019-07-29 17:33:51.937",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -326,9 +326,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Build and Deploy The Application\n\nYou can build the Jar (we suggest building an uber jar) using `maven`, similar to how you build and deploy a typical Spark application.\n\n```\nmvn clean package\n```\n\nOnce the jar is built (typically in the `target` folder within the project folder), you can copy it over to the edge node or region server on the cluster to execute with the spark-submit command.\n\nNote that if you are using the Docker image, you can copy the jar over to the running instance with the following command:\n\n```\ndocker cp \u003cPATH_ON_HOST_MACHINE\u003e spliceserver:\u003cPATH_TO_TARGET_FOLDER_ON_RUNNING_INSTANCE\u003e\n```\n",
+      "text": "%md\n## Build and Deploy The Application\n\nYou can build the Jar (we suggest building an uber jar) using `maven`, similar to how you build and deploy a typical Spark application. Given the sample pom.xml file in this tutorial, you may have to select an appropriate maven profile when packaging the jar file.\n\n```\nmvn clean package\n```\n\nOnce the jar is built (typically in the `target` folder within the project folder), you can copy it over to the edge node or region server on the cluster to execute with the spark-submit command.\n\nNote that if you are using the Docker image, you can copy the jar over to the running instance with the following command:\n\n```\ndocker cp \u003cPATH_ON_HOST_MACHINE\u003e spliceserver:\u003cPATH_TO_TARGET_FOLDER_ON_RUNNING_INSTANCE\u003e\n```\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-18 17:43:10.775",
+      "dateUpdated": "2019-07-29 17:35:58.419",
       "config": {
         "editorHide": true,
         "enabled": true,
@@ -352,7 +352,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBuild and Deploy The Application\u003c/h2\u003e\n\u003cp\u003eYou can build the Jar (we suggest building an uber jar) using \u003ccode\u003emaven\u003c/code\u003e, similar to how you build and deploy a typical Spark application.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003emvn clean package\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eOnce the jar is built (typically in the \u003ccode\u003etarget\u003c/code\u003e folder within the project folder), you can copy it over to the edge node or region server on the cluster to execute with the spark-submit command.\u003c/p\u003e\n\u003cp\u003eNote that if you are using the Docker image, you can copy the jar over to the running instance with the following command:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edocker cp \u0026lt;PATH_ON_HOST_MACHINE\u0026gt; spliceserver:\u0026lt;PATH_TO_TARGET_FOLDER_ON_RUNNING_INSTANCE\u0026gt;\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eBuild and Deploy The Application\u003c/h2\u003e\n\u003cp\u003eYou can build the Jar (we suggest building an uber jar) using \u003ccode\u003emaven\u003c/code\u003e, similar to how you build and deploy a typical Spark application. Given the sample pom.xml file in this tutorial, you may have to select an appropriate maven profile when packaging the jar file.\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003emvn clean package\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eOnce the jar is built (typically in the \u003ccode\u003etarget\u003c/code\u003e folder within the project folder), you can copy it over to the edge node or region server on the cluster to execute with the spark-submit command.\u003c/p\u003e\n\u003cp\u003eNote that if you are using the Docker image, you can copy the jar over to the running instance with the following command:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003edocker cp \u0026lt;PATH_ON_HOST_MACHINE\u0026gt; spliceserver:\u0026lt;PATH_TO_TARGET_FOLDER_ON_RUNNING_INSTANCE\u0026gt;\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -360,15 +360,15 @@
       "jobName": "paragraph_1559581897072_927636269",
       "id": "20190603-171137_1488177463",
       "dateCreated": "2019-06-03 17:11:37.073",
-      "dateStarted": "2019-06-18 17:43:10.776",
-      "dateFinished": "2019-06-18 17:43:10.802",
+      "dateStarted": "2019-07-29 17:35:58.448",
+      "dateFinished": "2019-07-29 17:35:58.476",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Using spark submit to Launch Spark Adapter Applications\n\nYou can launch your application with the following command on the provided docker image:\n\n```\nspark-submit --conf \"spark.dynamicAllocation.enabled\u003dfalse\" --conf \"spark.task.maxFailures\u003d2\" --conf \"spark.driver.memory\u003d512m\" --conf \"spark.driver.cores\u003d1\" --conf \"spark.kryoserializer.buffer\u003d512\" --conf \"spark.kryoserializer.buffer.max\u003d1024\" --conf \"spark.io.compression.codec\u003dorg.apache.spark.io.SnappyCompressionCodec\" --conf \"spark.executor.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\" --conf \"spark.driver.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\" --class \u0026lt;FULLY_QUALIFIED_EXECUTABLE_CLASS_NAME\u0026gt; --master local[1] --deploy-mode client --num-executors 1 --executor-memory 1G --executor-cores 1 \u0026lt;JAR_FILE_NAME\u0026gt; localhost 1527 splice admin\n```\n\nNote that  various executor settings in the above example are just illustrative and need to be be configured for your job and its execution environment.\n",
+      "text": "%md\n## Using spark submit to Launch Spark Adapter Applications\n\nYou can launch your application with the following command on the provided docker image:\n\n```\nspark-submit --conf \"spark.dynamicAllocation.enabled\u003dfalse\" --conf \"spark.task.maxFailures\u003d2\" --conf \"spark.driver.memory\u003d512m\" --conf \"spark.driver.cores\u003d1\" --conf \"spark.kryoserializer.buffer\u003d512\" --conf \"spark.kryoserializer.buffer.max\u003d1024\" --conf \"spark.io.compression.codec\u003dorg.apache.spark.io.SnappyCompressionCodec\" --conf \"spark.executor.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\" --conf \"spark.driver.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\" --class \u003cFULLY_QUALIFIED_EXECUTABLE_CLASS_NAME\u003e --master local[1] --deploy-mode client --num-executors 1 --executor-memory 1G --executor-cores 1 \u003cJAR_FILE_NAME\u003e localhost 1527 splice admin\n```\n\nNote that  various executor settings in the above example are just illustrative and need to be be configured for your job and its execution environment.\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-18 17:44:50.810",
+      "dateUpdated": "2019-07-27 23:31:33.097",
       "config": {
         "editorHide": true,
         "enabled": true,
@@ -392,7 +392,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing spark submit to Launch Spark Adapter Applications\u003c/h2\u003e\n\u003cp\u003eYou can launch your application with the following command on the provided docker image:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003espark-submit --conf \u0026quot;spark.dynamicAllocation.enabled\u003dfalse\u0026quot; --conf \u0026quot;spark.task.maxFailures\u003d2\u0026quot; --conf \u0026quot;spark.driver.memory\u003d512m\u0026quot; --conf \u0026quot;spark.driver.cores\u003d1\u0026quot; --conf \u0026quot;spark.kryoserializer.buffer\u003d512\u0026quot; --conf \u0026quot;spark.kryoserializer.buffer.max\u003d1024\u0026quot; --conf \u0026quot;spark.io.compression.codec\u003dorg.apache.spark.io.SnappyCompressionCodec\u0026quot; --conf \u0026quot;spark.executor.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\u0026quot; --conf \u0026quot;spark.driver.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\u0026quot; --class \u0026amp;lt;FULLY_QUALIFIED_EXECUTABLE_CLASS_NAME\u0026amp;gt; --master local[1] --deploy-mode client --num-executors 1 --executor-memory 1G --executor-cores 1 \u0026amp;lt;JAR_FILE_NAME\u0026amp;gt; localhost 1527 splice admin\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNote that various executor settings in the above example are just illustrative and need to be be configured for your job and its execution environment.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eUsing spark submit to Launch Spark Adapter Applications\u003c/h2\u003e\n\u003cp\u003eYou can launch your application with the following command on the provided docker image:\u003c/p\u003e\n\u003cpre\u003e\u003ccode\u003espark-submit --conf \u0026quot;spark.dynamicAllocation.enabled\u003dfalse\u0026quot; --conf \u0026quot;spark.task.maxFailures\u003d2\u0026quot; --conf \u0026quot;spark.driver.memory\u003d512m\u0026quot; --conf \u0026quot;spark.driver.cores\u003d1\u0026quot; --conf \u0026quot;spark.kryoserializer.buffer\u003d512\u0026quot; --conf \u0026quot;spark.kryoserializer.buffer.max\u003d1024\u0026quot; --conf \u0026quot;spark.io.compression.codec\u003dorg.apache.spark.io.SnappyCompressionCodec\u0026quot; --conf \u0026quot;spark.executor.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\u0026quot; --conf \u0026quot;spark.driver.extraClassPath\u003d/opt/hadoop/conf/:/opt/spark/jars/*\u0026quot; --class \u0026lt;FULLY_QUALIFIED_EXECUTABLE_CLASS_NAME\u0026gt; --master local[1] --deploy-mode client --num-executors 1 --executor-memory 1G --executor-cores 1 \u0026lt;JAR_FILE_NAME\u0026gt; localhost 1527 splice admin\n\u003c/code\u003e\u003c/pre\u003e\n\u003cp\u003eNote that various executor settings in the above example are just illustrative and need to be be configured for your job and its execution environment.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -400,15 +400,15 @@
       "jobName": "paragraph_1559669789849_-819139079",
       "id": "20190604-173629_1491743944",
       "dateCreated": "2019-06-04 17:36:29.849",
-      "dateStarted": "2019-06-18 17:44:50.811",
-      "dateFinished": "2019-06-18 17:44:50.823",
+      "dateStarted": "2019-07-27 23:31:33.113",
+      "dateFinished": "2019-07-27 23:31:33.130",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## For Further Exploration and Understanding\n\nTo gain a better understanding of using statistics, try using `spark-submit` by building a JAR file and running these exercises:\n\n1. Use Spark Adapter to create a set of tables where you can exercise some queries including join operations.\n\n2. Use the tables in Step-1 to load data into tables with Spark Adapter. Use both DF and internalDF to do these operations.\n\n3. Analyze the table using Spark Adapter\n\n4. Query the table and verify data load. \n\n5. Use a Join operation via Spark Adapter\n\n6. Drop the table(s)\n",
+      "text": "%md\n## For Further Exploration and Understanding\n\nTo gain a better understanding of using statistics, try using `spark-submit` by building a JAR file and running these exercises:\n\n1. Use Spark Adapter to create a set of tables where you can exercise some queries including join operations.\n\n2. Use the tables in Step-1 to insert data into tables with Spark Adapter. Use both DF and internalDF to do these operations.\n\n3. Analyze the table using Spark Adapter (NOTE: it may not execute due to memory constraints on docker image on localhost, skip this step in that case)\n\n4. Query the table and verify data load. \n\n5. Use a Join operation via Spark Adapter\n\n6. Drop the table(s)\n",
       "user": "anonymous",
-      "dateUpdated": "2019-06-18 17:45:15.074",
+      "dateUpdated": "2019-07-29 17:33:14.387",
       "config": {
         "editorHide": true,
         "enabled": true,
@@ -432,7 +432,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Further Exploration and Understanding\u003c/h2\u003e\n\u003cp\u003eTo gain a better understanding of using statistics, try using \u003ccode\u003espark-submit\u003c/code\u003e by building a JAR file and running these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse Spark Adapter to create a set of tables where you can exercise some queries including join operations.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse the tables in Step-1 to load data into tables with Spark Adapter. Use both DF and internalDF to do these operations.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eAnalyze the table using Spark Adapter\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eQuery the table and verify data load. \u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse a Join operation via Spark Adapter\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eDrop the table(s)\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFor Further Exploration and Understanding\u003c/h2\u003e\n\u003cp\u003eTo gain a better understanding of using statistics, try using \u003ccode\u003espark-submit\u003c/code\u003e by building a JAR file and running these exercises:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse Spark Adapter to create a set of tables where you can exercise some queries including join operations.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse the tables in Step-1 to insert data into tables with Spark Adapter. Use both DF and internalDF to do these operations.\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eAnalyze the table using Spark Adapter (NOTE: it may not execute due to memory constraints on docker image on localhost, skip this step in that case)\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eQuery the table and verify data load. \u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eUse a Join operation via Spark Adapter\u003c/p\u003e\u003c/li\u003e\n  \u003cli\u003e\n  \u003cp\u003eDrop the table(s)\u003c/p\u003e\u003c/li\u003e\n\u003c/ol\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -440,8 +440,8 @@
       "jobName": "paragraph_1559773713057_-717419114",
       "id": "20190605-222833_1832541911",
       "dateCreated": "2019-06-05 22:28:33.058",
-      "dateStarted": "2019-06-18 17:45:15.075",
-      "dateFinished": "2019-06-18 17:45:15.095",
+      "dateStarted": "2019-07-29 17:33:14.387",
+      "dateFinished": "2019-07-29 17:33:14.420",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -491,8 +491,7 @@
   "noteParams": {},
   "noteForms": {},
   "angularObjects": {
-    "md:shared_process": [],
-    "splicemachine:shared_process": []
+    "md:shared_process": []
   },
   "config": {
     "isZeppelinNotebookCronEnable": false
