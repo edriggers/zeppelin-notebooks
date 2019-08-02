@@ -5,17 +5,17 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-28 00:26:08.991",
       "config": {
-        "editorHide": true,
-        "enabled": true,
+        "enabled": false,
         "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
         "editorSetting": {
           "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
+          "language": "markdown",
+          "completionSupport": false
         },
+        "editorHide": true,
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
         "colWidth": 12.0
       },
       "settings": {
@@ -23,13 +23,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
         "msg": [
           {
-            "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003ePreparing Data for Import\u003c/h1\u003e\n\u003cp\u003eThe easiest way to get your database tables populated is to import data from flat files (csv, etc.). Splice Machine imports data directly from HDFS, AWS S3, and Azure Block Storage. \u003c/p\u003e\n\u003cp\u003eFor this training we\u0026rsquo;ll use S3, and the data we\u0026rsquo; wi\u0026rsquo;ll import has already beem created and is ready to load. If you want to learn more about how to import your own data, read on; otherwise, continue to the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data into Your Database\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003ch2\u003ePreparing Your Own Data for Import\u003c/h2\u003e\n\u003cp\u003eWhen you want to experiment with loading your own data from S3, you can follow the steps below to get your data into an S3 bucket. Additionally you will want to make sure that your data is in a format that can be properly imported. To copy your database to S3, you need to have an AWS account with access to S3 buckets.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteImportant\"\u003eThe flat files you use to import should include delimiters such as commas between fields in a record, and should use a newline to terminate each record.\u003c/p\u003e\n\u003ch2\u003eCopying Small Files From Your Local Machine\u003c/h2\u003e\n\u003cp\u003eFor small files on your local machine, you may be able to use the AWS Web UI to upload your files, as follows:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eLog in to your AWS account\u003c/li\u003e\n  \u003cli\u003eNavigate to the S3 area\u003c/li\u003e\n  \u003cli\u003eCreate an S3 bucket, if necessary\u003c/li\u003e\n  \u003cli\u003eNavigate to your S3 bucket\u003c/li\u003e\n  \u003cli\u003eClick the \u003ccode\u003eUpload\u003c/code\u003e button\u003c/li\u003e\n  \u003cli\u003eSelect the files to copy or use drag-and-drop to copy them to S3\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2\u003eCopying Large Files\u003c/h2\u003e\n\u003cp\u003eThe files that you want to import into your database are typically large and not located on your local computer; this means that you need to use the \u003cem\u003eAWS Command Line Interface\u003c/em\u003e to copy these files to S3. The AWS CLI site, \u003ca href\u003d\"https://aws.amazon.com/cli/\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://aws.amazon.com/cli/\"\u003ehttps://aws.amazon.com/cli/\u003c/a\u003e\u003c/a\u003e, shows you how to install and use this interface to copy your data up to an S3 bucket.\u003c/p\u003e\n\u003cp\u003eSplice Machine has extensive online documentation on importing options and best practices; the best starting point is our \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e. \u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf you need assistance with copying your data to S3, please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community Slack channel\u003c/em\u003e\u003c/a\u003e; if you\u0027ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003clink rel\u003d\"stylesheet\" href\u003d\"https://doc.splicemachine.com/zeppelin/css/zepstyles2.css\" /\u003e\n\u003ch1\u003ePreparing Data for Import\u003c/h1\u003e\n\u003cp\u003eThe easiest way to get your database tables populated is to import data from flat files (csv, etc.). Splice Machine imports data directly from HDFS, AWS S3, and Azure Block Storage. \u003c/p\u003e\n\u003cp\u003eFor this training we\u0026rsquo;ll use S3, and the data we\u0026rsquo; wi\u0026rsquo;ll import has already beem created and is ready to load. If you want to learn more about how to import your own data, read on; otherwise, continue to the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data into Your Database\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003ch2\u003ePreparing Your Own Data for Import\u003c/h2\u003e\n\u003cp\u003eWhen you want to experiment with loading your own data from S3, you can follow the steps below to get your data into an S3 bucket. Additionally you will want to make sure that your data is in a format that can be properly imported. To copy your database to S3, you need to have an AWS account with access to S3 buckets.\u003c/p\u003e\n\u003cp\u003e\u003cp class\u003d\"noteImportant\"\u003eThe flat files you use to import should include delimiters such as commas between fields in a record, and should use a newline to terminate each record.\u003c/p\u003e\n\u003ch2\u003eCopying Small Files From Your Local Machine\u003c/h2\u003e\n\u003cp\u003eFor small files on your local machine, you may be able to use the AWS Web UI to upload your files, as follows:\u003c/p\u003e\n\u003col\u003e\n  \u003cli\u003eLog in to your AWS account\u003c/li\u003e\n  \u003cli\u003eNavigate to the S3 area\u003c/li\u003e\n  \u003cli\u003eCreate an S3 bucket, if necessary\u003c/li\u003e\n  \u003cli\u003eNavigate to your S3 bucket\u003c/li\u003e\n  \u003cli\u003eClick the \u003ccode\u003eUpload\u003c/code\u003e button\u003c/li\u003e\n  \u003cli\u003eSelect the files to copy or use drag-and-drop to copy them to S3\u003c/li\u003e\n\u003c/ol\u003e\n\u003ch2\u003eCopying Large Files\u003c/h2\u003e\n\u003cp\u003eThe files that you want to import into your database are typically large and not located on your local computer; this means that you need to use the \u003cem\u003eAWS Command Line Interface\u003c/em\u003e to copy these files to S3. The AWS CLI site, \u003ca href\u003d\"https://aws.amazon.com/cli/\" target\u003d\"_blank\"\u003e\u003ca href\u003d\"https://aws.amazon.com/cli/\"\u003ehttps://aws.amazon.com/cli/\u003c/a\u003e\u003c/a\u003e, shows you how to install and use this interface to copy your data up to an S3 bucket.\u003c/p\u003e\n\u003cp\u003eSplice Machine has extensive online documentation on importing options and best practices; the best starting point is our \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e. \u003c/p\u003e\n\u003cp class\u003d\"noteNote\"\u003eIf you need assistance with copying your data to S3, please visit our \u003ca href\u003d\"https://splicemachine.slack.com/messages/splice-community/\" target\u003d\"_blank\"\u003e\u003cem\u003esplice-community Slack channel\u003c/em\u003e\u003c/a\u003e; if you\u0027ve not already done so, you can register for this channel \u003ca href\u003d\"https://www.splicemachine.com/community/slack-channel-signup/\" target\u003d\"_blank\"\u003ehere\u003c/a\u003e.\u003c/p\u003e\n\u003c/div\u003e",
+            "type": "HTML"
           }
-        ]
+        ],
+        "code": "SUCCESS"
       },
       "apps": [],
       "jobName": "paragraph_1542392281512_326762842",
@@ -45,18 +45,18 @@
       "user": "anonymous",
       "dateUpdated": "2018-12-01 17:17:55.704",
       "config": {
-        "editorHide": true,
         "enabled": false,
         "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
         "editorSetting": {
           "completionKey": "TAB",
           "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
+          "language": "markdown",
+          "completionSupport": false
         },
+        "editorHide": true,
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
         "colWidth": 12.0
       },
       "settings": {
@@ -66,8 +66,8 @@
       "results": {
         "msg": [
           {
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow that you\u0026rsquo;ve learned about preparing your data to import into your Splice Machine database, please continue on to the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data into Your Database\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003c/div\u003e",
-            "type": "HTML"
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eWhere to Go Next\u003c/h2\u003e\n\u003cp\u003eNow that you\u0026rsquo;ve learned about preparing your data to import into your Splice Machine database, please continue on to the \u003ca href\u003d\"/#/notebook/2DVR1D5BP\"\u003e\u003cem\u003eImporting Data into Your Database\u003c/em\u003e\u003c/a\u003e notebook.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ],
         "code": "SUCCESS"
@@ -80,22 +80,22 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%md\n## Related Documentation\nThe \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation provides details about and examples of using our different data importation processes.",
+      "text": "%md\n## Related Documentation\nThe \u003ca href\u003d\"https://doc.splicemachine.com/bestpractices_ingest_overview.htmll\" target\u003d\"_blank\"\u003e\u003cem\u003eBest Practices: Ingesting Data - Overview\u003c/em\u003e\u003c/a\u003e in our documentation provides details about and examples of using our different data importation processes.",
       "user": "anonymous",
-      "dateUpdated": "2018-12-28 00:21:38.942",
+      "dateUpdated": "2019-08-02 16:22:11.902",
       "config": {
-        "editorHide": true,
         "title": false,
-        "enabled": true,
+        "enabled": false,
         "results": {},
-        "editorMode": "ace/mode/markdown",
-        "fontSize": 9.0,
-        "tableHide": false,
         "editorSetting": {
           "editOnDblClick": true,
-          "completionSupport": false,
-          "language": "markdown"
+          "language": "markdown",
+          "completionSupport": false
         },
+        "editorHide": true,
+        "fontSize": 9.0,
+        "tableHide": false,
+        "editorMode": "ace/mode/markdown",
         "colWidth": 12.0
       },
       "settings": {
@@ -107,7 +107,7 @@
         "msg": [
           {
             "type": "HTML",
-            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRelated Documentation\u003c/h2\u003e\n\u003cp\u003eThe \u003ca href\u003d\"https://doc.splicemachine.com/tutorials_import_intro.html\" target\u003d\"_blank\"\u003e\u003cem\u003eImporting Data Tutorial\u003c/em\u003e\u003c/a\u003e in our documentation provides details about and examples of using our different data importation processes.\u003c/p\u003e\n\u003c/div\u003e"
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eRelated Documentation\u003c/h2\u003e\n\u003cp\u003eThe \u003ca href\u003d\"https://doc.splicemachine.com/bestpractices_ingest_overview.htmll\" target\u003d\"_blank\"\u003e\u003cem\u003eBest Practices: Ingesting Data - Overview\u003c/em\u003e\u003c/a\u003e in our documentation provides details about and examples of using our different data importation processes.\u003c/p\u003e\n\u003c/div\u003e"
           }
         ]
       },
@@ -115,8 +115,8 @@
       "jobName": "paragraph_1542392281513_595075135",
       "id": "20170907-075958_1415190286",
       "dateCreated": "2018-11-16 10:18:01.000",
-      "dateStarted": "2018-12-28 00:21:38.943",
-      "dateFinished": "2018-12-28 00:21:38.979",
+      "dateStarted": "2019-08-02 16:22:04.656",
+      "dateFinished": "2019-08-02 16:22:04.673",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
